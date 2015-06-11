@@ -1,0 +1,777 @@
+\documentclass{book}
+
+\usepackage[T1]{fontenc}
+\usepackage[UTF8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{lmodern}
+\usepackage{ngerman}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage[siunitx]{circuitikz}
+\usepackage{tikz-cd}
+\usepackage{makeidx}
+\usepackage{hyperref}
+
+\newcommand{\df}[1]{\textbf{#1}\index{#1}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Top}{\textbf{Top}}
+\newcommand{\Mod}{\textbf{Mod}}
+
+\newcommand{\set}[2]{\left\lbrace #1~|~#2 \right\rbrace}
+\newcommand{\grp}[2]{\left\langle #1~|~#2 \right\rangle}
+
+\newcommand{\qed}{$\square$}
+
+\newcommand{\gl}[1]{\overset{#1}{=}}
+\newcommand{\grgl}[1]{\overset{#1}{\geq}}
+\newcommand{\klgl}[1]{\overset{#1}{\leq}}
+\newcommand{\gr}[1]{\overset{#1}{>}}
+\newcommand{\kl}[1]{\overset{#1}{<}}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+
+\newcommand{\Matrix}[4]{\left(\begin{matrix}
+		#1 & #2\\
+		#3 & #4
+	\end{matrix}\right)}
+
+\begin{document}
+
+% 15.05.15: 10.VL
+
+Beweis $\Longleftarrow$ von 
+\[G \text{ frei } \Longleftrightarrow G \curvearrowright_\text{frei} Baum \]
+\[S' := \set{g_e \in G}{e \text{ wesentlich für }T_0} \]
+wesentlich heißt
+\[e = \{u,v\}, u \in T_0, v \notin T_0\]
+$g_e$ so, dass $g_e^{-1} v \in V(T_0)$
+
+\paragraph{2.Schritt}
+Zeige $S'$ erzeugt $G$:\\
+
+$g\in G$, Ziel: finde Elemente in $S'$ so, dass $g$ Produkt dieser ist.\\
+
+Wähle Ecke $u \in T_0$, weil $T$ zusammenhängend, existiert Kantenpfad $p$ in $T$ von $u$ nach $g.u$.
+
+Weil $V(T) = \bigcup_{g\in G} V(g.T_0)$, weil $T_0$ aus jedem $G$-Orbit eine Ecke enthält.\\
+$\Longrightarrow$ $p$ durchläuft verschiedene Kopien $g_0T_0, ..., g_nT_0$ von $T_0$ mit $g_0 = 1, g_n = g$.\\
+Es ist $g_{j+1} \neq g_j$ für $\forall j: k_0 \leq j \leq k_1$, wenn $p$ reduziert.\\
+$\Rightarrow$ $g_jT_0$ und $g_{j+1}T_0$ sind für alle $j$ wie oben verbunden.\\
+$g_j^{-1} e_j$ ist wesentliche Kante für $T_0$; $p = e_0...e_{n-1}$\\
+Setze $s_j := g_j^{-1}g_{j+1} \in S'$.\\
+Dann $g = g_0 \cdots g_{k_0}^{-1}g_{k_0 +1} g_{k_0 +1}^{-1} \cdots g_n = s_0 \cdots s_n \in \grp{S'}{}$
+
+\paragraph{3.Schritt}
+$\exists S \subset S'$, das G frei erzeugt.
+
+aus 1.Schritt folgt, dass S' in Paare aufspaltet $\{s, s^{-1}$; für S wähle ein Element pro Paar aus.
+
+Es reicht zu zeigen: Cay(G,S) enthält keine Kreise.
+
+Annahme: Sei $g_0,\ldots, g_{n-1}, g_n = g_0$ Kreis in Cay(G,S)
+
+Setze $s_j := g_j^{-1}g_{j+1} \forall j= 0, \ldots , n-1$
+
+Es sei $s_j\in S \forall j$ (OE: S so wählbar)
+
+Sei $e_j$ wesentliche Kante zw. $T_0$ und $s_jT_0$
+
+Jede Kopie von $T_0$ ist zusammenhängender Teilbaum, daher können wir die Ecken der Kanten $g_je_j$ und $g_js_je_{j+1} = g_{j+1}e_{j+1}$, die in $g_{j+1}T_0$ liegen durch einen eindeutigen, reduzierten Weg in $g_{j+1}T_0$ verbinden.
+
+Weil $g_n = g_0$, ist der erhaltene Weg geschlossen.\\
+Starten und Enden in selber Kopie vom Baum $T_0$. Widerspruch zu $T$ ist Baum.
+
+\subsubsection{Korollar 3.15 (Satz von Nielsen-Schreier)} Untergruppen freier Gruppen sind frei.
+\paragraph{Beweis} Eine Untergruppe wirkt frei auf den Cayleygraphen seiner Obergruppe.
+
+\subsubsection{Korollar 3.16} $F$ freie Gruppe, $Rang(F) = n$, $G < F$ UG vom Index $k$. Dann ist G frei und vom Rang $k(n-1) + 1$. Insbesondere sind Untergruppen vom endlichen Index in freien Gruppen vom endlichen Index endlich erzeugt.
+\paragraph{Beweis} $S$ freies EZS von $F$, $\Gamma:= Cay(G,S)$, $G,F \curvearrowright_{frei} \Gamma$ durch Linksmult.
+
+Bew 3.11: Rang(G) = $\frac{1}{2} E$, E = \# wesentlicher Kanten für Fund.-Baum $T_0$ von $G \curvearrowright T$
+
+Weil $|F:G| = k$ hat $T_0$ genau $k$ Ecken.
+
+Es gilt $d_T(v) = 2n$ für alle v in T.
+
+Dann: (1) $\sum_{v\in V(T_0)} d_T(v) = k 2n$, andererseits ist $T_0$ endlicher Baum mit $k$ Ecken, also hat $T_0$ $k-1$ Kanten.
+
+In (1) werden Kanten doppelt gezählt, d.h.
+\[\sum_{v\in V(T_0)}d_T(v) = 2(k-1) + E\]
+\[1/2 E = k(n-1) + 1 = Rang G\]
+
+\subsubsection{Korollar 3.17}
+F frei vom Rang $m \geq 2$, und $n\in \N$, Dann gibt es UG von $F$, die frei und vom Rang n ist.
+
+\subsubsection{3.18 Ping-Pong Lemma (Felix Klein)}
+$G$ Gruppe, erzeugt von $S = \{a,b\}$, wobei $a,b$ unendliche Ordnung.\\
+$G \curvearrowright X$, X Menge, so dass für $\emptyset \neq A, B \subset X$
+mit $B \not \subset A$ gilt:
+\[a^nB \subset A \text{ und } b^nA \subset B, \forall n \in \Z\setminus\{0\} \]
+
+dann ist G frei von S erzeugt.
+
+\paragraph{Beweis}
+Zu zeigen $G \cong F_{red}(a,b)$ via Isom, der S festhält.
+
+UAE:
+$\phi : F_{red}(a,b) \longrightarrow G$ mit $\phi|S = id$, dann ist $\phi$ surjektiv.
+
+Zu zeigen: $\phi$ injektiv.
+
+Annahme: $\phi$ nicht injektiv, dann existiert $w\in F_{red}(S)$ mit $\phi(w) = 1$
+
+4 Fälle: 
+
+\paragraph{1.Fall}
+w beginnt mit nichttriv. Potenz von a und endet mit einer solchen:
+\[w = a^{n_0}b^{m_0}...b^{m_k}a^{n_{k+1}}, n_i, m_i \in \Z- 0 \]
+
+Nun ist $B = 1.B = \phi(w)B = a^{n_0}b^{m_0}...b^{m_k}a^{n_{k+1}}.B \subset A$. Widerspruch!
+
+\paragraph{2.Fall}
+w beginnt mit $b$ und endet mit $b$. konjugiere mit a: 1.Fall
+
+\paragraph{3.Fall}
+w beginnt mit $a$ und endet mit $b$. Konjugiere mit $a^k$ für k groß genug
+
+
+\subsubsection{3.19 Beispiel}
+freie UG von SL(2,Z)
+
+\[SL(2,\Z) = \set{\begin{matrix}
+	a & b\\
+	c & d\\
+	\end{matrix}}{det = 1}\]
+Dann ist $G:= \grp{M_1, M_2}{}$ frei vom Rang 2, wobei 
+\[M_1 =\begin{matrix}
+1 & 2\\
+0 & 1
+\end{matrix}, M_1 =\begin{matrix}
+1 & 0\\
+2 & 1
+\end{matrix}\]
+
+\paragraph{Beweis}
+Betrachte lineare Wirkung von $SL(2,\R) \curvearrowright \R^2$ definiert durch
+\[(M, (x,y)) \longmapsto M.(x,y)\]
+$\forall n \in \Z - 0$ und $(x,y) \in \R^2$: $M_1^n.(x,y) = (x+2ny,y)$
+
+Sei $A = \set{(x,y)}{|x| > |y|}$, 
+ $B = \set{(x,y)}{|y| > |x|}$,  $B \not \subset A$
+
+Dann $|x + 2ny| \geq |2ny| - |x| > |2y| - |y| = |y|$, also $M_1^nB \subset A$, analog für $M_2$.
+
+3.18 zeigt: G frei.
+
+% 19.05.15, 11. VL
+% Prüfungszeiträume: 27.7 - 30.7 & 8. - 11.9
+% Listen vor Büro an Pinnwand: 1.005
+
+\paragraph{Motivation}
+Gruppe -> Geometrie
+Ziel: Konzept finden, welches Cayleygraphen einer festgelegten Gruppe als gleich (äquivalent) auffasst
+
+\subsection{Ein paar Definitionen}
+Seien $(X,d),(Y,d)$ metrische Räume, $f:X\rightarrow Y$ eine stetige Abbildung.
+\begin{itemize}
+	\item $f$ heißt eine \df{isometrische Einbettung}, falls für alle $x,y \in X$ gilt
+	\[d(f(x),f(y) = d(x,y) \]
+	\item $f$ heißt eine \df{Isometrie}, falls $f$ eine surjektive isometrische Einbettung ist.
+	\item $X$ und $Y$ heißen isometrisch, falls eine Isometrie $X\rightarrow Y$ existiert.
+	\item $f$ heißt eine \df{Bilipschitz-Einbettung}, falls eine reelle Konstante $c \geq 1$ existiert, sodass für alle $x,y \in X$ gilt
+	\[ \frac{1}{c} d(x,y) \leq  d(f(x),f(y) \leq c d(x,y) \]
+	\item $f$ heißt eine \df{Bilipschitz-Äquivalenz}, falls $f$ eine surjektive Bilipschitz-Einbettung ist.
+\end{itemize}
+
+\subsection{Bemerkung 4.4}
+\begin{itemize}
+	\item Isometrie -> Bil.Äqu -> QI
+	\item Umkehrung i.A. nicht richtig
+	\item Quasi-Isometrisch sind $(R,d)$ und $(Z, d)$ und $(2Z, d)$ mit den euklidischen Metriken.
+	Die Inklusionen sind quasi-isom. Einbettungen, aber keine Bilipschitzäqu., weiter sind
+	\begin{align*}
+	f:\R \longrightarrow \Z && x \longmapsto \lfloor x\rfloor\\
+	g: \Z \longrightarrow 2\Z && x \longmapsto \{x, x -1\}\cap 2\Z
+	\end{align*}
+\end{itemize}
+\subsection{Quiz 4.5}
+\begin{itemize}
+	\item Sind $\Z$ und $2\Z$ bilipschitz-äquivalent?
+\end{itemize}
+
+\subsection{4.6 Durchmesser metrischer Räume}
+Jeder nichtleere, metrische Raum $(X,d)$ mit endlichen Durchmessern
+\[diam(X) := \sup_{x,y\in X}(d(x,y)) \]
+ist quasi-isometrisch zu einem Punkt.
+\paragraph{Beweis}
+Setze $D:= diam(X)$, sei $* \in X$ beliebig. definiere die Abbildung
+\[f:X \longrightarrow X, x \longmapsto *\]
+Dann gilt
+\[d(f(x), f(y)) - D \leq d(f(x),f(y)) \leq d(f(x),f(y)) + D \]
+Daraus folgt auch, dass $d(f^2(x), id(x)) \leq D$, ergo sind $X$ und $*$ quasi-isometrisch.
+\qed
+\subsection{Korollar}
+Ist $X$ beschränkt und $Y$ quasi-isom. zu $X$, so ist auch $Y$ beschränkt.
+
+\subsection{4.17 Satz}
+$X,Y$ metrische Räume,$f:X\rightarrow Y$ eine quasi-isometrische Einbettung. Dann gilt:
+\[f \text{ Quasi-Isometrie }\Longleftrightarrow f \text{ hat quasi-dichtes Bild in }Y \]
+d.h. $f(X) \subset Y$ ist $\delta$-dicht für $\delta \geq 0$, d.h.
+\[\forall y\in Y, \exists x \in X: d(y,f(x)) \leq \delta \]
+
+\paragraph{Beweis}
+$f$ Quasi-Isometrie, dann existiert quasi-Inverse $g : Y \rightarrow X$ und somit $\delta > 0$, s.d. $\forall y \in Y$ gilt
+\[d((f\circ g)(y), y) \leq \delta \]
+ergo quasi-Dichtes Bild.
+
+Andere Richtung: $f$ sei (C,D)-q.i.Einbettung mit $\delta$-dichtem Bild, wir konstruieren quasi-Inverse via Auswahlaxiom\\
+Setze $\lambda := \max\{C,D,\delta\} \geq 1$, dann gilt
+\begin{itemize}
+	\item $\forall x,y \in X:  \frac{1}{\lambda} d(x,y) - \lambda \leq d(f(x),f(y) \leq {\lambda} d(x,y) + \lambda  $
+	\item $\forall y \in Y \exists x \in X: d(f(x),y) \leq \lambda$
+\end{itemize}
+Setze $g:Y\rightarrow X, y \longmapsto x_\lambda $; wähle $x_\lambda$ so, dass $d(f(x_\lambda), y) \leq \lambda$.\\
+
+Zu Zeigen: $g$ ist quasi-invers zu $f$.\\
+\[\forall y\in Y: d(f(g(y)), id(y)) = d(f(x_\lambda), y) \leq \lambda \]
+\[\forall x\in X: d(g(f(x)), id(x)) = d(x_{f(x)}, x) \leq \lambda \cdot d(f(x_{f(x)}), f(x)) + \lambda^2 \leq 2\lambda^2 \]
+
+Noch zu zeigen: $g$ ist quasi-isometrische Einbettung\\
+
+Seien dazu $y,y' \in Y$
+\[d(g(y),g(y')) = d(x_y, x_{y'}) \leq \lambda d(f(x_y), f(x_{y'})) + \lambda^2 \]
+\[\leq \lambda \left( d(f(x_y),y) + d(y, y') + d(y', f(x_{y'})) \right) + \lambda^2\]
+\[\leq \lambda^2 + \lambda d(y, y') + \lambda^2 + \lambda^2 \]
+
+Setze $C = \lambda, D = 3\lambda^2$\\
+
+Für $y,y' \in Y$ ist noch zu zeigen
+\[d(g(y),g(y') \geq \frac{1}{C} d(y,y') - D \]
+
+%% 13. VL, 26.05.15
+
+\subsubsection{4.18 Definition: Geodäten}
+Eine \df{Geodäte} ist ein eine isometrische Einbettung $\gamma : [0,L] \rightarrow X$ eines Intervalls in einen metrischen Raum.
+
+\subsubsection{4.20 Definition Quasigeodäte}
+Eine $(C,D)$-\df{Quasigeodäte} für $C\geq 1, D \geq 0$ ist eine $(C,D)$-Quasiisometrische Einbettung von $[0,L]$ nach $X$.
+
+$X$ heißt $(C,D)$-quasigeodätisch, falls $\forall x,y \in X$ eine verbindende Quasigeodäte \[\gamma :[0,d(x,y)] \rightarrow X \] existiert.
+
+\subsubsection{4.22 Satz von Schwarz-Milner}
+$G$ Gruppe, $X$ metr. Raum, $G\curvearrowright X$ durch Isometrien.
+Weiter gelte:
+$X$ quasi-geod. für $(C,D)$ mit $D > 0$
+$\exists B \subset X$ beschränkt mit $\bigcup_{g\in G}gB = X$
+$S:=\set{g\in G}{gB' \cap B' \neq \emptyset}$ ist endlich mit $B' := \set{x\in X}{\exists y \in B: d(x,y) \leq 2D}$
+
+Dann gilt:
+$G$ wird von $S$ erzeugt
+$\forall x \in X$ ist $(G,d_S) \rightarrow (X,d); g \mapsto g.x$ eine quasi-Isometrie.
+
+\paragraph{Beweis}
+ZZ: $S$ erzeugt $G$
+
+Sei $g\in G$, $x\in B$. Dann existiert $(C,D)$-Quasigeodäte von $x$ nach $g.x$, $\gamma: [0,d(x,g.x)] \rightarrow X$.
+
+Setze $n := \lceil\frac{CL}{D}\rceil$ und für alle $j = 0,\ldots, n-1$
+Setzte $t_j = \frac{jD}{C}$ und $t_n := L$
+$x_j := \gamma(t_j)$ für $j = 0,\ldots,n$
+
+Die Translate von $B$ unter $G$ überdecken $X$, also existiert für alle $x_j$ ein $g_j$, s.d. $x_j \in g_j.B$, $g_0 = 1$, $g_n \in g$
+
+Beh.: $\forall j = 1,\ldots, n$ ist $s_j := g_{j-1}^{-1}g_j \in S$
+Bew.: $\gamma$ Quasi-Geodäte
+$d(x_{j-1},x_j) \leq C |t_{j-1}-t_j| + D
+\leq C \frac{D}{C} + D
+= 2D$
+also $x_j \in B_{2D}(g_{j-1}.B) \overset{G \curvearrowright X isom.}{=} g_{j-1}.B_{2D}(B) = g_{j-1}.B'$
+andererseits ist $x_j \in g_j.B \subset g_j.B'$
+also $g_j.B \cap g_{j-1}.B'\neq \emptyset$
+also $g_{j-1}^{-1}g_j \in S$
+\qed
+
+Also $g = g_n = g_{n-1}(g_{n-1}^{-1}g_n) = g_{n-1}s_n = g_{n-2}(g_{n-2}^{-1}g_{n-1})s_n = s_1...s_n \in \grp{S}{}_G$
+
+
+ZZ. $G\sim_{QI}X$:
+
+Wir zeigen $\forall x \in X:$ $\phi: G \rightarrow X, g \mapsto g.x$ quasi-isom. Einbettung mit quasi-dichtem Bild.
+
+OE: $x \in B$, weil $\bigcup_{g\in G}g.B = X$ und $G \curvearrowright X$ isom., sonst ersetze $B$ durch passendes Translat.
+
+Sei $x'\in X$. Dann gibt es $g\in G$ mit $x' \in g.B$
+$d(x', \phi(g)) = d(x', gx) \leq diam(gB) = diam(B) = \delta$
+$\Longrightarrow \delta$-dichtes Bild
+
+Noch ZZ: qi. Einbettung
+
+Betrachte $(C,D)$-quasi-geodäte $\gamma : [0,L] \rightarrow X$ von $x$ nach $g.x$
+Dann gilt
+$d(\phi(e), \phi(g)) = d(x, g.x) = d(\gamma(0), \gamma(L)) \geq \frac{L}{C} - D
+\geq \frac{1}{C}(\frac{D(n-1)}{C}D)
+=\frac{D}{C^2}n - \frac{D}{C^2} - D
+\geq \frac{D}{C^2} d_S(e,g) - (\frac{D}{C^2}+D)$
+
+Abschätzung nach oben:
+Setze $n = d_S(e,g)$
+\[d(\phi(e), \phi(g))
+= d(x,g.x)
+\leq d(x,s_1.x) + d(s_1.x, s_1s_2.x) + ... + d(s_1...s_{n-1}.x, g.x)
+\overset{G wirkt isom.}{=}
+d(x,s_1.x) + d(x, s_2.x) + ... + s(x,s_n.x)
+\leq 2n diam(B')
+\leq 2n (diam(B)4D)
+= d_S(e,g) 2 (diam B + 4D)
+\]
+wähle für $(C_0, D_0)$-qi Einbettung die Konstanten
+$C_0 = \max\set{C^2/D, 2(...)}{}$
+$D_0 = D/C^2 + D$
+allgemeiner Fall folgt aus der Linksinvarianz von $d$ und $d_S$.
+\qed
+
+%% 14.VL, 29.05.15
+
+\subsection{4.23 Definition}
+Ein metrischer Raum $X$ heißt \df{eigentlich}, falls alle abgeschlossene Bälle von endlichem Radius kompakt sind.\\
+Eine Wirkung $G\curvearrowright X$ ist \df{eigentlich}, wenn für alle kompakten Teilmengen $K \subset X$, die Menge
+\[\set{g\in G}{g.K \cap K \neq \emptyset}\]
+endlich ist.\\
+Manchmal sagt man auch \df{eigentlich diskontinuierlich}.
+
+\subsection{Bemerkung}
+$f$ eigentlich, wenn Urbilder kompakter Mengen wieder kompakt sind.\\
+Hier $G\curvearrowright X$ eigentlich
+\[\Longleftrightarrow G\times X \longrightarrow X \]
+\[(g,x) \longmapsto g.x\]
+ist eigentliche Abbildung. (Wobei man auf $G$ die diskrete Topologie betrachtet.)
+
+\subsection{4.24 Beispiel}
+\begin{itemize}
+	\item $\Z \curvearrowright \R$ via Translation ist eigentlich.
+	\item $G\curvearrowright X$ eigentlich $\Longrightarrow$ $Stab_G(x)$ ist endlich für $x \in X$, d.h. $G$-Bahnen haben keinen Häufungspunkt
+	\item $\Z \curvearrowright \R^2$ Rotation um Ursprung um Winkel mal $z$\\
+	$(0,0)$ ist Fixpunkt, also kann diese Wirkung nicht eigentlich sein.
+	\item $\Z \curvearrowright S^1$ via Rotation um $\alpha$ ist nicht eigentlich, da $S^1$ kompakt.
+	\item $unendliche Gruppe \curvearrowright kompakter Raum$ ist nicht eigentlich
+	\item $G$ erzeugt von $S$, $|S| < \infty$, dann ist $G \curvearrowright Cay(G,S) =: \Gamma$ eigentlich.
+	\paragraph{Beweis}
+	$K \subset \Gamma$ kompakt $\Longrightarrow$ $diam(K)< \infty$ $\Longrightarrow$ $\forall g\in G$ mit $d_S(e,g) = |g|_S > diam(K)$ gilt: $K\cap g.K = \emptyset$, sonst $\exists x \in K \cap g.K \Longrightarrow x \in K$ und $g^{-1}.x\in K$ mit $d_S(x,g^{-1}.x) = |g^{-1}|_S = |g|_S$ ein Widerspruch\\
+	Insbesondere nur endlich viele $g$ mit $|g|_S \leq D$. \qed
+\end{itemize}
+
+\subsection{4.25 Erinnerung} $X$ topologischer Raum
+\begin{itemize}
+	\item $X$ \df{hausdorffsch}, g.d.w.
+	\[\forall x \in X \exists U_x \subset_O, x \in U_x, U_y \subset_O, y \in U_y: U_x \cap U_y = \emptyset  \]
+	\item $X$ \df{lokal kompakt}, g.d.w.
+	Für alle $x \in X$ enthält jede offene Umgebung von $x$ eine kompakte Umgebung von $x$.
+	\item $X$ metrischer Raum $\Longrightarrow$ hausdorffsch
+	\item eigentliche metrische Räume $\Longrightarrow$ lokal kompakt
+\end{itemize}
+
+\subsection{4.26 Bemerkung/Lemma: Quotientenräume}
+
+$(X,d)$ metrischer Raum, eigentlich
+\[\alpha : G \rightarrow Isom(X) \text{ Wirkung von G auf X} \]
+\[p : X \rightarrow X/G \text{ natürliche Projektion auf Quotienten} \]
+Setze $f(x,y) := \inf\{d(x,y) | p(x) = x, p(y) = y\}$ für $x,y \in X/G$\\
+Dann gilt:
+\begin{enumerate}
+	\item $inf = min$, d.h. $\exists x,y \in X: f(x,y) = d(x,y) \forall x,y \in X/G$
+	\item $f$ ist Metrik auf $X/G$
+\end{enumerate}
+
+\paragraph{Beweis}
+Seien $z,w \in X/G$, $x = p^{-1}(w)$; setze $R = f(z,w)$\\
+Annahme: inf $\neq$ min\\
+Dann existieren unendliche Folgen $(x_n,y_n)$ mit $d(x_n,y_n) \rightarrow R$ und $p(x_n) = w, p(y_n) = z$.\\
+Weil $p(x_n) = p(x)$ gilt: $\exists h_n \in G$ mit $h_nx_n = x$\\
+$\Longrightarrow$ $d(h_nx_n, h_ny_n) = d(x_n,y_n)$, da $\alpha$ isom.\\
+daraus folgt $x_n$ kann durch konstante Folge $x$ und $y_n$ durch $y_nh_n$ ersetzt werden.\\
+Daraus folgt $y_n \in B_{R+\epsilon}(x_n)$, $p(y_n) = z$\\
+Weil $B_{R+ \epsilon}(x)$ kompakt ist, hat $(y_n)_n$ einen HP in $B_{R+ \epsilon}(x)$. Widerspruch zu 4.24\\
+\\
+
+
+$f$ nichtneg. und symmetrisch, da $d$ so.\\
+$f(z,w) = 0 \Longrightarrow \exists x,y: d(x,y) = 0 \Longrightarrow x = y \Longrightarrow z = w$\\
+Dreiecksungleichung: $u,v,w \in X/G$, wähle $x, y \in X$, s.d. $d(x,y) = f(u,v)$, $p(x) = u, p(y) = v$.\\
+Wähle $y_1$ mit $d(x,y_1) = f(u,v)$, $p(y_1) = v$; $y_2$, $p(y_2) = v$ und $d(z,y_2) = f(v,w)$\\
+weil $y_1, y_2 \in p^{-1}(v)$ existiert $g$ mit $g.y_2 =y_1$\\
+$\Longrightarrow f(u,v) + f(v,w) = d(x,y_1)+d(y_2,z) = d(x,g.y_2) + d(g.y_2, g.z) \geq d(x,g.z) \geq f(u,w)$
+\qed
+
+
+\subsection{4.27 Definition}
+Eine Gruppenwirkung $G\curvearrowright X$ heißt kokompakt, wenn $X/G$ kompakt.\\
+Betrachte auf $X/G$ Topologie, die durch Quotientenmetrik $f$ induziert wird, wenn wir mit metrischen Raum gestartet sind.
+
+\subsection{4.28 Beispiele}
+\begin{itemize}
+	\item $\Z \curvearrowright \R^2$ durch Translation längs $x$-Achse.\\
+	$\R^2/\Z$ = Zylinder ist nicht kompakt, also keien kokompakte Wirkung.
+	
+	\item $X$ kompakt, wegzusammenhängend top. Raum, $\widetilde{X}$ universelle Überlagerung.\\
+	$\pi_1(X) \curvearrowright \widetilde{X}$ durch Decktransformationen ist kokompakt und eigentlich\\
+	$X = \widetilde{X}/ \pi_1(X)$
+	
+	\item $G \curvearrowright Cay(G,S) =: X$ mit kombinatorischer Metrik\\
+	$n := |S|$, $X/G = R_n$, Rose mit n Blättern, kompakt
+\end{itemize}
+
+\subsection{4.29 (topologischer) Satz von Schwarz-Milner}
+$G$ wirke eigentlich, kokompakt, durch Isometrien auf einen nichtleeren, eigentlichen, geodätischen metrischen Raum $(X,d)$
+, dann gilt $G$ endlich erzeugt und für alle $x \in X$ ist
+\[G \longrightarrow X, g \longmapsto g.x\]
+eine Quasi-Isometrie.\\
+Wenn $G\curvearrowright X$ eigentlich, kokompakt und durch Isometrien, so sagt man auch $G$ wirkt \df{geometrisch}.
+
+\paragraph{Beweis}
+Suche $B$.\\
+\begin{itemize}
+	\item nach Vorr. ist $X$ $\forall \epsilon > 0$, $(1, \epsilon)$-quasi-geodätisch.
+	\item Sei für bel. $x_0 \in X$: $B:=\set{x \in X}{d(x,x_0) \leq D}$;\\
+	$D:= diam(X/G) < \infty$, da $G\curvearrowright X$ kokompakt.
+\end{itemize}
+Dann gilt: $\bigcup_{g\in G}g.B= X$, $B' := B_{2\epsilon} (B)$ endlicher Radius, also kompakt, da $X$ eigentlich.\\
+$G \curvearrowright X$ eigentlich, also $\set{g \in G}{g.B' \cap B' \neq \emptyset}$ endlich.
+
+4.22 zeigt Beh.\qed
+
+\subsection{Korollar}
+Sei $H < G$, $G$ endlich erzeugt mit $(G: H )< \infty$.
+Dann ist $H$ endlich erzeugt und quasi-isom. zu $G$.
+
+\paragraph{Bew:}
+$S$ sei endl. EZS von $G$\\
+$\Longrightarrow$ $H \curvearrowright Cay(G,S) =: \Gamma$ mit Wortmetrik $d_S$ isom., eigentlich, kokompakt.\\
+Sei $B$ endliches Vertretersystem von $G/H$, existiert, weil Anzahl Nebenklassen von $H$ in $G$ endlich ist.\\
+Dann ist $HB = G$
+
+$B' := B_2(B)$ endlich, $\set{h\in H}{h.B'\cap B' \neq \emptyset}$ endlich.\\
+Schwarz-Milner: $H$ endlich erzeugt und $H\sim_{qi} \gamma \sim_{qi} G$\qed
+
+%% 2.6.15, 15.Vl
+
+\subsection{4.31 Definition}
+\begin{enumerate}
+	\item Zwei Gruppen $G,H$ heißen \df{kommensurabel}, wenn es Untergruppen $G'<G, H<H'$ mit endlichem Index gibt, s.d. $G' \cong H'$.
+	\item Zwei Gruppen $G,H$ heißen \df{schwach kommensurabel}, wenn es Untergruppen $G'<G, H<H'$ mit endlichem Index gibt, s.d. normale Untergruppen $N \vartriangleleft H', M \vartriangleleft G'$ mit 
+	\[H'/N \cong G'/M \]
+\end{enumerate}
+
+\subsection{Bemerkung}
+$\sim_C, \sim_{WC}$ sind ÄQ (kommensurabel, schwach ...)
+$G\sim_C H \Longrightarrow G\sim_{QI}H (falls G endlich erzeugt)$
+
+\subsection{Korollar}
+Sei $G$ eine Gruppe und 
+\begin{enumerate}
+	\item $G' < G$ eine UG mit endlichem Index. Dann gilt:
+	\[G' \text{ endlich erzeugt } \Longleftrightarrow G \text{ endlich erzeugt} \]
+	Falls $G,G'$ endlich erzeugt, dann $G \sim_{QI} G'$
+	\item $N \vartriangleleft G$ ein endliche normale Untergruppe. Dann gilt:
+	\[G/ N \text{ endlich erzeugt } \Longleftrightarrow \text{G endlich erzeugt} \]
+	Falls $G,N$ endlich erzeugt, dann $G/N \sim_{QI} G$
+\end{enumerate}
+Insbesondere: Ist G endl. erz. und $H \sim_WC G$, dann ist $H$ endlich erzeugt und $G\sim_QI H$
+\subsection{Bemerkung}
+Man kann zeigen, dass nicht alle qi Gruppen kommensurabel sind. Z.Bsp.: $(F_3\times F_3)* F_3 \sim_QI (F_3\times F_3)*F_4$, aber die Gruppen sind nicht kommensurabel (Eulercharakteristik)
+
+\subsection{4.33 Korollar}
+Sei $M$ eine kompakte Mannigfaltigkeit ohne Rand mit Riemannscher Metrik und $M'$ die Riem. universelle Überlagerung. Dann gilt:
+\begin{enumerate}
+	\item $\pi_1(M)$ endl. erz.
+	\item $\forall c \in M'$ ist $\pi_1(M) \rightarrow M'$, $g\longmapsto g.x$ eine QI
+\end{enumerate}
+\paragraph{Beweis}
+Zeige mit Standard-Argumenten der Geometrie und alg. Topo, dass M' eig. und geod.
+$\pi(M) \curvearrowright M'$ eig., kokompakt und durch Isom.
+\section{Quasi-Isometrie-Invarianten}
+\subsection{Definition}
+Sei V eine menge. Eine \df{QI-Invariante} mit Werten in V ist eine Abb.
+\[I:X \longrightarrow V\]
+$X \subset \set{G: Gruppe}{G endl. erz}$, s.d. gilt
+\[G\sim_QI H \Longrightarrow I(G) = I(H)\]
+\subsection{Bemerkung}
+\begin{enumerate}
+	\item QI-Invarianten sind hilfreich, um $G \not\sim_QI H $ zu zeigen
+	\item i.A. ist es nicht möglich zu entscheiden, ob $G \sim_QI H$ gilt
+\end{enumerate}
+\subsection{Beispiel}
+\begin{enumerate}
+	\item $V = \{1\}$, dann keine Infos
+	\item $V = \{0,1\}$, $I(G) = 1, G unendl., sonst 0$ ist QIInv.
+	\item $V = \N$, $I(F) = rang F$, $F$ endl. erz. freie Gruppe, ist keine QIInv., weil $F_n\sim_QI F_m$ für $n,m \geq 2$
+\end{enumerate}
+\subsection{Definition}
+Eine Eigenschaft $P$ von endl. erz. Gruppen heißt \df{geometrisch}, wenn gilt: 
+G hat P und H qi G, dann H hat P
+
+\subsection{Beispiel}
+\begin{enumerate}
+	\item $\forall n \in \N$ ist die Eigenschaft \df{virtuell $\Z^n$} zu sein eine geom. ES.
+	\item \df{endlich sein} ist geometrisch.
+	\item \df{endlich erzeugt und virtuell frei} ist geometrisch ES.
+	\item \df{abelsch} ist kein geom. ES.
+\end{enumerate}
+1 bis 3 ist schwer zu beweisen, wir zeigen:
+\begin{enumerate}
+	\item \df{endlich präsentiert} ist geom. ES.
+	\item Wachstum von Gruppen liefert geom. ES.
+	\item einige Ränder/Enden von einigen Gruppen liefert geom. ES.
+\end{enumerate}
+
+\subsection{Einschub: Simplizialkomplexe und CW-Komplexe}
+\paragraph{Definition} Ein (abstrakter) \df{Simplizialkomplex} $\Delta$ ist eine Menge von Teilmengen einer Menge $V$, s.d. gilt:
+\begin{enumerate}
+	\item $\{v\} \in \Delta$ für alle $v \in V$
+	\item $\emptyset\neq A \subset B \in \Delta \Longrightarrow A \in \Delta$
+\end{enumerate}
+Dimension von $a \in \Delta$ ist $dim(a) := |a| -1$
+Dimension von $\Delta$ ist $dim(\Delta) = \sup_{a\in A}dim(a)$
+Schreibe: $a$ ist $K$-Simplex, falls $dim(a) = K$
+
+\paragraph{Beispiel}
+\begin{enumerate}
+	\item $V = \{1,2,3\}, \Delta = \{\{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}\}$  ist Simplizialkomplex für V
+	\item $V = \{1,2,3\}, \Delta = \{\{1\}, \{2\}, \{1,2\}\}$  ist kein Simplizialkomplex für V
+	\item ungerichtete, einfache Graphen sind Simplizialkomplexe
+	\item $V$ Menge, $\Delta = P(V)-\{\emptyset\} =: \grp{V}{} $ ist Simplizialkomplex;
+\end{enumerate}
+
+\paragraph{Allgemeiner: CW-Komplexe}
+Ein CW-Komplex ist ein top. Raum, der schrittweise aus sog. Zellen zusammengeklebt worden ist. 
+\paragraph{Definition}
+Sei $X^{(0)}\subset \R^n$ eine diskrete Menge, diese Menge besteht aus den sogenannten \df{0-Zellen}.\\
+Das \df{$n$-Skelett} $X^{(n)}$ entsteht aus den $X^{(n-1)}$ durch Ankleben von $n$-Zellen $D^n_i$ durch stetige Abb.
+\[\phi_i : S^{n-1} = \partial D_n \longrightarrow X^{(n-1)} \]
+
+Formal:
+\[X^{(n)} = X^{(n-1)} \cup \bigcup_{i\in I}D^n_i/\sim \]
+wobei $x\sim \phi_i(x)$ für $x \in \partial D_i^n$
+
+Definiere den CW-Komplex durch $X = \bigcup_{n\geq 0} X^{(n)}$.
+
+\paragraph{Beispiele}
+\begin{enumerate}
+	\item Graphen mit Doppelkanten sind CW-Komplexe
+\end{enumerate}
+
+%% 16.VL, 5.6.15
+
+\subsubsection{Definition}
+$G,H$ schwach kommensurabel, falls $\exists$
+\[N \vartriangleleft G' \leq G\]
+\[M \vartriangleleft H' \leq H\]
+wobei $N,M, (G':G), (H':H)$ endlich sind.
+
+\subsubsection{Satz 5.5}
+$G$ endlich erzeugt von $S$ mit Relationen $R$, $R$ endlich. Sei $H$ endlich erzeugte Gruppe von $S'$ und $H\sim_{QI}G$, dann gilt:
+$H$ ist endlich präsentiert und es existiert eine endliche Menge $R'$ von Relationen, s.d.
+\[H = \grp{S'}{R'}\]
+\paragraph{Idee}
+Baue 2-dim. CW-Komplex, der die Darstellung kodiert (aufbauend auf Cayleygraphen).
+\paragraph{Erinnerung}
+$G = \grp{S}{R} = F(S)/ \grp{R}{}_G\vartriangleleft$\\
+$\exists \pi: F(S) \rightarrow > \grp{S}{R}, kern \pi = \grp{R}{}_G\vartriangleleft$ 
+
+\subsection{Definition 5.6: Präsentationskomplex}
+OE: $1 \in S, G \cong \grp{S}{R}$ endlich präsentiert.
+\[\Gamma := Cay(G,S)/\sim \]
+wobei zwei Kanten $e, e'$ verklebt werden (äquiv. sind), wenn gilt $\delta(e) = \delta(e')$\\\\
+
+Der \df{Präsentations(zwei)komplex} $K = K(S,R)$ von $G$ ist der Quotient $K'/G$ von folgendem 2-Komplex $K'$:\\
+1-Skelett von $K'$ ist $\Gamma$\\
+$\forall $ Kreise $\gamma$ in $\Gamma$ der Form $\gamma = g^{-1}.(1,s_1, s_1s_2, \ldots, s_1\cdots s_n)$ wobei $g \in G, s_1\cdots s_n \in R$; klebe 2-Zelle an $\gamma$ um $K'$ zu erhalten.\\
+$K'$ heißt \df{Cayley-Komplex} von $\grp{S}{R}$
+
+\paragraph{Bemerkung}
+Man kann mittels Seifert-Van Kampen zeigen, dass $K'$ einfach zusammenhängend. $K'$ ist univ. Überlagerung und $G = \pi(K) = \pi(K'/G)$
+
+\subsection{Beispiel 5.8}
+\begin{enumerate}
+	\item $G = \Z^2 = \grp{a,b}{aba^{-1}b^{-1}}$\\
+		$K' = \R^2, K = T^2$
+	\item Flächengruppen: $G:=\grp{a,b,c,d}{a^{-1}b^{-1}abc^{-1}d^{-1}cd }$
+	$K'$ kann aufgefasst werden als Parkettierung von $H^2$\\
+	$K$ ist Torus mit 2 Löchern, $S^2$-Fläche von Geschlecht 2
+\end{enumerate}
+
+\subsection{Bemerkung 5.9: alternative Definition von $K(S,R)$}
+hier $K_G$, $K_G$ enthält
+\begin{enumerate}
+	\item eine 0-Zelle $v$
+	\item eine 1-Zelle für jedes $s \in S$, die von $v$ nach $v$ führt, orientiere diese 1-Zellen
+	\item eine 2-Zelle $d_r \forall r \in R$ verklebt so, dass Kanten $g \rightarrow gs$ orientierungserhaltend verklebt werden über $1 \rightarrow s_1 \rightarrow s_1s_2 \rightarrow \ldots \rightarrow s_1\cdots s_n$, wobei $r = s_1\cdots s_n, s_i \in S\cup S^{-1}$
+\end{enumerate}
+Man kann zeigen $K_G \cong K(S,R)$ und $K'$ ist univ. Überlagerung von $K_G$
+
+\paragraph{Beweis von 5.5}
+Setze $G_1 := G, G_2 := H, S_1 := S, S_2 := S', \Gamma = Cay(G_i, S_i)/\sim$ wie in 5.6.\\
+
+Sei $\rho$ die Länge der längsten Relation in $R$
+\begin{itemize}
+	\item Cayleykomplex $K'_1$ ist einfach zusammenhängend
+	\item Seien $f:\Gamma_2 \rightarrow \Gamma_1, f' : \Gamma_1 \rightarrow \Gamma 2$ $(C,D)$-quasi Isometrien (existieren, da $G \sim_{QI} H$)
+\end{itemize}
+Sei $\mu > 0$, s.d. $d(f'(f(v)), v) \leq \mu \forall v \in \Gamma_2$\\
+Setze $m:= \max \set{\rho, \mu, C,D}{}, M := 3(3m^2 + 5m + 1)$.\\
+Sei $K_2'$ 2-Komplex, den man durch Ankleben von 2-Zellen an jeden Kreis der Länge $\leq M$ in $\Gamma_2$ erhält.\\
+
+Sei $l$ Kantenkreis in $\Gamma_2$, d.h. $l = (g_1,\ldots, g_n, g_1)$\\
+Betrachte $l$ als Abb. $\partial D \rightarrow \Gamma_2$, $D$ ist hier eine 2-Zelle.\\
+
+\paragraph{Zwischenlemma (Formalisierung der Bemerkung 5.7.2)}
+$G$ erzeugt von $S$, $R \leq Kern \pi$, $\pi : F(S) \rightarrow G$; $X$ Komplex den man, durch Ankleben von 2-Zellen an Kantenkreisen geg. durch Wörtern in $R$ an $Cay(G,S)/\sim$ erhält. Dann gilt:
+\[X \text{ einfach zusammenhängend } \Longleftrightarrow \grp{R}{}_G^\vartriangleleft = kern(\pi)  \]
+\paragraph{Beweis von Zwischenlemma:} Lemma 8.9 in Bridson-Haefliger, S.135
+
+
+Wir sind fertig, wenn wir zeigen können:\\
+$l$ besitzt stetige Fortsetzung $l' : D \rightarrow K_2'$, d.h. $K'_2$ einfach zusammenhängend.\\
+Seien $v_i$ Urbilder der $g_i$ unter $l$\\
+Sei $\phi : \partial D \rightarrow \Gamma_1$ eine Abb., die $v_i$ auf $f(g_i)$ in $\Gamma_1$ und die Kante $\{v_i, v_{i+1}\}$ auf $\partial D$ auf Geodäten von $f(g_i)$ nach $f(g_{i+1})$.\\
+$K_1'$ ist einfach zusammenhängend $\Longrightarrow$ $\phi$ erweitert zu $\phi': D \rightarrow K'_1$
+
+\begin{itemize}
+	\item $\forall x \in D$ definiere Elemente $h_x$ in $V(\Gamma_1) = G$ wie folgt:
+	\begin{itemize}
+		\item ist $\phi'(x)$ Ecke, so ist $h_x = \phi'(x)$
+		\item ist $\phi'(x)$ in einer offenen Kante oder offenen 2-Zelle enthalten, so wähle nächste Ecke der Kante / 2-Zelle als $h_x$ 
+	\end{itemize}
+	Weil $\phi'$ stetig ist, ist $d(h_x, h_y) \leq \rho \forall x,y$, wenn $x,y$ nah genug aneinander sind in $D$.\\
+	Es gilt $d(\phi(x), h_x) \leq \frac{1}{2} \forall x \in \partial D$ (alle Kanten in $\partial D$ haben Länge 1).
+	\item Trianguliere $D$ so, dass $v_i \in \partial D$ wieder Ecken von $T$ sind und $\forall$ benachbarten $t,t' \in T$ gilt:
+	\[d(h_t, h_{t'}) \leq \rho \]
+	Metrik auf $D$ dazu so gewählt, dass $D$ reguläres $M$-Polygon in $R^2$ ist
+	\item Setze $l'_{|\partial D} = l$ und $l'(x) = f'(h_x) \forall x \in D^o$
+	\paragraph{Behauptung}
+	Für alle benachbarten Ecken $t,t'$ in der Triangulierung $T$ gilt:
+	\[d(t,t') \leq M/3 \]
+	Gilt diese Behauptung, so erweitert $l'$ auf $D$ so, dass Kanten in $T$ auf Geodäten in $\Gamma_2$ geschickt werden und nach Konstruktion Kreise der Länge $\leq M$ eine 2-Zelle beranden. Daraus würde folgen, dass $l'$ eine stetige Fortsetzung wäre.
+	\paragraph{Bew. Beh.:} einziger interessanter Fall: $t\in D^o, t' \in \partial D$. Sei $t'$ zwischen $v_i$ und $v_{i+1}$. Es gilt:
+	\[d(l'(t), l'(t')) = d(f'(h_t), l(t')) \overset{ganz viele \triangle-Ugl.en}{\leq} d(f'(h_t), f'(h_t))  + d(f'(h_{t'}) , f'(\phi(t'))) + d(f'(\phi(t')) + f'(\phi(v_i)) ) + d(f'(\phi(v_i)), l(v_i) ) + d(l(v_i), l(t')) \leq \ldots \leq M/3 \]
+\end{itemize}
+
+%% 17.VL, 9.6.15
+
+\section{Hyperbolische Gruppen}
+\subsection{Oberes Halbebenenmodell von $\H^2$}
+\[\H^2 := \set{z \in \C }{Im z > 0} \]
+Riemannsche Struktur:
+\[ds^2 = \frac{dx^2 + dy^2}{y^2} \]
+hyberbolische Norm für Tangentenvektoren $v \in \T_z\H^2 = \R^2$
+\[\norm{v}_{hyp} := \frac{\norm{v}_{eukl}}{im z} \]
+direkte Definition einer Metrik auf $\H^2$:\\
+Sei $\gamma: [0,1] \rightarrow \H^2 $ glatte Kurve, $\gamma(t) = x(t) + iy(t)$, dann ist die \df{Länge} von $\gamma$ definiert durch
+\[L_{hyp}(\gamma) := \int_{0}^{1} \frac{\norm{\gamma'(t)}_{eukl}}{y(t)}dt\]
+wir definieren die \df{hyperbolische Metrik} auf $\H^2$
+\[d(z,w) := \inf_{\gamma : z \rightarrow w, glatt}L_\H(\gamma) \]
+
+\subsection{Beispiel}
+\begin{enumerate}
+	\item
+	$c : [0,1] \rightarrow \H^2, c(t) = i + (a-1)it$, $a \in \R$
+	\[L_\H(c) = \ln(a) \]
+	Außerdem gilt für beliebiges $\gamma : [0,1] \rightarrow \R^2$ von $i$ nach $a$
+	\[L_\H = \int_0^1\frac{\sqrt{x'(t)^2 + y'(t)^2}}{y(t)}dt \geq \int_0^1\frac{y'(t)}{y(t)} = \ln a\]
+	\[\Longrightarrow d(i,a) = \ln a\]
+	\item
+	$\gamma(t) = ai + t, a > 0, \gamma'(t) = 1, y(t) = a, x(t) =t$
+	\[\Longrightarrow L^\H(\gamma) = \frac{1}{a} \]
+	\[L(\gamma) \rightarrow 0, a \rightarrow \infty \]
+	\[L(\gamma) \rightarrow \infty, a \rightarrow 1 \]
+	Insbesondere ist $\gamma$ keine Geodäte.
+\end{enumerate}
+
+\subsection{Isometrien}
+Isometrien von $\H^2$ sind die Möbiustransformationen. Eine \df{Möbiustransformation} (MT) ist eine Abbildung $\pi : \overline{\C} := \C\cup\{\infty\} \rightarrow \overline{\C}$ definiert durch
+\[z \longmapsto \frac{az + b}{cz + d}, a,b,c,d \in \C \]
+
+\subsection{Eigenschaften}
+\begin{enumerate}
+	\item MT sind dreifach transitiv auf $\overline{\C}$, d.h. sind $(z_1, z_2, z_3),(w_1, w_2, w_3) \in \overline{\C}^3$, dann existiert genau eine MT $T$ mit $T(z_i) = w_i$.
+	\item MT bilden Kreise bzw. Geraden auf Kreise bzw. Geraden ab.
+	\item $PSL(2,\R) = SL(2,\R)/\pm I $ operiert auf $\H^2$ durch Möbiustransformationen:
+	\[A = \left(\begin{matrix}
+	a & b \\
+	c & d
+	\end{matrix}\right) \longmapsto \frac{az + b }{cz + d}=: A.z\]
+	\[Im(A.z) = \frac{Im z}{\left|cz + d\right|^2} > 0 \]
+\end{enumerate}
+
+\subsection{Satz}
+Die Wirkung von $PSL(2,\R) \curvearrowright \H^2$ durch MT ist isometrisch und 
+\[PSL(2,\R) \hookrightarrow Isom(\H^2) \]
+
+\paragraph{Beweisskizze:}
+\begin{itemize}
+	\item Bestimme Erzeuger von $PSL(2, \R)$ (Gaußverfahren)
+	\[\set{\Matrix{1}{r}{0}{1}, \Matrix{0}{-1}{0}{1}, \Matrix{\lambda}{}{}{\frac{1}{\lambda}}}{r \in \R, \lambda \in \R \setminus \{0\}}\]
+	für Injektivität:\\
+	\begin{itemize}
+		\item betrachte: $\Matrix{-1}{}{}{-1} = id_{\H^2}$
+		\item $\{I, -I\} \triangleleft SL(\R^2)$
+		\item $T_A(z) = z \Longleftrightarrow A = \pm I$
+	\end{itemize}	
+\end{itemize}
+\qed
+
+\subsection{Bemerkung}
+\[Isom(\H^2, d_\H) \cong PSL(2,\R) \cup \sigma \cdot PSL(\R^2) \]
+wobei $\sigma = [z \mapsto -\overline{z}]$
+
+\subsection{Satz: Geodätische}
+Geodäten in $\H^2$ sind nach Bogenlänge parametrisierte Halbkreise mit Zentrum auf der $x$-Achse und Halbgeraden parallel zur $y$-Achse. Insbesondere gibt es für je zwei Punkte genau eine Geodätische, die diese verbindet.
+
+\paragraph{Beweis}
+Seien $z,w \in \H^2$
+\begin{enumerate}
+	\item Sei zunächst $z = ia, w= ib, b > a > 0$\\
+	Man rechnet nach:
+	\[L_\H (\gamma) = \ln(\frac{b}{a}) \]
+	Für $\sigma$ gilt:
+	\[L_\H (\sigma) = \ln\frac{b}{a} \]
+	Ergo ist $\sigma$ Geodäte
+	\item $z,w$ beliebig: betrachte 2 Teilfälle
+	\begin{enumerate}
+		\item $Re (z) \neq Re(w)$: Sei $C$ Kreis um Punkt $P$ auf $x$-Achse, der $z$ und $w$ enthält. ($P$ ist der Schnittpunkt der $x$-Achse und der Orthogonalen der Verbindungsstrecke $zw$, der den Mittelpunkt der Verbindungsstrecke enthält.)
+		$(0, t_1)$ und $(0,t_2)$ seien die Randpunkte des Halbkreises $C$, setze dann
+		\[g(u) := \frac{u - t_2}{u(t_2 - t_1)- t_1(t_2 - t_1)}\]
+		\[g(t_1) = \infty, g(t_2) = 0\]
+		Weiter bildet $g$ den Kreis $C$ auf die imaginäre Achse ab. (Nachrechnen mit Halbkreisparam.)
+		
+		\item $Re (z) = Re(w)$:\\
+		Mit dreifach-Transitivität existiert MT mit $g(w) = w', g(z) = z'$ und $Re w = Re w', Im w' =0, Re z' = Re z, Im z' 0$. Nachrechnen: senkrechte Kurve $z \rightarrow w$ wird auf imaginäre Achse abbildet.
+	\end{enumerate}
+\end{enumerate}
+\qed
+
+\subsection{Bemerkung}
+hyperbolische Kreise $S_{r,p} := \set{w\in \H^2}{d(w,p) = r}$ sehen exzentrisch aus
+
+\subsection{Lemma}
+Zu jeder Geodäten $\gamma$ und $\forall z \notin \gamma$ gibt es unendlich viele Geodäten $\sigma$ mit: $z \in \sigma $ und $\sigma || \gamma$, wobei 
+\[\sigma || \gamma : \Leftrightarrow \sigma \cap \gamma = \emptyset \]
+
+
+\subsection{Satz 6.9: Dreiecke sind dünn}
+Jedes hyperbolische Dreieck hat Innenkreisradius $\leq \frac{1}{2} \ln 3$
+
+\paragraph{Beweisskizze}
+Sei ein Dreieck in $\H^2$ gegeben (die einzelnen Seiten sind Strecken von Geodäten). In diesem gibt es einen Hyperbolischen Kreis mit maximalen Radius.\\
+Die beiden Seiten rechts und links, werden zu Geraden erweitert, wodurch der Innenkreisradius größer wird.\\
+Es existiert eine MT, die die drei Ecken des neuen Dreiecks $p,q, \infty$ auf $-1, 1, \infty$ abbildet.\\
+Das dadurch erhaltene Dreieck hat einen Innenkreisradius von $\leq \frac{1}{2} \ln 3$
+
+\end{document}

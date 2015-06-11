@@ -1,0 +1,326 @@
+\documentclass{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[UTF8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{lmodern}
+\usepackage{ngerman}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage[siunitx]{circuitikz}
+\usepackage{tikz-cd}
+\usepackage{makeidx}
+\usepackage{hyperref}
+
+\newcommand{\df}[1]{\textbf{#1}\index{#1}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\O}[1]{\mathcal{O}\left(#1\right)}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Top}{\textbf{Top}}
+\newcommand{\Mod}{\textbf{Mod}}
+
+\newcommand{\set}[2]{\left\lbrace #1~|~#2 \right\rbrace}
+\newcommand{\grp}[2]{\left\langle #1~|~#2 \right\rangle}
+
+\newcommand{\qed}{$\square$}
+
+\begin{document}
+
+\section{Matching}
+
+% 20.05.15: 7.VL
+
+\subsection{Matching-Lemma}
+G Graph, $w : E \rightarrow \R$, $v\in V$, $M'$ maximales Matching für $G' = G -v$; dann kann mit einer Berechnung eines erhöhenden Weges Matching $M$ maximalen Gewichts von $G$ berechnet werden.
+
+\subsection{Matching-Algorithmus für planaren Graphen $G$}
+\begin{enumerate}
+	\item Zerlege $G$ in $G_1, G_2$ dank Separator $S$ entsprechend Planar-Separator-Theorem und berechne rekursiv in $G_1$ und $G_2$ Matching $M_1, M_2$ maximalen Gewichts; definiere $M:= M_1\cup M_2$, $G' = G_1\cup G_2$
+	\item Solange $S \neq \emptyset$:
+	\begin{itemize}
+		\item wähle $v\in S$, $S:= S-v$, und berechne mit Lemma aus $M'$ Matching maximalen Gewichts in $G'+v$
+	\end{itemize}
+\end{enumerate}
+
+\paragraph{Laufzeit}
+$t$ Laufzeit von Matching, $t'$ von Lemma, $c_1,c_2 \leq \frac{2}{3}$,$c_3\in \N$, $c_1+c_2 \leq 1$
+\[t(n) = t(c_1\cdot n )+t(c_2\cdot n ) + c_3\sqrt{n}t'(n)\]
+Mit Mastertheorem kann $t(n)$ abgeschätzt werden durch
+\[t(n) \in \O{n^\frac{3}{2}}, \text{ falls }t'(n) \in \O{n}, \text{ falls ungewichtet}\]
+\[t(n) \in \O{n^\frac{3}{2}\log n}, \text{ falls }t'(n) \in \O{n\log n}, \text{ falls gewichtet}\]
+
+\newpage
+\section{Mixed-Max-Cut in planaren Graphen}
+
+\subsection{Definition: Schnitt}
+$G = (V,E)$ Graph, $S \subset E$ heißt \df{Schnitt} von $G$, falls der durch $E-S$ induzierter Subgraph unzusammenhängend ist und für alle $(u,v) \in S$, $u$ und $v$ in verschiedenen Zusammenhangkomponenten liegen.
+
+\subsection{Definition: \textsc{Mixed-Max Cut}}
+Kantengewichte $w: E \rightarrow \R$\\
+\df{\textsc{Mixed-Max Cut}}: Finde Schnitt $S$ mit $w(S) = \sum_{s\in S}w(S)$ maximal.
+
+ist in bel. Graphen NP-Schwer.
+
+\paragraph{Beobachtung:}
+\textsc{Mixed-Max Cut} und \textsc{Mixed-Min Cut} sind äquivalent. (Vorzeichen der Gewichte umdrehen.)
+
+\paragraph{Spezialfall:} \textsc{Min Cut} Problem mit $w:E\rightarrow \R_{\geq 0}$ ist auch für beliebige Graphen in P.
+
+\subsection{Definition:}
+Matching M in G mit $|V|$ gerade heißt perfekt, falls $2|M| = |V|$
+
+\subsection{Polynomialer Algorithmus für \textsc{Mixed-Max Cut} in planaren Graphen}
+Verwende 
+\begin{itemize}
+	\item Dualität von Schnitten und Kreisen
+	\item maximales Matching bzw. Planar Separator Theorem
+\end{itemize}
+Laufzeit in $\O{n^{3/2}\log n}$
+
+
+Es gilt: $G$ enthält Euler-Kreis g.d.w. E kandendisjunkte Vereinigung einfacher Kreise g.d.w. $\forall v\in V$ ist $d(v) \in 2\Z$
+
+
+Dualität von Schnitt in G und Menge von einfachen Kreisen in Dualgraph $G^*$ (bzgl. bel. pl. Einbettung)
+Menge von einfachen Kreisen = Kantenmenge, in der für alle Knoten der Knotengrad gerade ist =: gerade Menge
+
+(maximaler Schnitt in G induziert maximalen Kreis in $G^*$ und umgekehrt)
+
+\begin{enumerate}
+	\item Trianguliere G in $\O{n}$; zusätzliche Kanten erhalten Gewicht 0
+	\item berechne in $\O{n}$ Dualgraph $G^*$ bzgl. bel. pl. Einbettung; $G^*$ ist dann 3-regulär, d.h. $\forall v \in V^*: d(v) = 3$
+	\item Konstruiere zu $G^*$ Graph $G'$, so dass perfektes Matching min. Gewichts in $G'$ eine gerade Menge (bzw. Menge von Kreisen) max. Gewichts in $G^*$ induziert
+	\item berechne in $\O{n^{3/2}\log n}$ solch ein Matching bzw. gerade Menge
+	\item falls diese gerade Menge nichtleer, berechne daraus den entsprechenden Schnitt, ansonsten Sonderfall
+\end{enumerate}
+
+\subsubsection{Schritt 3}
+beachte, dass $G^*$ 3-regulär; ersetze jeden Punkt in $G^*$ durch ein Dreieck, erhalte $G'$; Matching ergibt zwei Fälle:
+(1)
+
+Sei $m$ die Anzahl der Kanten in $G^*$ und $n$ die Anzahl der Knoten
+\[\Rightarrow 3n = 2m \Rightarrow n \text{ gerade }\]
+ergo hat $G'$ eine gerade Anzahl an Knoten. Wir sehen, dass mindestens ein perfektes Matching für $G'$ existiert.
+
+\subsubsection{Schritt 4}
+Konstruiere perfektes Matching minimalen Gewichts in $G'$
+\paragraph{Beobachtung}
+$M$ perfektes Matching minimalen Gewichts in $G = (V,E)$ mit $w:E\rightarrow \R$, g.d.w. $M$ perfektes Matching max. Gewichts in $G$ bzgl. $y(e) = W - w(e)$, für $W$ geeignet\\
+erzwinge, dass Matching max. Gewichts perfekt ist:
+\begin{itemize}
+	\item zu $M$ perfekt, betrachte $y(M) = \sum_{e\in M}y(e) = nW/2 - \sum_{e \in M}w(e) \geq n/2 (W- w_{max})$
+	\item Zu $N$ nicht perfekt, gilt $v(N) \leq (n/2 - 1)(W - w_{min})$
+	\item Wähle $W$ so, dass
+	\[v(N) \leq (n/2 - 1)(W - w_{min}) < n/2 (W- w_{max}) \leq y(M)\]
+\end{itemize}
+in $\O{n^\frac{3}{2}\log n}$
+
+\subsubsection{Schritt 5}
+Komplementmenge von perfektem Matching min. Gewichts in $G'$ induziert gerade Menge max. Gewichts in $G^*$ und damit max. Schnitt in $G$.\\
+Es kann sein, dass resultierende Menge leer ist. Passiert, wenn max. Schnitt negatives Gewicht hat.
+\paragraph{$\rightsquigarrow$ Sonderfall:} Wollen nichttrivialen Schnitt erzwingen;\\
+betrachte wieder Schritt 3, erzwinge, dass in perfektem Matching minimalen Gewichts für mindestens einen Knoten $v \in G^*$, Fall 2 eintritt.
+\paragraph{Vorgehensweise} betrachte alle Knoten $v \in G^*$ und $G^* - v$ sowie durch perfektes Matching in $G'$ induziertes Matching in $G^* - v$ und berechne mit Matching-Lemma ein Matching in $G^*$.\\
+Wähle $M$ mit $w(M) = \min_{v\in V^*}w(M_v)$
+
+\paragraph{Frage}
+Wie kann man dabei Fall 2 bei v erzwingen?
+(2)
+
+%% 26.05.15, 8.VL
+
+Folien: Maximale s-t-Flüsse in Planaren Graphen
+
+\subsection{Lemma}
+Für jeden Kozykel $C$ gilt: $\pi(C) \in \{-1,0,1\}$.\\
+Ferner: $\pi(C) = 1 \Longleftrightarrow C$ ist $(s,t)$-Schnitt
+
+\paragraph{Beweis}
+\begin{enumerate}
+	\item[Fall 1:] $s,t$ liegen auf derselben Seite von $C^*$
+	\begin{align*}
+	\Longleftrightarrow & P \text{ kreuzt } C^* \text{ gleich oft in jeder Richtung}\\
+	\Longleftrightarrow & C \text{ enthält dieselbe Zahl von Kanten in }P \text{ und }\overline{P}\\
+	\Longleftrightarrow & \pi(C) = 0
+	\end{align*}
+		\item[Fall 2:] $s$ liegt innen und $t$ außen von $C^*$
+		\begin{align*}
+		\Longleftrightarrow & P \text{ kreuzt } C^* \text{ einmal mehr in die Richtung von }s\rightarrow t\\
+		\Longleftrightarrow & C \text{ enthält eine Kante mehr in }P \text{ als in }\overline{P}\\
+		\Longleftrightarrow & \pi(C) = 1
+		\end{align*}
+			\item[Fall 2:] $s$ liegt innen und $t$ außen von $C^*$\\
+			analog wie Fall 2
+\end{enumerate}
+
+\subsection{Lemma}
+$G$ besitzt einen gültigen $s-t$-Fluss mit Wert $\lambda$ genau dann, wenn $G^*_\lambda$ keinen negativen Kreis enthält.
+
+\paragraph{Beweis}
+Zeige '$\Longrightarrow$': Annahme: $G^*_\lambda$ enthält negativen Kreis $C^*$, d.h.
+$0 >c(\lambda, C^*) = \sum_{e \in C}c(\lambda,e)= \sum_{e\in C}c(e) - \lambda \sum_{e\in C}\pi(e) = c(C) - \lambda \pi(C)$
+$\Longrightarrow \pi(C)  > c(C)/ \lambda \leq 0 \Longrightarrow \pi(C) = 1$
+\[\Longrightarrow C \text{ ist } s-t-\text{Schnitt}\]
+Außerdem $c(C) < \lambda$, d.h. es existiert ein Schnitt mit Kapazität $< \lambda$, das ist ein Widerspruch
+
+Zeige '$\Longrightarrow$': $G_\lambda^*$ enthält keinen negativen Kreis.\\
+$\Longrightarrow$ kürzeste Wege wohldefiniert;
+sei $x$ in $G^*_\lambda$ beliebiger Ursprung, $dist(p,\lambda) := $ Distanz von $x$ zu $p$
+
+\paragraph{Definition}
+\[\phi(\lambda, e) := dist(\lambda, head(e^*)) - dist(\lambda, tail(e^*)) + \lambda \pi(e) \]
+
+Zeige $\phi$ ist gütliger $st$-Fluss
+\begin{enumerate}
+	\item Für $v \in V$ gilt: $\sum_{w}\phi(v \rightarrow w) = \sum_{w}\lambda \pi(v \rightarrow w)$
+	es folgt: $\phi(\lambda, \cdot)$ ist Fluss mit Wert $\lambda$
+	\item $slack(\lambda, e^*) := dist(\lambda, tail(e^*)) + c(\lambda, e) - dist(\lambda, head(e^*)) $
+	es gilt: $slack(\lambda, e) = c(e) - \phi(\lambda, e)$
+	$\phi(\lambda, e) \leq c(e) \Longleftrightarrow slack(\lambda, e) \geq 0$
+	Wäre $slack(\lambda, e) < 0$, dann folgt: $dist(\lambda, head(e^*)) > dist(\lambda, tail(e^*)) + c(\lambda, e^*)$, das wäre ein Widerspruch
+\end{enumerate}
+
+\subsection{Satz}
+Ein maximaler $st$-Fluss in einem $st$-planaren Graph kann in $\O{n\log n}$ Zeit berechnet werden.
+
+Max $\lambda$, s.d. kein neg. Kreis in $G^*_\lambda$ ist Länge des kürzesten $ts$-Weges in $G^*_\lambda$
+
+%% 27.05.15 9. VL
+\newpage
+\section{Das Menger-Problem}
+
+\subsection{Zur Erinnerung}
+$S \subset V$ heißt Separator in $G$, falls $G - S$ unzusammenhängend.\\
+$S\subset E$ heißt Schnitt in $G$, falls $G - S$ unzusammenhängend.
+
+
+\subsection{Definitionen}
+Zu $u,v \in V$ definiere den \df{Knotenzusammenhang}
+\begin{align*}
+\kappa_G(u,v) := \left\lbrace \begin{aligned}
+|V| - 1, \text{ falls }\{u,v\} \in E\\
+\min_{S\subset V}|S|, \text{ für } S \text{ Separator, der u und v trennt}
+\end{aligned} \right.
+\end{align*}
+und $\kappa_G := \min_{u,v\in V}\kappa_G(u,v)$
+
+\[\lambda_G(u,v) := \min_{S \subset E, \text{ S Schnitt und trennt u und v}}|S| \]
+und
+\[\lambda(G) := \min_{u,v\in V} \lambda_G(u,v) \]
+
+Zwei Wege heißen \df{kantendisjunkt}, wenn sie keine gemeinsame Kante enthalten, und (intern) \df{knotendisjunkt}, wenn sie außer Anfangs- und Endknoten keinen gemeinsamen Knoten enthalten.
+
+\subsection{Satz von Menger}
+Seien $s$ und $t$ Knoten in $G = (V,E)$ ($\{s,t\}\notin E$ bei knotendisjunkter Version)
+\begin{itemize}
+	\item $\kappa_G(s,t) \geq k \Longleftrightarrow \exists_{\geq k}$ paarweise knotendisjunkte $st$-Wege
+	\item $\lambda_G(s,t) \geq k \Longleftrightarrow \exists_{\geq k}$ paarweise kantendisjunkte $st$-Wege
+\end{itemize}
+
+\subsection{Menger-Problem}
+Finde zu $G,s,t$ maximale Anzahl knotendisjunkter bzw. kantendisjunkter $st$-Wege.
+
+\subsection{Menger-Problem in planaren Graphen: kantendisjunkte Variante}
+Linearzeitalgorithmus basierend auf \textsc{Right-First-DFS}.
+
+\paragraph{Spezialfall}
+$s$ und $t$ liegen auf derselben Facette:\\
+\textsc{Right-First} $=$ im Gegenuhrzeigersinn nächste freie Kante in Adjazenzliste (relativ zur aktuellen eingehenden Kante).
+
+\paragraph{Algorithmus}
+$G$ planar eingebetteter Graph, OE $t$ auf äußerer Facette
+\begin{enumerate}
+	\item Ersetze $G$ durch den gerichteten Graphen $\overrightarrow{G}$, indem $\{u,v\} \in E$ durch $(u,v)$ und $(v,u)$ ersetzt wird. (in $\O{n}$)
+	\item Berechne in $\O{n}$ Menge gerichteter einfacher kantendisjunkter Kreise $\overrightarrow{C_1},\ldots, \overrightarrow{C_l}$ und konstruiere aus $\overrightarrow{G}$ den Graphen $\overrightarrow{G}_C$, indem die Richtung aller Kanten auf den $\overrightarrow{C_i}$ umgedreht wird.
+	\item Berechne in $\overrightarrow{G}_C$ in $\O{n}$ mittels \textsc{Right-First-DFS} eine maximale Anzahl kantendisjunkter gerichteter $st$-Wege.
+	\item Berechne aus den in Schritt 3 gefundenen $st$-Wegen in $\overrightarrow{G}_C$ gleiche Anzahl kantendisjunkter $st$-Wege in $G$ in $\O{n}$.
+\end{enumerate}
+
+\paragraph{Schritt 1}
+\subsection{Lemma}
+Seien $P_1, \ldots, P_r$ kantendisjunkte, gerichtete $st$-Wege in $\overrightarrow{G}$. Dann enthält
+\[P = \set{\{u,v\} \in E}{\text{Genau eine der Kanten (u,v) und (v,u) liegt auf einem der }P_i}\]
+gerade $r$ kantendisjunkte $st$-Wege in $G$.
+
+\paragraph{Beweis}
+Zwei Fälle: Wir konstruieren in beiden Fällen aus gegebenen $st$-Wegen unproblematische $st$-Wege
+\begin{enumerate}
+	\item $(u,v) \in P_i \wedge (v,u) \in P_i$: Entferne $(u, v, \ldots, v, u)$ bzw. $(v, u, \ldots, u, v)$ aus $P_i$
+	\item $(u,v) \in P_i \wedge (v,u) \in P_j$: $P_i = (A, u, v, B)$, $P_j = (C, v, u, D)$; konstruiere $\widetilde{P}_i = (A, D)$ und $\widetilde{P}_j = (C, B)$
+\end{enumerate}
+
+\paragraph{Schritt 2}
+$C_1,\ldots, C_l$ in $\overrightarrow{G}$, sodass
+\begin{enumerate}
+	\item $\overrightarrow{G}_C$ enthält keine Rechtskreise, d.h. keine Kreise, deren Inneres rechts liegt (aus Sicht einer Kante).
+	\item Sei $\overrightarrow{P}_C \subset \overrightarrow{E}_C$ Menge der Kanten auf kantendisj. $s-t$ Wegen in $\overrightarrow{G}_C$ und $\overrightarrow{P} \subset \overrightarrow{E}$, wobei
+	\[\overrightarrow{P} := (\overrightarrow{P}_C \cap \overrightarrow{E})\cup \{(u,v) \in \overrightarrow{E}: (u,v) \text{ auf einem der }\overrightarrow{C}_i \text{ und } (v,u)' \notin \overrightarrow{P}_C \} \]
+	Dann induziert $\overrightarrow{P}$ $k$ kantendisjunkte gerichtete $st$-Wege in $\overrightarrow{G}$ g.d.w $\overrightarrow{P}_C$ induziert $k$ kantendisjunkte gerichtete $st$-Wege in $\overrightarrow{G}_C$.
+\end{enumerate}
+
+\paragraph{Konstruktion der Kreise $C_1, \ldots, C_l$}
+Sei $f$ Facette in $G$ bzw. $\overrightarrow{G}$; definiere Abstand von $f$ zur äußerer Facette $f_0$ als
+\[dist(f) := \text{Länge eines kürzesten Weges des Dualknotens }f^* \text{ zum Dualknoten der äußeren Facette }f_0^* \text{ in }G^*\]
+Definiere $C_i$ als Vereinigung der einfachen Kreise in $G$ für die alle Facetten $f$ im Inneren die Bedingung $dist(f) \geq i$ erfüllen. $\overrightarrow{C}_i$ sei entsprechender Rechtskreis in $\overrightarrow{G}$.
+Drehe alle diese $C_i$ um, erhalte $\overrightarrow{G}_C$.\\
+%%3.6.15, 10.VL
+$\overrightarrow{G}_C$ enthält keine Rechtskreise, da für jeden Rechtskreis in $\overrightarrow{G}$ beim Übergang zu $\overrightarrow{G}_C$ mindestens eine Kante des Kreises umgedreht wird.\\\\
+
+Sei $\overrightarrow{P}_C \subset \overrightarrow{E}_C$ Kantenmenge zu $k$ $st$-Wegen in $\overrightarrow{G}_C$. Konstruiere dazu Kantenmenge $\overrightarrow{P}$ in $\overrightarrow{G}$.
+\[\overrightarrow{P} := (\overrightarrow{P}_C \cap \overrightarrow{E})\cup
+\{(u,v) \in \overrightarrow{E}: (u,v) \text{ auf einem }\overrightarrow{C}_j \text{ und }(v,u)' \notin \overrightarrow{P}_C \}
+\]
+
+\paragraph{Schritt 3}
+Berechnung einer maximalen Anzahl kantendisjunkter $st$-Wege in $\overrightarrow{G}_C$(in $\O{n}$)\\
+Schleife über ausgehende Kanten aus $s$\\
+\textsc{RightFirstDepthSearch}:\\
+Suchschritt: rechteste nicht markierte auslaufende Kante in Bezug auf Referenzkante\\\\
+
+Zwei Variationen, wie die \df{Referenzkante} zu wählen ist
+\begin{enumerate}
+	\item Weihe: aktuell einlaufende Kante
+	\item Coupry: erste einlaufende Kante
+\end{enumerate}
+
+\paragraph{Korrektheitsbeweis zu Schritt 3}
+Beh.: $\overrightarrow{P}_C$ enthält maximale Anzahl kantendisjunkter $st$-Wegen.\\
+Benutze dazu gewichtete Variante des Satz v. Menger, d.h. konstruiere $st$-Schnitt der entsprechenden Kapazität.\\
+Schnitt A wird induziert durch geeigneten Kreis $\overrightarrow{K} \subset \overbrace{G}_C$ mit:
+\begin{enumerate}
+	\item $s\in Innen(\overrightarrow{K})$ oder auf $\overrightarrow{K}$
+	\item $t \in Aussen(\overrightarrow{K})$
+	\item $A :=\set{(u,v)\in \overrightarrow{E}_C}{u \text{ liegt auf }\overrightarrow{K}, v \in Aussen(\overrightarrow{K})}$, $|A| = $\# $st$-Wegen in $\overrightarrow{P}_C$
+\end{enumerate}
+
+$\overrightarrow{K}$ wird mittels \textsc{LeftFirst}-Rückwärtssuche von $s$ aus in $\overrightarrow{P}_C$ konstruiert.\\
+Wie sieht $\overrightarrow{K}$ aus:
+\paragraph{Variante 1}
+$\overrightarrow{K}$ geht von $s$ nach $s$
+\paragraph{Variante 2}
+$\overrightarrow{K}$ geht von $s \neq v_0$ nach $v_0$ und $s$\\
+In diesem Fall den Kreis, der von $v_0$ nach $v_0$ beschrieben wird.
+
+\subsection{Lemma}
+Betrachte $\overrightarrow{G}_C = (V,\overrightarrow{E}_C)$ und $\overrightarrow{K}$, dann ist jede Kante $(u,v) \in \overrightarrow{E}_C$ mit $u$ auf $\overrightarrow{K}$ und $v \in Aussen(\overrightarrow{K})$ durch einen $st$-Weg aus $\overrightarrow{P}_C$ besetzt.
+
+\paragraph{Beweis}
+\begin{enumerate}
+	\item Wenn $P_1,\ldots, P_l$ $st$-Wege sind und $\overrightarrow{K}$ ein Linkskreis von $s$ nach $s$, dann gehört keine der Kanten $(x,y)$, $x \in Aussen(\overrightarrow{K}), y \in \overrightarrow{K}$ zu einem der $p_i$.\\
+	Wegen \textsc{LeftFirst} in Graph indziert durch $p_1,\ldots, p_l$ $(x,y) \in p_i$, für alle $1 \leq i \leq l$.\\
+	Deswegen: Kante $(u,v)$ mit $u$ auf $\overrightarrow{K}$, $v \in Aussen(\overrightarrow{K})$ kann nicht auf einem Linkskreis aus $p_1,\ldots, P_l$ liegen.
+	
+	\item betrachte $(u,v)$ mit $u$ auf $\overrightarrow{K}$, $v \in Aussen(\overrightarrow{K})$ und $(u,w)$ mit $w$ auf $\overrightarrow{K}$.\\
+	Annahme: $(u,v)$ gehört zu keinem der $P_1, \ldots, P_l$.\\
+	Betrachte Referenzkante zu $(u,w)$ in \textsc{RightFirst}-Suche (Schritt 3)\\
+	Referenzkante geht von Innerem zum Kreis oder liegt auf den Kreis,\\
+	aber dann hätte \textsc{RightFirst} nicht $(u,w)$ sondern $(u,v)$ gewählt. Das wäre ein Widerspruch.
+\end{enumerate}
+
+
+\end{document}
