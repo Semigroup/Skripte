@@ -1,4 +1,4 @@
-\documentclass{book}
+\documentclass{article}
 
 \usepackage[T1]{fontenc}
 \usepackage[UTF8]{inputenc}
@@ -89,10 +89,10 @@ Jede Kopie von $T_0$ ist zusammenhängender Teilbaum, daher können wir die Ecke
 Weil $g_n = g_0$, ist der erhaltene Weg geschlossen.\\
 Starten und Enden in selber Kopie vom Baum $T_0$. Widerspruch zu $T$ ist Baum.
 
-\subsubsection{Korollar 3.15 (Satz von Nielsen-Schreier)} Untergruppen freier Gruppen sind frei.
+\subsection{Korollar 3.15 (Satz von Nielsen-Schreier)} Untergruppen freier Gruppen sind frei.
 \paragraph{Beweis} Eine Untergruppe wirkt frei auf den Cayleygraphen seiner Obergruppe.
 
-\subsubsection{Korollar 3.16} $F$ freie Gruppe, $Rang(F) = n$, $G < F$ UG vom Index $k$. Dann ist G frei und vom Rang $k(n-1) + 1$. Insbesondere sind Untergruppen vom endlichen Index in freien Gruppen vom endlichen Index endlich erzeugt.
+\subsection{Korollar 3.16} $F$ freie Gruppe, $Rang(F) = n$, $G < F$ UG vom Index $k$. Dann ist G frei und vom Rang $k(n-1) + 1$. Insbesondere sind Untergruppen vom endlichen Index in freien Gruppen vom endlichen Index endlich erzeugt.
 \paragraph{Beweis} $S$ freies EZS von $F$, $\Gamma:= Cay(G,S)$, $G,F \curvearrowright_{frei} \Gamma$ durch Linksmult.
 
 Bew 3.11: Rang(G) = $\frac{1}{2} E$, E = \# wesentlicher Kanten für Fund.-Baum $T_0$ von $G \curvearrowright T$
@@ -107,10 +107,10 @@ In (1) werden Kanten doppelt gezählt, d.h.
 \[\sum_{v\in V(T_0)}d_T(v) = 2(k-1) + E\]
 \[1/2 E = k(n-1) + 1 = Rang G\]
 
-\subsubsection{Korollar 3.17}
+\subsection{Korollar 3.17}
 F frei vom Rang $m \geq 2$, und $n\in \N$, Dann gibt es UG von $F$, die frei und vom Rang n ist.
 
-\subsubsection{3.18 Ping-Pong Lemma (Felix Klein)}
+\subsection{3.18 Ping-Pong Lemma (Felix Klein)}
 $G$ Gruppe, erzeugt von $S = \{a,b\}$, wobei $a,b$ unendliche Ordnung.\\
 $G \curvearrowright X$, X Menge, so dass für $\emptyset \neq A, B \subset X$
 mit $B \not \subset A$ gilt:
@@ -143,7 +143,7 @@ w beginnt mit $b$ und endet mit $b$. konjugiere mit a: 1.Fall
 w beginnt mit $a$ und endet mit $b$. Konjugiere mit $a^k$ für k groß genug
 
 
-\subsubsection{3.19 Beispiel}
+\subsection{3.19 Beispiel}
 freie UG von SL(2,Z)
 
 \[SL(2,\Z) = \set{\begin{matrix}
@@ -258,15 +258,15 @@ Für $y,y' \in Y$ ist noch zu zeigen
 
 %% 13. VL, 26.05.15
 
-\subsubsection{4.18 Definition: Geodäten}
+\subsection{4.18 Definition: Geodäten}
 Eine \df{Geodäte} ist ein eine isometrische Einbettung $\gamma : [0,L] \rightarrow X$ eines Intervalls in einen metrischen Raum.
 
-\subsubsection{4.20 Definition Quasigeodäte}
+\subsection{4.20 Definition Quasigeodäte}
 Eine $(C,D)$-\df{Quasigeodäte} für $C\geq 1, D \geq 0$ ist eine $(C,D)$-Quasiisometrische Einbettung von $[0,L]$ nach $X$.
 
 $X$ heißt $(C,D)$-quasigeodätisch, falls $\forall x,y \in X$ eine verbindende Quasigeodäte \[\gamma :[0,d(x,y)] \rightarrow X \] existiert.
 
-\subsubsection{4.22 Satz von Schwarz-Milner}
+\subsection{4.22 Satz von Schwarz-Milner}
 $G$ Gruppe, $X$ metr. Raum, $G\curvearrowright X$ durch Isometrien.
 Weiter gelte:
 $X$ quasi-geod. für $(C,D)$ mit $D > 0$
@@ -770,8 +770,113 @@ Jedes hyperbolische Dreieck hat Innenkreisradius $\leq \frac{1}{2} \ln 3$
 
 \paragraph{Beweisskizze}
 Sei ein Dreieck in $\H^2$ gegeben (die einzelnen Seiten sind Strecken von Geodäten). In diesem gibt es einen Hyperbolischen Kreis mit maximalen Radius.\\
-Die beiden Seiten rechts und links, werden zu Geraden erweitert, wodurch der Innenkreisradius größer wird.\\
+Die beiden Seiten rechts und links, werden zu Geraden gebogen, wodurch der Innenkreisradius größer wird.\\
 Es existiert eine MT, die die drei Ecken des neuen Dreiecks $p,q, \infty$ auf $-1, 1, \infty$ abbildet.\\
-Das dadurch erhaltene Dreieck hat einen Innenkreisradius von $\leq \frac{1}{2} \ln 3$
+Das dadurch erhaltene Dreieck hat einen Innenkreisradius von $\leq \frac{1}{2} \ln 3$\qed
+
+%% 18.V, 12.6.15
+
+\subsection{Definition 6.10: Fuchssche Gruppen}
+Eine Untergruppe $\Gamma < Isom(\H^2)$ heißt genau dann \df{Fuchssche Gruppe}, wenn sie eigentlich diskontinuierlich auf $\H^2$ wirkt.
+
+\subsection{Definition 6.11: Fundamentalbereich}
+Sei $G \curvearrowright X$ eigentliche Wirkung auf einem lokal kompaktem Hausdorffraum.\\
+Ein (abgeschlossenes) $F\subset X$ heißt \df{Fundamentalbereich} von $G \curvearrowright X$, wenn gilt:
+\begin{enumerate}
+	\item[(a)] $G.F = X$
+	\item[(b)] $g.F^o \cap F^o = \emptyset \forall g \in G\setminus\{e\}$
+\end{enumerate}
+
+\subsection{Bemerkung}
+Jede Untergruppe einer Fuchsschen Gruppe ist wieder eine Fuchssche Gruppe.
+
+\subsection{Beispiel: 6.12}
+\begin{enumerate}
+	\item $T_A$ MT zu 
+	\[\Matrix{1}{1}{0}{1} \]
+	$T_A(z) = z +1, \Gamma:= \grp{T_A}{}$
+	Bahnen haben keinen Häufungspunkt. Stabilisatoren sind trivial. $\set{z \in \H^2}{Re z \in [0,1)}$ ist ein Fundamentalbereich. $\H^2 / \Gamma \cong (D^2)^o\setminus\{0\} \cong S^1\times \R$.
+	
+	\item $A = \Matrix{\lambda}{0}{0}{1/\lambda}, \Gamma = \grp{T_A}{}$ wirkt eigentlich.\\
+	$\H^2\setminus \Gamma \cong S^1\times \R$
+	
+	\item $PSL(2, \Z) < SL(2, \R) < Isom (\H^2)$, $PSL(2, \Z)$ ist Fuchssche Gruppe\\
+	Poincare: Theorie des groups fuchsiens (1882)
+	
+	\item alle abelschen Fuchsschen Gruppen sind zyklisch\\
+	insbesondere is also keine Fuchssche Gruppe isomorph zu $\Z^n$ für $n > 1$
+\end{enumerate}
+
+\subsection{Definition 6.13: Hyperbolische metrische Räume}
+Sei $(X,d)$ ein metrischer Raum. Ein geodätisches Dreieck $\Delta$ in $X$ ist ein Tripel von Geodäten (den Seiten des Dreiecks) $\gamma_1, \gamma_2,\gamma_3 : [0,l_i] \rightarrow X$ so, dass:
+\[\gamma_1(0) = \gamma_3(l_3), \gamma_2(0) = \gamma_1(l_1), \gamma_3(0) = \gamma_2(l_2)\]
+Ein geodätisches Dreieck $\Delta$ ist $\delta$-dünn für ein $\delta \geq 0$, falls
+\[\gamma_i \subset A_j\cup U_k \]
+wobei $A_i := \set{x \in X}{d(x, \gamma_i) \leq \delta}$ für $i,j,k$ verschieden.
+
+\subsection{Beispiel}
+\begin{itemize}
+	\item Alle Dreiecke in $\R$ sind 0-dünn.
+	\item Ebenfalls 0-dünn sind alle Dreiecke in simplizialen Bäumen.
+	\item Dreiecke in $\H^2$ sind $\delta$-dünn.
+\end{itemize}
+
+\subsection{Definition 6.14: }
+Ein metrischer Raum $(X,d)$ heißt \df{$\delta$-hyperbolisch}, wenn er geodätisch ist und alle geodätischen Dreiecke in $X$ $\delta$-dünn sind. Wir sagen $X$ ist \df{(Gromor)-hyperbolisch}, wenn es ein $\delta \geq 0$ gibt, s.d. $X$ $\delta$-hyperbolisch ist.
+
+\subsection{Bemerkung}
+$\delta$-hyperbolisch $\Longrightarrow$ $\delta'$-hyperbolisch $\forall \delta' \geq \delta$
+
+\subsection{Beispiel 6.15}
+\begin{itemize}
+	\item $\R^n$ ist nicht hyperbolisch für $n > 1$.
+	\item Geodätische Räume mit endlichem Durchmesser sind hyperbolisch.
+	\item 0-hyperbolische Räume sind genau $\R$-Bäume.
+\end{itemize}
+
+\subsection{Satz 6.16: iterierte Dünnheit}
+Sei $(X,d)$ $\delta$-hyperbolischer Raum, $P$ sei ein hyperbolisches Polygon mit Kanten $s_i : X_{i-1} \rightarrow X_{i}, i = 1\ldots n$. Setze
+\[Y:= \bigcup_{i=1}^n Bild(s_i) \]
+Dann gilt $\forall x \in S_0$
+\[d(x,Y) \leq k\cdot \delta \]
+mit $k := \lceil\log_2n \rceil$
+
+\paragraph{Beweis}
+\begin{itemize}
+	\item Sei $n = 2^l$ für ein $l \in \N$, zu zeigen:
+	\[d(x,Y) \leq l\delta \]
+	Induktion über $l$:
+	\paragraph{I.A.:} $l = 1$, dann $n = 2$, $P$ Dreieck $\Longrightarrow$ Behauptung.
+	\paragraph{Induktionsschritt:} $l \rightarrow l + 1$\\
+	$n = 2^{l+1}$, wähle $x \in Bild S_0$ und geodätische Segmente $[X_0, X_{2^l}], [X_n, X_{2^l}] $\\
+	Das Dreieck $X_0, X_{2^l}, X_n$ ist $\delta$-dünn, also existiert $t \in [X_0, X_{2^l}]$ mit $d(t,x) \leq \delta$.\\
+	Nach I.V. ist
+	\[d(t, Y') \leq l\delta \]
+	für $Y' = \bigcup_{i= 1}^{2^l} s_i$
+	\[\Rightarrow \exists t' \in Y' \text{ mit } d(t,t') = d(t,Y') \]
+	\[\Rightarrow d(x,Y) \leq d(x,t') \leq d(x,t) + d(t,t') \leq \delta + l \delta \]
+	\item Sei $n$ beliebig: füge $r$ Zwischenpunkte auf $Y$ ein, sodass
+	\[n + r = 2^l\]
+	\qed
+\end{itemize}
+
+\subsection{Definition 6.17: }
+$(X,d)$ : metrischer Raum, $c \geq 1, b \geq 0$\\
+Ein \df{$(c,b)$-quasi-geodätisches Dreieck} ist analog zu geodätisches Dreieck definiert mit $\gamma_i$ $(c,b)$-quasi-Geodäten.\\
+$\delta$-dünn genau analog definiert.
+
+\subsection{Definition 6.18: }
+$X$ heißt \df{$(c,b,\delta)$-quasi-hyperbolisch}, falls $X$ $(c,b)$-quasi-geodätisch und alle $(c,b)$-quasi-geodätisch Dreiecke $\delta$-dünn sind.\\
+$X$ heißt \df{$(c,b)$-quasi-hyperbolisch}, wenn $\delta \geq 0$, s.d. $X$ $(c,b,\delta)$-quasi-hyperbolisch.
+
+\subsection{Bemerkung}
+Im Allgemeinem ist es schwieriger zu zeigen, dass $X$ quasi-hyperbolisch ist, als, dass $X$ hyperbolisch ist.
+
+\subsection{Proposition 6.19: QI-Invarianz von quasi-hyperbolisch}
+$(X,d), (Y, f)$ metrische quasi-isometrische Räume, dann:
+\begin{enumerate}
+	\item $X$ quasi-geod. $\Longleftrightarrow$ $Y$ quasi-geod.
+	\item $X$ quasi-hyp. $\Longleftrightarrow$ $Y$ quasi-hyp.
+\end{enumerate}
 
 \end{document}
