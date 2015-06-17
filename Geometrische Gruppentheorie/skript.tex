@@ -34,6 +34,7 @@
 \newcommand{\gl}[1]{\overset{#1}{=}}
 \newcommand{\grgl}[1]{\overset{#1}{\geq}}
 \newcommand{\klgl}[1]{\overset{#1}{\leq}}
+\newcommand{\qi}{\backsimeq_{\textsc{QI}}}
 \newcommand{\gr}[1]{\overset{#1}{>}}
 \newcommand{\kl}[1]{\overset{#1}{<}}
 \newcommand{\norm}[1]{\left|\left|#1\right|\right|}
@@ -873,10 +874,85 @@ $X$ heißt \df{$(c,b)$-quasi-hyperbolisch}, wenn $\delta \geq 0$, s.d. $X$ $(c,b
 Im Allgemeinem ist es schwieriger zu zeigen, dass $X$ quasi-hyperbolisch ist, als, dass $X$ hyperbolisch ist.
 
 \subsection{Proposition 6.19: QI-Invarianz von quasi-hyperbolisch}
-$(X,d), (Y, f)$ metrische quasi-isometrische Räume, dann:
-\begin{enumerate}
+$(X,d), (Y, e)$ metrische quasi-isometrische Räume, dann:
+\begin{itemize}
 	\item $X$ quasi-geod. $\Longleftrightarrow$ $Y$ quasi-geod.
 	\item $X$ quasi-hyp. $\Longleftrightarrow$ $Y$ quasi-hyp.
-\end{enumerate}
+\end{itemize}
+
+
+%% 16.06.15, 19.VL
+
+\paragraph{Beweis}
+$f:X \rightarrow Y$ sei eine $(c,c)$-Quasi-Isometrie mit $c$-dichtem Bild.
+\begin{itemize}
+	\item Ohne Einschränkung sei $Y$  $(c,c)$-quasi-geod., seien $x,x'\in X$. Dann existiert eine $(c,c)$-Quasi-Geodäte $\gamma$ von $f(x)\rightarrow f(x')$.\\
+	Mit Auswahlaxiom finden wir $\gamma':[0,l] \rightarrow X$ mit 
+	\[\gamma'(0) = x, \gamma'(l)  = x' \text{ und } e(f(\gamma'(t)), \gamma(t)) \leq c \forall t \]
+	Wie in Satz 4.7 zeigt man, dass $\gamma'$ $(c, max(3c^2, 3))$-quasi-Geodäte ist.\\
+	Daraus folgt: $X$ ist quasi-geodätisch.
+	
+	\item Ohne Einschränkung sei $Y$  quasi-hyp., der obere Teil zeigt, dass $X$ quasi-geodätisch ist. Es gibt also Konstanten $c\geq 1, d \geq 0$, s.d. $Y$ $(c,d)$-quasi-hyp. und $X$ $(c,d)$-quasi-geod.\\
+	Seien $c' \geq  c, d' \geq d$ und $\gamma_i$, $i = 1,2,3$, $(c',d')$-quasi-geodätisches Dreieck in $X$.\\
+	Das Bild $(f\circ \gamma_1, f\circ \gamma_2, f\circ \gamma_3)$ unter $f$ ist $(c'', d'')$-quasi-geod. Dreieck in $Y$.\\
+	Weil $Y$ quasi-hyp., ist $(f\circ \gamma_1, f\circ \gamma_2, f\circ \gamma_3 )$ $\delta$-dünn, für $\delta \geq 0$.\\
+	Man rechne nach:
+	\[Bild(\gamma_1) \subset \bigcup_{c\delta + cd}(Bild\gamma_2 \cup Bild \gamma_3) \]
+	weil $f$ eine $(c,d)$- quasi-isom. Einbettung ist mit $\delta$-dichtem Bild.\\
+	Also ist $X$ quasi-hyperbolisch mit Konstanten $(c', d', c\delta + cd)$. \qed
+\end{itemize}
+
+\subsection{Bemerkung}
+In 6.19.2 reicht es vorauszusetzen: $X,Y$ metr., $Y$ quasi-hyp., $X$ quasi-geod., $f: X \rightarrow Y$ qi. Einbettung, dann ist $X$ quasi-hyp.
+
+\subsection{Satz 6.20}
+$(X,d)$ geod. metr. Raum.
+\[X \text{ hyperbolisch } \Longleftrightarrow X \text{ quasi-hyperbolisch }  \]
+
+\paragraph{Beweis unter Benutzung von 6.21}
+$\Longleftarrow$: klar.\\
+$\Longrightarrow$: Sei $X$ $\delta$-hyperbolisch, $c \geq 0,b \geq 1$. Wir zeigen:\\
+$\exists \delta' \geq 0$, s.d. $X$ $(c,b,\delta')$-quasi-hyp.\\
+Sei $\Delta := (\gamma_1, \gamma_2, \gamma_3)$ ein $(c,b)$-quasi-geod. Dreieck.\\
+Weil $X$ geodätisch, existieren Geodäten $\gamma_i'$ mit selben Endknoten wie $\gamma_i$.\\
+$X$ hyp. $\Longrightarrow \Delta' =(\gamma_i')_{i = 1,\ldots, 3}$ $delta$-dünn.\\
+Mit (6.21) folgt:
+\[Bild(\gamma_i') \subset U_k(Bild \gamma_i) \]
+\[Bild(\gamma_i) \subset U_k(Bild \gamma_i') \]
+$X$ $\delta$-hyp. $\Longrightarrow$ $Bild(\gamma_i') \subset U_\delta(Bild \gamma_j \cup Bild \gamma_k)$\\
+$\Longrightarrow Bild(\gamma_i) \subset U_k(Bild(\gamma_i')) \subset  U_k(U_\delta (Bild\gamma_j \cup Bild \gamma_k)) \subset U_{2k + \delta}(Bild\gamma_j \cup Bild \gamma_k)$\qed
+
+
+\subsection{Satz 6.21 (Stabilität von Quasi-Geodäten)}
+Seien $c,\delta \geq 0, b \geq 1$ Konstanten. Dann existiert $k = k(\delta, c,b) \geq 0$, s.d. gilt:\\
+Ist $X$ $\delta$-hyp. Raum, $\gamma : [0,l] \rightarrow X$ eine $(c,b)$-quasi-Geodäte und $\gamma' : [0,l'] \rightarrow X$ eine Geodäte mit $\gamma'(0) = \gamma(0)$ und $\gamma'(l') = \gamma(l)$.\\
+Dann gilt: $Bild(\gamma') \subset U_k(Bild \gamma)$ und $Bild(\gamma) \subset U_k(Bild \gamma')$
+
+\paragraph{Bemerkung} Die Voraussetzung $X ~\delta$-hyperbolisch ist hier wesentlich.
+
+\subsection{6.22 Korollar von 6.20}
+$X,Y$ geod. metr. Räume, $X \qi Y$.\\
+Dann:
+\[X \text{ hyperbolisch} \Longleftrightarrow Y \text{ hyperbolisch} \]
+
+\subsection{6.23 Hilfslemma (Abstand von Kurven und Geodäten)}
+$\delta \geq 0$, $(X,d)$ $\delta$-hyp., sei $\gamma : I \rightarrow X$ stetige Kurve in $X$ mit Endpunkten $p,q$. Sei $\gamma'$ Geodäte von $p$ nach $q$. Dann gilt $\forall t\in I$
+\[d(\gamma'(t), Bild(\gamma)) \leq \delta \norm{\log_2(L(\gamma))} + 1 \]
+wobei 
+\[L(\gamma) := \sup \set{\sum d(\gamma(t_i), \gamma(t_{i+1})}{(t_0, \ldots, t_n) \text{ Zerlegung von } I} \]
+
+\paragraph{Beweisskizze}
+Ohne Einschränkung: $1 < L(\gamma) =: L' < \infty$ und $\gamma: [0,l] \rightarrow X$ nach Bogenlänge parametrisiert, $p = \gamma(0), q = \gamma(l)$. Wähle $N \in \N_0$ groß genug, sodass
+\[\frac{L(\gamma)}{2^{N+1}} < 1 \leq \frac{L(\gamma)}{2^N} \]
+Sei $\gamma' : [0, l'] \rightarrow X$ und $t$ fest in $[0, l']$.\\
+$X$ hyperbolisch $\Longrightarrow$ wir finden Punkte $x_1, \ldots, x_n$ in $X$, s.d. gilt:
+\[d(\gamma'(\gamma'(t), x_1) ) , d(x_i, x_{i+1}) \leq \delta \]
+mit $x_i$ auf einer Geodäten der Länge $L(\gamma)/2^i$ mit Endpunkten in $Bild \gamma$.\\
+Sei $y$ der Endpunkt der Geodäten, die $x_i$ enthält, der näher an $\gamma'$ ist.\\
+Es gilt:
+\[d(\gamma'(t) , Bild \gamma) \leq d(\gamma'(t), y) \leq d(\gamma'(t), x_i) + d(x_i,y) \leq i \delta + L(\gamma)/(2^{i+1}) \leq \delta \norm{\log_2(L(\gamma))} + 1 \]
+weil $\frac{L(\gamma)}{2^{N+1}} < 1$, $N \leq \norm{\log_2(L(\gamma))}$.\qed
+
+
 
 \end{document}
