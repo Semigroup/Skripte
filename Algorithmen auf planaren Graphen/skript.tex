@@ -365,7 +365,7 @@ $\Longleftarrow$: Sei $fcap(v)$ gerade für alle $v$, $X \subset V$:\\
 Terminalpaare $D$ auf äußerer Facette und Geradheitsbedingung erfüllt.\\
 
 \begin{enumerate}
-	\item[Phase 1] Konstruiere aus $G, D$ einfachere Instanz mit Klammerstruktur und berechne mittels \textsc{RightFirst}-Tiefensuche Lösungswege $q_1, \ldots, q_k$. Diese induzieren gerichteten Hilfsgraph.
+	\item[Phase 1] Konstruiere aus $G, D$ einfachere Instanz mit Klammerstruktur und berechne mittels \textsc{RightFirst}-Tiefensuche kantendisjunkte Lösungswege $q_1, \ldots, q_k$. Diese induzieren gerichteten Hilfsgraph.
 	\item[Phase 2] Berechne mittels gerichteter \textsc{RightFirst}-Tiefensuche in Hilfsgraph Lösungswege $p_1,\ldots, p_k$, die jeweils $s_i$ mit $t_i$ verbinden.
 \end{enumerate}
 
@@ -385,8 +385,58 @@ $G, D = \set{\{s_i,t_i\}}{}$
 	\item kein $q_i$ kreuzt sich selbst
 	\item Sei $G'$ der gerichtete Graph, der durch die $q_i$ induziert wird. $G'$ enthält keinen Rechtskreis.\\
 	Angenommen $G'$ hätte einen Rechtskreis, dann wären an diesem mind. zwei $q_i, q_j$ beteiligt. Daraus folgt auf der Facette folgende Terminale: $s_i, t_j, s_j, t_i$, was der Klammerung $()()$ entspricht, was ein Widerspruch zur Paarung ist.\\
-	$\Longrightarrow$ induktiv über $q_i$ kann gezeigt werden, dass $q_i$ die richtigen Terminale verbindet.
-	\item 1.Phase in $\O{(n)}$ klar.
+	\item 1, 2 \& 3 $\Longrightarrow$ induktiv über $q_i$ kann gezeigt werden, dass $q_i$ die richtigen Terminale verbindet.
+	\item 1.Phase in $\O{n}$ klar.
 \end{enumerate}
+
+%%% 17.6.15, 13.VL
+
+\subsection{Phase 2}
+Ohne Einschränkung sei von Startterminal im Gegenuhrzeigersinn jeweils $s_i$ vor $t_i$ und Indizierung entsprechend Auftreten der $t_i$.\\
+Für $i = 1, \ldots, k$
+\begin{enumerate}
+	\item $p_i := $ führe \textsc{RFS} in $G'$ von $s_i$ aus bis zu einem $j$
+	\item Falls $i \neq j$, \textsc{Stop}.
+\end{enumerate}
+gebe $p_1,\ldots, p_k$ aus.
+
+\paragraph{Laufzeit}
+$\O{n}$ amortisiert mit \textsc{Union-Find} wie beim kantendisjunkten Menger-Problem.
+
+\paragraph{Korrektheit}
+Der Algorithmus endet entweder
+\begin{enumerate}
+	\item mit Wegen $p_1,\ldots, p_k$, die jeweils $s_i$ mit $t_i$ verbinden.
+	\item $p_1,\ldots, p_{i-1}$ korrekt und $p_i$ verbindet $s_i$ mit $t_j$\\
+	$\Longrightarrow i < j$, da $i \neq j$\\
+	Prozedur, die Weg $p$ berechnet, so dass $p$ einen Schnitt $X$ induziert, der im Fall 1 \df{saturiert} ist, d.h. $fcap(X) = $ und der im Fall 2 \df{übersaturiert} ist, d.h. $fcap(X) < 0$.
+\end{enumerate}
+
+\paragraph{Prozedur} für Schnitt $X$:\\
+Rückwärts-\textsc{LFS} startet von Terminal $t_i$ bzw. $t_j$ wo Weg $p_i$ endet in Graph, der durch $p_1,\ldots, p_i$ induziert wird.
+
+\subsection{Lemma}
+Sei $A$ Menge der Kanten $\{u,v\}$ aus $G$ mit $u$ auf $p$ und $v$ rechts von $p$. Jede Kante $\{u,v\} \in A$ gehört zu $G'$ und genau dann in Orientierung $(u,v)$, wenn sie durch eine der $p_1, \ldots, p_i$ besetzt ist.
+
+\paragraph{Beweis}
+Wenn $\{u,v\}$ durch ein $p_i$ besetzt, dann wegen Konstruktion von $p$ in Orientierung $(u,v)$.
+\begin{enumerate}
+	\item[Fall 1] Es existiere $(u,v)$ mit $(u,v)$ nicht durch $p_1, \ldots, p_i$ besetzt. Mein Bild zeigt einen Widerspruch zu RFS Ur argument is invalid.
+	\item[Fall 2] Es existiert $\{u,v\} \in A, (u,v), (v,u) \notin G'$. Bild. ICh bin müde as fuck\ldots
+	\qed
+\end{enumerate}
+
+\subsection{Lemma}
+Sei $X$ Schnitt induziert durch $p$ (Knoten rechts von $p$). Falls $p_i$ $s_i-t_i$-Weg, so ist $fcap(X) = 0$, sonst $fcap(X) < 0$.
+\paragraph{Beweis}
+Kanten $\{u,v\}$ auf $p$, $v$ rechts von $p$ entweder zu Weg $p_j$ gehört mit $1 \leq j < i, s_j \in V\setminus X$ und $t_j\in X$ oder zu Weg $q_j$ aus erster Phase mit $s_j'\in X$ und $t_j' \in V\setminus X$.\\
+Wenn $p_i$ korrekter $s_i-t_i$-Weg, so gilt
+\[cap(X) = \# \set{\{s_j, t_j\}}{s_j \notin X, t_j \in X, 1 \leq j \leq l}
++\# \set{\{s_j', t_j'\}}{s_j' \in X, t_j' \notin X, \{s_i', t_j'\} \notin D } \]
+\[ = dens(X)\]
+Wenn $p_i$ nicht korrekt, d.h. $s_i$ mit $t_j$, $i< j$, verbindet, so ist $cap(X) < dens(X)$, da $s_i \notin X, t_i \in X$.
+\qed
+
+
 
 \end{document}
