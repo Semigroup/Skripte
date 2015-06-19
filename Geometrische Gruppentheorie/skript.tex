@@ -29,7 +29,7 @@
 \newcommand{\set}[2]{\left\lbrace #1~|~#2 \right\rbrace}
 \newcommand{\grp}[2]{\left\langle #1~|~#2 \right\rangle}
 
-\newcommand{\qed}{$\square$}
+\newcommand{\qed}{\hfill $\square$}
 
 \newcommand{\gl}[1]{\overset{#1}{=}}
 \newcommand{\grgl}[1]{\overset{#1}{\geq}}
@@ -45,6 +45,8 @@
 	\end{matrix}\right)}
 
 \begin{document}
+
+\section{3 ?}
 
 % 15.05.15: 10.VL
 
@@ -175,6 +177,8 @@ Dann $|x + 2ny| \geq |2ny| - |x| > |2y| - |y| = |y|$, also $M_1^nB \subset A$, a
 % 19.05.15, 11. VL
 % Prüfungszeiträume: 27.7 - 30.7 & 8. - 11.9
 % Listen vor Büro an Pinnwand: 1.005
+
+\section{Quasi-Isometrien}
 
 \paragraph{Motivation}
 Gruppe -> Geometrie
@@ -930,6 +934,50 @@ Dann gilt: $Bild(\gamma') \subset U_k(Bild \gamma)$ und $Bild(\gamma) \subset U_
 
 \paragraph{Bemerkung} Die Voraussetzung $X ~\delta$-hyperbolisch ist hier wesentlich.
 
+\paragraph{Beweis unter Benutzung von 6.23 und 6.24}
+Ohne Einschränkung sei $\gamma$ stetig (geht wg. 6.24).\\
+Sei $\gamma'$ Geodäte, wir schätzen zunächst Abstand ab:
+\[D:= \sup\set{d(x, Bild(\gamma))}{ x\in Bild\gamma' } \]
+Sei $x_0$ Punkt, an dem das Supremum angenommen wird. Der offene Ball mit Radius $d$ um $x_0$ schneidet $\gamma$ nicht.\\
+Sei $y$ Punkt auf $\gamma_{|[0,t]}$, ($t$ so, dass $\gamma'(t) = x_0$), so gewählt, dass $d(y,x_0) = 2D$ oder, wenn $d(\gamma'(0), x_0)< 2D$, dann setze $y = \gamma'(0)$.\\
+Wähle $y',z' \in \gamma$ mit $d(y,y') \leq D$ und $d(z,z') \leq D$. Verbinde $y$ mit $y'$, $z$ mit $z'$ durch geod. Segmente. Betrachte jetzt den Weg\\
+$\sigma := $
+\begin{enumerate}
+	\item Geodäte $y\mapsto y'$, dann Teilstück  
+	\item dann Teilstück von $\gamma$ von $y'$ nach $z'$
+	\item Geodäte $z'\mapsto z$
+\end{enumerate}
+Nach Konstruktion und 6.23:
+\[D \overset{D vermeidet den D-Ball um x_0 }{\leq} d(x_0, \sigma) \leq \delta \norm{\log_2(L(\sigma))} + 1 \]
+\[\Longrightarrow d(y',z') \leq d(y',y) + d(y,z) + d(z,z') \leq D + 4D+ D \]
+Mit 6.24 ist
+\[L(\sigma) \leq cd(y',z') + b + 2D \leq c6D + b +2D\]
+\[\overset{6.23}{\Longrightarrow} D = d(x_0, \sigma) \leq \sigma \norm{\log_2(L(\delta))} + 1 \]
+\[ D- 1 \leq \delta \norm{\log_2(D(6c + 2) + b)} \]
+$\log_2$ wächst langsamer als $D-1$, also ist $D$ beschränkt durch eine Konstante $D_0(c,b,\delta)$.\\
+Wir müssen noch zeigen: 
+\[\gamma \subset U_{D_1}(\gamma') \]
+für $D_1 = D_1(D_0, c,b)$\\
+Sei $[r,s] \subset [0,l]$ maximales Teilintervall, s.d. $\gamma_{|[r,s]}$ außerhalb der $D_0$-Umgebung von $\gamma'$ liegt;\\
+wenn so ein $[r,s]$ nicht existiert, setze $D_1 = D_0$, fertig.\\
+Jeder Punkt von $\gamma'$ liegt in $U_{D_0} (\gamma)$.\\
+Somit gilt
+\[ \gamma' \subset U_{D_0}(\gamma_{|[0,r]} \cup \gamma_{|[s,l]}) \]
+Weil $\gamma, \gamma'$ stetig und $[0,l']$ Definitionsbereich von $\gamma'$ zusammenhängend, existiert $t'\in [0,l']$, sowie $r'\in [0,r']$ und $s' \in [s,l]$ mit $d(\gamma'(t), \gamma(r')) \leq D_0$ und
+\[ d(\gamma'(t'), \gamma(s')) \leq D_0 \]
+\[\Longrightarrow d(\gamma(r'), \gamma(s')) \leq 2D_0 \]
+Und wir erhalten: 
+\[ L(\gamma_{|[r,s]}) \leq L(\gamma_{|[r',s']}) \overset{6.24}{\leq} cd(\gamma(r'), \gamma(s')) + b \leq c2D_0 + b=:D_1 \]
+\[\Longrightarrow \gamma_{|[r,s]} \subset U_{D_1}(\gamma')  \]
+
+Man überlegt sich $\forall p,q$ mit $\gamma_{|[p,q]} \not \subset U_{D_0}(\gamma')$, dass
+\[\gamma_{|[p,q]} \subset U_{D_1} (\gamma')\]
+also gilt wegen $D_1 > D$, dass
+\[\gamma \subset U_{D_1}(\gamma') \]
+\qed
+
+
+
 \subsection{6.22 Korollar von 6.20}
 $X,Y$ geod. metr. Räume, $X \qi Y$.\\
 Dann:
@@ -953,6 +1001,47 @@ Es gilt:
 \[d(\gamma'(t) , Bild \gamma) \leq d(\gamma'(t), y) \leq d(\gamma'(t), x_i) + d(x_i,y) \leq i \delta + L(\gamma)/(2^{i+1}) \leq \delta \norm{\log_2(L(\gamma))} + 1 \]
 weil $\frac{L(\gamma)}{2^{N+1}} < 1$, $N \leq \norm{\log_2(L(\gamma))}$.\qed
 
+%% 19.06.15, 20.VL
+
+\subsection{Satz 6.24: Hilfslemma: Approximation durch stetige Quasi-Geodäten}
+$(X,d)$ geod. metr. Raum, $c \geq 1, b \geq 0$, dann existiert $c' \geq 1, b \geq 0$, s.d. gilt:\\
+Ist $\gamma$ $(c,b)$-quasi-Geodäte $\gamma : [0,l] \rightarrow X$, dann existiert eine stetige $(c',b')$-quasi-Geodäte $\gamma' : [0,l] \rightarrow X$ mit $\gamma'(0) = \gamma(0), \gamma'(l) = \gamma(l)$ und für die gilt
+\begin{enumerate}
+	\item $\forall s \leq t $ in $[0,1]$:
+	\[L(\gamma'_{|[s,t]}) \leq c'd(\gamma'(s) , \gamma'(t)) + b' \]
+	\item 
+	\[Bild(\gamma') \subset U_{c+ b}(Bild(\gamma))  \]
+	\[Bild(\gamma) \subset U_{c+ b}(Bild(\gamma'))  \]
+\end{enumerate}
+
+\paragraph{Beweisskizze}
+$I := [0,l) \cap \Z$
+\begin{enumerate}
+	\item[1.Schritt] $\gamma'(t) := \gamma(t) \forall t \in I$
+	\item[2.Schritt] Erweitere $\gamma'$ auf $[0,l]$ durch $\gamma'(l) := \gamma(l)$ und zwischen benachbarten $t,t+1$ in $I$ bzw. zw. $\max I$ und $l$ durch Geodäten
+	\end{enumerate}
+\qed
+
+\subsection{Definition 6.25: Hyperbolische Gruppen}
+Eine endlich erzeugte Gruppe $G$ heißt (Gromor)-\df{hyperbolisch}, wenn für ein (und somit für alle) endliche Erzeugersysteme $S$ der Cayleygraph von $G$ bzgl. $S$ hyperbolisch ist.
+
+\subsection{Bemerkung}
+Auf dem Cayleygraphen betrachten wir die geodätische Graphmetrik (geom. Realisierung) definiert durch die Eigenschaft, dass alle Kanten die Länge 1 haben.
+
+\subsection{Satz 6.24 (hyperbolisch ist geometrisch)}
+Seien $G, H $ endlich erzeugt, $G \qi H$, so gilt:\\
+\[G \text{ hyperbolisch } \Leftrightarrow H \text{ hyperbolisch} \]
+\paragraph{Beweis} folgt aus 6.22, weil \grqq hyperbolisch\glqq\ QI-Invar. für metr. Räume.\qed
+
+\subsection{Beispiele}
+\begin{enumerate}
+	\item freie Gruppen
+	\item endliche Gruppen
+	\item $\Z, \R$
+	\item Fuchssche Gruppen
+	\item $\Z^n, \R^n$ nicht hyperbolisch für $n > 1$
+	\item $\C$ nicht hyperbolisch
+\end{enumerate}
 
 
 \end{document}
