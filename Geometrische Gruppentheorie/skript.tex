@@ -1033,7 +1033,7 @@ Seien $G, H $ endlich erzeugt, $G \qi H$, so gilt:\\
 \[G \text{ hyperbolisch } \Leftrightarrow H \text{ hyperbolisch} \]
 \paragraph{Beweis} folgt aus 6.22, weil \grqq hyperbolisch\glqq\ QI-Invar. für metr. Räume.\qed
 
-\subsection{Beispiele}
+\subsection{Beispiele 6.25}
 \begin{enumerate}
 	\item freie Gruppen
 	\item endliche Gruppen
@@ -1041,7 +1041,97 @@ Seien $G, H $ endlich erzeugt, $G \qi H$, so gilt:\\
 	\item Fuchssche Gruppen
 	\item $\Z^n, \R^n$ nicht hyperbolisch für $n > 1$
 	\item $\C$ nicht hyperbolisch
+	
+	%%23.06.15, 21.VL
+	\item Parkettierungsgruppen von ($\H^2$)\\
+	$P$ konvexes, kompaktes (d.h. keine Ecken auf dem Rand) Polygon in $\H^2$ mit Ecken in $x_1, \ldots, x_n, n\geq 3$\\
+	\paragraph{Annahme} $\forall i$ ist der Innenwinkel an $x_i$ in $P$ von der Form $\pi/p_i, p_i \in \Z_{\geq 2}$.\\
+	Falls $\sum_{j=1}^n \frac{1}{p_i} < n - 2$, dann existiert ein solches Polygon (dünnes Polygon in $\H^2$)\\
+	\paragraph{Annahme} $P$ \df{regulär}, d.h. $p_i = p \forall i$\\
+	betrachte Spiegelungen $s_i$ an Seite $x_i \rightarrow x_{i+1}$ in $P$, diese erzeugen eine Gruppe $G$\\
+	\[G = \grp{s_1, \ldots, s_n}{s_i^2, (s_is_{j-1})^{p}, \forall i \forall j }\]
+	
+	\paragraph{Satz (Poincare)}
+	$G$ wirkt eigentlich  auf $\H^2$ mit $P$ als Fundamentalbereich.\\
+	Für $x \in P^o$ ist $G.x$ quasi-isom. zu $\H^2$
+\end{enumerate}
+
+\newpage
+\section{Wortproblem für hyperbolische Gruppen}
+
+\subsection{Definition}
+$G = \grp{S}{R}$ endl. präsentierte Gruppe.\\
+Wir sagen:
+\[das~Wortproblem ~ist ~für ~G ~lösbar\]
+wenn es einen Algorithmus gibt, der für alle $w \in (S\cup S^{-1})^*$ entscheidet, ob $w= 1$ in $G$ oder nicht.\\
+\paragraph{Genauer} Die Mengen 
+\[\set{w \in (S\cup S^{-1})^*}{w = 1} \text{ und } \set{w \in (S\cup S^{-1})^*}{w \neq 1}\]
+sind rekursiv aufzählbar.
+
+\paragraph{Beispiele}
+\begin{enumerate}
+	\item freie Gruppen und freie abelsche Gruppen sind sogar Chomsky 2
+	\item alle endlichen Gruppen sind Chomsky 3
+	\item Sind Gruppen Chomsky 3 genau, dann, wenn $((S\cup S^{-1})^* : L) < \infty$
+\end{enumerate}
+
+\paragraph{Bemerkung}
+\begin{enumerate}
+	\item Für eine beliebige Gruppe ist das Wortproblem im Allgemeinem nicht lösbar.
+	\item Folgende Klassen haben lösbares WP:
+	\begin{enumerate}
+		\item Coxetgruppen
+		\item Zopfgruppen
+		\item Fundamentalgruppen geschlossener orientierter Flächen
+		\item hyperbolische Gruppen
+	\end{enumerate}
+\end{enumerate}
+
+\subsection{Satz (Gromor, Olshanskii 1992)}
+$k \in \Z_{\geq 2}, A = S\cup S^{-1}, S = \set{s_1,\ldots,s_n}{}, i \geq 0$ und Folge von natürlichen Zahlen $n_1,\ldots,n_i$\\
+Sei $\mathcal{N} := \mathcal{N}(k,i,n_1,\ldots, n_i)$ die Anzahl der Präsentationen $\grp{s_1,\ldots, s_k}{r_1,\ldots, r_i}$, $r_j$ reduziertes Wort in $A$ mit Länge $l(r_j) = n_j \forall j = 1,\ldots, i$.\\
+$N_h \leq \mathcal{N}$ sei die Anzahl der hyperbolischen Gruppen dieser Form.\\
+Für $n := \min\set{n_1,\ldots, n_i}{}$ gilt:
+\[\lim\limits_{n \rightarrow \infty} \frac{N_h}{N} = 1 \]
+
+\subsection{Satz}
+Hyperbolische Gruppen haben lösbares Wortproblem, d.h. für ein endliches Erzeugendensystem $S$ von $G$ existiert $R \subset (S\cup S^{-1})^*$ so, dass $G \cong \grp{S}{R}$ und das Wortproblem für $\grp{S}{R}$ lösbar ist.
+
+\paragraph{Beweis unter Benutzung von 7.5 und 7.4} Offensichtlich.
+
+\subsection{Definition}
+Eine endliche Präsentierung $\grp{S}{R}$ ist eine \df{Dehn-Präsentation}, wenn für ein $n \in \N$ Wörter $u_1,\ldots, u_n, v_1,\ldots, v_n$ existieren mit
+\begin{enumerate}
+	\item $R = \set{u_1v_1^{-1},\ldots, u_nv_n^{-1}}{}$
+	\item $\forall j$ gilt: $v_j$ ist echt kürzer als $u_j$
+	\item $\forall w \in (S\cup S^{-1})^*\setminus\{\epsilon\}$, die das neutrale Element präsentieren, existiert ein $j \in \{1,\ldots, n\}$, s.d. $u_j$ ein Teilwort von $w$ ist.
 \end{enumerate}
 
 
+\subsection{7.5 Satz: Dehn-Algorithmus}
+Ist $\grp{S}{R}$ eine Dehn-Präsentation, dann ist das Wortproblem lösbar.
+
+\paragraph{Beweis}
+$R = \set{u_iv_i^{-1}}{i = 1,\ldots, n}$, sei $w$ ein beliebiges Wort und führe strukturelle Induktion nach der Länge von $w$.
+\begin{enumerate}
+	\item[I.A.] Offensichtlich ist $w$ trivial.
+	\item[I.S.] Existiert ein $u_i$, sodass $u_i$ ein Teilwort von $w$ ist, so ersetze dieses durch $v_i$. Das dadurch erhaltene Wort hat eine echt kleinere Länge, weshalb man nach Induktion-Voraussetzung entscheiden kann, ob dieses das Neutralelement präsentiert.\\
+	Ist kein Teilwort von $w$ gleich einem $u_i$, so kann $w$ nach Dehn-Eigenschaft nicht das Neutralelement präsentieren.\qed
+\end{enumerate}
+
+\subsection{Satz}
+$G$ hyperbolische, von $S$ endlich erzeugte Gruppe; dann existiert $R \subset (S\cup S^{-1})^*$ so, dass $\grp{S}{R}$ Dehn-Präsentation und $G \cong \grp{S}{R}$.
+
+\subsection{7.6 Lemma: Abkürzungen}
+$G$ hyperbolische, von $S$ endlich erzeugte Gruppen, $Cay(G,S)$ $\delta$-hyperbolisch für ein $\delta > 0$.\\
+Falls $\gamma : [0,n] \rightarrow Cay(G,S)$ ein stückweiser linearer nach Bogenlänge parametrisierter geschlossener Weg ist, dann existieren $t,t'\in [0,n]$ mit 
+\[l(\gamma_{|[t,t']}) < 8\delta \text{ und } \gamma_{|[t,t']} \text{ nicht geodätisch} \]
+
+\subsection{Lemma 7.7: Trapping für lokale Geodäten}
+$\delta \geq 0, c > 8 \delta$ und $(X,d)$ $\delta$-hyperbolisch.\\
+$\gamma:[0,l] \rightarrow X$ \df{$c$-lokale} Geodäte, d.h.\\
+$\forall t, t' \in [0,l]$ mit $\norm{t - t'} < c$ gilt
+\[d(\gamma(t), \gamma(t')) = \norm{t -t'}\]
+Ist $\gamma':[0,l'] \rightarrow X$ mit $\gamma'(0) = \gamma(0), \gamma'(l) = \gamma(l)$, so gilt
+\[\gamma \subseteq U_{2\delta}(\gamma') \]
 \end{document}
