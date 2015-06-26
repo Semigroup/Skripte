@@ -46,6 +46,10 @@
 
 \begin{document}
 
+\section{1 ?}
+
+\section{2 ?}
+
 \section{3 ?}
 
 % 15.05.15: 10.VL
@@ -1097,7 +1101,7 @@ Für $n := \min\set{n_1,\ldots, n_i}{}$ gilt:
 \subsection{Satz}
 Hyperbolische Gruppen haben lösbares Wortproblem, d.h. für ein endliches Erzeugendensystem $S$ von $G$ existiert $R \subset (S\cup S^{-1})^*$ so, dass $G \cong \grp{S}{R}$ und das Wortproblem für $\grp{S}{R}$ lösbar ist.
 
-\paragraph{Beweis unter Benutzung von 7.5 und 7.4} Offensichtlich.
+\paragraph{Beweis unter Benutzung von 7.4 und 7.5} Offensichtlich.
 
 \subsection{Definition}
 Eine endliche Präsentierung $\grp{S}{R}$ ist eine \df{Dehn-Präsentation}, wenn für ein $n \in \N$ Wörter $u_1,\ldots, u_n, v_1,\ldots, v_n$ existieren mit
@@ -1108,7 +1112,7 @@ Eine endliche Präsentierung $\grp{S}{R}$ ist eine \df{Dehn-Präsentation}, wenn
 \end{enumerate}
 
 
-\subsection{7.5 Satz: Dehn-Algorithmus}
+\subsection{7.4 Satz: Dehn-Algorithmus}
 Ist $\grp{S}{R}$ eine Dehn-Präsentation, dann ist das Wortproblem lösbar.
 
 \paragraph{Beweis}
@@ -1119,13 +1123,59 @@ $R = \set{u_iv_i^{-1}}{i = 1,\ldots, n}$, sei $w$ ein beliebiges Wort und führe
 	Ist kein Teilwort von $w$ gleich einem $u_i$, so kann $w$ nach Dehn-Eigenschaft nicht das Neutralelement präsentieren.\qed
 \end{enumerate}
 
-\subsection{Satz}
+\subsection{7.5 Satz}
 $G$ hyperbolische, von $S$ endlich erzeugte Gruppe; dann existiert $R \subset (S\cup S^{-1})^*$ so, dass $\grp{S}{R}$ Dehn-Präsentation und $G \cong \grp{S}{R}$.
 
-\subsection{7.6 Lemma: Abkürzungen}
-$G$ hyperbolische, von $S$ endlich erzeugte Gruppen, $Cay(G,S)$ $\delta$-hyperbolisch für ein $\delta > 0$.\\
+\paragraph{Beweis unter Benutzung von 7.6}
+Sei $R := \set{uv^{-1}}{u,v \in (S\cup S^{-1})^*, d_S(1, \pi(u)) < \norm{u} \leq D, \norm{v} = d_S(1, \pi(u)), \pi(u) = \pi(v) } $ wobei $D:= \lceil8\delta \rceil$, $\pi$ ist kanonische Projektion $F(S) \rightarrow G$\\ %%\cup \set{ss^{-1}e}{s\in (S\cup S^{-1})^*}
+Betrachte Abbildung
+\[\phi : \grp{S}{R} \rightarrow G \]
+induziert durch $\phi_{|S} = id_{S}$, $\grp{S}{} = G$, also ist $\phi$ surjektiv.\\
+
+\subparagraph{Behauptung} $\phi$ injektiv und $\grp{S}{R}$ Dehn-Präsentation.
+\[\Longleftrightarrow \ker \pi  = \grp{R}{}_{F(S)}^\vartriangleleft \]
+\subparagraph{Beweis}
+Definition von $R$ liefert
+\[ \grp{R}{}_{F(S)}^\vartriangleleft \subset \ker \pi \]
+Sei jetzt $w \in (S\cup S^{-1})^*$ mit $\pi(w) = 1$\\
+Zu Zeigen durch Induktion über Wortlänge: $w \in \grp{R}{}_{F(S)}^\vartriangleleft$ und $w$ besitzt Teilwörter nach Definition von Dehn-Präsentation.\\
+\begin{enumerate}
+	\item[$l(w) = 0$ ] $w = e$
+	\item[$l(W) > 0$] 
+	\begin{enumerate}
+		\item $w$ nicht reduziert, dann besitzt $w$ ein Teilwort der Form $ss^{-1}e$ mit $s \in S\cup S^{-1}$.\\
+		$ss^{-1}e \in R$ mit $u = ss^{-1}, v = e$.
+		\item $w$ reduziert, dann entspricht $w$ einem geschlossenem Kantenpfad in $Cay(G,S)$\\
+		7.6 $\Longrightarrow$ $\exists$ nicht-geod. Teilpfad und somit nicht-geod. Teilwort, das abgekürzt werden kann.\\
+		$\Longrightarrow$ $w$ besitzt Zerlegung $w = w'uw''$, wobei $u$ nicht geodätisch und $d(1, \pi(u)) < l(u) \overset{7.7}{\leq} D$\\
+		Wähle $v \in (S\cup S^{-1})^*$, sodass $\pi(u) = \pi(v)$ und $l(v) = d_S(1, \pi(u))< l(U)$\\
+		Definition von $R$: $1 = \pi(w) = \pi(w') \pi(u) \pi(w'') \overset{\pi(u) = \pi(v)}{=} \pi(w'vw'') $\\
+		Nach IV. ist $w'vw'' \in \grp{R}{}_{F(S)}^\vartriangleleft$ und besitzt gesuchte Teilwörter.\\
+		$\Longrightarrow$ $\exists k \in \ker \pi $ mit $w = w'vw''k$ \qed
+	\end{enumerate}
+\end{enumerate}
+
+\subsection{7.6 Lemma: Abkürzungslemma}
+$G$ hyperbolische, von $S$ endlich erzeugte Gruppe; $Cay(G,S)$ $\delta$-hyperbolisch für ein $\delta > 0$.\\
 Falls $\gamma : [0,n] \rightarrow Cay(G,S)$ ein stückweiser linearer nach Bogenlänge parametrisierter geschlossener Weg ist, dann existieren $t,t'\in [0,n]$ mit 
-\[l(\gamma_{|[t,t']}) < 8\delta \text{ und } \gamma_{|[t,t']} \text{ nicht geodätisch} \]
+\[l(\gamma_{|[t,t']}) \leq 8\delta \text{ und } \gamma_{|[t,t']} \text{ nicht geodätisch} \]
+
+\paragraph{Beweis unter Benutzung von 7.7}
+\begin{enumerate}
+	\item Zeige: $\gamma$ kann für $c > 8\delta$ keine $c$-lokale Geodäte sein.\\
+	\paragraph{Annahme} $\exists c > 8 \delta$, sodass $\gamma$ eine $c$-lokale Geodäte in $Cay(G,S)$.\\
+	Weil $\gamma(0) = \gamma(n)$ muss $n > 8\delta$\\
+	Lemma 7.7 $: \gamma 2\delta$-nahe an jeder Geodäte von $\gamma(0) \rightarrow \gamma(n) = \gamma(0)$,\\
+	also ist $\gamma$ $2\delta$-nahe am Punkt $\gamma(0) = $ konstante Geodäte\\
+	\[\Longrightarrow \gamma \subset U_{2\delta}(\gamma(0)) = B_{2\delta}(\gamma(0)) \]
+	\[ 4\delta \geq diam B_{2\delta}(\gamma(0)) \overset{\gamma \text{ geschlossen, nach BL param.}}{\geq} d_S(\gamma(0), \gamma(5\delta)) \overset{BL, c\text{-lokale Geodäte}}{=} 5\delta \]
+	Was ein Widerspruch ist.\\
+	$\Longrightarrow$ $\gamma$ kann keine $c$-lokale Geodäte sein für $c > 8\delta$
+	\item Also $\exists t, t' \in [0,n]$ mit
+	\[ \norm{t - t'} \leq 8\delta \text{ und } d(\gamma(t), \gamma(t')) \neq \norm{t -t'} \]
+	Insbesondere ist $\gamma_{|[t,t']}$ keine Geodäte. \qed
+\end{enumerate}
+
 
 \subsection{Lemma 7.7: Trapping für lokale Geodäten}
 $\delta \geq 0, c > 8 \delta$ und $(X,d)$ $\delta$-hyperbolisch.\\
@@ -1134,4 +1184,61 @@ $\forall t, t' \in [0,l]$ mit $\norm{t - t'} < c$ gilt
 \[d(\gamma(t), \gamma(t')) = \norm{t -t'}\]
 Ist $\gamma':[0,l'] \rightarrow X$ mit $\gamma'(0) = \gamma(0), \gamma'(l) = \gamma(l)$, so gilt
 \[\gamma \subseteq U_{2\delta}(\gamma') \]
+
+%% 26.06.15, 22. VL
+
+\subsection{Konjugationsproblem}
+Problem: Gegeben zwei Elemente $u,v$; existiert ein $g$, s.d.
+\[gug^{-1} =v \]
+
+\paragraph{Beispiel: freie Gruppen}
+Wort $w = s_0\cdots s_n$ in $F(S)$ ist \df{zyklisch reduziert}, wenn $s_i \neq s_{i+1}^{-1} \forall i = 0,\ldots, n-1$ und $s_0 \neq s_n^{-1}$, d.h. alle zyklischen Permutationen von $w$ sind reduziert.\\
+Gegeben beliebiges Wort $w$, so kann $w$ wie folgt zyklisch reduziert werden:\\
+Wiederhole
+\begin{itemize}
+	\item Lösche Teilwörter $s^{-1}s$, $s \in S\cup S^{-1}$
+	\item Lösche $s_0$ und $s_n$, falls $s_0^{-1} = s_n$
+\end{itemize}
+Das zyklisch reduzierte Wort, das man so erhält, ist eindeutig bis auf zyklische Permutationen.\\
+Z.Bsp. $bab^{-1}babb^{-1} \longrightarrow baa \text{ oder } aab$\\
+$u$ und $v$ sind konjugiert genau dann, wenn ihre zyklischen Reduktionen zyklische Permutationen voneinander sind.\\
+Algorithmus:
+\begin{enumerate}
+	\item reduziere $u,v$ zyklisch
+	\item betrachte alle zyklischen Permutationen von $u$ und $v$ und prüfe, ob Schnitt nicht leer ist. (Hierzu muss man das Wortproblem lösen können.)
+\end{enumerate}
+
+\subsection{Definition 7.9}
+Ein Wort $w$ über $S$, $S$ endl. EZS von $G$, heißt \df{vollständig reduziert}, wenn $w$ und alle seine zyklischen Permutationen Geodäten in $Cay(G,S)$ sind.
+
+\subsection{Lemma 7.10}
+$G$ $\delta$-hyp. bzgl. $S$, $\norm{S} < \infty$.\\
+Repräsentieren zwei vollständige reduzierte Wörter $u,v$ zwei konjugierte Elemente in $G$, dann gilt:
+\begin{enumerate}
+	\item $\max\{l(u), l(v)\} \leq 8\delta + 1$ oder
+	\item $\exists$ zykl. Permutationen $u',v'$ von $u,v$ und ein Wort $w$ mit
+	\[l(w)  \leq 2\delta +1  \]
+	sodasss $wu'w^{-1} = v'$
+\end{enumerate}
+
+\paragraph{Beweis}
+Sei $w$ geodätisches Wort, s.d. $wuw^{-1} = v$.\\
+Betrachte geod. Viereck $Q $ mit Kanten$ w,u, w^{-1},v^{-1}$ in $Cay(G,S)$:\\
+Man kann zeigen, dass es zyklische Permutationen von $u$ und $v$ gibt, s.d. jede Ecke auf $u$ Abstand $\geq l(w)$ zur Seite $v$ hat.\\
+Jede Ecke auf $u$ hat Abstand $\geq l(w)$ zu jeder Ecke $v$.\\
+Sei $P$ Mitte von Pfad $u$, dann existiert $q$ auf eines der drei anderen Kanten mit $d(p,q) \leq 2\delta$ (weil $G$ $\delta$-hyp.).\\
+Ist $q$ auf $v$, dann haben die am nächsten an $p$ und $q$ liegenden Ecken Abstand $\leq 2\delta + 1$.\\
+Dann ist $l(w) \leq 2\delta + 1$.\\
+Ist $q$ auf einer der vertikalen Seiten mit Enden $x$ (auf $u$) und $y$ (auf $v$), dann gilt:
+\[ l(w) - \frac{1}{2} \leq d(p,y) \leq 2\delta + d(q,y)  \]
+und
+\[ d(q,y) = l(w) = d(x,q) \]
+\[\Longrightarrow d(x,q)  \leq 2\delta + 1 \]
+\[ d(x,p)  \leq d(p,q) + d(q,x) \leq 4\delta + \frac{1}{2} \]
+\[l(w) = 2d(x,p) \]
+\[ \Longrightarrow l(u) \leq 8\delta + 1 \]
+Analog zeige
+\[l(v) \leq 8\delta + 1 \]
+\qed
+
 \end{document}
