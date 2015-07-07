@@ -46,6 +46,8 @@
 
 \begin{document}
 
+\tableofcontents
+
 \section{1 ?}
 
 \section{2 ?}
@@ -594,7 +596,7 @@ Baue 2-dim. CW-Komplex, der die Darstellung kodiert (aufbauend auf Cayleygraphen
 $G = \grp{S}{R} = F(S)/ \grp{R}{}_G\vartriangleleft$\\
 $\exists \pi: F(S) \rightarrow > \grp{S}{R}, kern \pi = \grp{R}{}_G\vartriangleleft$ 
 
-\subsection{Definition 5.6: Präsentationskomplex}
+\subsection{Definition 5.6: Präsentationskomplex (Korrekt?)}
 OE: $1 \in S, G \cong \grp{S}{R}$ endlich präsentiert.
 \[\Gamma := Cay(G,S)/\sim \]
 wobei zwei Kanten $e, e'$ verklebt werden (äquiv. sind), wenn gilt $\delta(e) = \delta(e')$\\\\
@@ -603,6 +605,21 @@ Der \df{Präsentations(zwei)komplex} $K = K(S,R)$ von $G$ ist der Quotient $K'/G
 1-Skelett von $K'$ ist $\Gamma$\\
 $\forall $ Kreise $\gamma$ in $\Gamma$ der Form $\gamma = g^{-1}.(1,s_1, s_1s_2, \ldots, s_1\cdots s_n)$ wobei $g \in G, s_1\cdots s_n \in R$; klebe 2-Zelle an $\gamma$ um $K'$ zu erhalten.\\
 $K'$ heißt \df{Cayley-Komplex} von $\grp{S}{R}$
+
+\paragraph{Korrekte Definition:}
+Definiere den Cayley-Komplex $K(S,R)$ als universelle Überlagerung von $K_G$.\\
+\paragraph{Explizite Beschreibung des Cayleykomplexes}
+$\grp{S}{R} = G$, $S$ reduziert.\\
+Sei $\Gamma$ der Graph, der aus dem $Cay(G,S)$ durch folgende Operation entsteht:
+\begin{enumerate}
+	\item $\forall s \in S$ mit $s^2 = 1$, füge $\forall g$ eine zweite Kante der Form $(g,gs)$ hinzu.
+	\item Orientiere alle Kanten $(g,gs)$ im Graphen so, dass sie von $g$ nach $gs$ zeigen\\
+	Ordnung 2 Elemente liefern Doppelkanten zu zwei Punkten. $\overset{\curvearrowright}{\longleftarrow}$
+	
+	\item 
+	klebe 2-Zelle $d_{r,g}$ an $\Gamma$ für alle Paare $(r,g) \in R \times G $, $G \sim V(\Gamma)$ wie folgt:\\
+	verklebe 1 mit $g \in V(\Gamma)$ und den Rand von $d_{r,g}$ mit dem Pfad (eind.), der zum Wort $r$ gehört, das in $g$ startet.
+\end{enumerate}
 
 \paragraph{Bemerkung}
 Man kann mittels Seifert-Van Kampen zeigen, dass $K'$ einfach zusammenhängend. $K'$ ist univ. Überlagerung und $G = \pi(K) = \pi(K'/G)$
@@ -617,7 +634,8 @@ Man kann mittels Seifert-Van Kampen zeigen, dass $K'$ einfach zusammenhängend. 
 \end{enumerate}
 
 \subsection{Bemerkung 5.9: alternative Definition von $K(S,R)$}
-hier $K_G$, $K_G$ enthält
+$G = \grp{S}{R}$ endliche Präsentation, $S$ reduziert.\\
+Definiere den Komplex $K_G$ durch
 \begin{enumerate}
 	\item eine 0-Zelle $v$
 	\item eine 1-Zelle für jedes $s \in S$, die von $v$ nach $v$ führt, orientiere diese 1-Zellen
@@ -1240,5 +1258,51 @@ und
 Analog zeige
 \[l(v) \leq 8\delta + 1 \]
 \qed
+
+%%% 23.VL, 7.7.15
+
+\subsection{Lemma 7.11 (Trapping von $c$-lokalen-Geodäten)}
+$X$ $\delta$-hyperbolisch metr. Raum, dann $\exists C = C(\delta)$, s.d. $\forall$ 4-Ecke $Q$ in $X$ mit $(8\delta + 1)$-lokal-geodätische Seiten gilt:\\
+Jede Seite von $Q$ liegt in der $C$-Umgebung der drei anderen Seiten.
+
+\subsection{Lemma 7.12 (Verallgemeinerung von 7.10 mit Hilfe von 7.11)}
+$G$ $\delta$-hyperbolische Gruppe bzgl. EZS $S$, d.h. $Cay(G,S)$ ist $\delta$-hyperbolisch.\\
+Dann $\exists k > 0$, $k = k(\delta)$ konstant, s.d. $\forall$ Wörter $u,v$, die in $G$ konjugierte Elemente repräsentieren, gilt:\\
+Sind $u,v$ und alle ihre zyklischen Permutationen $(8\delta + 1)$-lokal-geodätisch, dann ist entweder
+\begin{enumerate}
+	\item $\max\{ l(u),l(v) \} \leq k$ oder
+	\item $\exists $ Wort $w$, $l(w) \leq k$, s.d.
+	\[wuw^{-1} =v^{-1} \]
+	für $u',v'$ geeignete zykl. Permutation von $u$ bzw. $v$.
+\end{enumerate}
+
+\subsection{7. 13: Algorithmus für Konjugationsproblem}
+Input: 2 Wörter $u,v$
+\begin{itemize}
+	\item Finde in $u$ und $v$ und allen zykl. Permutationen Teilwörter der Länge $\leq 8\delta + 1$, die nicht Geod. sind und ersetze durch äquivalente Teilwörter, die geod. sind.
+	\item Wiederhole 1.Schritt bis $u', v'$ und alle zykl. Permutationen $(8\delta + 1)$-loakal-geodätisch.
+	\item mit Lemma 7.12 existiert endl. Menge $\Sigma \subset (S+S^{-1})^*$, s.d. $u$ konjugiert ist, gdw. $\exists w \in \Sigma$ mit $wu''w^{-1} = v''$ für zykl. Permutationen $u'',v''$ von $u,v$.\\
+	(Wähle: $\Sigma = \set{\text{Wörter }w}{l(w) \leq k} \sqcup \set{k}{ku_0k^{-1} = v_0 \forall \text{ konjugierte Paare } (u_0,v_0) \text{ und }\max\{l(u_0), l(v_0)\}} \leq k $)
+		\item Verwende Dehn-Algorithmus, um zu prüfen, ob ein $w \in \Sigma$ existiert mit $w^{-1}u''w = v''$ in $G$
+\end{itemize}
+\paragraph{Fazit} Konjugationsproblem lässt sich für hyperbolische Gruppen auf das Wortproblem reduzieren.
+
+\newpage
+\section{Enden von Gruppen}
+\subsection{Definition}
+Sei $\Gamma = (V,E, \delta)$ ein Graph.
+\begin{itemize}
+	\item Ein \df{(eigentlicher) Strahl} in $\Gamma$ ist eine unendlicher Pfad $\gamma = (x_i)_{i \geq 0}$, s.d. $\forall$ beschränkten Teilmengen $B \leq V$ nur endlich viele $x_i$ in $B$ liegen.\\
+	(Graphen mit endlich vielen Ecken besitzen keine eigentlichen Strahlen).
+	\item Eine Menge $C$ von Ecken heißt \df{zusammenhängend}, wenn $\forall x,y \in C$ ein Pfad von $x$ nach $y$ existiert, der nur über Ecken in $C$ läuft.
+	\item \df{Zusammenhangskomponenten} von $C \subset V$ sind die maximalen zusammenhängenden Teilmengen $D$ von $C$.\\
+	\item Wir sagen $A,B \subset V$ werden von $S \subset V$ \df{separiert}, falls $\forall x\in A, y \in B$ gilt:\\
+	$x,y$ liegen in unterschiedlichen Zusammenhangkomponenten von $V- S$.
+
+\end{itemize}
+
+\subsection{Definition 8.2}
+Ein \df{Unterstrahl} eines Strahles $(x_i)_{i \geq 0}$ ist ein Strahl $(y_j)_{j\geq 0}$ mit $y_i = x_i+k$ für alle $i$, $k\in \N$ fest.\\
+Zwei Strahlen $(x_i)_{i\geq 0}, (y_j)_{j\geq 0}$ werden von einer endlichen Menge $S$ \df{separiert}, wenn es zwei disjunkte Unterstrahlen $(x'_i), (y'_j)$ in $V-S$ gibt, deren Eckenmengen von $S$ separiert werden. 
 
 \end{document}
