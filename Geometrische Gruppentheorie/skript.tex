@@ -54,6 +54,31 @@
 
 \section{3 ?}
 
+
+\subsection{3.10 Satz von Sabidussi}
+$f : G \rightarrow Aut(\Gamma)$ Ghom., $\Gamma$ kombinatorischer Graph
+\begin{enumerate}
+	\item $f$ äquivalent zur Linkstranslation von $G$ auf $Cay(G,S)$ für red. EZS $S$\\
+	$\Longleftrightarrow$ $f_V$ ist transitiv und fixpunktfrei (heißt auch \df{einfach transitiv})
+	\item Setzt man zusätzlich voraus, dass $G$ keine Element der Ordnung 2 hat, so ist $f_E$ inversionsfrei.
+\end{enumerate}
+
+\paragraph{Beweis:}
+Wähle feste Ecke $x\in \Gamma$\\
+\[\overline{S} := \set{g\in G}{gx \text{ ist benachbart zu } x}\]
+
+\paragraph{Behauptung 1}
+$\overline{S}$ abgeschlossen unter Inversenbildung. Denn sind $x, gx$ Nachbarn, so müssen auch $g^{-1}x, g^{-1}gx$ Nachbarn sein, da $f(g)$ Graphhom. ist.\\
+
+Sei $S$ die Menge bestehend aus allen Elementen $s\in \overline{S}$ mit $s^{-1} = s$ oder je eines der beiden Elemente $s \neq s^{-1}$ (Auswahlaxiom).
+\[ x, sx \text{ benachbart} \Longleftrightarrow s \in S \vee s^{-1} \in S  \]
+Rest genau so.
+
+\paragraph{Aussage Teil 2}
+\[\Gamma \text{ Cayley} \Longleftrightarrow Aut(\Gamma) \text{ enthält UG die transitiv und frei auf } V(\Gamma) \text{ wirkt} \]
+
+\qed
+
 % 15.05.15: 10.VL
 
 Beweis $\Longleftarrow$ von 
@@ -184,6 +209,7 @@ Dann $|x + 2ny| \geq |2ny| - |x| > |2y| - |y| = |y|$, also $M_1^nB \subset A$, a
 % Prüfungszeiträume: 27.7 - 30.7 & 8. - 11.9
 % Listen vor Büro an Pinnwand: 1.005
 
+\newpage
 \section{Quasi-Isometrien}
 
 \paragraph{Motivation}
@@ -692,6 +718,7 @@ $K_1'$ ist einfach zusammenhängend $\Longrightarrow$ $\phi$ erweitert zu $\phi'
 
 %% 17.VL, 9.6.15
 
+\newpage
 \section{Hyperbolische Gruppen}
 \subsection{Oberes Halbebenenmodell von $\H^2$}
 \[\H^2 := \set{z \in \C }{Im z > 0} \]
@@ -1302,7 +1329,80 @@ Sei $\Gamma = (V,E, \delta)$ ein Graph.
 \end{itemize}
 
 \subsection{Definition 8.2}
-Ein \df{Unterstrahl} eines Strahles $(x_i)_{i \geq 0}$ ist ein Strahl $(y_j)_{j\geq 0}$ mit $y_i = x_i+k$ für alle $i$, $k\in \N$ fest.\\
-Zwei Strahlen $(x_i)_{i\geq 0}, (y_j)_{j\geq 0}$ werden von einer endlichen Menge $S$ \df{separiert}, wenn es zwei disjunkte Unterstrahlen $(x'_i), (y'_j)$ in $V-S$ gibt, deren Eckenmengen von $S$ separiert werden. 
+\begin{itemize}
+	\item Ein \df{Unterstrahl} eines Strahles $(x_i)_{i \geq 0}$ ist ein Strahl $(y_j)_{j\geq 0}$ mit $y_i = x_i+k$ für alle $i$, $k\in \N$ fest.
+	
+	\item Zwei Strahlen $(x_i)_{i\geq 0}, (y_j)_{j\geq 0}$ werden von einer endlichen Menge $S$ \df{separiert}, wenn es zwei disjunkte Unterstrahlen $(x'_i), (y'_j)$ in $V-S$ gibt, deren Eckenmengen von $S$ separiert werden.
+	
+	%%10.07.15, 24.VL
+	
+	%%Online Prüfungsanmeldung nicht vergessen!
+	
+	\item  Zwei Strahlen  heißen \df{äquivalent} (definieren das selbe Ende), wenn sie nicht durch eine endliche Menge von Ecken separiert werden können.
+	\item Die Äquivalenzklasse eines Strahles $\gamma$ heißt \df{Ende von $\gamma$} $end(\gamma)$.
+	\item $Ends(\Gamma) := \set{end(\gamma)}{\gamma \text{ Strahl in }\Gamma}$
+	\item $E(\Gamma) := \# Ends(\Gamma)$
+\end{itemize}
+
+\subsection{8.3 Beispiel}
+\begin{enumerate}
+	\item $\Z$ hat zwei Enden
+	\item $\Z^2$ hat nur eine Ecke, da $\Z^2-B$ für $B$ endlich immer genau eine Zusammenhangkomponente hat.
+	\item Jeder endliche Graph hat 0 Enden.
+	\item Der Cayleygraph einer freien Gruppe hat unendlich viele Enden.
+\end{enumerate}
+
+\subsection{Bemerkung 8.4}
+Man kann für geodätische metrische Räume Enden wie folgt definieren:
+\begin{itemize}
+	\item Ein \df{(eigentlicher) Strahl} $\gamma$ in $X$ ist eine stetige Abbildung $\gamma:[0,\infty) \rightarrow X$, s.d. $\forall B \subset X$ beschränkt das Urbild $\gamma^{-1}(B)$ beschränkt ist.
+	\item Zwei eigentliche Strahlen $\gamma, \gamma'$ sind \df{äquivalent}, wenn $\forall B \subset X$ beschränkt gilt:
+	\[\exists t \in [0,\infty): \gamma([t,\infty)) und \gamma'([t,\infty)) \text{ liegen in derselben Zusammenhangskomponente von } X- B \]
+	\item $end, Ends$ und $E$ definiert man analog wie für Graphen.
+\end{itemize}
+
+\subsection{8.5 Definition}
+Ein Strahl ist \df{geodätisch}, wenn der zugehörige Strahl in der geometrischen Realisierung eine Geodäte ist.
+
+\subsection{Bemerkung}
+$B(v_0, R) := \set{v \in V}{d(v_0, v) \leq R}$
+
+\subsection{8.7 Beobachtung}
+$\Gamma$ lokal endlicher, zusammenhängender Graph
+\begin{enumerate}
+	\item $end((x_i)) = end((y_j)) \Longleftrightarrow \forall S \subset V \text{ endl. } \exists N \in \N: (x_i)_{i \geq N},(y_j)_{j \geq N}$ liegen in derselben Zusammenhangkomponente von $V-S$
+	\item $end((x_i)) = end((y_j)) \Longleftrightarrow \forall B = B(v_0, R) \exists N \in \N: (x_i)_{i \geq N}, (y_j)_{j \geq N}$ liegen in derselben Zusammenhangkomponente von $V-B$
+\end{enumerate}
+\paragraph{Beweis}
+Jede endliche Menge $S$ ist in einem $B(V,R)$ enthalten. Jeder Ball ist endlich, also selbst endliches $S \subset V$.\qed
+
+\subsection{8.8 Lemma}
+$\Gamma$ lokal endlicher, zusammenhängender Graph, $v_0 \in V$ fest.\\
+Sei $G_{v_0}(\Gamma) := \set{\text{geod. Strahl } \gamma}{\gamma \df{ startet bei }v_0}$. Dann ist die Abb.
+\[G_{v_0}(\Gamma ) \longrightarrow Ends(\Gamma) \]
+\[\gamma \longmapsto end(\gamma) \]
+surjektiv.
+
+\paragraph{Beweis-Skizze}
+$\sigma$ (eigentlicher Strahl) in $\Gamma$, d.h. $end(\sigma) \in Ends(\Gamma)$.\\
+Zu Zeigen: $\exists$ geod. Strahl $\gamma$ mit $end(\gamma) = end(\sigma)$.\\
+Setze $\gamma_n := $Geodäte von $v_0$ nach $x_n$ wobei $\sigma = (x_i)_{i\geq 0}$ verlängert bis unendlich durch die konstante Folge $(x_n)_i$\\
+
+Man kann zeigen, dass eine Teilfolge von $(\gamma_n)_n$ existiert, die gegen einen geod. Strahl $\gamma$ konvergiert, der nach Konstruktion und 8.7 (b) dasselbe Ende wie $\sigma$ besitzt.
+
+\paragraph{Satz von Arzela-Ascoli}
+$X$ kompakter metrischer Raum, $Y$ separabler metrischer Raum, dann hat jede Folge gleichmäßig stetiger Abbildungen $f_n : Y \rightarrow X$ eine Teilfolge, die gegen eine stetige Abbildung $f : Y \rightarrow X$ konvergiert.
+\qed
+
+\subsection{8.9 Lemma}
+Ein \df{$k$-Pfad} von $x$ nach $y$, $x,y \in V$, ist endliche Folge von Ecken $x = x_1,\ldots, x_n = y$ mit $d(x_i, x_{i+1}) \leq k$.\\
+Sei $\Gamma$ lokal endlicher Graph, $v_0$ feste Ecke. Seien $\gamma_1 = (x_i)_{i \geq 0}$ und $\gamma_2 = (y_i)_{i \geq 0}$ Strahlen in $\Gamma$. Dann gilt:
+\[end(\gamma_1) = end(\gamma_2) \Longleftrightarrow\]
+\[\forall R > 0 \exists T > 0\forall i > T: x_i \in V- B(v_0, R) \text{ kann mit } y_i \text{ durch }k\text{-Pfad verbunden werden} \]
+
+\paragraph{Beweis}
+$\Longrightarrow: $ $x_i$ kann mit $y_i$ durch einen 1-Pfad verbunden werden für $i$ groß (wg. 8.7 (b)).\\
+$\Longleftarrow: $ für einen $k$-Pfad $x = x_1, \ldots, x_n = y$ wähle Geodäten der Länge $d(x_i,x_{i+1})$ in $V- B(v_0,R)$ um $x_i$ mit $y_i$ zu verbinden. Verkettung dieser Geodäten ist Pfad von $x_i$ nach $y_i$\\
+$\Longrightarrow$ $x_i, y_i$ liegen in derselben Zusammenhangkomponente $\forall i > T$.\qed
 
 \end{document}
