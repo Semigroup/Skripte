@@ -1405,4 +1405,84 @@ $\Longrightarrow: $ $x_i$ kann mit $y_i$ durch einen 1-Pfad verbunden werden fü
 $\Longleftarrow: $ für einen $k$-Pfad $x = x_1, \ldots, x_n = y$ wähle Geodäten der Länge $d(x_i,x_{i+1})$ in $V- B(v_0,R)$ um $x_i$ mit $y_i$ zu verbinden. Verkettung dieser Geodäten ist Pfad von $x_i$ nach $y_i$\\
 $\Longrightarrow$ $x_i, y_i$ liegen in derselben Zusammenhangkomponente $\forall i > T$.\qed
 
+%%27.VL, 14.07.15
+
+\subsection{8.10 Satz}
+Seien $\Gamma_1 = (V_1, E_1, \delta_1)$, $\Gamma_2 = (V_2, E_2, \delta_2)$ lokal endliche Graphen.\\
+Jede Quasi-Isometrie $f:\Gamma_1 \rightarrow \Gamma_2$ induziert eine bijektive Abbildung $f_E : Ends(\Gamma_1) \rightarrow Ends(\Gamma_2)$, d.h. $E(\Gamma)$ ist eine Quasi-Isometrie-Invariante.
+
+\paragraph{Beweis}
+Sei $\gamma = (x_i)_{i\geq 0}$ eigentlicher Strahl in $\Gamma_1$, d.h. $end(\gamma) \in Ends(\Gamma_1)$, sei $f$ eine $(c,d)$ quasi-Isometrie.\\
+Definiere Folge $(y_j)$ in $\Gamma_2$ wie folgt:\\
+Verbinde Bilder $f(x_i), f(x_{i+1})$ durch einen stückweise geodätischen Weg in $\Gamma_2$ und erhalte so Eckenfolge $(y_i)$ mit $d(y_i, y_{i+1}) = 1$.\\
+Weil $f$ Quasi-Isometrie, ist $(y_i)$ ein Strahl, weil beschränkte Mengen von $(y_i)$ nach endl. Zeit verlassen werden.\\
+Definiere $f_*((x_i)_{i \geq 0}) = (y_j)_{j\geq 0}$. Offensichtlich ist $end(f_*((x_i)))$ unabhängig von der Wahl der geodätischen Segmente von $f(x_i)$ nach $f(x_{i+1})$.\\
+Definiere $f_E : Ends(\Gamma_1) \rightarrow Ends(\Gamma_2), end(\gamma) \mapsto end(f_*(\gamma))$ für \textbf{geodätische} Strahlen $\gamma$.\\
+Wegen Lemma 8.8 ist $f_*$ auf ganz $Ends(\Gamma_1)$ definiert.\\
+Seien $\gamma = (x_i), \sigma = (y_j)$ zwei Strahlen in $\Gamma_1$ mit $end(\gamma) = end(\sigma)$. Dann gilt mit Lemma 8.9, dass $\forall R > 0$ ein $T> 0$ existiert, s.d. $\forall i > T$ $x_i$ durch einen $k$-Pfad mit $y_i$ verbunden werden kann außerhalb von $B(1,R)$.\\\\
+
+Das Bild eines $k$-Pfades unter einer $(c,d)$-Quasi-Isometrie ist ein $(cd+k)$-Pfad.\\
+$\Longrightarrow end(f_*(\gamma)) = end(f_*(\sigma))$, d.h. $f_E$ wohldefiniert und insbes. injektiv.\\
+Für Quasi-Isometrien $f: \Gamma_1 \rightarrow \Gamma_2 \overset{f'}{\rightarrow} \Gamma_1$ gilt $(f'\circ f)_E = f'_e \circ f_E$.\\
+Wenn $f'$ Quasi-Inverse von $f$ ist, dann ist $(f'\circ f)_E = id_{Ends(\Gamma_1)}$.\\
+$\Longrightarrow f_E$ surjektiv.\qed
+
+
+\subsection{Definition 8.11}
+Die (Anzahl der) Enden einer endlich erzeugten Gruppe ist die (Anzahl der) Enden eines ihrer Cayley-Graphen.
+\paragraph{Beispiele}
+\begin{itemize}
+	\item Jede endliche Gruppe hat 0 Enden.
+	\item $\Z^2$ hat ein Ende.
+	\item $\Z$ hat zwei Enden.
+	\item $F_2$ hat unendlich viele Enden.
+\end{itemize}
+
+\subsection{8.12 Satz von Freudenthal-Hopf (1930)}
+$G$ endlich erzeugte Gruppe, dann hat $G$ entweder $0,1,2$ oder überabzählbar viele Enden.\\
+$G$ hat 0 Enden $\Longrightarrow$ $G$ endlich\\
+$G$ hat 2 Enden $\Longrightarrow$ $\Z$ eine Untergruppe von endlichem Index in $G$ ist.
+
+\paragraph{Beweis}
+$G$ endlich erzeugt, $\Gamma = Cay(G,S)$, $S$ endliches EZS von $G$.
+
+\paragraph{Annahme:} $k := E(\Gamma) \geq 3$.
+\paragraph{Annahme:} $\norm{G} = \infty$, sonst Widerspruch zu $E(G) = 0$ (8.7 (b)).\\
+Wähle $g\in G$ mit $d_S(1,g) > 2n$ und $g$ enthalten in einer unbeschränkten Zusammenhangkomponente von $V- B(1,n)$, $n$ groß genug, dass $V-B(1,n)$ $k$ unbeschränkte Zusammenhangkomponente hat (geht wegen 8.7 (b)).\\
+Es gilt:
+\[g.B(1,n) \cap B(1,n) = \emptyset \]
+Weiter ist $g.B(1,n)$ in einer unbeschränkten Zusammenhangkomponente von $V-B(1,n)$ weil $B(1,n)$ und somit auch $g.B(1,n)$ zusammenhängend ist.\\
+$\Gamma$ homogen (sieht überall gleich aus) also teilt $g.B(1,n)$ die unbeschränkte Zusammenhangkomponente von $g$ in mind. $k$ zusammenhängende Teile, von denen mind. $k-1$ unbeschränkt sind.\\
+Die Anzahl der unbeschränkten Zusammenhangkomponenten von $V- (B(1,n) \cup g.B(1,n))$ ist $\geq (k-1) + (k-1) = 2k - 2 > k$ weil $k \geq 3$.\\
+Widerspruch zur Annahme, dass $k$ endlich wäre.\\
+
+\paragraph{Beweisskizze} für 2 Enden:\\
+$\Longleftarrow$: $\Z$ UG von endlichem Index in $G$:
+\[Cay(\Z, T)  \qi Cay(G,S) \]
+$\Longrightarrow E(G) = E(\Z)$\\
+
+$\Longrightarrow$: 
+Sei jetzt $E(G) = 2$. $\Gamma$ Cayleygraph von $G$, dann gilt:
+\[E(\Gamma) = 2\]
+und mit 8.10 induziert jede Quasi-Isom. auf $\Gamma$ eine Bijektion der beiden Enden.\\
+$G \curvearrowright \Gamma$ durch Isometrien $\rightarrow$ Jedes $g \in G$ induziert Bijektion $f_g : Ends(\Gamma) \rightarrow Ends(\Gamma)$.\\
+Wähle $g \in G$ so, dass $f_g = id$.\\
+Sei $B:=B(1,k)$ so, dass $V-B$ zwei Zusammenhangkomponenten hat.\\
+OE sei $g$ so gewählt, dass $g\in V-B$ und $g$ liegt in einer unbeschränkten Zusammenhangkomponente von $V-B$. \\
+Wähle einen Strahl $\gamma$ geodätisch und leerene Schnitt mit $B$, $\gamma$ starte in $g$.\\
+$g^n.\gamma$ ist $\forall n$ wieder Strahl. Insbesondere ist (nach Wahl von $g$) $end(\gamma) = end(g.\gamma)$.\\
+Nachrechnen: $g^n.\gamma$ und $g^{-n}.\gamma$ konvergieren gegen 2 verschiedene Enden. $\rightarrow \grp{g}{} = \cong \Z$\\
+Noch zu zeigen: alle Elemente aus $V$ haben beschränkten Abstand zu $\grp{g}{}$.\qed
+
+\subsection{Satz von Stallings (1968)}
+$G$, endlich erzeugt, hat $\infty$-viele Enden $\Longleftrightarrow$\\
+$G$ zerfällt als HNN-Erweiterung oder freies amalgiertes Produkt, d.h. $G \cong A *_C B$ oder $\cong A_{*B}$ mit $C$ endlich und $\norm{A/C} \geq 3, \norm{B/C} \geq 2$.
+\begin{itemize}
+	\item Insbesondere wirkt $G$ dann auf einem Baum.
+	\item Ist $G$ torsionsfrei (d.h. $\not \exists$ $g\in G$ endlicher Ordnung), dann hat $G$ $\infty$-viele Enden $\Longleftrightarrow$ $G$ freies Produkt, $G \cong H * K$ und $H,K$ nicht-trivial.
+\end{itemize}
+
+%%%% 28.VL, 17.07.15
+
+
 \end{document}
