@@ -1,0 +1,4 @@
+#diagramma.sty
+
+\Top
+\Mod

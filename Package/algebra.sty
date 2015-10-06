@@ -1,0 +1,115 @@
+% Gebacken nach Rezept von http://en.wikibooks.org/wiki/LaTeX/Creating_Packages
+
+\NeedsTeXFormat{LaTeX2e} %Keine Ahnung, was hier hin soll?
+\ProvidesPackage{algebra}[2015/09/05]
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{ngerman}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{wasysym}
+\usepackage{dsfont}
+\usepackage[left = 30mm, right = 30mm, top = 30mm, bottom = 30mm]{geometry}
+\usepackage{makeidx}
+\usepackage{hyperref}
+
+
+
+\newcommand{\klam}[1]{\left(#1\right)}
+\newcommand{\bet}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\bet{\bet{#1}}}
+\newcommand{\brak}[1]{\left[#1\right]}
+\newcommand{\curv}[1]{\left\lbrace#1\right\rbrace}
+\newcommand{\shrp}[1]{\left<#1\right>}
+\newcommand{\set}[2]{\curv{\ifLeer{#2}{#1}{#1 ~ | ~ #2}}}
+\newcommand{\grp}[2]{\shrp{\ifLeer{#2}{#1}{#1 ~ | ~ #2}}}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\O}{\mathcal{O}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\id}[1]{\textsf{id}_{#1}}
+\newcommand{\Ker}{\textsf{Kern}}
+\newcommand{\Coker}{\textsf{Kokern}}
+\newcommand{\Img}{\textsf{Bild}}
+\newcommand{\Coimg}{\textsf{Kobild}}
+\newcommand{\Hom}[3]{\textsf{Hom}_{#1}\left(#2, #3\right)}
+\newcommand{\Aut}[2]{\textsf{Aut}_{#1}\left(#2\right)}
+\newcommand{\Sym}[1]{\textsf{Symm}_{#1}}
+
+\renewcommand{\d}{\partial}
+\newcommand{\e}{\varepsilon}
+\renewcommand{\i}{^{-1}}
+
+\newcommand{\Pfeil}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\Lpfeil}[1]{\overset{#1}{\longleftarrow}}
+\newcommand{\pfeil}[1]{\overset{#1}{\rightarrow}}
+\newcommand{\lpfeil}[1]{\overset{#1}{\leftarrow}}
+\newcommand{\inj}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\linj}[1]{\overset{#1}{\hookleftarrow}}
+\newcommand{\Inj}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\Linj}[1]{\overset{#1}{\hookleftarrow}}
+\newcommand{\impl}[1]{\overset{#1}{\Rightarrow}}
+\newcommand{\Impl}[1]{\overset{#1}{\Longrightarrow}}
+
+\newcommand{\gdw}[1]{\overset{#1}{\Leftrightarrow}}
+\newcommand{\Gdw}[1]{\overset{#1}{\Longleftrightarrow}}
+
+\newcommand{\Func}[4]{
+\ifLeer{#3}{\begin{align*}
+#1 & \longrightarrow #2
+\end{align*}}{\begin{align*}
+#1 & \longrightarrow #2\\
+#3 & \longmapsto #4
+\end{align*}}}
+\newcommand{\func}[2]{\brak{#1 \mapsto #2}}
+
+\newcommand{\off}{\overset{o}{\subset}}
+\newcommand{\abg}{\overset{c}{\subset}}
+
+\newcommand{\gl}[1]{\overset{#1}{=}}
+\newcommand{\grgl}[1]{\overset{#1}{\geq}}
+\newcommand{\klgl}[1]{\overset{#1}{\leq}}
+\newcommand{\hot}[1]{\sim_{#1}}
+\newcommand{\gr}[1]{\overset{#1}{>}}
+\newcommand{\kl}[1]{\overset{#1}{<}}
+\newcommand{\isom}[1]{\overset{#1}{\cong}}
+
+\newcommand{\Matrix}[4]{\klam{\begin{matrix}
+		#1 & #2\\
+		#3 & #4
+	\end{matrix}}}
+
+\makeindex
+\date{\today}
+\author{Rü\c{s}tü}
+
+\endinput

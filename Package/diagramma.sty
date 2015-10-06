@@ -1,0 +1,54 @@
+% Gebacken nach Rezept von http://en.wikibooks.org/wiki/LaTeX/Creating_Packages
+
+\NeedsTeXFormat{LaTeX2e} %Keine Ahnung, was hier hin soll?
+\ProvidesPackage{diagramma}[2015/09/05]
+
+\usepackage{tikz-cd}
+
+\newcommand{\diag}[8]{
+\begin{tikzpicture}
+\node (D1) at (0,2) [] {$#1$};
+\node (D3) at (2,2) [] {$#3$};
+\node (D5) at (2,0) [] {$#5$};
+\node (D7) at (0,0) [] {$#7$};
+
+\draw [->] (D1) -> (D3) node[midway, above] {$#2$};
+\draw [->] (D3) -> (D5) node[midway, right] {$#4$};
+\draw [->] (D7) -> (D5) node[midway, below] {$#6$};
+\draw [->] (D1) -> (D7) node[midway, left] {$#8$};
+
+\end{tikzpicture}
+}
+\newcommand{\Diag}[8]{
+\begin{tikzpicture}
+\node (D1) at (0,2) [] {$#1$};
+\node (D3) at (4,2) [] {$#3$};
+\node (D5) at (4,0) [] {$#5$};
+\node (D7) at (0,0) [] {$#7$};
+
+\draw [->] (D1) -> (D3) node[midway, above] {$#2$};
+\draw [->] (D3) -> (D5) node[midway, right] {$#4$};
+\draw [->] (D7) -> (D5) node[midway, below] {$#6$};
+\draw [->] (D1) -> (D7) node[midway, left] {$#8$};
+
+\end{tikzpicture}
+}
+
+\newcommand{\triag}[6]{
+\begin{tikzpicture}
+\node (D1) at (0,1) [] {$#1$};
+\node (D3) at (4,1) [] {$#3$};
+\node (D5) at (2,0) [] {$#5$};
+
+\draw [->] (D1) -> (D3) node[midway, above] {$#2$};
+\draw [->] (D5) -> (D3) node[midway, below right] {$#4$};
+\draw [->] (D1) -> (D5) node[midway, below left] {$#6$};
+
+\end{tikzpicture}
+}
+
+\newcommand{\kes}[3]{
+\[ 0\longrightarrow #1 \longrightarrow #2 \longrightarrow #3  \longrightarrow 0 \]
+}
+
+\endinput

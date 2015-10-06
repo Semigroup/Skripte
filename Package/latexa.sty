@@ -1,0 +1,16 @@
+% Gebacken nach Rezept von http://en.wikibooks.org/wiki/LaTeX/Creating_Packages
+
+\NeedsTeXFormat{LaTeX2e} %Keine Ahnung, was hier hin soll?
+\ProvidesPackage{latexa}[2015/09/05]
+
+\newcommand{\ifLeer}[3]{
+\begin{scriptsize}
+\ifx&#1&%
+{#2}
+\else
+{#3}
+\fi
+\end{scriptsize}
+}
+
+\endinput

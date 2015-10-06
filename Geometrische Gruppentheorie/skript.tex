@@ -1,66 +1,290 @@
 \documentclass{article}
 
-\usepackage[T1]{fontenc}
-\usepackage[UTF8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{stmaryrd}
-\usepackage{lmodern}
-\usepackage{ngerman}
-\usepackage{xcolor}
-\usepackage{geometry}
-\usepackage[siunitx]{circuitikz}
-\usepackage{tikz-cd}
-\usepackage{makeidx}
-\usepackage{hyperref}
+\usepackage{../Package/latexa}
+\usepackage{../Package/algebra}
+\usepackage{../Package/theorema}
+\usepackage{../Package/diagramma}
+\usepackage{../Package/categoria}
 
-\newcommand{\df}[1]{\textbf{#1}\index{#1}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
-\renewcommand{\H}{\mathbb{H}}
-\newcommand{\T}{\mathcal{T}}
-\newcommand{\Top}{\textbf{Top}}
-\newcommand{\Mod}{\textbf{Mod}}
-
-\newcommand{\set}[2]{\left\lbrace #1~|~#2 \right\rbrace}
-\newcommand{\grp}[2]{\left\langle #1~|~#2 \right\rangle}
-
-\newcommand{\qed}{\hfill $\square$}
-
-\newcommand{\gl}[1]{\overset{#1}{=}}
-\newcommand{\grgl}[1]{\overset{#1}{\geq}}
-\newcommand{\klgl}[1]{\overset{#1}{\leq}}
 \newcommand{\qi}{\backsimeq_{\textsc{QI}}}
-\newcommand{\gr}[1]{\overset{#1}{>}}
-\newcommand{\kl}[1]{\overset{#1}{<}}
-\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\ba}{\backsimeq_{\textsc{BA}}}
+\newcommand{\normal}{\vartriangleleft}
+\newcommand{\tm}{\subset}
+\newcommand{\Stab}[2]{\textsf{Stab}_{#1}(#2)}
+\newcommand{\Cay}[2]{\textsf{Cay}(#1,#2)}
 
-\newcommand{\Matrix}[4]{\left(\begin{matrix}
-		#1 & #2\\
-		#3 & #4
-	\end{matrix}\right)}
+\renewcommand{\C}{\mathcal{C}}
+\newcommand{\Cz}{\mathbb{C}}
 
 \begin{document}
 
 \tableofcontents
 
-\section{1 ?}
+\newpage
+\section{Gruppen und Graphen}
+\Def{Gruppe}
+\Bsp{Gruppen}
+\Def{Direktes Gruppenprodukt}
+\Def{Homomorphismus}
+\Bsp{Homomorphismen}
+\Satz{Satz von Cayley}
+Jede Gruppe ist Untergruppe einer symmetrischen Gruppe.
+\begin{Beweis}{}
+Ist $G$ eine Gruppe, so existiert folgender Monomorphismus
+\Func{G}{\Sym{G}}{g}{\func{x}{gx}}
+\end{Beweis}
+\Def{Normale Untergruppe}
+\Bsp{Normale Untergruppen}
+\Satz{Faktorgruppe}
+Ist $N\normal G $, so ist $G/N$ eine Gruppe mit folgender UAE:\\
+Jeder Homomorphismus $\phi : G \pfeil{} H$ mit $\Ker \phi \tm N $ steigt eindeutig zu einem Homomorphismus $\widetilde{\phi} : G/N \pfeil{} H$ ab, der folgendes Diagramm zum Kommutieren bringt:
+\begin{center}
+\triag{G}{\phi}{H}{\exists_1 \widetilde{\phi}}{G/N}{\pi} 
+\end{center}
 
-\section{2 ?}
+\Def{Erweiterung}
+Sind $Q,N,G$ Gruppen und ist folgende kurze exakte Sequenz gegeben
+\kes{N}{G}{Q}
+so heißt $G$ eine \df{Erweiterung} von $Q$ durch $N$.
 
-\section{3 ?}
+\Def{Semidirektes Produkt}
+Sind $Q,N$ Gruppen mit Homomorphismus $\phi : Q \pfeil{} \Aut{}{N}$, so definiere das \df{semidirekte Produkt} $Q\rtimes_\phi N$ von $Q$ mit $N$ durch die Menge $Q\times N$ und die Verknüpfung
+\[ (q_1,n_1) \cdot (q_2, n_2) := (q_1q_2, n_1 \phi(q_1) n_2 ) \]
+\paragraph{Bemerkung}
+Spaltet eine Erweiterung $G$ von $Q$ durch $N$, so ist $G$ das semidirekte Produkt von $Q$ mit $N$.
 
+\Def{Erzeugendensystem}
+\Bsp{Erzeugendensysteme}
 
-\subsection{3.10 Satz von Sabidussi}
-$f : G \rightarrow Aut(\Gamma)$ Ghom., $\Gamma$ kombinatorischer Graph
+\Def{Freie Gruppe}
+\Bsp{Freie Gruppen}
+\Satz{Eindeutigkeit freier Gruppen}
+Zwei Gruppen, die über derselben Menge frei erzeugt sind, sind isomorph.
+\Satz{Existenz freier Gruppen}
+\Kor{}
+Ist $S$ ein freies Erzeugendensystem, so gilt
+$\F(S) = \grp{S}{}$
+
+\Satz{Rang freier Gruppen}
+\begin{itemize}
+\item Die freien Erzeugendensystem einer festen freien Gruppe haben dieselbe Kardinalität. Wir nennen diese den \df{Rang} der freien Gruppe.
+\item Die Kardinalität jedes Erzeugendensystems einer freien Gruppe ist mindestens so mächtig wie der Rang der Gruppe. 
+\end{itemize}
+
+\Def{Freie Gruppe von Rang $n$}
+$\F_n := \grp{s_1, \ldots, s_n}{}$
+\Bem{Freie Gruppe in zwei Erzeugern}
+Die freie Gruppe in zwei Erzeugern enthält alle endlich erzeugten freie Gruppen.
+
+\Satz{}
+Eine Gruppe ist genau dann endlich erzeugt, wenn sie Quotient einer freien Gruppe endlichen Ranges ist.
+
+\Def{Reduzierte Wörter}
+Sei $S$ eine Menge, dann ist $(S + S\i)^*$ eine Sprache. Ein Wort $s_1\cdots s_n$ dieser Sprache heißt \df{reduziert}, falls
+\begin{itemize}
+\item $s_i \neq s_{i+1}\i \forall i$
+\item $s_i\i \neq s_{i+1} \forall i$
+\end{itemize}
+
+\Def{Erzeugte normale Untergruppe}
+Sei $R \tm G$ Teilmenge einer Gruppe. Definiere den durch $R$ erzeugten Normalteiler durch
+\[\N(R) := \bigcap_{R \tm U \normal G} U \] 
+
+\Def{Darstellung}
+Sei $S$ eine Menge, $R \subset (S + S\i)^*$. Definiere die Gruppe, die durch $S$ mit Relatoren $R$ erzeugt wird, durch
+\[ \grp{S}{R} := \F(S) / \N(R) \]
+Wir nennen $\grp{S}{R}$ eine \df{Darstellung}.
+
+\Prop{Universelle Abbildungseigenschaft von Darstellungen}
+Sei eine Darstellung $\grp{S}{R}$ und eine Abbildung $\phi : S \pfeil{} G$ gegeben, sodass $\phi(R) = 1$, so existiert genau ein Pfeil $\phi' :\grp{S}{R} \pfeil{} G$, sodass folgendes Diagramm kommutiert:
+\begin{center}
+\triag{S}{\phi}{G}{\exists_1 \phi'}{\grp{S}{R}}{}
+\end{center}
+
+\Bsp{}
+
+\Bem{}
+\begin{itemize}
+\item Die Sprache aller endlichen trivialen Darstellungen ist nicht entscheidbar.
+\item Die Sprache der trivialen Ausdrücke einer gegebenen Darstellungen ist im Allgemeinem nicht entscheidbar.
+\end{itemize}
+
+\Satz{}
+Es gibt überabzählbar viele Isomorphieklassen von Gruppen, die von zwei Elementen erzeugt werden.
+
+\Kor{}
+Es gibt überabzählbar viele Isomorphieklassen von Gruppen, die endlich erzeugt, aber nicht endlich präsentiert sind.
+
+\Prop{}
+Es existiert ein Gruppe, die von zwei Elementen erzeugt wird und überabzählbar viele normale Untergruppen hat.
+\begin{Beweis}{}
+Betrachte $G = \grp{s,t}{R}$
+\[ R = \set{[[s, t^nst^{-n}],s]}{n\in \Z} + \set{[[s, t^nst^{-n}],t]}{n\in \Z} \]
+Definiere $C = \grp{[s, t^nst^{-n}]}{n \in \Z}$, dann ist $C$ zentral in $G$, da
+\[sxs^{-1} = txt\i = x \]
+für alle $x \in C$. Man kann einsehen, dass
+\[ C \isom{} \sum_{\Z}\Z \]
+D.h. $C$ enthält überabzählbar viele Untergruppen, die, da $C$ zentral ist, normal in $G$ sind.
+\end{Beweis}
+
+\Prop{}
+Für eine endlich erzeugte Gruppe sind folgende Aussagen äquivalent:
+\begin{itemize}
+\item Die Gruppe hat überabzählbar viele normale Untergruppen.
+\item Die Gruppe hat überabzählbar viele nicht-isomorphe Quotienten.
+\end{itemize}
+\begin{Beweis}{1 $\impl{}$ 2}
+Wir zeigen die Kontraposition: Also habe die Gruppe $G$ höchstens abzählbar viele nicht-isomorphe Quotienten. Da $G$ endlich erzeugt ist, existieren nur abzählbar viele Homomorphismen von $G$ zu einem seiner Quotienten. Ergo gibt es nur abzählbar viele Normalteiler in $G$, die denselben Quotienten induzieren. Ergo hat $G$ nur endlich viele Normalteiler.
+\end{Beweis}
+
+\Bsp{Beispiele}
+
+\newpage
+\section{Cayleygraphen}
+\Def{Graph}
+Definiere einen \df{ungerichteten Graphen} durch ein Tripel $\Gamma = (V,E,\delta)$, wobei $V$ eine Knotenmenge, $E$ die Kantenmenge und $\delta : E \rightarrow \P_2(V)$ die Randabbildung ist.\\
+Zwei Ecken $u,v \in V$ heißen \df{benachbart}, wenn es eine Kante $e \in E$ mit $\delta(e) = \set{u,v}{}$.\\
+Eine \df{Schleife} ist eine Kante $e \in E$ mit $\delta(e) = \set{u}{}$.\\
+Eine\df{Doppelkante} ist eine Kante $e \in E$ für die eine Kante $e' \neq e$ existiert, sodass $\delta(e) = \delta(e')$.\\
+$\Gamma$ heißt \df{simplizial} bzw. \df{einfach} oder \df{kombinatorisch}, wenn keine Schleifen oder Doppelkanten existieren.
+
+\Bsp{Graphen}
+
+\Def{Graphenmorphismus}
+Seien $\Gamma = (V,E, \delta), \Gamma' = (V', E', \delta')$ Graphen. Eine Abbildung
+\Func{f : V}{V'}{}{}
+heißt \df{Graphenmorphismus}, falls für alle $e \in E$ gilt:
+\[ f(e) := f(\delta(e)) \in E' \]
+
+\Def{Pfad}
+Ein \df{Pfad} bzw. \df{Kantenweg} in $\Gamma$ der Länge $n \in \N_0$ ist definiert durch eine endliche Folge $P = v_0,\ldots, v_n \in V$, sodass $v_i$ und $v_{i+1}$ für jedes $i = 1,\ldots, n-1$ benachbart sind.\\
+Wir sagen: $P$ \df{verbindet} $v_0$ mit $v_n$.\\
+$P$ heißt \df{reduziert}, falls keine Kante mehrfach hintereinander im Pfad vorkommt.\\
+Ist $v_0 = v_n$, so heißt $P$ \df{geschlossen}.\\
+Ein \df{Kreis} bzw. \df{Zykel} der Länge $n \in \N$ ist definiert als ein geschlossener, reduzierter Pfad der Länge $n$.\\
+Ein simplizialer Graph ohne Kreise heißt \df{Wald}; ist er zusammenhängend, so heißt er \df{Baum}.
+
+\Satz{Charakterisierung von Bäumen}
+Sei $\Gamma = (V,E)$ ein zusammenhängender, simplizialer Graph mit mindestens zwei Knoten, dann ist $\Gamma$ genau dann ein Baum, wenn für jedes Knotenpaar genau ein reduzierter Pfad existiert, der beide Knoten verbindet.
+
+\Def{Cayleygraph}
+Sei $G$ eine Gruppe mit Erzeugendensystem $S$. Der \df{Cayleygraph} von $G$ bzgl. $S$ ist definiert durch
+\begin{align*}
+\Cay{G}{S} & := (V,E,\delta)\\
+V &= G\\
+\end{align*}
+\[E  = \set{(a,b)}{\exists s \in S: as = b} + \set{(a,b)}{\exists s \in S: as\i = b, s\i \in S}\]
+\paragraph{Bemerkung}
+\[E = \set{(s, (g, gs))}{ s\in S, g\in G } \]
+
+\Bsp{Cayleygraphen}
+
+\Prop{Eigenschaften der Cayleygraphen}
 \begin{enumerate}
-	\item $f$ äquivalent zur Linkstranslation von $G$ auf $Cay(G,S)$ für red. EZS $S$\\
+\item Cayleygraphen sind zusammenhängend.
+\item Cayleygraphen sind \df{regulär}, d.h. jeder Knoten hat die gleiche Anzahl ausgehender Kante.
+\item Cayleygraphen sind \df{lokal endlich}, d.h. jeder Knoten hat eine endliche Anzahl adjazenter Kante.
+\end{enumerate}
+
+\Satz{}
+Sei $G$ eine Gruppe, $S \tm G$ ein Erzeugendensystem
+\begin{itemize}
+\item $Cay(G,S)$ besitzt Schleifen $\Gdw{}$ $1 \in S$
+\item $Cay(G,S)$ besitzt Doppelkanten $\Gdw{}$ $\exists s \in S: s^2 = 1 \neq s$
+\item $Cay(G,S)$ ist kombinatorisch $\Gdw{}$ $S\cap S\i = \set{s\in S}{s^2 = 1}$
+\end{itemize}
+
+\Satz{}
+Für jede Menge $S$ ist $\Cay{\F(S)}{S}$ ein Baum.
+
+\begin{Beweis}{}
+Wir wissen bereits, dass $\Gamma = \Cay{\F(S)}{S}$ simplizial ist. Es bleibt zu zeigen, dass $\Gamma$ keine reduzierten Kreise besitzt. Angenommen $\Gamma$ besitzt einen reduzierten Kreis, dann existiert ein Wort $w \in (S + S\i)^*$ und ein $g \in \F(S)$, sodass $gw = g$, also $w = 1$.\\
+Betrachte die Abbildung
+\Func{f : S}{\Z}{s}{1}
+dann existiert laut UAE eine Abbildung
+\Func{g : \F(S)}{\Z}{}{}
+sodass $f = g$ auf $S$. Nun folgt
+\[ 0 = f(1) = f(w) \]
+weswegen $w$ Länge 0 haben muss. Deswegen muss unser Kreis aber eine Schleife sein, was ein Widerspruch ist.\\
+Ergo ist $\Gamma$ kreisfrei.
+\end{Beweis}
+
+\Satz{Beinahe Umkehrung von 2.10}
+Sei $G$ eine Gruppe und $S$ ein \df{reduziertes Erzeugendensystem}, d.h. für alle $s,t \in S$ gilt:
+\[ s\cdot t \neq 1 \]
+Ist $\Cay{G}{S}$ ein Baum, dann ist $S$ ein freies Erzeugendensystem von $G$.
+
+\begin{Beweis}{}
+Sei $\iota : S \inj \F(S)$ die kanonische Inklusion. Sie induziert uns einen Homomorphismus
+\Func{f : G}{\F(S)}{s_1\cdots s_n}{f(s_1\cdots s_n)}
+$f$ ist wohldefiniert. Sind $w, v$ zwei Wörter in $(S + S\i)^*$, die in $G$ dasselbe Element erzeugen, so ergeben sich zwei nicht reduzierte Pfade im Cayleygraphen. Da dieser ein Baum ist, müssen beide Pfade übereinstimmen, weswegen $v,w$ als reduzierte Wörter und somit auch in $\F(S)$ übereinstimmen müssen.\\
+Es ist jetzt nicht notwendig zu zeigen, dass $f$ bijektiv ist. Über ein Kommutativitätsargument kann man zeigen, dass man durch $f$ einen natürlichen Pfeil $h = f \circ g : \F(S) \rightarrow \F(S)$ erhält, der das UAE Diagramm von $\F(S)$ zum kommutieren bringt und deswegen die Identität ist. Ebenfalls erhält man einen Pfeil $G \pfeil{} \F(S) \pfeil{} G$, der die Identität ist.
+\end{Beweis}
+
+\Bsp{Beispiel}
+Die Bedingung, dass $S$ in 2.11 reduziert ist, ist notwendig, da der Cayleygraph von
+$\grp{s}{s^2 = 1}$
+zwar ein Baum ist, aber die Gruppe offensichtlich nicht frei ist.
+
+\Bem{}
+Ist $S \tm G$ kein Erzeugendensystem von $G$, so
+\begin{itemize}
+\item nennt man $\Cay{G}{S}$ keinen Cayleygraphen.
+\item ist $\Cay{G}{S}$ nicht zusammenhängend.
+\end{itemize}
+
+\newpage
+\section{Gruppenwirkungen auf Cayleygraphen}
+\Def{}
+Sei $G$ eine Gruppe, $\C$ eine Kategorie, $X$ eine Menge. Eine \df{Wirkung} bzw. \df{Operation} von $G$ auf $X$ ist ein Homomorphismus
+\Func{\rho : G}{\Aut{\mathcal{C}}{X}}{}{}
+
+\Bsp{Beispiel}
+\Bem{Alternative Schreibweise}
+
+\Def{}
+$G$ operiere auf $X$
+\begin{itemize}
+\item Die Gruppenwirkung heißt \df{frei}, falls $g.x = x \gdw{} g = 1$ für alle $g,x$. D.h. der Stabilisator
+\[\Stab{G}{x} := \set{g \in G}{g.x = x}= \set{1}{}\]
+für alle $x\in X, g \in G$. In diesem Fall wirkt jedes $g \in G- \set{1}{}$ \df{fixpunktfrei}.
+\item Die Gruppenwirkung heißt \df{treu}, falls $\rho$ injektiv ist.
+\item Die Gruppenwirkung heißt \df{transitiv}, falls für alle $x,y\in X$ ein $g\in G$ existiert, sodass $g.x = y$. In diesem Fall ist die \df{Bahn} bzw. der \df{Orbit} $G.x$ jedes $x$ gleich $X$.
+\end{itemize}
+
+\Bsp{Beispiel}
+
+\Def{Freie Wirkungen auf Graphen}
+Sei $G$ eine Gruppe, die auf einen Graphen $\Gamma = (V,E, \delta)$ wirkt. Diese Wirkung heißt \df{frei}, wenn für alle $x\in V, e \in E, g \in G-\set{1}{}$ gilt:
+\begin{itemize}
+\item $g.x \neq x$, d.h. die Wirkung ist \df{fixpunktfrei}.
+\item $g.e \neq e$, d.h. die Wirkung ist \df{inversionsfrei}.
+\end{itemize}
+
+\Bsp{}
+
+\Satz{}
+Sei $G$ eine Gruppe mit Erzeuger $S, 1 \notin S$. Die Wirkung von $G$ auf $\Cay{G}{S}$ ist genau dann frei, wenn $S$ keine Elemente der Ordnung 2 enthält.
+\begin{Beweis}{}
+Wir müssen zeigen, dass die Wirkung genau dann inversionsfrei ist, wenn $S$ keine Elemente der Ordnung 2 enthält.\\
+Sei $e = (g, gs) \in E, h \in G - 1$, es gelte
+\[ \{hg, hgs\} = e.h = e = \{g, gs\} \]
+das ist äquivalent dazu, dass
+\[hgs = g \text{ und } hg = gs \]
+was äquivalent ist zu $s^2 = 1$.
+\end{Beweis}
+
+\Def{Äquivalente Wirkungen}
+Zwei Wirkungen $\phi : G \rightarrow \Aut{\C}{X}, \rho : G \pfeil{} \Aut{\C}{Y}$ heißen \df{äquivalent}, wenn es einen Isomorphismus $f : X \pfeil{} Y$ gibt, der mit der Wirkung verträglich ist, d.h.
+\[ f(g.x) = g.f(x) \]
+
+\Satz{Sabidussi}
+$f : G \rightarrow Aut(\Gamma)$ Ghom., $\Gamma$ ein kombinatorischer Graph
+\begin{enumerate}
+	\item $f$ äquivalent zur Linkstranslation von $G$ auf der Kontenmenge von $Cay(G,S)$ für red. EZS $S$\\
 	$\Longleftrightarrow$ $f_V$ ist transitiv und fixpunktfrei (heißt auch \df{einfach transitiv})
 	\item Setzt man zusätzlich voraus, dass $G$ keine Element der Ordnung 2 hat, so ist $f_E$ inversionsfrei.
+	\item $\Gamma$ ist ein Cayley-Graph $\Gdw{}$ $\Aut{}{\Gamma}$ enthält eine Untergruppe, die transitiv und fixpunktfrei auf $V(\Gamma)$ operiert.
 \end{enumerate}
 
 \paragraph{Beweis:}
@@ -79,9 +303,9 @@ Rest genau so.
 
 \qed
 
-% 15.05.15: 10.VL
-
-Beweis $\Longleftarrow$ von 
+\Satz{}
+Eine Gruppe $G$ ist genau dann frei, wenn sie frei auf einen Baum wirkt.
+\begin{Beweis}{$\Longleftarrow$ von 13.11}
 \[G \text{ frei } \Longleftrightarrow G \curvearrowright_\text{frei} Baum \]
 \[S' := \set{g_e \in G}{e \text{ wesentlich für }T_0} \]
 wesentlich heißt
@@ -122,11 +346,34 @@ Jede Kopie von $T_0$ ist zusammenhängender Teilbaum, daher können wir die Ecke
 
 Weil $g_n = g_0$, ist der erhaltene Weg geschlossen.\\
 Starten und Enden in selber Kopie vom Baum $T_0$. Widerspruch zu $T$ ist Baum.
+\end{Beweis}
 
-\subsection{Korollar 3.15 (Satz von Nielsen-Schreier)} Untergruppen freier Gruppen sind frei.
-\paragraph{Beweis} Eine Untergruppe wirkt frei auf den Cayleygraphen seiner Obergruppe.
+\Def{Fundamentalbaum}
+$G$ wirke auf einem zusammenhängenden, simplizialen Graphen $X = (V,E)$.\\
+Ein \df{Fundamentalbaum} dieser Wirkung ist ein Unterbaum von $X$, der genau eine Ecke aus jeder $G$-Bahn von $V$ enthält.
 
-\subsection{Korollar 3.16} $F$ freie Gruppe, $Rang(F) = n$, $G < F$ UG vom Index $k$. Dann ist G frei und vom Rang $k(n-1) + 1$. Insbesondere sind Untergruppen vom endlichen Index in freien Gruppen vom endlichen Index endlich erzeugt.
+\Satz{}
+Jede Wirkung auf einem nichtleeren, zusammenhängenden, simplizialen Graphen besitzt einen Fundamentalbaum.
+
+\begin{Beweis}{}
+Wähle einen beliebigen Knoten $x \in V$. Dieser liegt in einer Bahn $G.x$. Da $\Gamma$ zusammenhängend ist, existiert für jede andere Bahn $G.v$ ein Pfad $P_v : x \mapsto v$. Dieser lässt sich reduzieren auf einen Pfad $P_{v'} : x \mapsto v'$ (für ein passend gewähltes  $v' \in G.v$), der ausschließlich Kanten enthält, die nicht in einer Bahn liegen, da $G$ auf $E$ wirkt. Der Fundamentalbaum ist nun der Spannbaum des Graphen, der durch alle $v', P_{v'}$ erzeugt wird. 
+\end{Beweis}
+
+\Def{}
+$G$ wirke frei auf einem Baum $T$, $T_0$ sei ein Fundamentalbaum dieser Wirkung. Dann heißt eine Kante $e$ wesentlich, wenn
+\[ e \notin E(T_0) \text{ und } \partial{e} \cap V(T_0) \neq \emptyset \]
+
+% 15.05.15: 10.VL
+
+
+
+\Kor{Satz von Nielsen-Schreier} 
+Untergruppen freier Gruppen sind frei.
+\begin{Beweis}{}
+Eine Untergruppe wirkt frei auf den Cayleygraphen seiner Obergruppe.
+\end{Beweis}
+
+\Kor{Quantitative Version von 3.15} $F$ freie Gruppe, $Rang(F) = n$, $G < F$ UG vom Index $k$. Dann ist G frei und vom Rang $k(n-1) + 1$. Insbesondere sind Untergruppen vom endlichen Index in freien Gruppen vom endlichen Rang endlich erzeugt.
 \paragraph{Beweis} $S$ freies EZS von $F$, $\Gamma:= Cay(G,S)$, $G,F \curvearrowright_{frei} \Gamma$ durch Linksmult.
 
 Bew 3.11: Rang(G) = $\frac{1}{2} E$, E = \# wesentlicher Kanten für Fund.-Baum $T_0$ von $G \curvearrowright T$
@@ -141,10 +388,10 @@ In (1) werden Kanten doppelt gezählt, d.h.
 \[\sum_{v\in V(T_0)}d_T(v) = 2(k-1) + E\]
 \[1/2 E = k(n-1) + 1 = Rang G\]
 
-\subsection{Korollar 3.17}
+\Kor{}
 F frei vom Rang $m \geq 2$, und $n\in \N$, Dann gibt es UG von $F$, die frei und vom Rang n ist.
 
-\subsection{3.18 Ping-Pong Lemma (Felix Klein)}
+\Satz{Ping-Pong Lemma (Felix Klein)}
 $G$ Gruppe, erzeugt von $S = \{a,b\}$, wobei $a,b$ unendliche Ordnung.\\
 $G \curvearrowright X$, X Menge, so dass für $\emptyset \neq A, B \subset X$
 mit $B \not \subset A$ gilt:
@@ -177,7 +424,7 @@ w beginnt mit $b$ und endet mit $b$. konjugiere mit a: 1.Fall
 w beginnt mit $a$ und endet mit $b$. Konjugiere mit $a^k$ für k groß genug
 
 
-\subsection{3.19 Beispiel}
+\Bsp{}
 freie UG von SL(2,Z)
 
 \[SL(2,\Z) = \set{\begin{matrix}
@@ -205,9 +452,9 @@ Dann $|x + 2ny| \geq |2ny| - |x| > |2y| - |y| = |y|$, also $M_1^nB \subset A$, a
 
 3.18 zeigt: G frei.
 
+\Bsp{Beispiel}
+
 % 19.05.15, 11. VL
-% Prüfungszeiträume: 27.7 - 30.7 & 8. - 11.9
-% Listen vor Büro an Pinnwand: 1.005
 
 \newpage
 \section{Quasi-Isometrien}
@@ -216,35 +463,51 @@ Dann $|x + 2ny| \geq |2ny| - |x| > |2y| - |y| = |y|$, also $M_1^nB \subset A$, a
 Gruppe -> Geometrie
 Ziel: Konzept finden, welches Cayleygraphen einer festgelegten Gruppe als gleich (äquivalent) auffasst
 
-\subsection{Ein paar Definitionen}
-Seien $(X,d),(Y,d)$ metrische Räume, $f:X\rightarrow Y$ eine stetige Abbildung.
+\Def{}
+Seien $(X,d),(Y,d)$ metrische Räume, $f:X\rightarrow Y$ eine Abbildung.
 \begin{itemize}
 	\item $f$ heißt eine \df{isometrische Einbettung}, falls für alle $x,y \in X$ gilt
-	\[d(f(x),f(y) = d(x,y) \]
+	\[d(f(x),f(y)) = d(x,y) \]
 	\item $f$ heißt eine \df{Isometrie}, falls $f$ eine surjektive isometrische Einbettung ist.
 	\item $X$ und $Y$ heißen isometrisch, falls eine Isometrie $X\rightarrow Y$ existiert.
-	\item $f$ heißt eine \df{Bilipschitz-Einbettung}, falls eine reelle Konstante $c \geq 1$ existiert, sodass für alle $x,y \in X$ gilt
-	\[ \frac{1}{c} d(x,y) \leq  d(f(x),f(y) \leq c d(x,y) \]
-	\item $f$ heißt eine \df{Bilipschitz-Äquivalenz}, falls $f$ eine surjektive Bilipschitz-Einbettung ist.
 \end{itemize}
 
-\subsection{Bemerkung 4.4}
+\Def{}
+\begin{itemize}
+	\item $f$ heißt eine \df{Bilipschitz-Einbettung}, falls eine reelle Konstante $c \geq 1$ existiert, sodass für alle $x,y \in X$ gilt
+	\[ \frac{1}{c} d(x,y) \leq  d(f(x),f(y)) \leq c d(x,y) \]
+	\item $f$ heißt eine \df{Bilipschitz-Äquivalenz}, falls $f$ eine surjektive Bilipschitz-Einbettung ist.
+	\item Existiert eine Bilipschitz-Äquivalenz $X\pfeil{} Y$, so heißen $X$ und $Y$ \df{bilipschitz (äquivalent)}.
+\end{itemize}
+
+\Def{}
+\begin{itemize}
+	\item $f$ heißt eine $(C,D)$-\df{quasi-isometrische Einbettung}, falls reelle Konstanten $c \geq 1, D\geq 0$ existieren, sodass für alle $x,y \in X$ gilt
+	\[ \frac{1}{C} d(x,y) - D \leq  d(f(x),f(y)) \leq C d(x,y) + D \]
+	\item $f$ und $g$ haben endlichen Abstand, falls eine reelle Konstante $C \geq 0$ existiert, sodass
+	\[d(f(x), g(x)) \leq C ~~ \forall x \in X \]
+	\item $f$ heißt eine $(C,D)$-\df{Quasi-Isometrie}, falls $f$ eine $(C,D)$-{quasi-isometrische Einbettung} ist und eine weitere $(C,D)$-{quasi-isometrische Einbettung} $g : Y \pfeil{} X$ existiert, sodass $g \circ f$ und $f \circ g$ endlichen Abstand von der jeweiligen Identität haben.
+	\item Existiert eine Quasi-Isometrie $X\pfeil{} Y$, so heißen $X$ und $Y$ \df{quasi-isometrisch}. In diesem Fall schreiben wir
+	\[ X \qi Y \]
+\end{itemize}
+
+\Bem{}
 \begin{itemize}
 	\item Isometrie -> Bil.Äqu -> QI
 	\item Umkehrung i.A. nicht richtig
-	\item Quasi-Isometrisch sind $(R,d)$ und $(Z, d)$ und $(2Z, d)$ mit den euklidischen Metriken.
+	\item Quasi-Isometrisch sind $(\R,d)$ und $(\Z, d)$ und $(2\Z, d)$ mit den euklidischen Metriken.
 	Die Inklusionen sind quasi-isom. Einbettungen, aber keine Bilipschitzäqu., weiter sind
 	\begin{align*}
 	f:\R \longrightarrow \Z && x \longmapsto \lfloor x\rfloor\\
 	g: \Z \longrightarrow 2\Z && x \longmapsto \{x, x -1\}\cap 2\Z
 	\end{align*}
 \end{itemize}
-\subsection{Quiz 4.5}
+\subsection{Quiz}
 \begin{itemize}
 	\item Sind $\Z$ und $2\Z$ bilipschitz-äquivalent?
 \end{itemize}
 
-\subsection{4.6 Durchmesser metrischer Räume}
+\Satz{Durchmesser metrischer Räume}
 Jeder nichtleere, metrische Raum $(X,d)$ mit endlichen Durchmessern
 \[diam(X) := \sup_{x,y\in X}(d(x,y)) \]
 ist quasi-isometrisch zu einem Punkt.
@@ -255,14 +518,24 @@ Dann gilt
 \[d(f(x), f(y)) - D \leq d(f(x),f(y)) \leq d(f(x),f(y)) + D \]
 Daraus folgt auch, dass $d(f^2(x), id(x)) \leq D$, ergo sind $X$ und $*$ quasi-isometrisch.
 \qed
-\subsection{Korollar}
+
+\paragraph{Korollar}
 Ist $X$ beschränkt und $Y$ quasi-isom. zu $X$, so ist auch $Y$ beschränkt.
 
-\subsection{4.17 Satz}
-$X,Y$ metrische Räume,$f:X\rightarrow Y$ eine quasi-isometrische Einbettung. Dann gilt:
-\[f \text{ Quasi-Isometrie }\Longleftrightarrow f \text{ hat quasi-dichtes Bild in }Y \]
-d.h. $f(X) \subset Y$ ist $\delta$-dicht für $\delta \geq 0$, d.h.
-\[\forall y\in Y, \exists x \in X: d(y,f(x)) \leq \delta \]
+\Satz{Alternative Charakterisierung von Quasi-Isometrie}
+Sei $f : X \pfeil{} Y$ eine quasi-isometrische Einbettung. $f$ ist genau dann eine Quasi-Isometrie, wenn sein Bild \df{quasi-dicht} in $Y$ liegt, d.h. $\exists \delta > 0 \forall y \in Y \exists x \in f(X):$
+\[ d(x,y) \leq \delta \]
+
+\begin{Beweis}{}
+$\Leftarrow:$\\
+Ist $f$ eine QI, so existiert eine Inverse $g : Y \pfeil{} X$. Es gilt nun für alle $y \in Y:$
+\[ d( y, f(g(y)) ) \leq \delta \]
+für ein passendes $\delta$.
+
+
+$\Rightarrow:$\\
+Konstruiere $g$ wie folgt:
+\[g(y) := x, \text{ so dass } d(y,f(x)) \leq \delta \]
 
 \paragraph{Beweis}
 $f$ Quasi-Isometrie, dann existiert quasi-Inverse $g : Y \rightarrow X$ und somit $\delta > 0$, s.d. $\forall y \in Y$ gilt
@@ -293,26 +566,94 @@ Setze $C = \lambda, D = 3\lambda^2$\\
 Für $y,y' \in Y$ ist noch zu zeigen
 \[d(g(y),g(y') \geq \frac{1}{C} d(y,y') - D \]
 
+\end{Beweis}
+
+\Satz{Quasi-Isometriegruppe}
+\begin{itemize}
+\item Die Komposition zweier Quasi-Einbettungen ist wieder eine Quasi-Einbettung.
+\item Definiere $QI(X)$ als die Menge aller Quasi-Isometrien $X\pfeil{} X$ und führe folgende die Äquivalenzrelation ein:
+\[ f\sim g \Gdw{} f,g \text{ haben endlichen Abstand} \]
+Dann ist $QI(X)/\sim$ bzgl. der Komposition von Abbildungen eine Gruppe, die sogenannte \df{Quasi-Isometrie-Gruppe}.
+\item Eine Wirkung von $G$ auf $X$ \df{mittels Quasi-Isometrien} ist ein Morphismus
+\[G \Pfeil{} QI(X)/\sim \]
+\end{itemize}
+
+\Bsp{Beispiel}
+
+\Def{}
+Sei $\Gamma = (V,E, \d)$ ein zusammenhängender Graph.
+\begin{itemize}
+\item Definiere die \df{kombinatorische Metrik} auf $\Gamma$ durch
+\begin{align*}
+d : V^2 &\Pfeil{} \N_0\\
+(v,w) & \longmapsto inf \{n \in \N_0 ~~|~~\text{es existiert ein }n \text{-Pfad von }v \text{ zu }w \}
+\end{align*}
+\item Sei $G$ Gruppe mit Erzeuger $S$. Die kombinatorische Metrik auf $\Cay{G}{S}$ heißt \df{Wortmetrik}.
+\end{itemize}
+
+\Bsp{Beispiel}
+
+\Satz{Alle Cayleygraphen einer Gruppe sind quasi-isometrisch}
+Sei $G$ eine Gruppe, $S,T$ endliche Erzeugermengen von $G$.
+Dann ist $\id{G}$ eine Bilipschitz-Äquivalenz von $(G,d_S)$ und $(G,d_T)$.
+
+\Def{QI-Typen von endlich erzeugten Gruppen}
+Sei $G$ eine endlich erzeugte Gruppe.\\
+$G$ heißt \df{bilipschitz-äquivalent} bzw. \df{quasi-isometrisch} zu einem metrische Raum $X$, falls sein Cayleygraph {bilipschitz-äquivalent} bzw. {quasi-isometrisch} zu $X$ ist.\\
+Zwei endlich erzeugte Gruppen heißen \df{bilipschitz-äquivalent} bzw. \df{quasi-isometrisch}, falls ihre Cayleygraphen {bilipschitz-äquivalent} bzw. {quasi-isometrisch} sind.\\
+
+\Kor{}
+Eine endlich erzeugte Gruppe ist genau dann quasi-isometrisch zu einer endlichen Gruppe, wenn sie selber endlich ist.
+
+\Satz{}
+Sei $G$ eine Gruppe, die von einem EZS $S$ erzeugt wird.\\
+$S$ endlich $\Gdw{}$ $d_S$ ist \df{eigentlich}, d.h. Bälle von endlichem Radius enthalten endlich viele Elemente. 
+
+
+\Bsp{}
+
+\Def{Virtuelle Eigenschaften}
+$G$ ist virtuell $P$, wenn $G$ eine Untergruppe von endlichem Index besitzt, die $P$ hat.
+
+
+\Satz{}
+Eine endlich erzeugte Gruppe ist virtuell $\Z$, wenn sie quasi-isometrisch zu $\Z$ ist.
+
+%\subsection{4.17 Satz}
+%$X,Y$ metrische Räume,$f:X\rightarrow Y$ eine quasi-isometrische Einbettung. Dann gilt:
+%\[f \text{ Quasi-Isometrie }\Longleftrightarrow f \text{ hat quasi-dichtes Bild in }Y \]
+%d.h. $f(X) \subset Y$ ist $\delta$-dicht für $\delta \geq 0$, d.h.
+%\[\forall y\in Y, \exists x \in X: d(y,f(x)) \leq \delta \]
+
+
+
 %% 13. VL, 26.05.15
 
-\subsection{4.18 Definition: Geodäten}
-Eine \df{Geodäte} ist ein eine isometrische Einbettung $\gamma : [0,L] \rightarrow X$ eines Intervalls in einen metrischen Raum.
+\Def{Geodäten}
+Eine \df{Geodäte} ist eine isometrische Einbettung $\gamma : [0,L] \rightarrow X$ eines Intervalls in einen metrischen Raum.\\
+$X$ heißt \df{geodätisch (vollständig)}, falls je zwei Punkte durch eine Geodäte verbunden werden.
 
-\subsection{4.20 Definition Quasigeodäte}
+\Bsp{Beispiel}
+
+\Def{Quasigeodäte}
 Eine $(C,D)$-\df{Quasigeodäte} für $C\geq 1, D \geq 0$ ist eine $(C,D)$-Quasiisometrische Einbettung von $[0,L]$ nach $X$.
 
 $X$ heißt $(C,D)$-quasigeodätisch, falls $\forall x,y \in X$ eine verbindende Quasigeodäte \[\gamma :[0,d(x,y)] \rightarrow X \] existiert.
 
-\subsection{4.22 Satz von Schwarz-Milner}
-$G$ Gruppe, $X$ metr. Raum, $G\curvearrowright X$ durch Isometrien.
-Weiter gelte:
-$X$ quasi-geod. für $(C,D)$ mit $D > 0$
-$\exists B \subset X$ beschränkt mit $\bigcup_{g\in G}gB = X$
-$S:=\set{g\in G}{gB' \cap B' \neq \emptyset}$ ist endlich mit $B' := \set{x\in X}{\exists y \in B: d(x,y) \leq 2D}$
+\Bsp{Beispiel}
 
-Dann gilt:
-$G$ wird von $S$ erzeugt
-$\forall x \in X$ ist $(G,d_S) \rightarrow (X,d); g \mapsto g.x$ eine quasi-Isometrie.
+\Satz{Schwarz-Milner}
+$G$ Gruppe, $X$ metr. Raum, $G\curvearrowright X$ durch Isometrien. Weiter gelte:
+\begin{itemize}
+\item $X$ $(C,D)$-quasi-geodätisch
+\item $\exists B \subset X$ beschränkt mit $\bigcup_{g\in G}gB = X$
+\item $S:=\set{g\in G}{gB' \cap B' \neq \emptyset}$ ist endlich mit $B' := B_{2D}(B) = \set{x\in X}{\exists y \in B: d(x,y) \leq 2D}$
+\end{itemize}
+Dann gilt:\\
+$G$ wird von $S$ erzeugt und
+$\forall x \in X$ ist 
+\Func{(G,d_S)}{(X,d)}{g}{g.x}
+eine Quasi-Isometrie.
 
 \paragraph{Beweis}
 ZZ: $S$ erzeugt $G$
@@ -384,7 +725,7 @@ Eine Wirkung $G\curvearrowright X$ ist \df{eigentlich}, wenn für alle kompakten
 endlich ist.\\
 Manchmal sagt man auch \df{eigentlich diskontinuierlich}.
 
-\subsection{Bemerkung}
+\paragraph{Bemerkung}
 $f$ eigentlich, wenn Urbilder kompakter Mengen wieder kompakt sind.\\
 Hier $G\curvearrowright X$ eigentlich
 \[\Longleftrightarrow G\times X \longrightarrow X \]
@@ -420,7 +761,7 @@ ist eigentliche Abbildung. (Wobei man auf $G$ die diskrete Topologie betrachtet.
 $(X,d)$ metrischer Raum, eigentlich
 \[\alpha : G \rightarrow Isom(X) \text{ Wirkung von G auf X} \]
 \[p : X \rightarrow X/G \text{ natürliche Projektion auf Quotienten} \]
-Setze $f(x,y) := \inf\{d(x,y) | p(x) = x, p(y) = y\}$ für $x,y \in X/G$\\
+Setze $f(x,y) := \inf\{d(x',y') | p(x') = x, p(y') = y\}$ für $x,y \in X/G$\\
 Dann gilt:
 \begin{enumerate}
 	\item $inf = min$, d.h. $\exists x,y \in X: f(x,y) = d(x,y) \forall x,y \in X/G$
@@ -449,8 +790,8 @@ $\Longrightarrow f(u,v) + f(v,w) = d(x,y_1)+d(y_2,z) = d(x,g.y_2) + d(g.y_2, g.z
 
 
 \subsection{4.27 Definition}
-Eine Gruppenwirkung $G\curvearrowright X$ heißt kokompakt, wenn $X/G$ kompakt.\\
-Betrachte auf $X/G$ Topologie, die durch Quotientenmetrik $f$ induziert wird, wenn wir mit metrischen Raum gestartet sind.
+Eine Gruppenwirkung $G\curvearrowright X$ heißt \df{kokompakt}, wenn $X/G$ kompakt.\\
+Betrachte auf $X/G$ Topologie, die durch Quotientenmetrik $f$ induziert wird, als wir mit einem metrischen Raum gestartet sind.
 
 \subsection{4.28 Beispiele}
 \begin{itemize}
@@ -495,14 +836,14 @@ Sei $B$ endliches Vertretersystem von $G/H$, existiert, weil Anzahl Nebenklassen
 Dann ist $HB = G$
 
 $B' := B_2(B)$ endlich, $\set{h\in H}{h.B'\cap B' \neq \emptyset}$ endlich.\\
-Schwarz-Milner: $H$ endlich erzeugt und $H\sim_{qi} \gamma \sim_{qi} G$\qed
+Schwarz-Milner: $H$ endlich erzeugt und $H\sim_{qi} \Gamma \sim_{qi} G$\qed
 
 %% 2.6.15, 15.Vl
 
 \subsection{4.31 Definition}
 \begin{enumerate}
 	\item Zwei Gruppen $G,H$ heißen \df{kommensurabel}, wenn es Untergruppen $G'<G, H<H'$ mit endlichem Index gibt, s.d. $G' \cong H'$.
-	\item Zwei Gruppen $G,H$ heißen \df{schwach kommensurabel}, wenn es Untergruppen $G'<G, H<H'$ mit endlichem Index gibt, s.d. normale Untergruppen $N \vartriangleleft H', M \vartriangleleft G'$ mit 
+	\item Zwei Gruppen $G,H$ heißen \df{schwach kommensurabel}, wenn es Untergruppen $G'<G, H<H'$ mit endlichem Index gibt, s.d. normale \textbf{endliche} Untergruppen $N \vartriangleleft H', M \vartriangleleft G'$ mit 
 	\[H'/N \cong G'/M \]
 \end{enumerate}
 
@@ -533,26 +874,28 @@ Sei $M$ eine kompakte Mannigfaltigkeit ohne Rand mit Riemannscher Metrik und $M'
 \paragraph{Beweis}
 Zeige mit Standard-Argumenten der Geometrie und alg. Topo, dass M' eig. und geod.
 $\pi(M) \curvearrowright M'$ eig., kokompakt und durch Isom.
+
+\newpage
 \section{Quasi-Isometrie-Invarianten}
 \subsection{Definition}
 Sei V eine menge. Eine \df{QI-Invariante} mit Werten in V ist eine Abb.
 \[I:X \longrightarrow V\]
 $X \subset \set{G: Gruppe}{G endl. erz}$, s.d. gilt
-\[G\sim_QI H \Longrightarrow I(G) = I(H)\]
-\subsection{Bemerkung}
+\[G\qi H \Longrightarrow I(G) = I(H)\]
+\paragraph{Bemerkung}
 \begin{enumerate}
-	\item QI-Invarianten sind hilfreich, um $G \not\sim_QI H $ zu zeigen
-	\item i.A. ist es nicht möglich zu entscheiden, ob $G \sim_QI H$ gilt
+	\item QI-Invarianten sind hilfreich, um $G \not\qi H $ zu zeigen
+	\item i.A. ist es nicht möglich zu entscheiden, ob $G \qi H$ gilt
 \end{enumerate}
 \subsection{Beispiel}
 \begin{enumerate}
 	\item $V = \{1\}$, dann keine Infos
 	\item $V = \{0,1\}$, $I(G) = 1, G unendl., sonst 0$ ist QIInv.
-	\item $V = \N$, $I(F) = rang F$, $F$ endl. erz. freie Gruppe, ist keine QIInv., weil $F_n\sim_QI F_m$ für $n,m \geq 2$
+	\item $V = \N$, $I(F) = rang F$, $F$ endl. erz. freie Gruppe, ist keine QIInv., weil $F_n\qi F_m$ für $n,m \geq 2$
 \end{enumerate}
 \subsection{Definition}
 Eine Eigenschaft $P$ von endl. erz. Gruppen heißt \df{geometrisch}, wenn gilt: 
-G hat P und H qi G, dann H hat P
+$G$ hat $P$ und $H\qi G$, dann $H$ hat $P$
 
 \subsection{Beispiel}
 \begin{enumerate}
@@ -567,6 +910,103 @@ G hat P und H qi G, dann H hat P
 	\item Wachstum von Gruppen liefert geom. ES.
 	\item einige Ränder/Enden von einigen Gruppen liefert geom. ES.
 \end{enumerate}
+
+\Satz{endlich präsentiert}
+Sei $G = \grp{S}{R}$ endlich präsentierte Gruppe. Sei $H$ endlich erzeugt durch $S'$.\\
+Gilt $G \qi H$, so existiert ein endliches $R' \tm \F(S')$, sodass $H \isom{} \grp{S'}{R'}$.
+
+\Def{Präsentationskomplex}
+$G = \grp{S}{R}$, $S$ reduziert.\\
+Definiere den \df{Cayleykomplexen} $K'$ als den Komplex, der aus $\Cay{G}{S}$ durch Anwenden folgender Schritte entsteht:
+\begin{itemize}
+\item Für jedes selbstinverse $s\in S$ füge eine zweite Kante $gs \pfeil{} g$ für jedes $g \in G$ hinzu.
+\item Orientiere alle anderen Kanten $(g, gs)$, so dass $g \pfeil{} gs$.
+\item Füge für jedes $r \in R, x \in \Cay{G}{S}$ folgende Zweizellen hinzu:\\
+Fasse $r = s_1\cdots s_n \in (S + S\i)^*$ als \textbf{orientierten} Kreis $x \pfeil{} x.s_1 \pfeil{\ldots} x.r$ auf und klebe entlang ihm orientierungserhaltend eine 2-Zelle.
+\end{itemize}
+Definiere den \df{Präsentationskomplex} als $K(S,R) := K' / G$.
+
+\paragraph{Bemerkung}
+Man kann mittels Seifert-Van Kampen zeigen, dass $K'$ einfach zusammenhängend. $K'$ ist univ. Überlagerung und $G = \pi(K) = \pi(K'/G)$
+
+\Bem{}
+
+\Bsp{Beispiel}
+\begin{enumerate}
+	\item $G = \Z^2 = \grp{a,b}{aba^{-1}b^{-1}}$\\
+		$K' = \R^2, K = T^2$
+	\item Flächengruppen: $G:=\grp{a,b,c,d}{a^{-1}b^{-1}abc^{-1}d^{-1}cd }$
+	$K'$ kann aufgefasst werden als Parkettierung von $H^2$\\
+	$K$ ist Torus mit 2 Löchern, $S^2$-Fläche von Geschlecht 2
+\end{enumerate}
+
+\Bem{alternative Definition von $K(S,R)$}
+$G = \grp{S}{R}$, $S$ reduziert.\\
+Definiere den Komplex $K_G$ durch
+\begin{itemize}
+	\item eine 0-Zelle $v$
+	\item eine 1-Zelle für jedes $s \in S$, die von $v$ nach $v$ führt, orientiere diese 1-Zellen
+	\item eine 2-Zelle $d_r \forall r \in R$ verklebt so, dass Kanten $s_i$ orientierungserhaltend verklebt werden über $v \pfeil{s_1}  v \pfeil{s_2}  \ldots \pfeil{s_n} v$, wobei $r = s_1\cdots s_n, s_i \in S\cup S^{-1}$
+\end{itemize}
+Man kann zeigen $K_G \cong K(S,R)$ und $K'$ ist univ. Überlagerung von $K_G$
+
+
+
+\begin{Beweis}{von Satz 5.5}
+Setze $G_1 := G, G_2 := H, S_1 := S, S_2 := S', \Gamma = Cay(G_i, S_i)/\sim$ wie in 5.6.\\
+
+Sei $\rho$ die Länge der längsten Relation in $R$
+\begin{itemize}
+	\item Cayleykomplex $K'_1$ ist einfach zusammenhängend
+	\item Seien $f:\Gamma_2 \rightarrow \Gamma_1, f' : \Gamma_1 \rightarrow \Gamma 2$ $(C,D)$-quasi Isometrien (existieren, da $G \sim_{QI} H$)
+\end{itemize}
+Sei $\mu > 0$, s.d. $d(f'(f(v)), v) \leq \mu \forall v \in \Gamma_2$\\
+Setze $m:= \max \set{\rho, \mu, C,D}{}, M := 3(3m^2 + 5m + 1)$.\\
+Sei $K_2'$ 2-Komplex, den man durch Ankleben von 2-Zellen an jeden Kreis der Länge $\leq M$ in $\Gamma_2$ erhält.\\
+
+Sei $l$ Kantenkreis in $\Gamma_2$, d.h. $l = (g_1,\ldots, g_n, g_1)$\\
+Betrachte $l$ als Abb. $\partial D \rightarrow \Gamma_2$, $D$ ist hier eine 2-Zelle.\\
+
+\paragraph{Zwischenlemma (Formalisierung der Bemerkung 5.7.2)}
+$G$ erzeugt von $S$, $R \leq Kern \pi$, $\pi : F(S) \rightarrow G$; $X$ Komplex den man, durch Ankleben von 2-Zellen an Kantenkreisen geg. durch Wörtern in $R$ an $Cay(G,S)/\sim$ erhält. Dann gilt:
+\[X \text{ einfach zusammenhängend } \Longleftrightarrow \grp{R}{}_G^\vartriangleleft = kern(\pi)  \]
+\paragraph{Beweis von Zwischenlemma:} Lemma 8.9 in Bridson-Haefliger, S.135
+
+
+Wir sind fertig, wenn wir zeigen können:\\
+$l$ besitzt stetige Fortsetzung $l' : D \rightarrow K_2'$, d.h. $K'_2$ einfach zusammenhängend.\\
+Seien $v_i$ Urbilder der $g_i$ unter $l$\\
+Sei $\phi : \partial D \rightarrow \Gamma_1$ eine Abb., die $v_i$ auf $f(g_i)$ in $\Gamma_1$ und die Kante $\{v_i, v_{i+1}\}$ auf $\partial D$ auf Geodäten von $f(g_i)$ nach $f(g_{i+1})$.\\
+$K_1'$ ist einfach zusammenhängend $\Longrightarrow$ $\phi$ erweitert zu $\phi': D \rightarrow K'_1$
+
+\begin{itemize}
+	\item $\forall x \in D$ definiere Elemente $h_x$ in $V(\Gamma_1) = G$ wie folgt:
+	\begin{itemize}
+		\item ist $\phi'(x)$ Ecke, so ist $h_x = \phi'(x)$
+		\item ist $\phi'(x)$ in einer offenen Kante oder offenen 2-Zelle enthalten, so wähle nächste Ecke der Kante / 2-Zelle als $h_x$ 
+	\end{itemize}
+	Weil $\phi'$ stetig ist, ist $d(h_x, h_y) \leq \rho \forall x,y$, wenn $x,y$ nah genug aneinander sind in $D$.\\
+	Es gilt $d(\phi(x), h_x) \leq \frac{1}{2} \forall x \in \partial D$ (alle Kanten in $\partial D$ haben Länge 1).
+	\item Trianguliere $D$ so, dass $v_i \in \partial D$ wieder Ecken von $T$ sind und $\forall$ benachbarten $t,t' \in T$ gilt:
+	\[d(h_t, h_{t'}) \leq \rho \]
+	Metrik auf $D$ dazu so gewählt, dass $D$ reguläres $M$-Polygon in $\R^2$ ist
+	\item Setze $l'_{|\partial D} = l$ und $l'(x) = f'(h_x) \forall x \in D^o$
+	\paragraph{Behauptung}
+	Für alle benachbarten Ecken $t,t'$ in der Triangulierung $T$ gilt:
+	\[d(t,t') \leq M/3 \]
+	Gilt diese Behauptung, so erweitert $l'$ auf $D$ so, dass Kanten in $T$ auf Geodäten in $\Gamma_2$ geschickt werden und nach Konstruktion Kreise der Länge $\leq M$ eine 2-Zelle beranden. Daraus würde folgen, dass $l'$ eine stetige Fortsetzung wäre.
+	\paragraph{Bew. Beh.:} einziger interessanter Fall: $t\in D^o, t' \in \partial D$. Sei $t'$ zwischen $v_i$ und $v_{i+1}$. Es gilt:
+	\begin{align*}
+	d(l'(t), l'(t')) &= d(f'(h_t), l(t'))\\
+	&\overset{ganz viele \triangle-Ugl.en}{\leq} d(f'(h_t), f'(h_t))  + d(f'(h_{t'}), f'(\phi(t')))\\
+	&+ d(f'(\phi(t')) + f'(\phi(v_i)) ) + d(f'(\phi(v_i)), l(v_i) ) + d(l(v_i), l(t'))\\
+	&\leq \ldots \leq M/3
+	\end{align*}
+\end{itemize}
+\end{Beweis}
+
+
+
 
 \subsection{Einschub: Simplizialkomplexe und CW-Komplexe}
 \paragraph{Definition} Ein (abstrakter) \df{Simplizialkomplex} $\Delta$ ist eine Menge von Teilmengen einer Menge $V$, s.d. gilt:
@@ -606,122 +1046,12 @@ Definiere den CW-Komplex durch $X = \bigcup_{n\geq 0} X^{(n)}$.
 
 %% 16.VL, 5.6.15
 
-\subsubsection{Definition}
-$G,H$ schwach kommensurabel, falls $\exists$
-\[N \vartriangleleft G' \leq G\]
-\[M \vartriangleleft H' \leq H\]
-wobei $N,M, (G':G), (H':H)$ endlich sind.
-
-\subsubsection{Satz 5.5}
-$G$ endlich erzeugt von $S$ mit Relationen $R$, $R$ endlich. Sei $H$ endlich erzeugte Gruppe von $S'$ und $H\sim_{QI}G$, dann gilt:
-$H$ ist endlich präsentiert und es existiert eine endliche Menge $R'$ von Relationen, s.d.
-\[H = \grp{S'}{R'}\]
-\paragraph{Idee}
-Baue 2-dim. CW-Komplex, der die Darstellung kodiert (aufbauend auf Cayleygraphen).
-\paragraph{Erinnerung}
-$G = \grp{S}{R} = F(S)/ \grp{R}{}_G\vartriangleleft$\\
-$\exists \pi: F(S) \rightarrow > \grp{S}{R}, kern \pi = \grp{R}{}_G\vartriangleleft$ 
-
-\subsection{Definition 5.6: Präsentationskomplex (Korrekt?)}
-OE: $1 \in S, G \cong \grp{S}{R}$ endlich präsentiert.
-\[\Gamma := Cay(G,S)/\sim \]
-wobei zwei Kanten $e, e'$ verklebt werden (äquiv. sind), wenn gilt $\delta(e) = \delta(e')$\\\\
-
-Der \df{Präsentations(zwei)komplex} $K = K(S,R)$ von $G$ ist der Quotient $K'/G$ von folgendem 2-Komplex $K'$:\\
-1-Skelett von $K'$ ist $\Gamma$\\
-$\forall $ Kreise $\gamma$ in $\Gamma$ der Form $\gamma = g^{-1}.(1,s_1, s_1s_2, \ldots, s_1\cdots s_n)$ wobei $g \in G, s_1\cdots s_n \in R$; klebe 2-Zelle an $\gamma$ um $K'$ zu erhalten.\\
-$K'$ heißt \df{Cayley-Komplex} von $\grp{S}{R}$
-
-\paragraph{Korrekte Definition:}
-Definiere den Cayley-Komplex $K(S,R)$ als universelle Überlagerung von $K_G$.\\
-\paragraph{Explizite Beschreibung des Cayleykomplexes}
-$\grp{S}{R} = G$, $S$ reduziert.\\
-Sei $\Gamma$ der Graph, der aus dem $Cay(G,S)$ durch folgende Operation entsteht:
-\begin{enumerate}
-	\item $\forall s \in S$ mit $s^2 = 1$, füge $\forall g$ eine zweite Kante der Form $(g,gs)$ hinzu.
-	\item Orientiere alle Kanten $(g,gs)$ im Graphen so, dass sie von $g$ nach $gs$ zeigen\\
-	Ordnung 2 Elemente liefern Doppelkanten zu zwei Punkten. $\overset{\curvearrowright}{\longleftarrow}$
-	
-	\item 
-	klebe 2-Zelle $d_{r,g}$ an $\Gamma$ für alle Paare $(r,g) \in R \times G $, $G \sim V(\Gamma)$ wie folgt:\\
-	verklebe 1 mit $g \in V(\Gamma)$ und den Rand von $d_{r,g}$ mit dem Pfad (eind.), der zum Wort $r$ gehört, das in $g$ startet.
-\end{enumerate}
-
-\paragraph{Bemerkung}
-Man kann mittels Seifert-Van Kampen zeigen, dass $K'$ einfach zusammenhängend. $K'$ ist univ. Überlagerung und $G = \pi(K) = \pi(K'/G)$
-
-\subsection{Beispiel 5.8}
-\begin{enumerate}
-	\item $G = \Z^2 = \grp{a,b}{aba^{-1}b^{-1}}$\\
-		$K' = \R^2, K = T^2$
-	\item Flächengruppen: $G:=\grp{a,b,c,d}{a^{-1}b^{-1}abc^{-1}d^{-1}cd }$
-	$K'$ kann aufgefasst werden als Parkettierung von $H^2$\\
-	$K$ ist Torus mit 2 Löchern, $S^2$-Fläche von Geschlecht 2
-\end{enumerate}
-
-\subsection{Bemerkung 5.9: alternative Definition von $K(S,R)$}
-$G = \grp{S}{R}$ endliche Präsentation, $S$ reduziert.\\
-Definiere den Komplex $K_G$ durch
-\begin{enumerate}
-	\item eine 0-Zelle $v$
-	\item eine 1-Zelle für jedes $s \in S$, die von $v$ nach $v$ führt, orientiere diese 1-Zellen
-	\item eine 2-Zelle $d_r \forall r \in R$ verklebt so, dass Kanten $g \rightarrow gs$ orientierungserhaltend verklebt werden über $1 \rightarrow s_1 \rightarrow s_1s_2 \rightarrow \ldots \rightarrow s_1\cdots s_n$, wobei $r = s_1\cdots s_n, s_i \in S\cup S^{-1}$
-\end{enumerate}
-Man kann zeigen $K_G \cong K(S,R)$ und $K'$ ist univ. Überlagerung von $K_G$
-
-\paragraph{Beweis von 5.5}
-Setze $G_1 := G, G_2 := H, S_1 := S, S_2 := S', \Gamma = Cay(G_i, S_i)/\sim$ wie in 5.6.\\
-
-Sei $\rho$ die Länge der längsten Relation in $R$
-\begin{itemize}
-	\item Cayleykomplex $K'_1$ ist einfach zusammenhängend
-	\item Seien $f:\Gamma_2 \rightarrow \Gamma_1, f' : \Gamma_1 \rightarrow \Gamma 2$ $(C,D)$-quasi Isometrien (existieren, da $G \sim_{QI} H$)
-\end{itemize}
-Sei $\mu > 0$, s.d. $d(f'(f(v)), v) \leq \mu \forall v \in \Gamma_2$\\
-Setze $m:= \max \set{\rho, \mu, C,D}{}, M := 3(3m^2 + 5m + 1)$.\\
-Sei $K_2'$ 2-Komplex, den man durch Ankleben von 2-Zellen an jeden Kreis der Länge $\leq M$ in $\Gamma_2$ erhält.\\
-
-Sei $l$ Kantenkreis in $\Gamma_2$, d.h. $l = (g_1,\ldots, g_n, g_1)$\\
-Betrachte $l$ als Abb. $\partial D \rightarrow \Gamma_2$, $D$ ist hier eine 2-Zelle.\\
-
-\paragraph{Zwischenlemma (Formalisierung der Bemerkung 5.7.2)}
-$G$ erzeugt von $S$, $R \leq Kern \pi$, $\pi : F(S) \rightarrow G$; $X$ Komplex den man, durch Ankleben von 2-Zellen an Kantenkreisen geg. durch Wörtern in $R$ an $Cay(G,S)/\sim$ erhält. Dann gilt:
-\[X \text{ einfach zusammenhängend } \Longleftrightarrow \grp{R}{}_G^\vartriangleleft = kern(\pi)  \]
-\paragraph{Beweis von Zwischenlemma:} Lemma 8.9 in Bridson-Haefliger, S.135
-
-
-Wir sind fertig, wenn wir zeigen können:\\
-$l$ besitzt stetige Fortsetzung $l' : D \rightarrow K_2'$, d.h. $K'_2$ einfach zusammenhängend.\\
-Seien $v_i$ Urbilder der $g_i$ unter $l$\\
-Sei $\phi : \partial D \rightarrow \Gamma_1$ eine Abb., die $v_i$ auf $f(g_i)$ in $\Gamma_1$ und die Kante $\{v_i, v_{i+1}\}$ auf $\partial D$ auf Geodäten von $f(g_i)$ nach $f(g_{i+1})$.\\
-$K_1'$ ist einfach zusammenhängend $\Longrightarrow$ $\phi$ erweitert zu $\phi': D \rightarrow K'_1$
-
-\begin{itemize}
-	\item $\forall x \in D$ definiere Elemente $h_x$ in $V(\Gamma_1) = G$ wie folgt:
-	\begin{itemize}
-		\item ist $\phi'(x)$ Ecke, so ist $h_x = \phi'(x)$
-		\item ist $\phi'(x)$ in einer offenen Kante oder offenen 2-Zelle enthalten, so wähle nächste Ecke der Kante / 2-Zelle als $h_x$ 
-	\end{itemize}
-	Weil $\phi'$ stetig ist, ist $d(h_x, h_y) \leq \rho \forall x,y$, wenn $x,y$ nah genug aneinander sind in $D$.\\
-	Es gilt $d(\phi(x), h_x) \leq \frac{1}{2} \forall x \in \partial D$ (alle Kanten in $\partial D$ haben Länge 1).
-	\item Trianguliere $D$ so, dass $v_i \in \partial D$ wieder Ecken von $T$ sind und $\forall$ benachbarten $t,t' \in T$ gilt:
-	\[d(h_t, h_{t'}) \leq \rho \]
-	Metrik auf $D$ dazu so gewählt, dass $D$ reguläres $M$-Polygon in $R^2$ ist
-	\item Setze $l'_{|\partial D} = l$ und $l'(x) = f'(h_x) \forall x \in D^o$
-	\paragraph{Behauptung}
-	Für alle benachbarten Ecken $t,t'$ in der Triangulierung $T$ gilt:
-	\[d(t,t') \leq M/3 \]
-	Gilt diese Behauptung, so erweitert $l'$ auf $D$ so, dass Kanten in $T$ auf Geodäten in $\Gamma_2$ geschickt werden und nach Konstruktion Kreise der Länge $\leq M$ eine 2-Zelle beranden. Daraus würde folgen, dass $l'$ eine stetige Fortsetzung wäre.
-	\paragraph{Bew. Beh.:} einziger interessanter Fall: $t\in D^o, t' \in \partial D$. Sei $t'$ zwischen $v_i$ und $v_{i+1}$. Es gilt:
-	\[d(l'(t), l'(t')) = d(f'(h_t), l(t')) \overset{ganz viele \triangle-Ugl.en}{\leq} d(f'(h_t), f'(h_t))  + d(f'(h_{t'}) , f'(\phi(t'))) + d(f'(\phi(t')) + f'(\phi(v_i)) ) + d(f'(\phi(v_i)), l(v_i) ) + d(l(v_i), l(t')) \leq \ldots \leq M/3 \]
-\end{itemize}
-
 %% 17.VL, 9.6.15
 
 \newpage
 \section{Hyperbolische Gruppen}
 \subsection{Oberes Halbebenenmodell von $\H^2$}
-\[\H^2 := \set{z \in \C }{Im z > 0} \]
+\[\H^2 := \set{z \in \Cz }{Im z > 0} \]
 Riemannsche Struktur:
 \[ds^2 = \frac{dx^2 + dy^2}{y^2} \]
 hyberbolische Norm für Tangentenvektoren $v \in \T_z\H^2 = \R^2$
@@ -749,12 +1079,12 @@ wir definieren die \df{hyperbolische Metrik} auf $\H^2$
 \end{enumerate}
 
 \subsection{Isometrien}
-Isometrien von $\H^2$ sind die Möbiustransformationen. Eine \df{Möbiustransformation} (MT) ist eine Abbildung $\pi : \overline{\C} := \C\cup\{\infty\} \rightarrow \overline{\C}$ definiert durch
-\[z \longmapsto \frac{az + b}{cz + d}, a,b,c,d \in \C \]
+Isometrien von $\H^2$ sind die Möbiustransformationen. Eine \df{Möbiustransformation} (MT) ist eine Abbildung $\pi : \overline{\C} := \Cz\cup\{\infty\} \rightarrow \overline{\Cz}$ definiert durch
+\[z \longmapsto \frac{az + b}{cz + d}, a,b,c,d \in \Cz \]
 
 \subsection{Eigenschaften}
 \begin{enumerate}
-	\item MT sind dreifach transitiv auf $\overline{\C}$, d.h. sind $(z_1, z_2, z_3),(w_1, w_2, w_3) \in \overline{\C}^3$, dann existiert genau eine MT $T$ mit $T(z_i) = w_i$.
+	\item MT sind dreifach transitiv auf $\overline{\Cz}$, d.h. sind $(z_1, z_2, z_3),(w_1, w_2, w_3) \in \overline{\Cz}^3$, dann existiert genau eine MT $T$ mit $T(z_i) = w_i$.
 	\item MT bilden Kreise bzw. Geraden auf Kreise bzw. Geraden ab.
 	\item $PSL(2,\R) = SL(2,\R)/\pm I $ operiert auf $\H^2$ durch Möbiustransformationen:
 	\[A = \left(\begin{matrix}
@@ -865,8 +1195,8 @@ Jede Untergruppe einer Fuchsschen Gruppe ist wieder eine Fuchssche Gruppe.
 Sei $(X,d)$ ein metrischer Raum. Ein geodätisches Dreieck $\Delta$ in $X$ ist ein Tripel von Geodäten (den Seiten des Dreiecks) $\gamma_1, \gamma_2,\gamma_3 : [0,l_i] \rightarrow X$ so, dass:
 \[\gamma_1(0) = \gamma_3(l_3), \gamma_2(0) = \gamma_1(l_1), \gamma_3(0) = \gamma_2(l_2)\]
 Ein geodätisches Dreieck $\Delta$ ist $\delta$-dünn für ein $\delta \geq 0$, falls
-\[\gamma_i \subset A_j\cup U_k \]
-wobei $A_i := \set{x \in X}{d(x, \gamma_i) \leq \delta}$ für $i,j,k$ verschieden.
+\[\gamma_i \subset U_j\cup U_k \]
+wobei $U_i := \set{x \in X}{d(x, \gamma_i) \leq \delta}$ für $i,j,k$ verschieden.
 
 \subsection{Beispiel}
 \begin{itemize}
@@ -1043,7 +1373,7 @@ Ohne Einschränkung: $1 < L(\gamma) =: L' < \infty$ und $\gamma: [0,l] \rightarr
 \[\frac{L(\gamma)}{2^{N+1}} < 1 \leq \frac{L(\gamma)}{2^N} \]
 Sei $\gamma' : [0, l'] \rightarrow X$ und $t$ fest in $[0, l']$.\\
 $X$ hyperbolisch $\Longrightarrow$ wir finden Punkte $x_1, \ldots, x_n$ in $X$, s.d. gilt:
-\[d(\gamma'(\gamma'(t), x_1) ) , d(x_i, x_{i+1}) \leq \delta \]
+\[d(\gamma'(t), x_1 ) , d(x_i, x_{i+1}) \leq \delta \]
 mit $x_i$ auf einer Geodäten der Länge $L(\gamma)/2^i$ mit Endpunkten in $Bild \gamma$.\\
 Sei $y$ der Endpunkt der Geodäten, die $x_i$ enthält, der näher an $\gamma'$ ist.\\
 Es gilt:
@@ -1074,7 +1404,7 @@ $I := [0,l) \cap \Z$
 \subsection{Definition 6.25: Hyperbolische Gruppen}
 Eine endlich erzeugte Gruppe $G$ heißt (Gromor)-\df{hyperbolisch}, wenn für ein (und somit für alle) endliche Erzeugersysteme $S$ der Cayleygraph von $G$ bzgl. $S$ hyperbolisch ist.
 
-\subsection{Bemerkung}
+\paragraph{Bemerkung}
 Auf dem Cayleygraphen betrachten wir die geodätische Graphmetrik (geom. Realisierung) definiert durch die Eigenschaft, dass alle Kanten die Länge 1 haben.
 
 \subsection{Satz 6.24 (hyperbolisch ist geometrisch)}
@@ -1121,7 +1451,7 @@ sind rekursiv aufzählbar.
 \begin{enumerate}
 	\item freie Gruppen und freie abelsche Gruppen sind sogar Chomsky 2
 	\item alle endlichen Gruppen sind Chomsky 3
-	\item Sind Gruppen Chomsky 3 genau, dann, wenn $((S\cup S^{-1})^* : L) < \infty$
+	\item Gruppen sind genau dann Chomsky 3, dann, wenn $((S\cup S^{-1})^* : L) < \infty$
 \end{enumerate}
 
 \paragraph{Bemerkung}
@@ -1225,9 +1555,9 @@ Falls $\gamma : [0,n] \rightarrow Cay(G,S)$ ein stückweiser linearer nach Bogen
 \subsection{Lemma 7.7: Trapping für lokale Geodäten}
 $\delta \geq 0, c > 8 \delta$ und $(X,d)$ $\delta$-hyperbolisch.\\
 $\gamma:[0,l] \rightarrow X$ \df{$c$-lokale} Geodäte, d.h.\\
-$\forall t, t' \in [0,l]$ mit $\norm{t - t'} < c$ gilt
-\[d(\gamma(t), \gamma(t')) = \norm{t -t'}\]
-Ist $\gamma':[0,l'] \rightarrow X$ mit $\gamma'(0) = \gamma(0), \gamma'(l) = \gamma(l)$, so gilt
+$\forall t, t' \in [0,l]$ mit $\bet{t - t'} < c$ gilt
+\[d(\gamma(t), \gamma(t')) = \bet{t -t'}\]
+Ist $\gamma':[0,l'] \rightarrow X$ Geodäte mit $\gamma'(0) = \gamma(0), \gamma'(l) = \gamma(l)$, so gilt
 \[\gamma \subseteq U_{2\delta}(\gamma') \]
 
 %% 26.06.15, 22. VL

@@ -1,0 +1,20 @@
+% Gebacken nach Rezept von http://en.wikibooks.org/wiki/LaTeX/Creating_Packages
+
+\NeedsTeXFormat{LaTeX2e} %Keine Ahnung, was hier hin soll?
+\ProvidesPackage{theorema}[2015/09/05]
+
+\newcommand{\Def}[1]{\subsection{Definition: #1}}
+\newcommand{\Bsp}[1]{\subsection{Beispiel: #1}}
+\newcommand{\Lem}[1]{\subsection{Lemma: #1}}
+\newcommand{\Bem}[1]{\subsection{Bemerkung: #1}}
+\newcommand{\Kor}[1]{\subsection{Korollar: #1}}
+\newcommand{\Satz}[1]{\subsection{Satz: #1}}
+\newcommand{\Prop}[1]{\subsection{Proposition: #1}}
+
+\newcommand{\qed}{\hfill $\square$}
+
+\newenvironment{Beweis}[1]{\paragraph{Beweis\\}}{\qed}
+
+\newcommand{\df}[1]{\index{#1}\textbf{#1}}
+
+\endinput
