@@ -29,7 +29,53 @@
 
 \newcommand{\qed}{$\square$}
 
+\newcommand{\rev}[1]{\overline{e}}
+\newcommand{\pfeil}{\rightarrow}
+
 \begin{document}
+
+\section{Einführung}
+
+\subsection{Satz: Appel und Haken}
+Jeder planare Graph ist 4-färbbar.
+
+\section{Grundlegende Eigenschaften}
+\subsection{Satz: Euler}
+Für jeden planaren Graphen gilt:
+\[ n - m + f = 2 \]
+
+\subsection{Dualität von Schnitten und Kreisen}
+Jeder Schnitt entspricht einer Menge, die einen Kreis enthält, im Dualgraph und umgekehrt.
+
+
+\subsection{Definitionen}
+\begin{itemize}
+\item Eine \df{Unterteilung} eines Graphen entsteht, indem man Kanten durch einfache Wege ersetzt.
+\item Einen \df{Minor} eines Graphen erhält man, indem man beliebige Knoten eines Teilgraphen, die Grad 2 haben, durch Kanten ersetzt.
+\end{itemize}
+
+\subsection{Satz von Kuratowski}
+Ein Graph ist genau dann planar, wenn er weder $K_5$ noch $K_{3,3}$ als Minor enthält.
+
+\section{Färbung planarer Graphen}
+
+\subsection{Satz}
+Jeder planarer ist 5-listenfärbbar.
+
+\section{Separatoren}
+\subsection{Planar-Separator-Theorem}
+Sei $G$ ein zusammenhängender planarer Graph mit mindestens 5 Knoten. Dann kann in Linearzeit ein Separator gefunden werden, der folgendes erfüllt:
+\begin{itemize}
+\item Die beiden Komponenten des separierten Graphen besitzen jeweils höchstens $\frac{2}{3}$ der Knoten des Ausgangsgraphen.
+\item Der Separator enthält höchstens $4 \sqrt{n}$ Knoten.
+\end{itemize}
+
+\subsection{Lemma}
+Sei $G$ ein zusammenhängender planarer Graph mit mindestens 5 Knoten und $T$ ein aufspannender Baum von $G$. Dann kann in Linearzeit ein Separator gefunden werden, der folgendes erfüllt:
+\begin{itemize}
+\item Die beiden Komponenten des separierten Graphen besitzen jeweils höchstens $\frac{2}{3}$ der Knoten des Ausgangsgraphen.
+\item Der Separator enthält höchstens $2 \cdot \textsf{Höhe}(T) + 1$ Knoten.
+\end{itemize}
 
 \section{Matching}
 
@@ -101,7 +147,25 @@ Menge von einfachen Kreisen = Kantenmenge, in der für alle Knoten der Knotengra
 
 \subsubsection{Schritt 3}
 beachte, dass $G^*$ 3-regulär; ersetze jeden Punkt in $G^*$ durch ein Dreieck, erhalte $G'$; Matching ergibt zwei Fälle:
-(1)
+\begin{center}
+\begin{tikzpicture}[scale = 0.5]
+\draw 	(5,0) -> (5,3) -> (3,7) -> (0,10)
+		(5,3) -> (7,7) -> (10,10)
+		(3,7) -> (7,7);
+\draw [red, thick]	(5,0) -> (5,3)
+			(3,7) -> (0,10)
+			(7,7) -> (10,10);
+\end{tikzpicture}
+\begin{tikzpicture}[scale = 0.5]
+\draw 	(5,0) -> (5,3) -> (3,7) -> (0,10)
+		(5,3) -> (7,7) -> (10,10)
+		(3,7) -> (7,7);
+\draw [red, thick]	(5,0) -> (5,3)
+			(3,7) -> (7,7);
+\end{tikzpicture}\\
+Die gematchten Kanten werden rot dargestellt.
+\end{center}
+
 
 Sei $m$ die Anzahl der Kanten in $G^*$ und $n$ die Anzahl der Knoten
 \[\Rightarrow 3n = 2m \Rightarrow n \text{ gerade }\]
@@ -130,14 +194,75 @@ Wähle $M$ mit $w(M) = \min_{v\in V^*}w(M_v)$
 
 \paragraph{Frage}
 Wie kann man dabei Fall 2 bei v erzwingen?
-(2)
+\paragraph{Antwort} Ersetze $v$ durch
+\begin{center}
+\begin{tikzpicture}[scale = 0.5]
+\draw 	(0,4) -> (2,4) -> (2,6) -> (0,6)
+		(2,4) -> (3,0) -> (7,5) -> (3,10) -> (2,6);
+\draw [red, thick]	(3,0) -> (10,0)
+					(7,5) -> (10,5)
+					(3,10) -> (10,10);
+\end{tikzpicture}\\
+Die drei roten Kanten ersetzen die ehemaligen Kanten von $v$.
+\end{center}
 
 %% 26.05.15, 8.VL
+\section{$st$-Flüsse}
+\subsection{Definition: $st$-Fluss}
+Seien folgende Dinge gegeben
+\begin{itemize}
+\item $G$ symmetrischer gerichteter Graph, $\rev{a \pfeil b } := b \pfeil a$
+\item $c : E \pfeil \R$ Kapazitätsfunktion
+\item $s,t \in V$
+\end{itemize}
+Ein \df{$st$-Fluss} ist eine Abbildung $\phi : E \pfeil \R$, s.d.
+\begin{itemize}
+\item $\phi(e) = - \phi ( \rev{e})$
+\item $\forall w \in V-\{s,t\} :~~\sum_{v \in V} \phi(v \pfeil w) = 0$ 
+\end{itemize}
+$\phi$ heißt \df{zulässig}, falls $\phi \leq c$.
 
-Folien: Maximale s-t-Flüsse in Planaren Graphen
+\subsection{Parametrisches Kürzeste-Wege-Problem}
+\paragraph{Gegeben}
+\begin{itemize}
+\item  $G = (V,E)$ ein gerichteter Graph
+\item $E' \subset E$
+\item  $c : E\pfeil \R$ und
+\begin{align*}
+c(\lambda, e ) := 
+\left\lbrace
+\begin{aligned}
+ c(e) - \lambda && e \in E'\\
+ c(e) && e \notin E
+\end{aligned}
+\right.
+\end{align*}
+\end{itemize}
+\paragraph{Gesucht} Größtes $\lambda$, sodass $G$ bzgl. $c(\lambda, \cdot)$ keine negativen Kreise enthält.
+\paragraph{Laufzeit} $\O{n^2\log n}$ bzw. $\O{nm\log n}$
+
+\subsection{Definition}
+Ein \df{gerichteter $st$-Schnitt} ist eine Kantenmenge $C$, sodass jeder $st$-Pfad nichttrivialen Schnitt mit $C$ hat.
+
+\subsection{Dualität}
+$C$ gerichteter $st$-Schnitt $\Longleftrightarrow$ $C^*$ gerichteter Kreis, der $s^*$ und $t^*$ trennt.
+
+\subsection{Definition}
+$C$ heißt \df{Kozykel}, falls $C^*$ ein einfacher gerichteter Kreis ist.
 
 \subsection{Lemma}
-Für jeden Kozykel $C$ gilt: $\pi(C) \in \{-1,0,1\}$.\\
+Sei $\pi: E \pfeil \R$ der \df{Einheitsfluss} eines einfachen $st$-Pfades $P$, d.h.
+\begin{align*}
+\pi(e) :=
+\left\lbrace
+\begin{aligned}
+1 && e\in P\\
+-1 && \rev{e} \in P\\
+0 && \text{sonst}
+\end{aligned}
+\right.
+\end{align*}
+Dann gilt für jeden Kozykel $C$: $\pi(C) \in \{-1,0,1\}$.\\
 Ferner: $\pi(C) = 1 \Longleftrightarrow C$ ist $(s,t)$-Schnitt
 
 \paragraph{Beweis}
@@ -158,6 +283,12 @@ Ferner: $\pi(C) = 1 \Longleftrightarrow C$ ist $(s,t)$-Schnitt
 			analog wie Fall 2
 \end{enumerate}
 
+\subsection{Definition}
+Setze $\phi = \lambda \cdot \pi$. Das \df{Residual-Netzwerk} $G_\lambda$ ist definiert als $G$ mit Kapazitätsfunktion
+\[ c(\lambda, e) = c(e) - \lambda \cdot \pi(e) \]
+Definiere $G_\lambda^*$ als $G^*$ mit Kapazitätsfunktion
+\[ c(\lambda, e^*) = c(\lambda, e) \]
+
 \subsection{Lemma}
 $G$ besitzt einen gültigen $s-t$-Fluss mit Wert $\lambda$ genau dann, wenn $G^*_\lambda$ keinen negativen Kreis enthält.
 
@@ -174,6 +305,9 @@ sei $x$ in $G^*_\lambda$ beliebiger Ursprung, $dist(p,\lambda) := $ Distanz von 
 
 \paragraph{Definition}
 \[\phi(\lambda, e) := dist(\lambda, head(e^*)) - dist(\lambda, tail(e^*)) + \lambda \pi(e) \]
+wobei
+\[ dist(\lambda, p) := \min c(\lambda, o \pfeil^* p) \]
+wobei $o \in G^*$ beliebig, aber fest.\\
 
 Zeige $\phi$ ist gütliger $st$-Fluss
 \begin{enumerate}
@@ -184,6 +318,12 @@ Zeige $\phi$ ist gütliger $st$-Fluss
 	$\phi(\lambda, e) \leq c(e) \Longleftrightarrow slack(\lambda, e) \geq 0$
 	Wäre $slack(\lambda, e) < 0$, dann folgt: $dist(\lambda, head(e^*)) > dist(\lambda, tail(e^*)) + c(\lambda, e^*)$, das wäre ein Widerspruch
 \end{enumerate}
+
+\subsection{Satz}
+Ein maximaler $st$-Fluss in einem $st$-planaren Graphen kann in $\O{n\log n}$ berechnet werden.
+
+\subsection{Definition}
+Ein Graph heißt $st$-planar, falls er so planar eingebettet werden kann, dass $s$ und $t$ an der selben Facette liegen.
 
 \subsection{Satz}
 Ein maximaler $st$-Fluss in einem $st$-planaren Graph kann in $\O{n\log n}$ Zeit berechnet werden.
@@ -216,10 +356,10 @@ und
 Zwei Wege heißen \df{kantendisjunkt}, wenn sie keine gemeinsame Kante enthalten, und (intern) \df{knotendisjunkt}, wenn sie außer Anfangs- und Endknoten keinen gemeinsamen Knoten enthalten.
 
 \subsection{Satz von Menger}
-Seien $s$ und $t$ Knoten in $G = (V,E)$ ($\{s,t\}\notin E$ bei knotendisjunkter Version)
+Seien $s$ und $t$ Knoten in $G = (V,E)$
 \begin{itemize}
-	\item $\kappa_G(s,t) \geq k \Longleftrightarrow \exists_{\geq k}$ paarweise knotendisjunkte $st$-Wege
-	\item $\lambda_G(s,t) \geq k \Longleftrightarrow \exists_{\geq k}$ paarweise kantendisjunkte $st$-Wege
+\item Sei $\{s,t\}\notin E$, dann existieren genau $\kappa_G(s,t)$ knotendisjunkte $st$-Wege.
+\item Es existieren genau $\lambda_G(s,t)$ kantendisjunkte $st$-Wege.
 \end{itemize}
 
 \subsection{Menger-Problem}
@@ -242,7 +382,7 @@ $G$ planar eingebetteter Graph, OE $t$ auf äußerer Facette
 \end{enumerate}
 
 \paragraph{Schritt 1}
-\subsection{Lemma}
+\paragraph{Lemma}
 Seien $P_1, \ldots, P_r$ kantendisjunkte, gerichtete $st$-Wege in $\overrightarrow{G}$. Dann enthält
 \[P = \set{\{u,v\} \in E}{\text{Genau eine der Kanten (u,v) und (v,u) liegt auf einem der }P_i}\]
 gerade $r$ kantendisjunkte $st$-Wege in $G$.
@@ -268,6 +408,8 @@ Sei $f$ Facette in $G$ bzw. $\overrightarrow{G}$; definiere Abstand von $f$ zur 
 \[dist(f) := \text{Länge eines kürzesten Weges des Dualknotens }f^* \text{ zum Dualknoten der äußeren Facette }f_0^* \text{ in }G^*\]
 Definiere $C_i$ als Vereinigung der einfachen Kreise in $G$ für die alle Facetten $f$ im Inneren die Bedingung $dist(f) \geq i$ erfüllen. $\overrightarrow{C}_i$ sei entsprechender Rechtskreis in $\overrightarrow{G}$.
 Drehe alle diese $C_i$ um, erhalte $\overrightarrow{G}_C$.\\
+
+
 %%3.6.15, 10.VL
 $\overrightarrow{G}_C$ enthält keine Rechtskreise, da für jeden Rechtskreis in $\overrightarrow{G}$ beim Übergang zu $\overrightarrow{G}_C$ mindestens eine Kante des Kreises umgedreht wird.\\\\
 
