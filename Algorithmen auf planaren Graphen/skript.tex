@@ -422,8 +422,7 @@ Sei $\overrightarrow{P}_C \subset \overrightarrow{E}_C$ Kantenmenge zu $k$ $st$-
 Berechnung einer maximalen Anzahl kantendisjunkter $st$-Wege in $\overrightarrow{G}_C$(in $\O{n}$)\\
 Schleife über ausgehende Kanten aus $s$\\
 \textsc{RightFirstDepthSearch}:\\
-Suchschritt: rechteste nicht markierte auslaufende Kante in Bezug auf Referenzkante\\\\
-
+Suchschritt: rechteste nicht markierte auslaufende Kante in Bezug auf Referenzkante\\
 Zwei Variationen, wie die \df{Referenzkante} zu wählen ist
 \begin{enumerate}
 	\item Weihe: aktuell einlaufende Kante
@@ -433,7 +432,7 @@ Zwei Variationen, wie die \df{Referenzkante} zu wählen ist
 \paragraph{Korrektheitsbeweis zu Schritt 3}
 Beh.: $\overrightarrow{P}_C$ enthält maximale Anzahl kantendisjunkter $st$-Wegen.\\
 Benutze dazu gewichtete Variante des Satz v. Menger, d.h. konstruiere $st$-Schnitt der entsprechenden Kapazität.\\
-Schnitt A wird induziert durch geeigneten Kreis $\overrightarrow{K} \subset \overbrace{G}_C$ mit:
+Schnitt A wird induziert durch geeigneten Kreis $\overrightarrow{K} \subset \overrightarrow{G}_C$ mit:
 \begin{enumerate}
 	\item $s\in Innen(\overrightarrow{K})$ oder auf $\overrightarrow{K}$
 	\item $t \in Aussen(\overrightarrow{K})$
@@ -448,7 +447,7 @@ $\overrightarrow{K}$ geht von $s$ nach $s$
 $\overrightarrow{K}$ geht von $s \neq v_0$ nach $v_0$ und $s$\\
 In diesem Fall den Kreis, der von $v_0$ nach $v_0$ beschrieben wird.
 
-\subsection{Lemma}
+\paragraph{Lemma}
 Betrachte $\overrightarrow{G}_C = (V,\overrightarrow{E}_C)$ und $\overrightarrow{K}$, dann ist jede Kante $(u,v) \in \overrightarrow{E}_C$ mit $u$ auf $\overrightarrow{K}$ und $v \in Aussen(\overrightarrow{K})$ durch einen $st$-Weg aus $\overrightarrow{P}_C$ besetzt.
 
 \paragraph{Beweis}
@@ -464,25 +463,63 @@ Betrachte $\overrightarrow{G}_C = (V,\overrightarrow{E}_C)$ und $\overrightarrow
 	aber dann hätte \textsc{RightFirst} nicht $(u,w)$ sondern $(u,v)$ gewählt. Das wäre ein Widerspruch.
 \end{enumerate}
 
+%% 9.6.15, 11.VL
+
+\subsection{Das knotendisjunkte Menger-Problem}
+Laut dem Satz von Menger entspricht die maximale Zahl aller knotendisjunkter $st$-Wege gerade der Kardinalität von eines minimalen Separators von $G$.
+
+\paragraph{Schritt 1}
+Mache aus $G$ den gerichteten Graphen $\overrightarrow{G}$, indem für jedes $\{s, v\}$ ein $(s,v)$, für jedes $\{v,t\}$ ein $(v,t)$ und für alle anderen $\{u,v\}$ sowohl $(u,v)$ als auch $(v,u)$ aufgenommen werden.
+
+\paragraph{Schritt 2}
+$l_1,\ldots, l_r$ seien die aus $s$ ausführenden Kanten. Führe von jedem $l_i$ eine \textsc{RightFirstDFS} durch, die in $s$ oder $t$ endet.\\
+Trifft dabei eine Iteration auf einen bereits belegten Knoten, unterscheiden wir folgende Konflikte:
+\begin{itemize}
+\item Konflikt von links: Der neue Weg kommt aus Sicht eines bereits bestehenden Weges von links. In diesem Fall wird die letzte Kante des neuen Weges entfernt, er geht einen Schritt zurück und wählt die nächste Kante.
+\item Konflikt von rechts: Vertausche die vorangehende Abschnitte der beiden Wege. Jetzt existiert ein Konflikt von links und ein neuer Suchweg.
+\item Konflikt von rechts auf sich selbst: Suche im Vorfeld alle Linkskreise und entferne die entsprechenden Rechtskreise.
+\end{itemize}
+\paragraph{Laufzeit} Linear.
+
 %% 16.06.15, 12.VL
 
 \section{Das Okamura \& Seymour Problem}
-Sei $G$ ein planarer Graph, $D = \{\{s_i,t_i\}, s_i,t_i \in V, 1 \leq i \leq k \}$, $s_i, t_i$ liegen alle auf Rand der äußeren Facette.\\
+Sei $G$ ein planarer Graph, $D = \{\{s_i,t_i\}, s_i,t_i \in V, 1 \leq i \leq k \}$\\
 Finde $k$ paarweise kantendisjunkte Wege, die jeweils $s_i$ mit $t_i$ verbinden.
+NP-vollständig im Allgemeinem, aber Spezialfälle:
+\begin{itemize}
+\item $s_i, t_i$ liegen alle auf Rand derselben Facette
+\item $G +D := (V, E \cup D)$ ist ebenfalls planar
+\end{itemize}
 
-\subsection{Kapazitätsbedingung}
-Für jeden Schnitt $X \subset V$ ist die \df{freie Kapazität} $fcap(X) \geq 0$,
-\[fcap(X) := cap(X) - dens (X)\]
+\subsection{Definition}
+Sei $X \subset V$, definiere 
+\begin{itemize}
+\item die \df{Kapazität} von $X$ durch
 \[cap(X) = \left|\set{\{x,y\} \in E}{x \in X, y \in V\setminus X}\right|\]
+\item die \df{Dichte} von $X$ durch
 \[dens(X) = \left|\set{\{s,t\} \in D}{\#(\{s,t\}\cap X) = 1}\right|\]
-(\df{Kapazität} und \df{Dichte} von $X$)\\
-Die Kapazitätsbedingung ist offensichtlich notwendig für Lösbarkeit des Problems. Allerdings ist sie i.A. nicht hinreichend.
+\item die \df{freie Kapazität} von $X$ durch
+ \[fcap(X) := cap(X) - dens (X)\]
+\end{itemize}
+\subsection{Kapazitätsbedingung}
+Für jeden Schnitt ist die \df{freie Kapazität} $fcap(X) \geq 0$.\\
+Diese Bedingung ist notwendig aber nicht hinreichend für die Existenz paarweiser kantendisjunkter $s_it_i$-Pfade.
 
-\paragraph{Anti-Beispiel}
-Ein Quadrat, mit den Ecken $a,b,c,d$ mit Farben 1,2,1,2. Erfüllt Kapazitätsbedingung, löst aber Problem nicht. $fcap(X) = 1$, wobei $X = \set{a}{}$.
+\paragraph{Gegen-Beispiel}
+\begin{center}
+\begin{tikzpicture}
+\node[draw, circle] (A) at (0,0) {$s_2$};
+\node[draw, circle] (B) at (4,0) [] {$s_1$};
+\node[draw, circle] (C) at (4,4) {$t_2$};
+\node[draw, circle] (D) at (0,4) [] {$t_1$};
+
+\draw (A) -> (B) -> (C) -- (D) -- (A);
+\end{tikzpicture}
+\end{center}
 
 \subsection{Geradheitsbedingung}
-Für alle Schnitte $X \subset V$ gilt $fcap(X)$ ist gerade.
+Für alle $X \subset V$ ist $fcap(X)$ gerade.
 
 \subsection{Satz von Okamura \& Seymour}
 Falls die Geradheitsbedingung erfüllt ist, ist die Kapazitätsbedingung äquivalent zur Lösbarkeit des Problems.
@@ -512,7 +549,7 @@ Terminalpaare $D$ auf äußerer Facette und Geradheitsbedingung erfüllt.\\
 \end{enumerate}
 
 \subsection{Phase 1: Instanz mit Klammerstruktur}
-$G, D = \set{\{s_i,t_i\}}{}$
+$G, D = \set{\{s_i,t_i\}}{i \in I}$
 \begin{enumerate}
 	\item Wähle beliebiges Terminal als Startterminal.
 	\item Gehe im Gegenuhrzeigersinn: Dem ersten Terminal eines Paares, das einem begegnet, ordnet man ein aufgehende Klammer zu. Begegnet man dem zweiten, erhält dieses eine zugehende Klammer.\\
@@ -537,7 +574,7 @@ $G, D = \set{\{s_i,t_i\}}{}$
 Ohne Einschränkung sei von Startterminal im Gegenuhrzeigersinn jeweils $s_i$ vor $t_i$ und Indizierung entsprechend Auftreten der $t_i$.\\
 Für $i = 1, \ldots, k$
 \begin{enumerate}
-	\item $p_i := $ führe \textsc{RFS} in $G'$ von $s_i$ aus bis zu einem $j$
+	\item $p_i := $ führe \textsc{RFS} in $G'$ von $s_i$ aus bis zu einem $t_j$
 	\item Falls $i \neq j$, \textsc{Stop}.
 \end{enumerate}
 gebe $p_1,\ldots, p_k$ aus.
@@ -551,7 +588,7 @@ Der Algorithmus endet entweder
 	\item mit Wegen $p_1,\ldots, p_k$, die jeweils $s_i$ mit $t_i$ verbinden.
 	\item $p_1,\ldots, p_{i-1}$ korrekt und $p_i$ verbindet $s_i$ mit $t_j$\\
 	$\Longrightarrow i < j$, da $i \neq j$\\
-	Prozedur, die Weg $p$ berechnet, so dass $p$ einen Schnitt $X$ induziert, der im Fall 1 \df{saturiert} ist, d.h. $fcap(X) = $ und der im Fall 2 \df{übersaturiert} ist, d.h. $fcap(X) < 0$.
+	Prozedur, die Weg $p$ berechnet, so dass $p$ einen Schnitt $X$ induziert, der im Fall 1 \df{saturiert} ist, d.h. $fcap(X) = 0$ und der im Fall 2 \df{übersaturiert} ist, d.h. $fcap(X) < 0$.
 \end{enumerate}
 
 \paragraph{Prozedur} für Schnitt $X$:\\
@@ -564,7 +601,7 @@ Sei $A$ Menge der Kanten $\{u,v\}$ aus $G$ mit $u$ auf $p$ und $v$ rechts von $p
 Wenn $\{u,v\}$ durch ein $p_i$ besetzt, dann wegen Konstruktion von $p$ in Orientierung $(u,v)$.
 \begin{enumerate}
 	\item[Fall 1] Es existiere $(u,v)$ mit $(u,v)$ nicht durch $p_1, \ldots, p_i$ besetzt. Mein Bild zeigt einen Widerspruch zu RFS Ur argument is invalid.
-	\item[Fall 2] Es existiert $\{u,v\} \in A, (u,v), (v,u) \notin G'$. Bild. ICh bin müde as fuck\ldots
+	\item[Fall 2] Es existiert $\{u,v\} \in A, (u,v), (v,u) \notin G'$.Widerspruch.
 	\qed
 \end{enumerate}
 
