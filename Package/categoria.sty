@@ -3,7 +3,14 @@
 \NeedsTeXFormat{LaTeX2e} %Keine Ahnung, was hier hin soll?
 \ProvidesPackage{categoria}[2015/09/05]
 
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+
 \newcommand{\Top}{\textbf{Top}}
 \newcommand{\Mod}{\textbf{Mod}}
+
+\newcommand{\colim}[2]{\underset{#1}{\textsf{colim}}#2}
 
 \endinput

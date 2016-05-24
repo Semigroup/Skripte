@@ -3,14 +3,6 @@
 \NeedsTeXFormat{LaTeX2e} %Keine Ahnung, was hier hin soll?
 \ProvidesPackage{latexa}[2015/09/05]
 
-\newcommand{\ifLeer}[3]{
-\begin{scriptsize}
-\ifx&#1&%
-{#2}
-\else
-{#3}
-\fi
-\end{scriptsize}
-}
+\newcommand{\ifLeer}[3]{\ifx&#1&\relax#2\relax\else\relax#3\relax\fi\relax}
 
 \endinput

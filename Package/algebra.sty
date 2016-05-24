@@ -26,6 +26,7 @@
 \newcommand{\brak}[1]{\left[#1\right]}
 \newcommand{\curv}[1]{\left\lbrace#1\right\rbrace}
 \newcommand{\shrp}[1]{\left<#1\right>}
+\newcommand{\quot}[1]{\glqq #1 \grqq\relax}
 \newcommand{\set}[2]{\curv{\ifLeer{#2}{#1}{#1 ~ | ~ #2}}}
 \newcommand{\grp}[2]{\shrp{\ifLeer{#2}{#1}{#1 ~ | ~ #2}}}
 
@@ -67,7 +68,6 @@
 
 \renewcommand{\d}{\partial}
 \newcommand{\e}{\varepsilon}
-\renewcommand{\i}{^{-1}}
 
 \newcommand{\Pfeil}[1]{\overset{#1}{\longrightarrow}}
 \newcommand{\Lpfeil}[1]{\overset{#1}{\longleftarrow}}
@@ -75,11 +75,17 @@
 \newcommand{\lpfeil}[1]{\overset{#1}{\leftarrow}}
 \newcommand{\inj}[1]{\overset{#1}{\hookrightarrow}}
 \newcommand{\linj}[1]{\overset{#1}{\hookleftarrow}}
-\newcommand{\Inj}[1]{\overset{#1}{\hookrightarrow}}
-\newcommand{\Linj}[1]{\overset{#1}{\hookleftarrow}}
+\newcommand{\Inj}[1]{\overset{#1}{\lhook\joinrel\longrightarrow}}
+\newcommand{\Linj}[1]{\overset{#1}{\lhook\joinrel\longleftarrow}}
+\newcommand{\surj}[1]{\overset{#1}{\twoheadrightarrow}}
+\newcommand{\lsurj}[1]{\overset{#1}{\twoheadleftarrow}}
+%\newcommand{\Surj}[1]{\overset{#1}{\relbar\joinrel\twoheadrightarrow}
+%\newcommand{\Linj}[1]{\overset{#1}{\relbar\joinrel\twoheadleftarrow}
+
 \newcommand{\impl}[1]{\overset{#1}{\Rightarrow}}
 \newcommand{\Impl}[1]{\overset{#1}{\Longrightarrow}}
-
+\newcommand{\aus}[1]{\overset{#1}{\Leftarrow}}
+\newcommand{\Aus}[1]{\overset{#1}{\Longleftarrow}}
 \newcommand{\gdw}[1]{\overset{#1}{\Leftrightarrow}}
 \newcommand{\Gdw}[1]{\overset{#1}{\Longleftrightarrow}}
 
