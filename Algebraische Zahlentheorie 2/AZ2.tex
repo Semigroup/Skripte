@@ -140,7 +140,81 @@ Sei $X$ ein topologischer Raum.
 \begin{itemize}
 \item Wir nennen $X$ \df{kompakt}, falls er \df{quasikompakt} ist, d.\,h., jede offene Überdeckung von $X$ besitzt eine offene Teilüberdeckung.
 \item $X$ heißt \df{lokal kompakt}, falls jeder Punkt eine Umgebung enthält, deren Abschluss kompakt ist.
-\item 
 \end{itemize}
+
+\Bem{}
+\begin{itemize}
+\item Jede abgeschlossene Teilmenge eines kompakten Raumes ist kompakt.
+\item Jede kompakte Menge eines Hausdorffraums ist abgeschlossen.
+\item Ist ein Raum kompakt und hausdorffsch, so erfüllt er \df{T3}, d.\,h., er ist \df{regulär}, d.\,h., jede abgeschlossene Teilmenge und jeder nicht in dieser Teilmenge liegender Punkt könne durch offene Umgebungen getrennt werden.
+\item Ein Raum ist genau dann regulär, wenn jeder Punkt eine Umgebungsbasis aus abgeschlossenen Umgebungen besitzt.
+\item In lokal kompakten Räumen hat jeder Punkt eine Umgebungsbasis aus kompakten Umgebungen.
+\item Ist ein Raum kompakt und hausdorffsch, so erfüllt er \df{T4}, d.\,h., er ist \df{normal}, d.\,h., disjunkte abgeschlossene Teilmengen werden durch offene Umgebungen getrennt.
+\item Eine bijektive, stetige Abbildung von einem Kompaktum nach einem Hausdorffraum ist homöomorph.
+\end{itemize}
+
+\Prop{}
+Sei $G$ eine lokal kompakte Gruppe, $H\leq G$ eine abgeschlossene Gruppe.
+\begin{itemize}
+\item $G/H$ ist ein lokal kompakter Raum.
+\item Jede kompakte Teilmenge von $G/H$ besitzt ein kompaktes Urbild.
+\end{itemize}
+
+\Prop{}
+Sei $G$ lokal kompakt und hausdorffsch, $H \leq G$ eine Untergruppe.\\
+$H$ ist genau dann diskret, wenn $H\cap K$ für alle kompakten Teilmengen von $K \subset G$ endlich ist.
+
+\section{Zusammenhangkomponenten}
+\Def{}
+Ein topologischer Raum heißt \df{zusammenhängend}, wenn er sich nicht in zwei offene, disjunkte, nichtleere Teilräume zerlegen lässt.
+
+\Bem{}
+\begin{itemize}
+\item Ist eine Teilmenge eines Raumes zusammenhängend, so ist es auch ihr Abschluss.
+\item Seien $A_i \subset X$ jeweils zusammenhängend, dann gilt
+\[ \bigcap_{i\in I}A_i \neq \emptyset \Impl{} \bigcup_{i\in I} A_i \text{ ist zusammenhängend} \]
+\item Beliebige Produkte zusammenhängender Räume sind zusammenhängend.
+\item Bilder zusammenhängender Räume bleiben unter stetigen Abbildungen zusammenhängend.
+\end{itemize}
+
+\Def{}
+Sei $X$ ein topologischer Raum.
+\begin{itemize}
+\item Ist $x \in X$ ein Punkt, so verstehen wir unter der \df{Zusammenhangkomponente} von $x$ die größte, zusammenhängende Teilmenge von $X$, die $x$ enthält.
+\item $X$ heißt \df{total unzusammenhängend}, wenn jede Zusammenhangkomponente genau ein Element enthält.
+\item Ist $G$ eine topologische Gruppe, so bezeichnen wir mit $G^o$ die Zusammenhangkomponente der Eins. 
+\end{itemize}
+
+\Prop{}
+Ist $G$ eine topologische Gruppe, so ist $G^o$ ein abgeschlossener Normalteiler.
+
+\Prop{}
+Sei $G$ eine topologische Gruppe, $H \leq G$ eine Untergruppe. Sind $H$ und $G/H$ zusammenhängend, so auch $G$.
+
+\Prop{}
+Sei $G$ eine topologische Gruppe, dann ist $G/G^o$ hausdorffsch und total unzusammenhängend.
+
+\Bem{}
+Eine total unzusammenhängende Gruppe ist hausdorffsch.
+
+\section{Total Unzusammenhängende Gruppen}
+\Satz{}
+Eine hausdorffsche Gruppe ist genau dann total unzusammenhängend und lokal kompakt, wenn jede Umgebung der Eins eine offene und kompakte Untergruppe enthält.
+
+\Lem{}
+Sei $X$ ein kompakter und total unzusammenhängender Hausdorffraum. Bezeichnet $\mathcal{W}$ für $x \in X$ die Menge der Umgebungen von $x$, die zugleich offen und abgeschlossen sind, so gilt
+\[ \bigcap_{W\in \mathcal{W}} W = \{x\} \]
+
+\Lem{}
+Sei $G$ eine lokal kompakte und total unzusammenhängende Gruppe, $U$ eine offene Umgebung von $x \in G$.\\
+Dann existiert eine offene und kompakte Umgebung von $x$, die in $U$ enthalten ist.
+
+\Kor{}
+Sei $G$ eine kompakte und total unzusammenhängende Gruppe. Dann enthält jede Umgebung der Eins einen offenen Normalteiler.
+
+\section{Limiten Topologischer Räume}
+
+\section{Proendliche Gruppe}
+\section{Unendliche Galoistheorie}
 
 \end{document}
