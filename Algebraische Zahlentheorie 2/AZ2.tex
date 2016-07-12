@@ -6,6 +6,10 @@
 \usepackage{../Package/diagramma}
 \usepackage{../Package/categoria}
 
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows}
+
 \newcommand{\qi}{\backsimeq_{\textsc{QI}}}
 \newcommand{\ba}{\backsimeq_{\textsc{BA}}}
 \newcommand{\normal}{\vartriangleleft}
@@ -17,6 +21,8 @@
 \newcommand{\Cz}{\mathbb{C}}
 
 \renewcommand{\i}{^{-1}}
+
+\newcommand{\pf}{\mathfrak{p}}
 
 \begin{document}
 
@@ -213,8 +219,194 @@ Dann existiert eine offene und kompakte Umgebung von $x$, die in $U$ enthalten i
 Sei $G$ eine kompakte und total unzusammenhängende Gruppe. Dann enthält jede Umgebung der Eins einen offenen Normalteiler.
 
 \section{Limiten Topologischer Räume}
+\Def{Gerichtet Geordnet}
+Sei $I$ eine nichtleere Menge.
+\begin{itemize}
+	\item $(I,\leq)$ heißt \df{teilgeordnet}, falls $\leq$ auf $I$ eine binäre Relation ist, die reflexiv und transitiv ist.
+	\item Eine teilgeordnete Menge $(I,\leq)$ heißt \df{gerichtet}, falls für jedes Paar $i,j \in I$ ein $k \in I$ existiert, sodass $i \leq k$ und $j\leq k$.
+\end{itemize}
+
+\Def{Inverses System}
+Sei $I$ gerichtet.
+\begin{itemize}
+	\item Ein \df{inverses System} $(X_i, \phi_{ij})$ topologischer Räume ist ein kontravarianter Funktor $X : I \pfeil{} \Top$, d.\,h., die $X_i$ sind topologische Räume und für jedes $i\leq j$ ist
+	\[\phi_{ij} :X_j \Pfeil{}X_i \]
+	eine stetige Abbildung.
+	\item Ein Morphismus inverser Systeme ist eine natürliche Transformation von inversen Systemen.
+	\item Ist $X$ ein topologische Raum, so verstehen wir unter $(X, \id{X})$ das \df{konstante System} zu $X$.
+\end{itemize}
+
+\Def{Projektiver Limes}
+Ein \df{projektiver bzw. inverser Limes} eines inversen Systemes $(X_i, \phi_{ij})$ ist ein topologischer Raum
+\[ X = \lim\limits_{i \in I}(X_i, \phi_{ij}) =: \lim\limits_{i\in I}X_i \]
+der den Funktor
+\begin{align*}
+\Top &\Pfeil{} \textbf{Set}\\
+Y & \longmapsto \Hom{\text{inv.Sys.}}{(Y,\id{Y})}{(X_i, \phi_{ij})}
+\end{align*}
+darstellt, d.\,h.,
+\[ \Hom{\Top}{Y}{X}  \isom{} \Hom{\text{inv.Sys.}}{(Y,\id{Y})}{(X_i, \phi_{ij})} \]
+
+\Bem{}
+\begin{itemize}
+	\item Ein Limes ist eindeutig bis auf eindeutige Isomorphie.
+	\item Folgendes Konstrukt ist ein Limes von $(X_i, \phi_{ij})$
+	\[ X:= \set{(x_k) \in \prod_{i\in I}X_i }{ \phi_{ij}(x_i) = x_j \forall i \leq j } \]
+	\item Es gilt
+	\[ X= \bigcap_{i\leq j} \set{(x_k) \in \prod_{i\in I}X_i }{ \phi_{ij}(x_i) = x_j} \]
+\end{itemize}
+
+\Prop{}
+Sei $(X_i, \phi_{ij})$ ein inverses System topologischer Räume mit stetigen Abbildungen
+\[ \phi_i : X_i \Pfeil{} X:= \lim\limits_{i \in I} X_i \]
+\begin{itemize}
+	\item Die $\phi_i\i$ bilden für alle $i$ und $U\subseteq_o X_i$ eine Basis der Topologie von $X$.
+	\item Eine Teilmenge $Y \subset X$ mit $\phi_i(Y) = X_i$ für alle $i\in I$ liegt dicht in $X$.
+	\item Eine Abbildung $f : X \pfeil{} Y$ ist genau dann stetig, wenn für alle $i \in I$ $\phi_i\circ f$ stetig ist.
+\end{itemize}
+\Prop{}
+Sei $(X_i,\phi_{ij})$ ein inverses System topologischer Räume mit Limes $X$.
+\begin{itemize}
+	\item Sind alle $X_i$ hausdorffsch, so ist dies auch $X$.
+	\item Sind alle $X_i$ total unzusammenhängend, so auch $X$.
+	\item Sind alle $X_i$ hausdorffsch, so ist
+	\[\set{(x_k) \in \prod_{i\in I}X_i }{ \phi_{ij}(x_i) = x_j \forall i \leq j }\]
+	eine abgeschlossene Teilmenge von $\prod_{i \in I}X_i$.
+	\item Sind alle $X_i$ kompakt und hausdorffsch, so ist es auch $X$.
+	\item Sind alle $X_i$ nichtleer, kompakt und hausdorffsch, so ist dies auch $X$.
+\end{itemize}
+\Prop{}
+Seien folgende Morphismen inverser Systeme von kompakten und hausdorffschen Gruppen gegeben
+\begin{align*}
+ (F_i, \upsilon_{ij}) \Pfeil{\alpha} (G_i, \phi_{ij}) \Pfeil{\beta} (H_i, \chi_{ij})
+\end{align*}
+Ist diese Sequenz gradweise exakt, d.\,h., ist für alle $i \in I$
+\[ F_i \Pfeil{\alpha_i} G_i \Pfeil{\beta_i} H_i \]
+exakt, so ist auch die Limessequenz
+\[ \lim\limits_{i\in I} F_i \Pfeil{\alpha} \lim\limits_{i \in I}G_i \Pfeil{\beta} \lim\limits_{i \in I}H_i \]
+exakt.
+
+\Def{Kolimes}
+Sei $I$ gerichtet.
+\begin{itemize}
+	\item Ein \df{direktes System} topologischer Räume ist ein kovarianter Funktor
+	\[X : I \Pfeil{} \Top\]
+	\item Morphismen direkter System sind natürliche Transformationen der zugrunde liegenden Funktoren.
+	\item Ein \df{Kolimes} eines direkten Systemes $(X_i, \phi_{ij})$ ist ein topologischer Raum $X = \textsf{colim}_{i\in I}X_i$, der den Funktor
+	\[ Y \longmapsto \Hom{}{(X_i,\phi_{ij})}{(Y,\id{Y})} \]
+	darstellt.
+\end{itemize}
+
+\Bem{}
+Ist $(X_i,\phi_{ij})$ ein direktes System, so ist folgender Kolimes gegeben
+\[ \coprod_{i\in I}X_i/\sim \]
+wobei
+\[ x_i \sim x_j \Gdw{} \exists k \geq i,j : \phi_{ik}(x_i) = \phi_{jk}(x_j) \]
 
 \section{Proendliche Gruppe}
+\Bem{}
+Jede endliche Gruppe wird als eine topologische Gruppe aufgefasst, indem wir sie mit der diskreten Topologie versehen.
+\Def{}
+Eine topologische Gruppe heißt \df{proendlich}, wenn sie ein projektiver Limes eines inversen Systems endlicher Gruppen ist.
+\Satz{}
+Sei $G$ eine topologische Gruppe. Folgende Aussagen sind äquivalent:
+\begin{itemize}
+	\item $G$ ist proendlich.
+	\item $G$ ist kompakt und total unzusammenhängend.
+	\item $G$ ist kompakt und
+	\[ \bigcap_{N\trianglelefteq_o G}N = \{1\} \]
+\end{itemize}
+
+\Lem{}
+Sei $G$ eine topologische Gruppe, $I$ eine Familie abgeschlossener Normalteiler, sodass gilt
+\[ N_1,N_2 \in I \Impl{} \exists N_3 \in I: N_3 \subseteq N_1 \cap N_2 \]
+\begin{itemize}
+	\item Definiere für $N_1,N_2\in I$
+	\[ N_1\preceq N_2 \Gdw{} N_1 \supseteq N_2 \]
+	Dann ist $(I,\preceq)$ gerichtet.
+	\item Setzt man für $N_i \preceq N_j$
+	\[ \phi_{ij} : G/N_j \Pfeil{} G/N_i \]
+	so ist $(G/N_i, \phi_{ij})$ ein inverses System.\\
+	Definiere
+	\[ \widehat{G} := \lim\limits_{N \in I}G/N \]
+	Es existiert ein kanonischer Morphismus stetiger Gruppen
+	\[ \upsilon : G \Pfeil{} \widehat{G} \]
+	mit Kern
+	\[\Ker \upsilon = \bigcap_{N\in I}N \]
+	\item Ist $G$ kompakt, so ist $\upsilon$ surjektiv.
+\end{itemize}
+
 \section{Unendliche Galoistheorie}
+
+\Satz{}
+Sei $L|K$ eine galoissche, nicht notwendigerweise endliche Körpererweiterung. Definiere
+\[ G(L|K) :=\Aut{K-\text{Alg.}}{L} \]
+$G(L|K)$ erhält eine Topologie als Gruppe, indem wir Untergruppen der Gestalt
+\[ G(L|E) \]
+für alle endlichen, galoisschen Teilerweiterungen $E|K$ zu einer Umgebungsbasis der Eins in $G(L|K)$ zusammenfassen. Es gilt dann
+\[ G = \lim\limits_{\stackrel{L|E|K}{E|K \text{ endl., gal.}}}G(E|K) \]
+
+\Satz{Satz der Unendlichen Galoistheorie}
+Für eine galoissche Körpererweiterung  $K$ herrschen folgende Dualitäten vor
+\begin{center}
+\begin{tikzpicture}[scale =2]
+\node (D1) at (0,1)  {$\{L|E|K\text{ galoissche Zwischenerweiterung}\}$};
+\node (D3) at (4,1)  {$\{ U \subseteq_\text{abg} G \}$};
+\node (D5) at (4,0)  {$\{U \subseteq_o G \}$};
+\node (D7) at (0,0)  {$\{L|E|K\text{endliche, galoissche Zwischenerweiterung}\}$};
+
+\draw[<->] (D1) -> (D3);
+\draw[<->] (D5) -> (D7);
+\draw[right hook->] (D5) -> (D3);
+\draw[right hook->] (D7) -> (D1);
+%\draw [ultra thick, right hook->,    blue] (0,-1) -- (3,-1);
+\end{tikzpicture}
+\end{center}
+durch
+\begin{align*}
+E & \longmapsto G(L|E)\\
+H & \longmapsto L^H
+\end{align*}
+
+
+
+\chapter{Klassenkörpertheorie -- Motivation und Hauptresultate}
+\section{Abelsche und Quadratische Erweiterungen von $\Q$}
+\Satz{Kroncker-Weber}
+Sei $L|\Q$ eine endliche Erweiterung. Folgende Aussagen sind äquivalent:
+\begin{itemize}
+	\item $L|\Q$ ist abelsch.
+	\item $L$ ist enthalten in einem Kreisteilungskörper $\Q(\mu_n)$.
+\end{itemize}
+
+\Satz{}
+Sei $N \in \N$, $L |\Q$ endlich. Folgende Aussagen sind äquivalent:
+\begin{itemize}
+	\item $L \subseteq \Q(\mu_N)$.
+	\item Ob eine Primzahl $p$ in $L$ voll zerlegt ist, hängt nur von $p\mod{n}$ ab.
+\end{itemize}
+
+\Satz{}
+Sei $L|\Q$ abelsch und $N$ minimal mit
+\[ L \subseteq \Q(\mu_N) \]
+Für jede Primzahl $p$ gilt
+\[ p \text{ ist in }L \text{ verzweigt} \Gdw{} p|N \]
+
+\Satz{}
+Sei $N \in \N$ und $H \subseteq (\Z/N\Z)^\times \isom{} G(\Q(\mu_N) / \Q)$ beliebig. Es bezeichne $L = \Q(\mu_N)$.\\
+Für $p\not | N$ prim gilt:
+\begin{itemize}
+	\item $p$ ist unverzweigt in $L$.
+	\item $p$ ist genau dann voll zerlegt in $L$, wenn $p\mod{N} \in H$.
+	\item Ist $f$ die kleinste natürliche Zahl, die
+	\[ p^f \mod{N} \in H \]
+	erfüllt, so ist $p\O_L$ ein Produkt von $[L:\Q]/f$ verschiedenen Primidealen. 
+\end{itemize}
+
+\Prop{}
+Sei $L|K$ galoissch und $\pf \subset \O_K$ unverzweigt in $L$. Dann gilt
+\begin{itemize}
+	\item 
+\end{itemize}
 
 \end{document}
