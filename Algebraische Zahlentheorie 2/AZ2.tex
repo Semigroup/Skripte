@@ -18,12 +18,14 @@
 \newcommand{\Cay}[2]{\textsf{Cay}(#1,#2)}
 
 
-\newcommand{\Cz}{\mathbb{C}}
+\renewcommand{\A}{\mathbb{A}}
 
 \renewcommand{\i}{^{-1}}
 
 \newcommand{\pf}{\mathfrak{p}}
 \newcommand{\Pf}{\mathfrak{P}}
+\newcommand{\mf}{\mathfrak{m}}
+\newcommand{\Mf}{\mathfrak{M}}
 \newcommand{\af}{\mathfrak{a}}
 \newcommand{\Af}{\mathfrak{A}}
 \renewcommand{\bf}{\mathfrak{b}}
@@ -802,5 +804,112 @@ wobei $K_v$ die Komplettierung von $K$ bzgl. $v$ bezeichnet.
 \end{itemize}
 
 \section{Was besagt die Klassenkörpertheorie? Erste Folgerungen der Hauptresultate}
+\Satz{}
+Sei $L|K$ eine endliche, abelsche Erweiterung globaler Körper. $v$ sei eine Stelle von $K$, $\pi_v \in \O_{K_v} \subset K_v$ die zugehörige lokale Stelle. Definiere folgende Abbildung
+\[ \Theta : K_v^\times \Inj{} C_K \Pfeil{} C_K/N_{L|K}C_L \]
+Dann gilt
+\begin{itemize}
+\item $v$ zerlegt sich voll in $L$ $\Gdw{}$ $\Theta(K_v^\times) = \{1\}$
+\item Ist $v$ endlich, so gilt
+\[ v \text{ ist unverzweigt in }L\Gdw{} \Theta(\O_{K_v}^\times) = \{1\} \]
+\item Sei $v$ endlich und unverzweigt in $L$. Dann liegt folgende Isomorphie vor
+\begin{align*}
+C_K / N_{L|K}C_L &\Pfeil{} G(L|K)\\
+\Theta(\pi_v) & \longmapsto \Frob_v
+\end{align*}
+\end{itemize}
+
+\chapter{Adele, Idele und Verallgemeinerte Idealklassengruppen}
+\section{Eingeschränkte Produkte}
+\Bem{}
+Ab sofort heißt ein topologischer Raum \textit{kompakt}, falls er \textit{quasikompakt} und \textit{hausdorffsch} ist.\\
+Ein Raum heißt ferner ab jetzt \textit{lokal kompakt}, falls er \textit{hausdorffsch} und \textit{lokal quasikompakt} ist.
+
+\Def{Eingeschränkte Produkte}
+Sei $I$ eine Indexmenge, $(G_i)_{i\in I}$ eine Familie lokal kompakter, abelscher Gruppen und $(U_i)_{i\in I}$ eine Familie jeweils kompakter, offener Untergruppen.\\
+Definiere das \df{restringierte Produkt} bzw. \df{eingeschränkte Produkt} von $(G_i)_i$ bzgl. $(U_i)_i$ durch
+\[ \prod_{i\in I}'G_i := \set{(x_i)_i \in \prod_{i\in I}G_i}{ x_i \in U_i \text{ ffa } i \in I } \]
+Definiere für eine endliche Menge $J \subset I$
+\[ G_J := \prod_{i \in J}G_i \times \prod_{i \in I\setminus J} G_i \]
+Dann gilt
+\[ \prod_{i\in I}'G_i = \bigcup_{J \text{ endlich}}G_J  \]
+Jedes $G_J$ trägt die Produkttopologie und ist lokal kompakt; das restringierte Produkt $\prod_{i\in I}'G_i$ wird nun mit der dadurch induzierten Kolimestopologie versehen. Dadurch ist $\prod_{i\in I}'G_i$ ebenfalls lokal kompakt und für jedes $V \subset \prod_{i\in I}'G_i$ gilt insbesondere
+\[ V \subset_o G \Gdw{} V\cap G_J \subset_o G_J \text{ für alle }J \text{ endlich} \]
+Die Menge
+\[ \set{ \prod_{i \in J}O_i \times \prod_{i \in I\setminus J}U_i }{J \subset I \text{ endlich und } 1 \in O_i \subset_o G_i} \]
+bilde eine Umgebungsbasis der Eins in $\prod_{i\in I}'G_i$.\\
+Ferner wird folgende universelle Abbildungseigenschaft für jede hausdorffsche, abelsche Gruppe $Z$ erfüllt
+\[ \Hom{cts}{\prod_{i\in I}'G_i}{Z} = \set{(f_i)_i \in \prod_{i \in I} \Hom{cts}{G_i}{Z} }{ \text{ffa } i \in I \text{ ist } f_i(U_i) \text{ in jedem }1 \in U\subset_o Z \text{ enthalten} } \]
+
+
+\section{Adele und Idele}
+\Def{Adelering und Idelering}
+Sei $K$ ein globaler Körper, $S$ die Menge aller Stellen von $K$. Definiere den \df{Adelering} von $K$ durch das restringierte Produkt
+\[ \A_K := \prod'_{v\in S} K_v \text{ bzgl. } (\O_v)_{v\in S} \]
+und die \df{Idelegruppe} durch
+\[ \A_K^\times := \prod'_{v\in S}K_v^\times \text{ bzgl. } (\O_v^\times)_{v\in S} \]
+
+\Bem{}
+\[(\A_K)^\times = \A_K^\times \]
+\Def{Hauptadele und Hauptidele}
+Es liegen folgende Homomorphismen vor
+\begin{align*}
+K & \Inj{} \A_K && K^\times \Inj{} \A_K^\times\\
+a & \longmapsto (a)_v && a\longmapsto (a)_v
+\end{align*}
+Die Bilder dieser Inklusionen nennen wir \df{Hauptadele} bzw. \df{Hauptidele}.\\
+Die \df{Idele-Klassengruppe} ist definiert durch
+\[ C_K := \A_K^\times / K^\times \]
+Ferner liegt folgender stetiger multiplikativer Monoid-Homomorphismus vor
+\begin{align*}
+\bet{\cdot} : \A_K &\Pfeil{} \R_{\geq 0}\\
+(a_v)_v & \longmapsto \bet{a} := \prod_{v}\bet{a}_v
+\end{align*}
+
+\Satz{Produktformel}
+Sei $K$ global, dann gilt für alle $a \in K^\times$
+\[ \bet{a} = 1 \]
+
+\Satz{}
+Sei $K$ global.
+\begin{itemize}
+\item $K$ liegt in $\A_K$ diskret und $\A_K/K$ ist kompakt.
+\item Definiere
+\[ \A_K^1 := \set{a\in\A_K^\times}{ \bet{a} = 1 } \]
+$K^\times$ liegt in $\A_K^1$ diskret und $C^1_K:= \A_K^1/K^\times$ ist kompakt.
+\end{itemize}
+
+\Bem{}
+$C_K = \A_K^\times/K^\times$ ist im Allgemeinem nicht kompakt.
+
+\Bem{Idealklassengruppe}
+Sei $K$ ein Zahlkörper, $\I$ bezeichne die Menge der gebrochenen Ideale von $K$, $\P$ die Menge der gebrochenen Hauptideale.\\
+Die \df{Idealklassengruppe} ist definiert durch
+\[Cl(K) = \I/\P \]
+Bezeichnet $S_f$ die Menge der endlichen Stellen von $K$ und $S_\infty$ die Menge der unendlichen Stellen von $K$, so definiere
+\[ \U := \prod_{v\in S_\infty}K_v^\times \times \prod_{v\in S_f} \O_v^\times \subset \A_K^\times \]
+Es gilt
+\[ \A_K^\times / \U \isom{} \bigoplus_{v\in S_f} K_v^\times / \O_v^\times \isom{} \I  \]
+Definiert man ferner $\overline{\U} := K^\times\cdot\U/K^\times$, so gilt
+\[ C_K / \overline{\U} \isom{} Cl(K) \]
+
+\Def{Verallgemeinerte Idealklassengruppe}
+Sei $K$ ein Zahlkörper.\\
+Definiere für ein Ideal $0\neq \af \subset \O_K$
+\[ \U(\af) := \prod_{v\in S}U_v(\af) \subset \U \]
+wobei
+\[ U_v(\af) := \left\lbrace
+\begin{aligned}
+\{x \in \O_{K_v}~|~x \equiv 1 \mod{\af\O_{K_v}}\} = 1 + \mf^{n_v(\af)} && v \in S_f\\
+K_v^\times && v \text{ komplex}\\
+\R_{>0} \cap K^\times_v && v \text{ reell}
+\end{aligned}
+\right. \]
+Die \df{verallgemeinerte Idealklassengruppe} ist definiert durch
+\[Cl(K, \af) = C_K / \overline{\U(\af)} \]
+Es gilt für Ideale $\af,\bf$
+\[ \af \leq \bf \Gdw{} \U(\af) \leq \U(\bf) \Gdw{} Cl(K,\af) \surj{} Cl(K,\bf) \]
+und
+\[ Cl(K,\O_K) = Cl(K) \]
 
 \end{document}
