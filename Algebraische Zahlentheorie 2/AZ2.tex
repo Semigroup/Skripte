@@ -715,6 +715,91 @@ Das Normrestsymbol erfüllt folgende Eigenschaften:
 \end{itemize}
 
 \section{Haupttheoreme der Klassenkörpertheorie}
+\Def{Lokaler Körper}
+Unter einem \df{lokalen Körper} verstehen wir $\R$ oder $\C$ oder einen vollständigen, diskret bewerteten Körper mit endlichem Restklassenkörper.
+
+\Satz{Lokale Klassenkörpertheorie}
+Sei $K$ ein lokaler Körper.
+\begin{itemize}
+\item Es existiert genau ein stetiger Gruppenhomomorphismus
+\[ \phi_K : K^\times \Pfeil{} G_K^{ab} \]
+der folgende Eigenschaften erfüllt:
+\begin{itemize}
+\item Für jede endliche, abelsche Erweiterung $L|K$ induziert $\phi_K$ einen Isomorphismus
+\[ K^\times / N_{L|K} L^\times \Pfeil{\isom{}} G(L|K) \]
+\item Ist $K\neq \R,\C$ und besitzt den endlichen Restklassenkörper $\kappa$, so kommutiert folgendes Diagramm
+\begin{center}
+\begin{tikzpicture}[scale =1]
+\node (D1) at (0,2)  {$K^\times$};
+\node (D3) at (4,2)  {$G(K^{ab}|K)$};
+\node (D5) at (0,0)  {$\Z$};
+\node (D7) at (4,0)  {$G(\overline{\kappa}|\kappa)$};
+\node (D9) at (6,0)  {$G(K^{uv}|K)$};
+
+\draw[->] (D1) -> (D3) node[midway, above]{$\phi_K$};
+\draw[->] (D5) -> (D7) node[midway, above]{$\phi_\kappa : 1 \mapsto \phi_{\#\kappa}$};
+\draw[->>] (D3) -> (D7) node[midway, right]{};
+\draw[->>] (D3) -> (D9) node[midway, above right]{$res$};
+\draw[->] (D7) -> (D9) node[midway, above]{$\isom{}$};
+\draw[->] (D1) -> (D5) node[midway, left]{$v_K:\pi_K\mapsto 1$};
+\end{tikzpicture}
+\end{center}
+wobei $K^{ab}$ die maximale abelsche Erweiterung von $K$ und $K^{uv}$ ihre maximale unverzweigte Teilerweiterung ist.
+\end{itemize}
+\item Es ergeben sich folgende Korrespondenzen
+\begin{center}
+\begin{tikzpicture}[scale =2]
+\node (D1) at (0,1)  {$\{H\leq_o G(K^{ab}|K)\}$};
+\node (D3) at (3,1)  {$\{ U \subseteq_o K^\times \text{ von endlichem Index} \}$};
+\node (D7) at (0,0)  {$\{ L |K \text{ endlich, abelsch} \}$};
+
+\draw[<->] (D1) -> (D3) node[midway, above]{1 : 1};
+\draw[<->] (D7) -> (D1) node[midway, left]{1 : 1};
+%\draw [ultra thick, right hook->,    blue] (0,-1) -- (3,-1);
+\end{tikzpicture}
+\end{center}
+\end{itemize}
+
+\Def{Globale Körper}
+Unter einem \df{globalen Körper} verstehen wir einen Zahl- bzw. Funktionenkörper.
+
+\Satz{Globale Klassenkörpertheorie}
+Sei $K$ ein globaler Körper, $C_K$ bezeichne seien Idelegruppe.
+\begin{itemize}
+\item Es existiert genau ein stetiger Gruppenhomomorphismus
+\[ \phi_K : C_K \Pfeil{} G_K^{ab} \]
+sodass für jede Stelle $v$ von $K$ folgendes Diagramm kommutiert
+\begin{center}
+\begin{tikzpicture}[scale =1]
+\node (D1) at (0,2)  {$K_v^\times$};
+\node (D3) at (4,2)  {$G(K_v^{ab}|K_v)$};
+\node (D5) at (0,0)  {$C_K$};
+\node (D7) at (4,0)  {$G(K^{ab}|K)$};
+
+\draw[->] (D1) -> (D3) node[midway, above]{$\phi_{K_v}$};
+\draw[->] (D5) -> (D7) node[midway, above]{$\phi_K : ? \mapsto \Frob_v$};
+\draw[right hook->] (D3) -> (D7) node[midway, right]{};
+\draw[right hook->] (D1) -> (D5) node[midway, left]{$\pi_v \mapsto ?$};
+\end{tikzpicture}
+\end{center}
+wobei $K_v$ die Komplettierung von $K$ bzgl. $v$ bezeichnet. 
+
+\item Für jede endliche, abelsche Erweiterung $L|K$ induziert $\phi_K$ einen Isomorphismus
+\[ C_K / N_{L|K} C_L \Pfeil{\isom{}} G(L|K) \]
+
+\item Es ergeben sich folgende Korrespondenzen
+\begin{center}
+\begin{tikzpicture}[scale =2]
+\node (D1) at (0,1)  {$\{H\leq_o G(K^{ab}|K)\}$};
+\node (D3) at (3,1)  {$\{ U \subseteq_o C_K \text{ von endlichem Index} \}$};
+\node (D7) at (0,0)  {$\{ L |K \text{ endlich, abelsch} \}$};
+
+\draw[<->] (D1) -> (D3) node[midway, above]{1 : 1};
+\draw[<->] (D7) -> (D1) node[midway, left]{1 : 1};
+%\draw [ultra thick, right hook->,    blue] (0,-1) -- (3,-1);
+\end{tikzpicture}
+\end{center}
+\end{itemize}
 
 \section{Was besagt die Klassenkörpertheorie? Erste Folgerungen der Hauptresultate}
 
