@@ -19,6 +19,7 @@
 
 
 \renewcommand{\A}{\mathbb{A}}
+\newcommand{\Nc}{\mathcal{N}}
 
 \renewcommand{\i}{^{-1}}
 
@@ -1063,4 +1064,51 @@ Es folgt nun
 \item $N_{L|K}C_L = K^\times N_{L|K}\A_L^\times ~/~ K^\times$
 \item $C_K / N_{L|K}C_L = \A_K^\times ~/~ (K^\times  N_{L|K}\A_L^\times)$
 \end{itemize}
+
+\Def{Zulässige Ideale}
+Sei $K$ ein Zahlkörper. Ein Ideal $0\neq \af \subset \O_K$ heißt \df{zulässig} für eine endliche, galoissche Erweiterung $L|K$, falls für alle Stellen $v$ von $K$ und allen $w$ über $v$ gilt
+\[ U_v(\af) \subseteq N_{L_w|K_v}L_w^\times \]
+\paragraph{Bemerkung} Für unendliche Stellen ist diese Bedingung immer erfüllt.\\
+Für endliche, unverzweigte Stellen ist diese Bedingung ebenfalls immer erfüllt.\\
+Bezeichnet $S$ die Menge aller Stellen, die in $L$ verzweigen, so wähle $\af$ dergestalt, dass für alle $v \in S$ und $w$ über $v$ gilt
+\[ [L_w : K_v] ~|~ v(\af) \]
+Es gilt in diesem Fall
+\[ U_v(\af) = 1+\af \O_{K_v} = 1 + \mf_v^{v(\af)} \subset (K^\times_v)^{v(\af)}  \subset (K^\times_v)^{[L_w:K_v]} = N_{L_w|K_v}K^\times_v \subset N_{L_w|K_v}L_w^\times  \]
+Bezüglich Teilbarkeit existiert für $L|K$ ferner stets ein kleinstes zulässiges Ideal $\ff$.
+
+\Satz{}
+\begin{itemize}
+\item Ist $L|K$ eine endliche, unverzweigte Erweiterung lokaler Körper, so ist folgende Norm
+\[ N_{L|K} : \O_L^\times \Pfeil{} \O_K^\times \]
+surjektiv.
+\item Sei $L|K$ eine endliche, galoissche Erweiterung globaler Körper, $\af$ ein zulässiges Ideal und $\ff$ das kleinste zulässige Ideal für $L|K$.\\
+Definiere die Menge der gebrochenen Ideale in $L$ mit zu $\af$ teilerfremden Träger durch
+\[ \I_L(\af) := \set{\bf \in \I_L}{ \Pf | \bf \impl{} \Pf \nmid \af\O_L } \]
+und
+\[ \Nc(\af) := N_{L|K}\I(\af) = \set{N_{L|K}\bf}{\bf \in \I_L(\af)} \subset \I(\af) \]
+Die Inklusion
+\[ \I(\af) \Inj{} \I(\ff) \]
+induziert einen Isomorphismus
+\[ \I(\af) / (\P(\af) \Nc(\af)) \isom{} \I(\ff) / (\P(\ff) \Nc(\ff)) \]
+Insbesondere gilt
+\[ \P(\ff) \Nc(\ff) \cap \I(\af) = \P(\af)\Nc(\af) \]
+Ist
+\[ \textsf{supp}(\af) := \set{\pf \in \textsf{Spec}\O_K }{ \pf \text{ teilt } \af } = \textsf{supp}(\ff)  \]
+d.\,h., es gilt
+\[ \I(\af) = \I(\ff) \text{ und } \Nc(\af) = \Nc(\ff) \]
+so gilt insbesondere
+\[ \P(\ff) \Nc(\ff) = \P(\af) \Nc(\af) \]
+\item Gilt in obiger Situation folgende Isomorphie
+\[ \A_K^\times/K^\times \isom{} \A_{K,\af}^\times/K_\af^\times \]
+so induziert $\Psi_\af$ folgende Isomorphie
+\[ C_K / N_{L|K}C_L \isom{} \A_K^\times / K^\times N_{L|K}\A_L^\times \Pfeil{\isom{}, \Psi_\af} \I(\af) / (\P(\af) \Nc (\af)) \]
+\end{itemize}
+
+\Lem{}
+Sei $\lambda | \kappa$ eine Erweiterung endlicher Körper.
+\begin{itemize}
+\item $N_{\lambda|\kappa} : \lambda^\times \Pfeil{} \kappa^\times$ ist surjektiv.
+\item $T_{\lambda|\kappa} : \lambda \Pfeil{} \kappa$ ist surjektiv.
+\end{itemize}
+
 \end{document}
