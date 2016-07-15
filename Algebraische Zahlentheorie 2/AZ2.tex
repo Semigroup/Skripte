@@ -958,4 +958,54 @@ und
 \[\O_{K,\af}^\times := K_\af^\times \cap \O_K^\times \]
 Dann liegt folgende Isomorphie vor
 \[ K_\af^\times / \O_{K,\af}^\times = \P(\af) \]
+
+\Lem{}
+Folgende Sequenz ist exakt
+\[ 1 \Pfeil{} K_\af^\times \Pfeil{} K^\times \Pfeil{} \bigoplus_{v\in S} K_v^\times/U_v(\af) \Pfeil{} 1 \]
+
+\Satz{Schlangenlemma}
+Sei folgendes kommutative Diagramm von $R$-Moduln gegeben
+\begin{center}
+\begin{tikzpicture}[scale =2]
+\node (O1) at (-1,0)  {$0$};
+\node (A1) at (0,1)  {$A$};
+\node (A2) at (0,0)  {$A'$};
+\node (B1) at (1,1)  {$B$};
+\node (B2) at (1,0)  {$B'$};
+\node (C1) at (2,1)  {$C$};
+\node (C2) at (2,0)  {$C'$};
+\node (O2) at (3,1)  {$0$};
+
+\draw[->] (O1) -> (A2);
+\draw[->] (A2) -> (B2);
+\draw[->] (B2) -> (C2);
+
+\draw[->] (A1) -> (B1);
+\draw[->] (B1) -> (C1);
+\draw[->] (C1) -> (O2);
+
+\draw[->] (A1) -> (A2) node[midway, left]{$a$};
+\draw[->] (B1) -> (B2) node[midway, left]{$b$};
+\draw[->] (C1) -> (C2) node[midway, left]{$c$};
+\end{tikzpicture}
+\end{center}
+Es liegt folgende exakte Sequenz vor
+\[ \Ker a \Pfeil{} \Ker b \Pfeil{} \Ker c \Pfeil{\delta} \Coker a \Pfeil{} \Coker b \Pfeil{} \Coker c \]
+
+\Bem{}
+Definiere
+\[ \A_{K,\af}^\times := \prod_{v \in S}U_v(\af) \times \prod'_{v\notin S} K_v^\times \]
+dann liegt folgende Isomorphie vor
+\[ \A_{K,\af}^\times \Pfeil{\isom{}} \A_K^\times / K^\times \]
+und folgende surjektive Abbildung
+\begin{align*}
+\Psi_\af : \A_{K,\af}^\times &\Pfeil{} \I(\af)\\
+(a)_v & \longmapsto (a) := \prod_{v\in S_f}\pf_v^{v(a_v)}
+\end{align*}
+
+
+\section{Normgruppen}
+
+
+
 \end{document}
