@@ -22,16 +22,18 @@
 
 \renewcommand{\i}{^{-1}}
 
-\newcommand{\pf}{\mathfrak{p}}
-\newcommand{\Pf}{\mathfrak{P}}
-\newcommand{\mf}{\mathfrak{m}}
-\newcommand{\Mf}{\mathfrak{M}}
 \newcommand{\af}{\mathfrak{a}}
 \newcommand{\Af}{\mathfrak{A}}
 \renewcommand{\bf}{\mathfrak{b}}
 \newcommand{\Bf}{\mathfrak{B}}
+\newcommand{\cf}{\mathfrak{c}}
+\newcommand{\Cf}{\mathfrak{C}}
 \newcommand{\ff}{\mathfrak{f}}
 \newcommand{\Ff}{\mathfrak{F}}
+\newcommand{\pf}{\mathfrak{p}}
+\newcommand{\Pf}{\mathfrak{P}}
+\newcommand{\mf}{\mathfrak{m}}
+\newcommand{\Mf}{\mathfrak{M}}
 
 \newcommand{\Frob}{\textsf{Frob}}
 
@@ -900,7 +902,7 @@ Definiere für ein Ideal $0\neq \af \subset \O_K$
 wobei
 \[ U_v(\af) := \left\lbrace
 \begin{aligned}
-\{x \in \O_{K_v}~|~x \equiv 1 \mod{\af\O_{K_v}}\} = 1 + \mf^{n_v(\af)} && v \in S_f\\
+\{x \in \O_{K_v}~|~x \equiv 1 \mod{\af\O_{K_v}}\} = 1 + \mf_v^{n_v(\af)} = 1 + \af \O_{K_v} && v \in S_f\\
 K_v^\times && v \text{ komplex}\\
 \R_{>0} \cap K^\times_v && v \text{ reell}
 \end{aligned}
@@ -912,4 +914,48 @@ Es gilt für Ideale $\af,\bf$
 und
 \[ Cl(K,\O_K) = Cl(K) \]
 
+\Bem{Alternative Beschreibung der Idealklassengruppe}
+Sei $K$ ein Zahlkörper, $0\neq \af \subset \O_K$ ein Ideal.\\
+Es sei
+\[ S(\af) := \set{v \in S_f}{n_v(\af) \neq 0} \]
+Definiere für ein Ideal $0\neq \af \subset \O_K$ die Gruppe der zu $\af$ teilerfremden gebrochenen Ideale
+\[ \I(\af) := \set{\bf\i \cf}{\bf,\cf \trianglelefteq \O_K \text{ teilerfremd zu } \af} \isom{} \bigoplus_{v\in S_f \setminus S(\af)}\Z \]
+und die Gruppe der $\af$ teilerfremden gebrochenen Hauptideale
+\[ \P(\af) := \set{(\alpha) \in K^\times}{\alpha \text{ ist lokal positiv und }\forall v \in S(\af): \alpha \in 1 + \af\O_{K_v}}  \]
+
+\Bem{}
+Im Allgemeinem gilt
+\[ \P(\af) \subsetneq \P \cap \I(\af) \]
+In jedem Fall gilt wegen dem Approximationsatz
+\[ \I(\af) / \P \cap \I(\af) = \I / \P = Cl(K) \]
+
+\Satz{}
+Sei $K$ ein Zahlkörper, $0\neq \af \subset \O_K$ ein Ideal.\\
+Setze
+\[ S:= S_\infty \cup S(\af) \]
+Beachte, dass für $v \notin S$ $U_v(\af) = \O_{K_v}^\times$ gilt. Wir erklären folgenden Homomorphismus
+\begin{align*}
+\phi : \I(\af) \isom{} \bigoplus_{v\notin S} \Z \isom{} \bigoplus_{v\notin S} K_v^\times / U_v(\af) \subset \A_K^\times / \U(\af) \surj{} C_K / \overline{\U(\af)} = Cl(K,\af)  
+\end{align*}
+Es gilt
+\begin{itemize}
+\item $\phi$ induziert einen Isomorphismus
+\[ \phi : \I(\af) / \P(\af) \Pfeil{} Cl(K,\af) \]
+\item Es liegt folgende kurze exakte Sequenz vor
+\[ 1 \Pfeil{} \klam{ \bigoplus_{v \text{ reell}} \R^\times / \R_{>0} \oplus (\O_K / \af)^\times } / \O_K^\times \Pfeil{} Cl(K,\af) \Pfeil{} Cl(K) \Pfeil{} 1 \]
+Insbesondere ist $Cl(K,\af)$ endlich.
+\end{itemize}
+
+\Satz{Approximationssatz}
+Sei $K$ ein Zahlkörper, $S$ eine endliche Stellenmenge. Für jedes $v \in S$ sei ein $x_v \in K$ vorgegeben. Dann existiert für jedes $\epsilon >0$ ein $x \in K$, sodass für alle $v \in S$ gilt
+\[ \bet{x-x_v}_v < \epsilon \]
+
+\Def{}
+Sei $K$ ein Zahlkörper, $0\neq \af \subset \O_K$ ein Ideal, $S = S_\infty \cup S(\af)$.\\
+Definiere
+\[ K_\af^\times := \Ker\klam{ K^\times \pfeil{} \bigoplus_{v\in S } K_v^\times / U_v(\af)}  \]
+und
+\[\O_{K,\af}^\times := K_\af^\times \cap \O_K^\times \]
+Dann liegt folgende Isomorphie vor
+\[ K_\af^\times / \O_{K,\af}^\times = \P(\af) \]
 \end{document}
