@@ -1240,7 +1240,7 @@ für $i = 0,1$.
 \section{Motivationen für die Norm-Index-Berechnung}
 \Bem{}
 Sei $L|K$ eine endliche Erweiterung globaler Körper.\\
-Es bezeichne $\delta = \delta_{L|K}$ die \df{Diskriminante} von $L|K$, d.\,h., dasjenige Ideal, das von allen Determinanten aller in $\O_L$ liegenden Basen des $K$-Vektorraums $L$ erzeugt wird. Es gilt
+Es bezeichne $\delta = \delta_{L|K}$ die \df{Diskriminante} von $L|K$, d.\,h., dasjenige Ideal, das von allen Determinanten der Galoispermutationen aller in $\O_L$ liegenden Basen des $K$-Vektorraums $L$ erzeugt wird. Es gilt
 \[ \pf \text{ verzweigt in }L \Gdw{} \pf | \delta \]
 
 \Def{Artin-Symbol}
@@ -1281,7 +1281,68 @@ Ist $L|K$ eine echte, zyklische Erweiterung globaler Körper, so zerlegen sich u
 Ist $L|K$ eine zyklische Erweiterung globaler Körper von Grad $n$, so gilt
 \[ (\A_K^\times : K^\times N_{L|K} \A_L^\times ) = (C_K : N_{L|K}C_L) = n \]
 
+\Def{Führer der Artin-Abbildung}
+Sei $L|K$ eine abelsche Erweiterung globaler Körper.\\
+Unter einem \df{Führer der Artin-Abbildung} verstehen wir ein zulässiges Primideal $\ff$, welches von allen verzweigenden Primidealen geteilt wird und für das gilt
+\[ \P(\ff) \subset \Ker \omega_\ff \]
+
+\Bem{}
+Für ein gebrochenes Ideal $\af \in \I(\ff)$ von $L$, welches teilerfremd zu den verzweigenden Primidealen ist, gilt
+\[ (N_{L|K}\af, L|K) = (\af, L|L) = 1 \]
+da $\N(\ff) = N_{L|K} \I(\ff)$, folgt
+\[ \P(\ff) \N(\ff) \subset \Ker \omega_\ff  \]
+d.\,h.
+\[ C_K/N_{L|K}C_L \isom{} \I(\ff) / (\P(\ff) \N(\ff)) \surj{} G(L|K) \]
+Mit dem folgenden Satz gilt nun, dass $\omega_\ff$ ein Isomorphismus ist.
+
+\Satz{Universelle Normenungleichung}
+Sei $L|K$ eine Galoiserweiterung von Grad $n$. Es gilt
+\[ (C_K : N_{L|K}C_L ) \leq n \]
+
 \section{Der Lokale Norm-Index}
+
+\Bem{Unverzweigt bei Unendlich}
+Ist $v$ eine archimedische Stelle einer Körpererweiterung $L|K$, so heißt $w|v$ \df{unverzweigt}, falls $L_w = K_v$.\\
+D.\,h., $\C|\R$ ist verzweigt mit Verzweigungsgrad 2.
+
+\Satz{}
+Sei $L|K$ eine zyklische Erweiterung lokaler Körper, $G = G(L|K)$, $e$ der Verzweigungsindex. Dann gilt
+\begin{itemize}
+\item $\# H^0(G,L^\times) = (K^\times : N_{L|K}L^\times) = [L:K]$
+\item $H\i(G,L^\times) = 0$
+\item $(\O_K^\times : N_{L|K}\O_L^\times) = e$
+\item $Q(G, \O_L^\times) = 1$, d.\,h. 
+\[ \#H^0(G, \O_L^\times) = \#H\i(G, \O_L^\times) = e \]
+\end{itemize}
+\paragraph{Bemerkung}
+Das Ergebnis der lokalen Klassenkörpertheorie wird am Ende sein, dass dieser Satz für abelsche Erweiterungen lokaler Körper gilt.\\
+Ersetzt man $\O_K^\times$ durch $K_v^\times$ für $K = \R,\C$, so gilt der Satz auch für $\R$ und $\C$.
+
+\Satz{Normalbasissatz}
+Sei $L|K$ eine beliebige, endliche Galoiserweiterung. Dann gilt folgende Isomorphie von $G$-Moduln
+\[ L \isom{} \textsf{Ind}_GK = K[G] \]
+D.\,h., es existiert ein $b \in L$, sodass $\set{b^\sigma}{\sigma \in G(L|K)}$ eine Basis von $L$ ist.
+
+\Lem{}
+Sei $L|K$ eine endliche Galoiserweiterung mit Galoisgruppe $G(L|K) = \{\sigma_1, \ldots, \sigma_n\}$.\\
+Es gilt für Elemente $a_1,\ldots, a_n \in L$
+\[ a_1,\ldots, a_n \text{ sind eine }K\text{-Basis für }L \Gdw{} \det(a_j^{\sigma_i}) \neq 0 \]
+
+\Kor{}
+Ist $L|K$ eine unverzweigte Erweiterung lokaler Körper, so ist
+\[ N_{L|K} : \O_L^\times \Pfeil{} \O_K^\times \]
+unverzweigt.
+
+\Kor{}
+Sei $L|K$ eine beliebige, abelsche Erweiterung lokaler Körper so gilt
+\begin{itemize}
+\item $(K^\times : N_{L|K} L^\times ) ~|~ [L:K]$
+\item $(\O_K^\times : N_{L|K} \O_L^\times ) ~|~ e$
+\end{itemize}
+
+\Bem{}
+Sei $L|K$ eine endliche, abelsche Erweiterung von Zahlkörpern, und $\cf \subset \O_K$ ein zulässiges Ideal.\\
+Ist $v$ eine endliche, verzweigende Stelle in $L$, so gilt $v | \cf$.
 
 \section{Globale Norm-Index-Berechnungen}
 
