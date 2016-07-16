@@ -1085,7 +1085,7 @@ surjektiv.
 Definiere die Menge der gebrochenen Ideale in $L$ mit zu $\af$ teilerfremden Träger durch
 \[ \I_L(\af) := \set{\bf \in \I_L}{ \Pf | \bf \impl{} \Pf \nmid \af\O_L } \]
 und
-\[ \Nc(\af) := N_{L|K}\I(\af) = \set{N_{L|K}\bf}{\bf \in \I_L(\af)} \subset \I(\af) \]
+\[ \Nc(\af) := N_{L|K}\I_L(\af) = \set{N_{L|K}\bf}{\bf \in \I_L(\af)} \subset \I(\af) \]
 Die Inklusion
 \[ \I(\af) \Inj{} \I(\ff) \]
 induziert einen Isomorphismus
@@ -1110,5 +1110,65 @@ Sei $\lambda | \kappa$ eine Erweiterung endlicher Körper.
 \item $N_{\lambda|\kappa} : \lambda^\times \Pfeil{} \kappa^\times$ ist surjektiv.
 \item $T_{\lambda|\kappa} : \lambda \Pfeil{} \kappa$ ist surjektiv.
 \end{itemize}
+
+\chapter{Norm-Index-Berechnungen}
+
+\section{Hilbert '90}
+\Def{Gruppenkohomologiegruppen}
+Sei $G$ eine endliche Gruppe, $A$ ein multiplikativ geschriebener $G$-Modul.\\
+Definiere die Gruppe der 1-\df{Kozykel} durch
+\[Z^1(G,A) := \{ f : G \pfeil{} A ~|~ \forall  \sigma, \tau \in G: f(\sigma \tau) = (f(\sigma))^\tau \cdot f(\tau) \} \]
+und die Gruppe der 1-\df{Koränder} durch
+\[ B^1(G,A) := \set{f \in Z^1(G,A)}{ \exists a \in A: f(\sigma) = a^{\sigma - 1} } \]
+Definiere die erste \df{Gruppenkohomologiegruppe} von $G$ mit Koeffizienten in $A$ durch
+\[ H^1(G,A) := Z^1(G,A) / B^1(G,A) \]
+
+\Satz{Hilbert '90}
+\begin{itemize}
+\item Ist $L|K$ eine zyklische, galoissche Erweiterung beliebiger Körper, so gilt
+\[ H\i(G(L|K), L^\times) = 1 \]
+\item Ist $L|K$ eine endliche, galoissche Erweiterung beliebiger Körper, so gilt
+\[ H^1(G(L|K), L^\times) = 1 \]
+\end{itemize}
+\begin{Beweis}{}
+\begin{itemize}
+\item Da
+\[ H\i(G(L|K), L^\times) = \ _{N_{L|K}}L^\times / I_{G(L|K)}L^\times \]
+ist die Behauptung äquivalent zur Aussage, dass zu jedem $\alpha \in L^\times$ mit
+\[ N_{L|K}(\alpha) = 1 \]
+ein $\beta \in L^\times$ existiert, so dass
+\[ \alpha = \beta^{\sigma - 1} \]
+wobei $\sigma$ einen Erzeuger der zyklischen Gruppe $G(L|K)$ bezeichnet.\\
+Es bezeichne $n = [L:K]$ den Grad der zyklischen Erweiterung. Die Automorphismen
+\[ \id{L^{\times}}, \sigma, \ldots, \sigma^{n-1} : L^\times \Pfeil{} L^\times \]
+stellen $n$ verschiedene Charaktere da und sind deswegen linear unabhängig. Insbesondere verschwindet folgende Linearkombination nicht
+\[ \sum_{i=0}^{n-1} \klam{\alpha^{\sum_{j = 0}^{i - 1} \sigma^j }} \sigma^i = \id{L^\times} + \alpha \sigma + \alpha^{1 + \sigma} \sigma^2 +  \cdots + \alpha^{1 + \sigma + \cdots + \sigma^{n-2}} \sigma^{n-1}  \]
+ Ergo existiert ein $\gamma \in L^\times$, sodass
+\[ \beta := \gamma + \alpha \gamma^\sigma + \alpha^{1 + \sigma} \gamma^{\sigma^2} + \cdots + \alpha^{1+\sigma + \cdots + \sigma^{n-2}}\gamma^{\sigma^{n-1}} \neq 0 \]
+Es gilt nun
+\[ \alpha \beta^\sigma = \alpha (\gamma^\sigma + \cdots + \alpha^{\sigma + \cdots + \sigma^{n-1}}\gamma^{\sigma^n} ) = \beta \]
+da
+\[ \alpha^{\sigma + \cdots + \sigma^{n-1}}\gamma^{\sigma^n} = \frac{N_{L|K}(\alpha)}{\alpha} \gamma = \alpha\i \gamma \]
+\item Sei $f \in Z^1(G(L|K),A)$. Aufgrund der Unabhängigkeit der Charaktere existiert ein $\gamma \in L^\times$ mit
+\[ \alpha := \sum_{\sigma \in G} f(\sigma) \gamma^\sigma \neq 0  \]
+Für beliebige $\tau \in G$ gilt nun
+\[ \alpha^\tau = \sum_{\sigma \in G(L|K)} f(\sigma)^\tau \gamma^{\sigma \tau} \sum_{\sigma \in G(L|K)} f(\sigma\tau)f(\tau\i) \gamma^{\sigma \tau} = f(\tau\i)\alpha \]
+Daraus folgt nun
+\[ f(\tau) = \alpha^{1 - \tau} = \beta^{\tau - 1} \]
+für $\beta := \alpha\i$. Ergo $f \in B^1(G(L|K),A)$
+\end{itemize}
+\end{Beweis}
+
+\Satz{Gruppenkohomologie ist auch wirklich eine Kohomologietheorie}
+Zu jeder exakten Sequenz von $G$-Moduln
+\[ 1 \Pfeil{} A \Pfeil{} B \Pfeil{} C \Pfeil{} 1\]
+existiert folgende lange exakte Kohomologiesequenz
+\begin{align*}
+1 \Pfeil{} A^G \Pfeil{} B^G \Pfeil{} C^G \Pfeil{} H^1(G,A) \Pfeil{} H^1(G,B) \Pfeil{} H^1(G,C) \Pfeil{} \ldots
+\end{align*}
+
+\section{Herbrand Quotient}
+\Lem{}
+
 
 \end{document}
