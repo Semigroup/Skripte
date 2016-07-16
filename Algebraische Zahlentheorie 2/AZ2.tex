@@ -1188,4 +1188,101 @@ Ist ferner $A$ endlich, so ist $Q(A) = 1$.
 Sei $G = \shrp{\sigma}$ zyklisch, $A$ ein multiplikativer $G$-Modul und $f = 1 - \sigma$ und $g =N = \prod_{\sigma \in G}\sigma$ zwei Selbstabbildungen von $A$. Es gilt dann
 \[ Q(G,A):=Q_{f,g}(A) = \frac{(A_f : A^g)}{(A_g : A^f)} = \frac{(A^G : NA)}{(N_A : I_GA)} = \frac{\# H^0(G,A)}{\# H\i(G,A)} \]
 
+\Def{Induzierte Moduln}
+Seien $H\leq G$ Gruppen, $B$ ein multiplikativ geschriebenes $H$-Linksmodul.\\
+Definiere den durch $B$ \df{induzierten $G$-Modul} durch
+\[ \textsf{Ind}_G^H(B) := \set{f : G \pfeil{} B}{f(hg) = \ ^hf(g) \forall g \in G, h\in H }  = \Hom{\text{Links-}H-\Mod}{G}{B} \isom{} G \otimes_{H} B \]
+$G$ operiert auf $\textsf{Ind}^H_G(B)$ von links durch
+\[ \ ^\sigma f := [g \in G \mapsto f(g\sigma) \in B ] \]
+für $\sigma \in G, f \in \textsf{Ind}^H_G(B)$.\\
+Für $H = \{1\}$ schreiben wir auch $\textsf{Ind}_G(B)$.
+
+\Bem{}
+\begin{itemize}
+\item Der kanonische $H$-Homomorphismus
+\begin{align*}
+\pi : \textsf{Ind}^H_G(B) & \Pfeil{} B\\
+f & \longmapsto f(1)
+\end{align*}
+bildet den $H$-Untermodul
+\[ B' := \set{f \in \textsf{Ind}_G^H(B)}{ f(g) = 1 \forall g \notin H } \]
+isomorph auf $B$ ab. Insofern können $B'$ und $B$ identifiziert werden und $B$ als Untermodul von $\textsf{Ind}^H_G(B)$ aufgefasst werden.
+\item Ist $(G:H)$ endlich, so erhalten wir folgende Isomorphie
+\begin{align*}
+\textsf{Ind}_G^H(B) &\Pfeil{} \prod_{\rho \in G/H} \ ^\rho B\\
+f & \longmapsto \prod_{\rho \in G/H} \ ^\rho f_{\rho}
+\end{align*}
+wobei
+\begin{align*}
+\ ^\rho f_{\rho} (g) := \left\lbrace
+\begin{aligned}
+f(g) && g\rho \in H\\
+1 && g\rho \notin H
+\end{aligned}
+\right.
+\end{align*}
+$G$ operiert auf $\prod_{\rho \in G/H} \ ^\rho B$ durch
+\[ \ ^g(\ ^\rho f_{\rho}) := \ ^{g\rho}b_\rho = \ ^{\rho'}(\ ^{h}b_\rho) = (\ ^gb)_{\rho'} \]
+wobei $g \in G$ und $g\rho = \rho' h$ für $\rho' \in G/H$ und $h \in H$.
+\item Ist $(G:H)$ endlich, so liegt folgende universelle Abbildungseigenschaft für $G$-Moduln $C$ vor
+\begin{align*}
+\Hom{G}{\textsf{Ind}_G^H(B)}{C} &\Pfeil{\isom{}} \Hom{H}{B}{C}\\
+f& \longmapsto f_{|B}
+\end{align*}
+\end{itemize}
+
+\Satz{}
+Seien $H\leq G$ endliche Gruppen, $H$ ein multiplikativ geschriebenes Links-$H$-Modul.\\
+Es liegt folgender kanonischer Isomorphismus vor
+\[ H^i(G, \textsf{Ind}_G^H(B)) = H^i(H,B) \]
+für $i = 0,1$.
+
+\section{Motivationen für die Norm-Index-Berechnung}
+\Bem{}
+Sei $L|K$ eine endliche Erweiterung globaler Körper.\\
+Es bezeichne $\delta = \delta_{L|K}$ die \df{Diskriminante} von $L|K$, d.\,h., dasjenige Ideal, das von allen Determinanten aller in $\O_L$ liegenden Basen des $K$-Vektorraums $L$ erzeugt wird. Es gilt
+\[ \pf \text{ verzweigt in }L \Gdw{} \pf | \delta \]
+
+\Def{Artin-Symbol}
+Sei $L|K$ eine abelsche Erweiterung globaler Körper, $G = G(L|K)$, $\pf \subset \O_K$ ein Primideal, welches nicht in $L$ verzweigt.\\
+Definiere das \df{Artin-Symbol} von $\pf$ in $G$ durch
+\[ (\pf, L/K) := \Frob_\pf \in G_\pf \subset G \]
+Definiere die \df{Artin-Abbildung} durch
+\begin{align*}
+\omega : \I(\delta) & \Pfeil{} G\\
+\bf = \prod_{\pf \text{ prim zu }\delta} \pf^{v_{\pf}} & \longmapsto (\bf,L/K) := \prod_{\pf} (\pf, L/K)^{v_\pf}
+\end{align*}
+Ist $0\neq \cf \subset \O_K$ ein weiteres Ideal, das durch alle verzweigenden Primideale geteilt wird, so ergibt sich analog folgendes Diagramm
+\begin{center}
+\begin{tikzpicture}[scale =1]
+\node (C) at (0,1)  {$\I(\cf)$};
+\node (D) at (0,0)  {$\I(\delta)$};
+\node (G) at (2,0)  {$G$};
+
+\draw[right hook->] (C) -> (D) node[midway, left]{};
+\draw[->] (C) -> (G) node[midway, above right]{$\omega_\cf$};
+\draw[->] (D) -> (G) node[midway, below]{$\omega$};
+\end{tikzpicture}
+\end{center}
+
+\Satz{}
+$\omega_\cf$ ist surjektiv.
+\begin{Beweis}{}
+Es bezeichne $H := \Img \omega_\cf \leq G(L|K)$, $F = L^H$.\\
+Jedes $\pf \in \I(\cf)$ zerlegt sich voll in $F$, da
+\[ \Frob_\pf =  (\pf, F/K) =(\pf, L/K)_{|F} = \omega_\cf(\pf)_{|F} \in H/H = 1 \]
+Sei $F'|K$ eine beliebige, zyklische Zwischenerweiterung. In $F'$ sind nun alle bis auf endliche viele Primideale von $\O_K$ voll zerlegt. Mit der folgenden Proposition folgt nun, dass $F' = K$. Ergo ist $F$ als Vereinigung aller zyklischen Zwischenerweiterungen gleich $K$. Ergo ist $H = G(L|K)$.
+\end{Beweis}
+
+\Prop{}
+Ist $L|K$ eine echte, zyklische Erweiterung globaler Körper, so zerlegen sich unendlich viele Primideale nicht voll in $L$.
+
+\Satz{}
+Ist $L|K$ eine zyklische Erweiterung globaler Körper von Grad $n$, so gilt
+\[ (\A_K^\times : K^\times N_{L|K} \A_L^\times ) = (C_K : N_{L|K}C_L) = n \]
+
+\section{Der Lokale Norm-Index}
+
+\section{Globale Norm-Index-Berechnungen}
+
 \end{document}
