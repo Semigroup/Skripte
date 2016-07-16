@@ -1167,8 +1167,25 @@ existiert folgende lange exakte Kohomologiesequenz
 1 \Pfeil{} A^G \Pfeil{} B^G \Pfeil{} C^G \Pfeil{} H^1(G,A) \Pfeil{} H^1(G,B) \Pfeil{} H^1(G,C) \Pfeil{} \ldots
 \end{align*}
 
-\section{Herbrand Quotient}
+\section{Herbrand-Quotient}
 \Lem{}
+Sei $f : A \pfeil{} C$ ein Homomorphismus abelscher Gruppen und $B \leq A$ eine Untergruppe. Setze
+\[ \ _fA := A_f := \set{a\in A}{f(a) = 1} = \Ker f_{|A} \text{ und } A^f := f(A) = \Img f_{|A} \]
+Es gilt
+\[ (A:B) = (A^f:B^f) \cdot (A_f : B_f) \]
 
+\Def{Herbrand-Quotient}
+Für Morphismen $f, g : A\pfeil{} A $ einer Gruppe $A$ definiere den Herbrand-Quotienten durch
+\[ Q(A) := Q_{f,g}(A) := \frac{(A_f : A^g)}{(A_g : A^f)} \]
+
+\Lem{}
+Seien $f, g : A\pfeil{} A $ Homomorphismen einer abelschen Gruppe. $B \leq A$ sei eine Untergruppe, sodass $f(B),g(B) \subset B$.\\
+Dann gilt
+\[ Q(A) = Q(B) \cdot Q(A/B) \]
+Ist ferner $A$ endlich, so ist $Q(A) = 1$.
+
+\Bem{}
+Sei $G = \shrp{\sigma}$ zyklisch, $A$ ein multiplikativer $G$-Modul und $f = 1 - \sigma$ und $g =N = \prod_{\sigma \in G}\sigma$ zwei Selbstabbildungen von $A$. Es gilt dann
+\[ Q(G,A):=Q_{f,g}(A) = \frac{(A_f : A^g)}{(A_g : A^f)} = \frac{(A^G : NA)}{(N_A : I_GA)} = \frac{\# H^0(G,A)}{\# H\i(G,A)} \]
 
 \end{document}
