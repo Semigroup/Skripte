@@ -40,6 +40,8 @@
 
 \newcommand{\Leg}[2]{\left(\frac{#1}{#2}\right)}
 
+\makeindex
+
 \begin{document}
 
 \tableofcontents
@@ -84,7 +86,7 @@ V &:= V' \cap {V'}\i
 \end{align*}
 \item[(ii)] Wir geben ohne Beweis einen Satz an, aus dem die Behauptung sofort folgt:
 \paragraph{Satz von Weil}
-Eine topologische Gruppe $G$ ist $\text{T}_{3\frac{1}{2}}$, d.\,h., ist $A\subseteq_aG$ eine Teilmenge, die die 1 nicht enthält, so existiert eine stetige Abbildung $f : G \pfeil{} [0,1] \subset \R$ mit folgenden Eigenschaften:
+Eine topologische Gruppe $G$ ist \df{T3$\frac{1}{2}$}, d.\,h., ist $A\subseteq_aG$ eine Teilmenge, die die 1 nicht enthält, so existiert eine stetige Abbildung $f : G \pfeil{} [0,1] \subset \R$ mit folgenden Eigenschaften:
 \begin{itemize}
 \item $f(A) = \{1\}$
 \item $f(1) = 0$
@@ -1092,11 +1094,11 @@ induziert einen Isomorphismus
 \[ \I(\af) / (\P(\af) \Nc(\af)) \isom{} \I(\ff) / (\P(\ff) \Nc(\ff)) \]
 Insbesondere gilt
 \[ \P(\ff) \Nc(\ff) \cap \I(\af) = \P(\af)\Nc(\af) \]
-Ist
+Stimmen die \df{Träger} von $\ff$ und $\af$ überein, d.\,h.
 \[ \textsf{supp}(\af) := \set{\pf \in \textsf{Spec}\O_K }{ \pf \text{ teilt } \af } = \textsf{supp}(\ff)  \]
-d.\,h., es gilt
+so gilt
 \[ \I(\af) = \I(\ff) \text{ und } \Nc(\af) = \Nc(\ff) \]
-so gilt insbesondere
+und insbesondere
 \[ \P(\ff) \Nc(\ff) = \P(\af) \Nc(\af) \]
 \item Gilt in obiger Situation folgende Isomorphie
 \[ \A_K^\times/K^\times \isom{} \A_{K,\af}^\times/K_\af^\times \]
@@ -1345,5 +1347,108 @@ Sei $L|K$ eine endliche, abelsche Erweiterung von Zahlkörpern, und $\cf \subset
 Ist $v$ eine endliche, verzweigende Stelle in $L$, so gilt $v | \cf$.
 
 \section{Globale Norm-Index-Berechnungen}
+\Def{}
+Sei $L|K$ eine endliche Galoiserweiterung globaler Körper, $G = G(L|K)$, $v$ eine Stelle von $K$.\\
+Definiere folgende $G$-Moduln
+\[ L_v^\times := \prod_{w|v} L_w^\times \supseteq \O_{L,v}^\times := \prod_{w|v}\O_{L_w}^\times \]
+Dann ist
+\[ \A_L^\times = \prod'_vL_v^\times \text{ restringiert bzgl. } \O_{L,v}^\times  \]
+Fixiert man ein $w_0|v$, so gilt
+\[ L_v^\times = \prod_{\sigma \in G/G_{w_0}} L_{\sigma w_0}^\times = \prod_{\sigma \in G/G_{w_0}} \ ^\sigma L_{w_0}^\times \text{ und } \O_{L,v}^\times = \prod_{\sigma \in G/G_{w_0}} \ ^\sigma \O_{L_{w_0}}^\times \]
+Es gilt ergo
+\[ L^\times_v = \textsf{Ind}_G^{G_{w_0}} (L_{w_0}^\times) \text{ und } \O^\times_{L, v} = \textsf{Ind}_G^{G_{w_0}} (\O_{L_{w_0}}^\times) \]
+
+\Satz{}
+Sei $L|K$ eine zyklische Erweiterung und $S$ die Menge aller Stellen von $K$, die in $L$ verzweigen.\\
+Setze
+\[ \A_{L,S}^\times := \prod_{v\in S}L_v^\times \times \prod_{v\notin S} \O_{L,s}^\times \]
+Für jede Stelle $v$ von $K$ bezeichne $w$ eine ausgewählte Stelle über $v$. Dann gilt für $i = 0,-1$
+\begin{align*}
+H^i(G, \A_{L,S}^\times ) &= \bigoplus_{v\in S}H^i(G_w, L_w^\times)\\
+H^i(G, \A_{L}^\times ) &= \bigoplus_{v}H^i(G_w, L_w^\times)\\
+\end{align*}
+\Bem{}
+Es gilt mit obigem Satz
+\begin{align*}
+H\i (G, \A_L^\times) &= 0\\
+H^0(G,\A_L^\times) &= \A_K^\times/N_{L|K}\A_L^\times = \bigoplus_{v} K_v^\times / N_{L_w|K_v}L_w^\times
+\end{align*}
+Mit anderen Worten, ein Idel von $K$ ist genau dann Norm eines Ideles von $L$, wenn es überall lokal eine Norm ist.
+
+\Satz{}
+Sei $L|K$ eine zyklische Erweiterung globaler Körper, $S$ bezeichne die Menge aller verzweigenden Stellen. Es gilt
+\[ Q(G, \A_{L,S}^\times) = \prod_{v\in S} [L_w:K_v] \]
+
+\Satz{}
+Sei $K$ ein Zahlkörper, $S \supseteq S_\infty$ eine endliche Menge von Stellen von $K$.\\
+Definiere die Menge der \df{$S$-Einheiten} durch
+\[ K_S := K^\times \cap \A_{K,S} \]
+Der Homomorphismus
+\begin{align*}
+\lambda_S : K_S &\Pfeil{} \prod_{v\in S} \R\\
+a & \longmapsto (\log \bet{a}_v)_{v\in S} 
+\end{align*}
+hat als Kern $\mu(K)$, die Menge aller Einheitswurzeln in $K$. Sein Bild ist ein Gitter im $(\#S-1)$-dimensionalen \df{Spur-Null-Raum}, der definiert ist durch
+\[ \H:= \set{(x_v)_v \in \prod_{v\in S}\R }{\sum_{v\in S}x_v = 0} \]
+
+\Lem{}
+Sei $V$ ein $n$-dimensionaler $\R$-Vektorraum, $G \leq \Aut{\R}{V}$ eine endliche Untergruppe, die eine gegebene Basis $v_1,\ldots,v_n$ von $V$ permutiert durch
+\[ \sigma(v_i) =: v_{\sigma(i)} \]
+für $\sigma \in G, i = 1,\ldots,n$.\\
+Sei $\Gamma \leq V$ ein $G$-invariantes Gitter, d.\,h., $G\Gamma \subset \Gamma$. Dann gibt es ein Untergitter $\Gamma' = \Z w_1 + \ldots \Z w_n \leq \Gamma$, sodass
+\[ \sigma w_i = w_{\sigma(i)} \]
+für $\sigma \in G, i = 1,\ldots,n$.
+
+\Satz{}
+Sei $L|K$ eine zyklische Erweiterung globaler Körper, $S \supset S_\infty$ eine endliche Stellenmenge von $K$.\\
+Es bezeichne 
+\[\overline{S} = \set{w \text{ Stelle von }L}{w|v \text{ für ein } v \in S} \]
+die über $S$ liegenden Stellen und setze ferner
+\[ L_S := L_{\overline{S}} = L^\times \cap \A_{L,\overline{S}} \]
+Dann gilt, wobei je $v \in S$ ein passendes $w\in \overline{S}$ gewählt wird,
+\[ Q(G,L_S) = \frac{\prod_{v\in S} [L_w : K_v]}{[L:K]} \]
+
+\Satz{}
+Sei $L|K$ eine zyklische Erweiterung globaler Körper vom Grad $n$, $G = G(L|K)$ ihre Galoisgruppe. Es gilt
+\[ Q(G, C_L) = \frac{\# H^0(G,C_L)}{\# H\i(G,C_L)} = [L:K]  \]
+Zusammen mit der universellen Normenungleichung  folgt nun
+\[ (C_K : N_{L|K} C_L ) = n \]
+Insbesondere erhalten wir nun die Klassenkörperaxiome
+\[ \# H^i(G,C_L) = \left\lbrace
+\begin{aligned}
+\ [L:K] && i = 0\\
+1 && i = -1
+\end{aligned}
+\right. \]
+
+\begin{Beweis}{}
+Wähle eine endliche Stellenmenge $S \supset S_\infty$, so dass
+\[ \A_L^\times = L\times \A_{L,S}^\times \]
+Dies ist laut dem nächsten Lemma möglich. Es ergibt sich nun folgende exakte Sequenz
+\[ 1 \Pfeil{} L_S \Pfeil{} \A_{L,S}^\times \Pfeil{} \A_{L,S}^\times L^\times /L^\times = C_L \Pfeil{} 1 \]
+Da der Herbrand-Quotient multiplikativ ist, ergibt sich
+\[ Q(C_L) = Q(L_S)\i Q(\A_{L,S}^\times) = \frac{[L:K]}{\prod_{v\in S} [L_w : K_v]} \prod_{v\in S} [L_w : K_v] = [L:K] \]
+\end{Beweis}
+
+\Lem{}
+Sei $K$ ein globaler Körper. Es seien folgende Repräsentanten $\{\af_1,\ldots , \af_n \} = Cl(K) = \I / \P$ der Idealklassengruppe gegeben.\\
+$S \supset S_\infty$ sei eine endliche Stellenmenge, die alle endlichen Stellen $\pf$ enthalte, die im Träger eines $\af_i$
+\[ \textsf{supp}(\af_i) = \set{\pf \in \textsf{spec}\O_K}{\pf | \af_i} \]
+liegen. Dann gilt
+\[ \A_K^\times = \A_{K,S}^\times K^\times \]
+
+\Satz{Hasses Normensatz}
+Sei $L|K$ eine zyklische Erweiterung, $x \in K^\times$. Es gilt
+\[ x \text{ ist eine Norm, d.\,h. } x \in N_{L|K}L^\times \Gdw{} x \text{ ist überall lokal eine Norm} \]
+\begin{Beweis}{}
+Betrachte die exakte Sequenz
+\[ 1 \Pfeil{} L^\times \Pfeil{} \A_K^\times \Pfeil{} C_L \Pfeil{} 1 \]
+Sie induziert folgende exakte Sequenz in Kohomologie
+\[ 1 = H\i(G,C_L) \Pfeil{} H^0(G,L^\times) \Pfeil{} H^0(G,\A_L^\times) = \bigoplus_v H^0(G_w, L_w^\times) \]
+Wir lesen folgende Inklusion ab
+\[ K^\times / N_{L|K}L^\times \Inj{} \bigoplus_v K_v^\times / N_{L_w|K_v}L_w^\times \]
+\end{Beweis}
+
+\printindex
 
 \end{document}
