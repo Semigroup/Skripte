@@ -356,6 +356,13 @@ Sei $G$ eine topologische Gruppe, $I$ eine Familie abgeschlossener Normalteiler,
 	\item Ist $G$ kompakt, so ist $\upsilon$ surjektiv.
 \end{itemize}
 
+\Lem{}
+Ist $G$ eine topologische Gruppe und $(G_i)_{i\in I}$ ein inverses System endlicher Gruppen mit stetigen, surjektiven Gruppenhomomorphismen
+\[ G \Pfeil{} G_i \]
+für jedes $i \in I$, so besitzt der kanonische Pfeil
+\[ G \Pfeil{} \lim_{i\in I} G_i \]
+ein dichtes Bild.
+
 \section{Unendliche Galoistheorie}
 
 \Satz{}
@@ -1466,6 +1473,7 @@ Wir lesen folgende Inklusion ab
 \chapter{Das Globale Reziprozitätsgesetz}
 \section{Eigenschaften der Artin-Abbildung}
 \Satz{Eigenschaften der Artin-Abbildung}
+\label{Eigenschaften}
 Sei $L|K$ eine endliche abelsche Erweiterung globaler Körper, $\delta = \delta_{L|K}$ die dazugehörige Diskriminante.
 \begin{itemize}
 \item[$(\Af 1)$] Ist $\sigma : L \pfeil{} \sigma L$ ein beliebiger Ringisomorphismus, so gilt für alle $\af \in \I(\delta)$
@@ -1523,7 +1531,74 @@ Dann existiert eine beliebig große Zahl $m \in \N$, die von keiner Zahl aus $S$
 \item $\pf$ zerlegt sich voll in $E$.
 \end{itemize} 
 
+\Lem{}
+Sei $L|K$ eine endliche, zyklische Erweiterung beliebiger Zahlkörper. $\pf_1,\ldots, \pf_r$ seien Primideale in $K$, die über $L|K$ nicht verzweigen.\\
+Zu jedem $\pf_i$ existiert laut Artins Lemma eine endliche Erweiterung $E_i|K$ und ein $m_i$, sodass die einzelnen $m_i$ paarweise teilerfremd sind.\\
+Setzt man $E = E_1\cdots E_r$, so gilt $L\cap E = K$ und daher
+\[G(L|K) = G(LE|E) \]
 
+\Satz{}
+Ist $L|K$ eine zyklische Erweiterung beliebiger Zahlkörper, so existiert ein zulässiges Ideal $0\neq \cf \subset \O_K$, das nur durch in $L$ verzweigende Primideale geteilt wird und für das gilt
+\[ \Ker \omega_\cf = \P(\cf) \Nc(\cf) \]
+
+\Satz{}
+Ist $L|K$ eine endliche, abelsche Erweiterung beliebiger Zahlkörper, $\cf$ ein zulässiges Ideal, so hat $\omega_\cf$ als Kern $\P(\cf)\Nc(\cf)$ und induziert einen Isomorphismus
+\[ \I(\cf) / (\P(\cf) \Nc(\cf)) \Pfeil{\isom{}} G(L|K) \]
+
+\section{Ideltheoretische Formulierung}
+\Def{Normrestsymbol}
+Sei $L|K$ eine endliche, abelsche Erweiterung beliebiger Zahlkörper, $\cf$ ein zulässiges Ideal. Definiere das \df{Normrestsymbol} durch folgende Surjektion
+\[ (\_, L/K) : \A_K^\times \surj{} \A_K^\times / K^\times N_{L|K}\A_L^\times \pfeil{} \I(\cf) /\P(\cf) \Nc(\cf) \pfeil{\isom{}} G(L|K) \]
+Für ein $a \in \A_K^\times$ gilt
+\[ (a,L/K) = (\af, L/K) \]
+wobei $\af \in \I(\cf)$ assoziiert ist zu $\alpha a \in \A_{K,\cf}^\times = \prod_{v\in S(\cf)} U_v(\cf) \times \prod_{v\not \in S(\cf)}'K_v^\times $ für ein geeignetes $\alpha \in K^\times$, wobei
+\[ S(\cf) = \set{v\text{ endliche Stelle von }K}{ v |\cf } \]
+
+\Satz{}
+Sei $L|K$ eine endliche, abelsche Erweiterung beliebiger Zahlkörper. Dann impliziert die Artin-Abbildung folgenden Isomorphismus
+\[ C_K /N_{L|K}C_L \isom{} \A_K^\times / K^\times N_{L|K}\A_L^\times \Pfeil{\isom{}} G(L|K) \]
+Für jedes $a \in \A_K^\times$ gilt
+\[ (a,L/K) = \prod_v (a_v, L/K) \]
+wobei wir unter $a_v$ das Idel verstehen, das an Stelle $v$ mit $a$ übereinstimmt und an allen anderen Stellen gleich Eins ist. Ferner erfüllt das Normrestsymbol dieselben Eigenschaften \ref{Eigenschaften} wie die ideltheoretische Formulierung.
+
+\Bem{}
+Ist $L|K$ eine endliche Erweiterung von Zahlkörpern, so sind $N_{E|K}\A_E^\times$ und $K^\times N_{E|K}\A_E^\times$ offen in $\A_K^\times$.\\
+Insbesondere ist $\U(\af) \subset N_{E|K}\A_E^\times$ offen in $\A_K^\times$ für geeignete $\af \in \I$.\\
+Es ergibt sich insofern folgende Korrespondenz
+\[ \set{H \subset_o C_K}{} \overset{\text{1 : 1}}\longleftrightarrow \set{U \subset_o \A_K^\times}{K^\times \subset U} \]
+
+\Def{Klassenkörper und Klassengruppen}
+Sei $L|K$ eine endliche Erweiterung von Zahlkörpern.\\
+$H \subset \A_K^\times$ bzw. $H' \subset C_K$ heißt die \df{Klassengruppe} von $L|K$, falls $H = K^\times N_{L|K}\A_L^\times$ bzw. $H' = N_{L|K}C_L$.\\
+Umgekehrt heißt $L$ in diesem Fall der \df{Klassenkörper} von $H$ bzw. $H'$.
+
+\Def{Universelles Normrestsymbol}
+Sei $K$ ein Zahlkörper. Definiere das \df{universelle Normrestymbol} durch
+\begin{align*}
+(\_, K^{ab} | K)  : C_K& \Pfeil{} G(K^{ab}|K) \\
+a & \longmapsto  \lim\limits_{L|K \text{ endl, ab}}(a, L|K)
+\end{align*}
+Das universelle Normrestsymbol ist ein stetiger, surjektiver Gruppenhomomorphismus.
+\paragraph{Bemerkung} Definiert man das universelle Normrestsymbol axiomatisch für beliebige Körper und Gruppen, die die Klassenkörperaxiome erfüllen, so ist das Normrestsymbol im Allgemeinem nicht surjektiv, besitzt aber immer ein dichtes Bild.
+
+\Prop{}
+Die kurze exakte Sequenz topologischer Gruppen
+\[ 1 \Pfeil{} C_K^1 \Pfeil{} C_K \Pfeil{} \R_{> 0} \Pfeil{} 1 \]
+spaltet.
+
+\Lem{}
+Bezeichne das universelle Normrestsymbol mit
+\[ \phi : C_K \isom{} C_K^1 \times \R_{>0} \Pfeil{} G(K^{ab}|K) \]
+Dann ist $\phi_{|\R_{>0}}$ trivial und $\phi_{|C_K^1}$ surjektiv.
+
+\Bem{}
+Es gilt
+\[ \Ker \phi = \bigcap_{L|K \text{ endl, ab}}N_{L|K}C_L \]
+und
+\[ \Ker \phi_{|C_K^1} = \bigcap_{L|K \text{ endl, ab}}(N_{L|K}C_L)^1 \]
+Dadurch induziert $\phi_{|C_K^1}$ folgenden Isomorphismus topologischer Gruppen
+\[ C_K^1/\bigcap_{L|K}(N_{L|K}C_L)^1 \Pfeil{\isom{}} G(K^{ab}|K) \]
+da $C_K^1$ kompakt ist.
 \printindex
 
 \end{document}
