@@ -1281,6 +1281,18 @@ Sei $F'|K$ eine beliebige, zyklische Zwischenerweiterung. In $F'$ sind nun alle 
 \Prop{}
 Ist $L|K$ eine echte, zyklische Erweiterung globaler Körper, so zerlegen sich unendlich viele Primideale nicht voll in $L$.
 
+\begin{Beweis}{}
+Angenommen es gäbe nur endliche viele Primstellen, die sich nicht voll zerlegen. $S$ bezeichne die Menge aller dieser Primstellen. Sei $a \in \A_K^\times$ ein Idel. Da $S$ endlich ist, erhalten wir durch den Approximationssatz erhalten ein Hauptideal $\alpha \in K^\times$, sodass
+\[ (\alpha a)_v \in N_{L_w|K_v}L_w^\times\]
+für alle $v \in S$. Da alle $v\notin S$ total zerlegt sind, erhalten wir für diese Stellen
+\[ (\alpha a)_v \in K_v^\times = L_w^\times = N_{L_w|K_v}L_w^\times \]
+Ergo ist das Idel $\alpha a$ eine Norm und es folgt
+\[ a \in K^\times N_{L|K}\A_L^\times \]
+Da $a \in \A_K^\times$ aber beliebig war, würde hieraus folgen
+\[ (\A_K^\times :K^\times N_{L|K} \A_L^\times  ) = 1\]
+was ein Widerspruch zum folgenden Satz ist.  
+\end{Beweis}
+
 \Satz{}
 Ist $L|K$ eine zyklische Erweiterung globaler Körper von Grad $n$, so gilt
 \[ (\A_K^\times : K^\times N_{L|K} \A_L^\times ) = (C_K : N_{L|K}C_L) = n \]
