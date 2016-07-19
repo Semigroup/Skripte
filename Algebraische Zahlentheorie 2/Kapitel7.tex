@@ -1,0 +1,52 @@
+\chapter{Der Existenzsatz und Lokale Klassenkörpertheorie}
+\section{Der Existenzsatz}
+\Satz{Existenzsatz}
+Sei $K|\Q$ eine endliche Körpererweiterung. Die Abbildung
+\[ L \longmapsto \Nc_L := N_{L|K}C_L \]
+stiftet eine Eins-zu-Eins-Korrespondenz zwischen den endlichen abelschen Erweiterungen $L|K$ und den offenen Untergruppen von $C_K$ von endlichem Index.\\
+Insbesondere gelten folgende Zusammenhänge:
+\begin{itemize}
+\item $L_1 \subset L_2 \Gdw{} \Nc_{L_1} \supset \Nc_{L_2}$
+\item $\Nc_{L_1L_1} = \Nc_{L_1}\cap \Nc_{L_2}$
+\item $\Nc_{L_1\cap L_2} = \Nc_{L_1} \Nc_{L_2}$
+\end{itemize}
+
+\Lem{}
+Sei $L|K$ der Klassenkörper zu $H$ und $H \subset H_1 \subset C_K$ eine Untergruppe.\\
+Dann ist $H_1$ die Klassengruppe zu $L^{(H_1 L/K)}$.
+
+\Lem{}
+Sei $F|K$ eine zyklische Erweiterung und $H\leq_o C_K$ eine offene Untergruppe von endlichem Index.\\
+Besitzt $N_{F|K}\i(H) \subset C_F$ einen Klassenkörper über $F$, so auch $H$ über $K$.
+
+\Bem{}
+Sei $H\leq_o C_K$ von endlichem Index. $A = C_K/H$ ist eine endliche abelsche Gruppe vom Exponenten $n$.\\
+Setze $F = K(\mu_n)$. Dann ist $F/K$ abelsche, ergo existiert ein Körperturm
+\[ K \subset F_1 \subset F_2 \subset \ldots \subset F_r = F \]
+zyklischer Erweiterungen. Setze $H_F := N_{F|K}\i (H)$ und $H_i := N_{F_i|K}\i(H)$.\\
+Besitzt $H_F$ einen Klassenkörper, so laut dem vorhergehenden Lemma auch $H_r$ und dann $H_{r-1}$, usw. bis $H$.\\
+Wir können also in Zukunft annehmen, dass $\mu_n \subset K$ und $C_K/H$ vom Exponenten $n > 2$ ist.
+
+\Bem{Kummer-Theorie}
+Sei $K$ ein beliebiger Körper, der die $n$-ten Einheitswurzeln enthält.\\
+Die Zuordnungen
+\[ A \longmapsto K_A := K(\sqrt[n]{A}) \]
+\[ L \longmapsto (L^\times)^n \cap K^\times   \]
+liefert eine Eins-zu-Eins-Korrespondenz zwischen den Untergruppen $ (K^\times)^n\subset A \subset K^\times$ und den abelschen Erweiterungen $L|K$ vom Exponenten $n$.\\
+Ferner ist die Paarung
+\begin{align*}
+G(K_A|K) \times A/(K^\times)^n & \Pfeil{} \mu_n\\
+(\sigma, \overline{a}) &\longmapsto \frac{\sigma(\sqrt[n]{a})}{\sqrt[n]{a}}
+\end{align*}
+nicht ausgeartet. Es folgt
+\[ A/(K^\times)^n \isom{} \Hom{cts}{G(K_A|K)}{\mu_n} = H^1(G(K_A|K),\mu_n) \]
+Insbesondere gilt also
+\[ [K_A : K] = (A : (K^\times)^n) \]
+
+\Satz{}
+Sei $K$ ein Zahlkörper, der die $n$-ten Einheitswurzeln enthält. $S \supset S_\infty \cup \{ v \in S_f ~|~ \pf_v \mid n \}$ sei eine hinreichend große, aber endliche Stellenmenge von $K$, sodass
+\[ \A_K^\times = K^\times \A_K^\times \]
+Setze
+\[ I_{S,n} := \prod_{v\in S} (K^\times_v)^n \times \prod_{v\not\in S}U_v \]
+Dann besitzt $I_{S,n}$ den Klassenkörper $L = K(\sqrt[n]{K_S})$ und es gilt
+\[ [L:K] = n^{\# S} \text{ und } K^\times \cap I_{S,n} =K_S^n \]

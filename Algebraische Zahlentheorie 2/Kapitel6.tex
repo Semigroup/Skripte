@@ -1,0 +1,149 @@
+\chapter{Differente und Diskriminante}
+\Def{Ausartung}
+Sei $R$ ein kommutativer Ring, $M,N$ seien $R$-Moduln.\\
+Eine Bilinearform $\shrp{} : M\times N \pfeil{} R$ heißt \df{perfekt} oder \df{nicht ausgeartet}, falls die \df{Ausartungsräume}
+\begin{align*}
+M^\bot &:= \{n \in N ~|~ \forall m \in M : \shrp{m,n} = 0\}\\
+N^\bot &:0 \{m \in M ~|~ \forall n \in N: \shrp{m,n} = 0\}
+\end{align*}
+verschwinden.
+\Bem{}
+Verschwinden die Ausartungsräume, so sind die natürlichen Abbildungen
+\[ M \Pfeil{} \Hom{R}{N}{R} \text{ und } N \Pfeil{} \Hom{R}{M}{R} \]
+injektiv. Ist ferner $R$ ein Körper, so sind jene Abbildungen sogar isomorph.\\
+Sind die Ausartungsräume trivial, so existiert zu jeder Basis $b_1,\ldots, b_n$ von $M$ genau eine Basis $b_1^\vee,\ldots, b_n^\vee$ von $N$, sodass gilt
+\[ \shrp{b_i,b_j^\vee} = \delta_{i,j} \]
+
+\section{Komplementärmoduln}
+\Bem{}
+Sei $A$ ein Dedekindring, $K = Quot(A)$, $L|K$ eine endliche, separable Körpererweiterung. $B$ bezeichne den ganzen Abschluss von $A$ in $L$.\\
+Die \df{Spurpaarung}
+\begin{align*}
+Tr : L\times L &\Pfeil{} K\\
+(x,y) & \longmapsto Tr_{L|K}(xy)
+\end{align*}
+ist $K$-linear und nicht ausgeartet. Es folgt
+\[ \Hom{K}{L}{K} \isom{} L \]
+Aber im Allgemeinem ist es falsch, anzunehmen
+\[ \Hom{A}{B}{A} \isom{} B \]
+
+\Def{Komplementärmodul}
+Sei $M\subset L$ ein $A$-Untermodul. Dann heißt
+\[ D_A(M) := \set{x\in L}{Tr_{L|K}(xM) \subset A} \]
+der \df{Komplementärmodul} von $M$.
+
+\Satz{}
+Seien $M \subseteq N \subseteq L$ $A$-Untermoduln, $\bf$ ein gebrochenes Ideal von $L$.
+\begin{itemize}
+	\item $D_A(M)$ ist ein $A$-Untermodul von $L$. Ist $M$ ein $B$-Modul, so auch $D_A(M)$.
+	\item $D_A(N) \subset D_A(M)$
+	\item $B \subset D_B(B)$
+	\item Ist $w_1,\ldots,w_n$ eine $K$-Basis von $L$, so gilt
+	\[ D_A(Aw_1 + \ldots + Aw_n) = Aw_1^\vee + \ldots + Aw_n^\vee \]
+	\item $D_A(\bf)$ ist ein gebrochenes Ideal von $L$.
+	\item $D_A(\bf) = D_A(B)\cdot \bf\i$
+	\item $D_A(D_A(\bf)) = \bf$
+\end{itemize}
+
+\Def{}
+Definiere die \df{Differente} von $B|A$ als das ganze Ideal
+\[ D_{B/A} := D_A(B)\i \subset B \]
+
+\Satz{}
+Sei $L = K(\alpha), n = [L:K]$. $f \in K[X]$ sei das Mimimalpolynom von $\alpha$, es bezeichne
+\[ \frac{f}{X-\alpha} = X^{n-1} + b_{n-2}X^{n-2} + \ldots + b_1X + b_0 \]
+Dann ist
+\[ \frac{1}{f'(\alpha)}, \frac{b_{n-2}}{f'(\alpha)}, \ldots , \frac{b_{0}}{f'(\alpha)} \]
+die duale Basis zu
+\[ 1, \alpha, \ldots, \alpha^{n-1} \]
+
+\Kor{}
+Sei $\alpha \in L$, $C = A[\alpha]$. Dann gilt
+\[ D_A(C) = (f'(\alpha))\i C \]
+Gilt $B = A[\alpha]$, so folgt insbesondere
+\[ D_{B/A} = f'(\alpha)B \]
+
+\Satz{}
+\begin{itemize}
+	\item Seien $K\subset L\subset E$ endliche, separable Erweiterungen. $C$ bezeichne den ganzen Abschluss von $A$ in $E$. Dann gilt
+	\[ D_{C/A} = D_{B/A} \cdot D_{C/B} \]
+	\item Ist $S \subset K^\times$ ein Untermonoid, so gilt
+	\[ S\i D_{B/A} = D_{S\i B / S\i A} \]
+	\item Sind $\Pf |\pf$ Primideale in $B$ bzw. $A$ und $\widehat{B}_\Pf$ bzw. $\widehat{A}_\pf$ diesbezügliche Komplettierungen, so gilt
+	\[ D_{B/A} \widehat{A}_\Pf = D_{\widehat{B}_\Pf / \widehat{A}_\pf} \]
+\end{itemize}
+
+\Kor{}
+Die Differente ist das formale Produkt
+\[ D_{B/A} = \prod_{ \Pf \subset B \text{ prim}} D_\Pf \]
+wobei $D_\Pf = D_{\widehat{B}_\Pf / \widehat{A}_\pf} \cap = D_{B_\Pf / A_\pf}\cap B $
+
+\section{Differente und Verzweigungen}
+\Lem{}
+Sei $L|K$ eine endliche separable Körpererweiterung mit Ganzheitsringen $B|A$.\\
+Zusätzlich sei $L = K[\alpha]$ für $\alpha \in B$ und
+\[ F= \set{x \in A[\alpha]}{xB \subset A[\alpha]} \]
+Dann gilt
+\[ F = f'(\alpha)D\i_{B/A} \]
+wobei $f\in K[X]$ das Minimalpolynom von $\alpha$ ist.
+
+\Kor{}
+Die Differente $D_{B/A}$ teilt $f'(\alpha) B$. Ferner gilt
+\[ D_{B/A} = f'(\alpha) B \Gdw{} B = A[\alpha] \]
+
+\Satz{}
+Seien $A,B$ diskrete Bewertungsringe, deren Restklassenkörpererweiterung separabel ist. Dann existiert ein $\alpha \in B$, sodass $B = A[\alpha]$.
+
+\Satz{}
+Sei $\Pf \subset B$ ein Primideal über $\pf \subset A$ und sei $B/\Pf | A / \pf$ separabel. Es gilt:
+\begin{itemize}
+	\item $\pf$ verzweigt in $L$ genau dann, wenn $\pf$ die Differente $D_{B/A}$ teilt.
+	\item Sei $s = v_\Pf(D_{B/A})$ und $e = e_\pf$.
+	\begin{itemize}
+		\item Ist $\pf$ zahm verzweigt, so gilt
+		\[ s = e - 1\]
+		\item Ist $\pf$ wild verzweigt, so gilt
+		\[ e \leq s \leq e - 1 + v_\pf(e) \]
+	\end{itemize}
+\end{itemize}
+
+\Satz{}
+Seien alle Restklassenkörpererweiterungen separabel. Dann ist $D_{B/A}$ das Ideal, das von allen $f'_\alpha(\alpha)$ erzeugt wird, wobei $\alpha$ alle Elemente mit $L = K(\alpha)$ durchläuft und $f_\alpha$ sein Minimalpolynom bezeichnet.
+
+\Def{Diskriminante}
+Das Ideal $\delta_{B|A} := N_{L|K}(D_{B/A})$ heißt \df{Diskriminante} von $B|A$.
+
+\Satz{}
+Sei $K = \Q$, dann ist
+\[ \delta_{\O_L/\Z}  = d(L)\cdot \Z \]
+wobei $d(L)$ definiert ist durch
+\[ d(L) := \det( \klam{Tr_{L|\Q} (w_i w_j)}_{i,j} ) \]
+für eine $\Z$-Basis $w_1,\ldots, w_n$ von $\O_L$.
+
+\Satz{}
+\begin{itemize}
+	\item Seien $K\subset L\subset E$ endliche, separable Erweiterungen. $C$ bezeichne den ganzen Abschluss von $A$ in $E$. Dann gilt
+	\[ \delta_{C/A} = N_{L|K}(\delta_{C/B}) \cdot \delta_{B/A} \]
+	\item Ist $S \subset K^\times$ ein Untermonoid, so gilt
+	\[ S\i \delta_{B/A} = \delta_{S\i B / S\i A} \]
+	\item Sind $\Pf |\pf$ Primideale in $B$ bzw. $A$ und $\widehat{B}_\Pf$ bzw. $\widehat{A}_\pf$ diesbezügliche Komplettierungen, so gilt
+	\[ \delta_{B/A} \widehat{A}_\Pf = \delta_{\widehat{B}_\Pf / \widehat{A}_\pf} \]
+\end{itemize}
+
+\Satz{}
+Sei $\pf \subset A$ prim, $\pf = \Pf_1^{e_1} \cdots \Pf_r^{e_r}$ die Zerlegung in $B$. $p = \textsf{char}(A/\pf)$. Dann gilt
+\[ v_\pf (\delta_{B/A}) \left\lbrace
+\begin{aligned}
+= (e_1 - 1) f_1 + \ldots + (e_r - 1)f_r && \text{ falls } p \nmid e_i \forall i\\
+<(e_1 - 1) f_1 + \ldots + (e_r - 1)f_r && \text{ sonst}
+\end{aligned}
+\right. \]
+Insbesondere gilt
+\[ \pf \text{ verzweigt in }L \Gdw{} \pf \mid \delta_{B/A} \]
+
+\Satz{}
+Sei $S$ eine endliche Menge von maximalen Idealen eines Zahlkörpers $K$, $n\in \N$.\\
+Dann gibt es nur endlich viele Erweiterungen von $K$, die außerhalb von $S$ unverzweigt sind.
+
+\Satz{}
+Es gibt keine unverzweigten Erweiterungen von $\Q$.
