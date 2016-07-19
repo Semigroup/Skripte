@@ -1,0 +1,346 @@
+\chapter{Norm-Index-Berechnungen}
+\section{Hilbert '90}
+\Def{Gruppenkohomologiegruppen}
+Sei $G$ eine endliche Gruppe, $A$ ein multiplikativ geschriebener $G$-Modul.\\
+Definiere die Gruppe der 1-\df{Kozykel} durch
+\[Z^1(G,A) := \{ f : G \pfeil{} A ~|~ \forall  \sigma, \tau \in G: f(\sigma \tau) = (f(\sigma))^\tau \cdot f(\tau) \} \]
+und die Gruppe der 1-\df{Koränder} durch
+\[ B^1(G,A) := \set{f \in Z^1(G,A)}{ \exists a \in A: f(\sigma) = a^{\sigma - 1} } \]
+Definiere die erste \df{Gruppenkohomologiegruppe} von $G$ mit Koeffizienten in $A$ durch
+\[ H^1(G,A) := Z^1(G,A) / B^1(G,A) \]
+
+\Satz{Hilbert '90}
+\begin{itemize}
+\item Ist $L|K$ eine zyklische, galoissche Erweiterung beliebiger Körper, so gilt
+\[ H\i(G(L|K), L^\times) = 1 \]
+\item Ist $L|K$ eine endliche, galoissche Erweiterung beliebiger Körper, so gilt
+\[ H^1(G(L|K), L^\times) = 1 \]
+\end{itemize}
+\begin{Beweis}{}
+\begin{itemize}
+\item Da
+\[ H\i(G(L|K), L^\times) = \ _{N_{L|K}}L^\times / I_{G(L|K)}L^\times \]
+ist die Behauptung äquivalent zur Aussage, dass zu jedem $\alpha \in L^\times$ mit
+\[ N_{L|K}(\alpha) = 1 \]
+ein $\beta \in L^\times$ existiert, so dass
+\[ \alpha = \beta^{\sigma - 1} \]
+wobei $\sigma$ einen Erzeuger der zyklischen Gruppe $G(L|K)$ bezeichnet.\\
+Es bezeichne $n = [L:K]$ den Grad der zyklischen Erweiterung. Die Automorphismen
+\[ \id{L^{\times}}, \sigma, \ldots, \sigma^{n-1} : L^\times \Pfeil{} L^\times \]
+stellen $n$ verschiedene Charaktere da und sind deswegen linear unabhängig. Insbesondere verschwindet folgende Linearkombination nicht
+\[ \sum_{i=0}^{n-1} \klam{\alpha^{\sum_{j = 0}^{i - 1} \sigma^j }} \sigma^i = \id{L^\times} + \alpha \sigma + \alpha^{1 + \sigma} \sigma^2 +  \cdots + \alpha^{1 + \sigma + \cdots + \sigma^{n-2}} \sigma^{n-1}  \]
+ Ergo existiert ein $\gamma \in L^\times$, sodass
+\[ \beta := \gamma + \alpha \gamma^\sigma + \alpha^{1 + \sigma} \gamma^{\sigma^2} + \cdots + \alpha^{1+\sigma + \cdots + \sigma^{n-2}}\gamma^{\sigma^{n-1}} \neq 0 \]
+Es gilt nun
+\[ \alpha \beta^\sigma = \alpha (\gamma^\sigma + \cdots + \alpha^{\sigma + \cdots + \sigma^{n-1}}\gamma^{\sigma^n} ) = \beta \]
+da
+\[ \alpha^{\sigma + \cdots + \sigma^{n-1}}\gamma^{\sigma^n} = \frac{N_{L|K}(\alpha)}{\alpha} \gamma = \alpha\i \gamma \]
+\item Sei $f \in Z^1(G(L|K),A)$. Aufgrund der Unabhängigkeit der Charaktere existiert ein $\gamma \in L^\times$ mit
+\[ \alpha := \sum_{\sigma \in G} f(\sigma) \gamma^\sigma \neq 0  \]
+Für beliebige $\tau \in G$ gilt nun
+\[ \alpha^\tau = \sum_{\sigma \in G(L|K)} f(\sigma)^\tau \gamma^{\sigma \tau} \sum_{\sigma \in G(L|K)} f(\sigma\tau)f(\tau\i) \gamma^{\sigma \tau} = f(\tau\i)\alpha \]
+Daraus folgt nun
+\[ f(\tau) = \alpha^{1 - \tau} = \beta^{\tau - 1} \]
+für $\beta := \alpha\i$. Ergo $f \in B^1(G(L|K),A)$
+\end{itemize}
+\end{Beweis}
+
+\Satz{Gruppenkohomologie ist auch wirklich eine Kohomologietheorie}
+Zu jeder exakten Sequenz von $G$-Moduln
+\[ 1 \Pfeil{} A \Pfeil{} B \Pfeil{} C \Pfeil{} 1\]
+existiert folgende lange exakte Kohomologiesequenz
+\begin{align*}
+1 \Pfeil{} A^G \Pfeil{} B^G \Pfeil{} C^G \Pfeil{} H^1(G,A) \Pfeil{} H^1(G,B) \Pfeil{} H^1(G,C) \Pfeil{} \ldots
+\end{align*}
+
+\section{Herbrand-Quotient}
+\Lem{}
+Sei $f : A \pfeil{} C$ ein Homomorphismus abelscher Gruppen und $B \leq A$ eine Untergruppe. Setze
+\[ \ _fA := A_f := \set{a\in A}{f(a) = 1} = \Ker f_{|A} \text{ und } A^f := f(A) = \Img f_{|A} \]
+Es gilt
+\[ (A:B) = (A^f:B^f) \cdot (A_f : B_f) \]
+
+\Def{Herbrand-Quotient}
+Für Morphismen $f, g : A\pfeil{} A $ einer Gruppe $A$ definiere den Herbrand-Quotienten durch
+\[ Q(A) := Q_{f,g}(A) := \frac{(A_f : A^g)}{(A_g : A^f)} \]
+
+\Lem{}
+Seien $f, g : A\pfeil{} A $ Homomorphismen einer abelschen Gruppe. $B \leq A$ sei eine Untergruppe, sodass $f(B),g(B) \subset B$.\\
+Dann gilt
+\[ Q(A) = Q(B) \cdot Q(A/B) \]
+Ist ferner $A$ endlich, so ist $Q(A) = 1$.
+
+\Bem{}
+Sei $G = \shrp{\sigma}$ zyklisch, $A$ ein multiplikativer $G$-Modul und $f = 1 - \sigma$ und $g =N = \prod_{\sigma \in G}\sigma$ zwei Selbstabbildungen von $A$. Es gilt dann
+\[ Q(G,A):=Q_{f,g}(A) = \frac{(A_f : A^g)}{(A_g : A^f)} = \frac{(A^G : NA)}{(N_A : I_GA)} = \frac{\# H^0(G,A)}{\# H\i(G,A)} \]
+
+\Def{Induzierte Moduln}
+Seien $H\leq G$ Gruppen, $B$ ein multiplikativ geschriebenes $H$-Linksmodul.\\
+Definiere den durch $B$ \df{induzierten $G$-Modul} durch
+\[ \textsf{Ind}_G^H(B) := \set{f : G \pfeil{} B}{f(hg) = \ ^hf(g) \forall g \in G, h\in H }  = \Hom{\text{Links-}H-\Mod}{G}{B} \isom{} G \otimes_{H} B \]
+$G$ operiert auf $\textsf{Ind}^H_G(B)$ von links durch
+\[ \ ^\sigma f := [g \in G \mapsto f(g\sigma) \in B ] \]
+für $\sigma \in G, f \in \textsf{Ind}^H_G(B)$.\\
+Für $H = \{1\}$ schreiben wir auch $\textsf{Ind}_G(B)$.
+
+\Bem{}
+\begin{itemize}
+\item Der kanonische $H$-Homomorphismus
+\begin{align*}
+\pi : \textsf{Ind}^H_G(B) & \Pfeil{} B\\
+f & \longmapsto f(1)
+\end{align*}
+bildet den $H$-Untermodul
+\[ B' := \set{f \in \textsf{Ind}_G^H(B)}{ f(g) = 1 \forall g \notin H } \]
+isomorph auf $B$ ab. Insofern können $B'$ und $B$ identifiziert werden und $B$ als Untermodul von $\textsf{Ind}^H_G(B)$ aufgefasst werden.
+\item Ist $(G:H)$ endlich, so erhalten wir folgende Isomorphie
+\begin{align*}
+\textsf{Ind}_G^H(B) &\Pfeil{} \prod_{\rho \in G/H} \ ^\rho B\\
+f & \longmapsto \prod_{\rho \in G/H} \ ^\rho f_{\rho}
+\end{align*}
+wobei
+\begin{align*}
+\ ^\rho f_{\rho} (g) := \left\lbrace
+\begin{aligned}
+f(g) && g\rho \in H\\
+1 && g\rho \notin H
+\end{aligned}
+\right.
+\end{align*}
+$G$ operiert auf $\prod_{\rho \in G/H} \ ^\rho B$ durch
+\[ \ ^g(\ ^\rho f_{\rho}) := \ ^{g\rho}b_\rho = \ ^{\rho'}(\ ^{h}b_\rho) = (\ ^gb)_{\rho'} \]
+wobei $g \in G$ und $g\rho = \rho' h$ für $\rho' \in G/H$ und $h \in H$.
+\item Ist $(G:H)$ endlich, so liegt folgende universelle Abbildungseigenschaft für $G$-Moduln $C$ vor
+\begin{align*}
+\Hom{G}{\textsf{Ind}_G^H(B)}{C} &\Pfeil{\isom{}} \Hom{H}{B}{C}\\
+f& \longmapsto f_{|B}
+\end{align*}
+\end{itemize}
+
+\Satz{}
+Seien $H\leq G$ endliche Gruppen, $H$ ein multiplikativ geschriebenes Links-$H$-Modul.\\
+Es liegt folgender kanonischer Isomorphismus vor
+\[ H^i(G, \textsf{Ind}_G^H(B)) = H^i(H,B) \]
+für $i = 0,1$.
+
+\section{Motivationen für die Norm-Index-Berechnung}
+\Bem{}
+Sei $L|K$ eine endliche Erweiterung globaler Körper.\\
+Es bezeichne $\delta = \delta_{L|K}$ die \df{Diskriminante} von $L|K$, d.\,h., dasjenige Ideal, das von allen Determinanten der Galoispermutationen aller in $\O_L$ liegenden Basen des $K$-Vektorraums $L$ erzeugt wird. Es gilt
+\[ \pf \text{ verzweigt in }L \Gdw{} \pf | \delta \]
+
+\Def{Artin-Symbol}
+Sei $L|K$ eine abelsche Erweiterung globaler Körper, $G = G(L|K)$, $\pf \subset \O_K$ ein Primideal, welches nicht in $L$ verzweigt.\\
+Definiere das \df{Artin-Symbol} von $\pf$ in $G$ durch
+\[ (\pf, L/K) := \Frob_\pf \in G_\pf \subset G \]
+Definiere die \df{Artin-Abbildung} durch
+\begin{align*}
+\omega : \I(\delta) & \Pfeil{} G\\
+\bf = \prod_{\pf \text{ prim zu }\delta} \pf^{v_{\pf}} & \longmapsto (\bf,L/K) := \prod_{\pf} (\pf, L/K)^{v_\pf}
+\end{align*}
+Ist $0\neq \cf \subset \O_K$ ein weiteres Ideal, das durch alle verzweigenden Primideale geteilt wird, so ergibt sich analog folgendes Diagramm
+\begin{center}
+\begin{tikzpicture}[scale =1]
+\node (C) at (0,1)  {$\I(\cf)$};
+\node (D) at (0,0)  {$\I(\delta)$};
+\node (G) at (2,0)  {$G$};
+
+\draw[right hook->] (C) -> (D) node[midway, left]{};
+\draw[->] (C) -> (G) node[midway, above right]{$\omega_\cf$};
+\draw[->] (D) -> (G) node[midway, below]{$\omega$};
+\end{tikzpicture}
+\end{center}
+
+\Satz{}
+$\omega_\cf$ ist surjektiv.
+\begin{Beweis}{}
+Es bezeichne $H := \Img \omega_\cf \leq G(L|K)$, $F = L^H$.\\
+Jedes $\pf \in \I(\cf)$ zerlegt sich voll in $F$, da
+\[ \Frob_\pf =  (\pf, F/K) =(\pf, L/K)_{|F} = \omega_\cf(\pf)_{|F} \in H/H = 1 \]
+Sei $F'|K$ eine beliebige, zyklische Zwischenerweiterung. In $F'$ sind nun alle bis auf endliche viele Primideale von $\O_K$ voll zerlegt. Mit der folgenden Proposition folgt nun, dass $F' = K$. Ergo ist $F$ als Vereinigung aller zyklischen Zwischenerweiterungen gleich $K$. Ergo ist $H = G(L|K)$.
+\end{Beweis}
+
+\Prop{}
+Ist $L|K$ eine echte, zyklische Erweiterung globaler Körper, so zerlegen sich unendlich viele Primideale nicht voll in $L$.
+
+\begin{Beweis}{}
+Angenommen es gäbe nur endliche viele Primstellen, die sich nicht voll zerlegen. $S$ bezeichne die Menge aller dieser Primstellen. Sei $a \in \A_K^\times$ ein Idel. Da $S$ endlich ist, erhalten wir durch den Approximationssatz erhalten ein Hauptideal $\alpha \in K^\times$, sodass
+\[ (\alpha a)_v \in N_{L_w|K_v}L_w^\times\]
+für alle $v \in S$. Da alle $v\notin S$ total zerlegt sind, erhalten wir für diese Stellen
+\[ (\alpha a)_v \in K_v^\times = L_w^\times = N_{L_w|K_v}L_w^\times \]
+Ergo ist das Idel $\alpha a$ eine Norm und es folgt
+\[ a \in K^\times N_{L|K}\A_L^\times \]
+Da $a \in \A_K^\times$ aber beliebig war, würde hieraus folgen
+\[ (\A_K^\times :K^\times N_{L|K} \A_L^\times  ) = 1\]
+was ein Widerspruch zum folgenden Satz ist.  
+\end{Beweis}
+
+\Satz{}
+Ist $L|K$ eine zyklische Erweiterung globaler Körper von Grad $n$, so gilt
+\[ (\A_K^\times : K^\times N_{L|K} \A_L^\times ) = (C_K : N_{L|K}C_L) = n \]
+
+\Def{Führer der Artin-Abbildung}
+Sei $L|K$ eine abelsche Erweiterung globaler Körper.\\
+Unter einem \df{Führer der Artin-Abbildung} verstehen wir ein zulässiges Primideal $\ff$, welches von allen verzweigenden Primidealen geteilt wird und für das gilt
+\[ \P(\ff) \subset \Ker \omega_\ff \]
+
+\Bem{}
+Für ein gebrochenes Ideal $\af \in \I(\ff)$ von $L$, welches teilerfremd zu den verzweigenden Primidealen ist, gilt
+\[ (N_{L|K}\af, L|K) = (\af, L|L) = 1 \]
+da $\N(\ff) = N_{L|K} \I(\ff)$, folgt
+\[ \P(\ff) \N(\ff) \subset \Ker \omega_\ff  \]
+d.\,h.
+\[ C_K/N_{L|K}C_L \isom{} \I(\ff) / (\P(\ff) \N(\ff)) \surj{} G(L|K) \]
+Mit dem folgenden Satz gilt nun, dass $\omega_\ff$ ein Isomorphismus ist.
+
+\Satz{Universelle Normenungleichung}
+Sei $L|K$ eine Galoiserweiterung von Grad $n$. Es gilt
+\[ (C_K : N_{L|K}C_L ) \leq n \]
+
+\section{Der Lokale Norm-Index}
+
+\Bem{Unverzweigt bei Unendlich}
+Ist $v$ eine archimedische Stelle einer Körpererweiterung $L|K$, so heißt $w|v$ \df{unverzweigt}, falls $L_w = K_v$.\\
+D.\,h., $\C|\R$ ist verzweigt mit Verzweigungsgrad 2.
+
+\Satz{}
+Sei $L|K$ eine zyklische Erweiterung lokaler Körper, $G = G(L|K)$, $e$ der Verzweigungsindex. Dann gilt
+\begin{itemize}
+\item $\# H^0(G,L^\times) = (K^\times : N_{L|K}L^\times) = [L:K]$
+\item $H\i(G,L^\times) = 0$
+\item $(\O_K^\times : N_{L|K}\O_L^\times) = e$
+\item $Q(G, \O_L^\times) = 1$, d.\,h. 
+\[ \#H^0(G, \O_L^\times) = \#H\i(G, \O_L^\times) = e \]
+\end{itemize}
+\paragraph{Bemerkung}
+Das Ergebnis der lokalen Klassenkörpertheorie wird am Ende sein, dass dieser Satz für abelsche Erweiterungen lokaler Körper gilt.\\
+Ersetzt man $\O_K^\times$ durch $K_v^\times$ für $K = \R,\C$, so gilt der Satz auch für $\R$ und $\C$.
+
+\Satz{Normalbasissatz}
+Sei $L|K$ eine beliebige, endliche Galoiserweiterung. Dann gilt folgende Isomorphie von $G$-Moduln
+\[ L \isom{} \textsf{Ind}_GK = K[G] \]
+D.\,h., es existiert ein $b \in L$, sodass $\set{b^\sigma}{\sigma \in G(L|K)}$ eine Basis von $L$ ist.
+
+\Lem{}
+Sei $L|K$ eine endliche Galoiserweiterung mit Galoisgruppe $G(L|K) = \{\sigma_1, \ldots, \sigma_n\}$.\\
+Es gilt für Elemente $a_1,\ldots, a_n \in L$
+\[ a_1,\ldots, a_n \text{ sind eine }K\text{-Basis für }L \Gdw{} \det(a_j^{\sigma_i}) \neq 0 \]
+
+\Kor{}
+Ist $L|K$ eine unverzweigte Erweiterung lokaler Körper, so ist
+\[ N_{L|K} : \O_L^\times \Pfeil{} \O_K^\times \]
+unverzweigt.
+
+\Kor{}
+Sei $L|K$ eine beliebige, abelsche Erweiterung lokaler Körper so gilt
+\begin{itemize}
+\item $(K^\times : N_{L|K} L^\times ) ~|~ [L:K]$
+\item $(\O_K^\times : N_{L|K} \O_L^\times ) ~|~ e$
+\end{itemize}
+
+\Bem{}
+Sei $L|K$ eine endliche, abelsche Erweiterung von Zahlkörpern, und $\cf \subset \O_K$ ein zulässiges Ideal.\\
+Ist $v$ eine endliche, verzweigende Stelle in $L$, so gilt $v | \cf$.
+
+\section{Globale Norm-Index-Berechnungen}
+\Def{}
+Sei $L|K$ eine endliche Galoiserweiterung globaler Körper, $G = G(L|K)$, $v$ eine Stelle von $K$.\\
+Definiere folgende $G$-Moduln
+\[ L_v^\times := \prod_{w|v} L_w^\times \supseteq \O_{L,v}^\times := \prod_{w|v}\O_{L_w}^\times \]
+Dann ist
+\[ \A_L^\times = \prod'_vL_v^\times \text{ restringiert bzgl. } \O_{L,v}^\times  \]
+Fixiert man ein $w_0|v$, so gilt
+\[ L_v^\times = \prod_{\sigma \in G/G_{w_0}} L_{\sigma w_0}^\times = \prod_{\sigma \in G/G_{w_0}} \ ^\sigma L_{w_0}^\times \text{ und } \O_{L,v}^\times = \prod_{\sigma \in G/G_{w_0}} \ ^\sigma \O_{L_{w_0}}^\times \]
+Es gilt ergo
+\[ L^\times_v = \textsf{Ind}_G^{G_{w_0}} (L_{w_0}^\times) \text{ und } \O^\times_{L, v} = \textsf{Ind}_G^{G_{w_0}} (\O_{L_{w_0}}^\times) \]
+
+\Satz{}
+Sei $L|K$ eine zyklische Erweiterung und $S$ die Menge aller Stellen von $K$, die in $L$ verzweigen.\\
+Setze
+\[ \A_{L,S}^\times := \prod_{v\in S}L_v^\times \times \prod_{v\notin S} \O_{L,s}^\times \]
+Für jede Stelle $v$ von $K$ bezeichne $w$ eine ausgewählte Stelle über $v$. Dann gilt für $i = 0,-1$
+\begin{align*}
+H^i(G, \A_{L,S}^\times ) &= \bigoplus_{v\in S}H^i(G_w, L_w^\times)\\
+H^i(G, \A_{L}^\times ) &= \bigoplus_{v}H^i(G_w, L_w^\times)\\
+\end{align*}
+\Bem{}
+Es gilt mit obigem Satz
+\begin{align*}
+H\i (G, \A_L^\times) &= 0\\
+H^0(G,\A_L^\times) &= \A_K^\times/N_{L|K}\A_L^\times = \bigoplus_{v} K_v^\times / N_{L_w|K_v}L_w^\times
+\end{align*}
+Mit anderen Worten, ein Idel von $K$ ist genau dann Norm eines Ideles von $L$, wenn es überall lokal eine Norm ist.
+
+\Satz{}
+Sei $L|K$ eine zyklische Erweiterung globaler Körper, $S$ bezeichne die Menge aller verzweigenden Stellen. Es gilt
+\[ Q(G, \A_{L,S}^\times) = \prod_{v\in S} [L_w:K_v] \]
+
+\Satz{}
+Sei $K$ ein Zahlkörper, $S \supseteq S_\infty$ eine endliche Menge von Stellen von $K$.\\
+Definiere die Menge der \df{$S$-Einheiten} durch
+\[ K_S := K^\times \cap \A_{K,S} \]
+Der Homomorphismus
+\begin{align*}
+\lambda_S : K_S &\Pfeil{} \prod_{v\in S} \R\\
+a & \longmapsto (\log \bet{a}_v)_{v\in S} 
+\end{align*}
+hat als Kern $\mu(K)$, die Menge aller Einheitswurzeln in $K$. Sein Bild ist ein Gitter im $(\#S-1)$-dimensionalen \df{Spur-Null-Raum}, der definiert ist durch
+\[ \H:= \set{(x_v)_v \in \prod_{v\in S}\R }{\sum_{v\in S}x_v = 0} \]
+
+\Lem{}
+Sei $V$ ein $n$-dimensionaler $\R$-Vektorraum, $G \leq \Aut{\R}{V}$ eine endliche Untergruppe, die eine gegebene Basis $v_1,\ldots,v_n$ von $V$ permutiert durch
+\[ \sigma(v_i) =: v_{\sigma(i)} \]
+für $\sigma \in G, i = 1,\ldots,n$.\\
+Sei $\Gamma \leq V$ ein $G$-invariantes Gitter, d.\,h., $G\Gamma \subset \Gamma$. Dann gibt es ein Untergitter $\Gamma' = \Z w_1 + \ldots \Z w_n \leq \Gamma$, sodass
+\[ \sigma w_i = w_{\sigma(i)} \]
+für $\sigma \in G, i = 1,\ldots,n$.
+
+\Satz{}
+Sei $L|K$ eine zyklische Erweiterung globaler Körper, $S \supset S_\infty$ eine endliche Stellenmenge von $K$.\\
+Es bezeichne 
+\[\overline{S} = \set{w \text{ Stelle von }L}{w|v \text{ für ein } v \in S} \]
+die über $S$ liegenden Stellen und setze ferner
+\[ L_S := L_{\overline{S}} = L^\times \cap \A_{L,\overline{S}} \]
+Dann gilt, wobei je $v \in S$ ein passendes $w\in \overline{S}$ gewählt wird,
+\[ Q(G,L_S) = \frac{\prod_{v\in S} [L_w : K_v]}{[L:K]} \]
+
+\Satz{}
+Sei $L|K$ eine zyklische Erweiterung globaler Körper vom Grad $n$, $G = G(L|K)$ ihre Galoisgruppe. Es gilt
+\[ Q(G, C_L) = \frac{\# H^0(G,C_L)}{\# H\i(G,C_L)} = [L:K]  \]
+Zusammen mit der universellen Normenungleichung  folgt nun
+\[ (C_K : N_{L|K} C_L ) = n \]
+Insbesondere erhalten wir nun die Klassenkörperaxiome
+\[ \# H^i(G,C_L) = \left\lbrace
+\begin{aligned}
+\ [L:K] && i = 0\\
+1 && i = -1
+\end{aligned}
+\right. \]
+
+\begin{Beweis}{}
+Wähle eine endliche Stellenmenge $S \supset S_\infty$, so dass
+\[ \A_L^\times = L\times \A_{L,S}^\times \]
+Dies ist laut dem nächsten Lemma möglich. Es ergibt sich nun folgende exakte Sequenz
+\[ 1 \Pfeil{} L_S \Pfeil{} \A_{L,S}^\times \Pfeil{} \A_{L,S}^\times L^\times /L^\times = C_L \Pfeil{} 1 \]
+Da der Herbrand-Quotient multiplikativ ist, ergibt sich
+\[ Q(C_L) = Q(L_S)\i Q(\A_{L,S}^\times) = \frac{[L:K]}{\prod_{v\in S} [L_w : K_v]} \prod_{v\in S} [L_w : K_v] = [L:K] \]
+\end{Beweis}
+
+\Lem{}
+Sei $K$ ein globaler Körper. Es seien folgende Repräsentanten $\{\af_1,\ldots , \af_n \} = Cl(K) = \I / \P$ der Idealklassengruppe gegeben.\\
+$S \supset S_\infty$ sei eine endliche Stellenmenge, die alle endlichen Stellen $\pf$ enthalte, die im Träger eines $\af_i$
+\[ \textsf{supp}(\af_i) = \set{\pf \in \textsf{spec}\O_K}{\pf | \af_i} \]
+liegen. Dann gilt
+\[ \A_K^\times = \A_{K,S}^\times K^\times \]
+
+\Satz{Hasses Normensatz}
+Sei $L|K$ eine zyklische Erweiterung, $x \in K^\times$. Es gilt
+\[ x \text{ ist eine Norm, d.\,h. } x \in N_{L|K}L^\times \Gdw{} x \text{ ist überall lokal eine Norm} \]
+\begin{Beweis}{}
+Betrachte die exakte Sequenz
+\[ 1 \Pfeil{} L^\times \Pfeil{} \A_K^\times \Pfeil{} C_L \Pfeil{} 1 \]
+Sie induziert folgende exakte Sequenz in Kohomologie
+\[ 1 = H\i(G,C_L) \Pfeil{} H^0(G,L^\times) \Pfeil{} H^0(G,\A_L^\times) = \bigoplus_v H^0(G_w, L_w^\times) \]
+Wir lesen folgende Inklusion ab
+\[ K^\times / N_{L|K}L^\times \Inj{} \bigoplus_v K_v^\times / N_{L_w|K_v}L_w^\times \]
+\end{Beweis}
