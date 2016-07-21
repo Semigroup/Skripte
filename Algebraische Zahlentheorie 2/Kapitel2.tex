@@ -1,6 +1,6 @@
 \chapter{Klassenkörpertheorie -- Motivation und Hauptresultate}
 \section{Abelsche Erweiterungen von $\Q$}
-\Satz{Kroncker-Weber}
+\Satz{Kronecker-Weber}
 Sei $L|\Q$ eine endliche Erweiterung. Folgende Aussagen sind äquivalent:
 \begin{itemize}
 	\item $L|\Q$ ist abelsch.
@@ -217,7 +217,7 @@ Sei $K$ ein Zahlkörper. Ein Element $a \in K^\times$ heißt \df{total positiv},
 \Satz{Strahlklassenkörper}
 Sei $K$ ein Zahlkörper und $0\neq \af \subset \O_K$ ein Ideal.
 \begin{itemize}
-\item Es existiert genau eine endliche Körpererweiterung $K(\af)|K$, die folgende Eigenschaften für jedes Ideal $\pf \subset \O_K$ erfüllt
+\item Es existiert genau eine endliche Körpererweiterung $K(\af)|K$, die folgende Eigenschaften für jedes Primideal $\pf \subset \O_K$ erfüllt
 \begin{itemize}
 \item $\pf\nmid \af$ $\Impl{}$ $\pf$ ist unverzweigt in $K(\af)$.
 \item $\pf$ zerlegt sich voll in $K(\af)$ $\Gdw{}$ es existiert ein total positives $\alpha \in 1 + \af$ mit $\pf = (\alpha)$.
@@ -292,7 +292,7 @@ Das Normrestsymbol erfüllt folgende Eigenschaften:
 \node (D5) at (0,0)  {$A_{K^\sigma}$};
 \node (D7) at (4,0)  {$G(L^\sigma|K^\sigma)^{ab}$};
 
-\draw[->] (D1) -> (D3) node[midway, above]{$(\_, L|E)$};
+\draw[->] (D1) -> (D3) node[midway, above]{$(\_, L|K)$};
 \draw[->] (D5) -> (D7) node[midway, above]{$(\_, L^\sigma | K^\sigma)$};
 \draw[->] (D3) -> (D7) node[midway, right]{$\sigma^* : g \mapsto \sigma g \sigma\i$};
 \draw[->>] (D1) -> (D5) node[midway, left]{$\sigma$};
@@ -393,12 +393,12 @@ sodass für jede Stelle $v$ von $K$ folgendes Diagramm kommutiert
 \node (D7) at (4,0)  {$G(K^{ab}|K)$};
 
 \draw[->] (D1) -> (D3) node[midway, above]{$\phi_{K_v}$};
-\draw[->] (D5) -> (D7) node[midway, above]{$\phi_K : ? \mapsto \Frob_v$};
+\draw[->] (D5) -> (D7) node[midway, above]{$\phi_K : \overline{a} \mapsto \Frob_v$};
 \draw[right hook->] (D3) -> (D7) node[midway, right]{};
-\draw[right hook->] (D1) -> (D5) node[midway, left]{$\pi_v \mapsto ?$};
+\draw[right hook->] (D1) -> (D5) node[midway, left]{$\pi_v \mapsto \overline{a}$};
 \end{tikzpicture}
 \end{center}
-wobei $K_v$ die Komplettierung von $K$ bzgl. $v$ bezeichnet. 
+wobei $K_v$ die Komplettierung von $K$ bzgl. $v$ bezeichnet und $a = (\ldots, 1, \pi_v, 1,\ldots) \in K_v^\times \times \prod_{v' \neq v}\O_{K_v}^\times \subset_o \A_K^\times $ 
 
 \item Für jede endliche, abelsche Erweiterung $L|K$ induziert $\phi_K$ einen Isomorphismus
 \[ C_K / N_{L|K} C_L \Pfeil{\isom{}} G(L|K) \]
