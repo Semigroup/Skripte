@@ -1,0 +1,39 @@
+\chapter{Die Universelle Norm-Index-Ungleichung und die Riemannsche Zeta-Funktion}
+
+\newcommand{\Pb}{\mathbb{P}}
+
+\Def{Die Riemannsche Zeta-Funktion}
+Definiere die \df{Riemannsche Zeta-Funktion} elementar für $s \in \C$ mit $\textsf{Re} s > 1$ durch
+\[ \zeta(s) := \sum_{n\in \N} \frac{1}{n^s} = \prod_{p \in \Pb} \frac{1}{1 - \frac{1}{p^s}}  \]
+wobei $\Pb \subset \N$ die Menge aller natürlichen Primzahlen bezeichnet.
+
+\Satz{}
+Es bezeichne $\C^+ = \set{c \in \C}{\textsf{Re} c > 0}$, dann ist die Riemannsche Zeta-Funktion analytisch fortsetzbar auf $\C^+\setminus\{1\}$. Bei 1 besitzt sie einen Pol einfacher Ordnung mit Residuum 1.
+
+\Def{}
+Seien $f,g : \C^+ \pfeil{} \C$ zwei meromorphe Funktionen. Definiere folgende Äquivalenzrelation
+\[ f \sim g :\Gdw{} f - g \text{ ist holomorph in einer Umgebung der 1} \]
+
+\Kor{}
+$\zeta \sim \frac{1}{s-1}$
+
+\Def{Dedekindsche Zeta-Funktion}
+Sei $K$ ein Zahlkörper, definiere die \df{partielle Dedekindsche Zeta-Funktion} für $\kappa \in Cl_K$ durch
+\[ \zeta(\kappa, s) := \sum_{\af \in \kappa \text{ ganz}}\frac{1}{(N\af)^s} \]
+und die \df{Dedekindsche Zeta-Funktion} durch
+\[ \zeta_K(s) := \prod_{\pf \in \textsf{spec}\O_K} \frac{1}{1 - \frac{1}{(N\pf)^s}} = \sum_{\af \trianglelefteq \O_K} \frac{1}{(N\af)^s} = \sum_{\kappa \in Cl_K} \zeta(\kappa, s) \]
+Für ein Ideal $0\neq \cf \subset \O_K$ setze
+\[ \zeta_\cf (s) :=  \sum_{\af \trianglelefteq \O_K, (\af,\cf) = 1} \frac{1}{(N\af)^s} = \prod_{\pf | \cf} \frac{1}{1 - \frac{1}{(N\af)^s}} = \sum_{\kappa \in \I(\cf) / \P(\cf)} \zeta(\kappa, s) = \sum_{\kappa \in Cl(K,\cf)} \zeta(\kappa, s) \]
+
+\Satz{}
+Setze $D = \{ z \in \C ~|~ \textsf{Re}z > 1 - \frac{1}{[K:\Q]} \}$.\\
+$\zeta_K, \zeta_\cf, \zeta(\kappa, \_)$ sind holomorph auf $D\setminus \{1\}$. Bei 1 besitzen sie einen Pol erster Ordnung.
+
+\Satz{}
+Sei $\chi : Cl(K,\cf) \pfeil{} \mu$ ein Charakter. Setze
+\[ L_\cf (\chi, s) := \prod_{\pf \nmid \cf} \frac{1}{1 - \frac{\chi(\pf)}{ (N\pf)^s }} = \sum_{\af \trianglelefteq \O_k, (\af,\cf) = 1} \frac{\chi(\af)}{(N\af)^s} = \sum_{\kappa \in \I(\cf)/ \P(\cf) }\chi(\kappa) \zeta(\kappa, s) \]
+Ist $\chi$ nichttrivial, so ist $L_\cf(\chi, \_)$ holomorph bei 1.
+
+\Satz{Universelle Norm-Index-Ungleichung}
+Sei $L|K$ eine endliche Erweiterung von Zahlkörpern. $\cf \subset \O_K$ sei ein zulässiges Ideal. Dann gilt
+\[ (C_K : N_{L|K} C_L) = (\I(\cf) : \P(\cf) \Nc(\cf) ) \leq [L:K]  \]
