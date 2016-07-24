@@ -164,7 +164,7 @@ Sei $F'|K$ eine beliebige, zyklische Zwischenerweiterung. In $F'$ sind nun alle 
 Ist $L|K$ eine echte, zyklische Erweiterung globaler Körper, so zerlegen sich unendlich viele Primideale nicht voll in $L$.
 
 \begin{Beweis}{}
-Angenommen es gäbe nur endliche viele Primstellen, die sich nicht voll zerlegen. $S$ bezeichne die Menge aller dieser Primstellen. Sei $a \in \A_K^\times$ ein Idel. Da $S$ endlich ist, erhalten wir durch den Approximationssatz erhalten ein Hauptideal $\alpha \in K^\times$, sodass
+Angenommen es gäbe nur endliche viele Primstellen, die sich nicht voll zerlegen. $S$ bezeichne die Menge aller dieser Primstellen. Sei $a \in \A_K^\times$ ein Idel. Da $S$ endlich ist, erhalten wir durch den Approximationssatz ein Hauptideal $\alpha \in K^\times$, sodass
 \[ (\alpha a)_v \in N_{L_w|K_v}L_w^\times\]
 für alle $v \in S$. Da alle $v\notin S$ total zerlegt sind, erhalten wir für diese Stellen
 \[ (\alpha a)_v \in K_v^\times = L_w^\times = N_{L_w|K_v}L_w^\times \]
@@ -187,10 +187,10 @@ Unter einem \df{Führer der Artin-Abbildung} verstehen wir ein zulässiges Primi
 \Bem{}
 Für ein gebrochenes Ideal $\af \in \I(\ff)$ von $L$, welches teilerfremd zu den verzweigenden Primidealen ist, gilt
 \[ (N_{L|K}\af, L|K) = (\af, L|L) = 1 \]
-da $\N(\ff) = N_{L|K} \I(\ff)$, folgt
-\[ \P(\ff) \N(\ff) \subset \Ker \omega_\ff  \]
+Da $\Nc(\ff) = N_{L|K} \I(\ff)$, folgt
+\[ \P(\ff) \Nc(\ff) \subset \Ker \omega_\ff  \]
 d.\,h.
-\[ C_K/N_{L|K}C_L \isom{} \I(\ff) / (\P(\ff) \N(\ff)) \surj{} G(L|K) \]
+\[ C_K/N_{L|K}C_L \isom{} \I(\ff) / (\P(\ff) \Nc(\ff)) \surj{} G(L|K) \]
 Mit dem folgenden Satz gilt nun, dass $\omega_\ff$ ein Isomorphismus ist.
 
 \Satz{Universelle Normenungleichung}
@@ -229,7 +229,7 @@ Es gilt für Elemente $a_1,\ldots, a_n \in L$
 \Kor{}
 Ist $L|K$ eine unverzweigte Erweiterung lokaler Körper, so ist
 \[ N_{L|K} : \O_L^\times \Pfeil{} \O_K^\times \]
-unverzweigt.
+surjektiv.
 
 \Kor{}
 Sei $L|K$ eine beliebige, abelsche Erweiterung lokaler Körper so gilt
