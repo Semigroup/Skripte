@@ -11,7 +11,7 @@ Sei $L|\Q$ eine endliche Erweiterung. Folgende Aussagen sind äquivalent:
 Sei $N \in \N$, $L |\Q$ endlich. Folgende Aussagen sind äquivalent:
 \begin{itemize}
 	\item $L \subseteq \Q(\mu_N)$.
-	\item Ob eine Primzahl $p$ in $L$ voll zerlegt ist, hängt nur von $p\mod{n}$ ab.
+	\item Ob eine Primzahl $p$ in $L$ voll zerlegt ist, hängt nur von $p$ mod $n$ ab.
 \end{itemize}
 
 \Satz{}
@@ -32,7 +32,7 @@ Für $p\not | N$ prim gilt:
 \end{itemize}
 
 \Prop{}
-Sei $L|K$ galoissch und $\Pf|\pf$ unverzweigte Stellen in $\O_L|\O_K$. Es bezeichne $\lambda = \O_L / \Pf$ und $\kappa = \O_K /\pf$ die korrespondierenden Restklassenkörper. Dann ist $G_\Pf := G(\lambda | \kappa) \inj{\iota} G(L|K)$ zyklisch und wird vom \df{Frobeniusautomorphismus}
+Seien $L|K$ galoissch und $\Pf|\pf$ unverzweigte Stellen in $\O_L|\O_K$. Es bezeichne $\lambda = \O_L / \Pf$ und $\kappa = \O_K /\pf$ die korrespondierenden Restklassenkörper. Dann ist $G_\Pf := G(\lambda | \kappa) \inj{\iota} G(L|K)$ zyklisch und wird vom \df{Frobeniusautomorphismus}
 \begin{align*}
 \phi_q : \lambda & \Pfeil{} \lambda\\
 x &\longmapsto x^q 
@@ -294,7 +294,7 @@ Das Normrestsymbol erfüllt folgende Eigenschaften:
 
 \draw[->] (D1) -> (D3) node[midway, above]{$(\_, L|K)$};
 \draw[->] (D5) -> (D7) node[midway, above]{$(\_, L^\sigma | K^\sigma)$};
-\draw[->] (D3) -> (D7) node[midway, right]{$\sigma^* : g \mapsto \sigma g \sigma\i$};
+\draw[->] (D3) -> (D7) node[midway, right]{$\sigma^* : g \mapsto \sigma\i g \sigma$};
 \draw[->>] (D1) -> (D5) node[midway, left]{$\sigma$};
 \end{tikzpicture}
 \end{center}
@@ -310,7 +310,7 @@ Das Normrestsymbol erfüllt folgende Eigenschaften:
 \draw[->] (D1) -> (D3) node[midway, above]{$(\_, L'|K')$};
 \draw[->] (D5) -> (D7) node[midway, above]{$(\_, L | K)$};
 \draw[->] (D3) -> (D7) node[midway, right]{$\sigma \mapsto \sigma_{|L}$};
-\draw[->>] (D1) -> (D5) node[midway, left]{$N_{L'|L}$};
+\draw[->] (D1) -> (D5) node[midway, left]{$N_{K'|K}$};
 \end{tikzpicture}
 \end{center}
 

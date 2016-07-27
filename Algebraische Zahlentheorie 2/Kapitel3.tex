@@ -16,7 +16,7 @@ Jedes $G_J$ trägt die Produkttopologie und ist lokal kompakt; das restringierte
 \[ V \subset_o G \Gdw{} V\cap G_J \subset_o G_J \text{ für alle }J \text{ endlich} \]
 Die Menge
 \[ \set{ \prod_{i \in J}O_i \times \prod_{i \in I\setminus J}U_i }{J \subset I \text{ endlich und } 1 \in O_i \subset_o G_i} \]
-bilde eine Umgebungsbasis der Eins in $\prod_{i\in I}'G_i$.\\
+bildet eine Umgebungsbasis der Eins in $\prod_{i\in I}'G_i$.\\
 Ferner wird folgende universelle Abbildungseigenschaft für jede hausdorffsche, abelsche Gruppe $Z$ erfüllt
 \[ \Hom{cts}{\prod_{i\in I}'G_i}{Z} = \set{(f_i)_i \in \prod_{i \in I} \Hom{cts}{G_i}{Z} }{ \text{ffa } i \in I \text{ ist } f_i(U_i) \text{ in jedem }1 \in U\subset_o Z \text{ enthalten} } \]
 
@@ -64,13 +64,13 @@ $C_K = \A_K^\times/K^\times$ ist im Allgemeinem nicht kompakt.
 \Bem{Idealklassengruppe}
 Sei $K$ ein Zahlkörper, $\I$ bezeichne die Menge der gebrochenen Ideale von $K$, $\P$ die Menge der gebrochenen Hauptideale.\\
 Die \df{Idealklassengruppe} ist definiert durch
-\[Cl(K) = \I/\P \]
+\[Cl_K = \I/\P \]
 Bezeichnet $S_f$ die Menge der endlichen Stellen von $K$ und $S_\infty$ die Menge der unendlichen Stellen von $K$, so definiere
 \[ \U := \prod_{v\in S_\infty}K_v^\times \times \prod_{v\in S_f} \O_v^\times \subset \A_K^\times \]
 Es gilt
 \[ \A_K^\times / \U \isom{} \bigoplus_{v\in S_f} K_v^\times / \O_v^\times \isom{} \I  \]
 Definiert man ferner $\overline{\U} := K^\times\cdot\U/K^\times$, so gilt
-\[ C_K / \overline{\U} \isom{} Cl(K) \]
+\[ C_K / \overline{\U} \isom{} \A_K^\times / K^\times \U = \I / \P \isom{} Cl_K \]
 
 \Def{Verallgemeinerte Idealklassengruppe}
 Sei $K$ ein Zahlkörper.\\
@@ -89,7 +89,7 @@ Die \df{verallgemeinerte Idealklassengruppe} ist definiert durch
 Es gilt für Ideale $\af,\bf$
 \[ \af \leq \bf \Gdw{} \U(\af) \leq \U(\bf) \Gdw{} Cl(K,\af) \surj{} Cl(K,\bf) \]
 und
-\[ Cl(K,\O_K) = Cl(K) \]
+\[ Cl(K,\O_K) = Cl_K \]
 
 \Bem{Alternative Beschreibung der Idealklassengruppe}
 Sei $K$ ein Zahlkörper, $0\neq \af \subset \O_K$ ein Ideal.\\
@@ -110,7 +110,7 @@ In jedem Fall gilt wegen dem Approximationsatz
 Sei $K$ ein Zahlkörper, $0\neq \af \subset \O_K$ ein Ideal.\\
 Setze
 \[ S:= S_\infty \cup S(\af) \]
-Beachte, dass für $v \notin S$ $U_v(\af) = \O_{K_v}^\times$ gilt. Wir erklären folgenden Homomorphismus
+Beachte, dass $U_v(\af) = \O_{K_v}^\times$ für $v \notin S$ gilt. Wir erklären folgenden Homomorphismus
 \begin{align*}
 \phi : \I(\af) \isom{} \bigoplus_{v\notin S} \Z \isom{} \bigoplus_{v\notin S} K_v^\times / U_v(\af) \subset \A_K^\times / \U(\af) \surj{} C_K / \overline{\U(\af)} = Cl(K,\af)  
 \end{align*}
@@ -173,7 +173,7 @@ Es liegt folgende exakte Sequenz vor
 Definiere
 \[ \A_{K,\af}^\times := \prod_{v \in S}U_v(\af) \times \prod'_{v\notin S} K_v^\times \]
 dann liegt folgende Isomorphie vor
-\[ \A_{K,\af}^\times \Pfeil{\isom{}} \A_K^\times / K^\times \]
+\[ \A_{K,\af}^\times / K_\af^\times \Pfeil{\isom{}} \A_K^\times / K^\times \]
 und folgende surjektive Abbildung
 \begin{align*}
 \Psi_\af : \A_{K,\af}^\times &\Pfeil{} \I(\af)\\
