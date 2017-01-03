@@ -1,0 +1,285 @@
+\documentclass{article}
+
+\usepackage{../Package/latexa}
+\usepackage{../Package/algebra}
+\usepackage{../Package/theorema}
+\usepackage{../Package/diagramma}
+\usepackage{../Package/categoria}
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows}
+
+\newcommand{\qi}{\backsimeq_{\textsc{QI}}}
+\newcommand{\ba}{\backsimeq_{\textsc{BA}}}
+\newcommand{\normal}{\vartriangleleft}
+\newcommand{\tm}{\subset}
+\newcommand{\Stab}[2]{\textsf{Stab}_{#1}(#2)}
+\newcommand{\Cay}[2]{\textsf{Cay}(#1,#2)}
+
+
+\renewcommand{\A}{\mathbb{A}}
+\newcommand{\Nc}{\mathcal{N}}
+
+\renewcommand{\i}{^{-1}}
+\renewcommand{\d}{\textsf{d}}
+\renewcommand{\P}{\mathbb{P}}
+
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\Af}{\mathfrak{A}}
+\renewcommand{\bf}{\mathfrak{b}}
+\newcommand{\Bf}{\mathfrak{B}}
+\newcommand{\cf}{\mathfrak{c}}
+\newcommand{\Cf}{\mathfrak{C}}
+\newcommand{\ff}{\mathfrak{f}}
+\newcommand{\Ff}{\mathfrak{F}}
+\newcommand{\pf}{\mathfrak{p}}
+\newcommand{\Pf}{\mathfrak{P}}
+\newcommand{\mf}{\mathfrak{m}}
+\newcommand{\Mf}{\mathfrak{M}}
+\newcommand{\qf}{\mathfrak{q}}
+\newcommand{\Qf}{\mathfrak{Q}}
+
+\renewcommand{\M}{\mathbb{M}}
+
+\newcommand{\Ac}{\mathcal{A}}
+\newcommand{\Rc}{\mathcal{R}}
+\renewcommand{\O}{\mathcal{O}}
+
+\newcommand{\Frob}{\textsf{Frob}}
+
+\newcommand{\Leg}[2]{\left(\frac{#1}{#2}\right)}
+
+\newcommand{\ric}{\textsf{ric}}
+
+\makeindex
+
+\begin{document}
+
+\section{Krümmungen}
+
+\Def{}
+Es sei $M$ eine Riemannsche Mannigfaltigkeit und $\kappa_p(\sigma)$ bezeichne die Schnittkrümmung in einem Punkt $p$ und einer Ebene $\sigma \subset T_pM$.\\
+$M$ heißt \df{von positiver Schnittkrümmung}, falls $\kappa_p(\sigma) > 0$ für alle $p \in M, \sigma \subset T_pM$.
+Bezeichnet $\ric$ die Ricci-Krümung, so heißt $M$ \df{von positiver Ricci-Krümmung}, falls $\ric_p(v,v) > 0$ für alle $p \in M, v \in T_pM$.\\
+Die Ricci-Krümmung von $M$ wird von $\alpha > 0$ nach unten beschränkt, falls
+\[ \ric_p(v,v) \geq \alpha g_p(v,v) \]
+für alle $p \in M, v \in T_pM$.
+
+\Def{Isometrien}
+Eine glatte Abbildung $f : M \pfeil{} N$ heißt \df{lokal isometrisch}, falls für alle $p \in M$ das Differential $\d_p : T_pM \pfeil{} T_pN$ eine lineare Isometrie metrischer Räume ist.
+
+\Bem{}
+$f$ ist genau dann isometrisch, wenn $f$ lokal isometrisch und diffeomorph.
+
+\Satz{}
+Jede glatte Abbildung $f : M \pfeil{} M$, die für einen Punkt eine Isometrie auf den Tangentialräumen induziert, ist eine Isometrie.\\
+Jede glatte, abstandserhaltende Funktion $f : M \pfeil{} M$ ist eine Isometrie.
+
+\Def{}
+Die \df{Kompakt-Offen-Topologie} auf $\textsf{Isom}(M,M)$ wird durch eine Basis folgender Mengen generiert
+\[ W(K,U) := \set{f}{ f(K) \subseteq U } \]
+für alle $K \subseteq M$ kompakt und $ U \subseteq M$ offen.
+
+\Prop{Cartan}
+Seien $v,w$ normierte, orthogonale Vektoren in $T_pM$. Es gilt
+\[ d(c_v(t), c_w(t))^2 = 2t^2 - \frac{\kappa_p(\sigma_{v,w})}{6} t^4 + o(t^5)  \]
+
+\Lem{}
+Ist $Y$ ein Jacobifeld entlang $c$, so gilt
+\[ D_t(\Rc (\dot{c}, Y), \dot{c})(0) = \Rc (\dot{c}, D_tY)\dot{c}  \]
+\begin{Beweis}{}
+\begin{align*}
+\frac{\d}{\d t} g(\Rc(\dot{c} , Y) \dot{c}, w ) &= g(D_t \Rc(\dot{c}, Y) \dot{c}, w ) + g(\Rc (\dot{c}, Y) \dot{c}, D_tw )\\
+\frac{\d}{\d t} g(\Rc(\dot{c} , w) \dot{c}, Y ) &= g(D_t \Rc(\dot{c}, w) \dot{c}, Y ) + g(\Rc (\dot{c}, w) \dot{c}, D_tY )\\
+g(D_t \Rc(\dot{c}, Y) \dot{c}, w ) &= g(D_t \Rc(\dot{c}, w) \dot{c}, Y ) + g(\Rc(\dot{c}, w) \dot{c}, D_tY ) =  g(\Rc(\dot{c}, D_tY) \dot{c}, w )
+\end{align*}
+\end{Beweis}
+
+
+\Prop{}
+Seien $v,w \in T_pM$ mit $\bet{w} = 1$. Setze $Y(t) = (\d \exp_p)_{tv}(tw) \in J_{c_v}$. Dann gilt
+\[ \bet{Y(t)}^2 = g(Y(t), Y(t)) = t^2 - \frac{1}{3} g(\Rc(v,w)w, v)t^4 + o(t^5) \]
+
+\begin{Beweis}{}
+Es gilt
+\[ Y(0) = 0, D_t(Y)(0) = w \]
+Man rechnet nach
+\begin{align*}
+	g(Y,Y)(0)     & = 0                                                                    \\
+	g(Y,Y)'(0)    & = \frac{\d}{\d t}_{|t = 0} g(Y(t), Y(t)) = 2g(D_t(Y),Y) (0) = 0        \\
+	g(Y,Y)''(0)   & = 2g(D_tY, D_tY)(0) + 2g(D_tD_tY,Y)(0) = 2g(w,w) = 2                   \\
+	g(Y,Y)'''(0)  & = 6g(D_tD_tY, D_tY)(0) = 6g(-\Rc(\dot{c}, Y) \dot{c}, D_t Y ) (0) = 0  \\
+	g(Y,Y)''''(0) & = 8g(\Rc(\dot{c}, D_tY )\dot{c}, D_tY  ) - \frac{8}{24} g(\Rc(v,w)w,v) = - \frac{1}{3}g(\Rc(v,w)w,v)
+\end{align*}
+\end{Beweis}
+
+\newpage
+\section{Räume konstanter Krümmung}
+\Def{}
+Unter $\M_k^n$ verstehen wir die bis auf Isomorphie eindeutige vollständige, einfache zusammenhängende, $n$-dimensionale Riemannsche Mannigfaltigkeit von konstanter Schnittkrümmung $k$.
+\Bem{}
+Skaliert man die Metrik einer Riemannschen Mannigfaltigkeit mt $c > 0$, so skaliert sich ihre Krümmung mit $\frac{1}{c}$.
+\Bsp{}
+Man führe auf $\R^{n+1}$ folgende Bilinearformen ein
+\begin{align*}
+(x,y) &:= \sum_{i = 1}^{n+1}x_i \cdot y_i\\
+\shrp{x,y} &:= \sum_{i = 1}^{n}x_i \cdot y_i - x_{n+1} \cdot y_{n+1}\\
+\end{align*}
+Dann gilt
+\begin{align*}
+\M_0^n = \R^n && M_1^n = S^n = \{x \in \R^{n+1} ~|~ (x,x) = 1\} && M_{-1}^n = \H^n = \{ x \in \R^{n+1} ~|~ (x,x) = 1, x_{n+1} > 0 \} 
+\end{align*}
+
+\Def{}
+Der \df{Index} einer symmetrischen Bilinearform ist die größte Dimension aller Unterräume, auf denen jene Bilinearform negativ definit ist.
+
+\Def{}
+Sei $(M,g)$ eine semi-Riemannsche Untermannigfaltigkeit einer Riemannschen Mannigfaltigkeit $(M',g')$. Bezeichnet $\iota : M \inj{} M'$ die Einbettung, so verstehen wir unter $\V'(M) := \Gamma(\iota^*(TM'))$ den Pullback der Vektorfelder auf $M'$, d.h.
+\[ \V'(M) = \set{Y_{|M}}{Y \in \V(M)} \]
+Unter $\V(M)^\bot \subset \V'(M)$ verstehen wir die Vektorfelder auf $M$, die normal zu $M$ liegen.\\
+Wir schränken den Levi-Civita-Zusammenhang von $M'$ auf $\V(M) \times \V'(M)$ ein und erhalten
+\[ \D' : \V(M) \times \V'(M) \Pfeil{} \V'(M) \]
+
+\Lem{}
+$\D'$ ist wohldefiniert.
+\begin{Beweis}{}
+Sei $p \in M$ ein Punkt und $U \subset M$ eine Koordinatennachbarschaft von $p$. Seien ferner $V \in \V(M), X \in \V'(M)$ mit Liftungen $V',X' \in \V(M')$. $X'$ lässt sich auf $U$ darstellen durch
+\[ X' = \sum_{i} f^i \frac{\d}{\d x_i} \]
+\[ \D'_{V'}X' = \sum_i V'(f^i) \frac{\d}{\d x_i} + \sum_i f^i D'_{V'}\klam{\frac{\d}{\d x_i}} \]
+Für $q \in U\cap M$ gilt
+\[V'(f^i)(q) = V_q(f^i) = V_q(f^i_{|U\cap M}) \]
+und
+\[ \D'_{V'}\klam{\frac{\d}{\d x_i}}(q) = \D'_{V'_q}\klam{\frac{\d}{\d x_i}} \]
+\end{Beweis}
+\Kor{}
+Seien $V,W \in \V(M), X,Y \in V'(M)$.
+\begin{itemize}
+\item $D'_VX$ ist $\F(M)$-linear in $V$.
+\item $D'_VX$ ist $\R$-linear in $X$.
+\item $D'_V(fX) = (Vf) X + f\D'_VX$
+\item $[V,W] = \D'_VW - \D'_WV$
+\item $Vg(X,Y) = g(D'_VX, Y) + g(X, D'_VY)$
+\end{itemize}
+\Lem{}
+Sind $V,W \in \V(M)$, dann gilt
+\[ \D_VW = (\D'_VW)^T \]
+\begin{Beweis}{}
+Sei $X \in \V(M)$ beliebig
+\begin{align*}
+2g(\D'_{V'}W', X') = V'g(W',X') + W'g(X',V') - X'g(V',W') + g(W',[X',V']) + g(X', [V',W'])
+\end{align*}
+Mit dem Vorhergehenden Korollar erhalten wir durch Einschränkung auf $M$
+\[ g(\D'_{V}W, X) = g(\D_{V}W, X) \]
+Es gilt ferner
+\[ g(\D'_{V}W, X) = g((\D'_{V}W)^T, X) \]
+da $X$ tangential an $M$ liegt.
+\end{Beweis}
+
+\Lem{}
+Definiere den \df{Gestalttensor} bzw. \df{zweiten Fundamentaltensor} durch
+\begin{align*}
+\Pi : \V(M) \times \V(M) &\Pfeil{} \V(M)^\bot\\
+(V,W) & \longmapsto (\D'_VW)^N = \D'_VW - \D_VW
+\end{align*}
+Dann ist dieser Tensor $\F(M)$-bilinear und symmetrisch.
+\begin{Beweis}{}
+\begin{align*}
+(\D'_V(fW))^N = (f\D'_VW)^N + (V(f) W)^N = (f\D'_VW)^N\\
+\Pi(V,W) - \Pi(W,V) = (\D'(V,W) - \D'(W,V))^N = [V,W]^N = 0
+\end{align*}
+\end{Beweis}
+
+\Satz{Gauss-Gleichung}
+Seien $V,W,X,Y \in \V(M)$. Es gilt
+\[ g(\R(V,W)X,Y) = g(\R'(V,W)X,Y) + g(\Pi(V,X), \Pi(W,Y )) - g(\Pi(V,Y), \Pi(W,X )) \]
+\begin{Beweis}{}
+\begin{align*}
+\R(X,Y)Z &= -\D_{[X,Y]}Z + [\D_X,\D_Y]Z\\
+g(\D'_{[V,W]}X,Y) &= g(\D_{[V,W]}X,Y)\\
+g(\D'_V\D'_WX,Y) &= g(\D'_V\D_WX,Y) + g(\D'_V \Pi(W,X), Y)\\
+&= g(\D_V\D_WX,Y) + (Vg(\Pi(W,X), Y) - g(\Pi(W,X), \D'_VY ))\\
+\end{align*}
+Nun gilt aber
+\[ g(\Pi(W,X), Y) = 0 \]
+Ergo
+\begin{align*}
+g(\D'_V\D'_WX,Y) &= g(\D_V\D_WX,Y) + (Vg(\Pi(W,X), Y) - g(\Pi(W,X), \D'_VY ))\\
+&= g(\D_V\D_WX,Y) -g(\Pi(W,X), \Pi(V,Y) )
+\end{align*}
+\end{Beweis}
+
+\Kor{}
+Sind $v,w \in T_pM$ linear unabhängig, so gilt
+\[ \kappa(v,w) = \kappa'(v,w) + \frac{g(\Pi(v,v), \Pi(w,w)) - g(\Pi(v,w), \Pi(v,w))}{g(v,v) g(w,w) - g(v,w)^2} \]
+
+\Prop{}
+Sei $Y$ ein Vektorfeld tangential zu $M$ entlang einer Kurve $\alpha(t)$ in $M$. Dann gilt
+\[ \D_t' Y = \D_tY + \Pi(\dot{\alpha}, Y) \]
+
+\Kor{}
+$\alpha$ ist genau dann eine Geodäte von $M$, wenn $\D'_t(\dot{\alpha})$ normal zu $M$ steht.
+
+\Def{}
+Eine \df{semi-Riemannsche Hyperfläche} ist eine \df{semi-Riemannsche Untermannigfaltigkeit} der Kodimension Eins.
+
+\Def{}
+Das \df{Vorzeichen} einer semi-Riemannschen Hyperfläche $M$ ist definiert durch
+\[ \e := \left\lbrace 
+\begin{aligned}
++1 && \textsf{coindex}M = 0\\
+-1 && \textsf{coindex}M = 1
+\end{aligned}
+\right. \]
+
+\Def{}
+Sei $U$ ein normierter Normalenvektorfeld einer semi-Riemannschen Hyperfläche $M$. Dann wird durch
+\[ g(S(V),W)  = g(\Pi(V,W), U)\]
+ein (1,1)-Tensorfeld $S$ auf $M$ definiert, der sogenannte \df{Gestaltoperator}, der durch $U$ induziert wird.
+
+\Lem{}
+Für alle $v \in T_pM$ gilt
+\[ S(v) = -\D'_vU \]
+Ferner ist $S_p$ selbstadjungiert.
+\begin{Beweis}{}
+$g(U,U)$ ist konstant gleich 1. Ergo gilt
+\[ g(\D'_VU,U) = 0 \]
+Daraus folgt, dass $\D'_VU$ für alle $V \in \V(M)$ tangent an $M$ liegt.\\
+Sei nun $W \in \V(M)$, dann gilt
+\[ g(S(V),W) = g(\Pi(V,W), U) =g(\D'_VW, U) \gl{g(U,W) = 0} g(\D'_VU,W)   \]
+\end{Beweis}
+
+\Kor{}
+\[ \kappa(v,w) = \kappa'(v,w) + \e \frac{g(Sv,v)g(Sw,w) - g(Sv,w)^2}{g(v,v) g(w,w) - g(v,w)^2} \]
+\begin{Beweis}{}
+\[ \Pi(v,w) = \e g(Sv,w) U \text{ und } g(U,U) = \e \]
+\end{Beweis}
+
+\Def{3 Shades of Artig-Sein}
+Sei $x \in \R^{n+1}$.
+\begin{align*}
+x \text{ heißt } \left\lbrace \begin{aligned}
+\text{zeitartig, falls } &\shrp{x,x} < 0\\
+\text{lichtartig, falls } &\shrp{x,x} = 0\\
+\text{raumartig, falls } &\shrp{x,x} > 0
+\end{aligned} \right.
+\end{align*}
+
+\Prop{}
+Sei $M = \set{p \in \R^{n+1}}{\shrp{p,p} = -r^2}$. Dann ist $M$ eine Riemannsche Mannigfaltigkeit der konstanten Schnittkrümmung $-\frac{1}{r^2}$ für $r > 0$.
+\begin{Beweis}{}
+Definiere $f : \R^{n+1} \pfeil \R$ durch $x \mapsto \shrp{x,x}$. Dann ist $\d f_p(v) = 2\shrp{v,p}$. Ergo ist $\d f_p$ surjektiv für alle $p \in M$. Ergo ist $f\i(-r^2)$ eine glatte Hyperfläche von $\R^{n+1}$.\\
+Ferner ist
+\[ T_pM = \Ker \d f_p  = \set{v \in \R^{n+1}}{\shrp{p,v} = 0} = p^\bot \]
+Da $p$ zeitartig ist, ist $T_pM$ positiv definit. Ferner ist der vom Einheiten-Normalen Vektorfeld $U = \frac{p}{r}$ abgeleitete Gestaltoperator gegeben durch $S(V) = - \D'_VU = \frac{-V}{r}$. Es folgt
+\[ \kappa(v,w) = 0 - \frac{1}{r^2} = - \frac{1}{r^2} \] 
+\end{Beweis}
+
+\Def{}
+Unter einer \df{Paar-Isometrie} $\Phi : (M,M') \pfeil{} (N,N')$, wobei $M \subset M', N \subset N'$, ist eine Isometrie $M' \pfeil{} N'$, dergestalt, dass auch ihre Restriktion $M \pfeil{} N$ eine Isometrie ist.
+
+\Lem{}
+Eine Paar-Isometrie $\Phi : (M,M') \pfeil{} (N,N')$ erhält den Gestalttensor, d.\,h.
+\[ \d \Phi (\Pi (v,w)) = \Pi ( \d \Phi(v),\d \Phi(w) ) \]
+für alle $p \in M, v,w \in T_pM$.
+\end{document}

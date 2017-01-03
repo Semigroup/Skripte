@@ -1,0 +1,129 @@
+\documentclass{article}
+
+\usepackage{../Package/latexa}
+\usepackage{../Package/algebra}
+\usepackage{../Package/theorema}
+\usepackage{../Package/diagramma}
+\usepackage{../Package/categoria}
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows}
+
+\newcommand{\qi}{\backsimeq_{\textsc{QI}}}
+\newcommand{\ba}{\backsimeq_{\textsc{BA}}}
+\newcommand{\normal}{\vartriangleleft}
+\newcommand{\tm}{\subset}
+\newcommand{\Stab}[2]{\textsf{Stab}_{#1}(#2)}
+\newcommand{\Cay}[2]{\textsf{Cay}(#1,#2)}
+
+
+\renewcommand{\A}{\mathbb{A}}
+\newcommand{\Nc}{\mathcal{N}}
+
+\renewcommand{\i}{^{-1}}
+\renewcommand{\d}{\textsf{d}}
+\renewcommand{\P}{\mathbb{P}}
+
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\Af}{\mathfrak{A}}
+\renewcommand{\bf}{\mathfrak{b}}
+\newcommand{\Bf}{\mathfrak{B}}
+\newcommand{\cf}{\mathfrak{c}}
+\newcommand{\Cf}{\mathfrak{C}}
+\newcommand{\ff}{\mathfrak{f}}
+\newcommand{\Ff}{\mathfrak{F}}
+\newcommand{\pf}{\mathfrak{p}}
+\newcommand{\Pf}{\mathfrak{P}}
+\newcommand{\mf}{\mathfrak{m}}
+\newcommand{\Mf}{\mathfrak{M}}
+\newcommand{\qf}{\mathfrak{q}}
+\newcommand{\Qf}{\mathfrak{Q}}
+
+\newcommand{\Ac}{\mathcal{A}}
+
+\newcommand{\Frob}{\textsf{Frob}}
+
+\newcommand{\Leg}[2]{\left(\frac{#1}{#2}\right)}
+
+\makeindex
+
+\begin{document}
+
+\section{Einführung}
+\subsection{Algebraische Kurven}
+Jede glatte, projektive Kurve $C$ über $\C$ ist eine eindimensionale, kompakte komplexwertige Riemannsche Fläche, die topologisch durch ihr Geschlecht klassifiziert werden kann.
+\[ g = \frac{1}{2} \textsf{rk}H_1(C,\Z) = \dim_\C H^0(C,K_C) \]
+$K_C= \Omega_C^1$ bezeichnet hierbei das \df{kanonische Bündel}, d.h., für jede offene Menge $U$ ergibt sich
+\[ K_C(U) = \set{f(z)\d z}{f \text{ ist holomorph auf } U} \]
+In dieser Hinsicht unterscheidet man drei Fälle:
+\begin{itemize}
+\item $g = 0$: Dann ist $C$ einfach zusammenhängend, ergo isomorph zu $\P^1 = \C\cup \{\infty\}$. Es gilt
+\[ K_C \isom{} \O_{\P_1} (-2) \]
+\item $g= 1$: Dann handelt es sich bei $C$ um eine elliptische Kurve. Es existiert in diesem Fall ein $\tau \in \H = \set{z \in \C}{\Im z > 0}$, sodass
+\[ C \isom{} \C / (\Z \oplus \tau \Z) \isom{} E \subset \P^2 \]
+Ferner gilt
+\[ K_C = \O_C \]
+Außerdem ist die universelle Überlagerung von $C$ ganz $\C$ in diesem Fall und es gilt
+\[ \set{\text{Elliptische Kurven}}{} / \isom{} \Pfeil{\isom{}} \A^1 \]
+\item $g > 1$: In diesem Fall ist $C$ isomorph zu $\H / \Gamma$, wobei $\Gamma$ eine Fuchssche Gruppe, d.h. diskrete Untergruppe von $\text{PSL}_2(\R)$, ist, die auf $\H$ operiert. Der Grad von $K_C$ ist $2g-2$ und für jedes $g> 0$ existiert eine quasi-projektive Varietät $M_g$ mit
+\[ \set{\text{Glatte projektive Kurven von Geschlecht }g / \C}{} / \isom{} \Pfeil{\isom{}} M_g \]
+\end{itemize}
+
+\subsection{Projektive Varietäten}
+\Def{Der projektive Raum} Definiere den \df{komplexwertigen projektiven Raum} der Dimension $n$ durch
+\[ \P^n := (\C^{n+1} \setminus \{0\}) / \sim = \textsf{Proj}\C[X_0,\ldots, X_n]  \]
+wobei $a \sim b :\Gdw{} \exists \lambda \in \C^\times : a = \lambda b$ für $a,b \in \C^{n+1} \setminus\{0\}$.\\
+$\P^n$ wird von folgenden Karten überdeckt
+\[ U_i = \set{ [z_0 : \ldots : z_n]}{z_i \neq 0} \isom{} \A^n \]
+
+\Def{Zariski-Topologie} Eine Teilmenge $V \subset \P^n$ heißt \df{abgeschlossen} in der Zariski-Topologie, falls ein homogenes Ideal $I \subset \C[X_0,\ldots, X_n]$ existiert, sodass $V = V(I)$.\\
+$V$ heißt \df{reduzibel}, falls $V = V_1 \cup V_2$ mit $\emptyset \neq V_1, V_2 \subsetneq_a V$
+
+\Bem{}
+Jede abgeschlossene Teilmenge von $\P^n$ ist eine Vereinigungen von irreduziblen, abgeschlossenen Komponenten.
+
+\Def{}
+Definiere die \df{Dimension} von $V \subseteq_a \P^n$ durch das maximale $d$, für welches irreduzible, abgeschlossene Mengen $X_i \subseteq \P^n$ existieren, sodass sich folgende, echt aufsteigende Kette ergibt
+\[ \emptyset \neq X_0 \subsetneq X_1 \subsetneq \ldots \subsetneq X_n \subseteq V \]
+
+\Def{}
+Eine \df{projektive Varietät} ist ein geringter Raum isomorph zu $(V, \O_V)$ mit $V \subset_{a,i} \P^n$ und $\O_V = \O_{\P^n} / \I_V$.\\
+Morphismen sind stetige Abbildungen $f : V \pfeil{} W$ mit
+\[ f\i \O_W \inj{} \O_V \]
+wobei $f\i O_W$ die Garbifizierung der Prägarbe
+\[ U \longmapsto \lim_{f(U) \subseteq X \subseteq_o W } \O_W(X) \]
+
+\Def{}
+Setze für $p \in V$
+\[ \O_{V,p} := \lim_{p \in U \subseteq_o V} \O_V(U) \triangleright \mf_{V,p} := \set{f \in \O_{V,p}}{f(p) = 0} \]
+\[ T_pV := \Hom{\C}{\mf_{V,p} /\mf_{V,p}^2}{\C} \]
+Es gilt
+\[ \dim_\C(T_pV) \geq \dim V \]
+Gilt hier Gleichheit, so heißt $V$ in $p$ \df{glatt}.
+
+\subsection{Birationale Abbildungen}
+\Lem{Aufblasung}
+Sei $X$ eine glatte projektive Varietät, $n = \dim X$ und $p \in X$.\\
+Dann existiert eine weitere glatte projektive Varietät $Y$ und eine Abbildung $f : Y \pfeil{} X$, sodass
+\[ Y \setminus f\i(p) \Pfeil{\isom{}, f} X \setminus \{p\} \]
+und
+\[ f\i(p) \isom{} \P^{n-1} \]
+\begin{Beweis}{}
+Setze
+\[ Y = \textsf{Proj}_{\O_X}( \bigoplus_{n\geq 0} I_p^n) \]
+\end{Beweis}
+
+\Def{}
+Ein Morphismus $f : X \pfeil{} Y$ projektiver Varietäten heißt \df{birational}, falls offene Mengen $X_o \subset X, Y_o \subset Y$ existieren, sodass
+\[ X_o \Pfeil{f, \isom{}} Y_o \]
+In diesem Fall heißen $X$ und $Y$ \df{birational äquivalent}.
+
+\subsection{Numerische Invarianten}
+\Def{Plurigenera}
+Definiere für eine glatte projektive Varietät $X$ seinen \df{Plurigenus} durch
+\[ P_m(X) := \dim H^0(X, K_X^{\otimes m}) \]
+Man kann zeigen, dass für jedes $X$ ein $\kappa = \kappa(X) \in \set{-\infty, 0, 1, \ldots, \dim X}{}$ und $a,b > 0$ existieren, sodass für fast alle $m$ gilt
+\[ a m^\kappa \leq P_m(X) \leq bm^\kappa \]
+Man nennt $\kappa(X)$ die \df{Kodaira-Dimension} von $X$.
+\end{document}
