@@ -1575,7 +1575,7 @@ Dann gelten folgende Eigenschaften
 
 \Lem{}
 Es gilt
-\[ \lim\limits_{r\pfeil{} \infty} \frac{1}{r} \log N_S(r) \text{ existiert} \]
+\[ \lim\limits_{t\pfeil{} \infty} \frac{1}{t} \log N_S(t) \text{ existiert} \]
 und für alle $r$ gilt
 \[ \limsup\limits_{t\pfeil{}{\infty}} \frac{1}{t}\log N_S(t) \leq \frac{1}{r}\log N_S(r) \]
 
@@ -1649,7 +1649,7 @@ Die Äquivalenzklasse eines geodätischen Strahl $\delta$ bezeichnen wir mit $\d
 \Lem{}
 Definiere das \df{Sphärenbündel} von $M$ durch
 \[ S_pM := \set{v \in T_pM}{\norm{v} = 1} \]
-für $p \in M$. Für $v \in T_pM$ bezeichne $\sigma_v(t) = \exp(t\cdot v)$. Definiere hierdurch folgende Abbildung
+für $p \in M$. Für $v \in T_pM$ bezeichne $\sigma_v(t) = \exp_p(t\cdot v)$. Definiere hierdurch folgende Abbildung
 \begin{align*}
 \Phi_p : S_pM & \Pfeil{} \partial_\infty M\\
 v & \longmapsto \sigma_v(\infty)
@@ -1659,7 +1659,7 @@ Ist $M$ eine Hadamard-Mannigfaltigkeit, so ist $\Phi_p$ bijektiv.
 \Bem{}
 Es gibt zwei Modi operandi, um eine Topologie auf $\partial_\infty M$ einzuführen:
 \begin{enumerate}[1.)]
-\item Wir können direkt die Topologie auf $\partial_\infty M$, durch die $\Phi_p : S_pM  \pfeil{} \partial_\infty M$ zu einem Homöomorphismus wird.
+\item Wir können direkt die Topologie auf $\partial_\infty M$, durch die $\Phi_p : S_pM  \pfeil{} \partial_\infty M$ zu einem Homöomorphismus wird, betrachten.
 \item Wir können auf $\partial_\infty M$ eine Metrik, die sogenannte \df{visuelle Metrik}, einführen, indem wir für $\sigma_v(\infty), \sigma_u(\infty) \in \partial_\infty M$ festlegen
 \[ d(\sigma_v(\infty), \sigma_u(\infty)) := \measuredangle_p(v,u) \]
 Die Topologie, die durch diese Metrik induziert wird, stimmt mit obiger überein.
@@ -1684,7 +1684,7 @@ für alle $p \in M, \eta \in \partial_\infty M, r, \epsilon > 0$.
 \Def{Lokal Symmetrisch}
 Eine zusammenhängende Riemannsche Mannigfaltigkeit $M$ heißt \df{lokal symmetrisch}, falls für jeden Punkt $P \in M$ eine Zahl $r > 0$ und eine Isometrie
 \[ s_p : B_p(r) \Pfeil{} B_p(r) \]
-sodass
+existiert, sodass
 \begin{enumerate}[1.)]
 \item $s_p(p) = p$
 \item $\klam{\d s_p}_{p} = - \id{T_pM}$
@@ -1779,20 +1779,20 @@ Sind $M, N$ lokal symmetrisch, $M$ einfach zusammenhängend und $N$ vollständig
 \item Zeige, dass die Fortsetzung $f(x)$ ausschließlich vom Homotopietyp des Weges $c$ abhängt
 \item Da $M$ einfach zusammenhängend ist, ist die Fortsetzung von $f$ wohldefiniert 
 \end{enumerate}
-
-Zu 1.)\\
-Setze $I = \{ s \in [0,1] ~|~ f \text{ kann fortgesetzt werden auf }c([0,s]) \}$. Dann ist $I$ offen in $[0,1]$, da der Definitionsbereich von $f$ immer offen ist. Es bleibt also die Abgeschlossenheit zu zeigen, d.\,h.
+\begin{enumerate}[\text{Ad} 1.)]
+\item Setze
+\[I = \{ s \in [0,1] ~|~ f \text{ kann fortgesetzt werden auf }c([0,s]) \}\]
+Dann ist $I$ offen in $[0,1]$, da der Definitionsbereich von $f$ immer offen ist. Es bleibt also die Abgeschlossenheit zu zeigen, d.\,h.
 \[ S:= \sup I \in I \]
 Sei $(s_i)_i \in I$ eine gegen $S$ konvergente Folge. Dann konvergiert
 \[ f(c(s_i)) \pfeil{} q \]
 da $f$ lokal isometrisch ist. Setze $r > 0$ so, dass $B_{c(s)}(3r), B_{q}(3r)$ normale Nachbarschaften sind. Dann existiert ein $s \in I$, sodass
 \[ c(s) \in B_{c(S)}(r) \text{ und } f(c(s)) \in B_q(r) \]
-Dann setzt sich aber $f$ fort auf $B_{c(S)}(2r)$, ergo liegt $S \in I$.\\
-
-Zu 2.)\\
-Ähnliches Argument. Sei $H : [0,1]^2 \pfeil{} M$ eine Homotopie und $f^s$ die Fortsetzung entlang $H(s,[0,1])$. Setze
+Dann setzt sich aber $f$ fort auf $B_{c(S)}(2r)$, ergo liegt $S \in I$.
+\item Ähnliches Argument. Sei $H : [0,1]^2 \pfeil{} M$ eine Homotopie und $f^s$ die Fortsetzung entlang $H(s,[0,1])$. Setze
 \[ I = \set{s \in [0,1]}{ \forall\alpha \in [0,s]: f^\alpha (1) = f^s(1) } \]
 und zeige analog, dass $I$ abgeschlossen ist.
+\end{enumerate}
 \end{Beweis}
 
 % % Vorlesung 20.01.17
@@ -1806,7 +1806,7 @@ Eine Isometrie $f$ von $M$ heißt \df{Transvektion}, falls ein Punkt $p \in M$ u
 Ist $M$ symmetrisch, so existiert für jedes Paar von Punkten $p,q \in M$, eine Transvektion, die $p$ auf $q$ abbildet.
 
 \Kor{}
-Ist $M$ symmetrisch, so ist jede vollständige Geodäte ist der Orbit einer 1-Parameter Untegruppe von $Isom(M)$.
+Ist $M$ symmetrisch, so ist jede vollständige Geodäte der Orbit einer 1-Parameter Untegruppe von $Isom(M)$.
 \begin{Beweis}{}
 Sei $\gamma : \R \pfeil{} M$ vollständig geodätisch. Definiere
 \[ \tau_s := s_{\gamma(\frac{s}{2})} \circ s_{\gamma(0)} \]
@@ -1819,11 +1819,9 @@ ein Gruppenhomomorphismus.
 \end{Beweis}
 
 \Kor{}
-Sei $M$ symmetrisch.\\
-Bezeichnet $G = Isom(M)^0$ die Zusammenhangskomponente der Eins in $Isom(M)$, so agiert $G$ transitiv auf $M$.\\
-Ferner ist die Untergruppe
+Sei $M$ symmetrisch. Bezeichnet $G = Isom(M)^0$ die Zusammenhangskomponente der Identität in $Isom(M)$, so agiert $G$ transitiv auf $M$. Ferner ist die Untergruppe
 \[ K = Stab_G(m) = \set{g \in G}{gm = m} \]
-kompakt. Ferner ist folgender Homöomorphismus gegeben
+kompakt und folgender Homöomorphismus ist gegeben
 \begin{align*}
 G / K &\Pfeil{} M\\
 gK &\longmapsto g.m
@@ -1863,8 +1861,7 @@ Sei $G$ eine Lie-Gruppe, setze
 \[ \g = T_eG \]
 Dann ist $\g$ isomorph zum Raum der \df{links-invarianten Vektorfelder} auf $G$, d.\,h. der Vektorfelder $X$, für die gilt
 \[ X(gp) = \d g_{|p}X(p) \]
-Ergo können wir die Lie-Klammer der Vektorfelder auf $\g$ einschränken, wodurch $\g$ zu einer Lie-Algebra wird.\\
-Für $x\in\g$ definieren wir die \df{Adjunktion} durch
+Ergo können wir die Lie-Klammer der Vektorfelder auf $\g$ einschränken, wodurch $\g$ zu einer Lie-Algebra wird. Für $x\in\g$ definieren wir die \df{Adjunktion} durch
 \begin{align*}
 ad(x) : \g & \Pfeil{} \g\\
 v & \longmapsto [x,v]
@@ -1909,8 +1906,7 @@ Dann ist auch folgende Abbildung eine Involution für $m \in M$
 \[ Ad(s_m) = (\d\sigma)_{e} : \g \Pfeil{} \g \]
 Wir erhalten hierdurch die \df{Cartan-Zerlegung}
 \begin{align*}
-\g &= \kf \oplus \p\\
-&= \{ x \in \g ~|~ (\d\sigma)_{e}x = x \} \oplus \{ x \in \g ~|~ (\d\sigma)_{e}x = -x \}
+\g &= \kf \oplus \p = \{ x \in \g ~|~ (\d\sigma)_{e}x = x \} \oplus \{ x \in \g ~|~ (\d\sigma)_{e}x = -x \}
 \end{align*}
 Dabei ist $\kf \subset \g$ eine Lie-Subalgebra.
 
