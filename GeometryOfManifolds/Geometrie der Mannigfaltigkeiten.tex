@@ -1,0 +1,401 @@
+\documentclass{book}
+
+\usepackage{../Package/latexa}
+\usepackage{../Package/algebra}
+\usepackage{../Package/theorema}
+\usepackage{../Package/diagramma}
+\usepackage{../Package/categoria}
+
+\newcommand{\qi}{\backsimeq_{\textsc{QI}}}
+\newcommand{\ba}{\backsimeq_{\textsc{BA}}}
+\newcommand{\normal}{\vartriangleleft}
+\newcommand{\tm}{\subset}
+\newcommand{\Stab}[2]{\textsf{Stab}_{#1}(#2)}
+\newcommand{\Cay}[2]{\textsf{Cay}(#1,#2)}
+
+
+\renewcommand{\A}{\mathbb{A}}
+\newcommand{\Nc}{\mathcal{N}}
+
+
+\renewcommand{\d}{\textsf{d}}
+\renewcommand{\P}{\mathbb{P}}
+
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\Af}{\mathfrak{A}}
+\renewcommand{\bf}{\mathfrak{b}}
+\newcommand{\Bf}{\mathfrak{B}}
+\newcommand{\cf}{\mathfrak{c}}
+\newcommand{\Cf}{\mathfrak{C}}
+\newcommand{\ff}{\mathfrak{f}}
+\newcommand{\Ff}{\mathfrak{F}}
+\newcommand{\pf}{\mathfrak{p}}
+\newcommand{\Pf}{\mathfrak{P}}
+\newcommand{\mf}{\mathfrak{m}}
+\newcommand{\Mf}{\mathfrak{M}}
+\newcommand{\qf}{\mathfrak{q}}
+\newcommand{\Qf}{\mathfrak{Q}}
+
+\renewcommand{\M}{\mathbb{M}}
+\renewcommand{\l}[1]{\overline{#1}}
+
+\newcommand{\Ac}{\mathcal{A}}
+\newcommand{\Rc}{\mathcal{R}}
+\renewcommand{\O}{\mathcal{O}}
+
+\newcommand{\Frob}{\textsf{Frob}}
+
+\newcommand{\Leg}[2]{\left(\frac{#1}{#2}\right)}
+
+\newcommand{\ric}{\textsf{ric}}
+\newcommand{\g}{\mathfrak{g}}
+\newcommand{\kf}{\mathfrak{k}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\m}{\mathfrak{m}}
+
+\newcommand{\GL}{\textsf{GL}(n,\R)}
+\newcommand{\glf}{\mathfrak{gl}(n,\R)}
+\newcommand{\SO}{\textsf{SO}(n,\R)}
+\newcommand{\so}{\mathfrak{so}(n,\R)}
+\newcommand{\SL}{\textsf{SL}(n,\R)}
+\newcommand{\slf}{\mathfrak{sl}(n,\R)}
+\newcommand{\POS}{\textsf{Pos}(n,\R)}
+\newcommand{\symm}{\textsf{symm}(n,\R)}
+\newcommand{\of}{\mathfrak{o}}
+
+\usepackage{enumerate}
+
+\makeindex
+
+\begin{document}
+
+\title{
+\begin{huge}
+Geometrie der Mannigfaltigkeiten\\
+\end{huge}
+\begin{large}
+Kurzskript, SS 17
+\end{large}}
+
+
+%\author{Ak\i n Ünal}
+\maketitle
+\renewcommand{\i}{^{-1}}
+
+%Das folgende Kurzskript orientiert sich an einer Vorlesung, die im Wintersemester 2016 / 2017 in Heidelberg gehalten wurde. Für alle Fehler im Text trägt ausschließlich der Autor die Verantwortung.
+
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+% % % Vorlesung 1
+\newpage
+\chapter{Hyperbolische Modelle}
+\section{Das Hyperboloidenmodell}
+\Def{}
+Definiere die \df{Lorentzform} auf $\R^{n+1}$ durch
+\[ \shrp{x,y} := x_1y_1 + \ldots + x_{n}y_n - x_{n+1} y_{n+1} \]
+Ein Vektor$x \in \R^{n+1}$ heißt
+\begin{align*}
+\left\lbrace \begin{aligned}
+\text{\df{zeitartig}, falls } &\shrp{x,x} < 0\\
+\text{\df{lichtartig}, falls } &\shrp{x,x} = 0\\
+\text{\df{raumartig}, falls } &\shrp{x,x} > 0
+\end{aligned} \right.
+\end{align*}
+Definiere das \df{Hyperboloidenmodell} von $\H^n$ durch
+\[ I^n = \set{p \in \R^{n+1}}{\shrp{p,p} = -1, p_{n+1 > 0}} \]
+\Prop{}
+$I^n$ ist eine Riemannsche Mannigfaltigkeit.
+\begin{Beweis}{}
+Definiere $f : \R^{n+1} \pfeil{} \R$ durch $x \mapsto \shrp{x,x}$. Dann ist $\d f_p(v) = 2\shrp{v,p}$. Ergo ist $\d f_p$ surjektiv für alle $p \in M :=f\i(-1)$. Ergo ist $M$ eine glatte Hyperfläche von $\R^{n+1}$.\\
+Ferner ist
+\[ T_pM = \Ker ~\d f_p  = \set{v \in \R^{n+1}}{\shrp{p,v} = 0} = p^\bot \]
+Da $p$ zeitartig ist, ist $\shrp{\_, \_}$ auf $T_pM$ positiv definit. $I^n$ ist nun gerade die obere Zusammenhangskomponente von $M$.
+\end{Beweis}
+
+\Lem{}
+Definiere
+\[ O(n,1) = \set{A \in \R^{n+1\times n + 1}}{ \shrp{v,w} = \shrp{Av, Aw} }\]
+und
+\[ O(n,1)^+ = \set{A \in O(n,1)}{A (I^n) \subset I^n } \]
+Dann ist $O(n,1)^+$ eine Index-2-Gruppe von $O(n,1)$ und
+\[ Isom(I^n) = O(n,1)^+ \]
+Ferner gilt
+\[ Isom(S^n) = O(n) \text{ und } Isom(\R^n) = \set{x\mapsto Ax + b}{A \in O(n), b\in \R^n } \]
+
+
+\Prop{}
+Die $k$-dimensionalen, vollständigen, total geodätischen, zusammenhängenden Riemannschen Untermannigfaltigkeiten von $I^n$ sind genau die Schnitte
+\[ I^n \cap W^{k+1}\]
+wobei $W^{k+1}$ ein $k+1$-dimensionaler Untervektorraum von $\R^{n+1}$ ist, der keinen leeren Schnitt mit $I^n$ hat.\\
+Folgende Aussagen sind für einen $k+1$-dimensionalen Untervektorraum von $\R^{n+1}$ äquivalent:
+\begin{enumerate}[]
+	\item $W^{k+1}\cap I^n \neq \emptyset$
+	\item $W^{k+1}$ besitzt einen zeit-ähnlichen Vektor
+	\item $\shrp{\_,\_}$ besitzt auf $W^{k+1}$ die Signatur $(k,1)$
+\end{enumerate}
+
+\Bem{}
+Ein $k$-Unterraum von $I^n$ ist isometrisch zu $I^k$.
+
+\Prop{}
+Jede nach Bogenlänge parametrisierte Geodäte von $I^n$ ist von der Gestalt
+\[ \gamma(t) = \cosh(t) \gamma(0) + \sinh(t)\dot{\gamma}(0) \]
+
+\Kor{}
+$H^n$ ist vollständig.
+
+\section{Die Poincare Scheibe}
+\Lem{Poincare-Scheiben-Modell}
+Definiere die \df{Poincare-Scheibe} durch
+\[D^n = \set{x \in \R^n}{\norm{x} < 1} \]
+und folgenden Diffeomorphismus
+\begin{align*}
+p : I^n & \Pfeil{} D^n\\
+(x_1, \ldots, x_n, x_{n+1}) & \longmapsto \frac{1}{x_{n+1} + 1} (x_1,\ldots, x_n) 
+\end{align*}
+Dann ist die Metrik auf $D^n$ gerade gegeben durch
+\[ g^D_x = \klam{\frac{2}{1 - \norm{x}^2}}^2g^E_x \]
+wobei $g^E$ die euklidische Metrik von $\R^n$ bezeichnet.
+\begin{Beweis}{}
+	Die Umkehrabbildung von $p$ ist gerade
+	\[ p\i(x) = \frac{(2x, 1 + \norm{x}^2)}{1 - \norm{x}^2} \]
+	Ihre Derivation ist
+	\[ \d_xp\i(u) = \frac{ 2 (u (1 - \norm{x}^2) + 2 x(x|u), 2 (x|u) )}{ (1 - \norm{x}^2)^2 } \]
+	Es gilt
+	\[ \shrp{d_xp\i(u), d_xp\i(u)} = (\frac{2}{1 - \norm{x}})^2 \norm{u}^2 \]
+	Da $p\i$ eine Isometrie sein soll und das Verhalten einer Metrik durch ihre Norm bestimmt ist, folgt nun
+	\[ g^D_x = g^I_{p\i(x)} \circ \d_xp\i  = \klam{\frac{2}{1 - \norm{x}^2}}^2g^E_x \]
+\end{Beweis}
+
+\Def{}
+Ein Diffeomorphismus
+\[ f : (M,g) \Pfeil{} (N,h) \] 
+heißt \df{konform}, falls eine glatte Funktion $f : M \pfeil{} \R_{>0}$ existiert, sodass
+\[ f^*(h_{f(p)}) = \lambda(p)\cdot g_p  \]
+
+\Bem{}
+Die Poincare-Scheibe ist ein konformes Modell von $\H^n$, d.\,h., $(D^n, g^E)$ und $(D^n, g^D)$ sind zueinander konform.\\
+Daraus folgt nun insbesondere, dass Winkel von sich schneidenden Geodäten in $(D^n, g^D)$ genauso wie in $(D^n, g^E)$ gemessen werden dürfen.
+
+\Lem{}
+Die $k$-dimensionalen, vollständigen, zusammenhängenden, total geodätischen Untermannigfaltigkeiten der Poincare-Scheibe sind ihre Schnitte mit $k$-Sphären und $k$-Ebenen von $\R^n$, die orthogonal zum Rand der Poincare-Scheibe liegen.
+
+\Def{}
+Sei $S_{p}(r) \subset \R^n$ eine Sphäre mit Radius $r$ um $p$. Definiere die \df{Inversion} an $S_p(r)$ durch
+\begin{align*}
+\phi : \R^n\setminus\{p\} & \Pfeil{} \R^n\setminus\{p\}\\
+x & \longmapsto p + r^2\frac{x- p}{\norm{x-p}^2}
+\end{align*}
+\Prop{}
+Jede Inversion ist \df{anti-konform}, d.\,h. konform und Orientierung umkehrend, und bildet Sphären und Ebenen auf Sphären und Ebenen ab.
+
+\section{Das obere Halbraum-Modell}
+\Def{}
+Das \df{obere Halbraum-Modell}
+\[ H^n = \set{x \in \R^{n}}{x_n > 0} \]
+ergibt sich durch eine Inversion der Poincare-Scheibe an der Sphäre
+\[ S = S_{(0,\ldots,0,-1)}(\sqrt{2}) \]
+Insofern ist die obere Halbebene ein konformes Modell von $\H^n$.
+
+\Prop{}
+Die $k$-Ebenen von $H^n$ sind die $k$-Ebenen und $k$-Sphären von $\R^n$, die orthogonal zu $\partial H^n$ sind.
+
+\Prop{}
+Die Metrik auf $H^n$ ist gegeben durch
+\[ g_x^H =  \frac{1}{x_n^2} g^E \]
+
+
+\Prop{}
+Folgende Abbildungen sind Isometrien von $H^n$:
+\begin{enumerate}[1.)]
+\item Horizontale Translationen:
+\begin{align*}
+x \longmapsto x + (b_1,\ldots, b_{n-1}, 0)
+\end{align*}
+\item Dilationen:
+\[ x \longmapsto x \cdot \lambda \]
+\item Inversionen an Sphären orthogonal zu $\partial H^n$
+\end{enumerate}
+
+\Prop{}
+Die Isometrien der Poincare-Scheibe und der oberen Halbebene werden durch Inversionen an Sphären und Reflektion an Euklidischen Ebenen, die alle orthogonal zum Rand stehen, erzeugt.
+\Prop{}
+In den konformen Modellen sind Kugeln genau die euklidischen Kugeln mit exzentrischen Mittelpunkten.
+
+\section{Die Kleinsche Scheibe}
+\Def{}
+Die \df{Kleinsche Ebene} besitzt dieselbe Trägermenge $K^n = D^n$ wie die Poincare-Scheibe. Allerdings entsteht die Kleinsche-Ebene durch einen Diffeomorphismus
+\begin{align*}
+I^n & \Pfeil{} K^n\\
+x & \longmapsto \frac{(x_1,\ldots,x_n)}{x_n}
+\end{align*}
+Die Kleinsche Scheibe ist nicht konform, weswegen ihre Winkel nicht durch eine euklidische Einbettung gemessen werden können. Allerdings sind ihre Geodäten genau die Geraden des $\R^n$.
+
+\section{Ränder}
+\Def{}
+Zwei nach Bogenlänge parametrisierte Geodäten $\alpha, \beta : [0, \infty) \pfeil{} M$ heißen \df{asymptotisch äquivalent}, falls die Funktion
+\[ t \longmapsto d(\alpha(t), \beta(t)) \]
+beschränkt ist.\\
+Asymptotisch äquivalent Sein ist eine Äquivalenzrelation auf der Menge aller geodätischer Halbgeraden.\\
+Teilt man diese Relation heraus, erhält man den \df{Rand} $\partial M$ einer Mannigfaltigkeit $M$. Insbesondere schreibt man
+\[ \overline{M} = M \cup \partial M \]
+
+\Prop{}
+Es gibt eine Bijektion zwischen $\partial D^n$ als Rand einer Mannigfaltigkeit und $S^{n-1}$.\\
+Da ferner $\overline{D^n}$ eine naheliegende Topologie besitzt, können wir diese auf $\overline{\H^n}$ zurückführen.
+\begin{Beweis}{}
+	Sei $\gamma : [0, \infty) \pfeil{} D^n$ ein geodätischer Strahl. Da $\gamma$ sich orthogonal mit $S^{n-1}$ im Unendlichen schneiden muss, folgt
+	\[ \lim\limits_{t \pfeil{} \infty} \gamma(t) \in S^{n-1} \]
+	Hierdurch erhalten wir eine surjektive Abbildung
+	\[ R(\gamma) :=  \lim\limits_{t \pfeil{} \infty} \gamma(t) \]
+	Wir müssen nun zeigen, dass zwei nach Bogenlänge parametrisierte Strahlen $\gamma$, $\beta$ unter $R$ genau dann dasselbe Bild haben, wenn sie asymptotisch äquivalent sind.\\
+Wir transformieren das Problem zu einem Problem auf $H^n$ und rechnen die geforderte Eigenschaft dort konstruktiv nach.
+\end{Beweis}
+
+\Bem{}
+Man kann auch alternativ wie folgt eine Basis der Topologie von $\overline{\H^n}$ definieren: Dazu nimmt man alle offenen Mengen von $\H^n$ und schmeißt alle Mengen der Gestalt
+\[ \{ \alpha(t) \in \H^n~|~ \alpha(0) = \gamma(0), \dot{\alpha}(0)  \in V ,t > r\} \cup \set{ [\alpha] \in \partial \H^n }{\alpha(0) = \gamma(0),\dot{\alpha}(0)  \in V} \]
+für alle $[\gamma] \in \partial \H^n, V \subseteq_o T_{\gamma(0)}M, r > 0$. Die hierdurch entstehende Topologie stimmt der durch obige Proposition überein.
+
+\Prop{}
+Seien $S,S'$ zwei geodätisch vollständige Teilräume von $\H^n$. Dann tretet genau einer der folgenden Fälle ein:
+\begin{itemize}
+	\item $S$ und $S'$ sind \df{inzident}, d.\,h., $S\cap S'\neq \emptyset$.
+	\item $S$ und $S'$ sind \df{asymptotisch parallel}, d.\,h., $S\cap S' = \emptyset$ und $d(S, S') = 0$. Ferner ist dann $\overline{S} \cap \overline{S'}$ ein Punkt in $\H^n$ und existiert keine Geodäte, die zu beiden Räumen orthogonal ist.
+	\item $S$ und $S'$ sind \df{ultra-parallel}, d.\,h., $\overline{S}\cap \overline{S'} = \emptyset$ und $d(S, S') > 0$. In diesem Fall existiert genau eine Geodäte, die orthogonal zu beiden Teilräumen steht und den Abstand zwischen beiden realisiert.
+\end{itemize}
+\begin{Beweis}{}
+	Enthält $\overline{S} \cap \overline{S'}$ mindestens zwei Punkte, so enthält der Schnitt auch eine Geodäte zwischen beiden Punkten. Wir können also annehmen, dass sich $S$ und $S'$ wenn überhaupt nur im Unendlichen schneiden und dort höchstens einen Schnittpunkt haben.\\
+	Besteht $\overline{S} \cap \overline{S'}$ aus genau einem Punkt, so können wir die Situation in den $H^n$ transformieren und fordern, dass der gemeinsame Schnittpunkt gerade $\infty$ ist. In diesem Fall stehen $S$ und $S'$ parallel zur imaginären Achse, weswegen die Eigenschaften des zweiten Falles folgen.\\
+	Im zweiten Fall finden wir $x\in S, x' \in S'$ mit $d(x,x') = d(S, S')$, da $\overline{S}$ und $\overline{S'}$ kompakt sind. Die Geodäte, die $x$ und $x'$ verbindet, muss orthogonal sein, da wir sie sonst verschieben könnten, um den Abstand zwischen $S$ und $S'$ zu minimieren. Es kann keine weitere Geodäte zwischen $S$ und $S'$ mit Abstand $d(S, S')$ geben, da wir sonst einen flachen Bereich gefunden hätten.
+\end{Beweis}
+
+\Lem{}
+Eine Isometrie $\phi : \H^n \pfeil{} \H^n$ lässt sich zu einem Homöomorphismus $\overline{\phi} : \overline{\H^n} \pfeil{} \overline{\H^n} $ fortsetzen. $\phi$ ist durch $\overline{\phi}_{\partial \H^n}$ eindeutig festgelegt.
+
+\section{Isometrien}
+\Prop{}
+Sei $\phi : \H^n \pfeil{} \H^n$ eine nichttriviale Isometrie. Dann tritt genau einer der folgenden Fälle ein:
+\begin{itemize}
+	\item $\phi$ ist \df{elliptisch}, d.\,h., $\phi$ hat einen oder mehrere Fixpunkte in $\H^n$.
+	\item $\phi$ ist \df{parabolisch}, d.\,h., $\phi$ hat keinen Fixpunkt in $\H^n$, aber genau einen in $\partial \H^n$.
+	\item $\phi$ ist \df{hyperbolisch}, d.\,h., $\phi$ hat keinen Fixpunkt in $\H^n$, aber genau zwei in $\partial \H^n$.
+\end{itemize}
+\begin{Beweis}{}
+Wir können $\overline{\phi}$ als einen Homöomorphismus von $\overline{D^n}$ auf sich selbst auffassen. Nach Brauers Fixpunktsatz muss $\phi$ dann mindestens einen Fixpunkt haben. Hat $\phi$ keinen Fixpunkt in $D^n$ aber mindestens drei auf dem Rand, so fixiert $\phi$ jeden Punkt in $\H^n$, da jeder Punkt in $D^n$ durch seine Winkel zu den drei verschiedenen Randpunkten eindeutig determiniert ist.
+\end{Beweis}
+
+\Def{}
+Eine hyperbolische Isometrie fixiert zwei Randpunkte und damit auch die Geodäte, die zwischen beiden verläuft. Diese eindeutig bestimmte Geodäte nenne wir die \df{Achse} von $\phi$.
+
+\Def{}
+Eine \df{Horosphäre} $S \subset \overline{H^n}$ um den Punkt $p \in \partial H^n\setminus\{\infty\}$ ist eine $n-1$-dimensionale euklidische Sphäre, die $\partial H^n$ tangential in $p$ schneidet. Eine Horosphäre um $\infty$ ist eine $n-1$-dimensionale euklidische Hyperebene, die orthogonal zur imaginären Achse steht.\\
+Beide Horosphären sind flache Untermannigfaltigkeiten mit der Eigenschaft, dass jede Geodäte, die ihr Zentrum verlässt, die Horosphäre orthogonal schneidet.
+
+\Prop{}
+Wir stellen Punkte aus $H^n$ in der Form $(x,t)$ dar. Sei $\phi$ eine nichttriviale Isometrie von $\H^n$.
+\begin{itemize}
+	\item Ist $\phi$ elliptisch mit Fixpunkt $0 \in D^n$, so gibt es ein $A \in O(n)$, sodass sich $\phi$ darstellen lässt durch
+	\begin{align*}
+\phi:	D^n & \Pfeil{} D^n\\
+	x & \longmapsto Ax
+	\end{align*}
+	\item Ist $\phi$ parabolisch mit Fixpunkt $\infty \in \partial H^n$, so gibt es $A \in O(n-1)$ und $b\in \R^{n-1}$, sodass
+	\begin{align*}
+\phi:	H^n & \Pfeil{} H^n\\
+	(x,t) & \longmapsto (Ax + b, t)
+	\end{align*}
+	\item Ist $\phi$ hyperbolisch mit Fixpunkten $0,\infty \in \partial H^n$, so gibt es ein $\lambda > 0, \neq 1$ und ein $A\in O(n-1)$, sodass
+		\begin{align*}
+	\phi:	H^n & \Pfeil{} H^n\\
+	(x,t) & \longmapsto (\lambda Ax, \lambda t)
+	\end{align*}
+\end{itemize}
+\begin{Beweis}{}
+Der elliptische Fall ist klar.\\
+Sei der zweite Fall gegeben. Ist $O$ eine Horosphäre um $\infty$, so muss $\phi(O)$ wieder eine Horosphäre um $\infty$ liefern. Dann gibt es ein $(x,t) \in O$, sodass $\phi(x,t) = (x, t')$. Ist $t' \neq t$, so erhält $\phi$ eine Geodäte durch $(x,t)$ und $\infty$ und ist nicht mehr parabolisch. Ergo ist $\phi(O) = O$. D.\,h., $\phi$ ist auf jeder Horosphäre um $\infty$ durch eine euklidische Isometrie gegeben.\\
+Sei nun der dritte Fall gegeben. $\phi$ erhält die imaginäre Achse, ergo gibt es ein $\lambda$ mit $\phi(0,1) = (0, \lambda)$. Setzt man $\psi(x,t) = \lambda\i \phi(x,t)$, so gibt es ein $A\in O(n-1)$ mit
+\[ \d_{(0,1)} \psi = \klam{
+\begin{matrix}
+A & 0\\
+0 & 1
+\end{matrix}
+} \]
+womit folgt
+\[ \psi(x,t) = (Ax,t) \]
+\end{Beweis}
+
+\Def{}
+Für eine Isometrie $\phi : M \pfeil{} M$ sei die \df{Versetzung} definiert durch
+\begin{align*}
+d(\phi) := \inf_{p\in M}d(p, \phi(p))
+\end{align*}
+
+\Kor{}
+\begin{itemize}
+	\item Eine elliptische Isometrie hat eine Versetzung von 0, die an ihren Fixpunkten verwirklicht wird.
+	\item Eine parabolische Isometrie hat eine Versetzung von 0, die nirgendwo realisiert wird, und fixiert jede Horosphäre um ihren Fixpunkt.
+	\item Eine hyperbolische Isometrie hat eine Versetzung von $d > 0$, die genau auf ihrer Achse realisiert wird.
+\end{itemize}
+
+\section{Möbiusgeschichten}
+\Def{}
+Es bezeichne $S = \C \cup \infty$ die \df{Riemannsche Zahlenkugel}. Die Gruppe $PSL_2(\C)$ agiert auf $S$ durch die \df{Möbiustransformation}
+\[ \klam{
+\begin{matrix}
+a & b\\
+c & d
+\end{matrix}
+}.z := \frac{az + b}{cz + d} \]
+Die Möbiustransformation ist ein orientierungserhaltender Diffeomorphismus auf $S$.\\
+Die \df{Anti-Möbiustransformation} gegeben durch
+\[ \klam{
+	\begin{matrix}
+	a & b\\
+	c & d
+	\end{matrix}
+}.z := \frac{a\overline{z} + b}{c\overline{z} + d} \]
+ist ein orientierungsumkehrender Diffeomorphismus auf $S$.\\
+Unter $Conf(S) \subset Diffeo(S)$ verstehen wir die Menge aller Möbius- und Anti-Möbiustransformationen, die durch Elemente aus $PSL_2(\C)$ induziert werden.
+
+\Prop{}
+Inversionen entlang Sphären und Spiegelungen entlang Geraden sind beides Anti-Möbiustransformationen und erzeugen $Conf(S)$.
+
+\Lem{}
+Betrachte
+\[ H^2 = \set{ x + iy}{x \in \R, y > 0} \]
+und setze
+\[ Conf(H^2) = \set{\phi \in Conf(S)}{\phi(H^2) \subseteq H^2} \]
+Dann ist jede Transformation aus $Conf(H^2)$ induziert durch eine Matrix mit reellen Einträgen, deren Determinante gleich 1 ist, falls die Transformation orientierungserhaltend ist, anderenfalls -1 ist.\\
+Es gilt
+\[ Conf^+(H^2) = PSL_2(\R) \]
+
+\Prop{}
+Inversionen entlang Kreisen und Reflexionen entlang Geraden, die beide orthogonal zu $\R$ sind, generieren $Conf(H^2)$.
+\Kor{}
+\[ Conf(H^2) = Isom(H^2) \]
+
+\Prop{}
+Eine nichttriviale Transformation $A \in PSL_2(\R)$ ist
+\begin{itemize}
+	\item elliptisch, falls $\bet{tr(A)} < 2$
+	\item parabolisch, falls $\bet{tr(A)} = 2$
+	\item hyperbolisch, falls $\bet{tr(A)} > 2$
+\end{itemize}
+
+\Prop{}
+Da $\partial H^3 = S$, gilt
+\[ Isom(H^2) = Conf(S) \]
+
+\Prop{}
+Eine nichttriviale Transformation $A \in PSL_2(\C)$ ist
+\begin{itemize}
+	\item elliptisch, falls $tr(A) \in (-2, 2)$
+	\item parabolisch, falls $tr(A) = \pm 2$
+	\item hyperbolisch, falls $tr(A) \in \C\setminus [-2, 2]$
+\end{itemize}
+
+
+\printindex
+\end{document}
