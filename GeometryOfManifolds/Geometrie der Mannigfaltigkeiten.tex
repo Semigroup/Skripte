@@ -62,6 +62,7 @@
 \newcommand{\POS}{\textsf{Pos}(n,\R)}
 \newcommand{\symm}{\textsf{symm}(n,\R)}
 \newcommand{\of}{\mathfrak{o}}
+\renewcommand{\epsilon}{\varepsilon}
 
 \usepackage{enumerate}
 
@@ -396,6 +397,574 @@ Eine nichttriviale Transformation $A \in PSL_2(\C)$ ist
 	\item hyperbolisch, falls $tr(A) \in \C\setminus [-2, 2]$
 \end{itemize}
 
+\Prop{}
+Die Distanzfunktion ist auf $\H^n$ \df{strikt konvex}, d.\,h., für je zwei nach Bogenlänge parametrisierte, disjunkte Geodäten $\alpha, \beta : \R \pfeil{} \H^n$ gilt
+\[ d(\alpha(t  x_1 + (1-t)  y_1), \beta(t  x_2 + (1-t)  y_2) ) < t  d(\alpha(x_1), \beta(x_2)) + (1-t)  d(\alpha(y_1), \beta(y_2) ) \]
+für alle $x_1 \neq y_1, x_2 \neq y_2, t \in (0,1)$.
+\begin{Beweis}{}
+	Da die Distanzfunktion stetig ist, genügt es die Aussage für $t = \frac{1}{2}$ zu zeigen, also
+	\[ d(\alpha(\frac{x_1 + y_1}{2}), \beta(\frac{x_2 + y_2}{2})) < \frac{d(\alpha(x_1), \beta(x_2) ) + d(\alpha(y_1), \beta(y_2))}{2}  \]
+	Setze
+	\[ m:= \alpha(\frac{x_1 + y_1}{2})  \text{ und }n:= \beta(\frac{x_2 + y_2}{2}) \]
+	Für einen Punkt $p \in \H^n$ bezeichne $s_p$ die Punktspiegelung bei $p$. Dies ist eine globale Isometrie. Für zwei verschiedene Punkte $p,q$ ist $s_p \circ s_q$ eine orientierungserhaltende Isometrie. Insbesondere ist diese hyperbolisch, denn ist $l$ die Geodäte, die $p$ und $q$ enthält, so wird jeder Punkt auf $l$ um $2d(p,q)$ entlang $l$ bewegt.\\
+	Setze nun
+	\[ \tau = s_n \circ s_m \]
+	Dann gilt
+	\begin{align*}
+	d(\alpha(x_1), \tau(\alpha(x_1)) ) & \leq d(\alpha(x_1), \beta(x_2) ) + d( \beta(x_2), \tau(\alpha(x_1)) )\\
+	&=d(\alpha(x_1), \beta(x_2) ) + d(  s_n(\beta(y_2))  , s_n(\alpha(y_1))  )\\
+		&=d(\alpha(x_1), \beta(x_2) ) + d(  \beta(y_2)  , \alpha(y_1)  )\\
+	\end{align*}
+	Da $\alpha(x_1)$ nicht auf der hyperbolischen Achse von $\tau$ liegt, gilt ferner
+		\begin{align*}
+2d(m,n) &= d(m, \tau(m))\\
+&< d(\alpha(x_1), \tau(\alpha(x_1)))\\
+&\leq d(\alpha(x_1), \beta(x_2) ) + d(  \beta(y_2)  , \alpha(y_1)  )
+	\end{align*}
+\end{Beweis}
+
+\chapter{Werkzeuge der Hyperbolischen Mannigfaltigkeiten}
+\section{Hyperbolische Mannigfaltigkeiten}
+\Def{}
+Eine Mannigfaltigkeit heißt \df{hyperbolisch}, wenn sie durch offene, lokal isometrische Karten $\phi : U \pfeil{} \H^n$ überdeckt wird und zusammenhängend ist.
+
+\Satz{}
+Eine hyperbolische, einfach zusammenhängende, vollständige Mannigfaltigkeit ist isometrisch zu $\H^n$.
+\begin{Beweis}{Skizze}
+	Wir konstruieren eine lokal isometrische Abbildung $D : M \pfeil{} \H^n$. Zuerst wählen wir eine Karte $ U \pfeil{} \H^n$ und einen Punkt $p \in U$. Für ein beliebiges $q \in M$ wählen wir einen Weg $\gamma : p \mapsto q$ und überdecken diesen Weg mit endlich vielen hyperbolischen, kompatiblen Karten. Dadurch können wir $q$ einem Punkt aus $D(q) \in \H^n$ zuordnen.\\
+	Um die Wohldefiniertheit von $D$ zu zeigen, zeigt man zuerst, dass die Wahl der Karten, die $\gamma$ überdecken unerheblich für die Wahl des Bildpunktes $D(q)$ sind.\\
+	Danach zeigt man, dass $D(q)$ unabhängig von der Wahl des Weges $\gamma:p\mapsto q$ ist. Denn ist $H : \gamma \sim \gamma'$ eine Homotopie mit fixierten Endpunkten, so ist $D(H)$ ebenfalls eine Homotopie mit fixierten Endpunkten.\\
+	Da $D$ lokal isometrisch und $M$ geodätisch vollständig ist, ist $D$ surjektiv. Da $\H^n$ ferner einfach zusammenhängend ist, ist $D$ injektiv. 
+\end{Beweis}
+
+\Kor{}
+Ist $M$ eine hyperbolische, einfach zusammenhängende Mannigfaltigkeit, so gibt es eine lokal isometrische Abbildung $D : M \pfeil{} \H^n$, die sogenannte \df{Entfaltung}, die eindeutig bis auf Nachschaltung einer Isometrie auf $\H^n$ ist.
+
+\newpage
+\Prop{}
+Sei $M$ eine hyperbolische Mannigfaltigkeit und $D : M \pfeil{} \H^n$ eine lokale Isometrie. Für jedes $g\in Isom(M)$ existiert genau ein $\rho(g) \in Isom(\H^n)$, sodass folgendes Diagramm kommutiert
+\begin{center}
+	\begin{tikzpicture}
+	\node (M1) at (0,2) [] {$M$};
+	\node (H1) at (4,2) [] {$\H^n$};
+	\node (H2) at (4,0) [] {$\H^n$};
+	\node (M2) at (0,0) [] {$M$};
+	
+	\draw [->] (M1) -> (H1) node[midway, above] {$D$};
+	\draw [->] (M2) -> (H2) node[midway, above] {$D$};
+	\draw [->] (M1) -> (M2) node[midway, right] {$g$};
+	\draw [->] (H1) -> (H2) node[midway, right] {$\rho(g)$};
+	\end{tikzpicture}
+\end{center}
+Die Abbildung $\rho : Isom(M) \pfeil{} Isom(\H^n)$ ist eine Gruppenhomomorphismus und heißt die \df{Holonomie} zu $D$.
+
+\Bem{}
+Sei $M$ eine hyperbolische, vollständige Mannigfaltigkeit. Ist $\widetilde{M} \pfeil{} M$ die universelle Überlagerung von $M$, so ist $\widetilde{M}$ hyperbolisch, vollständig und einfach zusammenhängend und deswegen isometrisch zu $\H^n$. Wir erhalten also eine lokal isometrische Überlagerung $\H^n \pfeil{} M$ und wissen dadurch
+\[ \pi_1(M) = Deck(\H^n \pfeil{} M) \subseteq Isom(\H^n) \]
+
+\section{Vollständige Hyperbolische Mannigfaltigkeiten}
+\Def{}
+Sei $G$ eine Gruppe, die auf einen topologischen Raum $X$ wirkt. Diese Wirkung heißt \df{eigentlich diskontinuierlich}, falls es für jedes Paar von zwei verschiedenen Punkten $x,y \in X$ Umgebungen $U_x, U_y$ existieren, sodass
+\[ \#\set{g \in G}{g.U_x \cap U_y \neq \emptyset} < \infty \]
+Die Wirkung heißt \df{frei}, falls jedes nichttriviale $g\in G$ fixpunktfrei auf $X$ wirkt.
+
+\Lem{}
+Wirkt $\Gamma \subset Isom(\H^n)$ frei und eigentlich diskontinuierlich auf $\H^n$, so besitzt $\H^n / \Gamma$ genau eine Struktur als hyperbolische, vollständige Mannigfaltigkeit, durch die $\H^n \pfeil{} \H^n/\Gamma$ zu einer \df{Riemannschen Überlagerung}, d.\,h., lokal isometrischen Überlagerung wird.
+
+\Prop{}
+Jede vollständige, hyperbolische Mannigfaltigkeit ist isometrisch zu $\H^n / \Gamma$ für eine passende Gruppe $\Gamma \subset Isom(\H^n)$, die frei und eigentlich diskontinuierlich wirkt.
+
+\Bem{}
+$\Gamma \subset  Isom(\H^n)$ wirkt genau dann eigentlich diskontinuierlich, wenn $\Gamma$ diskret ist.
+\begin{Beweis}{}
+	$\Gamma$ wirke eigentlich diskontinuierlich. Seien $x,y \in \H^n$, dann gibt es Umgebungen $U_x, U_y$, sodass nur endlich viele Elemente aus $\Gamma$ $U_x$ über $U_y$ bewegen.\\
+	Definiert man die Abbildung
+	\begin{align*}
+	\phi : \Gamma& \Pfeil{} \H^n\\
+	g & \longmapsto g(x)
+	\end{align*}
+	so besitzt die offene Menge $\phi\i(U_x)$ nur endlich viele Elemente. Ergo besitzt jeder Punkt aus $\Gamma$ eine endliche Umgebung.\\
+	Sei $\Gamma$ nun diskret. Seien $x,y \in \H^n$ zwei verschiedene Punkte. Definiere $A:= \set{g \in \Gamma}{g.U_x \cap U_y \neq \emptyset}$. Indem wir $U_x$ und $U_y$ sukzessive kleiner machen, finden wir eine Folge in $\Gamma$, die durch ein Kompaktum beschränkt wird. Da $\Gamma$ endlich ist, muss dieses Kompaktum endlich sein.
+\end{Beweis}
+
+\Prop{}
+$\H^n / \Gamma$ und $\H^n / \Sigma$ sind genau dann isometrisch, wenn $\Sigma$ und $\Gamma$ konjugiert in $\H^n$ sind.
+\begin{Beweis}{}
+	$\H^n / \Gamma$ und $\H^n / \Sigma$ sind genau dann isometrisch, wenn es eine Isometrie $\phi : \H^n / \Gamma\pfeil{}\H^n / \Sigma$ gibt. Da $\H^n$ beide Räume überlagert, gibt es diese Isometrie genau dann, wenn es eine Isometrie $\widetilde{\phi}$ gibt, die folgendes Diagramm kommutieren lässt
+	\begin{center}
+		\begin{tikzpicture}
+		\node (M1) at (0,2) [] {$\H^n $};
+		\node (H1) at (4,2) [] {$\H^n$};
+		\node (H2) at (4,0) [] {$\H^n/ \Gamma$};
+		\node (M2) at (0,0) [] {$\H^n / \Sigma$};
+		
+		\draw [->] (M1) -> (H1) node[midway, above] {$\widetilde{\phi}$};
+		\draw [->] (M2) -> (H2) node[midway, above] {$\phi$};
+		\draw [->] (M1) -> (M2) node[midway, right] {};
+		\draw [->] (H1) -> (H2) node[midway, right] {};
+		\end{tikzpicture}
+	\end{center}
+Dies ist genau dann der Fall, wenn es ein Element $\widetilde{\phi}$ in $Isom(\H^n)$ gibt, sodass für es für jedes $\sigma \in \Sigma$ ein $\gamma \in \Gamma$ gibt mit
+\[ \widetilde{\phi}  \circ \sigma = \gamma \circ \widetilde{\phi} \]
+\end{Beweis}
+
+\Bem{}
+Wirkt $\Gamma \subset Isom(\H^n)$ eigentlich diskontinuierlich, so ist für jedes $p\in \H^n$ der \df{Stabilisator}
+\[ Stab_\Gamma(p) := \set{g \in \Gamma}{g(p) = p} \]
+endlich und jeder \df{Orbit} von $\Gamma$ in $p$
+\[ \Gamma.p := \set{g(p)}{g\in \Gamma} \]
+diskret.
+
+\Def{}
+Eine Menge von Teilmengen von $\H^n$ heißt \df{lokal endlich}, falls sie für jedes Kompaktum $K \subset \H^n$ nur endlich viele Teilmengen besitzt, die einen nicht-leeren Schnitt mit $K$ haben.
+
+\Prop{}
+$\Gamma\subset Isom(\H^n)$ wirke eigentlich diskontinuierlich. Dann liegt die Menge
+\[ \set{p \in \H^n}{ Stab_\Gamma(p) \text{ ist trivial} } \]
+offen und dicht in $\H^n$.
+\begin{Beweis}{}
+	Setze
+	\[ \mathcal{A}:= \set{Fix(g)}{g \in \Gamma \setminus \{\id{\H^n}\}} \]
+	$\mathcal{A}$ ist lokal endlich, da $\Gamma$ diskret ist. Setze nun
+	\[ B:= \H^n\setminus \klam{\bigcup_{X \in \mathcal{A}} X} \]
+	Dann ist $B$ offen und es gilt
+	\[ B = \set{p \in \H^n}{ Stab_\Gamma(p) \text{ ist trivial} } \]
+	Jedes $X \in \mathcal{A}$ ist eine echte Untermannigfaltigkeit von $\H^n$. Deswegen und weil $\mathcal{A}$ lokal endlich ist, liegt $B$ dicht in $\H^n$.
+\end{Beweis}
+
+\Prop{}
+Eine diskrete Gruppe $\Gamma \subset Isom(\H^n)$ agiert genau dann frei, wenn sie \df{torsionsfrei} ist, d.\,h., kein Element endlicher Ordnung besitzt.
+\begin{Beweis}{}
+	Es sei $\Gamma$ diskret und besitze ein Torsionselement $\phi$. Für einen Punkt $p$ ist dann die Menge $\set{\phi^k(p)}{k\geq 0}$ endlich. Der Mittelpunkt von dieser Menge wird dann durch $\phi$ fixiert.\\
+	Ist $\Gamma$ nicht frei, so gibt es ein $p$ mit $Stab_\Gamma(p) \neq 1$. Da $\Gamma$ diskret ist, ist $Stab_\Gamma(p)$ eine endliche, nichttriviale Untergruppe von $\Gamma$ und besitzt deswegen Torsionselemente.
+\end{Beweis}
+
+\Satz{}
+Es gibt eine natürliche Eins-zu-Eins-Korrespondenz zwischen der Menge der vollständigen hyperbolischen Mannigfaltigkeiten modulo Isometrie und der Menge der torsionsfreien, diskreten Untergruppen von $Isom(\H^n)$ modulo Konjugation.
+
+\Satz{}
+Agiert $\Gamma < Isom(\H^n)$ frei und eigentlich diskontinuierlich, so tut dies auch jede Untergruppe von $\Gamma$. Wir erhalten eine Eins-zu-Eins-Korrespondenz zwischen Überlagerungen $\H^n / \Gamma' \pfeil{}\H^n / \Gamma$ und den Untergruppen $\Gamma' < \Gamma$, wobei der Grad der Überlagerung gerade mit dem Index der Untergruppe übereinstimmt.
+
+\Lem{Selberg}
+Ist $G \subset GL_n(\C)$ endlich erzeugt, so existiert eine normale, torsionsfreie Untergruppe $H \subset G$ von endlichem Index.
+
+\Kor{}
+Jede endlich erzeugte, diskrete Untergruppe $\Gamma \subset Isom(\H^n)$ enthält eine normale Untergruppe endlichen Index, die frei und eigentlich diskontinuierlich auf $\H^n$ agiert.
+
+\Def{}
+Die spezielle lineare Untergruppe $PSL_2(\Z) < PSL_2(\R) = Isom^+(\H^2)$ ist diskret, agiert aber nicht frei auf $\H^2$.\\
+Betrachte aber folgenden Gruppenhomomorphismus für $m\geq 2$
+\begin{align*}
+\mod m : PSL_2(\Z) & \Pfeil{} PSL_2(\Z / m \Z)
+\end{align*}
+Den Kern $\Gamma(m)$ dieser Abbildung nennt man die \df{Kongruenzenuntergruppe}. Er ist eine diskrete Untergruppe in $PSL_2(\Z)$ von endlichem Index.
+
+\Prop{}
+Für $m\geq 4$ agiert $\Gamma(m)$ frei auf $\H^2$.
+
+\section{Polyeder}
+\Def{}
+Wir nennen eine Menge von Halbräumen in $\H^n$ \df{lokal endlich}, wenn die Menge der korrespondierenden Hyperebenen lokal endlich ist.\\
+Eine $n$-dimensionaler \df{Polyeder} in $\H^n$ ist eine Teilmenge, die sich als Schnitt von einer lokal endlichen Menge von Halbräumen schreiben lässt und eine offene Menge enthält.
+
+\Bem{}
+Ist $P \subset \H^n$ ein Polyeder, so sind $P$ und $\overline{P}\subset \overline{H^n}$ konvex.
+
+\Def{}
+Für eine beliebige $S \subset \overline{H^n}$ definieren wir ihre \df{konvexe Hülle} als die kleinste konvexe Menge, die $S$ enthält.
+
+\Def{}
+Unter einem \df{endlichen Polyeder} $P$ verstehen wir die konvexe Hülle von endlich vielen Punkten in $\H^n$, die nicht alle im unendlichen Abschluss einer Hyperebene liegen.\\
+Liegt eine Ecke von $P$ in $\partial \H^n$, so nennen wir sie \df{ideal}, ansonsten \df{endlich}.\\
+Sind alle Ecken von $P$ ideal, so nennen wir $P$ einen \df{idealen Polyeder}.
+
+\Lem{}
+Sei $O \subset \overline{\H^n}$ eine Horosphäre um $p \in \partial \H^n$. $D \subset O$ sei eine Menge endlichen Volumens und $C$ der \df{Kegel} über $D$, d.\,h., $C$ besteht aus allen Geodätischen Strahlen, die von einem Punkt aus $D$ nach $p$ führen. Es gilt
+\[ vol(C) = \frac{vol_O(D)}{n-1} \]
+wobei $vol_O(D)$ das $n-1$-dimensionale Volumen im affinen Raum $O$ bezeichnet.
+\begin{Beweis}{}
+	Wir betrachten die Situation im oberen Halbraum-Modell mit $p = \infty$. $O$ ist dann eine Hyperebene, die orthogonal zur imaginären Achse steht und eine Höhe $h$ hat. Es gilt
+	\begin{align*}
+	Vol(C) &= \int_{C} \frac{1}{t^n} \d x_1 \ldots \d x_{n-1} \d t\\
+	&= \int_{D}\d x_1 \ldots \d x_{n-1} \int_{h}^{\infty} \frac{1}{t^n} \d t\\
+		&= \int_{D}\d x_1 \ldots \d x_{n-1} \cdot \frac{1}{h^{n-1}} \frac{1}{n-1} \d t\\
+	&= \frac{Vol_O(D)}{n-1}
+	\end{align*}
+\end{Beweis}
+
+\Prop{}
+Jeder endliche Polyeder hat endliches Volumen.
+\begin{Beweis}{}
+	Besitzt ein endlicher Polyeder $P$ keine idealen Ecken, so ist die Aussage klar. Ansonsten kann man um jede ideale Ecke eine Horosphäre ziehen. Hierdurch wird $P$ in zwei Mengen aufgeteilt: $P$ geschnitten mit dem Inneren aller Horosphären und $P$ ohne das Innere der Horosphären.\\
+	Durch obiges Lemma lässt sich das Volumen der ersten Menge abschätzen.
+\end{Beweis}
+
+\Def{}
+Eine \df{Kachelung} ist eine lokal endliche Menge von Polyedern, die $\H^n$ überdecken und sich jeweils nur in gemeinsamen Facetten schneiden.
+
+\Prop{}
+Ist $S \subset \H^n$ diskret, so definiere die \df{Voronoi-Kachelung} für $p \in S$ durch
+\[ D(p) := \set{q \in \H^n}{d(p,q) \leq d(p',q) \forall p' \in S } \]
+\begin{Beweis}{}
+	Wir müssen zeigen, dass die Voronoi-Kachelung tatsächlich eine Kachelung ist. Sind $p,p'\in S$ zwei verschiedene Punkte, so ist
+	\[ \set{q \in \H^n}{d(p,q) = d(p',q)} \]
+	eine Hyperebene und
+	\[ H(p,p') := \set{q \in \H^n}{d(p,q) \leq d(p',q)} \]
+	ein Halbraum. Es gilt
+	\[ D(p) = \bigcap_{p'\in S} H(p,p')  \]
+	und da $S$ diskret ist, sind all diese Halbräume lokal endlich.\\
+	Sind $p,p'$ in $S$ verschieden, so ist $D(p) \cap D(p')$ in der Hyperebene
+	\[\set{q \in \H^n}{d(p,q) = d(p',q)} \]
+	enthalten.
+\end{Beweis}
+
+\Def{}
+Ein \df{Fundamentalbereich} für eine diskrete Gruppe $\Gamma \subset Isom(\H^n)$ ist ein Polyeder $D \subset \H^n$, sodass alle $g(D)$ verschieden sind und eine Kachelung von $\H^n$ bilden.
+
+\Bem{}
+Ist $\Gamma \subset Isom(\H^n)$ eine diskrete Gruppe und $p\in \H^n$ ein Punkt mit trivialen Stabilisator, so erhält man durch $S = \Gamma.p$ eine Voronoi-Kachelung, deren Kacheln gerade einen Fundamentalbereich für $\Gamma$ bilden. Diese Kacheln nenne wir \df{Dirichlet-Bereiche}. Es gilt
+\[ D(g(p)) = g.D(p) \]
+
+\Prop{}
+Ist $M = \H^n / \Gamma$ und $D$ ein Fundamentalbereich für $\Gamma$, so gilt
+\[ Vol_{\H^n}(D) = Vol_M(M) \]
+Ist ferner $D$ ein Dirichlet-Bereich, so ist $D$ genau dann kompakt, wenn $M$ kompakt ist.
+
+\Def{}
+Eine $n$-dimensionale \df{Verklebung} besteht aus einer endlichen Menge von $n$-Simplizes und aus affinen Verklebungsabbildungen, die jede Facette eines Simplex mit genau einer anderen Facette identifizieren.\\
+Hieraus entsteht ein $n$-dimensionaler Raum, indem man alle Simplizes disjunkt vereinigt und dann die Relation, die durch die Verklebungsabbildungen erzeugt wird, heraus teilt.
+
+\Def{}
+Sei $\sigma \in \Sigma$ ein Simplex eines Simplizialkomplexes. Ist $\tau \supset \sigma$ ein weiterer Simplex, so heißt $\overline{\sigma} \subset \tau$ \df{opposit} zu $\sigma$, falls
+\[ \sigma \cap \overline{\sigma} = \emptyset \text{ und } \textsf{conv}(\sigma \cup \overline{\sigma}) = \tau \]
+Definiere den \df{Link} von $\sigma$ als den Simplizialkomplex aller Simplizes, die opposit zu $\sigma$ liegen, d.\,h.
+\[ lk(\sigma) := \set{\overline{\sigma}}{\sigma \subset \tau}  \]
+
+\Prop{}
+Der Raum einer drei-dimensionalen Verklebung ist genau dann eine Mannigfaltigkeit, wenn jeder Link einer Ecke homöomorph zu $S^2$ ist.
+\Prop{}
+Der Raum einer drei-dimensionalen Verklebung ist genau dann eine Mannigfaltigkeit, wenn seine Eulerzahl gleich Null ist.
+\begin{Beweis}{}
+	Es sei $X$ der Raum der Verklebung. $X$ habe $k$ Ecken, $e$ Kanten, $f$ Facetten und $t$ Tetraeder. Jeder Tetraeder bringt vier Facetten ins Spiel; allerdings werden immer zwei verschieden Facetten gepaart, ergo gilt
+	\[ f = 2t \]
+	Es bezeichne $v_1,\ldots, v_k$ die Ecken des Simplizes. Jede Kante enthält zwei Ecken, die opposit zueinender sind. Jede Facette enthält drei Kanten, die opposit zu den Ecken der Facette stehen. Jeder Tetraeder enthält vier Facetten, die opposit zu seinen Ecken stehen. Es folgt
+	\[ \sum_{i=1}^k \chi(lk(v_i)) = 2e - 3f + 4t = 2e - 2t \]
+	und
+	\[ \chi(X) = k - e+f-t = k -e + t = k - \frac{1}{2}(\sum_{i=1}^k \chi(lk(v_i))) \]
+	Jedes $lk(v_i)$ bildet eine geschlossene, zwei-dimensionale Fläche, somit gilt
+	\[ lk(v_i) \leq 2 \]
+	Gleichheit gilt genau dann, wenn $lk(v_i)$ homöomorph zu $S^2$ ist.
+\end{Beweis}
+
+\Bem{Poincares Homologiesphäre}
+Betrachte einen regelmäßigen Dodekaeder. Unter dem \df{Torsionswinkel} verstehen wir den Winkel zwischen zwei den Normalen zweier anliegender Facetten.\\
+Wenn wir die Raumkrümmung erhöhen, steigen die Torsionswinkel unseres Dodekaeders an. Insbesondere können wir hierdurch erreichen, dass diese Winkel den Wert $\frac{2}{3}\pi$ erreichen. Wir können nun gegenüberliegende Seiten um $\frac{1}{3}\pi$ drehen und verkleben. Hierdurch erhalten wir eine kompakte, sphärische Mannigfaltigkeiten, die nicht homöomorph zu $S^3$ ist, aber dieselben Homologiegruppen hat.
+
+\Bem{Der Dodekaeder von Seifert und Weber}
+Wir können in obiger Situation die Raumkrümmung erniedrigen anstatt zu erhöhen und dadurch Torsionswinkel von $\frac{2}{5} \pi$ für unseren Dodekaeder erreichen. Indem wir gegenüberliegende Facetten um $\frac{3}{5}\pi$ verdrehen und verkleben, erhalten wir wieder eine kompakte, hyperbolische Mannigfaltigkeit.
+
+\chapter{Dick-Dünn-Zerlegung}
+\section{Tuben und Spitzen}
+\Prop{}
+Sei $M = \H^n / \Gamma$ eine Mannigfaltigkeit. Dann gilt
+\[ inj_x(M) = \frac{1}{2}\inf_{\gamma \in \Gamma} d(x, \gamma(x))  \]
+\Kor{}
+\[ inj(M) = \frac{1}{2}\inf_{\gamma \in \Gamma} d(\gamma) \]
+
+\Kor{}
+Ist $M = \H^n / \Gamma$ eine kompakte Mannigfaltigkeit, so besteht $\Gamma$ nur aus hyperbolischen Elementen.
+\begin{Beweis}{}
+	$\Gamma$ kann von vornerein keine elliptischen Elemente besitzen.\\
+	Da $M$ kompakt ist, ist $inj_x(M)$ nach unten beschränkt für $x \in M$. Allerdings ist $d(\gamma) = 0$ für eine parabolische Isometrie $\gamma$.
+\end{Beweis}
+
+\Def{Tuben}
+Sei $\phi \in Isom(\H^n)$ hyperbolisch mit Achse $l$ und minimaler Versetzung $d$. Teilt man $\Gamma = \shrp{\gamma}$ aus $\H^n$ heraus, erhält man eine \df{unendliche Tube}. $l$ wird dabei auf eine geschlossene Geodäte der Länge $d$ abgebildet, der \df{Nabe} der Tube.
+
+\Prop{}
+Jede unendlich Tube ist diffeomorph zu $S^1 \times \R^{n-1}$ oder $S^1 \widetilde{\times} \R^{n-1}$, wenn $\phi$ orientierungsumkehrend ist.\\
+$S^1 \widetilde{\times} \R^{n-1}$ entsteht aus $[0,1] \times  \R^{n-1}$, indem man die Relation
+\[ (0,x) \sim (1, -x) \]
+heraus teilt.
+
+\Def{}
+Eine \df{Tube der Länge $R$} entsteht, indem man $\Gamma = \shrp{\gamma}$ aus der $R$-Nachbarschaft von $l$ heraus teilt. Der entstehende Raum ist diffeomorph zu $S^1 \times D^{n-1}$ bzw. $S^1 \widetilde{\times} D^{n-1}$
+
+\Def{Spitze}
+Sei $\Gamma < Isom(\R^{n-1})$ eine nichttriviale diskrete Untergruppe, die frei auf $\R^n$ agiert.\\
+Jedes Element in $\Gamma$ induziert durch
+\[ \phi(x,t) := (Ax + b, t) \]
+eine parabolische Wirkung auf $H^n$, durch die $\infty$ fixiert wird. Teilt man diese Wirkung heraus, erhält man eine hyperbolische Mannigfaltigkeit, die diffeomorph ist zu
+\[ \R_{> 0} \times (\R^{n-1} / \Gamma) \]
+Wir nennen diese hyperbolische Mannigfaltigkeit eine \df{Spitze}.\\
+Eine \df{beschränkte Spitze} erhält man, indem man das diffeomorphe Äquivalent zu $[a,+\infty) \times (\R^{n-1} / \Gamma)$ für $a > 0$ nimmt.
+
+\Prop{}
+Für eine beschränkte Spitze $C$ gilt
+\[ vol(C) = \frac{vol(\partial C)}{n-1} \]
+
+\Lem{}
+Seien $\phi_1,\phi_2$ zwei hyperbolische oder parabolische Isometrien auf $\H^n$. Kommutieren diese, so gilt
+\[ Fix(\phi_1) = Fix(\phi_2) \]
+\begin{Beweis}{}
+	Allgemein gilt für jedes Paar von Bijektionen $a,b$
+	\[ Fix(aba\i) = a(Fix(b)) \]
+	In unserem Fall folgt hierdurch
+	\[ Fix(\phi_1) = \phi_2(Fix(\phi_1)) \]
+	Ist also $\phi_1$ parabolisch, so besitzt $\phi_2$ unter Anderem denselben Fixpunkt wie $\phi_1$. Aus symmetrischen Gründen ist $\phi_2$ aber dann auch parabolisch.\\
+	Sei $\phi_1$ also hyperbolisch. Dann sind $\phi_1$ und $\phi_2$ beide hyperbolisch und beide erhalten dieselbe Achse. Ergo müssen sie beide dieselben Punkte im Unendlichen fixieren.
+\end{Beweis}
+
+\Lem{}
+\label{Lemma 422}
+Seien $\phi_1, \phi_2 \in \Gamma$ zwei Isometrien einer diskreten und torsionsfreien Gruppe. Dann tritt genau einer der folgenden Fälle ein:
+\begin{itemize}
+	\item $Fix(\phi_1) \cap Fix(\phi_2) = \emptyset$.
+	\item $\phi_1$ und $\phi_2$ sind beide parabolisch und haben denselben Fixpunkt.
+	\item $\phi_1$ und $\phi_2$ sind beide hyperbolisch und lassen sich beide als eine Potenz derselben hyperbolischen Isometrie schreiben.
+\end{itemize}
+\begin{Beweis}{}
+	Wir nehmen an, dass $Fix(\phi_1) \cap Fix(\phi_2) \neq \emptyset$.
+\begin{itemize}
+	\item Angenommen $\phi_1$ ist hyperbolisch und $\phi_2$ ist parabolisch. Wir wählen dann das obere Halbraummodell mit $Fix(\phi_1) = \{0, \infty\}$ und $Fix(\phi_2) = \infty$.\\
+	$\phi_1$ und $\phi_2$ agieren dann durch
+	\[ \phi_1(x,t) = \lambda(Ax, t) \text{ und } \phi_2(x,t) = (Bx + b, t) \]
+	Ohne Beschränkung der Allgemeinheit ist $\lambda < 1$. Betrachte
+	\[ \phi_1^n\circ \phi_2 \circ \phi_1^{-n}(0,t) = (\lambda^n A^nb, t) \Pfeil{n \pfeil{} \infty} (0,t) \]
+	Dies ist ein Widerspruch zur Annahme, dass $\Gamma$ diskret wäre.
+	\item $\phi_1$ und $\phi_2$ seien beide hyperbolisch und besitzen einen gemeinsamen Fixpunkt. Der Kommutator $[\phi_1, \phi_2] = \phi_1\phi_2 \phi_1\i \phi_2\i$ erhält jede Horosphäre um $\infty$. Da er aber nicht parabolisch sein kann, muss er trivial sein. Ergo kommutieren $\phi_1$ und $\phi_2$.
+	\item Besitzen $\phi_1$ und $\phi_2$ dieselbe hyperbolisch Achse, so sind beide durch $w_i = d(\phi_i)$ bestimmt. $w_1$ und $w_2$ spannen als Elemente von $\R$ eine abelsche, additive Gruppe auf. Diese muss von einem Element erzeugt werden, da sonst $\Gamma$ nicht diskret wäre.
+\end{itemize}
+\end{Beweis}
+
+\Kor{}
+Ist $\Gamma$ diskret und torsionsfrei, so gelten folgende Eigenschaften:
+\begin{itemize}
+	\item Die Achsen zweier hyperbolischer Elemente aus $\Gamma$ sind entweder inzident oder ultraparallel.
+	\item Jede Untergruppe von $\Gamma$, die isomorph zu $\Z\times \Z$ ist, muss von zwei parabolischen Elementen aufgespannt werden.
+\end{itemize}
+
+\Kor{}
+Die Fundamentalgruppe einer geschlossenen hyperbolischen Mannigfaltigkeit kann keine Untergruppe enthalten, die isomorph zu $\Z\times \Z$ ist.
+
+\section{Exkurs zu Lie-Gruppen und Lie-Algebren}
+
+\Def{}
+Eine \df{Lie-Gruppe} ist eine glatte Mannigfaltigkeit, die eine Gruppenstruktur trägt, durch die Inversion und Multiplikation zu glatten Abbildungen werden.
+
+\Def{}
+Eine \df{Lie-Algebra} $V$ ist ein reeller Vektorraum mit einer Bilinearform
+\[ [,] : V\otimes_\R V \Pfeil{} V \]
+die folgende Eigenschaften erfüllt:
+\begin{enumerate}[1.)]
+	\item \df{Anti-Symmetrie}: $[X,Y] = -[Y,X]$
+	\item \df{Jacobi-Identität}: $[X,[Y,Z]] + [Z,[X,Y]] + [Y,[Z,X]] = 0$
+\end{enumerate}
+
+
+\Bem{}
+Sei $G$ eine Lie-Gruppe, setze
+\[ \g = T_eG \]
+Dann ist $\g$, der Tangentialraum des Neutralelements von $G$, isomorph zum Raum der \df{links-invarianten Vektorfelder} auf $G$, d.\,h., der Vektorfelder $X$, für die gilt
+\[ X(gp) = \d g_{|p}X(p) \]
+Ergo können wir die Lie-Klammer der Vektorfelder auf $\g$ einschränken, wodurch $\g$ zu einer Lie-Algebra wird. Für $x\in\g$ definieren wir die \df{Adjunktion} durch
+\begin{align*}
+ad(x) : \g & \Pfeil{} \g\\
+v & \longmapsto [x,v]
+\end{align*}
+Beachte, für jedes $x \in \g$ existiert genau ein glatter Gruppenmorphismus
+\[ \Theta : \R \Pfeil{} G \]
+sodass $\Theta'(0) = x, \Theta(0) = 1$.\\
+Wir definieren hierdurch folgende \df{Exponentialabbildung}
+\begin{align*}
+\exp : \g &\Pfeil{} G\\
+x &\longmapsto \Theta(1)
+\end{align*}
+Dann existiert ein Zusammenhang auf $G$, sodass $\exp$ der Riemannschen Exponential-Abbildung entspricht und jedes $\Theta$ eine Geodäte ist.\\
+Ist $h\in G$, so definiere
+\begin{align*}
+Int(h) :G& \Pfeil{} G\\
+g & \longmapsto hgh\i
+\end{align*}
+und die \df{adjungierte Aktion} durch
+\[ Ad(h) := (\d Int(h))_{e} : \g \Pfeil{} \g \]
+Dann gilt
+\begin{align*}
+\exp(Ad(h)x) &= h\exp(x)h\i\\
+Ad(\exp(x)) &= e^{ad(x)}
+\end{align*}
+
+\Bem{}
+Ist $G = \GL$, so ist $\g = \glf = \R^{n\times n}$ und $[x,y] = xy -yx$. 
+
+
+
+\section{Zassenhaus}
+\Def{}
+Ist $U \subset G$ Teilmenge einer Gruppe, so definiere rekursiv
+\begin{align*}
+U_{(0)} &:= U\\
+U_{(k)} &:= [U_{(k-1)}, U]
+\end{align*}
+Ist $U$ eine Umgebung der 1 in einer Lie-Gruppe $G$, so nennen wir $U$ eine \df{Zassenhaus-Umgebung}, falls
+\begin{align*}
+U_{(1)} &\subset U\\
+U_{(k)} &\Pfeil{k \pfeil{{}} \infty} \{1\}
+\end{align*}
+
+\Prop{}
+Jede reelle Lie-Gruppe besitzt eine Zassenhaus-Umgebung.
+\begin{Beweis}{}
+	\begin{itemize}
+		\item Wir zeigen die Aussage zuerst für $GL_n(\R)$.\\
+		Für $v \in \R^{n}$ bezeichne $\norm{v}$ die euklidische 2-Norm und für $A \in \R^{n\times n}$ bezeichne $\norm{A} := \sup_{v\in \R^n \setminus \{0\}} \frac{\norm{Av}}{\norm{v}}$ die dazugehörige Operatornorm. Insbesondere gilt für diese Norm
+		\[ \norm{A B} \leq \norm{A} \cdot \norm{B} \]
+		Definiere ferner
+		\[ m(A) := \norm{I_n-A} \]
+		Seien $A, B \in \R^{n\times n}$ mit $m(A) <1$ und $m(B) <1$. Schreibe $\alpha = A - I_n$ und $\beta = B - I_n$.\\
+		Da $\norm{\alpha} < 1$, konvergiert folgende Reihe
+		\[ A\i = \sum_{n = 0}^{\infty} (-\alpha)^n \]
+		Ferner gilt
+		\[ \norm{A\i v} \leq \sum_{n = 0}^{\infty} \norm{v}\norm{\alpha}^n = \frac{\norm{v}}{1 - \norm{\alpha}}  \]
+		Ergo
+		\[ \norm{A\i} \leq \frac{1}{1 - m(A)} \]
+		Es folgt
+		\begin{align*}
+		m([A,B]) &= \norm{ [A,B] - I } \\
+		&= \norm{ABA\i B\i - I}\\
+		&= \norm{ ((A-I)(B-I) - (B-I)(A-I))A\i B\i }\\
+		&\leq 2 \norm{A-I}\norm{B-I} \norm{A\i }\norm{B\i}\\
+		& \leq 2 \frac{m(A)m(B)}{(1-m(A)) (1-m(B))}
+		\end{align*}
+		Definiere nun folgende Umgebung der Eins in $GL_n(\R)$
+		\[ U:= \set{A\in \R^{n\times n}}{m(A) < \frac{1}{8}} \]
+		Induktiv rechnet man dann für $n\geq 0$ für alle $C \in U_{(n)}$ nach
+		\[ m(C) < \frac{1}{8} \klam{\frac{3}{8}}^n \]
+		Ergo ist $U$ eine Zassenhaus-Umgebung.
+		\item Ist $G$ eine Lie-Untergruppe von $GL_n(\R)$, so ist $U\cap G$ eine Zassenhaus-Umgebung für $G$.
+		\item Ist $G$ irgendeine reelle Lie-Gruppe, so folgt aus Ados Theorem, dass eine Injektion von Lie-Algebren
+		\[ \g = \T_eG \Inj{f} \mathfrak{gl}_n(\R) = T_eGL_n(\R) \]
+		existiert. Es bezeichne $\mathcal{G}$ die Untergruppe von $GL_n(\R)$, deren Lie-Algebra gerade dass Bild von $f$ ist.\\
+		Dann existiert eine lokale Isometrie
+		\[ \phi : V \Pfeil{} W \]
+		wobei $V \subset G, W \subset \mathcal{G}$ jeweils Umgebungen der Eins sind. Wir können nun eine Zassenhaus-Umgebung von $\mathcal{G}$ wählen, sie mit $W$ schneiden, und dann über $\phi$ zurückziehen.
+	\end{itemize}
+\end{Beweis}
+
+\Def{}
+Eine Gruppe heißt \df{nilpotent}, falls ein $n \in \N$ existiert mit
+\[ G_{(n)} = 1 \]
+
+\Prop{}
+Sei $G$ eine Gruppe, die durch eine Menge $S$ erzeugt wird. Gilt für alle $a_1,\ldots, a_{n+1} \in S$
+\[ [a_1, [a_2,  \ldots [a_n, a_{n+1} ] \ldots ]] = 1 \]
+so folgt
+\[ g_{(n)} = 1 \]
+
+\Lem{}
+Sei $G$ eine Lie-Gruppe. Dann existiert eine Umgebung $U$ der 1, sodass jede diskrete Untergruppe, die durch Elemente aus $U$ generiert wird, nilpotent ist.
+
+\section{Margulis Lemma}
+
+\Def{}
+Sei $S$ eine Menge von Symbolen. $S^*$ bezeichne das durch $S$ frei erzeugte Monoid. Ferner sei ein surjektiver Homomorphismus $\pi : S^* \pfeil{} G$ in eine Gruppe $G$ gegeben.\\
+Jedes Element aus $G$ besitzt dann eine Darstellung als ein \df{Wort} in $S^*$. Definiere folgende \df{Norm} auf $G$
+\[ \norm{g}_S := \set{\bet{w}}{w\in S^*, \pi(w) = g} \]
+
+\Lem{}
+Es agiere $G$ transitiv auf einer Menge $A$, die mindestens $m+1$ Elemente habe. Für jedes $a \in A$ gibt es mindestens $m+1$ Elemente aus $G$ mit Norm $\leq m$, die $a$ auf $m+1$ verschiedene Elemente abbilden.
+
+\Def{}
+Ist $H \subset G$ eine Untergruppe endlichen Index, so heißt $G$ \df{virtuell} $H$.\\
+Ist $H$ abelsch, nilpotent, etc., so heißt $G$ virtuell abelsch, nilpotent,etc..
+
+\Lem{Margulis Lemma}
+Sei $\Gamma \subset Isom(\H^n)$ diskret und $x \in \H^n$ beliebig. Für $\epsilon > 0$ setze
+\[ \Gamma_\epsilon(x) := \set{\gamma \in \Gamma}{d(x, \gamma(x)) \leq \epsilon} \]
+Dann existiert für jedes $n\geq 2$ eine sogenannte \df{Margulis-Konstante} $\epsilon_n > 0$, sodass für alle $x \in \H^n$ die Gruppe $\Gamma_{\epsilon_n}(x)$ virtuell nilpotent ist.
+\begin{Beweis}{}
+	\begin{itemize}
+		\item $G = Isom(\H^n)$ ist eine Lie-Gruppe.
+		Sei $U$ eine Zassenhaus-Umgebung der Eins in $G$. $V$ sei eine kompakte Umgebung von $Stab_G(x) \isom{} O(n-1)$ in $G$. Dann existiert eine Zahl $m$, sodass $V$ durch $m$ Translate von $U$ überdeckt wird.\\
+		Sei ferner $W$ eine Umgebung von $Stab_G(x)$ in $G$ mit $W = W\i$ und $W^m \subset V$.\footnote{
+			So ein $W$ kann mithilfe des verallgemeinerten Tuben-Lemmas gefunden werden: Seien Räume $A\subset X$ und $B \subset Y$ gegeben und eine offene Umgebung $N \subset X \times Y$ von $A\times B$. Sind $A$ und $B$ kompakt, so gibt es offene Mengen $U \subset X$ und $V \subset Y$ mit $A\times B \subset U \times V\subset N$.
+		}
+	\item Wir nehmen zuerst an, dass $\Gamma$ durch eine Menge $S \subset W$ erzeugt wird, und zeigen in diesem Fall, dass $\Gamma' := \Gamma \cap U$ einen Index von höchstens $m$ in $\Gamma$ hat.\\
+	Betrachte hierzu die Wirkung von $\Gamma$ auf $\Gamma / \Gamma'$. Besitzt diese Menge mehr als $m$ Elemente, so gibt es $m+1$ Nebenklassen aus $\Gamma / \Gamma'$, die einen Repräsentanten mit Norm $\leq m$ haben.\\
+	Da $S^{\leq m} \subset W^m \subset V$, liegen alle diese Repräsentanten in $V$. Da $V$ durch $m$ Translate von $U$ überdeckt wird, liegen mindestens zwei der $m+1$ Repräsentanten im denselben Translat. Deswegen repräsentieren diese beiden Elemente dieselbe Nebenklasse in $\Gamma / \Gamma'$, was einen Widerspruch zur Annahme, dass der Index von $\Gamma'$ in $\Gamma$ echt größer als $m$ ist, darstellt.
+	\item Wir wollen nun $\epsilon_n > 0$ so wählen, dass gilt
+	\[ \set{g \in G}{d(x, g(x)) \leq \epsilon_n} \subset W \]
+Das geht, denn betrachte das Faserbündel
+	\begin{align*}
+	\pi : G & \Pfeil{} \H^n\\
+	g & \longmapsto g(x)
+	\end{align*}
+	Die Faser von $x$ ist gerade $Stab_G(x) \isom{} O(n-1)$. Da $O(n-1)$ notorischerweise kompakt ist, ist $\pi$ eine eigentliche Abbildung\footnote{
+Ein Faserbündel ist genau dann eigentlich, wenn ihre Faser kompakt ist. Eine Abbildung heißt eigentlich, wenn das Urbild kompakter Mengen wieder kompakt ist.	
+}. Ergo ist auch die Menge
+\[ K_l := \pi\i\set{y \in \H^n}{ d(x,y) \leq \frac{1}{l} } = \set{g \in G}{d(x, g(x)) \leq \frac{1}{l}} \]
+kompakt. Ferner gilt
+\[ \bigcap_l K_l = Stab_G(x) \subset W \]
+Da die $K_l$ alle kompakt sind und $W$ eine Umgebung von $Stab_G(x)$ ist, existiert ein $l$ mit
+\[ K_l \subset W \]
+Ergo kann $\epsilon_n \leq \frac{1}{l}$ gewählt werden.
+	\end{itemize}
+	
+\end{Beweis}
+
+\Def{}
+Eine nichttriviale, diskrete Untergruppe $\Gamma \subset Isom(\H^n)$ heißt \df{elementar}, wenn es eine endliche Menge $\emptyset \neq S \subset \overline{\H^n}$ gibt, die von $\Gamma$ fixiert wird, d.\,h.,
+\[ Fix(\phi) = S \forall \phi \in \Gamma  \]
+Dies ist äquialent dazu zu fordern, dass es einen Punkt $x \in \overline{\H^n}$ gibt, dessen $\Gamma$-Orbit endlich ist.
+
+\Prop{}
+Eine elementare Gruppe $\Gamma$, die frei auf $\H^n$ operiert, wird entweder durch eine hyperbolische Isometrie oder durch beliebig viele parabolische Isometrien mitdemselben Fixpunkt erzeugt.
+\begin{Beweis}{}
+$\Gamma$ agiert frei und enthält deswegen kein elliptischen Elemente. $S$ muss ergo in $\partial \H^n$ liegen und aus einem, oder zwei Elementen bestehen. Der Rest folgt nun aus Lemma \ref{Lemma 422}.
+\end{Beweis}
+
+\Prop{}
+Sei $\Gamma \subset \H^n$ diskret, torsionsfrei und nichttrivial. $\Gamma$ ist genau dann elementar, wenn $\Gamma$ virtuell elementar ist.
+\begin{Beweis}{}
+	Sei $\Gamma' \subset \Gamma$ elementar und von endlichem Index. $\Gamma'$ besteht entweder aus hyperbolischen Elementen, die dieselbe Achse erhalten, oder aus parabolischen mit demselben Fixpunkt. Ist $\phi \in \Gamma$, so muss eine Potenz von $\phi$ in $\Gamma'$ liegen und ergo ebenfalls dieselbe Achse erhalten oder denselben Fixpunkt fixieren.
+\end{Beweis}
+
+\Kor{}
+Sei $\Gamma \subset \H^n$ diskret und torsionsfrei. Ist $\Gamma $ virtuell nilpotent, so ist $\Gamma$ entweder trivial oder elementar.
+\begin{Beweis}{}
+	Sei $H \subset G$ von endlichem Index und nilpotent. Ist $H$ trivial, so ist $G$ endlich. Da $G$ aber auch torsionsfrei ist, muss $G$ somit auch trivial sein.\\
+	Sei $H$ nicht trivial. Da $H$ nilpotent ist, existieren nichttriviale Elemente in $H$, die mit allen anderen kommutieren. Ergo müssen alle Elemente in $H$ dieselben Fixpunkte haben. Ergo ist $H$ elementar.
+\end{Beweis}
+
+\Kor{}
+Sei $\Gamma$ diskret und torsionsfrei. Für jedes $x\in \H^n$ ist dann $\Gamma_{\epsilon_n}(x)$ entweder trivial oder elementar.
+
+\section{Dick-Dünn-Zerlegung}
+
+\Def{}
+\begin{itemize}
+	\item Eine \df{sternförmige Menge um einen Randpunkt} $p \in \partial\H^n$ ist eine Menge $U \subset \H^n$, die mit jedem Strahl, der zu $p$ läuft, einen nicht-leeren zusammenhängenden Schnitt besitzt.
+	\item Eine \df{sternförmige Umgebung um eine Gerade} $l \subset \H^n$ ist eine Menge $U \subset \H^n$, die einen nicht-leeren zusammenhängenden Schnitt mit jeder Geodäte besitzt, die $l$ orthogonal schneidet.
+	\item Sei $\Gamma$ eine Gruppe, die frei und diskontinuierlich agiert und aus parabolischen Isometrien bestehet, die einen Randpunkt $p\in \partial\H^n$ fixieren. Ist $U$ eine sternförmige Umgebung um $p$, die invariant unter $\Gamma$ ist, so heißt $U / \Gamma$ eine \df{sternförmige Spitzenumgebung}.
+	\item Sei $\Gamma$ eine Gruppe, die durch eine hyperbolische Isometrie $\phi$ mit Achse $l$ erzeugt wird. Ist $V$ eine $\Gamma$-invariante sternförmige Umgebung um $l$, so heißt $V / \Gamma$ eine \df{sternförmige Umgebung einer einfachen geschlossenen Geodäten} der Länge $d(\phi)$.
+\end{itemize}
+\Bem{}
+Die beschränkten Tuben und Spitzen stellen Beispiele für sternförmige einfache geschlossene geodätische Umgebungen bzw. sternförmige Spitzenumgebungen dar.
+
+\newcommand{\thick}{M_{[\epsilon_n, \infty)}}
+\newcommand{\thin}{M_{(0,\epsilon_n]}}
+\Def{}
+Sei $M = \H^n / \Gamma$ eine Mannigfaltigkeit. $\epsilon_n$ sei eine Margulis-Konstante. Definiere den \df{dicken Teil} von $M$ durch
+\[ \thick := \set{ x \in M }{inj_x(M) \geq \frac{\epsilon_n}{2}} \]
+und den \df{dünnen Teil} durch
+\[ \thin := \overline{ M/\thick } \]
+
+\Satz{Dick-Dünn-Zerlegung}
+Sei $M$ eine vollständige, hyperbolische Mannigfaltigkeit der Dimension $n$.\\
+Der dünne Part $\thin$ besteht aus einer disjunkten Vereinigung von sternförmigen Spitzenumgebungen und sternförmigen Umgebungen von geschlossenen Geodäten der Länge $< \epsilon_n$.
+\begin{Beweis}{}
+	
+\end{Beweis}
 
 \printindex
 \end{document}
