@@ -913,20 +913,21 @@ Ergo kann $\epsilon_n \leq \frac{1}{l}$ gewählt werden.
 \end{Beweis}
 
 \Def{}
-Eine nichttriviale, diskrete Untergruppe $\Gamma \subset Isom(\H^n)$ heißt \df{elementar}, wenn es eine endliche Menge $\emptyset \neq S \subset \overline{\H^n}$ gibt, die von $\Gamma$ fixiert wird, d.\,h.,
-\[ Fix(\phi) = S \forall \phi \in \Gamma  \]
+Eine nichttriviale, diskrete Untergruppe $\Gamma \subset Isom(\H^n)$ heißt \df{elementar}, wenn es eine endliche $\Gamma$-invariante Menge $\emptyset \neq S \subset \overline{\H^n}$ gibt, d.\,h.,
+\[ \set{\phi(s) }{\phi \in \Gamma, s\in S} = S \]
 Dies ist äquialent dazu zu fordern, dass es einen Punkt $x \in \overline{\H^n}$ gibt, dessen $\Gamma$-Orbit endlich ist.
 
 \Prop{}
 Eine elementare Gruppe $\Gamma$, die frei auf $\H^n$ operiert, wird entweder durch eine hyperbolische Isometrie oder durch beliebig viele parabolische Isometrien mitdemselben Fixpunkt erzeugt.
 \begin{Beweis}{}
-$\Gamma$ agiert frei und enthält deswegen kein elliptischen Elemente. $S$ muss ergo in $\partial \H^n$ liegen und aus einem, oder zwei Elementen bestehen. Der Rest folgt nun aus Lemma \ref{Lemma 422}.
+$\Gamma$ agiert frei und enthält deswegen kein elliptischen Elemente. Angenommen $S$ besäße Punkte in $\H^n$. Dann würden Elemente aus $\Gamma$ diese Punkte vertauschen, sprich, aufeinander spiegeln. Insbesondere könnte man gemeinsame Schwerpunkte finden, die von nichttriviale Elementen aus $\Gamma$ fixiert werden würden, was einen Widerspruch darstellen würde. Ergo kann $S$ nur aus Punkten im Unendlichen bestehen.\\
+Hyperbolische und parabolische Elemente können Punkte im Unendlichen nicht zyklisch vertauschen, sondern nur fixieren bzw. unendlich oft bewegen. $S$ muss ergo in $\partial \H^n$ liegen und aus einem, oder zwei Elementen bestehen. Der Rest folgt nun aus Lemma \ref{Lemma 422}.
 \end{Beweis}
 
 \Prop{}
 Sei $\Gamma \subset \H^n$ diskret, torsionsfrei und nichttrivial. $\Gamma$ ist genau dann elementar, wenn $\Gamma$ virtuell elementar ist.
 \begin{Beweis}{}
-	Sei $\Gamma' \subset \Gamma$ elementar und von endlichem Index. $\Gamma'$ besteht entweder aus hyperbolischen Elementen, die dieselbe Achse erhalten, oder aus parabolischen mit demselben Fixpunkt. Ist $\phi \in \Gamma$, so muss eine Potenz von $\phi$ in $\Gamma'$ liegen und ergo ebenfalls dieselbe Achse erhalten oder denselben Fixpunkt fixieren.
+	Sei $\Gamma' \subset \Gamma$ elementar und von endlichem Index. $\Gamma'$ besteht entweder aus hyperbolischen Elementen, die dieselbe Achse erhalten, oder aus parabolischen mit demselben Fixpunkt. Ist $\phi \in \Gamma$, so muss eine Potenz von $\phi^k$ in $\Gamma'$ liegen und ergo ebenfalls dieselbe Achse erhalten oder denselben Fixpunkt fixieren.
 \end{Beweis}
 
 \Kor{}
@@ -963,8 +964,179 @@ und den \df{dünnen Teil} durch
 Sei $M$ eine vollständige, hyperbolische Mannigfaltigkeit der Dimension $n$.\\
 Der dünne Part $\thin$ besteht aus einer disjunkten Vereinigung von sternförmigen Spitzenumgebungen und sternförmigen Umgebungen von geschlossenen Geodäten der Länge $< \epsilon_n$.
 \begin{Beweis}{}
-	
+	\begin{itemize}
+		\item 	Sei $M = \H^n / \Gamma$. Definiere für $\phi \in \Gamma, \epsilon > 0$
+		\[ S_\phi(\epsilon) = \set{x \in \H^n}{d(x, \phi(x)) \leq \epsilon} \]
+		Dann ist der dünne Teil gerade der Quotient von
+		\[ S := \bigcup_{\phi \in \Gamma} S_\phi(\epsilon_n)  \]
+		\item Ist $\phi$ eine Parabolische, die $p$ fixiert, so ist $S_\phi(\epsilon)$ eine sternförmige Umgebung um $p\in\partial \H^n$.
+		\item Ist $\phi$ eine Hyperbolische mit Achse $l$, so ist $S_\phi(\epsilon)$ eine sterförmige Umgebung um $l$, falls $\epsilon > d(\phi)$.
+		\item Es bleibt zu zeigen, dass $S_\phi(\epsilon_n)$ und $S_\psi(\epsilon_n)$ disjunkt sind für verschiedene $\phi, \psi$.\\
+		Sei $x \in S_\phi(\epsilon_n)\cap S_\psi(\epsilon_n)$. Dann gilt
+		\[ \phi, \psi \in \Gamma_{\epsilon_n}(x) \]
+		Margulis Lemma sagt aus, dass $\Gamma_{\epsilon_n}(x)$ elementar ist. Ergo sind $\phi$ und $\psi$ entweder beide hyperbolisch und Potenz desselben Elements oder parabolisch und fixieren denselben Punkt im Unendlichen.
+		\item Ist nun $S_0 \subset S$ eine Zusammenhangskomponente, so existiert eine maximale elementare Untergruppe $\Gamma_0 \subset \Gamma$, sodass
+		\[S_0 = \bigcup_{\phi \in \Gamma_0\setminus \{ \id{\H^n}\}} S_\phi(\epsilon_n) \]
+		$S_0$ ist nun die Vereinigung von sternförmigen Nachbarschaften um $l$ bzw. $p$, und deswegen vom selben Typ. 
+	\end{itemize}
 \end{Beweis}
+
+\Prop{}
+Sei $M$ eine vollständige, orientierbare hyperbolische Mannigfaltigkeit der Dimension $\leq 3$. Der dünne Teil von $M$ besteht aus beschränkten Spitzen und Tuben endlicher Länge.
+\begin{Beweis}{}
+	\begin{itemize}
+		\item Sei $\phi \in Isom^+(\H^n)$. Es genügt zu zeigen, dass $S_\phi(\epsilon)$ entweder leer, oder eine $R$-Nachbarschaft um $l$ oder eine Horokugel um $p$ für alle $\epsilon > 0$ ist.
+		\item Sei also $\phi$ hyperbolisch mit Achse $l$. Dann hängt $d(x,\phi(x))$ stetig und monoton von $d(x,l)$ ab. Ergo gilt
+		\[ S_\phi(\epsilon) = \set{ x\in\H^n }{d(x,\phi(x)) \leq \epsilon} = \set{x\in \H^n}{d(x,l) \leq s(\epsilon)} \]
+		\item Ist $\phi$ parabolisch, so agiert $\phi$ auf jeder Horosphäre um $p$ wie eine euklidische fixpunktfreie orientierungserhaltende Isometrie. Für $n\leq 3$ kann dies nur eine Translation sein. Es folgt
+		\[ S_\phi(\epsilon) = \set{ x\in\H^n }{d(x,\phi(x)) \leq \epsilon} \isom{} \set{(x_1, t)\in H^n}{ t > s(\epsilon) } \]
+	\end{itemize}
+\end{Beweis}
+
+\Prop{}
+Sei $M$ eine vollständige hyperbolische Mannigfaltigkeit. Dann sind folgende Aussagen äquivalent:
+\begin{enumerate}[(1)]
+	\item $M$ hat endliches Volumen.
+	\item $M_{[\epsilon, \infty)}:= \set{x\in M}{ inj_x(M) \geq \frac{\epsilon}{2} }$ ist kompakt für alle $\epsilon > 0$.
+	\item $\thick$ ist kompakt.
+\end{enumerate}
+\begin{Beweis}{}
+	\begin{itemize}
+		\item Von (1) nach (2):\\
+		Sei $S$ eine maximale Teilmenge von $M_{[\epsilon,\infty)}$ mit der Eigenschaft, dass je zwei Punkte aus einen Mindestabstand von ${\epsilon}$ haben. Es gilt dann
+		\[ M_{[\epsilon, \infty)} \subset \bigcup_{s \in S} \overline{B_{\epsilon}(s)} =: D \]
+		Andererseits müssen die offenen Bälle mit Radius $\frac{\epsilon}{2}$ und Zentrum $s \in S$ alle disjunkt sein. Da $M$ nur endliches Volumen hat, kann $S$ somit nur endlich viele Elemente enthalten. Dadurch ist $D$ kompakt und $ M_{[\epsilon, \infty)}$ als abgeschlossene Teilmenge eines Kompakti wieder kompakt.
+		\item Von (3) nach (1):\\
+		Sei $\thick$ kompakt. Dann ist auch der Rand von $\thick$ kompakt. Ergo hat $\thin$ nur endliche viele Zusammenhangskomponenten. Es genügt ergo zu zeigen, dass eine sternförmige Umgebung um eine Spitze bzw. eine geschlossene Geodäte aus $\thin$ endliches Volumen hat. Dies ist erfüllt, wenn eine solche Komponente kompakt ist.
+		\item Eine abgeschlossene Umgebung um eine geschlossene Geodäte ist immer kompakt, da sie homöomorph zu $I \times S^1$ ist.
+		\item Sei ergo $M_0$ eine nicht kompakte Zusammenhangskomponente von $\thin$. Sei $S_0$ das dazugehörige Urbild in $\H^n$. Sei $\Gamma_0 < \Gamma$ eine maximale elementare Untergruppe, die nur aus Parabolischen besteht, die $\infty$ fixieren, sodass
+		\[ S_0 = \bigcup_{\phi \in \Gamma_0 \setminus \{ \id{\H^n} \}}\set{ x\in \H^n }{ d(x,\phi(x) ) \leq \epsilon_n } \]
+		Sei eine \df{Blätterung} auf $S_0$ gegeben, d.\,h., 
+		eine Übderdeckung von $S_0$ durch geodätische Halbstrahlen, die jeweils \df{Blätter} der Blätterung genannt werden. $\Gamma_0$ erhält diese Foliation, weswegen wir eine Foliation in $M_0$ erhalten.
+		\item Jedes Blatt beginnt in einem Punkt in $\partial \thick$, welches kompakt ist. Wir wählen eine zusammenhängende Menge $P \subset \H^n$, sodass der Anfangspunkt jedes Blattes in $M_0$ einmal in $P$ vertreten ist. Das Volumen von $M_0$ errechnet sich nun durch die Fläche, die von $P$ und $\infty$ aufgespannt ist und endlich ist.
+	\end{itemize}
+\end{Beweis}
+
+\Kor{}
+Jede vollständige, hyperbolische Mannigfaltigkeit endlichen Volumens ist diffeomorph zum Inneren einer kompakten Mannigfaltigkeit mit Rand. Der Rand besteht hierbei aus flachen Mannigfaltigkeiten.
+\begin{Beweis}{}
+	Sei $U$ eine sternförmige Spitzenumgebung in $M$. $U$ hat eine kompakte Basis $X$ und enthält eine beschränkte Spitze diffeomorph zu $X \times [t, \infty)$. Schmeißt man alle solche beschränkten Spitzen aus $M$ raus, bleibt was kompaktes mit Rand übrig: Der dicke Teil plus kompakten Umgebungen von geschlossenen Geodäten und kompakten Teilen von Spitzenumgebungen.\\
+	Die beschränkte Spitzenumgebung lässt sich zu $X\times [t,\infty]$ kompaktieren. $X$ entspricht einer Horosphäre in $\H^n$ und ist somit flach.
+\end{Beweis}
+
+\Bem{}
+\begin{itemize}
+	\item Ist in obiger Situation $n = 2$, so ist $M$ das Innere einer kompakten Fläche mit Rändern diffeomorph zu $S^1$.
+	\item Ist $n = 3$ und $M$ orientierbar, so sind die Ränder von $N$ flache Tori.
+	\item Wie die Ränder für allgemeine Fälle aussehen, beantworten folgende Theoreme.
+\end{itemize}
+
+\Satz{}
+Jede diskrete Teilgruppe von $\R^n$ ist virtuell abelsch.
+\Satz{Bieberbach}
+Jede geschlossene vollständige flache Mannigfaltigkeit wird durch endlich viele Tori überdeckt.
+
+\chapter{Mostows Rigiditäts-Theorem}
+\section{Inside group! Outside group! Which side group? I don't know!}
+\Def{}
+Seien $H\subset G$ Gruppen. Definiere den \df{Normalisierer} von $H$ durch
+\[ N(H) := \set{g \in G}{ gH = Hg } \]
+Der Normalisierer ist die größte Untergruppe von $G$, in der $H$ normal ist. Insbesondere ist $N(H) /H$ wohldefiniert.
+
+\Prop{}
+Sei $M = \H^n / \Gamma$ eine hyperbolische Mannigfaltigkeit. Dann gilt
+\[ Isom(M) \isom{} N(\Gamma) / \Gamma \]
+\begin{Beweis}{}
+	Sei $\phi_M : M \pfeil{} M$ eine Isometrie. Wir erhalten folgendes kommutative Diagramm
+		\begin{center}
+		\begin{tikzpicture}
+		\node (M1) at (0,2) [] {$\H^n $};
+		\node (H1) at (4,2) [] {$\H^n$};
+		\node (H2) at (4,0) [] {$M$};
+		\node (M2) at (0,0) [] {$M$};
+		
+		\draw [->, dashed] (M1) -> (H1) node[midway, above] {$\phi_{\H^n}$};
+		\draw [->] (M2) -> (H2) node[midway, above] {$\phi_M$};
+		\draw [->] (M1) -> (M2) node[midway, right] {};
+		\draw [->] (H1) -> (H2) node[midway, right] {};
+		\end{tikzpicture}
+	\end{center}
+Aus der Kommutativität folgt zwangsläufig $\phi_{\H^n} \in N(\Gamma)$. Ferner ist $\phi_{\H^n}$ bis auf ein Element aus $\Gamma$ eindeutig. Umgekehrt steigt jedes Element aus $N(\Gamma)/\Gamma$ auf $M$ ab. 
+\end{Beweis}
+
+\Def{}
+Das \df{Zentrum} von $H\subset G$ besteht aus allen Elementen aus $G$, die mit allen Elementen aus $H$ kommutieren, d.\,h.
+\[ Z(H) := \set{g \in G}{gh = hg \forall h \in H} \]
+
+
+
+\Def{}
+Sei $G$ eine Gruppe.
+\begin{itemize}
+	\item $Aut(G)$ bezeichne die Gruppe aller Gruppenisomorphismen vom Typ $G\pfeil{} G$.
+	\item Definiere die Gruppe der \df{inneren Automorphismen} durch
+	\[ Int(G) := \set{h \mapsto ghg\i}{g \in G} \]
+	Diese Gruppe ist ein Normalteiler von $Aut(G)$.
+	\item Definiere die Gruppe der \df{äußeren Automorphismen} durch
+	\[ Out(G) := Aut(G) / Int(G) \]
+\end{itemize}
+
+\Lem{}
+Es sei $X$ ein zusammenhängender Raum. $Homöo(X)$ bezeichne die Menge der Homöomorphismen auf $X$. Dann erhalten wir folgenden Homomorphismus von Gruppen
+\begin{align*}
+\nu : Homöo(X) & \Pfeil{} Out(\pi_1(X,x_0))\\
+f & \longmapsto [x_0 \mapsto f(x_0)]_* \circ f_*
+\end{align*}
+wobei $x_0 \mapsto f(x_0)$ einen Weg von $x_0$ nach $f(x_0)$ bezeichnet.\\
+$\nu(f)$ ist hängt nur von der Homotopieklasse von $f$ ab.
+\begin{Beweis}{}
+	\begin{itemize}
+		\item Ein Homöomorphismus $f : X \pfeil{} X$ induziert uns einen Isomorphismus
+		\begin{align*}
+		f_* : \pi_1(X,x_0) & \Pfeil{} \pi_1(X,f(x_0))\\
+		\gamma & \longmapsto f\circ \gamma
+		\end{align*}
+		\item Ist $\alpha$ ein Weg, der $x_0$ mit $f(x_0)$ verbindet, so erhalten wir einen Isomorphismus
+		\begin{align*}
+		\alpha_* : \pi_1(X,f(x_0)) & \Pfeil{} \pi_1(X,x_0)\\
+		\gamma & \longmapsto \alpha\i \gamma \alpha
+		\end{align*}
+		\item Ergo ist $\alpha_* \circ f_*$ ein Automorphismus von $\pi(X,x_0)$.
+		\item Dieser Automorphismus ist eindeutig bis auf Elemente aus $Int(\pi(X,x_0))$.
+	\end{itemize}
+\end{Beweis}
+
+\Prop{}
+Ist $M$ eine hyperbolische, vollständige Mannigfaltigkeit endlichen Volumens, so ist
+\[ \nu : Isom(M) \Pfeil{} Out(\pi_1(M)) \]
+injektiv.
+\paragraph{Bemerkung} Für $n\geq 3$ ist $\nu$ sogar ein Isomorphismus.
+\begin{Beweis}{}
+	Sei $M = \H^n /\Gamma$. Identifiziere $\pi_1(M)$ mit $\Gamma$ und $Isom(M) = N(\Gamma) / \Gamma$. Wir erhalten
+	\begin{align*}
+	\nu : N(\Gamma) / \Gamma &\Pfeil{} Out(\Gamma)\\
+	g & \longmapsto [ \gamma \mapsto g\i \gamma g ]
+	\end{align*}
+Sei $g \in N(\Gamma)$, sodass ein $\delta \in \Gamma$ existert, sodass für alle $\gamma\in \Gamma$ gilt
+\[ g\i \gamma g = \delta\i \gamma \delta \]
+d.\,h., für alle $\gamma$ gilt
+\[ (\delta g\i) \gamma = \gamma (\delta g\i) \]
+D.\,h., $\delta g\i$ liegt im Zentrum von $\Gamma$ in $Isom(\H^n)$. Dieses ist trivial, ergo gilt $g = \delta  \in \Gamma$, ergo ist $\nu$ injektiv.
+\end{Beweis}
+
+\Kor{}
+Sei $M$ eine hyperbolische, vollständige Mannigfaltigkeit endlichen Volumens. Dann sind verschiedene Isometrien auf $M$ nicht homotop zueinander.
+
+\chapter{Aufgaben}
+\Lem{}
+Sei $M = \H^n / \Gamma$ eine Mannigfaltigkeit endlichen Volumens. Dann ist das Zentrum von $\Gamma$ in $Isom(\H^n)$ trivial.
+\begin{Beweis}{}
+	Sei $h \in Z(\Gamma)$ nichttrivial. Dann gilt für alle nichttriviale $\phi \in \Gamma$
+	\[ Fix(\phi) = Fix(h) \]
+	D.\,h., $\Gamma$ wird von einer Hyperbolischen erzeugt oder von mehreren Parabolischen, die denselben Punkt im Unendlichen fixieren. Im ersten Fall ist $M$ eine unendliche Tube, im zweiten Fall eine unbegrenzte Spitze. Beide Mannigfaltigkeiten haben kein endliches Volumen.
+\end{Beweis}
+
+
 
 \printindex
 \end{document}
