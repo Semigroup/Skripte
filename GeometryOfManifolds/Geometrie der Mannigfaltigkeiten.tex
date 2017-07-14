@@ -291,7 +291,7 @@ Wir können $\overline{\phi}$ als einen Homöomorphismus von $\overline{D^n}$ au
 Eine hyperbolische Isometrie fixiert zwei Randpunkte und damit auch die Geodäte, die zwischen beiden verläuft. Diese eindeutig bestimmte Geodäte nenne wir die \df{Achse} von $\phi$.
 
 \Def{}
-Eine \df{Horosphäre} $S \subset \overline{H^n}$ um den Punkt $p \in \partial H^n\setminus\{\infty\}$ ist eine $n-1$-dimensionale euklidische Sphäre, die $\partial H^n$ tangential in $p$ schneidet. Eine Horosphäre um $\infty$ ist eine $n-1$-dimensionale euklidische Hyperebene, die orthogonal zur imaginären Achse steht.\\
+Eine \df{Horosphäre} $S \subset \overline{\H^n}$ um den Punkt $p \in \partial H^n\setminus\{\infty\}$ ist eine $n-1$-dimensionale euklidische Sphäre, die $\partial H^n$ tangential in $p$ schneidet. Eine Horosphäre um $\infty$ ist eine $n-1$-dimensionale euklidische Hyperebene, die orthogonal zur imaginären Achse steht.\\
 Beide Horosphären sind flache Untermannigfaltigkeiten mit der Eigenschaft, dass jede Geodäte, die ihr Zentrum verlässt, die Horosphäre orthogonal schneidet.
 
 \Prop{}
@@ -568,10 +568,10 @@ Wir nennen eine Menge von Halbräumen in $\H^n$ \df{lokal endlich}, wenn die Men
 Eine $n$-dimensionaler \df{Polyeder} in $\H^n$ ist eine Teilmenge, die sich als Schnitt von einer lokal endlichen Menge von Halbräumen schreiben lässt und eine offene Menge enthält.
 
 \Bem{}
-Ist $P \subset \H^n$ ein Polyeder, so sind $P$ und $\overline{P}\subset \overline{H^n}$ konvex.
+Ist $P \subset \H^n$ ein Polyeder, so sind $P$ und $\overline{P}\subset \overline{\H^n}$ konvex.
 
 \Def{}
-Für eine beliebige $S \subset \overline{H^n}$ definieren wir ihre \df{konvexe Hülle} als die kleinste konvexe Menge, die $S$ enthält.
+Für eine beliebige $S \subset \overline{\H^n}$ definieren wir ihre \df{konvexe Hülle} als die kleinste konvexe Menge, die $S$ enthält.
 
 \Def{}
 Unter einem \df{endlichen Polyeder} $P$ verstehen wir die konvexe Hülle von endlich vielen Punkten in $\H^n$, die nicht alle im unendlichen Abschluss einer Hyperebene liegen.\\
@@ -704,6 +704,7 @@ Für eine beschränkte Spitze $C$ gilt
 \[ vol(C) = \frac{vol(\partial C)}{n-1} \]
 
 \Lem{}
+\label{Kommutieren}
 Seien $\phi_1,\phi_2$ zwei hyperbolische oder parabolische Isometrien auf $\H^n$. Kommutieren diese, so gilt
 \[ Fix(\phi_1) = Fix(\phi_2) \]
 \begin{Beweis}{}
@@ -1032,7 +1033,8 @@ Jede vollständige, hyperbolische Mannigfaltigkeit endlichen Volumens ist diffeo
 \end{itemize}
 
 \Satz{}
-Jede diskrete Teilgruppe von $\R^n$ ist virtuell abelsch.
+\label{IsomRn}
+Jede diskrete Teilgruppe von $Isom(\R^n)$ ist virtuell abelsch.
 \Satz{Bieberbach}
 Jede geschlossene vollständige flache Mannigfaltigkeit wird durch endlich viele Tori überdeckt.
 
@@ -1127,6 +1129,134 @@ D.\,h., $\delta g\i$ liegt im Zentrum von $\Gamma$ in $Isom(\H^n)$. Dieses ist t
 \Kor{}
 Sei $M$ eine hyperbolische, vollständige Mannigfaltigkeit endlichen Volumens. Dann sind verschiedene Isometrien auf $M$ nicht homotop zueinander.
 
+\section{Limes Geschichten}
+\Def{}
+Sei $\Gamma \subset Isom(\H^n)$ nichttrivial und diskret. Sei $x \in \H^n$. Die \df{Limes-Menge} von $\Gamma$ ist definiert als alle Häufungspunkte von $\Gamma.x$ im Unendlichen, d.\,h.
+\[ \Lambda(\Gamma) := \overline{\Gamma.x} \cap \partial \H^n \]
+\Bem{}
+\begin{itemize}
+	\item Die Limes-Menge ist unabhängig von der Wahl von $x$.
+	\item Ist $\Gamma$ virtuell $\Gamma'$, so gilt $\Lambda(\Gamma) = \Lambda(\Gamma')$.
+	\item Ist $\Gamma$ elementar und torsionsfrei, so besteht $\Lambda(\Gamma) = Fix(\Gamma)$ aus einem oder zwei Punkten.
+\end{itemize}
+
+\Prop{}
+Sei $\Gamma \subset Isom(\H^n)$ nichttrivial und diskret. Folgende Aussagen sind äquivalent:
+\begin{enumerate}[(1)]
+	\item $\Gamma$ ist elementar.
+	\item $\Gamma$ erhält entweder einen Punkt in $\H^n$, oder eine Gerade in $\H^n$, oder einen Punkt in $p \in \partial \H^n$ und jede Horosphäre um $p$.
+	\item $\Gamma$ ist virtuell abelsch.
+	\item $\Lambda(\Gamma)$ besteht aus null, einem oder zwei Punkten.
+\end{enumerate}
+\begin{Beweis}{}
+	\begin{enumerate}
+		\item[(1) $\impl{}$ (2)] $\Gamma$ erhalte also eine endliche Menge $S$ an Punkten in $\overline{\H^n}$. Liegen einige davon in $\H^n$, so fixiert $\H^n$ deren Schwerpunkt.\\
+		Wir können also annehmen, dass $S\subset \partial \H^n$. Enthält $S$ drei Punkte oder mehr, so lässt sich zu diesen wieder ein Schwerpunkt in $\H^n$ konstruieren, der von $\Gamma$ wieder fixiert werden muss.\\
+		Ist $S$ zweielementig, so erhält $\Gamma$ die korrespondierende geodätische Achse.\\
+		Sei $S = \{x\}$ ergo einelementig. Wenn $\Gamma$ ein hyperbolisches Element enthalten würde, so müssten andere hyperbolische und elliptische in $\Gamma$ dieselbe Achse erhalten, da $\Gamma$ diskret ist. Ergo wäre dann $S$ zweielementig.\\
+		Ergo kann $\Gamma$ nur aus Parabolischen und Elliptischen bestehen, die $x$ fixieren. Diese erhalten jede Horosphäre um $x$.
+		\item[(2) $\impl{}$ (3)] $\Gamma$ erhält eine Menge von Punkten im Unendlichen. Sei $x$ aus dieser Menge und $\Gamma' = \set{g\in \Gamma}{g(x) = x}$. Enthält $\Gamma$ keine Hyperbolischen, so ist es  virtuell $\Gamma'$, ansonsten ist es virtuell ein semi-direktes Produkt aus $\Gamma'$ und $\Z$.\\
+		$\Gamma'$ erhält Horosphären und lässt sich deswegen als eine diskrete Untergruppe von $Isom(\R^{n-1})$ auffassen. Nach Satz \ref{IsomRn} ist $\Gamma'$ deswegen virtuell abelsch.
+		\item[(3) $\impl{}$ (4)] Wir können annehmen, dass $\Gamma$ abelsch ist. Lemma \ref{Kommutieren} lässt sich für elliptische Isometrien erweitern, weswegen Punkt (2) und somit auch (4) folgt.
+		\item[(4) $\impl{}$ (1)] $\Lambda(\Gamma)$ besteht aus $\Gamma$-Orbiten. Falls $\Lambda(\Gamma)$ leer ist, so fixiert $\Gamma$ einen Punkt in $\H^n$ wegen Brouwers Fixpunktsatz. Da $\Gamma$ diskret ist, muss $\Gamma$ endlich sein.
+	\end{enumerate}
+\end{Beweis}
+
+\Def{}
+Eine Gruppe $G$ agiere auf einem topologischen Raum $X$. Eine geschlossene, nicht-leere, $G$-invariante Menge $A \subset X$ heißt \df{minimal}, falls keine abgeschlossene, nicht-leere, $G$-invariante Teilmenge $B \subsetneq A$ existiert.
+
+\Prop{}
+Sei $\Gamma \subset Isom(\H^n)$ nichttrivial, nicht elementar und diskret.
+Dann ist $\Lambda(\Gamma)$ minimal.
+\begin{Beweis}{}
+	Sei $S \subset \Lambda(\Gamma)$ nicht-leer und $\Gamma$-invariant. $S$ muss unendlich viele Punkte enthalten, da $\Gamma$ nicht elementar ist. $C(S)$ bezeichne die konvexe Hülle von $S$, die ihrerseits wieder $\Gamma$-invariant ist. Sei $x \in C(S) \cap \H^n$, dann gilt
+	\[ \Lambda(\Gamma) = \overline{\Gamma.x} \cap \partial \H^n \subset C(S) \cap \partial \H^n = S \] 
+\end{Beweis}
+
+\Kor{}
+Sei $\Gamma \subset Isom(\H^n)$ nichttrivial, nicht elementar und diskret. $\Gamma' \subset \Gamma$ sei eine unendliche normale Untergruppe. Dann gilt $\Lambda(\Gamma') \subset \Lambda(\Gamma)$
+\begin{Beweis}{}
+	Da $\Gamma'$ normal ist, schickt $g \in \Gamma$ den Orbit $\Gamma.x$ auf $\Gamma.g(x)$, weswegen $\Lambda(\Gamma')$ stabil unter $\Gamma$ bleibt. Da $\Gamma'$ unendlich und $\overline{\H^n}$ kompakt ist, ist $\Lambda(\Gamma')$ nicht leer. Da $\Lambda(\Gamma)$ minimal ist, gilt $\Lambda(\Gamma) = \Lambda(\Gamma')$.
+\end{Beweis}
+
+\Lem{}
+Sei $C \subset \overline{\H^n}$ abgeschlossen, konvex und nicht leer. Für $x \in \H^n$ bezeichne $r(x)$ den nächsten Punkt in $C$. Für $x\in \partial\H^n$ bezeichne $r(x)$ den Punkt in $C$, der als erstes von einer Horosphäre um $x$ tangiert wird. $r : \overline{\H^n} \Pfeil{} C$ ist wohldefiniert.
+\begin{Beweis}{}
+	Sei $x\in {\H^n}$. Da $C$ nicht leer ist, gibt es möglich Kandidaten für $r(x)$. Wir nehmen uns zwei mögliche Kandidaten $y,z \in C$ für $r(x)$ heraus und konstruieren das geodätische Dreieck $\Delta_{xyz}$. Da $C$ konvex ist, liegt die Seite $\overline{yz}$ in $C$. Auf dieser Seite muss sich ein Punkt $x_1$ befinden, der von allen Punkten auf dieser Seite $x$ am nächsten ist.\\
+	Dieser Punkt ist eventuell nicht $r(x)$, aber indem wir die Konstruktion sukezessive durchführen, erhalten wir eine konvergente Folge $(x_n)_n$, deren Grenzwert $r(x)$ ist.
+\end{Beweis}
+
+\Lem{}
+$r$ ist stetig auf $\H^n \cup (\partial \overline{\H^n} \cap C)$.
+\begin{Beweis}{}
+	Seien $x,y \in D^n \cup (\partial \overline{D^n} \cap C) \setminus C$ verschieden. Wir wollen Folgendes zeigen
+	\[ \norm{r(x) - r(y)} \leq \norm{x-y} \]
+	wobei $\norm{\cdot}$ die euklidische Norm bezeichnet. Die geodätischen Segmente $[x,r(x)]$ und $[y,r(y)]$ stehen orthogonal zu $[r(x), r(y)]$. Deswegen gilt die Gleichung in $D^n$.
+\end{Beweis}
+
+\Def{}
+Sei $\Gamma \subset Isom(\H^n)$ nicht trivial und diskret. $conv(\Lambda(\Gamma)) \cap \H^n$ ist dann eine konvexe, $\Gamma$-invariante, abgeschlossene Teilmenge.\\
+Definiere den \df{konvexen Kern} von $M = \H^n / \Gamma$ durch
+\[ \klam{conv(\Lambda(\Gamma)) \cap \H^n} / \Gamma \]
+
+\Bem{}
+Im allgemeinem Fall liefert $r$ einen Deformationsretrakt von $\H^n$ auf $C$.\\
+In obigem Fall liefert $r$ einen $\Gamma$-invarianten Deformationsretrakt, weswegen wir einen Deformationsretrakt von $M$ auf seinen konvexen Kern erhalten. Deswegen ist $M$ homotopie-äquivalent zu seinem konvexen Kern.
+
+
+\Def{}
+Sei $\Gamma \subset Isom(\H^n)$ nicht trivial und diskret. Wir definieren den \df{Bereich der Diskontinuität} durch
+\[ \Omega(\Gamma) := \partial \H^n \setminus \Lambda(\Gamma) \]
+
+\Lem{}
+Die Wirkung von $\Gamma$ auf $\H^n \cup \Omega(\Gamma)$ ist eigentlich diskontiniuerlich.
+\begin{Beweis}{}
+	Da $\Gamma$ diskret ist, ist die Wirkung auf $\H^n$ sowieso eigentlich diskontinuierlich. $r$ retrahiert $\H^n \cup \Omega(\Lambda)$ stetig zu $conv(\Lambda(\Gamma)) \setminus \Lambda(\Gamma)$ und kommutiert mit Elementen aus $\Gamma$.\\
+	Sei $K \subset \H^n \cup \Omega(\Lambda)$ kompakt. Wir wollen zeigen, dass es nur endlich viele $g \in \Gamma$ gibt mit
+	\[ g.K \cap K \neq \emptyset \]
+	Da $K$ kompakt ist, ist es auch $r(K) \subset conv(\Lambda(\Gamma)) \setminus \Lambda(\Gamma)$. Gilt $g.K \cap K \neq \emptyset$, so folgt $g.r(K) \cap r(K) \neq \emptyset$. Da $\Gamma$ eigentlich diskontinuierlich auf $\H^n$ agiert, kann es für die zweite Schnittbedingung aber nur endlich viele $g$ geben.
+\end{Beweis}
+
+\Lem{}
+Für jedes $x\in \Omega(\Gamma)$ gibt es eine offene Umgebung $U\subset \overline{\H^n}$, sodass für alle $g\in \Gamma$ entweder
+\[ g.U = U \text{ falls } g(x) = x \]
+oder
+\[ g.U \cap U =\emptyset \]
+gilt.
+\begin{Beweis}{}
+	Da $\Gamma$ eigentlich diskontinuierlich auf $\H^n\cup \Omega(\Gamma)$ wirkt, gibt es einen geschlossenen Halbraum $H \subset \H^n \cup \Omega(\Gamma)$ mit $H \cap g.H = \emptyset$, falls $g(x)\neq x$. Da $Stab_\Gamma(x)$ endlich ist, können wir einfach
+	\[ U:= \bigcap_{g\in Stab_\Gamma(x)} g.H^o \]
+	setzen.
+\end{Beweis}
+
+\Prop{}
+Gilt $Vol(\H^n / \Gamma) < \infty$, so folgt $\Lambda(\Gamma) = \partial\H^n$.
+\begin{Beweis}{}
+	Sei $x \in \Omega(\Lambda)$. $U$ sei wie aus obigen Lemma. Zum Einen gilt
+	\[ (U\cap \H^n) / Stab_\Gamma(x) \subset \H^n / \Gamma \]
+	Es gilt aber
+	\[ Vol((U\cap \H^n) / Stab_\Gamma(x)) \geq  \frac{Vol(U)}{\# Stab_\Gamma(x)} = \infty \]
+	Da $Stab_\Gamma(x)$ endlich ist.
+\end{Beweis}
+
+\Kor{}
+Ist $Vol(\H^n / \Gamma)$ endlich, so enthält $\Gamma$ keine nichttriviale, virtuell abelsche, normale Untergruppe.
+\begin{Beweis}{}
+	Sei $H \subset \Gamma$ normal und virtuell abelsch. Ist $H$ unendlich, dann gilt
+	\[ \Lambda(H) = \Lambda(\Gamma)= \partial \H^n \]
+	Andererseits muss $\Lambda(H)$ null, eins oder zwei Elemente enthalten, da $H$ virtuell abelsch ist. Ergo erhalten wir für diesen Fall einen Widerspruch.\\
+	Wir können also annehmen, dass $H$ endlich ist. In diesem Fall ist $Fix(H)$ ein nicht-leerer echter Unterraum von $\H^n$. Da $H$ normal ist, agiert $\Gamma$ auf $Fix(H)$. Es folgt
+	\[ \Lambda(\Gamma) \subset \partial Fix(H) \]
+	Ein Widerspruch!
+\end{Beweis}
+
+\Kor{}
+Die Fundamentalgruppe einer hyperbolischen, vollständigen Mannigfaltigkeit endlichen Volumens ist nicht auflösbar.
+
+
+
+
+
 \chapter{Aufgaben}
 \Lem{}
 Sei $M = \H^n / \Gamma$ eine Mannigfaltigkeit endlichen Volumens. Dann ist das Zentrum von $\Gamma$ in $Isom(\H^n)$ trivial.
@@ -1135,6 +1265,7 @@ Sei $M = \H^n / \Gamma$ eine Mannigfaltigkeit endlichen Volumens. Dann ist das Z
 	\[ Fix(\phi) = Fix(h) \]
 	D.\,h., $\Gamma$ wird von einer Hyperbolischen erzeugt oder von mehreren Parabolischen, die denselben Punkt im Unendlichen fixieren. Im ersten Fall ist $M$ eine unendliche Tube, im zweiten Fall eine unbegrenzte Spitze. Beide Mannigfaltigkeiten haben kein endliches Volumen.
 \end{Beweis}
+
 
 
 
