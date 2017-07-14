@@ -1253,9 +1253,63 @@ Ist $Vol(\H^n / \Gamma)$ endlich, so enthält $\Gamma$ keine nichttriviale, virt
 \Kor{}
 Die Fundamentalgruppe einer hyperbolischen, vollständigen Mannigfaltigkeit endlichen Volumens ist nicht auflösbar.
 
+\Def{}
+Ein Punkt aus $\partial \H^n$ heißt \df{parabolisch} bzw. \df{hyperbolisch} für $\Gamma$, falls er von einer Parabolischen bzw. einer Hyperbolischen aus $\Gamma$ fixiert wird.
 
+\Prop{}
+Sei $\Gamma \subset Isom(\H^n)$ nicht elementar und diskret. Dann ist die Menge der hyperbolischen bzw. der parabolischen Punkte entweder dicht in $\Lambda(\Gamma)$ oder leer.
+\begin{Beweis}{}
+	$\Lambda(\Gamma)$ ist minimal und die Menge der parabolischen bzw. hyperbolischen Punkte ist $\Gamma$ invariant.
+\end{Beweis}
 
+\Kor{}
+Besitzt $\H^n / \Gamma$ endliches Volumen, so ist die Menge aller hyperbolischen bzw. parabolischen Punkte entweder leer oder dicht in $\partial \H^n$.
 
+\Lem{}
+Sei $\Gamma \subset Isom(\H^n)$ diskret, nicht elementar und endlich erzeugt. $\Gamma$ soll keinen $m$-Raum von $\H^n$ invariant lassen für $m < n- 1$.\\
+Dann ist $N(\Gamma)\subset Isom(\H^n)$ diskret.
+\begin{Beweis}{}
+\begin{itemize}
+	\item 	Es seien $g_1,\ldots, g_k$ Erzeuger von $\Gamma$. $x \in D^n$ sei ein Punkt, der von keinem Element aus $\Gamma$ außer der Identität fixiert wird. Setze
+	\[ s = d(x, \Gamma.x \setminus \{x\}) \]
+	und
+	\[ U = \set{\phi \in Isom(D^n)}{d(g_ix, \phi(g_ix)) < \frac{s}{2} \forall i } \]
+	$U$ ist eine offene Umgebung der Eins in $Isom(\H^n)$. Wir wollen zeigen, dass $N(\Gamma) \cap U$ (fast) trivial ist.
+	\item Sei $h \in N(\Gamma) \cap U$. Dann
+	\begin{align*}
+	d(g_i\i h\i g_i h x, x) = d(g_i h x, h g_i x) \leq d(g_i h x, g_i x) + d(g_i x, h g_i x) < d(hx, x) + \frac{s}{2} < s
+	\end{align*}
+	Ergo gilt $g_i\i h\i g_i h x = x$ für alle $i$, d.\,h.
+	\[ g_i h = h g_i \]
+	D.\,h., $h$ kommutiert mit jedem Element aus $\Gamma$.
+	\item Sei $y \in \Lambda(\Gamma)$ und $f_i \in \Gamma$ mit
+	\[ f_i(x) \Pfeil{i\pfeil{} \infty} y  \]
+	Da
+	\[ d(f_i x, hf_i x) = d(f_i x, f_i h x ) = d(x, hx) \]
+	gilt
+	\[  hy = y  \]
+	D.\,h., $h$ ist die Identität auf $\Lambda(\Gamma)$.
+	\item Sei $m$ minimal, sodass $\Lambda(\Gamma)$ in einer $m-1$-Sphäre in $\partial D^n$ enthalten ist. Ohne Beschränkung der Allgemeinheit gilt
+	\[ \Lambda(\Gamma) \subset S^{m-1} \]
+	Da $\Gamma$ die konvexe Hülle von $\Lambda(\Gamma)$ erhält, erhält $\Gamma$ auch die affine Hülle, die gerade $\overline{D^m}$ ist. Mit der Voraussetzung folgt nun $m \in \{n-1,n\}$.
+	\item Sei $m = n$. Dann fixiert $h$ ganz $\partial S^{n-1}$, ergo $h = 1$.
+	\item Sei $m = n-1$. $h$ muss $D^{n-1}$ fixieren, ergo ist $h$ entweder die Identität oder die Spiegelung $\rho$ entlang $D^{n-1}$. D.\,h.,
+	\[ U \cap N(\Gamma) = \{1, \rho\} \]
+	Ergo ist $N(\Gamma)$ diskret.
+\end{itemize}
+\end{Beweis}
+
+\Kor{}
+Es sei $M = \H^n / \Gamma$ eine vollständige hyperbolische Mannigfaltigkeit endlichen Volumens. Dann ist $Isom(M)$ endlich.
+\begin{Beweis}{}
+	\begin{itemize}
+		\item $\Gamma$ ist endlich erzeugt, da $M$ diffeomorph zum Inneren einer kompakten Mannigfaltigkeit mit Rand ist und $\pi_1(M) \isom{} \Gamma$.
+		\item Da $\Lambda(\Gamma) = \partial \H^n$ minimal ist, erhält $\Gamma$ keinen echten Unterraum von $\H^n$.
+		\item Es ist ergo $N(\Gamma)$ diskret und deswegen verschwindet $Vol(\H^n / N(\Gamma))$ nicht. Es gilt nun
+		\[ \# Isom(M) = [N(\Gamma) : \Gamma] = Vol(\H^n /\Gamma) / Vol(\H^n / N(\Gamma)) < \infty \]
+	\end{itemize}
+\end{Beweis}
+ 
 
 \chapter{Aufgaben}
 \Lem{}
