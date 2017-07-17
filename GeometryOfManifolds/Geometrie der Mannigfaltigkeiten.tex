@@ -1309,9 +1309,842 @@ Es sei $M = \H^n / \Gamma$ eine vollständige hyperbolische Mannigfaltigkeit end
 		\[ \# Isom(M) = [N(\Gamma) : \Gamma] = Vol(\H^n /\Gamma) / Vol(\H^n / N(\Gamma)) < \infty \]
 	\end{itemize}
 \end{Beweis}
- 
+
+\section{Die Epstein-Penner-Konstruktion}
+\Def{}
+Definiere den \df{positiven Lichtkegel} durch
+\[ L := \set{x\in \R^{n+1}}{\shrp{x,x} = 0, x_{n+1} > 0} \]
+
+\Bem{}
+\begin{itemize}
+	\item Ein Strahl von Null durch einen Punkt $v\in L$ entspricht einem Punkt $[v]$ von $\partial I^n$.
+	\item Ein Punkt $v \in L$ entspricht einer Horosphäre
+	\[ \set{w \in I^n}{ \shrp{v,w} = -1} \]
+	bzw. einer Horokugel
+	\[ \set{w \in I^n}{ -1\leq \shrp{v,w} < 0} \]
+	um jenen Punkt im Unendlichen.
+\end{itemize}
+
+\Lem{}
+$O^+(n,1)$ agiert transitiv auf $L$ und der Stabilisator eines Punktes ist nicht-kompakt für $n \geq 1$.
+\begin{Beweis}{}
+	Sei $N$ der Stabilisator von $v\in L$. Dann entspricht $N$ der Menge der ONBs $v,v_1,\ldots, v_n$. Dann ergibt sich folgende Isomorphie
+	\[ N \isom{} \{v\} \times( L \setminus \{ \lambda \cdot v \}) \times O(n-1) \]
+	da $(v,v_1)$ einen $(1,1)$-Unterraum aufspannt. Die Menge rechts ist nicht-kompakt.
+\end{Beweis}
+
+\Bem{}
+Parabolische Isometrien haben einen Strahl vom Ursprung aus in $L$, der punktweise fixiert wird.
+
+\Lem{}
+Sei $\Gamma \subset O^+(n,1)$ diskret und torsionsfrei. $I^n / \Gamma$ habe endliches Volumen und $p$ Spitzen.\\
+Wir fixieren $p$ beschränkte Spitzen $H_1,\ldots, H_p \subset I^n /\Gamma$ und $E_1,\ldots, E_p \subset I^n$ als Urbilder. Jedes $E_i$ stellt eine disjunkte, $\Gamma$-invariante Vereinigung von Horokugeln dar. Jede Horougel korrespondiert zu einem Punkt in $L$. $B_i \subset L$ bezeichne die Menge aller Punkte, deren Horokugeln in $E_i$ vorkommen.\\
+Dann ist jedes $B_i$ diskret.
+\begin{Beweis}{}
+	$I^n /\Gamma$ besteht aus endlich vielen Spitzen und einem kompakten Teil. Deswegen ist jede Komponente in $E \subset E_i$ eine \df{uniforme Horokugel}, d.\,h., für alle $g \in \Gamma$ gilt
+	\[ g.E \cap E \neq \emptyset \Impl{} g.E = E \]
+	Ergo ist jedes $B_i$ diskret.
+\end{Beweis}
+
+\Lem{}
+$C$ bezeichne die konvexe Hülle der $B_i$ in $\R^{n+1}$. Dann hat $C$ Dimension $n+1$.
+\begin{Beweis}{}
+	Wenn $C$ Dimension $\leq n$ hat, bezeichne $W$ den Vektorraum, der parallel zur affinen Hülle von $C$ ist. $C$ ist invariant unter $\Gamma$, aus Gründen der Linearität ist es auch $W$. $W$ oder $W^\bot$ induziert einen $k$-Raum in $I^n$ mit $k< n$, der $\Gamma$-invariant bleibt. Deswegen ist $\Lambda(\Gamma)$ enthalten in einer $k$-Sphäre. Da $I^n /\Gamma$ endliches Volumen hat, gilt aber $\Lambda(\Gamma) = \partial I^n$.
+\end{Beweis}
+
+\Lem{}
+Sei $x \in L$. $\Gamma.x$ hat genau dann einen Häufungspunkt in $0$, wenn $x$ nicht parabolisch ist.
+\begin{Beweis}{}
+	Sei $x$ parabolisch. Sei $O \subset D^n$ eine uniforme Horokugel zu $x$. Besitzt $\Gamma.x$ einen Häufungspunkt in $0$, so lassen sich beliebig große Horokugeln in $\set{g.O}{g \in \Gamma}$ finden. Dies widerspricht in $D^n$ anschaulich der Uniformität von $D^n$.\\
+	Sei $0$ kein Häufungspunkt von $\Gamma.x$. Wähle eine kompakte Menge $K\subset I^n$, die den dicken Teil von $I^n/\Gamma$ überdeckt. Reskaliere $x$ so, dass jede Horokugel von $\Gamma.x$ leeren Schnitt mit $K$ hat. Jedes $g(x)$ korrespondiert ergo zu einer beschränkten Spitze in $I^n / \Gamma$. Dies impliziert, dass $x$ parabolisch ist.
+\end{Beweis}
+
+\Lem{}
+Es gilt
+\[ L\cap C = \set{\lambda z}{z \in B_i, \lambda \geq 1} \]
+\begin{Beweis}{}
+	Wir zeigen nur
+	\[ L\cap C \supseteq \set{\lambda z}{z \in B_i, \lambda \geq 1} \]
+	Sei $z \in B_i$. Da $\Lambda(\Gamma) = \partial I^n$, liegen die Strahlen, mit Urpunkten in $\Gamma.(B_1\cup\ldots \cup B_p)$, dicht in der Menge aller Strahlen in $L$. Ist eine Folge von solchen Strahlen gegeben, die gegen $[x]$ konvergiert, so liegt ihr Grenzwert bereits in $C$, da $C$ konvex und abgeschlossen ist.
+\end{Beweis}
+
+\Lem{}
+Jeder Strahl in $L$ vom Nullpunkt aus trifft $\partial C$ genau einmal.
+
+\Prop{}
+Der Rand von $C$ in $\R^{n+1}$ ist $C \cup L$ geschnitten mit einer abzählbaren Zahl von Facetten $F_i$ der Kodimension Eins. Jedes $F_i$ ist die konvexe Hülle einer endlichen Zahl von Punkten in $B_1\cup\ldots \cup B_p$. Bezeichnet $A_i$ die affine Hülle von $F_i$, so ist jedes $A_i$ euklidisch und $L\cap A_i$ sphärisch bzgl. der euklidischen Struktur auf $A_i$. Die Menge der $F_i$ ist lokal endlich im Inneren des Lichtkegels.
+
+\Bem{}
+\begin{itemize}
+	\item Da die Konstruktion von $C$ $\Gamma$-äquivariant ist, ist die Zerlegung in Facetten $\Gamma$-äquvariant.
+	\item Die Zellstruktur in $\partial C \setminus L$ ist lokal endlich und jede Zelle ist euklidisch. Projizieren wir dies auf die Poincare-Scheibe, erhalten wir ergo eine Kachelung von $\H^n$.
+	\item Diese Kachelung lässt sich parametrisieren, indem $B_1,\ldots, B_p$ durch $\alpha_1B_1,\ldots, \alpha_p B_p$ ersetzt wird. Gilt aber $\alpha_1 = \ldots = \alpha_p$, so bleibt die Kachelung gleich. Wir erhalten also eine $\R_{> 0}^{p-1}$-parametrisierbare Familie von Kachelungen.
+	\item Jede Zelle hat vollständig geodätische Facetten und es gibt keine null-dimensionale Zellen außerhalb von $L$.
+	\item Das Innere jeder Facette lässt sich injektiv in $I^n / \Gamma$ abbilden. Ergo steigt die Familie der Kachelungen von $\H^n$ ab zu einer $\R_{> 0}^{p-1}$-parametrisierbaren Familie von Zerlegungen von $\H^n / \Gamma$.
+	\item Jeder der Facetten in $\H^n / \Gamma$ hat eine Euklidische Struktur, aber für $n > 2$ lassen sich diese Strukturen nicht zu einer Euklidischen Struktur von $\H^n/\Gamma$ verkleben.
+	\item Allerdings erhalten wir für $n = 2$ tatsächlich eine Euklidische Struktur auf $\H^n /\Gamma$.
+\end{itemize}
+
+\Satz{}
+Sei $M = \H^n /\Gamma$ eine vollständige, hyperbolische Mannigfaltigkeit endlichen Volumens mit $p\geq 1$ Spitzen. Durch die Epstein-Penner-Konstruktion erhalten wir eine $\R_{>0}^{p-1}$-parametrisierbare Familie von $\Gamma$-invarianten Kachelungen von $\H^n$, die zu einer kanonischen $\R_{>0}^{p-1}$-Familie von Zerlegungen von $M$ absteigt.\\
+Ist $n = 2$, so hat $M$ eine $\R_{>0}^{p-1}$-Familie von unvollständigen euklidischen Strukturen und für jeden Parameter gibt es eine Zerlegung von $M$ in endlich viele Zellen durch disjunkt eingebette Geodäten.
+
+\section{Erweiterungen von Homotopie-Äquivalenzen}
+\Def{}
+Eine Abbildung $f : X \pfeil{} Y$ metrischer Räume heißt \df{quasi-isometrisch}, wenn Konstanten $C,D > 1$ gewählt werden können, sodass für alle $x,y \in X$
+\[ \frac{1}{C}d(x,y) - D \leq d(f(x),f(y)) \leq C d(x,y) + D \]
+gilt. In einem solchen Fallen heißen $X,Y$ \df{quasi-isometrisch} zueinander.
+
+\Def{}
+Eine Abbildung $f : X \pfeil{} Y$ metrischer Räume heißt \df{pseudo-isometrisch}, wenn Konstanten $C,D > 1$ gewählt werden können, sodass für alle $x,y \in X$
+\[ \frac{1}{C}d(x,y) - D \leq d(f(x),f(y)) \leq C d(x,y) \]
+gilt. In einem solchen Fallen heißen $X,Y$ \df{pseudo-isometrisch} zueinander.\\
+Insbesondere sind Pseudo-Isometrien Lipschitz-stetig.
+
+\Def{}
+Sei $f : M \pfeil{} N$ eine glatte Abbildung Riemannscher Mannigfaltigkeit. Definiere die \df{maximale Dilatation} von $f$ bei $x\in M$ durch
+\[ \sup_{v \in \T_xM} \frac{\norm{\d_xf(v)}}{\norm{v}}  \]
+
+\Prop{}
+Sei $f : M \pfeil{} N$ eine glatte Homotopie-Äquivalenz geschlossener hyperbolischer Mannigfaltigkeiten. Dann ist jeder Lift $\widetilde{f} : \H^n \pfeil{} \H^n$ von $f$ eine Pseudo-Isometrie.
+\begin{Beweis}{}
+	Sei $g$ die Homotopie-Inverse zu $f$ und $\widetilde{g}$ ein Lift von $g$. Da $M$ kompakt ist, ist die maximale Dilatation von $f$ auf $M$ durch eine Konstante $C$ beschränkt. Da $\widetilde{f}$ lokal wie $f$ aussieht, ist die maximale Dilatation von $\widetilde{f}$ ebenfalls durch $C$ beschränkt. Ergo ist $\widetilde{f}$ $C$-Lipschitz-stetig. Dieselbe Argumentation lässt sich auch für $g$ durchführen und $C$ lässt sich so groß wählen, dass auch $\widetilde{g}$ $C$-Lipschitz-stetig ist.\\
+	Sei $M = \H^n / \Gamma$ und $F : [0,1] \times M \pfeil{} M$ eine Homotopie von $g\circ f $ zu $\id{M}$. Man kann nun nachrechnen, dass es eine Liftung $\widetilde{F}$ von $F$ gibt, die eine Homotopie von $\widetilde{g} \circ \widetilde{f}$ zu $\id{\H^n}$ und $\Gamma$-äquivariant ist.\\
+	Sei $D$ ein Dirichlet-Polyeder für $\Gamma$. $D$ ist kompakt, da $\H^n / \Gamma$ kompakt ist. Sei $K$ der maximale Durchmesser von $\widetilde{F}([0,1]\times D)$. Liegt $x \in D$, so liegen $x$ und $\widetilde{g} \circ \widetilde{f}(x)$ in $\widetilde{F}([0,1]\times D)$. Ergo
+	\[ d(x, \widetilde{g} \circ \widetilde{f} (x)) \leq K \]
+	Da aber $\widetilde{g} \circ \widetilde{f}$ äquivariant ist, gilt diese Ungleichung für alle $x \in \H^n$. Wir erhalten nun
+	\[ d(x,y) \leq d(\widetilde{g} \circ \widetilde{f} (x),\widetilde{g} \circ \widetilde{f}(y)) + 2K \leq C d(\widetilde{f}(x),\widetilde{f}(y)) + 2K \]
+\end{Beweis}
+
+\Satz{}
+Jede Pseudo-Isometrie $f : \H^n \pfeil{} \H^n$ lässt sich zu einer stetigen Abbildung $ \overline{\H^n} \pfeil{} \overline{\H^n}$ fortsetzen, die $\partial \H^n$ injektiv in sich selbst abbildet.
+
+\Lem{}
+Im oberen Halbraum-Modell bezeichne $\pi$ die geodätische Retraktion auf die imaginäre Achse. Für $x\in \H^n$ bezeichne $\theta$ den Winkel zwischen einer euklidischen Geraden $[0,x]$ und $[0,\pi(x)]$. Dann gilt
+\[ \cosh d(x,\pi(x)) = \frac{1}{\cos (\theta)} \]
+\begin{Beweis}{}
+	Ohne Beschränkung der Allgemeinheit können wir annehmen, dass sich Alles in $H^2$ abspielt, dass $\pi(x) = i$ und dass $x$ auf dem Einheitskreis liegt.\\
+	Wir erhalten eine nach Bogenlänge parametrisierte Form des Einheitskreises durch
+	\[ \gamma(t) = \frac{ie^{it} + 1}{-ie^{it} + 1} \]
+	Dann gilt
+	\[ \gamma(d(x,\pi(x))) = x \]
+	Setzt man $d := d(x,\gamma(x))$, so gilt
+	\[ \cos(\theta) = Im(x) = \frac{2e^d}{e^{2d} + 1} = \frac{1}{\cosh(d)} \]
+\end{Beweis}
+
+\Lem{}
+Sei $l \subset \H^n$ eine Geodäte und $\pi$ die geodätische Retraktion auf $l$. Für $x \in \H^n$ und $d = d(x,\pi(x))$ ist die maximale Dilatation von $\pi$ bei $x$ durch $\frac{1}{\cosh d}$ beschränkt.
+\begin{Beweis}{}
+	Wir stellen uns das Ganze wie in obigem Lemma vor. Sei $v \in \T_x\H^n$ so, dass $v$ Länge 1 hat. Dann gilt
+	\[ \norm{d\pi} = \cos \theta = \frac{1}{\cosh d} \] 
+\end{Beweis}
+
+\Lem{}
+$\overline{pq}\subset \H^n$ bezeichne das geodätische Segment zwischen $p$ und $q$. $N_R(\overline{pq})$ bezeichne die offene $R$-Nachbarschaft um $\overline{pq}$.\\
+Sei $F : \H^n \pfeil{} \H^n$ eine Pseudo-Isometrie, dann existiert $R> 0$, sodass für alle $p,q \in \H^n$ gilt
+\[ F(\overline{pq}) \subset N_R(\overline{F(p)F(q)}) \]
+\begin{Beweis}{}
+	Es gelte
+	\[ C\i d(x, y) - D \leq d(F(x),F(y)) \leq Cd(x,y) \]
+	Wähle $R > \cosh\i (2C^2)$ und sei $l$ die Geodäte, die $F(p)$ und $F(q)$ enthält, $\pi$ bezeichne die geodätische Retraktion auf $l$. Sei $\overline{st} \subset \overline{pq}$ maximal mit $F(\overline{st})\cap N_R(l) = \emptyset$. Es gilt
+	\begin{align*}
+	C\i d(s, t) - D &\leq d(F(s), F(t)) \\
+	&\leq d(F(s), \pi (F(s)) ) + d(\pi(F(s) ), \pi (F (t) ) )+ d(\pi(F(t) ), F (t)  )\\
+	&\leq R + L( \overline{ \pi(F(s) ) \pi (F (t) )  } )+ R\\
+	& \leq 2R + \frac{1}{\cosh R} L(\overline{ F(s)F(t) })\\
+	& \leq 2R + \frac{ C d(s,t) }{\cosh R}
+	\end{align*}
+	Ergo
+	\[ d(s,t) \leq \frac{ (2R + CD) \cosh R }{ \cosh R - C^2 } =: M \]
+	Ergo gilt
+	\[ F(\overline{pq}) \subset N_{R + C M} (l) \]
+	Analog zeigt man nun
+	\[ F(\overline{pq}) \subset N_{R + C M} (\overline{F(p)F(q)}) \]
+\end{Beweis}
+
+\Lem{}
+Sei $F : \H^n \pfeil{} \H^n$ eine Pseudo-Isometrie. Dann existiert eine Konstante $R > 0$, sodass für jeden geodätischen Strahl $l\subset \H^n$ genau ein Strahl $l'$ existiert mit
+\[ F(l) \subset N_R(l') \]
+\begin{Beweis}{}
+	Sei $l$ parametrisiert durch $l : [0,\infty) \pfeil{{}} \H^n$. Sei $R$ wie im vorhergehenden Lemma gewählt.\\
+	Existenz: Definiere folgende Folge in $\partial \H^n$
+	\[ l_n := [\overrightarrow{F(l(0)) F(l(n)) } ] \]
+	Da $\partial \H^n$ kompakt ist, besitzt diese Folge einen Grenzwert $l'$. Aufgrund des vorhergehenden Lemmatas erfüllt $l'$ die gewünschte Eigenschaft.\\
+	Eindeutigkeit: Seien $l'$ und $l''$ zwei mögliche Kandidaten. Dann ist der Abstand zwischen ihnen durch $2R$ begrenzt, ergo sind sie zwangsläufig identisch, da sie denselben Anfangspunkt und denselben Endpunkt im Unendlichen besitzen.
+\end{Beweis}
+
+\Lem{}
+Sei $F : \H^n \pfeil{} \H^n$ eine Pseudo-Isometrie. Dann gibt es eine Konstante $R > 0$, sodass für jede unbegrenzte Geodäte $l\subset \H^n$ genau eine Geodäte $l'$ existiert mit
+\[ F(l) \subset N_R(l') \]
+
+\Lem{}
+Sei $F : \H^n \pfeil{} \H^n$ eine Pseudo-Isometrie. Dann gibt es eine Konstante $R > 0$, sodass für jede Gerade $l$ und jeder Hyperebene $H$ orthogonal zu $l$, $\pi(F(H))$ ein geodätisches Segment der Länge $\leq R$ ist, wobei $\pi : \H^n \pfeil{} l'$ die geodätische Retraktion auf die Gerade $l'$ wie im obigen Lemma ist.
+\begin{Beweis}{}
+	Seien $l$ eine Gerade, $g$ eine Gerade orthogonal zu $l$ und $R> 0$ so, dass
+	\[ F(l) \subset N_R(l'), F(g) \subset N_R(g') \]
+Sei $x \in F(g)$ und $y\in g'$ der Punkt, der $x$ am nächsten ist. Es gilt
+\[ d(\pi(x), \pi(y)) \leq d(x, y) \leq R \]
+Es genügt also zu zeigen, dass $g'$ auf ein geodätisches Segment von $l'$ geschickt wird. Allerdings muss dies der Fall sein, da $F$ die visuelle Metrik auf $\partial \H^n$ erhält und deswegen $l'$ und $g'$ weiterhin orthogonal sind.\\
+Die Menge aller Geodäten in $H$ ist kompakt. Ergo lässt sich die Vereinigung all ihrer geodätischen Segmente auf $l'$ endlich zusammenführen.
+\end{Beweis}
+
+\Lem{}
+Die Fortsetzung $F : \overline{\H^n} \pfeil{} \overline{\H^n}$ ist stetig.
+\begin{Beweis}{}
+	Sei $l$ eine Gerade und $l'$ die Gerade zu $F(l)$. $S$ bezeichne einen Halbraum orthogonal zu $l'$. $H(t)$ bezeichne eine Hyperebene orthogonal zu $l$ bei $l(t)$. Nach vorhergehendem Lemma gilt $F(H(t)) \subset S$ für alle $t$, die hinreichend groß sind.
+\end{Beweis}
+
+\Satz{}
+Sei $f : M \pfeil{} N$ eine glatte Homotopie-Äquivalenz geschlossener hyperbolischer Mannigfaltigkeiten. Dann lässt sich sein Lift zu einer Pseudo-Isometrie $\widetilde{f} : \overline{\H^n} \pfeil{}\overline{\H^n}$ fortsetzen, dessen Einschränkung auf den Rand homömorph ist.
+\begin{Beweis}{}
+	Es bleibt zu zeigen, dass $\widetilde{f}_{|\partial \H^n}$ homöomorph ist. Allerdings ist diese Abbildung eine injektive Abbildung Riemannscher Mannigfaltigkeiten und somit offen. Ergo ist das Bild von $\widetilde{f}_{|\partial \H^n}$ offen und abgeschlossen, also ganz $\partial \H^n$.
+\end{Beweis}
+
+\section{Topologisches Volumen}
+\Satz{}
+Jede glatte kompakte Mannigfaltigkeit kann topologisch als endlicher Zellkomplex dargestellt werden.
+
+\Def{}
+Ein endlicher Zellkomplex $X$ ist lokal null-homotop und hat deswegen eine universelle Überlagerung $\widetilde{X}$. Ist $\widetilde{X}$ null-homotop, so heißt $X$ \df{asphärisch}.
+
+\Satz{Whitehead}
+Ein endlicher Zellkomplex $X$ ist genau dann asphärisch, wenn all seine höheren Homotopiegruppen $\pi_i(X), i\geq 2,$ verschwinden.
+
+\Satz{}
+Seien $X,Y$ zwei zusammenhängende, asphärische, endliche Komplexe. Dann wird jeder Isomorphismus $\pi_1(X) \pfeil{} \pi_1(Y)$ durch eine bis auf Homotopie eindeutige Homotopieäquivalenz $X\pfeil{} Y$ induziert.
+
+\Satz{Mostows Rigiditäts-Theorem}
+Seien $M,N$ zwei geschlossene, orientierbare, hyperbolische, zusammenhängende drei-dimensionale Mannigfaltigkeiten. Dann wird jeder Isomorphismus $\pi_1(M) \pfeil{} \pi_1(N)$ durch eine eindeutige Isometrie $M\pfeil{} N$ induziert.
+\begin{Beweis}{}
+	$M,N$ sind beide asphärisch, weil ihre universelle Überlagerung $\H^n$ null-homotop ist. Ergo wird jeder Isomorphismus von Fundamentalgruppen durch eine Homotopieklasse der Äquivalenzen $M\pfeil{} N$ induziert. Es bleibt zu zeigen, dass eine solche Homotopieklasse genau eine Isometrie enthält.
+\end{Beweis}
+
+\Kor{}
+Zwei geschlossene, zusammenhängende, orientierbare, hyperbolische drei-dimensionale Mannigfaltigkeiten sind genau dann isometrisch, wenn ihre Fundamentalgruppen isomorph sind.
+
+\Kor{}
+Ist $M$ eine geschlossene, orientierbare, hyperbolische, zusammenhängende drei-dimensionale Mannigfaltigkeit, so ist
+\[ \nu : Isom(M) \Pfeil{} Out(\pi_1(M)) \]
+ein Isomorphismus.
+
+\Def{}
+Definiere die \df{Lobachevsky-Funktion} durch
+\[ \Lambda(\theta) :=- \int\limits_{0}^{\theta} \log \bet{2\sin (t)} \d t \]
+\Lem{}
+Die Lobachevsky-Funktion ist wohldefiniert und stetig. Es gilt
+\begin{itemize}
+	\item $\Lambda'(\theta) = -\log \bet{2\sin (\theta)} $
+	\item $\Lambda''(\theta) = -\cot(\theta) $
+\end{itemize}
+
+\Lem{}
+\begin{itemize}
+	\item Die Lobachevsky-Funktion ist $\pi$-periodisch.
+	\item $\Lambda(0) = \Lambda(\pi / 2) = \Lambda(\pi)$
+	\item Die Lobachevsky-Funktion ist positiv auf $(0,\frac{\pi}{2})$ und negativ auf $(\frac{\pi}{2}, \pi)$.
+	\item Die Lobachevsky-Funktion hat ein Maximum bei $\frac{\pi}{6}$ und ein Minimum bei $\frac{5\pi}{6}$.
+	\item Für alle $m\in \N$ gilt
+	\[ \Lambda(m\theta) = m\sum\limits_{k = 0}^{m-1} \Lambda(\theta + \frac{k\pi}{m}) \]
+\end{itemize}
+
+\Lem{}
+Sei $D$ ein idealer, hyperbolischer Tetraeder und $e,e'$ zwei gegenüberliegende Kanten. Dann gibt es eine Achse, die orthogonal zu $e$ und $e'$ steht und $D$ bleibt invariant unter einer $\pi$-Drehung um diese Achse.
+\begin{Beweis}{}
+	$e$ und $e'$ sind ultra-parallel, wähle also eine Geodäte $r$, die den Abstand zwischen beiden minimiert. $r$ schneidet $e$ und $e'$ mittig, eine $\pi$-Drehung um $r$ vertauscht also die Endpunkte von $e$ und $e'$, erhält ergo $D$.
+\end{Beweis}
+
+\Kor{}
+Zwei gegenüberliegende Kanten eines idealen Tetraeders haben dieselben Torsionswinkel.
+
+\Satz{}
+Sei $D$ ein idealer Tetraeder mit Torsionswinkeln $\alpha, \beta, \gamma$. Dann gilt
+\[ Vol(D) = \Lambda(\alpha) + \Lambda(\beta) + \Lambda(\gamma) \]
+
+\Kor{}
+Der gleichmäßige, ideale Tetraeder hat maximales Volumen unter den hyperbolischen Tetraedern.
+
+\Def{Homologie-Gruppen, again\ldots}
+Sei $X$ ein topologischer Raum und $R$ ein kommutativer Ring.\\
+Ein \df{singulärer $k$-Simplex} in $X$ ist eine stetige Abbildung $\sigma : \Delta_k \pfeil{} X$. Definiere die Menge der \df{$k$-Ketten} $C_k(X; R)$ als den $R$-Modul, der aus formalen endlichen Linearkombinationen von singulären $k$-Simplizes besteht.\\
+Definiere die \df{Randabbildung} durch
+\begin{align*}
+\partial_k : C_k(X;R) & \Pfeil{} C_k(Y;R)\\
+\sigma & \longmapsto \sum_{i = 0}^n (-1)^id_i(\sigma)
+\end{align*}
+wobei $d_i(\sigma)$ die $i$-te Facette von $\sigma$ ist. Es gilt dann
+\[ \partial_{k-1} \circ \partial_k = 0 \]
+Definiere die Moduln der \df{$k$-Zykeln} und \df{$k$-Ränder} durch
+\[ Z_k(X;R) := \ker \partial_k \text{ und } B_k(X;R) := \Img \partial_{k+1} \]
+Definiere die \df{$k$-te Homologiegruppe} von $X$ mit Koeffizienten in $R$ durch
+\[ H_k(X;R) := Z_k(X;R) / B_k(X;R) \]
+
+\Def{}
+Sei $\alpha \in C_k(X;\R)$. Definiere die \df{Norm} von $\alpha$ durch
+\[ \norm{\alpha} = \norm{\lambda_1 \sigma_1 + \ldots + \lambda_k \sigma_k} := \bet{\lambda_1} + \ldots + \bet{\lambda_k} \]
+Definiere die Norm für $[\alpha] \in H_k(X;\R)$ durch
+\[ \norm{[\alpha]} = \inf \set{\norm{\beta}}{\beta \in [\alpha]} \]
+
+\Prop{}
+Die Norm auf den Homologiegruppen ist eine \df{Halbnorm}, d.\,h., sie erfüllt folgende Eigenschaften:
+\begin{enumerate}[(1)]
+	\item Sie ist \df{homogen}, d.\,h., für alle $\lambda \in \R$ und $a \in H_k(X;\R)$ gilt
+	\[ \norm{ \lambda a} = \bet{\lambda} \norm{a} \]
+	\item Sie erfüllt die \df{Dreiecks-Ungleichung}, d.\,h., für alle $a,b \in H_k(X;\R)$ gilt
+	\[ \norm{a+ b} \leq\norm{a} + \norm{b} \]
+\end{enumerate}
+
+\Bem{}
+Sei $M$ eine orientierbare, zusammenhängende, geschlossene Mannigfaltigkeit. Dann gilt
+\[ H_n(M; \Z) \isom{} \Z \]
+Eine Orientierung von $M$ ist eindeutig durch einen Erzeuger von $H_n(M; \Z)$ bestimmt. Ist $M$ bereits orientiert, nennen wir den korrespondierenden Erzeuger $[M]$ die \df{Fundamentalklasse} von $M$.
+
+\Def{}
+Definiere das \df{simpliziale Volumen} von $M$ durch
+\[ \norm{M} := \norm{[M]} \]
+Da sich die Fundamentalklassen von $M$ durch Vorzeichenwechsel unterscheiden, ist das simpliziale Volumen wohldefiniert.
+
+\Def{}
+Sei $f : M \pfeil{} N$ eine stetige Abbildung orientierter, geschlossener, zusammenhängender Mannigfaltigkeiten. Dann ist der \df{Grad} von $f$ als ein Element aus $\Z$ definiert, für das gilt
+\[ \deg f \cdot [N] = f_*[M] \]
+
+\Prop{}
+Es gilt in obiger Situation
+\[ \norm{N} \cdot \bet{\deg f} \leq \norm{M} \]
+\begin{Beweis}{}
+	Sei $\alpha = \lambda_1 \sigma_1 + \ldots + \lambda_k \sigma_k \in [M]$ mit minimaler Norm. Dann gilt $f_*(\alpha)= \lambda_1 f\sigma_1 + \ldots + \lambda_k f\sigma_k \in f*[M]$. Ergo
+	\[ \deg f\norm{[N]} \leq \norm{f_*(\alpha)} = \norm{\alpha} = \norm{[M]} \]
+\end{Beweis}
+
+\Kor{}
+Sind $M,N$ zwei geschlossene, orientierbare, homotopie-äquivalente Mannigfaltigkeiten derselben Dimension besitzen dassselbe simpliziale Volumen.
+\begin{Beweis}{}
+	Da $M,N$ homotopie-äquivalent sind, finden wir Abbildungen $f : M\pfeil{} N$ und $g : N \pfeil{} M$, die Isomorphien auf den Homologiegruppen induzieren. Ergo haben $f,g$ Grad $1$ bzw. $-1$.
+\end{Beweis}
+
+\Kor{}
+Ist $M$ eine geschlossene, orientierbare, sphärische oder euklidische Mannigfaltigkeit der Dimension $n\geq 1$, so gilt
+\[ \norm{M} = 0 \]
+\begin{Beweis}{}
+	Ist $M = S^n$ oder $T^n$, so besitzt $M$ eine Selbstabbildung von Grad $2$.\\
+	Ist $M$ sphärisch oder euklidisch, so wird $M$ endlich durch $S^n$ oder $T^n$ überlagert. Diese Überlagerung besitzt einen endlichen Grad auf den Homologiegruppen, ergo verschwindet das topologische Volumen von $M$.
+\end{Beweis}
+
+\Satz{}
+Sei $M$ eine geschlossene, zusammenhängede, orientierbare, hyperbolische Mannigfaltigkeit der Dimension 3. Bezeichnet $\nu_3$ das Volumen des idealen Tetraeders in $\H^3$, so gilt
+\[ Vol(M) = \nu_3 \cdot \norm{M} \]
+
 
 \chapter{Aufgaben}
+
+\section{Blatt 1}
+\subsection{Aufgabe 1}
+\paragraph{Claim}
+Let $I$ be the $n$-dimensional hyperboloid model.
+\begin{enumerate}[(i)]
+	\item Let $S$ be a $k$-space in $I$, $p \in S$. Then there exists a unique $(n-k)$-Subspace $T$, s.t. $S$ and $T$ intersects orthogonally in $p$.
+	\item Reflections along hypersurfaces generate Isom($S^n$) $\isom{} O(n+1)$.
+	\item Reflections along hyperbolic hyperspaces genertate Isom$(I)$.
+\end{enumerate}
+\begin{Beweis}{}
+	\begin{enumerate}[(i)]
+		\item Denote by the $\shrp{,}$ the Lorenzform on $\R^{n+1}$, i.\,e.
+		\[ \shrp{x,y} = x_1y_1 + \ldots x_ny_n - x_{n+1} y_{n+1} \]
+		Without loss of generality, we can assume
+		\[ I = \set{x \in \R^{n+1}}{\shrp{x,x} = -1, x_{n+1} > 0} \]
+		Let $S$ be a $k$-space in $I$, $p \in S$. Then there is a $(k+1)$-dimensional vector space $V_S \subset \R^{n+1}$, s.\,t.
+		\[ S = I \cap V_S \]
+		Since $\shrp{,}$ is not degenerate there is an $(n - k)$-dimensional vector space $V_T'$ which is orthogonal to $V_S$. $V_T'$ and $V_S$ intersects only in the origin of $\R^{n+1}$. Therefore, $I \cap V_T'$ an is $(n-k-1)$-dimensional subspace which doesn't intersect with $S$.\\
+		Now, it's tempting to simply throw the vector $p$ into $V_T'$. So let $V_T$ be the vector space generated by $V_T'$ and $p$.\\
+		Then $T := V_T \cap I$ is a $(n - k)$-dimensional subscape which intersects with $S$ in $p$ and only in $p$ since the intersection of $V_S$ and $V_T$ is exactly the line going from $0$ to $p$ and intersecting $I$ only in $p$.\\
+		The intersection of $T$ and $S$ is orthogonally since their tangent spaces are subspaces of $V_T$, $V_S$ resp., which dosn't contain $p$ and, therefore, are orthogonal to each other.
+		\item Let $\Phi \in $Isom$(S^n)$ be an isometry. For an arbitrary point $p \in S^n$ and an ONB $b_1,\ldots, b_n \in T_pS^n$, each isometry on $S^n$ is determined by $n+1$ dates: $\Phi(p), \d \Phi(b_1), \ldots, \d \Phi(b_n)$\\
+		First, we show there is a reflection $l$, s.\,t.
+		\[ l(p) = \Phi(p) \]
+		Let $\gamma : [0,t] \pfeil{} S^n$ be a geodesic with unit speed from $p$ to $\Phi(p)$. Let $E \subset S^n$ be a hypersubspace which intersects orthogonally with $\gamma$ in $\gamma(t/2)$. Now, the reflection $l$ along $E$ mirrors the points $\gamma(x)$ to $\gamma(t - x)$. Therefore
+		\[ l(p) = l(\gamma(0)) = \gamma(t) = \Phi(p) \]
+		So, we can assume now that $p$ is a fixed point of $\Phi$. We aim to pull through a very beautiful inductive argument. Note, that each isometry with fixed point $p$ is uniquely determined by its action on $T_pS^n \isom{} \R^n$. Therefore, we get
+		\[ \text{Fix}_p \isom{} O(n) \]
+		$O(n)$ denotes the linear isometries of $\R^{n}$. But these are uniquely determined by their action on $S^{n-1}$. By induction thesis, we know that the isometries on $S^{n-1}$ are the concatenation of reflections along $n-2$-subspaces in $S^{n-1}$. But these reflections correspond to reflections along $n-1$-vector spaces of $\R^n$. Well, and these reflections, then again, correspond to reflections along hypersurfaces of $S^n$ which contain the point $p$. Therefore, by induction hypothesis, the claim follows.
+		\item Let $\Phi : I \pfeil{} I$ be an isometry. Let $\gamma  : [0,t] \pfeil{} I$ be a geodesic from $p$ to $\gamma(p)$ with unit speed. By (i), we know there is an $(n-1)$-dimensional subspace which intersects othogonally with $\gamma$ in $\gamma(t/2)$. Therefore, the reflection on this subspace maps $p$ to $\Phi(p)$.\\
+		Now, we can assume that $\Phi$ has the fixed point $p$. Again, $\Phi$ is determined by its action on the sphere bundle $S_pI \isom{} S^{n-1}$ at $p$. But this action can be simulated by reflections along hypersurfaces of $S^{n-1}$, as we do know by (ii). These reflections correspond to reflections along $(n-1)$-dimensional subspaces of $I$. Therefore, the claim follows.
+	\end{enumerate}
+\end{Beweis}
+
+\subsection{Exercise 2}
+\paragraph{Claim}
+Let $\Phi : \C \pfeil{} \C$ be the inversion along the circle centered in $-i$ with radius $\sqrt{2}$. We claim
+\[ \Phi(z) = \frac{\l{z} + i}{i \l{z} + 1} \]
+\begin{Beweis}{}
+	Let $S = S_{-i}(\sqrt{r})$. The inversion along $S$ is defined by
+	\begin{align*}
+	\C \setminus \{-i\} & \Pfeil{} \C \setminus \{-i\}\\
+	z & \longmapsto -i + 2\frac{z + i}{\bet{z + i}^2}
+	\end{align*}
+	Computing this gives
+	\[ -i + 2\frac{z + i}{\bet{z + i}^2} = -i + 2\frac{1}{\l{z} - i} =  \frac{2 - i(\l{z}-i)}{\l{z} - i} = \frac{1 - i\l{z}}{\l{z} - i} = \frac{i(1 - i\l{z})}{i(\l{z} - i)} = \frac{i + \l{z}}{i\l{z} +1} \]
+\end{Beweis}
+
+
+\subsection{Exercise 3}
+A triple $(a,b,c) \in (\R\cup \infty)^3$ is called positive if $a < b < c$, $ b < c < a $ or $c < a < b$.
+\paragraph{Claim} $PSL_2\R$ acts freely and transitively on the set of positive triples of $\R \cup \{\infty\}$.
+\begin{Beweis}{}
+	Let $(x,y,z)$ be a positive triple. Without loss of generality, we can assume $x<y<z$.\\
+	Let $M \in SL_2\R$, s.\,t.
+	\[ (x,y,z).M = (x,y,z) \]
+	First we assume, that $z < \infty$
+	For
+	\[ M = \left(
+	\begin{matrix}
+	a & b \\
+	c & d
+	\end{matrix}
+	\right) \]
+	we get
+	\begin{align*}
+	&\frac{ax_i + b}{cx_i + d} = x_i\\
+	\Gdw{} & ax_i + b = cx_i^2 + dx_i\\
+	\Gdw{} & ax_i + b - cx_i^2 - dx_i = 0
+	\end{align*}
+	for $x_i \in \{x,y,z\}$. So, the above polynomial has three different vanishing points. Since it's of degree two, it has to be zero. Therefore $M$ now fixes every $x \in \R \cup \{\infty\}$. But there are only two matrices in $SL_2\R$ who are capable of doing this: $\pm I$. Therefore, it follows that $PSL_2\R$ acts freely on the positive triples of $\R$.\\
+	Now, let $z = \infty$. We then get
+	\[ \lim\limits_{t\pfeil{} \infty} \frac{at + b}{ct +d } = \infty \]
+	Therefore $c$ has to be zero. We then get the equations
+	\begin{align*}
+	ax_i + b - dx_i = 0 ~~~~x_i \in \{x,y\}
+	\end{align*}
+	but this means the above polynomial of degree one has two different vanishing points, therefore has to be zero. It follows, again, $M = \pm I$.\\
+	Let $(x_1, x_2, x_3), (y_1, y_2, y_3) \in \R^3$ be positive. We claim there is a $M \in SL_2(\R)$ which maps the first triple to the second. The coefficients of $M$ which will be again denoted by $a,b,c,d$ have to solve the following linear equation system
+	\[ ax_i + b +cx_iy_i + d = 0 ~~~~ \forall i \in \{1,2,3\} \]
+	But the vector space $V$ of all sufficient $(a,b,c,d)$ has at least dimension one. So, it remains to show there exists one quadruple in $V$ which additionally fulfils
+	\[ ad - bc = 1 \]
+	So, let $(a',b',c',d') \in V$, s.t. $r :=ad - bc \neq 0$. Then $(a,b,c,d) := \frac{1}{\sqrt{r}}(a',b',c',d')$ is an element of $V$ which gives rise to a matrix in $SL_2\R$ which transforms the triple $(x_1, x_2, x_3)$ to $(y_1,y_2, y_3)$. Hence $PSL_2\R$ acts transitively on the positive triples of $\R$.\\
+	Now, let $x,y \in \R, x<y$. We want to show there is $M \in SL_2\R$ which maps $(x,y, \infty)$ to $(-1,0,1)$. Indeed, one can compute that for each $\lambda \neq 0$ the matrix
+	\[ M = \lambda\left(
+	\begin{matrix}
+	1 & -y \\
+	1 & y - 2x
+	\end{matrix}
+	\right) \]
+	does the job. So, especially $\frac{1}{\det M} M \in SL_2\R$.\\
+	Now, since $PSL_2\R$ is a group, this also means that $(-1,0,1)$ can be mapped to every positive $(x,y,\infty)$. Since $PSL_2\R$ acts transitively on the positive triples of $\R$, it follows that it also acts transitively on all positive triples, which may have $\infty$ as their third coefficient. We also get the triples where $\infty$ is in the middle or the first component by using matrices $M \in PSL_2\R$ which permute the components of some triples with real coefficients. Therefore, $PSL_2\R$ acts indeed transitively on all positvie triples of $\R \cup \{\infty\}$.
+\end{Beweis}
+
+\subsection{Exercise 4}
+Let $p,q \in I$.
+\paragraph{Claim}
+\[ \cosh (d(p,q)) = -\shrp{p,q} \]
+\begin{Beweis}{}
+	Let $\gamma : [0,l]\pfeil{} I$ be a geodesic with unit speed starting at $p$ and ending in $q$. We know $\gamma$ is given by
+	\[ \gamma(t) = \cosh(t) p + \sinh(t) v \]
+	where $v \in S_pI$. We aim to compute $l = d(p,q)$. For this end, consider
+	\begin{align*}
+	\shrp{p,q} &= \shrp{p, \cosh(l)p + \sinh(l)v} \\
+	&= \cosh(l)\shrp{p,p} + \sinh(l)\shrp{p,v}\\
+	&= -\cosh(l)
+	\end{align*}
+	Since $l = d(p,q)$, the claim follows.
+\end{Beweis}
+
+
+\subsection{Exercise 5}
+Define the \df{cross-ratio} of $w,x,y,z \in \l{H^2}$ by
+\[ CR(w,x,y,z) := \frac{(w-y)(x-z)}{(x-y)(w-z)} \]
+\paragraph{Claim}
+\begin{enumerate}[(i)]
+	\item The cross-ratio is invariant under isometries.
+	\item For $\lambda > 0$, it holds
+	\[ d(i, \lambda i) = \bet{\ln \lambda} \]
+	\item For $p,q \in H^2$, let $p^*,q* \in \partial H^2$ be the corresponding endpoints of a geodesic connecting $p$ and $q$. It holds
+	\[ d(p,q) = \bet{\ln CR(q^*, p^*,p,q)} \]
+\end{enumerate}
+\begin{Beweis}{}
+	\begin{enumerate}[(i)]
+		\item Note, that each isometry of $H^2$ is a product of reflections along vertical lines and inversions along spheres. Therefore, it suffices to show that reflections and inversions don't change the cross-ratio.\\
+		First, let $\Phi(p) = t - p$ be a reflection on a vertical line. Then we get
+		\begin{align*}
+		CR( \Phi(w), \Phi(x), \Phi(y), \Phi(z) ) &= \frac{ (t - w - (t - y)) (t-x - (t- z)) }{ (t - x - (t- y)) (t - w - (t- z)) }\\
+		&= \frac{ (y - w ) (z-x) }{ (y - x ) (z - w ) }\\
+		&= \frac{(w-y)(x-z)}{(x-y)(w-z)}\\
+		&=  CR(w,x,y,z)
+		\end{align*}
+		Second, let $\Phi(x) = p + r^2 \frac{x - p}{\bet{x-p}^2}$ be an inversion along a sphere for $p \in H^2, r > 0$. Then, we get
+		\begin{align*}
+		(\Phi(x) - \Phi(y)) &= p + r^2 \frac{x - p}{\bet{x-p}^2} - (p + r^2 \frac{y - p}{\bet{y-p}^2} )\\
+		&= r^2 \klam{\frac{x - p}{\bet{x-p}^2} - \frac{y - p}{\bet{y-p}^2} }\\
+		&= r^2 \frac{(x - p)\bet{y-p}^2 - (y - p)\bet{x-p}^2 }{\bet{x-p}^2\bet{y-p}^2} \\
+		&= r^2 \frac{(x - p)\bet{y-p}^2 - (y - p)\bet{x-p}^2 }{\bet{(x-p)(y-p)}^2}
+		\end{align*}
+		Therefore
+		\begin{align*}
+		& CR( \Phi(w), \Phi(x), \Phi(y), \Phi(z) ) \\
+		=& \frac{
+			\frac{(w - p)\bet{y-p}^2 - (y - p)\bet{w-p}^2 }{\bet{(w-p)(y-p)}^2}
+			\cdot
+			\frac{(x - p)\bet{z-p}^2 - (z - p)\bet{x-p}^2 }{\bet{(x-p)(z-p)}^2}
+		}{
+			\frac{(x - p)\bet{y-p}^2 - (y - p)\bet{x-p}^2 }{\bet{(x-p)(y-p)}^2}
+			\cdot
+			\frac{(w - p)\bet{z-p}^2 - (z - p)\bet{w-p}^2 }{\bet{(w-p)(z-p)}^2}
+		}\\
+		=& \frac{
+			\klam{(w - p)\bet{y-p}^2 - (y - p)\bet{w-p}^2 }
+			\cdot
+			\klam{(x - p)\bet{z-p}^2 - (z - p)\bet{x-p}^2 }
+		}{
+			\klam{(x - p)\bet{y-p}^2 - (y - p)\bet{x-p}^2 }
+			\cdot
+			\klam{(w - p)\bet{z-p}^2 - (z - p)\bet{w-p}^2 }
+		}\\
+		=& \frac{
+			(w - p)(x - p)\bet{y-p}^2\bet{z-p}^2 
+			- (w - p)(z - p)\bet{x-p}^2\bet{y-p}^2
+			- (y - p)(x - p)\bet{z-p}^2\bet{w-p}^2
+			+(y - p) (z - p)\bet{x-p}^2\bet{w-p}^2}{
+			(x - p)(w - p)\bet{z-p}^2\bet{y-p}^2
+			- (y - p)(w - p)\bet{z-p}^2\bet{x-p}^2
+			- (z - p)(x - p)\bet{y-p}^2\bet{w-p}^2 
+			+ (y - p)(z - p)\bet{w-p}^2 \bet{x-p}^2 }\\
+		=& \frac{
+			(\l{y}-p)(\l{z}-p)
+			- (\l{x}-p)(\l{y}-p) 
+			- (\l{z}-p)(\l{w}-p) 
+			+ (\l{x}-p)(\l{w}-p) }{
+			(\l{z} - p) (\l{y} - p)
+			- (\l{z} - p)(\l{x} - p)
+			- (\l{y} - p) (\l{w} - p)
+			+ (\l{w} - p)(\l{x} - p)}\\
+		=& \frac{
+			(\l{x}-p)(\l{w} - \l{y})
+			-(\l{z}-p)(\l{w} - \l{y}) }{
+			(\l{w} - p)(\l{x} - \l{y})
+			-(\l{z} - p )(\l{x} - \l{y})}\\
+		=& \frac{
+			(\l{x}-\l{z})(\l{w} - \l{y}) }{
+			(\l{w} - \l{z})(\l{x} - \l{y})
+		}
+		\end{align*}
+		Since the cross-ratio is always a real value, the claim follows.
+		\item Let $\gamma > 0$. Note that the metric tensor on $H^2$ is given by
+		\[ g_{x+iy}(v,w) = \frac{1}{y^2} (v,w)  \]
+		for $x,y \in \R, y > 0, v,w \in T_{x+iy}H^2$.\\
+		First, we assume $\lambda > 1$. Consider in this case the geodesic
+		\begin{align*}
+		\gamma : [1, \lambda] & \Pfeil{} H^2\\
+		t & \longmapsto i t
+		\end{align*}
+		We compute
+		\[ \gamma'(t) = \left( 
+		\begin{matrix}
+		0\\
+		1
+		\end{matrix}
+		\right) \in T_{\gamma(t)}H^2 \]
+		and
+		\[ \norm{\gamma(t)'}_{\gamma(t)} = \sqrt{ g_{\gamma(t)}(\gamma'(t), \gamma'(t)) } = \sqrt{ \frac{1}{t^2} } = \frac{1}{\bet{t}} = \frac{1}{t} \]
+		Therefore, we get
+		\[ d(i,\lambda i) = \int_{1}^{\lambda} \norm{\gamma'(t)}_{\gamma(t)} \d t = \int_{1}^{\lambda} \frac{1}{t} \d t = \log \lambda - \log 1 = \log \lambda \]
+		Now, assume $\lambda < 1$. We then consider the inversion $\Phi$ along the unit sphere. Since $i$ lies on the unit sphere it will not be changed by $\Phi$, while for $\lambda i$, we get
+		\[ \Phi(\lambda i) = 0 + 1^2 \frac{i\lambda - 0}{\bet{i \lambda - 0}^2} = \frac{1}{-i\lambda} = i \frac{1}{\lambda} \]
+		Since $\Phi$ is an isometry we get
+		\[ d(i, \lambda i) = d(\Phi(i), \Phi(\lambda i)) = d(i, \frac{1}{\lambda} i) = \log \klam{\lambda\i} = - \log \lambda = \bet{\log \lambda} \]
+		\item First, we assume that $p = i$ and $q = \lambda i$ for $\lambda > 1$. Then, we get
+		\[ d(p,q) = \bet{\ln \lambda} \]
+		by (ii) and
+		\[ CR(q^*, p^*, p, q) = CR( \infty, 0, i, \lambda i ) = \frac{(\infty - i) (0 - \lambda i)}{(0 - i) ( \infty - \lambda i )} = \frac{-\lambda i}{-i} = \lambda \]
+		Therefore, the claim follows for the case $p = i, q = \lambda i, \lambda > 1$.\\
+		Now, let $p,q$ be two arbitrary distinct points of $H^2$. By a reflection along a vertical line, we can move $p$ to a point of the imaginary line. By an inversion along a suitable sphere, we can move $p$ to $i$ if $p$ isn't already $i$. Now, suppose $q$ doesn't lie after these isometries on the imaginary line. By an inversion along a suitable sphere, which contains $p$, we can move $q$ to the imaginary line without changing $p$. Then $q$ is $i\lambda$ for $\lambda > 0, \neq 1$. If $\lambda < 1$, we can again use the inversion along the unit sphere to fix $p$ and move $q$ to $\frac{1}{\lambda} i$.\\
+		Now, we do know these reflections and inversions doesn't change the distance of $p,q$, for they are isometries. Furthermore, they also don't change the cross-ratio of $q^*,q,p,p^*$ since the cross-ratio is invariant under isometries.\\
+		Therefore, we can always transform the general case to the special case which is handled above.
+	\end{enumerate}
+\end{Beweis}
+
+\subsection{Exercise 6}
+Denote by $D^2$ the Poincare disk.
+\paragraph{Claim}
+\begin{enumerate}[(i)]
+	\item For every triple $\alpha, \beta, \gamma > 0$ with $\alpha + \beta + \gamma < \pi$ there is a triangle with those inner angles.
+	\item The mentioned triangle is unique up to isometries.
+\end{enumerate}
+\begin{Beweis}{}
+	\begin{enumerate}[(i)]
+		\item Let $\alpha, \beta, \gamma > 0$ with $\alpha + \beta + \gamma < \pi$.\\
+		First, we consider the triangle with vertices
+		\begin{align*}
+		\left(0,0\right), \left(0,1\right) \text{ and } \left( \cos \alpha, \sin \alpha \right)
+		\end{align*}
+		This is a triangle in $\l{D}_2$ with angles $\alpha, 0, 0$.\\
+		Then we pick the geodesic line from $\left( \cos \alpha, \sin \alpha \right)$ to $\left(0,1\right)$ of the geodesic triangle and replace it by a geodesic $\gamma_t$ line from $\left( \cos \alpha, \sin \alpha \right)$ to $\left( \cos (-t), \sin (-t) \right)$ for $t > 0$. I.\,e., we move the endpoint of the geodesic slowly counter clockwise. By doing this, we enlarge the angle between $\gamma_t$ and the line from $(0,0)$ to $(0,1)$ without changing $\alpha$. We can do this till this angle reaches any value of $(0,\pi )$. Therefore, we can enable the angle $\beta$ here.\\
+		Now, we have a geodesic triangle with angles $\alpha, \beta, 0 = \gamma'$. By moving the points at $\alpha$ and $\beta$ closer together, we can make $\gamma'$ bigger till it reaches $\gamma$. Therefore, we can construct a geodesic triangle with angles $\alpha, \beta, \gamma$.
+		\item It suffices to show that each triangle with angles $\alpha, \beta, \gamma$ has the same side lengths. But, indeed, the side lengths of a hyperbolic triangle with angles $\alpha, \beta, \gamma$ and sides $a,b,c$ are totally determined by their inner angles since the following formula holds
+		\[ \frac{\sin \alpha}{\sinh a} = \frac{\sin \beta}{\sinh b} = \frac{\sin \gamma}{\sinh c}  \]
+		\item Alternativ kann man die Eindeutigkeit wie folgt zeigen: Sei $\Delta_{ABC}$ ein hyperbolisches Dreieck mit Winkeln $\alpha, \beta, \gamma$. Wir drehen $\Delta_{ABC}$ so, dass $B$ nach unten zeigt. Die Geodäte $\overline{ a}$, die die Seite $a$ enthält, hat zwei reelle Endpunkte. Zwischen diesen liegt ein Endpunkt der Seite $c$. Für ein weiteres Dreieck $\Delta_{A'B'C'}$ führen wir dieselbe Konstruktion durch und erhalten ein weiteres positives Tripel reeller Werte. Mithilfe einer Möbiustransformation können wir die Tripel identifizieren.\\
+		Die beiden Dreiecke haben nun dieselben Winkel. Da $B,B'$ beide auf $\overline{ a}$ liegen, und dieselben Winkel haben, folgt $B = B'$. Die Seiten $b$ und $b'$ sind durch die Winkel $\gamma$ und $\alpha$ eindeutig festgelegt, ergo stimmen sie überein. Dadurch stimmen beide Dreiecke bis auf eine Möbiustransformation überein. 
+	\end{enumerate}
+\end{Beweis}
+
+\section{Blatt 2}
+\subsection{Aufgabe 1}
+\subsubsection{Teilaufgabe 1}
+\paragraph{Behauptung}
+Sei $\Delta \subset \overline{H^2}$ ein hyperbolisches Dreieck mit Winkeln $\alpha, \beta, \gamma$. Dann gilt
+\[ area(\Delta) = \pi - \alpha - \beta - \gamma \]
+\begin{Beweis}{}
+	\begin{enumerate}[(i)]
+		\item Wir nehmen zuerst an, dass der Punkt $C$ von $\Delta$ Unendlich ist. Dann liegt ohne Beschränkung der Allgemeinheit $\Delta$ wie in folgender super hübschen Skizze vor
+		\begin{center}
+			\includegraphics[scale = 0.3]{Skizze1.png}	
+		\end{center}
+		Wir können die Fläche von $\Delta$ also unterteilen in die Flächen von $A_{\alpha}, C_{\alpha}, A_{\beta}, C_{\beta}$. Die horizontale Linie $D$ der Höhe 1 bildet eine Horosphäre auf der die Metrik durch das euklidische Skalarprodukt gegeben ist. Insofern berechnet sich die Fläche von $C_{\alpha}$ durch
+		\[ area(C_{\alpha}) = w = \cos(\alpha) \]
+		Die Fläche von $A_{\alpha}$ berechnet sich durch das Integral
+		\[ area(A_\alpha) = \int_{(x,y) \in A_{\alpha}}\frac{1}{y^2} \d x \d y = \int_{y = h}^{y = 1} \int_{x = -\cos(\sin\i(y))}^{x = -w} \frac{1}{y^2} \d x \d y \]
+		wobei wir zuerst annehmen, dass $\alpha \neq 0$. Mit $h = \sin(\alpha), w = \cos(\alpha)$ berechnen wir
+		\begin{align*}
+		area(A_\alpha)  &= \int_{y = \sin \alpha}^{y = 1} \int_{x = -\cos(\sin\i(y))}^{x = -\cos \alpha} \frac{1}{y^2} \d x \d y \\
+		&= \int_{y = \sin \alpha}^{y = 1} \frac{1}{y^2}\int_{x = -\cos(\sin\i(y))}^{x = -\cos \alpha}  \d x \d y \\
+		&= -\int_{y = \sin \alpha}^{y = 1} \frac{\cos(\alpha) - \cos(\sin\i (y))}{y^2} \d y
+		\end{align*}
+		Wir substituieren $\sin u = y$
+		\begin{align*}
+		area(A_\alpha) &= -\int_{u = \alpha}^{u = \pi / 2} \frac{\cos(\alpha) - \cos(u)}{\sin(u)^2}\cos(u) \d u\\
+		&= -\int_{u = \alpha}^{u = \pi / 2} \frac{\cos(\alpha)}{\sin(u)^2}\cos(u) \d u - \int_{u = \alpha}^{u = \pi / 2} \frac{ \cos(u)}{\sin(u)^2}\cos(u) \d u\\
+		&\gl{(\ast)} -\cos(\alpha) [-\frac{1}{\sin(u)}]_{u = \alpha}^{u = \pi / 2} + [- u -\cot(u)]_{u = \alpha}^{u = \pi / 2}\\
+		&= -\cos(\alpha)( - \frac{1}{\sin(\alpha)} + 1 ) + (-\alpha - \frac{\cos(\alpha)}{\sin (\alpha)} + \frac{\pi}{2})\\
+		&= -\cos(\alpha) - \alpha +\frac{\pi}{2}
+		\end{align*}
+		Gleichung $(\ast)$ folgt aus Wolfram Alpha. Dieses Ergebnis für $A_\alpha$ ist aus Stetigkeitsgründen nun auch für den Fall $\alpha = 0$ anwendbar.\\
+		Wir erhalten nun
+		\begin{align*}
+		area(\Delta) &= area(A_\alpha) + area(A_\beta)+ area(C_\alpha) + area(C_\beta) \\
+		&= -\cos(\alpha) - \alpha +\frac{\pi}{2} -\cos(\beta) - \beta +\frac{\pi}{2} + \cos(\alpha)+\cos(\beta) \\
+		&= \pi - \alpha - \beta
+		\end{align*}
+		
+		\item[(ii)] Es liege nun keiner der Punkte bei Unendlich. Durch Isometrien lässt sich $\Delta$ so verschieben, dass die Seite $a$ in der imaginären Achse enthalten ist. Ohne Beschränkung der Allgemeinheit können wir also annehmen, dass folgende Situation vorliegt
+		\begin{center}
+			\includegraphics[scale = 0.3]{Skizze2.png}	
+		\end{center}
+		Die Flächeninhalte von $\Delta_1$ und $\Delta_2$ können wir dank des ersten Falls bestimmen. Es folgt nun
+		\[ area(\Delta) = area(\Delta_2) - area(\Delta_1) = \pi - (\alpha + \alpha') - \beta - (\pi - \alpha' - \gamma') = \pi - \alpha - \beta - \gamma \]
+	\end{enumerate}
+\end{Beweis}
+
+\subsubsection{Teilaufgabe 2}
+\paragraph{Behauptung}
+Ein hyperbolisches Polygon mit Inneren Winkeln $\alpha_1,\ldots, \alpha_n$ hat eine Flächenmaß von
+\[ area(P) = (n-2)\pi - \sum_{i = 1}^{n} \alpha_i \]
+\begin{Beweis}{}
+	Sei $x$ ein innerer Punkt von $P$. Wir triangulieren $P$ anhand $x$ und erhalten $n$ Dreiecke $\Delta_1, \ldots, \Delta_n$. $\Delta_i$ hat dabei die Winkel $\beta_i, \gamma_i, \delta_i$ mit den Eigenschaften
+	\begin{align*}
+	\beta_i + \gamma_{(i\mod n)+1 } = \alpha_i \text{ für }i = 1,\ldots, n\\
+	\delta_1 + \ldots + \delta_n = 2\pi
+	\end{align*}
+	Wir erhalten nun 
+	\[ area(P) = \sum_{i = 1}^{n} area(\Delta_i) = \sum_{i = 1}^{n}(\pi - \beta_i - \gamma_i - \delta_i) = (n-2)\pi - \sum_{i = 1}^{n}\alpha_i \]
+\end{Beweis}
+
+\subsection{Aufgabe 2}
+\subsubsection{Teilaufgabe 1}
+Es bezeichne $\Gamma$ die Menge aller ganzzahligen 2x2-Matrizen mit Determinante 1, deren Inverses existiert und ebenfalls ganzzahlig ist.
+\paragraph{Behauptung}
+$\Gamma$ wird erzeugt durch
+\begin{align*}
+S =
+\left(\begin{matrix}
+0 & -1 \\
+1 & 0
+\end{matrix}\right)
+\text{ und }
+T  =
+\left(\begin{matrix}
+1 & 1 \\
+0 & 1
+\end{matrix}\right)
+\end{align*}
+\begin{Beweis}{}
+	\begin{enumerate}[1.]
+		\item Es gilt für $n \in \Z$
+		\[ T^n = \left(\begin{matrix}
+		1 & n \\
+		0 & 1
+		\end{matrix}\right) \]
+		\item Ferner
+		\[ S \cdot \left(\begin{matrix}
+		a & b\\
+		c & d
+		\end{matrix}\right) = \left(\begin{matrix}
+		-c & -d\\
+		a & b
+		\end{matrix}\right)
+		\text{ und }
+		\left(\begin{matrix}
+		a & b\\
+		c & d
+		\end{matrix}\right)\cdot S   = \left(\begin{matrix}
+		b & -a\\
+		d & -c
+		\end{matrix}\right)\]
+		Mithilfe der Matrix $S$ können ergo Einträge bis auf einen Vorzeichenwechsel permutiert werden.
+		\item Sei $A = \left(\begin{matrix}
+		a & b\\
+		c & d
+		\end{matrix}\right) \in \Gamma$. Wir zeigen durch Vollständige Induktion nach $n = \bet{a} + \bet{d}$, dass $A$ durch $S$ und $T$ erzeugt wird.
+		\begin{enumerate}
+			\item[I.A.] $n = 0$.\\
+			In diesem Fall sind $a = d = 0$ und $b,c\in \{\pm 1\}$, sodass $bc = -1$. Ergo ist $A$ entweder $S$ oder $S^3$.
+			\item[I.S.] $n>0$ ist beliebig, aber fest.\\
+			Da wir durch $S$ Einträge von $A$ vertauschen können, können wir ohne Beschränkung der Allgemeinheit annehmen, dass $d \neq 0$ und $c \neq 0$. Ließe sich dies nicht durch Anwendungen von $S$ einrichten, so wäre $A$ entweder die Identität oder eine Potenz von $S$. Betrachte nun für $z \in \{\pm 1\}$
+			\[ A \cdot T^z = \left(\begin{matrix}
+			a & az +b\\
+			c & cz +d
+			\end{matrix}\right)\]
+			Da $d,c \neq 0$, existiert ein $z \in \{\pm 1 \}$ mit
+			\[ \bet{cz+d} \leq \bet{d} \]
+			Mit der Induktionsvorrausetzung folgt nun ergo, dass $A\cdot T^z$ durch $S$ und $T$ erzeugt wird.
+		\end{enumerate}
+	\end{enumerate}
+\end{Beweis}
+
+\subsubsection{Teilaufgabe 2}
+\paragraph{Behauptung}
+$\Gamma$ wirkt eigentlich diskontinuierlich, aber nicht frei auf $H^2$.
+\begin{Beweis}{}
+	Die Wirkung ist nicht frei, da
+	\[ i.S = \frac{-1}{i} = i \]
+	Nichtsdestotrotz ist sie eigentlich diskontinuierlich. Denn sei $K \subset H^2$ kompakt. Dann ist die Menge
+	\[ A = \set{g \in PSL_2(\R)}{K.g \cap K \neq \emptyset} \]
+	kompakt in $PSL_2(\R)$. Da $\Gamma$ diskret in $PSL_2(\R)$ liegt, muss
+	\[ \set{g \in PSL_2(\Z)}{K.g \cap K \neq \emptyset} = \Gamma \cap A \]
+	endlich sein.
+\end{Beweis}
+
+%\subsection{Teilaufgabe 3}
+%Definiere das hyperbolische Dreieck $D$ durch
+%\[ D:= \set{z \in H^2}{ \bet{Re(z)} \leq \frac{1}{2}, \bet{z} \geq 1 } \]
+%\paragraph{Behauptung}
+%$D$ ist ein Fundamentalbereich von $\Gamma$.
+%\begin{Beweis}{}
+%	Setze $S = \set{2i.\gamma}{\gamma \in \Gamma}$. Dann bilden die Mengen
+%	\[ D(s) = \set{ p \in H^2}{d(s,p) \leq d(q,p) \forall q \in S} \]
+%	für $s \in S$ eine Kachelung von $H^2$. Es bleibt zu zeigen, dass $D = D(2i)$.
+%\end{Beweis}
+
+\subsubsection{Teilaufgabe 4}
+\paragraph{Behauptung}
+\[ area(D) = \pi \]
+\begin{Beweis}{}
+	$D$ wird gerade durch ein Dreieck mit Eckpunkten $\frac{-1}{2}, \frac{1}{2}, \infty$ beschränkt. Die inneren Winkel dieses Dreiecks betragen jeweils Null. Aus Aufgabe 1 folgt nun, dass $D$ eine Fläche von $\pi$ hat.
+\end{Beweis}
+
+%\newpage
+%\section{Aufgabe 3}
+%Sei $\Delta \subset H^2$ ein Dreieck, dessen Fläche echt zwischen 0 und $\pi$ liegt. Bezeichne mit $\Gamma$ die Gruppe, die durch die Spiegelungen entlang den Seiten von $\Delta$ erzeugt wird.
+%\subsection{Teilaufgabe 1}
+%\paragraph{Behauptung}
+%$\Gamma$ wirkt auf $H^2$ eigentlich diskontinuierlich, aber nicht frei.
+%\begin{Beweis}{}
+%	$\Gamma$ wirkt tatsächlich nicht frei, denn liegt $x$ auf einer Seite von $\Delta$ und bezeichnet $\phi$ die Spiegelung an dieser Seite, so gilt $\phi(x) = \phi$, obwohl $\phi$ nicht trivial ist.\\
+%	Es genügt nun zu zeigen, dass $\Gamma$ diskret in $Isom(H^2)$ liegt.\\
+%	Sei $\phi_n, n\in \N, \in \Gamma$ eine Folge, die gegen $\id{H^2}$ konvergiert. Wir müssen zeigen, dass $\phi_n = \id{H^2}$ für fast alle $n\in\N$ gilt.
+%\end{Beweis}
+
+
+\subsection{Aufgabe 4}
+\subsubsection{Teilaufgabe 1}
+\paragraph{Behauptung}
+Jede geschlossene, flache, orientierbare Fläche ist ein Torus.
+\begin{Beweis}{}
+	Sei $C$ eine geschlossene, flache, orientierbare Fläche. Da eine Fläche Sein vermutlich geodätisch vollständig impliziert, können wir annehmen, dass $C$ durch den $\R^2$ überlagert wird und durch das Herausteilen einer isometrischen, eigentlich diskontinuierlichen Wirkung $\Gamma \subset Isom(\R^2)$ induziert wird.\\
+	Da $C$ geschlossen ist, gibt es eine nichttriviale sphärische Geodäte $\gamma : S^1 \pfeil{} C$. Diese lässt sich liften zu einer Geodäten $\gamma' : \R^1 \pfeil{} \R^2$. Ferner gibt es ein nichttriviales Element $\alpha \in \Gamma$, dass $\gamma'$ invariant lässt, d.\,h., $\alpha(\gamma(\R)) = \gamma(\R)$. $\alpha$ besitzt die Gestalt
+	\[ \alpha(x) = Ax + b \]
+	für $A \in O(2), b \in \R^2$. Am Punkt $\gamma(0)$ sei eine Basis des Tangentialraums durch $\gamma'(0)$ und einen orthogonalen Vektor $v$ gegeben. Da $\gamma$ stabil unter $\alpha$ ist, gilt
+	\[ A\gamma'(0) = \gamma'(0) \]
+	Da $A \in O(2)$, folgt damit
+	\[ Av = zv \]
+	für $z = \pm 1$. Da $C$ orientierbar ist, muss $A$ orientierungserhaltend sein, es folgt $z = 1$, d.\,h., $A = E_2$. Es folgt
+	\[ \alpha(x) = x + b \]
+	für $b \in \R^2\setminus \{0\}$.\\
+	Es bezeichne $\Gamma_\alpha$ die Untergruppe, die durch $\alpha$ erzeugt wird. Teilt man diese raus, erhält man folgende Sequenz von Überlagerungen
+	\[ \R^2 \Pfeil{} \R^2 / \Gamma_\alpha \Pfeil{} C \]
+	$\R^2 / \Gamma_\alpha$ ist dabei seinerseits ein flacher Zylinder, also nicht abgeschlossen.\\
+	Sei $\beta'$ eine Geodäte in $\R^2$, die orthogonal zu $\gamma$ verläuft. Wir erhalten hierdurch eine unendliche Geodäte $\beta$ in $\R^2 / \Gamma_\alpha$, die orthogonal zur Nabe des Zylinders steht. Bezeichne $\Gamma'$ die Decktransformationsgruppe von $\R^2 / \Gamma_\alpha \surj{} C$. Die Decktransformationen von $\R^2 / \Gamma_\alpha \surj{} C$ können die Ausrichtung der Nabe des Zylinders nicht ändern, da sie abstands- und orientierungserhaltend sind. Ergo wird $\beta$ unter $\Gamma'$ auf andere unendliche Geodäten abgebildet, die orthogonal zur Nabe sind. Es bezeichne $\beta.\Gamma'$ den Orbit von $\beta$. Dieser ist enthalten in einer kompakten Menge, die diffeomorph zu $S^1$ ist. Da $\Gamma'$ eigentlich diskontinuierlich wirkt, ist der Orbit von $\beta$ endlich.\\
+	Da $C$ geschlossen ist, muss es ein Element in $\delta \in \Gamma'$ geben, welches die Nabe des Zylinders verschiebt. Insbesondere dreht $\delta$ die Geodäte $\beta$ um die Achse des Zylinders. Da der Orbit von $\beta$ endlich ist, gibt es ein $n \in \N$, sodass $\delta^n$ die Geodäte $\beta$ fixiert, aber nichttrivial ist. Teilt man die Wirkung der Gruppe, die durch $\delta^n$ erzeugt heraus, so erhält man einen Torus $T$, welcher weiterhin $C$ überlagert. Es ergeben sich folgende Überlagerungen
+	\[ \R^2 \Pfeil{} \R^2 / \Gamma_\alpha \Pfeil{} T \Pfeil{} C \]
+	Die orientierungserhaltenden Isometrien des Torus sind ausschließlich Drehungen und Verschiebungen der Nabe. Teilt man ergo die Decktransformationsgruppe von $T \surj{} C$ aus $T$ raus, so ergibt sich wieder ein Torus. Ergo folgt die Behauptung.
+\end{Beweis}
+\subsubsection{Teilaufgabe 2}
+\paragraph{Behauptung}
+Die Kleinsche Flasche ist eine geschlossene flache Fläche, die nicht orientierbar ist.
+\begin{Beweis}{}
+	Die Kleinsche Flasche wird durch den $\R^2$ überlagert und besitzt ohne Beschränkung der Allgemeinheit folgenden Fundamentalbereich.
+	\begin{center}
+		\includegraphics[scale = 0.15]{Skizze3.png}	
+	\end{center}
+	Insofern folgt bereits, dass die Kleinsche Flasche geschlossen und flach ist. Da die Punkte $A,B,C,D$ und die Seiten $v,v'$ und $w,w'$ unter Decktransformationsgruppe $\Gamma$ jeweils identifiziert werden, gibt es eine Decktransformation $\gamma \in \Gamma$ mit
+	\[ \gamma(A) = C, \d \gamma(v) = v', \d\gamma(w) = w'' \]
+	Aber daraus folgt sofort, dass $\gamma$ nicht orientierungserhaltend ist, d.\,h., $\det \d\gamma = -1$. Ergo ist die Kleinsche Flasche nicht orientierbar.
+\end{Beweis}
+
+\subsubsection{Teilaufgabe 3}
+\paragraph{Behauptung}
+Jede Überlagerung der Kleinschen Flasche durch den Torus hat einen ungeraden Grad.
+\begin{Beweis}{Skizze?}
+	Bezeichnet $T$ den Torus und $K$ die kleinsche Flasche, so erhält man für ungerades $n$ eine Überlagerung $T\surj{}K$ durch eine Isometrie $\phi_n$, die $T$ um $\frac{2\pi}{n}$ um seine Achse dreht und die Orientierung der Nabe von $T$ umdreht.\\
+	Ist eine Überlagerung $\phi : T \surj{} K$ gegeben, so können wir die Wirkung von $\phi$ auf dem Fundamentalbereich betrachten, die (vielleicht?) in etwa wie folgt aussieht
+	\begin{center}
+		\includegraphics[scale = 0.15]{Skizze4.png}	
+	\end{center}
+	Damit $\phi$ die Orientierung tatsächlich umkehrt, muss $\phi$ eine ungerade Ordnung haben, daraus resultiert ein ungerader Grad der Überlagerung.
+\end{Beweis}
+
+\subsection{Aufgabe 5}
+Sei $M = S^n / \Gamma$ eine elliptische Mannigfaltigkeit, wobei $\Gamma$ frei und eigentlich diskontinuierlich wirkt, und $n$ gerade.
+\paragraph{Behauptung}
+Es ist $M = S^n$ oder $M = P\R^n$.
+\begin{Beweis}{}
+	Es gilt
+	\[ Isom(S^n) = O(n+1) \]
+	Sei $A \in O(n+1)$ von Determinante $+1$. Dann besitzt $A$ mindestens einen Fixpunkt, denn die Eigenwerte von $A$ liegen alle in $\{\pm 1 \}$ und ihr Produkt ergibt gerade $\det A = +1$. Da $n+1$ ungerade ist, muss mindestens einer dieser Eigenwerte positiv sein, ergo besitzt $A$ einen Fixpunkt.\\
+	Ist nun $A \in O(n+1)$ nicht selbstinvers, so besitzt $A^2$ Determinante 1 und somit einen Fixpunkt, und kann ergo nicht in $\Gamma$ liegen. Die Elemente in $\Gamma$ sind ergo selbstinvers. Für selbstinverse Elemente $A \in O(n+1)$ gilt
+	\[ A = A\i = A^T \]
+	Ergo ist $A$ symmetrisch und orthogonal. Die symmetrischen und orthogonalen Matrizen sind aber genau die, die Diagonalmatrizen mit Diagonaleinträgen $\pm 1$ sind. Besitzt $A$ sowohl $+1$ als auch $-1$ als Diagonaleintrag, so ist $A$ weder trivial noch fixpunktfrei. Ergo kann $\Gamma$ nur $E_n$ und $-E_n$ besitzt.\\
+	Ist $\Gamma = \{E_n\}$, so folgt $M = S^n$. Ansonsten ist $\Gamma = \{\pm E_n \}$ und $M = P\R^n$. 
+\end{Beweis}
+
+\subsection{Aufgabe 6}
+Seien $p,q>1$ teilerfremd und $\theta := e^{\frac{2\pi i}{p}}$. Definiere auf $S^3 \subset \C^2$ die Abbildung
+\[ f(z_1,z_2) := (\theta z_1, \theta^q z_2) \]
+Es bezeichne $\Gamma$ die Gruppe, die durch $f$ erzeugt wird.
+\subsubsection{Teilaufgabe 1}
+\paragraph{Behauptung} $f$ ist eine Isometrie.
+\begin{Beweis}{}
+	Seien $(z_1,z_2), (w_1,w_2) \in S^3$. Wir rechnen nach
+	\begin{align*}
+	d(f(z_1,z_2), f(w_1,w_2))^2 &= d( (\theta z_1, \theta^p z_2) , (\theta w_1, \theta^p w_2) )^2\\
+	&= \bet{ \theta z_1 - \theta w_1 }^2 + \bet{\theta^p z_2 - \theta^p w_2 } \\
+	&= \bet{z_1 - w_1}^2 + \bet{z_2 - w_2}^2 = d((z_1,z_2), (w_1, w_2))
+	\end{align*}
+	da $\bet{\theta} = 1$. Ergo ist $f$ eine abstandserhaltende Selbstabbildung und dadurch, da $S^3$ zusammenhängend ist, eine Isometrie.
+\end{Beweis}
+
+\subsubsection{Teilaufgabe 2}
+\paragraph{Behauptung} Der \df{Linsenraum}
+$L(p,q) := S^3 / \Gamma$
+ist eine elliptische Mannigfaltigkeit.
+
+\begin{Beweis}{}
+	Es genügt zu zeigen, dass $\Gamma$ frei und eigentlich diskontinuierlich auf $S^3$ wirkt. Beachte hierbei, dass die Ordnung von $f$ genau $p$ ist.\\
+	Sei also $(z,w) \in S^3$ und $n \in \N$, sodass $f^n(z,w) = (z,w)$. Es gilt
+	\[ f^n(z,w) = (\theta^nz, \theta^{nq}w) = (e^{2\pi i\frac{n}{p}}z, e^2{2\pi i \frac{nq}{p}}w) = (z,w) \]
+	Dies ist genau dann der Fall, wenn
+	\[ \frac{n}{p}, \frac{nq}{p} \in \Z \]
+	was wiederum genau dann der Fall ist, wenn $p|n$ und $p|nq$, also wenn $n$ ein Vielfaches der Ordnung von $f$ ist. Ergo besitzt nur das triviale Element in $\Gamma$ einen Fixpunkt.\\
+	Da die Ordnung von $f$ endlich ist, ist $\Gamma$ endlich und liegt somit diskret in $Isom(S^3)$. Ergo agiert $\Gamma$ deswegen eigentlich diskontinuierlich.
+\end{Beweis}
+
+
+
 \Lem{}
 Sei $M = \H^n / \Gamma$ eine Mannigfaltigkeit endlichen Volumens. Dann ist das Zentrum von $\Gamma$ in $Isom(\H^n)$ trivial.
 \begin{Beweis}{}
@@ -1319,6 +2152,7 @@ Sei $M = \H^n / \Gamma$ eine Mannigfaltigkeit endlichen Volumens. Dann ist das Z
 	\[ Fix(\phi) = Fix(h) \]
 	D.\,h., $\Gamma$ wird von einer Hyperbolischen erzeugt oder von mehreren Parabolischen, die denselben Punkt im Unendlichen fixieren. Im ersten Fall ist $M$ eine unendliche Tube, im zweiten Fall eine unbegrenzte Spitze. Beide Mannigfaltigkeiten haben kein endliches Volumen.
 \end{Beweis}
+
 
 
 
