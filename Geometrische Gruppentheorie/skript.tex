@@ -18,23 +18,39 @@
 
 \begin{document}
 
+\title{
+	\begin{huge}
+		Geometrische Gruppentheorie\\
+	\end{huge}
+	\begin{large}
+		Kurzskript, SS 15
+\end{large}}
+
+
+\author{Ak\i n}
+\maketitle
+\renewcommand{\i}{^{-1}}
+
+%Das folgende Kurzskript orientiert sich an einer Vorlesung, die im Wintersemester 2016 / 2017 in Heidelberg gehalten wurde. Für alle Fehler im Text trägt ausschließlich der Autor die Verantwortung.
+
+\setcounter{tocdepth}{1}
 \tableofcontents
 
 \newpage
 \section{Gruppen und Graphen}
-\Def{Gruppe}
-\Bsp{Gruppen}
-\Def{Direktes Gruppenprodukt}
-\Def{Homomorphismus}
-\Bsp{Homomorphismen}
+%\Def{Gruppe}
+%\Bsp{Gruppen}
+%\Def{Direktes Gruppenprodukt}
+%\Def{Homomorphismus}
+%\Bsp{Homomorphismen}
 \Satz{Satz von Cayley}
 Jede Gruppe ist Untergruppe einer symmetrischen Gruppe.
 \begin{Beweis}{}
 Ist $G$ eine Gruppe, so existiert folgender Monomorphismus
 \Func{G}{\Sym{G}}{g}{\func{x}{gx}}
 \end{Beweis}
-\Def{Normale Untergruppe}
-\Bsp{Normale Untergruppen}
+%\Def{Normale Untergruppe}
+%\Bsp{Normale Untergruppen}
 \Satz{Faktorgruppe}
 Ist $N\normal G $, so ist $G/N$ eine Gruppe mit folgender UAE:\\
 Jeder Homomorphismus $\phi : G \pfeil{} H$ mit $\Ker \phi \tm N $ steigt eindeutig zu einem Homomorphismus $\widetilde{\phi} : G/N \pfeil{} H$ ab, der folgendes Diagramm zum Kommutieren bringt:
@@ -53,14 +69,14 @@ Sind $Q,N$ Gruppen mit Homomorphismus $\phi : Q \pfeil{} \Aut{}{N}$, so definier
 \paragraph{Bemerkung}
 Spaltet eine Erweiterung $G$ von $Q$ durch $N$, so ist $G$ das semidirekte Produkt von $Q$ mit $N$.
 
-\Def{Erzeugendensystem}
-\Bsp{Erzeugendensysteme}
-
-\Def{Freie Gruppe}
-\Bsp{Freie Gruppen}
+%\Def{Erzeugendensystem}
+%\Bsp{Erzeugendensysteme}
+%
+%\Def{Freie Gruppe}
+%\Bsp{Freie Gruppen}
 \Satz{Eindeutigkeit freier Gruppen}
 Zwei Gruppen, die über derselben Menge frei erzeugt sind, sind isomorph.
-\Satz{Existenz freier Gruppen}
+%\Satz{Existenz freier Gruppen}
 \Kor{}
 Ist $S$ ein freies Erzeugendensystem, so gilt
 $\F(S) = \grp{S}{}$
@@ -101,7 +117,7 @@ Sei eine Darstellung $\grp{S}{R}$ und eine Abbildung $\phi : S \pfeil{} G$ gegeb
 \triag{S}{\phi}{G}{\exists_1 \phi'}{\grp{S}{R}}{}
 \end{center}
 
-\Bsp{}
+%\Bsp{}
 
 \Bem{}
 \begin{itemize}
@@ -148,7 +164,7 @@ Eine \df{Schleife} ist eine Kante $e \in E$ mit $\delta(e) = \set{u}{}$.\\
 Eine\df{Doppelkante} ist eine Kante $e \in E$ für die eine Kante $e' \neq e$ existiert, sodass $\delta(e) = \delta(e')$.\\
 $\Gamma$ heißt \df{simplizial} bzw. \df{einfach} oder \df{kombinatorisch}, wenn keine Schleifen oder Doppelkanten existieren.
 
-\Bsp{Graphen}
+%\Bsp{Graphen}
 
 \Def{Graphenmorphismus}
 Seien $\Gamma = (V,E, \delta), \Gamma' = (V', E', \delta')$ Graphen. Eine Abbildung
@@ -177,7 +193,7 @@ V &= G\\
 \paragraph{Bemerkung}
 \[E = \set{(s, (g, gs))}{ s\in S, g\in G } \]
 
-\Bsp{Cayleygraphen}
+%\Bsp{Cayleygraphen}
 
 \Prop{Eigenschaften der Cayleygraphen}
 \begin{enumerate}
@@ -239,8 +255,8 @@ Ist $S \tm G$ kein Erzeugendensystem von $G$, so
 Sei $G$ eine Gruppe, $\C$ eine Kategorie, $X$ eine Menge. Eine \df{Wirkung} bzw. \df{Operation} von $G$ auf $X$ ist ein Homomorphismus
 \Func{\rho : G}{\Aut{\mathcal{C}}{X}}{}{}
 
-\Bsp{Beispiel}
-\Bem{Alternative Schreibweise}
+%\Bsp{Beispiel}
+%\Bem{Alternative Schreibweise}
 
 \Def{}
 $G$ operiere auf $X$
@@ -252,7 +268,7 @@ für alle $x\in X, g \in G$. In diesem Fall wirkt jedes $g \in G- \set{1}{}$ \df
 \item Die Gruppenwirkung heißt \df{transitiv}, falls für alle $x,y\in X$ ein $g\in G$ existiert, sodass $g.x = y$. In diesem Fall ist die \df{Bahn} bzw. der \df{Orbit} $G.x$ jedes $x$ gleich $X$.
 \end{itemize}
 
-\Bsp{Beispiel}
+%\Bsp{Beispiel}
 
 \Def{Freie Wirkungen auf Graphen}
 Sei $G$ eine Gruppe, die auf einen Graphen $\Gamma = (V,E, \delta)$ wirkt. Diese Wirkung heißt \df{frei}, wenn für alle $x\in V, e \in E, g \in G-\set{1}{}$ gilt:
@@ -261,7 +277,7 @@ Sei $G$ eine Gruppe, die auf einen Graphen $\Gamma = (V,E, \delta)$ wirkt. Diese
 \item $g.e \neq e$, d.h. die Wirkung ist \df{inversionsfrei}.
 \end{itemize}
 
-\Bsp{}
+%\Bsp{}
 
 \Satz{}
 Sei $G$ eine Gruppe mit Erzeuger $S, 1 \notin S$. Die Wirkung von $G$ auf $\Cay{G}{S}$ ist genau dann frei, wenn $S$ keine Elemente der Ordnung 2 enthält.
@@ -452,7 +468,7 @@ Dann $|x + 2ny| \geq |2ny| - |x| > |2y| - |y| = |y|$, also $M_1^nB \subset A$, a
 
 3.18 zeigt: G frei.
 
-\Bsp{Beispiel}
+%\Bsp{Beispiel}
 
 % 19.05.15, 11. VL
 
@@ -578,7 +594,7 @@ Dann ist $QI(X)/\sim$ bzgl. der Komposition von Abbildungen eine Gruppe, die sog
 \[G \Pfeil{} QI(X)/\sim \]
 \end{itemize}
 
-\Bsp{Beispiel}
+%\Bsp{Beispiel}
 
 \Def{}
 Sei $\Gamma = (V,E, \d)$ ein zusammenhängender Graph.
@@ -591,7 +607,7 @@ d : V^2 &\Pfeil{} \N_0\\
 \item Sei $G$ Gruppe mit Erzeuger $S$. Die kombinatorische Metrik auf $\Cay{G}{S}$ heißt \df{Wortmetrik}.
 \end{itemize}
 
-\Bsp{Beispiel}
+%\Bsp{Beispiel}
 
 \Satz{Alle Cayleygraphen einer Gruppe sind quasi-isometrisch}
 Sei $G$ eine Gruppe, $S,T$ endliche Erzeugermengen von $G$.
@@ -610,7 +626,7 @@ Sei $G$ eine Gruppe, die von einem EZS $S$ erzeugt wird.\\
 $S$ endlich $\Gdw{}$ $d_S$ ist \df{eigentlich}, d.h. Bälle von endlichem Radius enthalten endlich viele Elemente. 
 
 
-\Bsp{}
+%\Bsp{}
 
 \Def{Virtuelle Eigenschaften}
 $G$ ist virtuell $P$, wenn $G$ eine Untergruppe von endlichem Index besitzt, die $P$ hat.
@@ -633,14 +649,14 @@ Eine endlich erzeugte Gruppe ist virtuell $\Z$, wenn sie quasi-isometrisch zu $\
 Eine \df{Geodäte} ist eine isometrische Einbettung $\gamma : [0,L] \rightarrow X$ eines Intervalls in einen metrischen Raum.\\
 $X$ heißt \df{geodätisch (vollständig)}, falls je zwei Punkte durch eine Geodäte verbunden werden.
 
-\Bsp{Beispiel}
+%\Bsp{Beispiel}
 
 \Def{Quasigeodäte}
 Eine $(C,D)$-\df{Quasigeodäte} für $C\geq 1, D \geq 0$ ist eine $(C,D)$-Quasiisometrische Einbettung von $[0,L]$ nach $X$.
 
 $X$ heißt $(C,D)$-quasigeodätisch, falls $\forall x,y \in X$ eine verbindende Quasigeodäte \[\gamma :[0,d(x,y)] \rightarrow X \] existiert.
 
-\Bsp{Beispiel}
+%\Bsp{Beispiel}
 
 \Satz{Schwarz-Milner}
 $G$ Gruppe, $X$ metr. Raum, $G\curvearrowright X$ durch Isometrien. Weiter gelte:
@@ -929,7 +945,7 @@ Definiere den \df{Präsentationskomplex} als $K(S,R) := K' / G$.
 \paragraph{Bemerkung}
 Man kann mittels Seifert-Van Kampen zeigen, dass $K'$ einfach zusammenhängend. $K'$ ist univ. Überlagerung und $G = \pi(K) = \pi(K'/G)$
 
-\Bem{}
+%\Bem{}
 
 \Bsp{Beispiel}
 \begin{enumerate}
