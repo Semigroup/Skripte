@@ -15,11 +15,12 @@
 
 
 \renewcommand{\A}{\mathbb{A}}
+\renewcommand{\M}{\mathfrak{M}}
 \newcommand{\Nc}{\mathcal{N}}
 
 
 \renewcommand{\d}{\textsf{d}}
-\renewcommand{\P}{\mathbb{P}}
+\renewcommand{\P}{\mathcal{P}}
 
 \newcommand{\af}{\mathfrak{a}}
 \newcommand{\Af}{\mathfrak{A}}
@@ -36,7 +37,6 @@
 \newcommand{\qf}{\mathfrak{q}}
 \newcommand{\Qf}{\mathfrak{Q}}
 
-\renewcommand{\M}{\mathbb{M}}
 \renewcommand{\l}[1]{\overline{#1}}
 
 \newcommand{\Ac}{\mathcal{A}}
@@ -488,7 +488,7 @@ $\Gamma \subset  Isom(\H^n)$ wirkt genau dann eigentlich diskontinuierlich, wenn
 \end{Beweis}
 
 \Prop{}
-$\H^n / \Gamma$ und $\H^n / \Sigma$ sind genau dann isometrisch, wenn $\Sigma$ und $\Gamma$ konjugiert in $\H^n$ sind.
+$\H^n / \Gamma$ und $\H^n / \Sigma$ sind genau dann isometrisch, wenn $\Sigma$ und $\Gamma$ konjugiert in $Isom(\H^n)$ sind.
 \begin{Beweis}{}
 	$\H^n / \Gamma$ und $\H^n / \Sigma$ sind genau dann isometrisch, wenn es eine Isometrie $\phi : \H^n / \Gamma\pfeil{}\H^n / \Sigma$ gibt. Da $\H^n$ beide Räume überlagert, gibt es diese Isometrie genau dann, wenn es eine Isometrie $\widetilde{\phi}$ gibt, die folgendes Diagramm kommutieren lässt
 	\begin{center}
@@ -1393,6 +1393,8 @@ Ist $n = 2$, so hat $M$ eine $\R_{>0}^{p-1}$-Familie von unvollständigen euklid
 \Def{}
 Eine Abbildung $f : X \pfeil{} Y$ metrischer Räume heißt \df{quasi-isometrisch}, wenn Konstanten $C,D > 1$ gewählt werden können, sodass für alle $x,y \in X$
 \[ \frac{1}{C}d(x,y) - D \leq d(f(x),f(y)) \leq C d(x,y) + D \]
+und für alle $z \in Y$ ein $w \in X$ existiert mit
+\[ d(f(x),z) \leq D \]
 gilt. In einem solchen Fallen heißen $X,Y$ \df{quasi-isometrisch} zueinander.
 
 \Def{}
@@ -1514,6 +1516,7 @@ Ein endlicher Zellkomplex $X$ ist genau dann asphärisch, wenn all seine höhere
 Seien $X,Y$ zwei zusammenhängende, asphärische, endliche Komplexe. Dann wird jeder Isomorphismus $\pi_1(X) \pfeil{} \pi_1(Y)$ durch eine bis auf Homotopie eindeutige Homotopieäquivalenz $X\pfeil{} Y$ induziert.
 
 \Satz{Mostows Rigiditäts-Theorem}
+\label{MostomTheorem}
 Seien $M,N$ zwei geschlossene, orientierbare, hyperbolische, zusammenhängende drei-dimensionale Mannigfaltigkeiten. Dann wird jeder Isomorphismus $\pi_1(M) \pfeil{} \pi_1(N)$ durch eine eindeutige Isometrie $M\pfeil{} N$ induziert.
 \begin{Beweis}{}
 	$M,N$ sind beide asphärisch, weil ihre universelle Überlagerung $\H^n$ null-homotop ist. Ergo wird jeder Isomorphismus von Fundamentalgruppen durch eine Homotopieklasse der Äquivalenzen $M\pfeil{} N$ induziert. Es bleibt zu zeigen, dass eine solche Homotopieklasse genau eine Isometrie enthält.
@@ -1633,6 +1636,214 @@ Ist $M$ eine geschlossene, orientierbare, sphärische oder euklidische Mannigfal
 Sei $M$ eine geschlossene, zusammenhängede, orientierbare, hyperbolische Mannigfaltigkeit der Dimension 3. Bezeichnet $\nu_3$ das Volumen des idealen Tetraeders in $\H^3$, so gilt
 \[ Vol(M) = \nu_3 \cdot \norm{M} \]
 
+\Prop{}
+Eine Überlagerung $(A,a) \pfeil{} (B,b)$ topologischer Räume induziert Isomorphismen $\pi_n(A,a) \pfeil{\isom{}} \pi_n(B,b)$ für $n\geq 2$.
+
+\Satz{Whitehead}
+Eine stetige Abbildung zusammenhängender CW-Komplexe ist genau dann eine Homotopie-Äquivalenz, wenn sie Isomorphismen auf allen Homotopiegruppen induziert.
+
+\Kor{Hurewicz}
+Eine stetige Abbildung einfach zusammenhängender CW-Komplexe ist eine Homotopie-Äquivalenz.
+
+\section{Maßlose Maßtheorie}
+
+\Def{}
+Sei $X$ ein topologischer Raum. $\M \subset \P(X)$ heißt eine \df{$\sigma$-Algebra}, falls gilt
+\begin{enumerate}
+	\item $X \in \M$
+	\item $A \in \M \impl{} X\setminus A \in \M$
+	\item $A_n \in \M \impl{} \bigcup_{n\in \N}A_n \in \M$
+\end{enumerate}
+$X$ heißt in diesem Fall ein \df{messbarer Raum} und die Elemente aus $\M$ \df{messbare Mengen}.
+
+\Satz{}
+Jede Teilmenge $A \subset \P(X)$ erzeugt eine $\sigma$-Algebra.
+
+\Def{}
+Sei $X$ ein Raum mit offenen Mengen $\T$. Die $\sigma$-Algebra, die von $\T$ erzeugt wird, nennen wir die \df{Borel-Algebra} auf $X$.
+
+\Def{}
+Ein (positives) \df{Maß} auf einer $\sigma$-Algebra $\M$ ist eine Funktion $\mu : \M \pfeil{} \R_{\leq 0}$, die \df{abzählbar additiv} ist, d.\,h., für jede abzählbare Folge $A_n$ disjunkter Elemente aus $\M$ gilt
+\[ \mu(\bigcup_{n\in \N}A_n) = \sum_{n\in \N}\mu(A_n) \]
+Ein \df{Maß-Raum} $X$ ist ein messbarer Raum, auf dessen $\sigma$-Algebra $\M$ ein Maß $\mu$ definiert ist.\\
+Ist $X$ obendrein lokal kompakt und hausdorffsch und $\M$ seine Borel-Algebra, so heißt $\mu$ ein \df{Borel-Maß}.
+
+\Def{}
+Sei $G$ eine Lie-Gruppe. Ein Borel-Maß $\mu$ heißt \df{links-invariantes} \df{Haar-Maß}, falls
+\begin{enumerate}
+	\item $\mu(g\cdot A) = \mu(A)$
+	\item Ist $A\neq\emptyset$ offen, so gilt $\mu(A) > 0$.
+	\item Ist $A$ kompakt, so gilt $\mu(A) < \infty$.
+\end{enumerate}
+
+\Lem{}
+Ist $G$ eine Lie-Gruppe, so bildet die Menge seiner links-invarianten Haarmaße einen eindimensionalen, reellen Kegel.
+
+\Def{}
+$G$ heißt \df{unimodular}, falls jedes links-invariante Haarmaß auch rechts-invariant ist.
+
+\Lem{}
+Kompakte Lie-Gruppen sind unimodular.
+\begin{Beweis}{}
+	Sei $\mu$ ein links-invariantes Haarmaß. Definiere folgendes weitere links-invariante Haarmaß auf $G$ für $g\in G$ fest
+	\[ \mu_g(A) := \mu(Ag) \]
+	Dann existiert ein $k > 0$ mit
+	\[ \mu(Ag) = \mu_g(A) = k \mu(A) \]
+	Andererseits gilt
+	\[ \mu(G) = \mu_g(G) = k \mu(G) \]
+	da $G$ kompakt ist. Ergo ist $k = 1$.
+\end{Beweis}
+
+\Def{}
+Definiere die \df{modulare Funktion} $\Delta : G \pfeil{} \R_{>0}$ durch
+\[ \Delta(g) \mu_g = \mu \]
+
+\Prop{}
+\[ \Delta(g) = \bet{\det \textsf{Ad}(g)} \]
+
+\Kor{}
+$\Delta : G \pfeil{} \R_{>0}$ ist ein glatter Homomorphismus.
+
+\Bem{}
+Für alle $X \in \g$ gilt
+\[ \textsf{Ad}(\exp X) = e^{\textsf{ad} X} \]
+
+\Kor{}
+$G$ ist genau dann unimodular, wenn
+\[ \textsf{tr}(\textsf{ad}(X)) = 0 \]
+für alle $X \in \g$.
+
+\Prop{}
+$Isom(\H^n)$ ist eine unimodulare Lie-Gruppe.
+\begin{Beweis}{}
+	Sei $G = Isom(\H^n) = O^+(n,1)$. $\g$ ist dann das direkte Produkt der folgenden Vektorräume
+	\[ W := \set{
+\klam{
+\begin{matrix}
+A & 0\\
+0 & 0
+\end{matrix}
+}	
+}{A : \text{schief-symmetrische }n\times n \text{-Matrix}} \]
+	\[ V := \set{
+	\klam{
+		\begin{matrix}
+		0 & v\\
+		v^T & 0
+		\end{matrix}
+	}	
+}{v\in \R^n} \]
+Es genügt nun
+\[ \textsf{tr}(\textsf{ad}(X)) = 0 \]
+für alle $X \in V\cup W$ zu zeigen.\\
+Sei $X = \klam{
+	\begin{matrix}
+	A & 0\\
+	0 & 0
+	\end{matrix}
+}$. $\textsf{ad}(X)(W) = [X,W] \subset W$, nun hat $\textsf{ad}(X)$ eine Nullspur auf $W$, da $W$ die Lie-Algebra zur Lie-Gruppe $O(n)$ ist, die notorischerweise kompakt und somit unimodular ist.\\
+Für Elemente $Y \in V$ rechnet man nach $\textsf{ad}(X)(Y) = \textsf{tr}(A) = 0$.\\
+Ist $X \in V$, so vertauscht $\textsf{ad}(X)$ die Räume $V$ und $W$ und muss deswegen eine Nullspur haben.
+\end{Beweis}
+
+\section{Glattgebügelte Simplizes}
+\Def{}
+Ein $k$-Simplex $\alpha : \Delta_k \pfeil{} \H^n$ heißt \df{gerade}, falls seine Kanten Geodäten sind.\\
+Die \df{Begradigung} eines $k$-Simplex $\alpha$ ist ein gerade $k$-Simplex $\alpha^{st}$ mit denselben Eckpunkten.\\
+Ist $M$ eine hyperbolische, vollständige Mannigfaltigkeit, so wird die Begradigung eines $k$-Simplizes in $M$ dadurch erreicht, indem man den Simplex auf $\H^n$ hebt und seine Begradigung dort herunter projiziert.
+
+\Lem{}
+Die Begradigung induziert eine Abbildung
+\[ st : C_k(M;R) \Pfeil{} C_k(M;R) \]
+die mit dem Randhomomorphismus kommutiert und deswegen einen Homomorphismus auf den Homologiegruppen liefert.\\
+Dieser Homomorphismus ist gerade die Identität.
+
+\Def{}
+Sei $\alpha : \Delta_k \pfeil{} M$ ein gerader Simplex. Definiere das \df{abstrakte Volumen} von $\alpha$ durch
+\[ \bet{\int_{\alpha} \omega} =\bet{\int_{\Delta_k} \alpha^*\omega  } \]
+
+\Def{}
+Ist $\alpha$ nicht degeneriert, so hat $\alpha$ \df{positives Vorzeichen}, wenn sie als Abbildung berandeter Mannigfaltigkeiten orientierungserhaltend ist. Ansonsten hat $\alpha$ \df{negatives Vorzeichen}.\\
+Das Vorzeichen von $\alpha$ stimmt gerade mit dem von $\int_{\alpha} \omega$ überein.
+
+\Prop{}
+Sei $M$ eine geschlossene, orientierbare, hyberbolische drei-dimensionale Mannigfaltigkeit. Dann gilt
+\[ Vol({M}) \leq \nu_3 \norm{M} \]
+\begin{Beweis}{}
+	Sei $\alpha$ eine Begradigung der Fundamentalklasse. Es gilt
+	\[ Vol(M) = \int_M \omega = \int_{\alpha} \omega = \lambda_1 \int_{\alpha_1} \omega + \ldots +\lambda_k \int_{\alpha_k} \omega \]
+	Da $\int_{\alpha_i} \omega\leq \nu_3$, folgt
+	\[ Vol(M) \leq \lambda_1 \nu_3 +\ldots + \lambda_k \nu_3 \leq \nu_3 \norm{M} \]
+	Da dies für alle $\alpha \in [M]$ gilt, folgt die Behauptung.
+\end{Beweis}
+
+\Def{}
+Ein gerader {Zykel} $\alpha = \lambda_1 \alpha_1 + \ldots + \lambda_k \alpha_k$ der Fundamentalklasse heißt \df{$\epsilon$-effizient}, falls das abstrakte Volumen jedes $\alpha_i$ sich um höchstens $\epsilon$ vom Volumen des idealen Tetraeders unterscheidet und jedes $\alpha_i$ dasselbe Vorzeichen wie $\lambda_i$ besitzt.
+
+\Lem{}
+Besitzt $M$ für jedes $\epsilon > 0$ einen $\epsilon$-effizienten Zykel, so gilt
+\[ Vol({M}) \geq \nu_3 \norm{M} \]
+
+\Def{}
+Sei $t > 0$. Wir definieren einen Tetraeder $\Delta(t) \subset \H^3$, indem wir einen beliebigen Punkt $x \in \H^3$ fixieren und in seinem Tangentialraum einen regelmäßigen Tetraeder mit Außenradius $t$ und Zentrum $0$ konstruieren. Die Ecken dieses Tetraeders bilden nach $\H^3$ ab, und bezeichnen jeden Tetraeder, der isometrisch zu deren konvexe Hülle ist, als $\Delta(t)$. Ferner geben wir uns eine Ordnung auf den Ecken der $\Delta(t)$ vor, wodurch jeder $\Delta(t)$ zu einem geraden 3-Simplex wird.
+
+\Bem{}
+Es bezeichne $S(t)$ die Menge der $\Delta(t)$. Dann agiert $Isom(\H^3)$ frei und transitiv auf $S(t)$.\\
+Ferner erhalten wir ein $Isom(\H^3)$-invariantes Maß $m$ auf $S(t)$ durch
+\[ m(A) := \mu \set{ g \in Isom(\H^3) }{ g(u) \in A } \]
+für jedes $A \subset S(t)$ und ein fixiertes $u \in S(t)$.
+
+\Def{}
+Betrachte die Überlagerung $\pi : \H^3 \pfeil{} \H^3 / \Gamma$. Setze $\Sigma = \Gamma^4 / \Gamma$. Fixiert man $x_0 \in \H^3$, so liefert jedes $\sigma \in \Sigma$ einen singuären Simplex in $\H^3 / \Gamma$, dessen Eckpunkte alle $\pi(x)$ sind. Diesen Simplex bezeichnen wir mit $\sigma$.
+
+\Def{}
+Der Punkt $x_0$ legt eine Dirichlet-Kachelung von $\H^3$ in Bereiche $D(\gamma(x_0)), \gamma \in \Gamma,$ fest.\\
+Für $\sigma = (\gamma_1,\ldots, \gamma_4)\in \Sigma$ sei $S^+_\sigma(t) \subset S(t)$ die Menge aller $t$-Simplizes mit positivenm Vorzeichen, deren $i$-te Ecke in $D(\gamma_i(x_0))$ liegt. Definiere
+\[ \lambda^+_\sigma(t) := m(S^+_\sigma(t)) \]
+Definiere analog $\lambda^-_\sigma(t) :=  m(S^-_\sigma(t)) $ und
+\[ \lambda_\sigma(t) := \lambda_\sigma^+(t) - \lambda_\sigma^-(t) \]
+
+\Lem{}
+Definiere
+\[ \alpha(t) := \sum_{\sigma \in \Sigma} \lambda_\sigma(t) \sigma \]
+Dann hat $\alpha(t)$ für $t$ groß genug eine endliche Summe, ist ein Zykel und stellt ein positives Vielfaches der Fundamentalklasse $[M]$ dar.
+
+\Lem{}
+Setze $\overline{\alpha}(t) := k_t \alpha(t)$ für $\alpha(t) \in k_t [M]$. Für jedes $\epsilon> 0$ gibt es ein $t_0 > 0$, sodass $\alpha(t)$ $\epsilon$-effizient für $t> t_0$ ist.
+\begin{Beweis}{}
+	Sei $d$ der Außenradius von $D(x_0)$. Ein \df{quasi-$t$-Simplex} ist ein Simplex, dessen Ecken höchstens $d$ weit von den jeweiligen Eckpunkten eines $t$-Simplizes entfernt sind. $\overline{\alpha}(t)$ ist dann eine Linearkombination von quasi-$t$-Simplizes.\\
+	Das Volumen der $t$-Simplizes strebt für $t \pfeil{} \infty$ gegen $\nu_3$. Ergo ist $\overline{\alpha}(t)$ $\epsilon$-effizient für $t$ groß genug.
+\end{Beweis}
+
+\Lem{}
+Sei $f : M \pfeil{} N$ eine glatte Homotopie-Äquivalenz geschlossener, hyperbolischer, orientierbarer drei-dimensionaler Mannigfaltigkeiten. Dann können wir $f$ heben und erhalten eine Pseudo-Isometrie $\H^3 \pfeil{} \H^3$. Diese induziert einen Homöomorphismus $\widetilde{f} : \partial \H^3 \pfeil{} \H^3$.\\
+$\widetilde{f}$ schickt die Ecken eines gleichmäßigen, idealen Tetraeders auf die Ecken eines gleichmäßigen, idealen Tetraeders.
+\begin{Beweis}{Stichworte}
+	Wir haben bereits bewiesen, dass $M,N$ dasselbe topologische Volumen und somit auch dasselbe geometrische Volumen haben. $f$ erhält das topologische Volumen, deswegen muss $\widetilde{f}$ das geometrische Volumen erhalten, ergo ideale, gleichmäßige Tetraeder auf ihresgleichen schicken.
+\end{Beweis}
+
+\Bem{}
+Jedes ideale gleichmäßige Dreieck in $\H^3$ ist die Facette genau zweier idealer gleichmäßiger Tetraeder.
+
+\Prop{}
+Sei $f : M \pfeil{} N$ eine glatte Homotopie-Äquivalenz geschlossener, orientierbarer, hyperbolischer drei-dimensionaler Mannigfaltigkeiten. Dann wird die induzierte Randabbildung $\widetilde{f} : \partial \H^3 \pfeil{} \H^3$ durch eine Isometrie $\Phi \in Isom(\H^3)$ induziert.
+\begin{Beweis}{}
+	Seien $v_0,\ldots, v_3$ die Eckpunkte eines idealen, gleichmäßigen Tetraeders $D$. $\widetilde{f}$ bildet diese Ecken auf die Ecken eines weiteren idealen, gleichmäßigen Tetraeders ab. Ergo gibt es eine Isometrie $\Phi$, die die $v_i$ auf dieselben Bildpunkte schickt.\\
+	Indem wir $D$ iterativ an seinen Facetten spiegeln, erhalten wir eine Menge von Ecken, die Dicht in $\partial \H^3$ liegen muss. $\widetilde{f}$ und $\Phi$ schicken beide gleichmäßige, ideale Tetraeder auf ihresgleichen und stimmen deswegen auf diese dichten Menge überein.
+\end{Beweis}
+
+\begin{Beweis}{Wideraufnahme des Beweises von Mostows Rigidtätstheorems, Satz \ref{MostomTheorem}.}
+	Wir müssen zeigen, dass eine glatte Homotopie-Äquivalenz $f : M \pfeil{} N$ zu genau einer Isometrie $\Phi : M \pfeil{} N$ homotop ist.\\
+	$f$ induziert einen Isomorphismus
+	\[ f_* : \Gamma \pfeil{} \Sigma \]
+	für $M = \H^3 / \Gamma$ und $N = \H^3 / \Sigma$. Bezeichnet $\widetilde{f}$ die Liftung von $f$, so gilt für alle $\gamma \in \Gamma$
+	\[ \widetilde{f} \circ \gamma = f_*(\gamma) \circ \widetilde{f} \]
+	Auf dem Rand stimmt $\widetilde{f}$ mit einer Isometrie $\Phi$ überein, d.\,h., auf dem Rand gilt
+	\[ \Phi \circ \gamma = f_*(\gamma) \circ \Phi \]
+	Dies ist aber eine Gleichung von Isometrien, ergo ist sie auf ganz $\overline{\H^3}$ gültig. $\Phi$ induziert also eine wohldefinierte Isometrie
+	\[ \phi : M \pfeil{} N \]
+	In $\H^3$ erhalten wir eine Homotopie $\widetilde{f} \sim \Phi$, indem wir die Konvexkombination der Bildwerte nehmen. Diese steigt nun wohldefiniert zu einer Homotopie in $M\pfeil{} N$ ab.
+\end{Beweis}
 
 \chapter{Aufgaben}
 
@@ -1883,6 +2094,7 @@ Denote by $D^2$ the Poincare disk.
 	\end{enumerate}
 \end{Beweis}
 
+\newpage
 \section{Blatt 2}
 \subsection{Aufgabe 1}
 \subsubsection{Teilaufgabe 1}
@@ -1994,14 +2206,18 @@ T  =
 			\item[I.A.] $n = 0$.\\
 			In diesem Fall sind $a = d = 0$ und $b,c\in \{\pm 1\}$, sodass $bc = -1$. Ergo ist $A$ entweder $S$ oder $S^3$.
 			\item[I.S.] $n>0$ ist beliebig, aber fest.\\
-			Da wir durch $S$ Einträge von $A$ vertauschen können, können wir ohne Beschränkung der Allgemeinheit annehmen, dass $d \neq 0$ und $c \neq 0$. Ließe sich dies nicht durch Anwendungen von $S$ einrichten, so wäre $A$ entweder die Identität oder eine Potenz von $S$. Betrachte nun für $z \in \{\pm 1\}$
-			\[ A \cdot T^z = \left(\begin{matrix}
-			a & az +b\\
-			c & cz +d
+			Wir können ohne Beschränkung der Allgemeinheit annehmen, dass $a,b,c,d > 0$ und $a > d$. Da $ad -bc = 1$, folgt dann insbesondere auch $a>b,c$. Betrachte nun
+			\[ T\i A \cdot T\i = \left(\begin{matrix}
+			a - c - b +d & b - d\\
+			c - d & d
 			\end{matrix}\right)\]
-			Da $d,c \neq 0$, existiert ein $z \in \{\pm 1 \}$ mit
-			\[ \bet{cz+d} \leq \bet{d} \]
-			Mit der Induktionsvorrausetzung folgt nun ergo, dass $A\cdot T^z$ durch $S$ und $T$ erzeugt wird.
+		Wir behaupten, dass
+		\[ \bet{ a + d -b -c }< a \]
+		Angenommen, dem wäre nicht so. In jedem Fall muss $a + d > b +c$ gelten, da sonst die Determinante nicht Eins wäre. Es folgt aus der Annahme
+		\[ d\geq b+c \]
+		Aber dann gilt
+		\[ ad -cb\geq ab + ac -cb\geq ab > 1 \]
+		Was ein Widerspruch ist. Ergo können wir durch das beidseitige Ranmultiplizieren von $T\i$ erreichen, dass $\bet{a} + \bet{d}$ kleiner wird. Der Rest folgt nun aus der Induktionsvoraussetzung.
 		\end{enumerate}
 	\end{enumerate}
 \end{Beweis}
@@ -2019,11 +2235,11 @@ $\Gamma$ wirkt eigentlich diskontinuierlich, aber nicht frei auf $H^2$.
 	endlich sein.
 \end{Beweis}
 
-%\subsection{Teilaufgabe 3}
-%Definiere das hyperbolische Dreieck $D$ durch
-%\[ D:= \set{z \in H^2}{ \bet{Re(z)} \leq \frac{1}{2}, \bet{z} \geq 1 } \]
-%\paragraph{Behauptung}
-%$D$ ist ein Fundamentalbereich von $\Gamma$.
+\subsubsection{Teilaufgabe 3}
+Definiere das hyperbolische Dreieck $D$ durch
+\[ D:= \set{z \in H^2}{ \bet{Re(z)} \leq \frac{1}{2}, \bet{z} \geq 1 } \]
+\paragraph{Behauptung}
+$D$ ist ein Fundamentalbereich von $\Gamma$.
 %\begin{Beweis}{}
 %	Setze $S = \set{2i.\gamma}{\gamma \in \Gamma}$. Dann bilden die Mengen
 %	\[ D(s) = \set{ p \in H^2}{d(s,p) \leq d(q,p) \forall q \in S} \]
@@ -2032,47 +2248,61 @@ $\Gamma$ wirkt eigentlich diskontinuierlich, aber nicht frei auf $H^2$.
 
 \subsubsection{Teilaufgabe 4}
 \paragraph{Behauptung}
-\[ area(D) = \pi \]
+\[ area(D) = \frac{\pi}{3} \]
 \begin{Beweis}{}
-	$D$ wird gerade durch ein Dreieck mit Eckpunkten $\frac{-1}{2}, \frac{1}{2}, \infty$ beschränkt. Die inneren Winkel dieses Dreiecks betragen jeweils Null. Aus Aufgabe 1 folgt nun, dass $D$ eine Fläche von $\pi$ hat.
+	$D$ wird gerade durch ein Dreieck mit Eckpunkten $-\frac{\sqrt{3}}{2},  \frac{\sqrt{3}}{2}, \infty$ beschränkt. Die inneren Winkel dieses Dreiecks betragen $\frac{\pi}{3},\frac{\pi}{3}$ und Null. Aus Aufgabe 1 folgt nun, dass $D$ eine Fläche von $\frac{\pi}{3}$ hat.
 \end{Beweis}
 
 %\newpage
-%\section{Aufgabe 3}
-%Sei $\Delta \subset H^2$ ein Dreieck, dessen Fläche echt zwischen 0 und $\pi$ liegt. Bezeichne mit $\Gamma$ die Gruppe, die durch die Spiegelungen entlang den Seiten von $\Delta$ erzeugt wird.
-%\subsection{Teilaufgabe 1}
-%\paragraph{Behauptung}
-%$\Gamma$ wirkt auf $H^2$ eigentlich diskontinuierlich, aber nicht frei.
-%\begin{Beweis}{}
-%	$\Gamma$ wirkt tatsächlich nicht frei, denn liegt $x$ auf einer Seite von $\Delta$ und bezeichnet $\phi$ die Spiegelung an dieser Seite, so gilt $\phi(x) = \phi$, obwohl $\phi$ nicht trivial ist.\\
-%	Es genügt nun zu zeigen, dass $\Gamma$ diskret in $Isom(H^2)$ liegt.\\
-%	Sei $\phi_n, n\in \N, \in \Gamma$ eine Folge, die gegen $\id{H^2}$ konvergiert. Wir müssen zeigen, dass $\phi_n = \id{H^2}$ für fast alle $n\in\N$ gilt.
-%\end{Beweis}
+\subsection{Aufgabe 3}
+Sei $\Delta \subset H^2$ ein Dreieck, dessen Fläche echt zwischen 0 und $\pi$ liegt und das Winkel $\frac{\pi}{a}, \frac{\pi}{b}, \frac{\pi}{c}$ für natürliche Zahlen $a,b,c$ hat. Bezeichne mit $\Gamma$ die Gruppe, die durch die Spiegelungen entlang den Seiten von $\Delta$ erzeugt wird.
+\subsubsection{Teilaufgabe 1}
+\paragraph{Behauptung}
+$\Gamma$ wirkt auf $H^2$ eigentlich diskontinuierlich, aber nicht frei.
+\begin{Beweis}{}
+	$\Gamma$ wirkt tatsächlich nicht frei, denn liegt $x$ auf einer Seite von $\Delta$ und bezeichnet $\phi$ die Spiegelung an dieser Seite, so gilt $\phi(x) = \phi$, obwohl $\phi$ nicht trivial ist.\\
+	Es genügt nun zu zeigen, dass $\Gamma$ diskret in $Isom(H^2)$ liegt.\\
+Man sieht, dass $\set{g(\Delta)}{g \in \Gamma}$ eine Kachelung von $H^2$ liefert. Insbesondere besitzt jeder Punkt $x\in H^2$ eine Umgebung, die nur endlich viele dieser Kacheln schneidet. Ergo agiert $\Gamma$ eigentlich diskontinuierlich.
+\end{Beweis}
+\subsubsection{Teilaufgabe 2}
+\paragraph{Behauptung}
+$\Delta$ ist gerade ein Fundamentalbereich für $\Gamma$.
 
 
 \subsection{Aufgabe 4}
 \subsubsection{Teilaufgabe 1}
 \paragraph{Behauptung}
 Jede geschlossene, flache, orientierbare Fläche ist ein Torus.
+%\begin{Beweis}{}
+%	Sei $C$ eine geschlossene, flache, orientierbare Fläche. Da eine Fläche Sein vermutlich geodätisch vollständig impliziert, können wir annehmen, dass $C$ durch den $\R^2$ überlagert wird und durch das Herausteilen einer isometrischen, eigentlich diskontinuierlichen Wirkung $\Gamma \subset Isom(\R^2)$ induziert wird.\\
+%	Da $C$ geschlossen ist, gibt es eine nichttriviale sphärische Geodäte $\gamma : S^1 \pfeil{} C$. Diese lässt sich liften zu einer Geodäten $\gamma' : \R^1 \pfeil{} \R^2$. Ferner gibt es ein nichttriviales Element $\alpha \in \Gamma$, dass $\gamma'$ invariant lässt, d.\,h., $\alpha(\gamma(\R)) = \gamma(\R)$. $\alpha$ besitzt die Gestalt
+%	\[ \alpha(x) = Ax + b \]
+%	für $A \in O(2), b \in \R^2$. Am Punkt $\gamma(0)$ sei eine Basis des Tangentialraums durch $\gamma'(0)$ und einen orthogonalen Vektor $v$ gegeben. Da $\gamma$ stabil unter $\alpha$ ist, gilt
+%	\[ A\gamma'(0) = \gamma'(0) \]
+%	Da $A \in O(2)$, folgt damit
+%	\[ Av = zv \]
+%	für $z = \pm 1$. Da $C$ orientierbar ist, muss $A$ orientierungserhaltend sein, es folgt $z = 1$, d.\,h., $A = E_2$. Es folgt
+%	\[ \alpha(x) = x + b \]
+%	für $b \in \R^2\setminus \{0\}$.\\
+%	Es bezeichne $\Gamma_\alpha$ die Untergruppe, die durch $\alpha$ erzeugt wird. Teilt man diese raus, erhält man folgende Sequenz von Überlagerungen
+%	\[ \R^2 \Pfeil{} \R^2 / \Gamma_\alpha \Pfeil{} C \]
+%	$\R^2 / \Gamma_\alpha$ ist dabei seinerseits ein flacher Zylinder, also nicht abgeschlossen.\\
+%	Sei $\beta'$ eine Geodäte in $\R^2$, die orthogonal zu $\gamma$ verläuft. Wir erhalten hierdurch eine unendliche Geodäte $\beta$ in $\R^2 / \Gamma_\alpha$, die orthogonal zur Nabe des Zylinders steht. Bezeichne $\Gamma'$ die Decktransformationsgruppe von $\R^2 / \Gamma_\alpha \surj{} C$. Die Decktransformationen von $\R^2 / \Gamma_\alpha \surj{} C$ können die Ausrichtung der Nabe des Zylinders nicht ändern, da sie abstands- und orientierungserhaltend sind. Ergo wird $\beta$ unter $\Gamma'$ auf andere unendliche Geodäten abgebildet, die orthogonal zur Nabe sind. Es bezeichne $\beta.\Gamma'$ den Orbit von $\beta$. Dieser ist enthalten in einer kompakten Menge, die diffeomorph zu $S^1$ ist. Da $\Gamma'$ eigentlich diskontinuierlich wirkt, ist der Orbit von $\beta$ endlich.\\
+%	Da $C$ geschlossen ist, muss es ein Element in $\delta \in \Gamma'$ geben, welches die Nabe des Zylinders verschiebt. Insbesondere dreht $\delta$ die Geodäte $\beta$ um die Achse des Zylinders. Da der Orbit von $\beta$ endlich ist, gibt es ein $n \in \N$, sodass $\delta^n$ die Geodäte $\beta$ fixiert, aber nichttrivial ist. Teilt man die Wirkung der Gruppe, die durch $\delta^n$ erzeugt heraus, so erhält man einen Torus $T$, welcher weiterhin $C$ überlagert. Es ergeben sich folgende Überlagerungen
+%	\[ \R^2 \Pfeil{} \R^2 / \Gamma_\alpha \Pfeil{} T \Pfeil{} C \]
+%	Die orientierungserhaltenden Isometrien des Torus sind ausschließlich Drehungen und Verschiebungen der Nabe. Teilt man ergo die Decktransformationsgruppe von $T \surj{} C$ aus $T$ raus, so ergibt sich wieder ein Torus. Ergo folgt die Behauptung.
+%\end{Beweis}
 \begin{Beweis}{}
-	Sei $C$ eine geschlossene, flache, orientierbare Fläche. Da eine Fläche Sein vermutlich geodätisch vollständig impliziert, können wir annehmen, dass $C$ durch den $\R^2$ überlagert wird und durch das Herausteilen einer isometrischen, eigentlich diskontinuierlichen Wirkung $\Gamma \subset Isom(\R^2)$ induziert wird.\\
-	Da $C$ geschlossen ist, gibt es eine nichttriviale sphärische Geodäte $\gamma : S^1 \pfeil{} C$. Diese lässt sich liften zu einer Geodäten $\gamma' : \R^1 \pfeil{} \R^2$. Ferner gibt es ein nichttriviales Element $\alpha \in \Gamma$, dass $\gamma'$ invariant lässt, d.\,h., $\alpha(\gamma(\R)) = \gamma(\R)$. $\alpha$ besitzt die Gestalt
-	\[ \alpha(x) = Ax + b \]
-	für $A \in O(2), b \in \R^2$. Am Punkt $\gamma(0)$ sei eine Basis des Tangentialraums durch $\gamma'(0)$ und einen orthogonalen Vektor $v$ gegeben. Da $\gamma$ stabil unter $\alpha$ ist, gilt
-	\[ A\gamma'(0) = \gamma'(0) \]
-	Da $A \in O(2)$, folgt damit
-	\[ Av = zv \]
-	für $z = \pm 1$. Da $C$ orientierbar ist, muss $A$ orientierungserhaltend sein, es folgt $z = 1$, d.\,h., $A = E_2$. Es folgt
-	\[ \alpha(x) = x + b \]
-	für $b \in \R^2\setminus \{0\}$.\\
-	Es bezeichne $\Gamma_\alpha$ die Untergruppe, die durch $\alpha$ erzeugt wird. Teilt man diese raus, erhält man folgende Sequenz von Überlagerungen
-	\[ \R^2 \Pfeil{} \R^2 / \Gamma_\alpha \Pfeil{} C \]
-	$\R^2 / \Gamma_\alpha$ ist dabei seinerseits ein flacher Zylinder, also nicht abgeschlossen.\\
-	Sei $\beta'$ eine Geodäte in $\R^2$, die orthogonal zu $\gamma$ verläuft. Wir erhalten hierdurch eine unendliche Geodäte $\beta$ in $\R^2 / \Gamma_\alpha$, die orthogonal zur Nabe des Zylinders steht. Bezeichne $\Gamma'$ die Decktransformationsgruppe von $\R^2 / \Gamma_\alpha \surj{} C$. Die Decktransformationen von $\R^2 / \Gamma_\alpha \surj{} C$ können die Ausrichtung der Nabe des Zylinders nicht ändern, da sie abstands- und orientierungserhaltend sind. Ergo wird $\beta$ unter $\Gamma'$ auf andere unendliche Geodäten abgebildet, die orthogonal zur Nabe sind. Es bezeichne $\beta.\Gamma'$ den Orbit von $\beta$. Dieser ist enthalten in einer kompakten Menge, die diffeomorph zu $S^1$ ist. Da $\Gamma'$ eigentlich diskontinuierlich wirkt, ist der Orbit von $\beta$ endlich.\\
-	Da $C$ geschlossen ist, muss es ein Element in $\delta \in \Gamma'$ geben, welches die Nabe des Zylinders verschiebt. Insbesondere dreht $\delta$ die Geodäte $\beta$ um die Achse des Zylinders. Da der Orbit von $\beta$ endlich ist, gibt es ein $n \in \N$, sodass $\delta^n$ die Geodäte $\beta$ fixiert, aber nichttrivial ist. Teilt man die Wirkung der Gruppe, die durch $\delta^n$ erzeugt heraus, so erhält man einen Torus $T$, welcher weiterhin $C$ überlagert. Es ergeben sich folgende Überlagerungen
-	\[ \R^2 \Pfeil{} \R^2 / \Gamma_\alpha \Pfeil{} T \Pfeil{} C \]
-	Die orientierungserhaltenden Isometrien des Torus sind ausschließlich Drehungen und Verschiebungen der Nabe. Teilt man ergo die Decktransformationsgruppe von $T \surj{} C$ aus $T$ raus, so ergibt sich wieder ein Torus. Ergo folgt die Behauptung.
+	Sei $C$ eine geschlossene, flache, orientierbare Fläche. Da $C$ eine geschlossene Fläche ist, können wir annehmen, dass $C$ durch den $\R^2$ überlagert wird und durch das Herausteilen einer isometrischen, eigentlich diskontinuierlichen, freien und orientierungserhaltenden Wirkung $\Gamma \subset Isom(\R^2)$ induziert wird.\\
+	Ein nichttriviales Element $\gamma \in \Gamma$ wirkt nun durch
+	\[ x \mapsto Ax + b \]
+	für $x \in \R^2, b\in \R^2, A \in O(2)$ mit $\det A = 1$.\\
+	$A$ muss nun aber die Einheitsmatrix sein, da sich sonst folgendes LGS
+	\[ Ax + b = x \Gdw{} (A - I)x = b \]
+	lösen lässt und $\gamma$ einen Fixpunkt hätte. Nun ist aber $\Gamma$ offensichtlich ein Gitter in $\R^2$ der Dimension $\leq 2$. $C$ ist genau dann geschlossen, wenn $\Gamma$ Dimension 2 hat und deswegen einen Torus induziert.
 \end{Beweis}
+
+
 \subsubsection{Teilaufgabe 2}
 \paragraph{Behauptung}
 Die Kleinsche Flasche ist eine geschlossene flache Fläche, die nicht orientierbar ist.
@@ -2081,21 +2311,21 @@ Die Kleinsche Flasche ist eine geschlossene flache Fläche, die nicht orientierb
 	\begin{center}
 		\includegraphics[scale = 0.15]{Skizze3.png}	
 	\end{center}
-	Insofern folgt bereits, dass die Kleinsche Flasche geschlossen und flach ist. Da die Punkte $A,B,C,D$ und die Seiten $v,v'$ und $w,w'$ unter Decktransformationsgruppe $\Gamma$ jeweils identifiziert werden, gibt es eine Decktransformation $\gamma \in \Gamma$ mit
+	Insofern folgt bereits, dass die Kleinsche Flasche geschlossen und flach ist. Da die Punkte $A,B,C,D$ und die Seiten $v,v'$ und $w,w'$ unter der Decktransformationsgruppe $\Gamma$ jeweils identifiziert werden, gibt es eine Decktransformation $\gamma \in \Gamma$ mit
 	\[ \gamma(A) = C, \d \gamma(v) = v', \d\gamma(w) = w'' \]
 	Aber daraus folgt sofort, dass $\gamma$ nicht orientierungserhaltend ist, d.\,h., $\det \d\gamma = -1$. Ergo ist die Kleinsche Flasche nicht orientierbar.
 \end{Beweis}
 
 \subsubsection{Teilaufgabe 3}
 \paragraph{Behauptung}
-Jede Überlagerung der Kleinschen Flasche durch den Torus hat einen ungeraden Grad.
-\begin{Beweis}{Skizze?}
-	Bezeichnet $T$ den Torus und $K$ die kleinsche Flasche, so erhält man für ungerades $n$ eine Überlagerung $T\surj{}K$ durch eine Isometrie $\phi_n$, die $T$ um $\frac{2\pi}{n}$ um seine Achse dreht und die Orientierung der Nabe von $T$ umdreht.\\
-	Ist eine Überlagerung $\phi : T \surj{} K$ gegeben, so können wir die Wirkung von $\phi$ auf dem Fundamentalbereich betrachten, die (vielleicht?) in etwa wie folgt aussieht
+Jede Überlagerung der Kleinschen Flasche durch den Torus hat einen geraden Grad.
+\begin{Beweis}{}
+	Bezeichnet $T$ den Torus und $K$ die kleinsche Flasche, so erhält man für gerades $n$ eine Überlagerung $T\surj{}K$ durch eine Isometrie $\phi_n$, die $T$ um $\frac{2\pi}{n}$ um seine Achse dreht und die Orientierung der Nabe von $T$ umdreht.\\
+	Ist eine Überlagerung $\varphi : T \surj{} K$ gegeben, so können wir die Wirkung von $\varphi$ auf dem Fundamentalbereich betrachten, die in etwa wie folgt aussieht
 	\begin{center}
 		\includegraphics[scale = 0.15]{Skizze4.png}	
 	\end{center}
-	Damit $\phi$ die Orientierung tatsächlich umkehrt, muss $\phi$ eine ungerade Ordnung haben, daraus resultiert ein ungerader Grad der Überlagerung.
+	Damit $\varphi$ die Orientierung tatsächlich umkehrt, muss $\varphi$ eine gerade Ordnung haben, daraus resultiert ein gerader Grad der Überlagerung.
 \end{Beweis}
 
 \subsection{Aufgabe 5}
@@ -2105,7 +2335,13 @@ Es ist $M = S^n$ oder $M = P\R^n$.
 \begin{Beweis}{}
 	Es gilt
 	\[ Isom(S^n) = O(n+1) \]
-	Sei $A \in O(n+1)$ von Determinante $+1$. Dann besitzt $A$ mindestens einen Fixpunkt, denn die Eigenwerte von $A$ liegen alle in $\{\pm 1 \}$ und ihr Produkt ergibt gerade $\det A = +1$. Da $n+1$ ungerade ist, muss mindestens einer dieser Eigenwerte positiv sein, ergo besitzt $A$ einen Fixpunkt.\\
+	Sei $A \in O(n+1)$ von Determinante $+1$. Dann besitzt $A$ mindestens einen Fixpunkt. Denn sind $\lambda_1, \ldots, \lambda_k\in \{\pm 1\}$ die reellen Eigenwerte von $A$ und $\lambda_{k+1},\ldots,\lambda_{n+1}\in S^1$ die komplexen Eigenwerte, so gilt
+	\begin{align*}
+	\prod_{i = 1}^{n+1} \lambda_i & = 1\\
+	k &\text{ ist ungerade}\\
+	\lambda_{k+1 + 2i} &= \overline{ \lambda_{k+2 + 2i}} \text{ für }i\geq 0
+	\end{align*}
+	Ergo muss mindestens einer der Eigenwerte von $A$ +1 sein.\\
 	Ist nun $A \in O(n+1)$ nicht selbstinvers, so besitzt $A^2$ Determinante 1 und somit einen Fixpunkt, und kann ergo nicht in $\Gamma$ liegen. Die Elemente in $\Gamma$ sind ergo selbstinvers. Für selbstinverse Elemente $A \in O(n+1)$ gilt
 	\[ A = A\i = A^T \]
 	Ergo ist $A$ symmetrisch und orthogonal. Die symmetrischen und orthogonalen Matrizen sind aber genau die, die Diagonalmatrizen mit Diagonaleinträgen $\pm 1$ sind. Besitzt $A$ sowohl $+1$ als auch $-1$ als Diagonaleintrag, so ist $A$ weder trivial noch fixpunktfrei. Ergo kann $\Gamma$ nur $E_n$ und $-E_n$ besitzt.\\
@@ -2122,7 +2358,7 @@ Es bezeichne $\Gamma$ die Gruppe, die durch $f$ erzeugt wird.
 	Seien $(z_1,z_2), (w_1,w_2) \in S^3$. Wir rechnen nach
 	\begin{align*}
 	d(f(z_1,z_2), f(w_1,w_2))^2 &= d( (\theta z_1, \theta^p z_2) , (\theta w_1, \theta^p w_2) )^2\\
-	&= \bet{ \theta z_1 - \theta w_1 }^2 + \bet{\theta^p z_2 - \theta^p w_2 } \\
+	&= \bet{ \theta z_1 - \theta w_1 }^2 + \bet{\theta^p z_2 - \theta^p w_2 }^2 \\
 	&= \bet{z_1 - w_1}^2 + \bet{z_2 - w_2}^2 = d((z_1,z_2), (w_1, w_2))
 	\end{align*}
 	da $\bet{\theta} = 1$. Ergo ist $f$ eine abstandserhaltende Selbstabbildung und dadurch, da $S^3$ zusammenhängend ist, eine Isometrie.
@@ -2143,9 +2379,43 @@ ist eine elliptische Mannigfaltigkeit.
 	Da die Ordnung von $f$ endlich ist, ist $\Gamma$ endlich und liegt somit diskret in $Isom(S^3)$. Ergo agiert $\Gamma$ deswegen eigentlich diskontinuierlich.
 \end{Beweis}
 
+\newpage
+\section{Blatt 3}
+\subsection{Aufgabe 2}
+Sei $M = \H^n / \Gamma$ eine vollständige, hyperbolische Mannigfaltigkeit. $[S^1, M]$ bezeichne die Menge der Homotopieklassen stetiger Abbildungen des Typs $S^1 \pfeil{} M$.
+\subsubsection{Teilaufgabe 1}
+\paragraph{Behauptung} Sei $x_0 \in M$ beliebig. Dann ist die Abbildung
+\begin{align*}
+\Phi : \pi_1(M,x_0) & \Pfeil{} [S^1, M]\\
+[\gamma] & \longmapsto [\gamma]
+\end{align*}
+wohldefiniert und surjektiv. Für zwei Elemente $\gamma,\sigma \in \pi_1(M,x_0)$ gilt
+\[ \Phi(\gamma) = \Phi(\sigma) \Gdw{} \gamma \text{ und }\sigma  \text{ sind konjugiert}\]
+\begin{Beweis}{}
+	Die Abbildung ist offensichtlich wohldefiniert. Da $M$ zusammenhängend ist, ist sie auch offensichtlich surjektiv.\\
+	Seien $f,g \in \in \pi_1(M,x_0)$ mit $\Phi(f) = \Phi(g)$. Dann existiert eine (nicht Endpunkt erhaltende) Homotopie $H : I \times S^1 \pfeil{} M$ mit
+	\[ H_0 = f \text{ und } H_1 = g \]
+	Da die Endpunkte von $f$ und $g$ gerade $x_0$ sind, gilt $H_t(1) = H_t(0)$. Insbesondere liefert $H_t(1) =:c$ eine Schleife von und zu $x_0$. Es folgt nun aufgrund des Homotopiequadrates
+	\[ c f = gc \]
+	Sind umgekehrt $f$ und $g$ durch ein $c$ wie oben konjugiert, so existiert eine Homotopie $cf \sim gc$ in $\pi_1(M,x_0)$. Dies liefert eine Homotopie $f\sim g$ in $[S^1, M]$.
+\end{Beweis}
 
+\subsubsection{Teilaufgabe 2}
+\paragraph{Behauptung} Die Konjugationsklassen hyperbolischer Elemente $\gamma \in \Gamma$ stehen in Eins-zu-Eins-Korrespondenz zu geschlossenen Geodäten von $c\subset M$. Insbesondere gilt
+\[ l(c) = d(\gamma) \]
+\begin{Beweis}{}
+	Sei $l$ die geodätische Achse von $\gamma$. Dann wird $l$ in $M$ auf eine geschlossene Geodäte abgebildet, deren Länge der Versetzung von $\gamma$ entspricht. Sei nun $\sigma$ konjugiert zu $\gamma$. Beide korrespondieren zu Schleifen in $\pi_1(M, x_0)$ und werden auf dasselbe Element in $[S^1, M]$ abgebildet. Ergo sind die geschlossenen Geodäten, die sie induzieren, homotop zueinander und müssen deswegen übereinstimmen.
+\end{Beweis}
 
-\Lem{}
+\subsubsection{Teilaufgabe 3}
+\paragraph{Behauptung}
+Jede geschlossene Geodäte hat minimale Länge in seiner Homotopieklasse.
+\begin{Beweis}{}
+	Sei $\gamma$ eine geschlossene Geodäte und $c$ homotop zu $\gamma$. Seien $\widetilde{c}$ und $\widetilde{\gamma}$ Hebungen mit denselben Endpunkten. Es gilt
+	\[ l(c) \geq d(x,\phi(x)) \geq d(\phi) = l(\gamma) \]
+\end{Beweis}
+
+\subsection{Aufgabe 3}
 Sei $M = \H^n / \Gamma$ eine Mannigfaltigkeit endlichen Volumens. Dann ist das Zentrum von $\Gamma$ in $Isom(\H^n)$ trivial.
 \begin{Beweis}{}
 	Sei $h \in Z(\Gamma)$ nichttrivial. Dann gilt für alle nichttriviale $\phi \in \Gamma$
@@ -2153,8 +2423,57 @@ Sei $M = \H^n / \Gamma$ eine Mannigfaltigkeit endlichen Volumens. Dann ist das Z
 	D.\,h., $\Gamma$ wird von einer Hyperbolischen erzeugt oder von mehreren Parabolischen, die denselben Punkt im Unendlichen fixieren. Im ersten Fall ist $M$ eine unendliche Tube, im zweiten Fall eine unbegrenzte Spitze. Beide Mannigfaltigkeiten haben kein endliches Volumen.
 \end{Beweis}
 
+\subsection{Aufgabe 4}
+Sei $\H^n / \Gamma$ eine vollständige, hyperbolische Mannigfaltigkeit.
+\subsubsection{Teilaufgabe 1}
+\paragraph{Behauptung}
+Jede Untergruppe von $\Gamma$, die isomorph zu $\Z^2$ ist, besteht aus Parabolischen, die denselben Punkt im Unendlichen fixieren.
+\begin{Beweis}{}
+	Sei $U \subset \Gamma$ mit $U \isom{} \Z^2$. Da $U$ abelsch und diskret ist, müssen alle Elemente in $U$ denselben Typ haben, denn, erstens, $U$ kann keine elliptischen Elemente haben, da $\Gamma$ frei wirkt und, zweitens, zwei Elemente in $U$ müssen nun dieselben Fixpunkte haben, da $U$ abelsch ist.\\
+	$\phi_1,\phi_2$ bezeichne die beiden Erzeuger von $U$.\\
+	Sind beides Hyperbolische, die dieselbe geodätische Achse fixieren, so muss es aus Diskretheitsgründen $l,k> 0$ geben mit 
+	\[ \phi_1^l = \phi_2^k \]
+	Dies stellt aber einen Widerspruch zur Unabhängigkeit der beiden Erzeuger dar.\\
+	Ergo können $\phi_1, \phi_2$ nur noch Parabolische mit demselben Fixpunkt im Unendlichen sein. 
+\end{Beweis}
+\subsubsection{Teilaufgabe 2}
+\paragraph{Behauptung}
+Der $n$-Torus kann für $n\geq 2$ keine hyperbolische Struktur besitzen.
+\begin{Beweis}{}
+	Angenommen wir hätten $T^n = \H^n / \Gamma$. Dann gälte $\Gamma = \Z^n$. Folglich müsste $\Gamma$ Parabolische enthalten, die denselben Punkt im Unendlichen fixieren. Wir wissen aber, dass $\H^n / \Gamma$ genau dann kompakt ist, wenn $\Gamma$ nur aus Hyperbolischen besteht. Ein Widerspruch.
+\end{Beweis}
 
+\subsection{Aufgabe 5}
+Sei $\H^n / \Gamma$ eine vollständige, hyperbolische Mannigfaltigkeit. Für $\phi \in \Gamma$ setze
+\[S = S_\phi(\epsilon) := \set{x \in \H^n}{ d(\phi(x), x) \leq \epsilon } \] 
+\paragraph{Behauptung}
+Ist $\phi$ parabolisch mit Fixpunkt $p$, so ist $S$ eine sternförmige Umgebung um $p$. Ist $\phi$ hyperbolisch mit Achse $l$, so ist $S$ eine sternförmige Umgebung um $l$.
+\begin{Beweis}{}
+	\begin{itemize}
+		\item Sei $\phi$ parabolisch mit Fixpunkt $p$. Sei $g \subset \H^n$ eine Geodäte, das einen Endpunkt in $p$ hat. Wir müssen zeigen, dass der Schnitt $g\cap S$ nichtleer und zusammenhängend ist. Tatsächlich ist der Schnitt
+		\[ g\cap S = \set{ x \in g }{d(x, \phi(x))\leq \epsilon } \]
+		nichtleer, da $d(x, \phi(x))$ gegen Null konvergiert, wenn $x$ auf $g$ entlang gegen $p$ konvergiert. Diese Menge ist auch zusammenhängend, denn $\phi(g)$ ist ebenfalls eine Geodäte, die gegen $p$ konvergiert. Wird $g$ durch $g(t)$ parametrisiert, so folgt aus $d(g(t_0), \phi(g(t_0))) \leq \epsilon$ ergo $d(g(t), \phi(g(t))) \leq \epsilon$ für alle $t\geq t_0$. Dies muss gelten, da $\phi$ jede Horosphäre um $p$ erhält.
+		\item Sei $\phi$ hyperbolisch mit Achse $l$. Ist $\epsilon < d(\phi)$, so ist $S$ leer. Ist $\epsilon = d(\phi)$, so ist $S = l$ und somit keine Umgebung.\\
+		Sei nun $\epsilon > d(\phi)$. Sei $g$ eine Geodäte, die $l$ orthogonal schneidet. Offensichtlich ist dann der Schnitt mit $S$ nicht-leer. Betrachte die Geodäte $\phi(g)$. $g$ und $\phi(g)$ sind ultra-parallel, ihr minimaler Abstand wird genau auf $l$ realisiert. Von $l$ weg, nimmt der Abstand zwischen beiden monoton zu. Ergo ist $S \cap g$ zusammenhängend.
+	\end{itemize}
+\end{Beweis}
 
+\subsection{Aufgabe 6}
+Sei $\Gamma \subset Isom(\H^n)$ diskret und nichttrivial.
+\subsubsection{Teilaufgabe 1}
+Die Limes-Menge
+\[ \Lambda(\Gamma) = \overline{\Gamma.x} \cap \partial \H^n \]
+ist unabhängig von der Wahl von $x \in \H^n$.
+\begin{Beweis}{}
+	Seien $x,y \in \H^n$. Sei $(g_i(x))_i$ eine Folge in $\Gamma.x$, die gegen einen Punkt $p \in \partial \H^n$ konvergiert. $x$ und $y$ haben einen endlichen Abstand und die Folgen $(g_i(x))$ und $g_i(y))$ haben gliedweise denselben endlichen Abstand. Ergo konvergieren sie gegen denselben Punkt im Unendlichen.
+\end{Beweis}
+
+\subsubsection{Teilaufgabe 1}
+Ist $\Gamma' \subset \Gamma$ von endlichem Index, so gilt
+\[ \Lambda(\Gamma') = \Lambda(\Gamma) \]
+\begin{Beweis}{}
+	Sei $(g_i(x))_i$ eine Folge in $\Gamma.x$, die gegen einen Punkt $p \in \partial \H^n$ konvergiert. Wir nehmen an, dass alle $g_i$ nicht in $\Gamma'$ liegen. Da $\Gamma / \Gamma'$ endlich ist, gibt es ein $h \in \Gamma$, sodass unendlich viele der $g_ih$ in $\Gamma'$ liegen. Ergo ist $p$ ein Häufungspunkt von $\Gamma'.h\i(x)$.
+\end{Beweis}
 
 
 \printindex
