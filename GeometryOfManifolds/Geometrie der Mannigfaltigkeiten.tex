@@ -64,6 +64,9 @@
 \newcommand{\of}{\mathfrak{o}}
 \renewcommand{\epsilon}{\varepsilon}
 
+\newcommand{\thick}{M_{[\epsilon_n, \infty)}}
+\newcommand{\thin}{M_{(0,\epsilon_n]}}
+
 \usepackage{enumerate}
 
 \makeindex
@@ -662,12 +665,35 @@ Wenn wir die Raumkrümmung erhöhen, steigen die Torsionswinkel unseres Dodekaed
 Wir können in obiger Situation die Raumkrümmung erniedrigen anstatt zu erhöhen und dadurch Torsionswinkel von $\frac{2}{5} \pi$ für unseren Dodekaeder erreichen. Indem wir gegenüberliegende Facetten um $\frac{3}{5}\pi$ verdrehen und verkleben, erhalten wir wieder eine kompakte, hyperbolische Mannigfaltigkeit.
 
 \chapter{Dick-Dünn-Zerlegung}
+\section{How to Prove}
+\begin{itemize}
+	\item Bevor wir Margulis Lemma beweisen, zeigen wir, dass jede Lie-Gruppe eine Zassenhaus-Umgebung besitzt.
+	\item Sei $\Gamma$ diskret. Margulis Lemma sagt aus, dass es für alle $n\geq 2$ ein $\epsilon_n>0$ gibt, sodass $\Gamma_{\epsilon_n}(x)$ virtuell nilpotent für alle $x\in \H^n$ ist. Um das zu zeigen, wählen wir eine Zassenhaus-Umgebung von $Isom(\H^n)$ und eine Umgebung $Stab_G(X) \subset W \subset Isom(\H^n)$, sodass $W\i = W$ und $W^m$ von $m$ Translaten von $U$ überdeckt wird.\\
+	Da $\set{\phi \in Isom(\H^n)}{d(x,\phi(x)) \leq \epsilon_n}\subset W$, wird $\Gamma_{\epsilon_n}(x)$ von Elementen aus $W$ erzeugt. Die Gruppe $\Gamma' := \shrp{\Gamma_{\epsilon_n}(x)\cap U}$ ist nilpotent.
+	Da $W$ von $m$ Translaten von $U$ überdeckt wird, kann der Index von $\Gamma'$ in $\Gamma_{\epsilon_n}(x)$ nicht größer als $m$ sein.
+	\item Danach sehen wir ein, dass jedes nichttriviale $\Gamma_{\epsilon_n}(x)$ elementar ist, d.\,h., entweder nur aus Hyperbolischen mit derselben Achse oder nur aus Parabolischen mit demselben Fixpunkt im Unendlichen besteht.
+	\item Definiere den dicken Teil durch
+	\[ \thick = \set{x \in M}{inj_x(M) \geq \frac{\epsilon_n}{2}} \]
+	und den dünnen Teil durch
+	\[ \thin = \overline{M\setminus \thick} \]
+	Dann ist der dünne Teil eine disjunkten Vereinigung von sternförmigen Umgebungen um Spitzen und geschlossene Geodäten.\\
+	Setze für nichttriviale $\phi \in \Gamma$
+	\[ S_\phi(\epsilon_n) = \set{x\in \H^n}{d(x,\phi(x)) \leq \epsilon_n} \]
+	Diese Mengen sind sternförmige Umgebungen für Geodäten und Randpunkte in $\H^n$ und steigen ab zu sternförmigen Umgebungen für geschlossene Geodäten und Spitzen in $M$.\\
+	Sind zwei solcher Mengen nicht disjunkt, so ergänzen sie sich zu sternförmigen Umgebungen desselben Types, denn es gilt
+	\[ x \in S_\phi(\epsilon_n) \cap S_\psi(\epsilon_n) \Impl{} \phi, \psi \in \Gamma_{\epsilon_n}(x) \]
+	$\Gamma_{\epsilon_n}(x)$ ist elementar und besteht deswegen nur aus Parabolischen um denselben Randpunkt oder Hyperbolischen mit derselben Achse.
+	\item Ist $M$ eine orientierbare, vollständige hyperbolische Mannigfaltigkeit der Dimension $\leq 3$, so besteht der dünne Teil aus Umgebungen endlichen Volumens, da die parabolischen Elemente nur Translationen auf den Horosphären sind und deswegen die Spitzenumgebungen beschränkt sind.
+	\item $M$ hat genau dann endliches Volumen, wenn der dicke Teil kompakt ist.
+\end{itemize}
+
+\newpage
 \section{Tuben und Spitzen}
 \Prop{}
 Sei $M = \H^n / \Gamma$ eine Mannigfaltigkeit. Dann gilt
-\[ inj_x(M) = \frac{1}{2}\inf_{\gamma \in \Gamma} d(x, \gamma(x))  \]
+\[ inj_x(M) = \frac{1}{2}\inf_{\gamma \in \Gamma\setminus\{\id{\H^n}\}} d(x, \gamma(x))  \]
 \Kor{}
-\[ inj(M) = \frac{1}{2}\inf_{\gamma \in \Gamma} d(\gamma) \]
+\[ inj(M) = \frac{1}{2}\inf_{\gamma \in \Gamma\setminus\{\id{\H^n}\}} d(\gamma) \]
 
 \Kor{}
 Ist $M = \H^n / \Gamma$ eine kompakte Mannigfaltigkeit, so besteht $\Gamma$ nur aus hyperbolischen Elementen.
@@ -690,7 +716,7 @@ Eine \df{Tube der Länge $R$} entsteht, indem man $\Gamma = \shrp{\gamma}$ aus d
 
 \Def{Spitze}
 Sei $\Gamma < Isom(\R^{n-1})$ eine nichttriviale diskrete Untergruppe, die frei auf $\R^n$ agiert.\\
-Jedes Element in $\Gamma$ induziert durch
+Jedes Element $(Ax+b)\in\Gamma$ induziert durch
 \[ \phi(x,t) := (Ax + b, t) \]
 eine parabolische Wirkung auf $H^n$, durch die $\infty$ fixiert wird. Teilt man diese Wirkung heraus, erhält man eine hyperbolische Mannigfaltigkeit, die diffeomorph ist zu
 \[ \R_{> 0} \times (\R^{n-1} / \Gamma) \]
@@ -731,7 +757,7 @@ Seien $\phi_1, \phi_2 \in \Gamma$ zwei Isometrien einer diskreten und torsionsfr
 	Ohne Beschränkung der Allgemeinheit ist $\lambda < 1$. Betrachte
 	\[ \phi_1^n\circ \phi_2 \circ \phi_1^{-n}(0,t) = (\lambda^n A^nb, t) \Pfeil{n \pfeil{} \infty} (0,t) \]
 	Dies ist ein Widerspruch zur Annahme, dass $\Gamma$ diskret wäre.
-	\item $\phi_1$ und $\phi_2$ seien beide hyperbolisch und besitzen einen gemeinsamen Fixpunkt. Der Kommutator $[\phi_1, \phi_2] = \phi_1\phi_2 \phi_1\i \phi_2\i$ erhält jede Horosphäre um $\infty$. Da er aber nicht parabolisch sein kann, muss er trivial sein. Ergo kommutieren $\phi_1$ und $\phi_2$.
+	\item $\phi_1$ und $\phi_2$ seien beide hyperbolisch und besitzen einen gemeinsamen Fixpunkt $\infty$. Der Kommutator $[\phi_1, \phi_2] = \phi_1\phi_2 \phi_1\i \phi_2\i$ erhält jede Horosphäre um $\infty$. Da er aber nicht parabolisch sein kann, muss er trivial sein. Ergo kommutieren $\phi_1$ und $\phi_2$.
 	\item Besitzen $\phi_1$ und $\phi_2$ dieselbe hyperbolisch Achse, so sind beide durch $w_i = d(\phi_i)$ bestimmt. $w_1$ und $w_2$ spannen als Elemente von $\R$ eine abelsche, additive Gruppe auf. Diese muss von einem Element erzeugt werden, da sonst $\Gamma$ nicht diskret wäre.
 \end{itemize}
 \end{Beweis}
@@ -773,7 +799,7 @@ v & \longmapsto [x,v]
 \end{align*}
 Beachte, für jedes $x \in \g$ existiert genau ein glatter Gruppenmorphismus
 \[ \Theta : \R \Pfeil{} G \]
-sodass $\Theta'(0) = x, \Theta(0) = 1$.\\
+sodass $\Theta'(0) = x, \Theta(0) = e$.\\
 Wir definieren hierdurch folgende \df{Exponentialabbildung}
 \begin{align*}
 \exp : \g &\Pfeil{} G\\
@@ -805,7 +831,7 @@ Ist $U \subset G$ Teilmenge einer Gruppe, so definiere rekursiv
 U_{(0)} &:= U\\
 U_{(k)} &:= [U_{(k-1)}, U]
 \end{align*}
-Ist $U$ eine Umgebung der 1 in einer Lie-Gruppe $G$, so nennen wir $U$ eine \df{Zassenhaus-Umgebung}, falls
+Ist $U$ eine Umgebung der Eins in einer Lie-Gruppe $G$, so nennen wir $U$ eine \df{Zassenhaus-Umgebung}, falls
 \begin{align*}
 U_{(1)} &\subset U\\
 U_{(k)} &\Pfeil{k \pfeil{{}} \infty} \{1\}
@@ -868,7 +894,7 @@ Sei $G$ eine Lie-Gruppe. Dann existiert eine Umgebung $U$ der 1, sodass jede dis
 \Def{}
 Sei $S$ eine Menge von Symbolen. $S^*$ bezeichne das durch $S$ frei erzeugte Monoid. Ferner sei ein surjektiver Homomorphismus $\pi : S^* \pfeil{} G$ in eine Gruppe $G$ gegeben.\\
 Jedes Element aus $G$ besitzt dann eine Darstellung als ein \df{Wort} in $S^*$. Definiere folgende \df{Norm} auf $G$
-\[ \norm{g}_S := \set{\bet{w}}{w\in S^*, \pi(w) = g} \]
+\[ \norm{g}_S := \min \set{\bet{w}}{w\in S^*, \pi(w) = g} \]
 
 \Lem{}
 Es agiere $G$ transitiv auf einer Menge $A$, die mindestens $m+1$ Elemente habe. Für jedes $a \in A$ gibt es mindestens $m+1$ Elemente aus $G$ mit Norm $\leq m$, die $a$ auf $m+1$ verschiedene Elemente abbilden.
@@ -888,9 +914,9 @@ Dann existiert für jedes $n\geq 2$ eine sogenannte \df{Margulis-Konstante} $\ep
 		Sei ferner $W$ eine Umgebung von $Stab_G(x)$ in $G$ mit $W = W\i$ und $W^m \subset V$.\footnote{
 			So ein $W$ kann mithilfe des verallgemeinerten Tuben-Lemmas gefunden werden: Seien Räume $A\subset X$ und $B \subset Y$ gegeben und eine offene Umgebung $N \subset X \times Y$ von $A\times B$. Sind $A$ und $B$ kompakt, so gibt es offene Mengen $U \subset X$ und $V \subset Y$ mit $A\times B \subset U \times V\subset N$.
 		}
-	\item Wir nehmen zuerst an, dass $\Gamma$ durch eine Menge $S \subset W$ erzeugt wird, und zeigen in diesem Fall, dass $\Gamma' := \Gamma \cap U$ einen Index von höchstens $m$ in $\Gamma$ hat.\\
-	Betrachte hierzu die Wirkung von $\Gamma$ auf $\Gamma / \Gamma'$. Besitzt diese Menge mehr als $m$ Elemente, so gibt es $m+1$ Nebenklassen aus $\Gamma / \Gamma'$, die einen Repräsentanten mit Norm $\leq m$ haben.\\
-	Da $S^{\leq m} \subset W^m \subset V$, liegen alle diese Repräsentanten in $V$. Da $V$ durch $m$ Translate von $U$ überdeckt wird, liegen mindestens zwei der $m+1$ Repräsentanten im denselben Translat. Deswegen repräsentieren diese beiden Elemente dieselbe Nebenklasse in $\Gamma / \Gamma'$, was einen Widerspruch zur Annahme, dass der Index von $\Gamma'$ in $\Gamma$ echt größer als $m$ ist, darstellt.
+	\item Wir nehmen zuerst an, dass $\Gamma_{\epsilon_n}(x)$ durch eine Menge $S \subset W$ erzeugt wird, und zeigen in diesem Fall, dass $\Gamma' := \shrp{\Gamma_{\epsilon_n}(x) \cap U}$ einen Index von höchstens $m$ in $\Gamma_{\epsilon_n}(x)$ hat.\\
+	Betrachte hierzu die Wirkung von $\Gamma_{\epsilon_n}(x)$ auf $\Gamma_{\epsilon_n}(x) / \Gamma'$. Besitzt diese Menge mehr als $m$ Elemente, so gibt es $m+1$ Nebenklassen aus $\Gamma_{\epsilon_n}(x) / \Gamma'$, die einen Repräsentanten mit Norm $\leq m$ haben.\\
+	Da $S^{\leq m} \subset W^m \subset V$, liegen alle diese Repräsentanten in $V$. Da $V$ durch $m$ Translate von $U$ überdeckt wird, liegen mindestens zwei der $m+1$ Repräsentanten im denselben Translat. Deswegen repräsentieren diese beiden Elemente dieselbe Nebenklasse in $\Gamma_{\epsilon_n}(x) / \Gamma'$, was einen Widerspruch zur Annahme, dass der Index von $\Gamma'$ in $\Gamma_{\epsilon_n}(x)$ echt größer als $m$ ist, darstellt.
 	\item Wir wollen nun $\epsilon_n > 0$ so wählen, dass gilt
 	\[ \set{g \in G}{d(x, g(x)) \leq \epsilon_n} \subset W \]
 Das geht, denn betrachte das Faserbündel
@@ -914,10 +940,10 @@ Ergo kann $\epsilon_n \leq \frac{1}{l}$ gewählt werden.
 \Def{}
 Eine nichttriviale, diskrete Untergruppe $\Gamma \subset Isom(\H^n)$ heißt \df{elementar}, wenn es eine endliche $\Gamma$-invariante Menge $\emptyset \neq S \subset \overline{\H^n}$ gibt, d.\,h.,
 \[ \set{\phi(s) }{\phi \in \Gamma, s\in S} = S \]
-Dies ist äquialent dazu zu fordern, dass es einen Punkt $x \in \overline{\H^n}$ gibt, dessen $\Gamma$-Orbit endlich ist.
+Dies ist äquivalent dazu zu fordern, dass es einen Punkt $x \in \overline{\H^n}$ gibt, dessen $\Gamma$-Orbit endlich ist.
 
 \Prop{}
-Eine elementare Gruppe $\Gamma$, die frei auf $\H^n$ operiert, wird entweder durch eine hyperbolische Isometrie oder durch beliebig viele parabolische Isometrien mitdemselben Fixpunkt erzeugt.
+Eine elementare Gruppe $\Gamma$, die frei auf $\H^n$ operiert, wird entweder durch eine hyperbolische Isometrie oder durch beliebig viele parabolische Isometrien mit demselben Fixpunkt erzeugt.
 \begin{Beweis}{}
 $\Gamma$ agiert frei und enthält deswegen kein elliptischen Elemente. Angenommen $S$ besäße Punkte in $\H^n$. Dann würden Elemente aus $\Gamma$ diese Punkte vertauschen, sprich, aufeinander spiegeln. Insbesondere könnte man gemeinsame Schwerpunkte finden, die von nichttriviale Elementen aus $\Gamma$ fixiert werden würden, was einen Widerspruch darstellen würde. Ergo kann $S$ nur aus Punkten im Unendlichen bestehen.\\
 Hyperbolische und parabolische Elemente können Punkte im Unendlichen nicht zyklisch vertauschen, sondern nur fixieren bzw. unendlich oft bewegen. $S$ muss ergo in $\partial \H^n$ liegen und aus einem, oder zwei Elementen bestehen. Der Rest folgt nun aus Lemma \ref{Lemma 422}.
@@ -944,15 +970,14 @@ Sei $\Gamma$ diskret und torsionsfrei. Für jedes $x\in \H^n$ ist dann $\Gamma_{
 \Def{}
 \begin{itemize}
 	\item Eine \df{sternförmige Menge um einen Randpunkt} $p \in \partial\H^n$ ist eine Menge $U \subset \H^n$, die mit jedem Strahl, der zu $p$ läuft, einen nicht-leeren zusammenhängenden Schnitt besitzt.
-	\item Eine \df{sternförmige Umgebung um eine Gerade} $l \subset \H^n$ ist eine Menge $U \subset \H^n$, die einen nicht-leeren zusammenhängenden Schnitt mit jeder Geodäte besitzt, die $l$ orthogonal schneidet.
-	\item Sei $\Gamma$ eine Gruppe, die frei und diskontinuierlich agiert und aus parabolischen Isometrien bestehet, die einen Randpunkt $p\in \partial\H^n$ fixieren. Ist $U$ eine sternförmige Umgebung um $p$, die invariant unter $\Gamma$ ist, so heißt $U / \Gamma$ eine \df{sternförmige Spitzenumgebung}.
+	\item Eine \df{sternförmige Umgebung um eine Gerade} $l \subset \H^n$ ist eine Umgebung $U \subset \H^n$, die einen nicht-leeren zusammenhängenden Schnitt mit jeder Geodäte besitzt, die $l$ orthogonal schneidet.
+	\item Sei $\Gamma$ eine Gruppe, die frei und diskontinuierlich agiert und aus parabolischen Isometrien besteht, die einen Randpunkt $p\in \partial\H^n$ fixieren. Ist $U$ eine sternförmige Umgebung um $p$, die invariant unter $\Gamma$ ist, so heißt $U / \Gamma$ eine \df{sternförmige Spitzenumgebung}.
 	\item Sei $\Gamma$ eine Gruppe, die durch eine hyperbolische Isometrie $\phi$ mit Achse $l$ erzeugt wird. Ist $V$ eine $\Gamma$-invariante sternförmige Umgebung um $l$, so heißt $V / \Gamma$ eine \df{sternförmige Umgebung einer einfachen geschlossenen Geodäten} der Länge $d(\phi)$.
 \end{itemize}
 \Bem{}
-Die beschränkten Tuben und Spitzen stellen Beispiele für sternförmige einfache geschlossene geodätische Umgebungen bzw. sternförmige Spitzenumgebungen dar.
+Die beschränkten Tuben und Spitzen stellen Beispiele für sternförmige Umgebungen um geschlossene Geodäten bzw. Spitzen dar.
 
-\newcommand{\thick}{M_{[\epsilon_n, \infty)}}
-\newcommand{\thin}{M_{(0,\epsilon_n]}}
+
 \Def{}
 Sei $M = \H^n / \Gamma$ eine Mannigfaltigkeit. $\epsilon_n$ sei eine Margulis-Konstante. Definiere den \df{dicken Teil} von $M$ durch
 \[ \thick := \set{ x \in M }{inj_x(M) \geq \frac{\epsilon_n}{2}} \]
@@ -964,10 +989,10 @@ Sei $M$ eine vollständige, hyperbolische Mannigfaltigkeit der Dimension $n$.\\
 Der dünne Part $\thin$ besteht aus einer disjunkten Vereinigung von sternförmigen Spitzenumgebungen und sternförmigen Umgebungen von geschlossenen Geodäten der Länge $< \epsilon_n$.
 \begin{Beweis}{}
 	\begin{itemize}
-		\item 	Sei $M = \H^n / \Gamma$. Definiere für $\phi \in \Gamma, \epsilon > 0$
+		\item Sei $M = \H^n / \Gamma$. Definiere für $\phi \in \Gamma, \epsilon > 0$
 		\[ S_\phi(\epsilon) = \set{x \in \H^n}{d(x, \phi(x)) \leq \epsilon} \]
 		Dann ist der dünne Teil gerade der Quotient von
-		\[ S := \bigcup_{\phi \in \Gamma} S_\phi(\epsilon_n)  \]
+		\[ S := \bigcup_{\phi \in \Gamma\setminus\{\id{\H^n}\}} S_\phi(\epsilon_n)  \]
 		\item Ist $\phi$ eine Parabolische, die $p$ fixiert, so ist $S_\phi(\epsilon)$ eine sternförmige Umgebung um $p\in\partial \H^n$.
 		\item Ist $\phi$ eine Hyperbolische mit Achse $l$, so ist $S_\phi(\epsilon)$ eine sterförmige Umgebung um $l$, falls $\epsilon > d(\phi)$.
 		\item Es bleibt zu zeigen, dass $S_\phi(\epsilon_n)$ und $S_\psi(\epsilon_n)$ disjunkt sind für verschiedene $\phi, \psi$.\\
@@ -1011,7 +1036,7 @@ Sei $M$ eine vollständige hyperbolische Mannigfaltigkeit. Dann sind folgende Au
 		\item Sei ergo $M_0$ eine nicht kompakte Zusammenhangskomponente von $\thin$. Sei $S_0$ das dazugehörige Urbild in $\H^n$. Sei $\Gamma_0 < \Gamma$ eine maximale elementare Untergruppe, die nur aus Parabolischen besteht, die $\infty$ fixieren, sodass
 		\[ S_0 = \bigcup_{\phi \in \Gamma_0 \setminus \{ \id{\H^n} \}}\set{ x\in \H^n }{ d(x,\phi(x) ) \leq \epsilon_n } \]
 		Sei eine \df{Blätterung} auf $S_0$ gegeben, d.\,h., 
-		eine Übderdeckung von $S_0$ durch geodätische Halbstrahlen, die jeweils \df{Blätter} der Blätterung genannt werden. $\Gamma_0$ erhält diese Foliation, weswegen wir eine Foliation in $M_0$ erhalten.
+		eine Übderdeckung von $S_0$ durch geodätische Halbstrahlen, die jeweils \df{Blätter} der Blätterung genannt werden. $\Gamma_0$ erhält diese Blätterung, weswegen wir eine Blätterung in $M_0$ erhalten.
 		\item Jedes Blatt beginnt in einem Punkt in $\partial \thick$, welches kompakt ist. Wir wählen eine zusammenhängende Menge $P \subset \H^n$, sodass der Anfangspunkt jedes Blattes in $M_0$ einmal in $P$ vertreten ist. Das Volumen von $M_0$ errechnet sich nun durch die Fläche, die von $P$ und $\infty$ aufgespannt ist und endlich ist.
 	\end{itemize}
 \end{Beweis}
