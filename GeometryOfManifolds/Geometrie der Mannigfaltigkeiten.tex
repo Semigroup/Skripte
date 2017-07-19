@@ -95,14 +95,12 @@ Kurzskript, SS 17
 \Def{}
 Definiere die \df{Lorentzform} auf $\R^{n+1}$ durch
 \[ \shrp{x,y} := x_1y_1 + \ldots + x_{n}y_n - x_{n+1} y_{n+1} \]
-Ein Vektor$x \in \R^{n+1}$ heißt
-\begin{align*}
-\left\lbrace \begin{aligned}
-\text{\df{zeitartig}, falls } &\shrp{x,x} < 0\\
-\text{\df{lichtartig}, falls } &\shrp{x,x} = 0\\
-\text{\df{raumartig}, falls } &\shrp{x,x} > 0
-\end{aligned} \right.
-\end{align*}
+Ein Vektor $x \in \R^{n+1}$ heißt
+\begin{itemize}
+	\item \df{zeitartig}, falls $\shrp{x,x} < 0$,
+	\item \df{lichtartig}, falls $\shrp{x,x} = 0$,
+	\item \df{raumartig}, falls $\shrp{x,x} > 0$.
+\end{itemize}
 Definiere das \df{Hyperboloidenmodell} von $\H^n$ durch
 \[ I^n = \set{p \in \R^{n+1}}{\shrp{p,p} = -1, p_{n+1 > 0}} \]
 \Prop{}
@@ -130,11 +128,11 @@ Die $k$-dimensionalen, vollständigen, total geodätischen, zusammenhängenden R
 \[ I^n \cap W^{k+1}\]
 wobei $W^{k+1}$ ein $k+1$-dimensionaler Untervektorraum von $\R^{n+1}$ ist, der keinen leeren Schnitt mit $I^n$ hat.\\
 Folgende Aussagen sind für einen $k+1$-dimensionalen Untervektorraum von $\R^{n+1}$ äquivalent:
-\begin{enumerate}[]
+\begin{itemize}
 	\item $W^{k+1}\cap I^n \neq \emptyset$
-	\item $W^{k+1}$ besitzt einen zeit-ähnlichen Vektor
+	\item $W^{k+1}$ besitzt einen zeitartigen Vektor
 	\item $\shrp{\_,\_}$ besitzt auf $W^{k+1}$ die Signatur $(k,1)$
-\end{enumerate}
+\end{itemize}
 
 \Bem{}
 Ein $k$-Unterraum von $I^n$ ist isometrisch zu $I^k$.
@@ -150,7 +148,7 @@ $H^n$ ist vollständig.
 \Lem{Poincare-Scheiben-Modell}
 Definiere die \df{Poincare-Scheibe} durch
 \[D^n = \set{x \in \R^n}{\norm{x} < 1} \]
-und folgenden Diffeomorphismus
+und folgende Isometrie
 \begin{align*}
 p : I^n & \Pfeil{} D^n\\
 (x_1, \ldots, x_n, x_{n+1}) & \longmapsto \frac{1}{x_{n+1} + 1} (x_1,\ldots, x_n) 
@@ -162,9 +160,9 @@ wobei $g^E$ die euklidische Metrik von $\R^n$ bezeichnet.
 	Die Umkehrabbildung von $p$ ist gerade
 	\[ p\i(x) = \frac{(2x, 1 + \norm{x}^2)}{1 - \norm{x}^2} \]
 	Ihre Derivation ist
-	\[ \d_xp\i(u) = \frac{ 2 (u (1 - \norm{x}^2) + 2 x(x|u), 2 (x|u) )}{ (1 - \norm{x}^2)^2 } \]
+	\[ \d_xp\i(u) =  \klam{ \frac{ 2 u (1 - \norm{x}^2) + 2 x(x~|~u)}{ (1 - \norm{x}^2)^2 } , \frac{ 4  (x~|~u) }{ (1 - \norm{x}^2)^2 }} \]
 	Es gilt
-	\[ \shrp{d_xp\i(u), d_xp\i(u)} = (\frac{2}{1 - \norm{x}})^2 \norm{u}^2 \]
+	\[ \shrp{d_xp\i(u), d_xp\i(u)} = \klam{\frac{2}{1 - \norm{x}^2}}^2 \norm{u}^2 \]
 	Da $p\i$ eine Isometrie sein soll und das Verhalten einer Metrik durch ihre Norm bestimmt ist, folgt nun
 	\[ g^D_x = g^I_{p\i(x)} \circ \d_xp\i  = \klam{\frac{2}{1 - \norm{x}^2}}^2g^E_x \]
 \end{Beweis}
@@ -210,17 +208,17 @@ Die Metrik auf $H^n$ ist gegeben durch
 \Prop{}
 Folgende Abbildungen sind Isometrien von $H^n$:
 \begin{enumerate}[1.)]
-\item Horizontale Translationen:
+\item \df{Horizontale Translationen}
 \begin{align*}
 x \longmapsto x + (b_1,\ldots, b_{n-1}, 0)
 \end{align*}
-\item Dilationen:
-\[ x \longmapsto x \cdot \lambda \]
-\item Inversionen an Sphären orthogonal zu $\partial H^n$
+\item \df{Dilationen} für $\lambda > 0$
+\[ x \longmapsto \lambda \cdot x \]
+\item \df{Inversionen} an Sphären orthogonal zu $\partial H^n$.
 \end{enumerate}
 
 \Prop{}
-Die Isometrien der Poincare-Scheibe und der oberen Halbebene werden durch Inversionen an Sphären und Reflektion an Euklidischen Ebenen, die alle orthogonal zum Rand stehen, erzeugt.
+Die Isometrien der Poincare-Scheibe und der oberen Halbebene werden durch Inversionen an Sphären und Reflektionen an Euklidischen Ebenen, die alle orthogonal zum Rand stehen, erzeugt.
 \Prop{}
 In den konformen Modellen sind Kugeln genau die euklidischen Kugeln mit exzentrischen Mittelpunkten.
 
@@ -257,13 +255,13 @@ Wir transformieren das Problem zu einem Problem auf $H^n$ und rechnen die geford
 \Bem{}
 Man kann auch alternativ wie folgt eine Basis der Topologie von $\overline{\H^n}$ definieren: Dazu nimmt man alle offenen Mengen von $\H^n$ und schmeißt alle Mengen der Gestalt
 \[ \{ \alpha(t) \in \H^n~|~ \alpha(0) = \gamma(0), \dot{\alpha}(0)  \in V ,t > r\} \cup \set{ [\alpha] \in \partial \H^n }{\alpha(0) = \gamma(0),\dot{\alpha}(0)  \in V} \]
-für alle $[\gamma] \in \partial \H^n, V \subseteq_o T_{\gamma(0)}M, r > 0$. Die hierdurch entstehende Topologie stimmt der durch obige Proposition überein.
+für alle $[\gamma] \in \partial \H^n, V \subseteq_o T_{\gamma(0)}M, r > 0$ hinzu. Die hierdurch entstehende Topologie stimmt mit der aus obiger Proposition überein.
 
 \Prop{}
 Seien $S,S'$ zwei geodätisch vollständige Teilräume von $\H^n$. Dann tretet genau einer der folgenden Fälle ein:
 \begin{itemize}
 	\item $S$ und $S'$ sind \df{inzident}, d.\,h., $S\cap S'\neq \emptyset$.
-	\item $S$ und $S'$ sind \df{asymptotisch parallel}, d.\,h., $S\cap S' = \emptyset$ und $d(S, S') = 0$. Ferner ist dann $\overline{S} \cap \overline{S'}$ ein Punkt in $\H^n$ und existiert keine Geodäte, die zu beiden Räumen orthogonal ist.
+	\item $S$ und $S'$ sind \df{asymptotisch parallel}, d.\,h., $S\cap S' = \emptyset$ und $d(S, S') = 0$. Ferner ist dann $\overline{S} \cap \overline{S'}$ ein Punkt in $\H^n$ und es existiert keine Geodäte, die zu beiden Räumen orthogonal ist.
 	\item $S$ und $S'$ sind \df{ultra-parallel}, d.\,h., $\overline{S}\cap \overline{S'} = \emptyset$ und $d(S, S') > 0$. In diesem Fall existiert genau eine Geodäte, die orthogonal zu beiden Teilräumen steht und den Abstand zwischen beiden realisiert.
 \end{itemize}
 \begin{Beweis}{}
@@ -284,14 +282,14 @@ Sei $\phi : \H^n \pfeil{} \H^n$ eine nichttriviale Isometrie. Dann tritt genau e
 	\item $\phi$ ist \df{hyperbolisch}, d.\,h., $\phi$ hat keinen Fixpunkt in $\H^n$, aber genau zwei in $\partial \H^n$.
 \end{itemize}
 \begin{Beweis}{}
-Wir können $\overline{\phi}$ als einen Homöomorphismus von $\overline{D^n}$ auf sich selbst auffassen. Nach Brauers Fixpunktsatz muss $\phi$ dann mindestens einen Fixpunkt haben. Hat $\phi$ keinen Fixpunkt in $D^n$ aber mindestens drei auf dem Rand, so fixiert $\phi$ jeden Punkt in $\H^n$, da jeder Punkt in $D^n$ durch seine Winkel zu den drei verschiedenen Randpunkten eindeutig determiniert ist.
+Wir können $\overline{\phi}$ als einen Homöomorphismus von $\overline{D^n}$ auf sich selbst auffassen. Nach Brauers Fixpunktsatz muss $\phi$ dann mindestens einen Fixpunkt haben. Hat $\phi$ keinen Fixpunkt in $D^n$ aber mindestens drei auf dem Rand, so fixiert $\phi$ einen Punkt in $\H^n$, der auf der Geodäte zwischen zweien der Fixpunkte steht und für den die Geodäte von ihm zum dritten Fixpunkt orthogonal zur ersten Geodäten steht.
 \end{Beweis}
 
 \Def{}
 Eine hyperbolische Isometrie fixiert zwei Randpunkte und damit auch die Geodäte, die zwischen beiden verläuft. Diese eindeutig bestimmte Geodäte nenne wir die \df{Achse} von $\phi$.
 
 \Def{}
-Eine \df{Horosphäre} $S \subset \overline{\H^n}$ um den Punkt $p \in \partial H^n\setminus\{\infty\}$ ist eine $n-1$-dimensionale euklidische Sphäre, die $\partial H^n$ tangential in $p$ schneidet. Eine Horosphäre um $\infty$ ist eine $n-1$-dimensionale euklidische Hyperebene, die orthogonal zur imaginären Achse steht.\\
+Eine \df{Horosphäre} $S \subset \overline{H^n}$ um den Punkt $p \in \partial H^n\setminus\{\infty\}$ ist eine $n-1$-dimensionale euklidische Sphäre, die $\partial H^n$ tangential in $p$ schneidet. Eine Horosphäre um $\infty$ ist eine $n-1$-dimensionale, euklidische Hyperebene, die orthogonal zur imaginären Achse steht.\\
 Beide Horosphären sind flache Untermannigfaltigkeiten mit der Eigenschaft, dass jede Geodäte, die ihr Zentrum verlässt, die Horosphäre orthogonal schneidet.
 
 \Prop{}
@@ -342,14 +340,14 @@ d(\phi) := \inf_{p\in M}d(p, \phi(p))
 
 \section{Möbiusgeschichten}
 \Def{}
-Es bezeichne $S = \C \cup \infty$ die \df{Riemannsche Zahlenkugel}. Die Gruppe $PSL_2(\C)$ agiert auf $S$ durch die \df{Möbiustransformation}
+Es bezeichne $S = \C \cup \{\infty\}$ die \df{Riemannsche Zahlenkugel}. Die Gruppe $PSL_2(\C)$ agiert auf $S$ durch \df{Möbiustransformationen}
 \[ \klam{
 \begin{matrix}
 a & b\\
 c & d
 \end{matrix}
 }.z := \frac{az + b}{cz + d} \]
-Die Möbiustransformation ist ein orientierungserhaltender Diffeomorphismus auf $S$.\\
+Möbiustransformationen sind orientierungserhaltende Diffeomorphismen auf $S$.\\
 Die \df{Anti-Möbiustransformation} gegeben durch
 \[ \klam{
 	\begin{matrix}
@@ -375,7 +373,7 @@ Es gilt
 \Prop{}
 Inversionen entlang Kreisen und Reflexionen entlang Geraden, die beide orthogonal zu $\R$ sind, generieren $Conf(H^2)$.
 \Kor{}
-\[ Conf(H^2) = Isom(H^2) \]
+\[ Isom(H^2) = Conf(H^2)  \]
 
 \Prop{}
 Eine nichttriviale Transformation $A \in PSL_2(\R)$ ist
@@ -387,7 +385,7 @@ Eine nichttriviale Transformation $A \in PSL_2(\R)$ ist
 
 \Prop{}
 Da $\partial H^3 = S$, gilt
-\[ Isom(H^2) = Conf(S) \]
+\[ Isom(H^3) = Conf(S) \]
 
 \Prop{}
 Eine nichttriviale Transformation $A \in PSL_2(\C)$ ist
