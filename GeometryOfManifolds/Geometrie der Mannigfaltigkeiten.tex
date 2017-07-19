@@ -2468,13 +2468,70 @@ ist unabhängig von der Wahl von $x \in \H^n$.
 	Seien $x,y \in \H^n$. Sei $(g_i(x))_i$ eine Folge in $\Gamma.x$, die gegen einen Punkt $p \in \partial \H^n$ konvergiert. $x$ und $y$ haben einen endlichen Abstand und die Folgen $(g_i(x))$ und $g_i(y))$ haben gliedweise denselben endlichen Abstand. Ergo konvergieren sie gegen denselben Punkt im Unendlichen.
 \end{Beweis}
 
-\subsubsection{Teilaufgabe 1}
+\subsubsection{Teilaufgabe 2}
 Ist $\Gamma' \subset \Gamma$ von endlichem Index, so gilt
 \[ \Lambda(\Gamma') = \Lambda(\Gamma) \]
 \begin{Beweis}{}
 	Sei $(g_i(x))_i$ eine Folge in $\Gamma.x$, die gegen einen Punkt $p \in \partial \H^n$ konvergiert. Wir nehmen an, dass alle $g_i$ nicht in $\Gamma'$ liegen. Da $\Gamma / \Gamma'$ endlich ist, gibt es ein $h \in \Gamma$, sodass unendlich viele der $g_ih$ in $\Gamma'$ liegen. Ergo ist $p$ ein Häufungspunkt von $\Gamma'.h\i(x)$.
 \end{Beweis}
 
+
+\newpage
+\section{Blatt 4}
+\subsection{Aufgabe 1}
+Seien $\gamma_1,\ldots, \gamma_n \in Isom(D^n)$ hyperbolisch. $D_1,\ldots, D_n$ seien offene Mengen mit
+\begin{itemize}
+	\item $D_i \cap g(D_i) = \emptyset ~~~\forall g = \gamma_i^k, k \in \Z \setminus\{0\}$
+	\item $ D:= \bigcap_{i = 1}^n D_i \neq \emptyset $
+	\item $D_i \cup D_j =D^n~~~\forall i \neq j$ 
+\end{itemize}
+\subsubsection{Teilaufgabe 1 und 2}
+\paragraph{Behauptung}
+$\Gamma:= \shrp{\gamma_1,\ldots, \gamma_n}$ ist das Koprodukt der $\shrp{\gamma_i}$ in der Kategorie der Gruppen, oder anders ausgedrückt, $\Gamma$ wird frei von den $\gamma_i$ erzeugt.\\
+Ferner gilt für alle $g \in \Gamma, g\neq 1,$
+\[ D \cap g(D) = \emptyset \]
+\begin{Beweis}{}
+	Wir zeigen, dass es keine nichttrivialen Relationen in $\Gamma$ gibt. D.\,h., ist $1 = g_1\ldots g_k$ mit $g_j \in \shrp{\gamma_{i_j}}$ und $i_j \neq i_{j+1}$, so muss eines der $g_i$ trivial sein.\\
+	Wir führen dazu eine vollständige Induktion nach $k$ durch. Der Induktionsanfang ist klar.\\
+	Sei die Aussage für $k$ bewiesen und $g_1 \ldots g_{k+1} = 1$ in $\Gamma$. Da $g_{k+1} \neq 1$, gilt
+	\[ g_{k+1}(D_{i_{k+1}}) \subset D_{i_{k+1}}^C \subset D_{i_k} \]
+	und somit
+	\[ g_1\ldots g_{k+1} (D_{i_{k+1}}) \subset D_{i_1}^C  \]
+	und insbesondere
+	\[ g_1\ldots g_{k+1} (D) \subset D^C  \]
+	ergo gilt $ g_1\ldots g_{k+1}\neq 1$.
+\end{Beweis}
+
+\subsubsection{Teilaufgabe 3}
+\paragraph{Behauptung}
+$\Gamma$ ist diskret.
+\begin{Beweis}{}
+	Sei $g_n$ eine Folge in $\Gamma$, die gegen die Identität konvergiert. Für alle $g_n \neq 1$ gilt
+	\[ g_n(D) \cap D = \emptyset \]
+	Aus Stetigkeitsgründen gibt es ein $N$, sodass für alle $n\geq N$ gelten muss
+	\[ g_n(D)\cap D \neq\emptyset \]
+	Ergo $g_n = 1$ für $n\geq N$.
+\end{Beweis}
+
+\subsection{Aufgabe 4}
+\paragraph{Behauptung}
+Sei $f :M \pfeil{} N$ eine glatte Abbildung zwischen Riemannschen Mannigfaltigkeiten. Ist die maximale Dilatation $C$ von $f$ endlich, so ist $f$ $C$-Lipschitz-stetig.
+\begin{Beweis}{}
+	Seien $x,y \in M$. $\gamma : x\mapsto y$ sei eine nach Bogenlänge parametrisierte Geodäte, die den Abstand zwischen $x$ und $y$ minimiert. Es gilt
+	\[ d(f(x), f(y) ) \leq l(f\circ \gamma) = \int_{0}^1 \norm{ \d f_{\gamma(t)} \dot{\gamma}(t) }\d t\leq \int_{0}^1 \norm{ C\dot{\gamma}(t) }\d t = C d(x,y) \]
+\end{Beweis}
+
+\subsection{Aufgabe 6}
+Es bezeichne $S_g$ die vollständige hyperbolische geschlossene Oberfläche von Geschlecht $g$.
+\paragraph{Behauptung}
+Während $Isom(S_g)$ notorischerweise endlich ist, ist $Out(\pi_1(S_g))$ unendlich groß.
+\begin{Beweis}{}
+	Es gilt $\pi_1(S_g) = \shrp{a_1,b_1, \ldots, a_g,b_g~|~ [a_i,b_i]\cdots [a_g,b_g] }$. Die erste Homologiegruppe ist gerade die Abelisierung der Fundamentalgruppe
+	\[ H_1(S_g) = \pi_1(S_g)^{ab} = \Z^{2g} \]
+Die inneren Automorphismen von $\Z^{2g}$ sind trivial, weswegen $Out(\Z^{2g}) = GL(2g,\Z)$. Jeder äußere Automorphismus von $\pi_1(S_g)$ steigt zu einem wohldefinierten äußeren Automorphismus von $\Z^{2g}$ ab. Umgekehrt lässt sich jeder Automorphismus von $\Z^{2g}$ zu einem äußeren von $\pi_1(S_g)$ heben. Wir erhalten folgenden Epimorphismus
+\[ Out(\pi_1(S_g)) \surj{} Out(\Z^{2g}) \]
+Ergo ist $Out(\pi_1(S_g))$ unendlich.
+\end{Beweis}
 
 \printindex
 \end{document}
