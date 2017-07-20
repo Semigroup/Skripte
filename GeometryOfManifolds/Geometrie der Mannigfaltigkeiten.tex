@@ -1073,13 +1073,36 @@ Jede geschlossene vollständige flache Mannigfaltigkeit wird durch endlich viele
 	\item Um das zu zeigen, entlehnen wir uns mehrerer Resultate der algebraischen Topologie:
 	\begin{enumerate}[1.)]
 		\item Jede kompakte glatte Mannigfaltigkeit kann topologisch als endlicher Zellkomplex realisiert werden.
-		\item Satz von Whitehead: Ein endlicher Zellkomplex $X$ ist genau dann asphärisch, d.\,h., seine universelle Überlagerung ist null-homotop , wenn $\pi_i(X) = 0$ für alle $i\geq 2$.
+		\item Ein endlicher Zellkomplex $X$ ist genau dann asphärisch, d.\,h., seine universelle Überlagerung ist null-homotop , wenn $\pi_i(X) = 0$ für alle $i\geq 2$.
 		\item Jeder Isomorphismus von Fundamentalgruppen zusammenhängender asphärischer endlicher Zellkomplexe wird durch eine bis auf Homotopie eindeutige Homotopie-Äquivalenz induziert.
 	\end{enumerate}
-Wir wissen also, dass ein Isomorphismus von Fundamentalgruppen durch eine Homotopie-Äquivalenz $f : M \pfeil{} N$ induziert wird.
+Wir wissen also, dass ein Isomorphismus von Fundamentalgruppen durch eine Homotopie-Äquivalenz $f : M \pfeil{} N$ induziert wird, da $M,N$ beide asphärisch sind, weil ihre universelle Überlagerung $\H^3$ null-homotop ist.
 \item Ohne Beschränkung der Allgemeinheit können wir annehmen, dass $f$ glatt ist.
 \item $f$ lässt sich zu einer glatten Abbildung $\widetilde{f} : \H^n \pfeil{} \H^n$ heben. Wir rechnen nach, dass $\widetilde{f}$ eine Pseudo-Isometrie ist.
 \item Jede Pseudo-Isometrie induziert eine stetige Abbildung $\overline{\H^n} \pfeil{} \overline{\H^n}$ und einen Homöomorphismus $\partial \H^n \pfeil{} \partial \H^n$.
+\item Wir müssen eine Isometrie $\phi$ finden, die homotop zu $\widetilde{f}$ ist. Dazu wollen wir zeigen, dass $\widetilde{f}$ wie eine Isometrie auf $\partial \H^n$ agiert.
+\begin{itemize}
+	\item Dazu schauen wir uns an, was $\widetilde{f}$ mit den Eckpunkten idealer gleichmäßiger Tetraeder anstellt.
+	\item Ist $\Delta$ ein idealer Tetraeder mit Torsionswinkeln $\alpha, \beta, \gamma$, so ist sein Volumen gerade $\Lambda(\alpha) + \Lambda(\beta) + \Lambda(\gamma)$, wobei $\Lambda(\theta) = - \int_{0}^{\theta}\log \bet{ \sin(2t) } \d t$ die Lobachevsky-Funktion bezeichnet.
+	\item Insbesondere besitzen gleichmäßige ideale Tetraeder maximales Volumen $\nu_3$.
+	\item Um einen Zusammenhang zwischen topologischen und geometrischen Volumen zu erhalten, führen wir auf den Homologieklassen eine Norm ein. Das {simpliziale Volumen} $\norm{M}$ definieren wir durch die Norm seiner Fundamentalklasse $[M]$.
+	\item Es gilt im Allgemeinem
+	\[\bet{\deg f}\cdot \norm{N} \leq \norm{M} \]
+	und da $f$ eine Homotopie-Äquivalenz ist, gilt insbesondere $\norm{M} = \norm{N}$.
+	\item Um das Verhalten von $\widetilde{f}$ in Hinsicht auf Eckpunkte idealer regelmäßige Tetraeder zu verstehen, müssen wir folgende Formel zeigen
+	\[ Vol(M) = \nu_3 \norm{M} \]
+	\begin{itemize}
+		\item Dazu zeigen wir, dass $Isom(\H^n)$ eine unimodulare Lie-Gruppe ist, d.\,h., wir haben ein Haar-Maß auf dieser Gruppe, das invariant unter Links- und Rechts-Multiplikation von Elementen ist.
+		\item Wir können jeden Simplex begradigen. Jedem begradigten Simplex können wir ein abstraktes Volumen zuordnen, indem wir über den Bereich seiner Hebung in $\H^3$ integrieren.
+		\item Es gilt nun
+		\[  Vol(M) = \int_{[M]}\omega = \int_{\lambda_1 \alpha_1 + \ldots + \lambda_k \alpha_k} \omega = \lambda_1 \int_{\alpha_1} \omega + \ldots + \lambda_k \int_{\alpha_k}\omega \leq \lambda_1 \nu_3 + \ldots +\lambda_k \nu_3 \leq \norm{M} \nu_3 \]
+		\item Danach konstruieren wir einen Zykel $\overline{\alpha}(t) = \frac{1}{k_t} \sum_{\sigma \in \Sigma}\lambda_\sigma(t) \sigma$ der Fundamentalklasse, bei dem die einzelnen Simplizes ähnlich zu $\Delta(t)$ sind und deswegen ihr Volumen für $t\pfeil{} \infty$ gegen $\nu_3$ konvergiert. Es folgt dann
+		\[ Vol(M) = \int_{\overline{\alpha}(t)}\omega  \geq \nu_3\norm{M}  \]
+	\end{itemize}
+\item Da $f$ eine Homotopie-Äquivalenz ist, erhält $f$ das topologische Volumen. Deswegen muss $\widetilde{f}$ das geometrische Volumen erhalten und schickt die Ecken eines idealen gleichmäßigen Tetraeders auf die Ecken eines idealen gleichmäßigen Tetraeders.
+\end{itemize}
+\item Deswegen gibt es eine Isometrie $\psi$, die mit $\widetilde{f}$ auf dem Rand übereinstimmt.
+\item Wir können nun als Homotopie $\psi \sim \widetilde{f}$ in $\H^3$ die Konvex-Kombination der beiden Abbildungen nehmen. Diese steigt wohldefiniert auf $M\pfeil{} N$ ab und liefert deswegen die gewünschte Homotopie zu einer eindeutig bestimmten Isometrie.
 \end{itemize}
 \newpage
 \section{Inside group! Outside group! Which side group? I don't know!}
@@ -1806,7 +1829,7 @@ die mit dem Randhomomorphismus kommutiert und deswegen einen Homomorphismus auf 
 Dieser Homomorphismus ist gerade die Identität.
 
 \Def{}
-Sei $\alpha : \Delta_k \pfeil{} M$ ein gerader Simplex. Definiere das \df{abstrakte Volumen} von $\alpha$ durch
+Sei $\alpha : \Delta_k \pfeil{} M$ ein gerader Simplex. Definiere das \df{abstrakte Volumen} von $\alpha$ durch seinen Lift in $\H^n$ durch
 \[ \bet{\int_{\alpha} \omega} =\bet{\int_{\Delta_k} \alpha^*\omega  } \]
 
 \Def{}
@@ -1832,7 +1855,7 @@ Besitzt $M$ für jedes $\epsilon > 0$ einen $\epsilon$-effizienten Zykel, so gil
 \[ Vol({M}) \geq \nu_3 \norm{M} \]
 
 \Def{}
-Sei $t > 0$. Wir definieren einen Tetraeder $\Delta(t) \subset \H^3$, indem wir einen beliebigen Punkt $x \in \H^3$ fixieren und in seinem Tangentialraum einen regelmäßigen Tetraeder mit Außenradius $t$ und Zentrum $0$ konstruieren. Die Ecken dieses Tetraeders bilden nach $\H^3$ ab, und bezeichnen jeden Tetraeder, der isometrisch zu deren konvexe Hülle ist, als $\Delta(t)$. Ferner geben wir uns eine Ordnung auf den Ecken der $\Delta(t)$ vor, wodurch jeder $\Delta(t)$ zu einem geraden 3-Simplex wird.
+Sei $t > 0$. Wir definieren einen Tetraeder $\Delta(t) \subset \H^3$, indem wir einen beliebigen Punkt $x \in \H^3$ fixieren und in seinem Tangentialraum einen regelmäßigen Tetraeder mit Außenradius $t$ und Zentrum $0$ konstruieren. Die Ecken dieses Tetraeders bilden wir nach $\H^3$ ab, und bezeichnen jeden Tetraeder, der isometrisch zu deren konvexe Hülle ist, als $\Delta(t)$. Ferner geben wir uns eine Ordnung auf den Ecken der $\Delta(t)$ vor, wodurch jeder $\Delta(t)$ zu einem geraden 3-Simplex wird.
 
 \Bem{}
 Es bezeichne $S(t)$ die Menge der $\Delta(t)$. Dann agiert $Isom(\H^3)$ frei und transitiv auf $S(t)$.\\
@@ -1844,8 +1867,8 @@ für jedes $A \subset S(t)$ und ein fixiertes $u \in S(t)$.
 Betrachte die Überlagerung $\pi : \H^3 \pfeil{} \H^3 / \Gamma$. Setze $\Sigma = \Gamma^4 / \Gamma$. Fixiert man $x_0 \in \H^3$, so liefert jedes $\sigma \in \Sigma$ einen singuären Simplex in $\H^3 / \Gamma$, dessen Eckpunkte alle $\pi(x)$ sind. Diesen Simplex bezeichnen wir mit $\sigma$.
 
 \Def{}
-Der Punkt $x_0$ legt eine Dirichlet-Kachelung von $\H^3$ in Bereiche $D(\gamma(x_0)), \gamma \in \Gamma,$ fest.\\
-Für $\sigma = (\gamma_1,\ldots, \gamma_4)\in \Sigma$ sei $S^+_\sigma(t) \subset S(t)$ die Menge aller $t$-Simplizes mit positivenm Vorzeichen, deren $i$-te Ecke in $D(\gamma_i(x_0))$ liegt. Definiere
+Der Punkt $x_0$ legt eine Kachelung von $\H^3$ in Dirichlet-Bereiche $D(\gamma(x_0)), \gamma \in \Gamma,$ fest.\\
+Für $\sigma = (\gamma_1,\ldots, \gamma_4)\in \Sigma$ sei $S^+_\sigma(t) \subset S(t)$ die Menge aller $t$-Simplizes mit positiven Vorzeichen, deren $i$-te Ecke in $D(\gamma_i(x_0))$ liegt. Definiere
 \[ \lambda^+_\sigma(t) := m(S^+_\sigma(t)) \]
 Definiere analog $\lambda^-_\sigma(t) :=  m(S^-_\sigma(t)) $ und
 \[ \lambda_\sigma(t) := \lambda_\sigma^+(t) - \lambda_\sigma^-(t) \]
@@ -1856,14 +1879,14 @@ Definiere
 Dann hat $\alpha(t)$ für $t$ groß genug eine endliche Summe, ist ein Zykel und stellt ein positives Vielfaches der Fundamentalklasse $[M]$ dar.
 
 \Lem{}
-Setze $\overline{\alpha}(t) := k_t \alpha(t)$ für $\alpha(t) \in k_t [M]$. Für jedes $\epsilon> 0$ gibt es ein $t_0 > 0$, sodass $\alpha(t)$ $\epsilon$-effizient für $t> t_0$ ist.
+Setze $\overline{\alpha}(t) := \frac{1}{k_t} \alpha(t)$ für $\alpha(t) \in k_t [M]$. Für jedes $\epsilon> 0$ gibt es ein $t_0 > 0$, sodass $\overline{\alpha}(t)$ $\epsilon$-effizient für $t> t_0$ ist.
 \begin{Beweis}{}
 	Sei $d$ der Außenradius von $D(x_0)$. Ein \df{quasi-$t$-Simplex} ist ein Simplex, dessen Ecken höchstens $d$ weit von den jeweiligen Eckpunkten eines $t$-Simplizes entfernt sind. $\overline{\alpha}(t)$ ist dann eine Linearkombination von quasi-$t$-Simplizes.\\
 	Das Volumen der $t$-Simplizes strebt für $t \pfeil{} \infty$ gegen $\nu_3$. Ergo ist $\overline{\alpha}(t)$ $\epsilon$-effizient für $t$ groß genug.
 \end{Beweis}
 
 \Lem{}
-Sei $f : M \pfeil{} N$ eine glatte Homotopie-Äquivalenz geschlossener, hyperbolischer, orientierbarer drei-dimensionaler Mannigfaltigkeiten. Dann können wir $f$ heben und erhalten eine Pseudo-Isometrie $\H^3 \pfeil{} \H^3$. Diese induziert einen Homöomorphismus $\widetilde{f} : \partial \H^3 \pfeil{} \H^3$.\\
+Sei $f : M \pfeil{} N$ eine glatte Homotopie-Äquivalenz geschlossener, hyperbolischer, orientierbarer drei-dimensionaler Mannigfaltigkeiten. Dann können wir $f$ heben und erhalten eine Pseudo-Isometrie $\H^3 \pfeil{} \H^3$. Diese induziert einen Homöomorphismus $\widetilde{f} : \partial \H^3 \pfeil{} \partial\H^3$.\\
 $\widetilde{f}$ schickt die Ecken eines gleichmäßigen, idealen Tetraeders auf die Ecken eines gleichmäßigen, idealen Tetraeders.
 \begin{Beweis}{Stichworte}
 	Wir haben bereits bewiesen, dass $M,N$ dasselbe topologische Volumen und somit auch dasselbe geometrische Volumen haben. $f$ erhält das topologische Volumen, deswegen muss $\widetilde{f}$ das geometrische Volumen erhalten, ergo ideale, gleichmäßige Tetraeder auf ihresgleichen schicken.
