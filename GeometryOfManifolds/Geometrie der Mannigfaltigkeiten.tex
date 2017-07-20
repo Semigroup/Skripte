@@ -668,7 +668,7 @@ Wir können in obiger Situation die Raumkrümmung erniedrigen anstatt zu erhöhe
 \section{How to Prove}
 \begin{itemize}
 	\item Bevor wir Margulis Lemma beweisen, zeigen wir, dass jede Lie-Gruppe eine Zassenhaus-Umgebung besitzt.
-	\item Sei $\Gamma$ diskret. Margulis Lemma sagt aus, dass es für alle $n\geq 2$ ein $\epsilon_n>0$ gibt, sodass $\Gamma_{\epsilon_n}(x)$ virtuell nilpotent für alle $x\in \H^n$ ist. Um das zu zeigen, wählen wir eine Zassenhaus-Umgebung von $Isom(\H^n)$ und eine Umgebung $Stab_G(X) \subset W \subset Isom(\H^n)$, sodass $W\i = W$ und $W^m$ von $m$ Translaten von $U$ überdeckt wird.\\
+	\item Sei $\Gamma$ diskret. Margulis Lemma sagt aus, dass es für alle $n\geq 2$ ein $\epsilon_n>0$ gibt, sodass $\Gamma_{\epsilon_n}(x)$ virtuell nilpotent für alle $x\in \H^n$ ist. Um das zu zeigen, wählen wir eine Zassenhaus-Umgebung $U\subset Isom(\H^n)$ und eine Umgebung $Stab_G(x) \subset W \subset Isom(\H^n)$, sodass $W\i = W$ und $W^m$ von $m$ Translaten von $U$ überdeckt wird.\\
 	Da $\set{\phi \in Isom(\H^n)}{d(x,\phi(x)) \leq \epsilon_n}\subset W$, wird $\Gamma_{\epsilon_n}(x)$ von Elementen aus $W$ erzeugt. Die Gruppe $\Gamma' := \shrp{\Gamma_{\epsilon_n}(x)\cap U}$ ist nilpotent.
 	Da $W$ von $m$ Translaten von $U$ überdeckt wird, kann der Index von $\Gamma'$ in $\Gamma_{\epsilon_n}(x)$ nicht größer als $m$ sein.
 	\item Danach sehen wir ein, dass jedes nichttriviale $\Gamma_{\epsilon_n}(x)$ elementar ist, d.\,h., entweder nur aus Hyperbolischen mit derselben Achse oder nur aus Parabolischen mit demselben Fixpunkt im Unendlichen besteht.
@@ -1062,6 +1062,26 @@ Jede diskrete Teilgruppe von $Isom(\R^n)$ ist virtuell abelsch.
 Jede geschlossene vollständige flache Mannigfaltigkeit wird durch endlich viele Tori überdeckt.
 
 \chapter{Mostows Rigiditäts-Theorem}
+\section{How to Prove}
+\begin{itemize}
+	\item Zuerst zeigen wir, dass für hyperbolische, vollständige Mannigfaltigkeiten $M$ endlichen Volumens eine Injektion
+	\[ Isom(M) = N(\Gamma) / \Gamma \Inj{} Out(\pi_1(M)) \]
+	gegeben ist.
+	\item Danach zeigen wir, dass $Isom(M)$ endlich ist, wenn $M$ endliches Volumen hat. Das folgt, da $N(\Gamma)$ in diesem Fall diskret ist.
+	\item Besitzt $M$ endliches Volumen, so erhalten wir durch die Epstein-Penner-Konstruktion eine endliche Kachelung von $M$. Diese wird zu einer endlichen Zellzerlegung, wenn $M$ zweidimensional ist.
+	\item Mostows Rigidiäts-Theorem besagt, dass jeder Isomorphismus von Fundamentalgruppen dreidimensionaler hyperbolischer geschlossener orientierbarer Mannigfaltigkeiten durch genau eine Isometrie induziert wird.
+	\item Um das zu zeigen, entlehnen wir uns mehrerer Resultate der algebraischen Topologie:
+	\begin{enumerate}[1.)]
+		\item Jede kompakte glatte Mannigfaltigkeit kann topologisch als endlicher Zellkomplex realisiert werden.
+		\item Satz von Whitehead: Ein endlicher Zellkomplex $X$ ist genau dann asphärisch, d.\,h., seine universelle Überlagerung ist null-homotop , wenn $\pi_i(X) = 0$ für alle $i\geq 2$.
+		\item Jeder Isomorphismus von Fundamentalgruppen zusammenhängender asphärischer endlicher Zellkomplexe wird durch eine bis auf Homotopie eindeutige Homotopie-Äquivalenz induziert.
+	\end{enumerate}
+Wir wissen also, dass ein Isomorphismus von Fundamentalgruppen durch eine Homotopie-Äquivalenz $f : M \pfeil{} N$ induziert wird.
+\item Ohne Beschränkung der Allgemeinheit können wir annehmen, dass $f$ glatt ist.
+\item $f$ lässt sich zu einer glatten Abbildung $\widetilde{f} : \H^n \pfeil{} \H^n$ heben. Wir rechnen nach, dass $\widetilde{f}$ eine Pseudo-Isometrie ist.
+\item Jede Pseudo-Isometrie induziert eine stetige Abbildung $\overline{\H^n} \pfeil{} \overline{\H^n}$ und einen Homöomorphismus $\partial \H^n \pfeil{} \partial \H^n$.
+\end{itemize}
+\newpage
 \section{Inside group! Outside group! Which side group? I don't know!}
 \Def{}
 Seien $H\subset G$ Gruppen. Definiere den \df{Normalisierer} von $H$ durch
@@ -1091,7 +1111,7 @@ Aus der Kommutativität folgt zwangsläufig $\phi_{\H^n} \in N(\Gamma)$. Ferner 
 
 \Def{}
 Das \df{Zentrum} von $H\subset G$ besteht aus allen Elementen aus $G$, die mit allen Elementen aus $H$ kommutieren, d.\,h.
-\[ Z(H) := \set{g \in G}{gh = hg \forall h \in H} \]
+\[ Z(H) := \set{g \in G}{gh = hg ~~\forall h \in H} \]
 
 
 
@@ -1181,12 +1201,12 @@ Sei $\Gamma \subset Isom(\H^n)$ nichttrivial und diskret. Folgende Aussagen sind
 		\item[(2) $\impl{}$ (3)] $\Gamma$ erhält eine Menge von Punkten im Unendlichen. Sei $x$ aus dieser Menge und $\Gamma' = \set{g\in \Gamma}{g(x) = x}$. Enthält $\Gamma$ keine Hyperbolischen, so ist es  virtuell $\Gamma'$, ansonsten ist es virtuell ein semi-direktes Produkt aus $\Gamma'$ und $\Z$.\\
 		$\Gamma'$ erhält Horosphären und lässt sich deswegen als eine diskrete Untergruppe von $Isom(\R^{n-1})$ auffassen. Nach Satz \ref{IsomRn} ist $\Gamma'$ deswegen virtuell abelsch.
 		\item[(3) $\impl{}$ (4)] Wir können annehmen, dass $\Gamma$ abelsch ist. Lemma \ref{Kommutieren} lässt sich für elliptische Isometrien erweitern, weswegen Punkt (2) und somit auch (4) folgt.
-		\item[(4) $\impl{}$ (1)] $\Lambda(\Gamma)$ besteht aus $\Gamma$-Orbiten. Falls $\Lambda(\Gamma)$ leer ist, so fixiert $\Gamma$ einen Punkt in $\H^n$ wegen Brouwers Fixpunktsatz. Da $\Gamma$ diskret ist, muss $\Gamma$ endlich sein.
+		\item[(4) $\impl{}$ (1)] $\Lambda(\Gamma)$ besteht aus $\Gamma$-Orbiten. Falls $\Lambda(\Gamma)$ leer ist, so fixiert $\Gamma$ einen Punkt in $\H^n$ wegen Brouwers Fixpunktsatz. Da $\Gamma$ diskret ist, muss $\Lambda(\Gamma)$ endlich sein.
 	\end{enumerate}
 \end{Beweis}
 
 \Def{}
-Eine Gruppe $G$ agiere auf einem topologischen Raum $X$. Eine geschlossene, nicht-leere, $G$-invariante Menge $A \subset X$ heißt \df{minimal}, falls keine abgeschlossene, nicht-leere, $G$-invariante Teilmenge $B \subsetneq A$ existiert.
+Eine Gruppe $G$ agiere auf einem topologischen Raum $X$. Eine abgeschlossene, nicht-leere, $G$-invariante Menge $A \subset X$ heißt \df{minimal}, falls keine abgeschlossene, nicht-leere, $G$-invariante Teilmenge $B \subsetneq A$ existiert.
 
 \Prop{}
 Sei $\Gamma \subset Isom(\H^n)$ nichttrivial, nicht elementar und diskret.
@@ -1206,7 +1226,7 @@ Sei $\Gamma \subset Isom(\H^n)$ nichttrivial, nicht elementar und diskret. $\Gam
 Sei $C \subset \overline{\H^n}$ abgeschlossen, konvex und nicht leer. Für $x \in \H^n$ bezeichne $r(x)$ den nächsten Punkt in $C$. Für $x\in \partial\H^n$ bezeichne $r(x)$ den Punkt in $C$, der als erstes von einer Horosphäre um $x$ tangiert wird. $r : \overline{\H^n} \Pfeil{} C$ ist wohldefiniert.
 \begin{Beweis}{}
 	Sei $x\in {\H^n}$. Da $C$ nicht leer ist, gibt es möglich Kandidaten für $r(x)$. Wir nehmen uns zwei mögliche Kandidaten $y,z \in C$ für $r(x)$ heraus und konstruieren das geodätische Dreieck $\Delta_{xyz}$. Da $C$ konvex ist, liegt die Seite $\overline{yz}$ in $C$. Auf dieser Seite muss sich ein Punkt $x_1$ befinden, der von allen Punkten auf dieser Seite $x$ am nächsten ist.\\
-	Dieser Punkt ist eventuell nicht $r(x)$, aber indem wir die Konstruktion sukezessive durchführen, erhalten wir eine konvergente Folge $(x_n)_n$, deren Grenzwert $r(x)$ ist.
+	Dieser Punkt ist eventuell nicht $r(x)$, aber indem wir diese Konstruktion sukzessive fortführen, erhalten wir eine konvergente Folge $(x_n)_n$, deren Grenzwert $r(x)$ ist.
 \end{Beweis}
 
 \Lem{}
@@ -1234,7 +1254,7 @@ Sei $\Gamma \subset Isom(\H^n)$ nicht trivial und diskret. Wir definieren den \d
 \Lem{}
 Die Wirkung von $\Gamma$ auf $\H^n \cup \Omega(\Gamma)$ ist eigentlich diskontiniuerlich.
 \begin{Beweis}{}
-	Da $\Gamma$ diskret ist, ist die Wirkung auf $\H^n$ sowieso eigentlich diskontinuierlich. $r$ retrahiert $\H^n \cup \Omega(\Lambda)$ stetig zu $conv(\Lambda(\Gamma)) \setminus \Lambda(\Gamma)$ und kommutiert mit Elementen aus $\Gamma$.\\
+	Da $\Gamma$ diskret ist, ist die Wirkung auf $\H^n$ sowieso eigentlich diskontinuierlich. $r$ retrahiert $\H^n \cup \Omega(\Gamma)$ stetig zu $conv(\Lambda(\Gamma)) \setminus \Lambda(\Gamma)$ und kommutiert mit Elementen aus $\Gamma$.\\
 	Sei $K \subset \H^n \cup \Omega(\Lambda)$ kompakt. Wir wollen zeigen, dass es nur endlich viele $g \in \Gamma$ gibt mit
 	\[ g.K \cap K \neq \emptyset \]
 	Da $K$ kompakt ist, ist es auch $r(K) \subset conv(\Lambda(\Gamma)) \setminus \Lambda(\Gamma)$. Gilt $g.K \cap K \neq \emptyset$, so folgt $g.r(K) \cap r(K) \neq \emptyset$. Da $\Gamma$ eigentlich diskontinuierlich auf $\H^n$ agiert, kann es für die zweite Schnittbedingung aber nur endlich viele $g$ geben.
@@ -1269,7 +1289,7 @@ Ist $Vol(\H^n / \Gamma)$ endlich, so enthält $\Gamma$ keine nichttriviale, virt
 	\[ \Lambda(H) = \Lambda(\Gamma)= \partial \H^n \]
 	Andererseits muss $\Lambda(H)$ null, eins oder zwei Elemente enthalten, da $H$ virtuell abelsch ist. Ergo erhalten wir für diesen Fall einen Widerspruch.\\
 	Wir können also annehmen, dass $H$ endlich ist. In diesem Fall ist $Fix(H)$ ein nicht-leerer echter Unterraum von $\H^n$. Da $H$ normal ist, agiert $\Gamma$ auf $Fix(H)$. Es folgt
-	\[ \Lambda(\Gamma) \subset \partial Fix(H) \]
+	\[ \Lambda(\Gamma) \subset Fix(H) \]
 	Ein Widerspruch!
 \end{Beweis}
 
@@ -1349,11 +1369,11 @@ Definiere den \df{positiven Lichtkegel} durch
 \end{itemize}
 
 \Lem{}
-$O^+(n,1)$ agiert transitiv auf $L$ und der Stabilisator eines Punktes ist nicht-kompakt für $n \geq 1$.
+$O^+(n,1)$ agiert transitiv auf $L$ und der Stabilisator eines Punktes ist nicht kompakt für $n \geq 1$.
 \begin{Beweis}{}
 	Sei $N$ der Stabilisator von $v\in L$. Dann entspricht $N$ der Menge der ONBs $v,v_1,\ldots, v_n$. Dann ergibt sich folgende Isomorphie
 	\[ N \isom{} \{v\} \times( L \setminus \{ \lambda \cdot v \}) \times O(n-1) \]
-	da $(v,v_1)$ einen $(1,1)$-Unterraum aufspannt. Die Menge rechts ist nicht-kompakt.
+	da $(v,v_1)$ einen $(1,1)$-Unterraum aufspannt. Die Menge rechts ist nicht kompakt.
 \end{Beweis}
 
 \Bem{}
@@ -1399,7 +1419,7 @@ Der Rand von $C$ in $\R^{n+1}$ ist $C \cup L$ geschnitten mit einer abzählbaren
 
 \Bem{}
 \begin{itemize}
-	\item Da die Konstruktion von $C$ $\Gamma$-äquivariant ist, ist die Zerlegung in Facetten $\Gamma$-äquvariant.
+	\item Da die Konstruktion von $C$ $\Gamma$-äquivariant ist, ist die Zerlegung in Facetten $\Gamma$-äquivariant.
 	\item Die Zellstruktur in $\partial C \setminus L$ ist lokal endlich und jede Zelle ist euklidisch. Projizieren wir dies auf die Poincare-Scheibe, erhalten wir ergo eine Kachelung von $\H^n$.
 	\item Diese Kachelung lässt sich parametrisieren, indem $B_1,\ldots, B_p$ durch $\alpha_1B_1,\ldots, \alpha_p B_p$ ersetzt wird. Gilt aber $\alpha_1 = \ldots = \alpha_p$, so bleibt die Kachelung gleich. Wir erhalten also eine $\R_{> 0}^{p-1}$-parametrisierbare Familie von Kachelungen.
 	\item Jede Zelle hat vollständig geodätische Facetten und es gibt keine null-dimensionale Zellen außerhalb von $L$.
@@ -1417,18 +1437,18 @@ Ist $n = 2$, so hat $M$ eine $\R_{>0}^{p-1}$-Familie von unvollständigen euklid
 Eine Abbildung $f : X \pfeil{} Y$ metrischer Räume heißt \df{quasi-isometrisch}, wenn Konstanten $C,D > 1$ gewählt werden können, sodass für alle $x,y \in X$
 \[ \frac{1}{C}d(x,y) - D \leq d(f(x),f(y)) \leq C d(x,y) + D \]
 und für alle $z \in Y$ ein $w \in X$ existiert mit
-\[ d(f(x),z) \leq D \]
-gilt. In einem solchen Fallen heißen $X,Y$ \df{quasi-isometrisch} zueinander.
+\[ d(f(w),z) \leq D \]
+gilt. In einem solchen Fall heißen $X,Y$ \df{quasi-isometrisch} zueinander.
 
 \Def{}
 Eine Abbildung $f : X \pfeil{} Y$ metrischer Räume heißt \df{pseudo-isometrisch}, wenn Konstanten $C,D > 1$ gewählt werden können, sodass für alle $x,y \in X$
 \[ \frac{1}{C}d(x,y) - D \leq d(f(x),f(y)) \leq C d(x,y) \]
-gilt. In einem solchen Fallen heißen $X,Y$ \df{pseudo-isometrisch} zueinander.\\
+gilt. In einem solchen Fall heißen $X,Y$ \df{pseudo-isometrisch} zueinander.\\
 Insbesondere sind Pseudo-Isometrien Lipschitz-stetig.
 
 \Def{}
 Sei $f : M \pfeil{} N$ eine glatte Abbildung Riemannscher Mannigfaltigkeit. Definiere die \df{maximale Dilatation} von $f$ bei $x\in M$ durch
-\[ \sup_{v \in \T_xM} \frac{\norm{\d_xf(v)}}{\norm{v}}  \]
+\[ \sup_{v \in \T_xM} \frac{\norm{\d f_x(v)}}{\norm{v}}  \]
 
 \Prop{}
 Sei $f : M \pfeil{} N$ eine glatte Homotopie-Äquivalenz geschlossener hyperbolischer Mannigfaltigkeiten. Dann ist jeder Lift $\widetilde{f} : \H^n \pfeil{} \H^n$ von $f$ eine Pseudo-Isometrie.
@@ -1461,7 +1481,7 @@ Im oberen Halbraum-Modell bezeichne $\pi$ die geodätische Retraktion auf die im
 Sei $l \subset \H^n$ eine Geodäte und $\pi$ die geodätische Retraktion auf $l$. Für $x \in \H^n$ und $d = d(x,\pi(x))$ ist die maximale Dilatation von $\pi$ bei $x$ durch $\frac{1}{\cosh d}$ beschränkt.
 \begin{Beweis}{}
 	Wir stellen uns das Ganze wie in obigem Lemma vor. Sei $v \in \T_x\H^n$ so, dass $v$ Länge 1 hat. Dann gilt
-	\[ \norm{d\pi} = \cos \theta = \frac{1}{\cosh d} \] 
+	\[ \norm{\d\pi_x(v)} \leq  \cos \theta = \frac{1}{\cosh d} \] 
 \end{Beweis}
 
 \Lem{}
@@ -1521,13 +1541,17 @@ Die Fortsetzung $F : \overline{\H^n} \pfeil{} \overline{\H^n}$ ist stetig.
 
 \Satz{}
 Sei $f : M \pfeil{} N$ eine glatte Homotopie-Äquivalenz geschlossener hyperbolischer Mannigfaltigkeiten. Dann lässt sich sein Lift zu einer Pseudo-Isometrie $\widetilde{f} : \overline{\H^n} \pfeil{}\overline{\H^n}$ fortsetzen, dessen Einschränkung auf den Rand homömorph ist.
-\begin{Beweis}{}
-	Es bleibt zu zeigen, dass $\widetilde{f}_{|\partial \H^n}$ homöomorph ist. Allerdings ist diese Abbildung eine injektive Abbildung Riemannscher Mannigfaltigkeiten und somit offen. Ergo ist das Bild von $\widetilde{f}_{|\partial \H^n}$ offen und abgeschlossen, also ganz $\partial \H^n$.
+\paragraph{Bemerkung}
+Diese Aussage gilt auch, wenn $\widetilde{f}$ nicht durch eine Homotopie-Äquivalenz induziert wird, sondern eine normale Pseudo-Isometrie ist.
+\begin{Beweis}{} %%% Funktioniert das wirklich?
+	Es bleibt zu zeigen, dass $\widetilde{f}_{|\partial \H^n}$ surjektiv ist. Beachte, dass $\partial \H^n$ homömorph zu $S^{n-1}$ ist.\\
+	Sei also $\widetilde{f} : S^n \pfeil{} S^n$ eine beliebige, stetige, injektive Abbildung. Wir nehmen an, dass $\widetilde{f}$ nicht surjektiv ist. Für jede offene Menge $U \neq S^n$ ist dann $\widetilde{f}(U) \neq S^n$. Ergo können wir $U$ und $\widetilde{f}(U)$ mit Teilmengen des $\R^n$ identifizieren. Der Satz über die Invarianz des Bereiches sagt nun aus, dass $\widetilde{f}(U)$ offen in $\R^n$ liegt. Ergo liegt $\widetilde{f}(U)$ auch offen in $S^n$\footnote{Um das einzusehen, kann man notfalls eine offene Umgebung $V$ mit $\widetilde{f}(U) \subset V \subsetneq S^n$ mit einer Teilmenge des $\R^n$ identifizieren.}.\\
+	Seien $U_1,U_2$ offen in $S^n$ mit $S^n = U_1 \cup U_2$. Dann ist $\widetilde{f}(S^n) = \widetilde{f}(U_1) \cup \widetilde{f}(U_2)$ offen in $S^n$, aber auch kompakt, ergo eine nichtleere Zusammenhangkomponente.
 \end{Beweis}
 
 \section{Topologisches Volumen}
 \Satz{}
-Jede glatte kompakte Mannigfaltigkeit kann topologisch als endlicher Zellkomplex dargestellt werden.
+Jede kompakte glatte Mannigfaltigkeit kann topologisch als endlicher Zellkomplex dargestellt werden.
 
 \Def{}
 Ein endlicher Zellkomplex $X$ ist lokal null-homotop und hat deswegen eine universelle Überlagerung $\widetilde{X}$. Ist $\widetilde{X}$ null-homotop, so heißt $X$ \df{asphärisch}.
@@ -1546,7 +1570,7 @@ Seien $M,N$ zwei geschlossene, orientierbare, hyperbolische, zusammenhängende d
 \end{Beweis}
 
 \Kor{}
-Zwei geschlossene, zusammenhängende, orientierbare, hyperbolische drei-dimensionale Mannigfaltigkeiten sind genau dann isometrisch, wenn ihre Fundamentalgruppen isomorph sind.
+Zwei geschlossene, zusammenhängende, orientierbare, hyperbolische dreidimensionale Mannigfaltigkeiten sind genau dann isometrisch, wenn ihre Fundamentalgruppen isomorph sind.
 
 \Kor{}
 Ist $M$ eine geschlossene, orientierbare, hyperbolische, zusammenhängende drei-dimensionale Mannigfaltigkeit, so ist
@@ -1665,8 +1689,8 @@ Eine Überlagerung $(A,a) \pfeil{} (B,b)$ topologischer Räume induziert Isomorp
 \Satz{Whitehead}
 Eine stetige Abbildung zusammenhängender CW-Komplexe ist genau dann eine Homotopie-Äquivalenz, wenn sie Isomorphismen auf allen Homotopiegruppen induziert.
 
-\Kor{Hurewicz}
-Eine stetige Abbildung einfach zusammenhängender CW-Komplexe ist eine Homotopie-Äquivalenz.
+%\Kor{Hurewicz}
+%Eine stetige Abbildung einfach zusammenhängender CW-Komplexe ist eine Homotopie-Äquivalenz.
 
 \section{Maßlose Maßtheorie}
 
