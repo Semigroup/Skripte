@@ -1,0 +1,133 @@
+\Def{}
+\marginpar{Vorlesung vom 18.12.17}
+Wir definieren ein äußeres Produkt auf der Menge der glatten Differentialformen durch
+\begin{align*}
+ \wedge : \Omega^p(U) \times \Omega^q(U) & \Pfeil{{}} \Omega^{p+q}(U)\\
+ (\omega,\eta) & \longmapsto [x \in U \mapsto \omega(x)\wedge \eta(x)] 
+\end{align*}
+Dies ist zulässig, da $\omega\wedge \eta$ tatsächlich eine glatte Abbildung $U \pfeil{} Alt^{p+q}(\R^n)$ ist.\\
+Es gilt dann
+\[ (f\cdot \omega)\wedge \eta = f(\omega \wedge \eta) = \omega \wedge (f\eta) \]
+und
+\[ f\wedge \omega = f \cdot\omega\]
+
+\Lem{}
+Seien glatte Differentialformen $\omega\in \Omega^p(U), \eta \in \Omega^q(U)$. Dann gilt folgende \df{Produktregel} für Differentialformen
+\[ \d(\omega \wedge \eta) = (\d \omega) \wedge \eta +  (-1)^{p} \omega \wedge (\d \eta) \]
+\begin{Beweis}{}
+Es genügt dies auf Ebene von erzeugenden Formen der Gestalt
+\[ \omega = f\epsilon_I \text{ und } \eta = g\epsilon_J \]
+zu zeigen für $I = (i_1,\ldots, i_p), J = (j_1, \ldots, j_q)$. Es gilt
+\[ \omega \wedge \eta = (fg)\epsilon_I \epsilon_J \]
+und deswegen
+\begin{align*}
+\d (\omega \wedge \eta) &= \d (fg) \wedge \epsilon_I \wedge \epsilon_J\\
+&= \sum_{i} \frac{\partial (fg)}{\partial x_i} \epsilon_i \wedge \epsilon_I \wedge \epsilon_J\\
+&= \sum_{i} \klam{\frac{\partial f}{\partial x_i} g + f \frac{\partial g}{\partial x_i}} \epsilon_i \wedge \epsilon_I \wedge \epsilon_J\\
+&= \sum_{i} \frac{\partial f}{\partial x_i} g  \epsilon_i \wedge \epsilon_I \wedge \epsilon_J
++ \sum_{i} f\frac{\partial g}{\partial x_i}  \epsilon_i \wedge \epsilon_I \wedge \epsilon_J\\
+&=g \cdot (\d f) \wedge \epsilon_I \wedge \epsilon_J +  f \cdot (\d g) \wedge \epsilon_I \wedge \epsilon_J\\
+&=(\d f) \wedge \epsilon_I \wedge (g \cdot \epsilon_J) +  (-1)^p(f \cdot \epsilon_I) \wedge (\d g \wedge\epsilon_J)\\
+&= \d \omega  \wedge \eta + (-1)^p\omega \wedge (\d \eta)
+\end{align*}
+\end{Beweis}
+
+\Def{}
+Wir definieren die Algebra der glatten Differentialformen durch
+\[ (\Omega^*(U) = \bigoplus_{p\geq 0} \Omega^p(U), +, \wedge, \d) \]
+$(\Omega^*(U) = \bigoplus_{p\geq 0} \Omega^p(U), +, \wedge)$ ist eine graduiert-kommutative graduierte $C^\infty(U,\R)$-Algebra. $(\Omega^*(U),\d)$ ist ferner ein Komplex von $\R$-Vektorräumen, d.\,h. $\d^2 = 0$.\\
+Zwischen diesen beiden Strukturen existiert eine Interaktion\footnote{Im Englischen nennt man eine solche Struktur\textsl{ \textbf{D}ifferential \textbf{g}raded \textbf{a}lgebra}.}, nämlich ist $\d$ eine Derivation auf der Algebra, d.\,h., es gilt
+\[ \d(\omega\wedge \eta) = (\d \omega) \wedge \eta + (-1)^p \omega \wedge (\d \eta) \]
+
+\Prop{Eindeutigkeit von $\d$}
+Es existiert genau eine Familie linearer Abbildungen
+\[ d : \Omega^p(U) \Pfeil{} \Omega^{p+1}(U) \]
+sodass gilt:
+\begin{enumerate}[(i)]
+	\item $d f= \sum_{i} \frac{\partial f}{\partial x_i} \d x_i$ für $f \in \Omega^0(U)$
+	\item $d^2 = 0$
+	\item $d(\omega\wedge \eta) = (d \omega) \wedge \eta + (-1)^p\omega \wedge (d\eta)$ für $\omega \in \Omega^p(U), \eta \in \Omega^q(u)$
+\end{enumerate}
+
+\Bsp{Klassische Integralsätze von Green, Stokes und Gauß}
+Betrachte $U \off \R^2$. Alle nicht verschwindenden Gruppen von Differentialformen sind $\Omega^0(U),\Omega^1(U),\Omega^2(U)$. Ab $p\geq 3$ verschwinden die Gruppen, da ab da die alternierenden Räume verschwinden. Es gilt für $f \in \Omega^0(U) = C^\infty(U,\R)$
+\[ \d f = \frac{\partial f}{\partial x_1} \d x_1 +  \frac{\partial f}{\partial x_2} \d x_2 = \nabla f \cdot 
+\left(
+\begin{matrix}
+\d x_1\\
+\d x_2
+\end{matrix}
+\right) \]
+Für $\omega = f_1 \d x_1 + f_2 \d x_2 \in \Omega^1(U)$ gilt
+\begin{align*}
+\d \omega &= \d f_1 \wedge \d x_1 + \d f_2 \wedge \d x_2\\
+&= (\frac{\partial f_1}{\partial x_1} \d x_1 + \frac{\partial f_1}{\partial x_2} \d x_2)\wedge \d x_1
++(\frac{\partial f_2}{\partial x_1} \d x_1 + \frac{\partial f_2}{\partial x_2} \d x_2)\wedge \d x_2\\
+&= (\frac{\partial f_2}{\partial x_1} - \frac{\partial f_1}{x_2}) \d x_1 \wedge \d x_2\\
+&= \text{rot}(f_1, f_2) \d x_1 \wedge \d x_2
+\end{align*}
+Sei nun $U \off \R^3$. Wir betrachten $\d : \Omega^1(U) \pfeil{} \Omega^2(U)$ und $\omega = f_1 \d x_1 + f_2 \d x_2 + f_3 \d x_3$. Es gilt
+\begin{align*}
+\d \omega &= \klam{\frac{\partial f_2}{\partial x_1} -\frac{\partial f_1}{\partial x_2}}  \d x_1 \wedge \d x_2
++\klam{\frac{\partial f_3}{\partial x_2} -\frac{\partial f_2}{\partial x_3}}  \d x_2 \wedge \d x_3
++\klam{\frac{\partial f_1}{\partial x_3} -\frac{\partial f_3}{\partial x_1}}  \d x_3 \wedge \d x_1\\
+&= \text{rot}(f_1, f_2, f_3) \cdot
+\klam{\begin{matrix}
+	\d x_1 \wedge \d x_2\\
+	\d x_2 \wedge \d x_3\\
+	\d x_3 \wedge \d x_1
+	\end{matrix}}
+\end{align*}
+Betrachte nun $\omega = g_3 \d x_1 \wedge \d x_2+ g_1 \d x_2 \wedge \d x_3 +  g_2 \d x_3 \wedge \d x_1\in \Omega^2(U)$. Es gilt
+\[ \d \omega = \klam{ \frac{\partial g_1}{\partial x_1} + \frac{\partial g_2}{\partial x_2 } + \frac{\partial g_3}{\partial x_3} } \d x_1 \wedge \d x_2 \wedge \d x_3 = \text{div}(g)  \d x_1 \wedge \d x_2 \wedge \d x_3  \]
+In der klassischen Physik gilt, was hier wg. $\d^2 = 0$ offensichtlich ist
+\begin{align*}
+\rot \circ \nabla &= 0\\
+\text{div} \circ \rot &= 0
+\end{align*}
+
+\Def{}
+Wir definieren die $p$-te Kohomologiegruppe der \df{de Rham-Kohomologie} durch
+\[ H^p(U) := \ker (\d : \Omega^p(U) \pfeil{} \Omega^{p+1} (U)) / \Img(\d : \Omega^{p-1}(U) \pfeil{} \Omega^p(U) ) \]
+Wir setzen ferner $H^p(U) = \Omega^p(U) = 0$ für $p < 0$.
+
+\Bem{}
+\begin{align*}
+ H^0(U) =& \ker \d = \{f \in C^\infty (U,\R)~|~\d f = 0\} =  \{f \in C^\infty (U,\R)~|~ \frac{\partial f}{\partial x_i} = 0 \}\\
+  =& \{f \in C^\infty (U,\R)~|~ f\text{ ist lokal konstant auf }U \}
+\end{align*}
+Daraus folgt
+\[ \dim_\R H^0(U) = \text{ Zahl der Wegzshgkomp. von }U \]
+
+\section{Das Äußere Produkt auf der Kohomologie}
+\Def{}
+Wir definieren auf den Kohomologiegruppen ein Produkt durch
+\begin{align*}
+\wedge : H^p(U) \times H^q(U) & \Pfeil{} H^{p+q}(U)\\
+([\omega], [\eta]) & \longmapsto [\omega\wedge \eta]
+\end{align*}
+Dies ist wohldefiniert, denn für $\omega\in \Omega^p(u), \eta\in \Omega^q(U)$ mit $\d \omega = 0, \d \eta = 0$ gilt
+\[ \d (\omega \wedge \eta) = (\d \omega) \wedge \eta + (-1)^p \omega \wedge (\d \eta) = 0 \]
+ergo liegt $\omega \wedge \eta$ ebenfalls im Kern von $\d$. Ferner gilt für andere Repräsentanten $[\omega'] = [\omega], [\eta'] = [\eta]$
+\[ \omega' = \omega + \d \alpha \text{ und }\eta' = \eta + \d \beta \]
+und somit
+\begin{align*}
+\omega'\wedge \eta' &= (\omega + \d \alpha)\wedge (\eta + \d \beta) \\
+&= \omega \wedge \eta + \d \alpha \wedge \eta + \omega \wedge \d \beta + \d \alpha \wedge \d \beta\\
+ &= \omega \wedge \eta + \d(\alpha \wedge \eta + (-1)(\omega \wedge \beta) + (\alpha\wedge \d \beta) )
+\end{align*}
+Insofern bildet $(H^*(U), +, \wedge)$ eine graduiert-kommutative graduierte Algebra. $\wedge$ nennt man in diesem Zusammenhang auch \textit{Cup-Produkt}.
+
+\section{Funktorialität}
+\Bsp{Lineare Algebra}
+Seien $V,W$ reelle Vektorräume und $A : V\pfeil{} W$ eine lineare Abbildung. Sei $\eta \in Alt^p(W), v_1, \ldots, v_p \in V$. Dann setze
+\[ \omega(v_1, \ldots, v_p) := \eta( A(v_1), \ldots, A(v_p) ) \]
+Dann ist $\omega \in Alt^p(V)$. Setze $Alt^p(A)(\eta) := \omega$. Dadurch erhalten wir eine lineare Abbildung
+\begin{align*}
+Alt^p(A) : Alt^p(W) \Pfeil{} Alt^p(V)
+\end{align*}
+Für eine weitere lineare Abbildung $B : W \pfeil{} P$ gilt
+\[ Alt^p(B\circ A) = Alt^p(A) \circ Alt^p(B) \]
+Ferner gilt
+\[ Alt^p(\id{V}) = \id{Alt^p(V)} \]
+Insofern liefern die $(Alt^p)_p$ eine Familie kontravarianter Funktoren von der Kategorie der reellen Vektorräume in die Kategorie der reellen Vektorräume.

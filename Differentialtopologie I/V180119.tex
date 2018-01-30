@@ -1,0 +1,131 @@
+\Bsp{}
+\marginpar{Vorlesung vom 19.1.18}
+Wir wollen die Kohomologiegruppen von $\R^2-\{0\} \sim S^1$ berechnen. Dazu sollen $U$ und $V$ Umgebungen von zwei Hälften von $S^1$ sein. Dann besteht $U\cap V$ aus zwei Wegzusammenhangkomponenten.\\
+$U,V$ sind homotop zu Punkten und $U\cap V$ ist homotop zu zwei Punkten. Es ergibt sich folgende Mayer-Vietoris-Sequenz:
+\begin{align*}
+0\Pfeil{}H^0(S^1) & \Pfeil{} H^0(U) \oplus H^0(V) \Pfeil{} H^0(U\cap V) \\
+\Pfeil{}  H^1(S^1) & \Pfeil{} H^1(U) \oplus H^1(V) \Pfeil{}  H^1(U\cap V)\\
+ \Pfeil{}  H^2(S^1) & \Pfeil{} H^2(U) \oplus H^2(V) \Pfeil{}  H^2(U\cap V)\Pfeil{} \ldots
+\end{align*}
+Wir kennen nun folgende Kohomologiegruppen
+\[
+H^p(U) \isom{} H^p(V)\isom{}
+\left\lbrace
+\begin{aligned}
+\R && p = 0\\
+0 && \text{ sonst}
+\end{aligned}
+\right.
+\]
+Da $H^0(U\cap V)$ genau von den Wegzusammenhangkomponenten von $U\cap V$ abhängt, folgt
+\[ H^0(U\cap V) = \R \oplus \R \]
+Es ergibt sich nun folgende exakte Sequenz
+\begin{align*}
+0\Pfeil{}H^0(S^1) & \Pfeil{} \R \oplus \R \Pfeil{f} \R^2 \\
+\Pfeil{}  H^1(S^1) & \Pfeil{} 0 \oplus 0 \Pfeil{}  H^1(U\cap V)\\
+\Pfeil{}  H^2(S^1) & \Pfeil{} 0 \oplus 0 \Pfeil{}  H^2(U\cap V)\Pfeil{} \ldots
+\end{align*}
+$f$ ist dabei gegeben durch
+\[ f(u,v) = u - v \]
+Ergo hat $f$ einen eindimensionalen Kern und ein eindimensionales Bild. Es folgt aufgrund der Exaktheit
+\[ H^0(S^1) \isom{} \Ker f \isom{}\R \text{ und } H^1(S^1) \isom{}  \R^2 / \Img f \isom{} \R \]
+Für den Rest gilt nun
+\[ H^{p+1}(S^1) \isom{} H^p(U\cap V) = 0 \]
+da $\Omega^{p+1}(S^1) = 0$ für $p\geq 1$. Unterm Strich erhalten wir
+\[
+H^p(\R^2 - 0) \isom{} H^p(S^1) \isom{} 
+\left\lbrace
+\begin{aligned}
+\R && p = 0, 1\\
+0 && \text{ sont}
+\end{aligned}
+\right.
+\]
+
+\chapter{\textsc{Kohomologie mit Kompakten Trägern}}
+\Def{}
+Für $U \subset \R^n$ offen definieren wir den Raum der \df{Differentialformen mit kompakten Träger} durch
+\[ \Omega_c^p(U) := \set{\omega \in \Omega^p(U)}{\supp\ \omega \text{ ist kompakt}} \]
+Ist $\supp\ \omega$ kompakt, so ist auch $\supp\ \d \omega$ kompakt. Dadurch können wir $\d$ wohldefiniert auf $\Omega^*_c(U)$ einschränken. Dadurch erhalten wir folgenden Koketten-Komplex von reellen Vektorräumen
+\[ \d| : \Omega_c^p(U) \Pfeil{} \Omega_c^{p+1}(U) \]
+Die Kohomologiegruppen dieses Komplexes definieren die \df{Kohomologiegruppen mit kompakten Trägern}
+\[ H^p_c(U) := H^p(\Omega^*_c(U)) \]
+
+\Bsp{}
+Wir wollen $H^1_c(\R^1)$ bestimmen. Betrachte dazu die Abbildung
+\begin{align*}
+\int : \Omega_c^1(\R^1) & \Pfeil{} \R\\
+\omega &\longmapsto \int_{\R^1}\omega
+\end{align*}
+$\int$ ist offensichtlich linear und surjektiv. Wir wollen den Kern bestimmen. Zuerst zeigen wir
+\[ \Img\ \d| \subset \ker \int \]
+Sei dazu $\omega = \d f, f\in \Omega_c^0(\R)$. Dann gilt
+\[\int \omega = \int \d f = \int_{-\infty}^{\infty} \frac{\partial f}{\partial x} \d x \]
+Der kompakte Träger von $f$ sei enthalten in $[a,b]$. Dann haben wir
+\[\int \omega = \int \d f = \int_{a}^{b} \frac{\partial f}{\partial x} \d x = f(a) - f(b) = 0-0 = 0 \]
+Ferner behaupten wir
+\[ \ker \int \subset \Img\ d| \]
+Denn sei $\omega = g(x)\d x \in \Omega_c^1(\R^1)$ mit $\int_{-\infty}^{\infty}g(x)\d x = 0$. Ferner hat $g$ kompakten Träger. Wir definieren dann die wohldefinierte Funktion
+\[ G(x) := \int_{-\infty}^xg(x) \d x \]
+Es gilt dann
+\[ \d G = G' \d x = g \d x = \omega \]
+$G$ hat tatsächlich einen kompakten Träger, denn $g$ ist kompakt und $\int_{-\infty}^{\infty}g(x)\d x = 0$. Insofern ist $G$ nur auf einem kompakten Intervall ungleich Null.\\
+Es gilt nun
+\[ H^1_c(\R^1) = \ker \d| / \Img \d| = \Omega_c^1(\R^1) / \ker \int \isom{} \R^1 \]
+Dies unterscheidet sich von der gewöhnlichen De-Rham-Kohomologie, für die gilt
+\[H^1(\R^1) = 0\]
+Insbesondere ist $H^*_c$ \textbf{keine} Homotopieinvariante.
+
+\Def{}
+Ist $M$ eine beliebige, glatte Mannigfaltigkeit, dann definieren wir
+\[ \Omega_c^p(M) := \set{\omega \in \Omega^p(M)}{\supp \omega \text{ ist kompakt}} \]
+und
+\[H^p_c(M) := H^p(\Omega_c^*(M))\]
+
+\Bem{}
+Sei $\Phi : M \pfeil{} N$ eine glatte Abbildung. Der Pullback unter $\phi$ induziert im Allgemeinem \textbf{keine} Abbildung auf $H^*_c$.\\
+Z.\,Bsp. kann man
+\[ \phi : \R^1 \Pfeil{} \ast  \]
+betrachten. Der Pullback einer Differentialform auf dem einpunktigen Raum $\ast$ gibt eine konstante Abbildung auf $\R^1$, die im Allgemeinem keinen kompakten Träger hat.
+
+\Bem{}
+Wir klassifizieren zwei Abbildungen von glatten Mannigfaltigkeiten, die trotzdem Abbildungen auf den Kohomologiegruppen induzieren:
+\begin{enumerate}[1)]
+	\item \Def{}
+	Eine stetige Abbildung $f : X \pfeil{} Y$ topologischer Raum heißt \df{eigentlich}\footnote{Im Englischen \textit{proper}.}, falls das Urbild jeder kompakten Menge wieder kompakt ist, d.\,h.
+	\[ A \subset Y \text{ kompakt } \Impl{} f\i(A)  \subset X\text{ kompakt} \]
+	\Bsp{}
+	Ist $F$ ein kompakter Raum, so ist
+	\[ \R^n\times F \Pfeil{} \R^n \]
+	eigentlich.\\\\
+	Die Abbildung
+	\[\R^n \Pfeil{} \ast \]
+	ist nicht eigentlich.\\\\
+	Eigentliche, glatte Abbildungen $\phi : M\pfeil{} N$ von Mannigfaltigkeiten induzieren \textbf{kontravariant} Abbildungen
+	\begin{align*}
+	\phi^* : H^*_c(N) & \Pfeil{} H^*_c(M)\\
+	[\omega] & \longmapsto [\phi^*\omega]
+	\end{align*}
+	\item Sei $\iota : U \inj{} M$ die Inklusion einer offenen Teilmenge. Dann wird \textbf{kovariant} eine Abbildung
+	\[ \iota_* : H^*_c(U) \Pfeil{} H^*_c(M)\]
+	induziert, indem $\omega \in \Omega_c^*(U)$ durch die Null auf $M$ fortgesetzt wird.
+\end{enumerate}
+
+\section{Mayer-Vietoris für $H^*_c$}
+Sei $M$ eine glatte Mannigfaltigkeit, $U,V \subset M$ offen mit $U\cup V = M$. Wir erhalten folgende kommutative Diagramme
+\begin{center}
+	\begin{tikzcd}
+		U\cap V \arrow[hookrightarrow, r, "i_U"] \arrow[hookrightarrow, d, "i_V"]	& U \arrow[hookrightarrow, d, "j_U"] \\
+		V  \arrow[hookrightarrow, r, "j_V"] 	& M 
+	\end{tikzcd}
+	$\rightsquigarrow$
+	\begin{tikzcd}
+		\Omega^*_c(U\cap V) \arrow[r, "i_{U,*}"] \arrow[d, "i_{V,*}"]	& \Omega_c^*(U) \arrow[d, "j_{U,*}"] \\
+		\Omega_c^*(V)   \arrow[r, "j_{V,*}"]	& \Omega_c^*(M) 
+	\end{tikzcd}
+\end{center}
+Dadurch erhalten wir die kurze exakte Sequenz
+\[ 0 \Pfeil{} \Omega_c^*(U\cap V) \Pfeil{} \Omega_c^*(U) \oplus \Omega_c^*(V) \Pfeil{} \Omega_c^*(M) \Pfeil{} 0 \]
+und die folgende lange exakte Sequenz
+\[ \ldots \Pfeil{} H^p_c(U\cap V)  \Pfeil{} H_c^p(U) \oplus H_c^p(V) \Pfeil{} H^p(M)_c  \Pfeil{} H^{p+1}_c(U\cap V) \Pfeil{} \ldots \]
+Beachte, diese Sequenz ist analog zu der langen exakten Sequenz auf den normalen Kohomologiegruppen bis auf die Tatsache, dass $M$ und $U\cap V$ hier die Positionen getauscht haben.

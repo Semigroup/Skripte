@@ -1,0 +1,203 @@
+\section{Endlich-Dimensionalität der Kohomologie}
+\marginpar{Vorlesung vom 26.1.18}
+Sei $M$ eine glatte Mannigfaltigkeit der Dimension $n$.
+\Def{}
+Eine offene Überdeckung $\{U_\alpha\}_\alpha$ von $M$ heißt \df{gut}, wenn alle nichtleeren endlichen Schnitte $U_{\alpha_1}\cap U_{\alpha_2} \cap \ldots \cap U_{\alpha_k}$ diffeomorph zu $\R^n$ sind.
+
+\Lem{}
+$M$ besitzt eine gute Überdeckung. Diese kann endlich gewählt werden, wenn $M$ kompakt ist.
+\begin{Beweisskizze}{}
+Wähle eine Riemannsche Metrik auf $M$. Man kann zeigen, dass jeder Punkt von $M$ eine geodätisch konvexe Umgebung besitzt. Der Durchschnitt geodätischer konvexer Mengen ist wieder geodätisch konvex, sofern die beiden Mengen klein genug sind. Außerdem sind geodätische konvexe Mengen diffeomorph zu $\R^n$.\\
+Insofern genügt es eine Überdeckung von $M$ durch geodätisch konvexe Mengen zu wählen, die klein genug sind.
+\end{Beweisskizze}
+
+\Satz{}
+Hat $M$ eine gute endliche Überdeckung, so gilt für alle $p$
+\[ \dim_\R H^p(M) < \infty \]
+\begin{Beweis}{}
+\begin{enumerate}[\text{Schritt} 1:]
+	\item Seien $U,V \subset M$ offen mit
+	\begin{align*}
+	\dim H^p(U) &< \infty\\
+	\dim H^p(V) &< \infty\\
+	\dim H^p(U\cap V) &< \infty
+	\end{align*}
+	für alle $p$. Betrachte folgende exakte Sequenz
+	\[ 
+	H^p(U\cap V)
+	\Pfeil{\delta^*}
+	H^p(U\cup V)
+	\Pfeil{\iota^*}
+	H^p(U) \oplus H^p(V)
+	\Pfeil{}
+	H^p(U\cap V)
+	 \]
+	 Es gilt dann
+	 \[ H^p(U\cup V) \isom{} \Img \iota^* \oplus \Img \delta^* \]
+	 Da $H^p(U\cap V), H^p(U)$ und $H^p(V)$ endliche Dimension haben, haben dies auch die Bilder von $\iota^*$ und $\delta^*$. Ergo auch $H^p(U\cap V)$.
+	 \item Wir führen eine vollständige Induktion nach der Kardinalität $\kappa$ einer endlichen guten Überdeckung:
+	 \begin{itemize}
+	 	\item $\kappa = 1$:\\
+	 	Dann ist $M \isom{} \R^n$. Damit folgt auch
+	 	\[ H^p(M) \isom{} H^p(\R^n) \]
+	 	$H^p(\R^n)$ ist nach dem Poincare-Lemma endlich dimensional.
+	 	\item $\kappa - 1 \pfeil{} \kappa$:\\
+	 	Sei $U_1, \ldots, U_\kappa$ eine gute Überdeckung von $M$. Setze
+	 	\[ U:= U_1 \cup \ldots \cup U_{\kappa-1} \]
+	 	und
+	 	\[ V:= U_\kappa \isom{} \R^n \]
+	 	Durch die Induktionsannahme folgt
+	 	\[ \dim H^p(U)< \infty \text{  und  } \dim H^p(V)<\infty \]
+	 	für alle $p$. Betrachte
+	 	\[ U\cap V = (U_1\cap U_\kappa) \cup \ldots \cup (U_\kappa\cap U_\kappa) \]
+	 	$U\cap V$ besitzt die gute Überdeckung
+	 	\[ U_1\cap U_\kappa, \ldots, U_{\kappa - 1} \cap U_\kappa \]
+	 	der Kardinalität $\kappa - 1$. Mit der Induktionsannahme gilt also
+	 	\[ \dim H^p(U\cap V) < \infty \]
+	 	für alle $p$. Mit Schritt 1 folgt nun
+	 	\[ \dim H^p(M) = \dim H^p(U\cup V) < \infty \]
+	 	für alle $p$.
+	 \end{itemize}
+\end{enumerate}
+\end{Beweis}\\
+Wir wollen Folgendes zeigen: \textit{Ist $M$ orientiert und hat keinen Rand, so gilt}
+\[ \dim H^p(M) = \dim H_c^{n-p}(M) \]
+Dies nennt man \df{Poincare-Dualität}.\\
+
+Wir wollen eine Beschreibung des Verbindungshomomorphismus
+\[ \delta^* : H^p(U\cap V) \Pfeil{} H^{p+1}(U\cup V) \]
+in der Mayer-Vietoris-Sequenz erarbeiten. Sie ergibt sich durch eine Diagrammjagd aus folgendem Diagramm
+\begin{center}
+	\begin{tikzcd}
+		0 \arrow[r] &
+		\Omega^p(U\cup V) \arrow[r] \arrow[d, "\d"]	& 
+		\Omega^p(U) \oplus \Omega^p(V) \arrow[r] \arrow[d, "\d\oplus \d"] &
+		\Omega^p(U\cap V) \arrow[r] \arrow[d, "\d"] &
+		0 \\
+		0 \arrow[r] &
+		\Omega^{p+1}(U\cup V) \arrow[r]	& 
+		\Omega^{p+1}(U) \oplus \Omega^{p+1}(V) \arrow[r] &
+		\Omega^{p+1}(U\cap V) \arrow[r] &
+		0 
+	\end{tikzcd}
+\end{center}
+Es gilt somit für $\omega \in \Omega^p(U\cap V)$
+\begin{align*}
+\delta^*[\omega]_{|U} &= - [\d (f_V \cdot \omega)]\\
+\delta^*[\omega]_{|V} &= [\d (f_U \cdot \omega)]
+\end{align*}
+wobei
+\[ \omega = (f_U\omega)_{|V} + (f_V \omega)_{|U} \]
+Wir können $\delta^*: H^{n-p-1}_c(U\cup V) \pfeil{} H^{n-p}_c(U\cap V)$ beschreiben, indem wir für ein
+$[\omega] \in H^{n-p-1}_c(U\cup V)$ eine Fortsetzung durch Null von $\delta^*[\omega]$ auf $U$ und $V$ erhalten durch jeweils
+\[ -[\d (f_V\omega)] \text{  und  } [\d (f_U \omega)] \]
+
+\Lem{Fünfer-Lemma}
+\begin{center}
+	\begin{tikzcd}
+		A \arrow[r]\arrow[d,"\alpha"] & B \arrow[r]\arrow[d,"\beta"] & C \arrow[r]\arrow[d,"\gamma"] & D \arrow[r]\arrow[d,"\delta"] & E \arrow[d,"\epsilon"]\\
+		A' \arrow[r] & B' \arrow[r] & C' \arrow[r] & D' \arrow[r] & E'\\
+	\end{tikzcd}
+\end{center}
+Kommutiert obiges Diagramm und sind $\alpha, \beta, \delta$ und $\epsilon$ Isomorphismen, so ist auch $\gamma$ isomorph.
+\begin{Beweis}{}
+	Diagrammjagd.
+\end{Beweis}
+
+\Bem{}
+Sei $\shrp{\cdot ~|~ \cdot} : V\times W \pfeil{} \R$ eine Bilinearform, $V,W$ seien endlich-dimensionale Vektorräume.\\
+Man erinnere sich daran, dass
+\[ V^* = \Hom{\R}{V}{\R} \]
+gilt. $\shrp{\cdot ~|~\cdot }$ induziert lineare Abbildungen
+\begin{align*}
+V & \Pfeil{} W^*\\
+v & \longmapsto \shrp{v~|~\cdot}
+\end{align*}
+und
+\begin{align*}
+W & \Pfeil{} V^*\\
+w & \longmapsto \shrp{\cdot~|~w}
+\end{align*}
+Man erinnere sich daran, dass $\shrp{\cdot ~|~\cdot}$ \df{nicht-ausgeartet} heißt, wenn für alle $0\neq v \in V$ und $0\neq w \in W$ Vektoren $v'\in V, w'\in W$ existieren mit
+\[ \shrp{v~|~w'} \neq 0 \text{  und  } \shrp{v'~|~w} \neq 0 \]
+\Lem{}
+$\shrp{\cdot ~|~ \cdot}$ ist genau dann {nicht-ausgeartet}, wenn die beiden obigen induzierten Abbildungen Isomorphismen sind.
+
+\Def{}
+Sei $M$ eine orientierte, glatte Mannigfaltigkeit ohne Rand der Dimension $n$. Wir definieren eine Paarung durch
+\begin{align*}
+\shrp{\cdot ~|~\cdot} :H^p(M) \times H^{n-p}_c(M) &\Pfeil{} \R\\
+([\omega], [\eta]) & \longmapsto \int_M \omega \wedge \eta
+\end{align*}
+$\omega \wedge \eta$ ist in $\Omega^n_c(M)$, da $\eta$ kompakten Träger hat. Insofern ist obiges Integral wohldefiniert.\\
+Die Paarung ist unabhängig von der Wahl der Repräsentanten $\omega, \eta$. Dies folgt aus der Produktregel und dem Satz von Stokes, da $M$ keinen Rand hat.
+
+\Satz{Poincare-Dualität}
+Sei $M$ eine orientierte glatte Mannigfaltigkeit ohne Rand der Dimension $n$, die eine endliche gute Überdeckung besitzt.\\
+Dann ist
+\begin{align*}
+\shrp{\cdot ~|~\cdot} :H^p(M) \times H^{n-p}_c(M) &\Pfeil{} \R
+\end{align*}
+nicht-ausgeartet für alle $p$.
+\begin{Beweis}{}
+Seien $U,V \subset M$ offen. Die Poincare-Dualität gelte für $U,V$ und $U\cap V$.
+\begin{center}
+	\begin{tikzcd}
+		H^p(U\cup V) \arrow[r, "\iota^*"] \arrow[d, dash, "\oplus"]	& 
+		H^p(U) \oplus H^p(V) \arrow[r]  \arrow[d, dash, "\oplus"] &
+		H^p(U\cap V) \arrow[r, "\delta^*"]\arrow[d, dash, "\oplus"]&
+		H^{p+1}(U\cup V)\arrow[d, dash, "\oplus"] \\
+		H^{n-p}_c(U\cup V) \arrow[d, "\shrp{\cdot~|~\cdot}"]	& 
+		H^{n-p}_c(U) \oplus H^{n-p}_c(V) \arrow[l, "\iota_*"]  \arrow[d, "\shrp{\cdot~|~\cdot}"] &
+		H^{n-p}_c(U\cap V) \arrow[l]  \arrow[d, "\shrp{\cdot~|~\cdot}"]&
+		H^{n-p-1}_c(U\cup V) \arrow[l, "\delta^*"]  \arrow[d, "\shrp{\cdot~|~\cdot}"]\\ 
+		\R	& 
+		\R  &
+		\R &
+		\R\\ 
+	\end{tikzcd}
+\end{center}
+Indem wir den kontravarianten, exakten Funktor $\_^*$ auf die untere Zeile anwenden, erhalten wir\\\\
+\adjustbox{scale=0.8,center}{%
+	\begin{tikzcd}
+	H^{p-1}(U) \oplus H^{p-1}(V) \arrow[r]  \arrow[d, "\isom{}"] &
+	H^{p-1}(U\cap V) \arrow[r, "\delta^*"] \arrow[d, "\isom{}"]	&
+	H^p(U\cup V) \arrow[r, "\iota^*"] \arrow[d, "f"]	& 
+	H^p(U) \oplus H^p(V) \arrow[r]  \arrow[d, "\isom{}"] &
+	H^p(U\cap V) \arrow[d, "\isom{}"] \\
+	H_c^{n-p+1}(U)^* \oplus H_c^{n-p+1}(V)^* \arrow[r] &
+	H_c^{n-p+1}(U\cap V)^* \arrow[r, "\delta^*"] &
+	H_c^{n-p}(U\cup V)^* \arrow[r, "\iota^*"] 	& 
+	H_c^{n-p}(U)^* \oplus H^p(V)^* \arrow[r]   &
+	H_c^{n-p}(U\cap V)^*
+\end{tikzcd}
+}\\\\
+Mit dem Fünferlemma würde nun folgen, dass $f$ ein Isomorphismus ist, unter der Voraussetzung, dass obiges Diagramm kommutiert.\\
+Für die Kommutativität ist zu zeigen
+\[
+\shrp{\delta^* \omega, \eta} = \shrp{\omega, \delta^* \eta}
+\]
+Tatsächlich gilt
+\begin{align*}
+\shrp{\delta^* \omega, \eta} = \int_{U\cap V} \delta^*\omega \wedge \eta 
+&= \int \d(f_U\omega) \wedge \eta
+= \int \d f_U \wedge \omega \wedge \eta
+\end{align*}
+und
+\begin{align*}
+\shrp{\omega, \delta^* \eta}=\int \omega \wedge \delta_* \eta 
+&= \int \omega \wedge \d  (f_V \eta)
+ = \int \omega \wedge \d f_U \wedge \omega
+ =(-1)^p \int \d f_U \wedge \omega \wedge \eta
+\end{align*}
+Somit kommutiert obiges Diagramm bis auf Vorzeichen. Ergo ist 
+\[f : H^p{(U\cup V)} \pfeil{} H^{n-p}_c(U\cup V)^*\]
+ein Isomorphismus.\\
+Um den Beweis abzuschließen, führen wir wieder Induktion nach der Kardinalität einer endlichen guten Überdeckung von $M$.\\
+Der Induktionsanfang ist hierbei gegeben durch die Poincare-Lemmata.
+\end{Beweis}
+
+\Kor{}
+Insbesondere folgt aus obigem Satz
+\[ H^p(M) \isom{} H^{n-p}_c(M)^* \]
+für alle $p$.

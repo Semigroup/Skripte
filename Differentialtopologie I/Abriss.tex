@@ -1,0 +1,331 @@
+\chapter{\textsc{Abriss}}
+\marginpar{Abriss vorhergehender Vorlesungen}
+\section{Topologie}
+\Lem{Lebesgue}
+Sei $X$ ein kompakter Raum mit Metrik $d$. $(U_i)_{i\in I}$ sei eine Überdeckung von $X$ durch offene Mengen. Dann gibt es eine Konstante $\delta > 0$, die sogenannte \df{Lebesgue-Konstante}, sodass für jede Teilmenge $A \subset X$ gilt
+\[ \text{diam}(A) = \sup \{d(a,b)~|~a,b \in A\} < \delta \Impl{} \exists i \in I: A \subset U_i \]
+\begin{Beweis}{}
+Für jedes $x \in X$ wählen wir ein $\epsilon(x) > 0$ und ein $i(x) \in I$ mit
+\[ B_{2\epsilon(x)}(x) \subset U_{i(x)} \]
+Die Menge $\{ B_{\epsilon(x)}(x) \}_{x\in X}$ ist eine Überdeckung von $X$ durch offene Mengen und eine Verfeinerung von $\{U_i\}_{i\in I}$. Da $X$ kompakt ist, erhalten wir eine endliche Teilüberdeckung $\{ B_{\epsilon(x_i)}(x_i) \}_{i=1}^n$ von $X$. Setze
+\[ \delta := \min\{ \epsilon(x_1), \ldots, \epsilon(x_n) \} \]
+Sei nun $A \subset X$ mit
+\[ \text{diam}(A) \subset \delta \]
+Dann gibt es ein $x \in \{x_1,\ldots, x_n\}$ mit $a_0 \in B_{\epsilon(x)}(x)\cap A \neq \emptyset$. Es gilt dann für alle $a \in A$
+\[ d(a,x) \leq d(a, a_0) + d(a, x) < \delta + \epsilon(x)\leq 2 \epsilon(x) \]
+Daraus folgt
+\[ A \subset B_{2\epsilon(x)}(x) \subset U_{i(x)} \]
+\end{Beweis}
+
+%\section{Parakompaktheit}
+\Def{}
+Eine Überdeckung eines topologischen Raumes durch offene Mengen heißt \df{lokal endlich}, wenn jeder Punkt des Raumes eine Umgebung besitzt, die nur endlich viele Elemente der Überdeckung schneidet.
+
+\Def{}
+Ein topologischer Raum heißt \df{parakompakt}, wenn jede Überdeckung durch offene Mengen eine lokal endliche Verfeinerung besitzt.
+
+\Bem{}
+\begin{itemize}
+	\item Ist ein Raum parakompakt, so ist er auch \df{normal}, d.\,h., zwei disjunkte abgeschlossene Teilmengen besitzen in diesem Raum zwei disjunkte Umgebungen.
+	\item Jeder metrische Raum ist parakompakt.
+	\item Im Allgemeinem impliziert Parakompaktheit \textbf{nicht} Metrisierbarkeit.
+\end{itemize}
+
+\Def{}
+Sei $X$ ein topologischer Raum mit einer Überdeckung $\{U_i\}_{i\in I}$ durch offene Mengen. Eine \df{Zerlegung der Eins} bzgl. $\{U_i\}_{i\in I}$ ist eine Familie $\{f_i\}_{}$ von stetigen Funktionen
+\begin{align*}
+f_i : X & \Pfeil{} \R
+\end{align*}
+mit
+\begin{enumerate}[i.)]
+	\item $\supp f_i := Cl(\set{x\in X}{f(x) \neq 0}) \subset U_i$,
+	\item Für alle $x \in X$ gilt
+	\[ f_i(x) = 0 \]
+	für fast alle $i \in I$
+	\item und
+	\[\sum_{i\in I}f_i(x) = 1\]
+	für alle $x \in X$.
+\end{enumerate}
+
+\Satz{}
+Ein parakompakter Raum besitzt bzgl. jeder Überdeckung durch offene Mengen eine Zerlegung der Eins.
+
+\section{Mannigfaltigkeiten}
+Jede Mannigfaltigkeit, die sich durch zwei Karten mit zusammenhängendem Schnitt überdecken lässt, ist orientierbar.
+
+
+\Def{}
+Sei $\phi : M \pfeil{} N$ eine glatte Abbildung glatter Mannigfaltigkeiten.
+\begin{enumerate}[1.)]
+	\item $p \in M$ heißt ein \df{kritischer Punkt}, falls
+	\[\phi_{p,*} : T_pM \pfeil{} T_{\phi(p)}N\]
+	nicht surjektiv ist.
+	\item $q \in N$ heißt ein \df{kritischer Wert}, falls es einen kritischen Punkt $p\in \phi\i(q)$ gibt.
+	\item Ist $q \in N$ nicht kritisch, so nennen wir $q$ einen \df{regulären Wert}. 
+\end{enumerate}
+\Bem{}
+\begin{itemize}
+	\item Ist $\dim M < \dim N$, so gilt für $q \in N$
+	\[q \text{ ist regulär } \Gdw{} q \notin \phi(M) \]
+	\item Ist $\dim M \geq \dim N$, so gilt für $q \in N$
+	\[ q \text{ ist regulär } \Gdw{} \forall p \in \phi\i(q): \phi_{p,*} \text{ hat als lineare Abbildung einen Rang von } \dim N \]
+	\item Alle $q\in N - \phi(M)$ sind reguläre Werte.
+\end{itemize}
+
+\Satz{Sard}
+Sei $f : U \off \R^n \pfeil{} \R^p$ glatt. Setze
+\[ C:= \set{x \in \R^n}{x \text{ ist kein regulärer Punkt für }f} \]
+Dann ist $f(C)$ eine {Nullmenge}.
+\begin{Beweis}{}
+Wir führen eine Induktion nach $n$:
+Setze
+\[ C_k := \set{x \in U}{\text{alle partiellen Ableitungen von }f\text{ der Ordnung } k\text{ verschwinden in }x} \]
+Es gilt dann
+\[ C \supseteq C_1 \supseteq C_2 \supseteq \ldots \]
+Wir proklamieren folgende Dinge
+\begin{enumerate}[(1)]
+	\item $f(C\setminus C_1)$ ist eine Nullmenge.
+	\item $f(C_k\setminus C_{k+1} )$ ist eine Nullmenge.
+	\item Es gibt ein $k$, sodass $f(C_k)$ eine Nullmenge ist.
+\end{enumerate}
+Hieraus folgt dann, dass $f(C)$ eine Nullmenge ist.\\
+Wir zeigen nun die proklamierten Dinge
+\begin{enumerate}[(1)]
+	\item $f(C\setminus C_1)$ ist eine Nullmenge:\\
+	Sei $x' \in C\setminus C_1$. Dann gilt
+	\[ \frac{\partial f_1}{\partial x_1}(x') \neq  0 \]
+	Betrachte
+	\begin{align*}
+	h : U & \Pfeil{} \R^n\\
+	x & \longmapsto (f_1(x), x_2, \ldots, x_n)
+	\end{align*}
+	$h$ ist dann in einer Umgebung von $x'$ invertierbar. Betrachte für ein passendes $V \off \R^n$
+	\[ g:= f\circ h\i : V \Pfeil{} \R^p \]
+	Betrachte
+	\[ C' := h(C\cap V) \]
+	$C'$ ist gerade die Menge der kritischen Punkte von $g$. Ferner genügt es zu zeigen, dass $g(C') = f(C\cap V)$ eine Nullmenge ist.\\
+	Betrachte die Einschränkung
+	\begin{align*}
+	g_t : V \cap \{t\} \times \R^{n-1} & \Pfeil{} \R^n
+	\end{align*}
+	$g$ ist gerade so definiert, dass gilt
+	\[ g(x_1, \ldots, x_n) = (x_1, y_2,\ldots, y_p) \]
+	Deswegen ist der erste Eintrag der Jacobimatrix von $g$ eine Eins. Insofern gilt
+	\[ C' = \bigcup_t C_t \]
+	wobei $C_t$ die kritischen Punkte von $g_t$ sind. Nach der Induktionsvoraussetzung haben aber alle
+	\[ g_t(C_t) \]
+	Maß 0. Nach dem Satz von Fubini hat damit auch $g(C')$ Maß Null. Damit hat auch $f(C - C_1)$ Maß Null.
+	\item $f(C_k\setminus C_{k+1} )$ ist eine Nullmenge:\\
+	Sei $x' \in C_k\setminus C_{k+1}$. Dann gilt ohne Einschränkung
+	\[ \frac{\partial^{k+1} f_1}{\partial x_1\ldots \partial x_{k+1}}(x') \neq  0 \]
+	Betrachte
+	\begin{align*}
+	h : U & \Pfeil{} \R^n\\
+	x & \longmapsto (\frac{\partial^{k} f_1}{\partial x_1\ldots \partial x_{k}}(x), x_2, \ldots, x_n)
+	\end{align*}
+	Nach der vorherigen Überlegung folgt nun für $h$
+	\[ h(C^h - C_1^h) \text{ hat Maß Null} \]
+	Hieraus folgt die Behauptung.
+	\item Es gibt ein $k$, sodass $f(C_k)$ eine Nullmenge ist:\\
+	Sei $I^n \subset \R^n$ ein Würfel mit Seitenlängen $\delta$. Es genügt zu zeigen, dass $f(C_k \cap I^n)$ Nullmaß hat.\\
+	Seien $x$ und $x+h$ aus $I^n \cap C$. Durch eine Taylorentwicklung von $f$ bei $x$ sieht man ein, dass
+	\[ \norm{f(x+h) - f(x)} \leq c \cdot \norm{h}^{k+1} \]
+	Setze $k = n$. Durch Unterteilung von $I^n$ erhält man $2^n$ viele neue Unterwürfel (jedes $I$ wird halbiert). Dadurch wird die maximale Länge von $h$ halbiert. Ergo wird die maximale Distanz von Bildwerten von $f$ eines Unterwürfels um den Faktor $2^{n+1}$ reduziert. Hieraus folgt nun, dass $f(C_n\cap I^n)$ Maß Null haben muss, da wir sonst einen Widerspruch erhalten.
+\end{enumerate}
+\end{Beweis}
+
+\Kor{Satz von Brown}
+Sei $f : M \pfeil{} N$ glatt. Dann ist die Menge der regulären Werte von $f$ in $N$ dicht.
+
+\Def{}
+Sei $\phi : M \pfeil{} N$ eine glatte Abbildung glatter Mannigfaltigkeiten.
+\begin{enumerate}[1.)]
+	\item $\phi$ heißt \df{Submersion}, falls $\phi_{p,*} : T_pM \pfeil{} T_{\phi(p)}N $ für alle $p \in M$ surjektiv ist.
+	\item $\phi$ heißt \df{Immersion}, falls $\phi_{p,*} : T_pM \pfeil{} T_{\phi(p)}N $ für alle $p \in M$ injektiv ist.
+	\item $(M,\phi)$ heißt eine \df{Untermannigfaltigkeit} von $N$, falls $\phi$ eine injektive Immersion ist.
+	\item $(M,\phi)$ heißt eine \df{Einbettung} in $N$, falls sie eine Untermannigfaltigkeit ist und ein $\phi$ einen Homöomorphismus von $M$ auf ihr Bild ist.
+\end{enumerate}
+
+\Prop{}
+Sei $\phi : M \pfeil{} N$ eine glatte Abbildung glatter Mannigfaltigkeiten der Dimensionen $m$ bzw. $n$. $p\in M$ sei ein beliebiger Punkt.
+\begin{itemize}
+	\item Ist $\phi$ immersiv bei $p$, so existieren Karten $U\subset M, V\subset N$, um $p$ bzw. $\phi(p)$ und eine Abbildung
+	\begin{align*}
+	\widetilde{\phi} : \R^m& \Pfeil{} \R^n\\
+	(x_1,\ldots, x_m) & \longmapsto (x_1,\ldots, x_m, 0,\ldots, 0)
+	\end{align*}
+	sodass folgendes Diagramm kommutiert
+	\begin{center}
+		\begin{tikzcd}
+			U \arrow[r, "\phi"] \arrow[d, "\isom{}"]	& V \arrow[d, "\isom{}"] \\
+			\R^m  \arrow[r, "\widetilde{\phi}"] 	& \R^n
+		\end{tikzcd}
+	\end{center}
+	\item Ist $\phi$ submersiv bei $p$, so existieren Karten $U\subset M, V\subset N$, um $p$ bzw. $\phi(p)$ und eine Abbildung
+\begin{align*}
+\widetilde{\phi} : \R^m& \Pfeil{} \R^n\\
+(x_1,\ldots, x_m) & \longmapsto (x_1,\ldots, x_n)
+\end{align*}
+sodass folgendes Diagramm kommutiert
+\begin{center}
+	\begin{tikzcd}
+		U \arrow[r, "\phi"] \arrow[d, "\isom{}"]	& V \arrow[d, "\isom{}"] \\
+		\R^m  \arrow[r, "\widetilde{\phi}"] 	& \R^n
+	\end{tikzcd}
+\end{center}
+\end{itemize}
+
+\Kor{}
+Sei $\phi : M\pfeil{} N$ eine glatte Abbildung glatter Mannigfaltigkeiten. Ist $q\in N$ regulär, so ist $\phi\i(q)\subset M$ eine eingebettete Untermannigfaltigkeit der Dimension $\dim M - \dim N$.
+
+\Satz{}
+Seien $U,V \subset M$ glatte eingebettete Untermannigfaltigkeit. $U$ und $V$ schneiden sich \df{transversal}, wenn für alle $x\in U\cap V$ gilt
+\[ T_xU +T_xV = T_xM \]
+In einem solchen Fall ist $U\cap V$ eine eingebettete Untermannigfaltigkeit der Dimension $\dim U + \dim V - \dim M$.
+
+\section{Vektorraumbündel}
+\Def{}
+Ein \df{Vektorraumbündel} von Rang $n$ ist Tripel $(p,E,B)$, bei der $E,B$ topologisch Räume und $ p:E\pfeil{} B$ eine stetige Abbildung sind, die folgende Eigenschaften erfüllen
+\begin{itemize}
+	\item $p$ ist \df{lokal trivial}, d.\,h., jeder Punkt $b \in B$ hat eine Umgebung $U\subset B$ zusammen mit einem Diffeomorphismus
+	\[ \phi_U : p\i(U) \Pfeil{} U \times \R^n \]
+	sodass folgendes Diagramm kommutiert
+		\begin{center}
+		\begin{tikzcd}
+			p\i(U) \arrow[rr, "\phi_U"] \arrow[dr, "p"] &	& U\times \R^n \arrow[dl, "\pi"] \\
+			& U &  
+		\end{tikzcd}
+	\end{center}
+	\item Obiges $\phi_U$ induziert \df{faserweise} Isomorphismen, d.\,h., für alle $x\in U$ hat $p\i(x)$ eine gegebene Vektorraumstruktur, für die
+	\[ \phi_{|x} : p\i(x) \Pfeil{}  \{x\}\times \R^n \]
+	ein Isomorphismus von Vektorräumen ist.
+\end{itemize}
+In diesem Setting heißt $B$ der \df{Basisraum}, $E$ der \df{Totalraum}, $p$ die lokal triviale \df{Projektion} und $p\i(b)$ die \df{Faser} über $b \in B$.
+
+\Bem{}
+Ist ein Vektorraumbündel wie oben gegeben, so erhalten wir für zwei Karten $U,V\subset B$ folgendes Diagramm
+\begin{center}
+\begin{tikzcd}
+	& (U\cap V) \times \R^n \arrow[dd, "\theta_{UV}"]\\
+	p\i(U\cap V) \arrow[ru, "\phi_U"] \arrow[dr, "\phi_V"] & \\
+	&  (U\cap V) \times \R^n
+\end{tikzcd}
+\end{center}
+$\theta_{UV}$ ist dabei von der Gestalt
+\[ \theta_{UV}(x,y) = (x, \mathfrak{g}_{U,V}(x)\cdot y) \]
+mit $\mathfrak{g}_{U,V} : U\cap V \pfeil{} GL_n(\R)$ stetig. $GL_n(\R)$ nennt man hier die \df{Strukturgruppe} von $(p,E,B)$ und die $\mathfrak{g}_{U,V}$ nennt man die \df{Übergangsfunktionen}. Diese erfüllen funktorielle Eigenschaften:
+\begin{itemize}
+	\item $\mathfrak{g}_{U,U} = \id{}$
+	\item $\mathfrak{g}_{V,W} \cdot \mathfrak{g}_{U,V}  = \mathfrak{g}_{U,W}$
+\end{itemize}
+
+\Def{}
+Seien $(p,E,B)$ und $(p',E',B')$ zwei Vektorraumbündel. Eine \df{Homomorphismus} von Vektorraumbündeln ist ein kommutatives Diagramm
+\begin{center}
+	\begin{tikzcd}
+	E\arrow[r,"F"]\arrow[d, "p"]	& E' \arrow[d, "p'"] \\
+	B \arrow[r, "f"] & B'
+	\end{tikzcd}
+\end{center}
+wobei $F$ und $f$ stetig sind, und $F$ faserweise linear ist, d.\,h.
+\[ F_{|p\i(b)} : p\i(b) \Pfeil{} {p'}\i(f(b)) \]
+ist ein Homomorphismus von Vektorräumen für alle $b\in B$.
+
+\Bem{}
+Ein Homomorphismus $(F,f)$ von Vektorraumbündeln ist genau dann ein Isomorphismus, wenn $f$ homöomorph ist und $F$ auf jeder Faser einen Isomorphismus induziert.
+
+\Def{}
+$(p,E,B)$ heißt \df{trivial}, falls $E \isom{} B\times \R^n$.
+
+\Def{}
+Eine glatte Mannigfaltigkeit heißt \df{parallelisierbar}, wenn ihr Tangentialbündel trivial ist.
+
+\Satz{Einbettungssatz von Whitney}
+Sei $M$ eine glatte, geschlossene Mannigfaltigkeit der Dimension $n$. Dann existiert eine Einbettung $M \subset \R^{2n+1}$ von $M$ als Untermannigfaltigkeit.
+\begin{Beweis}{}
+\begin{itemize}
+	\item Sei $U_1, \ldots, U_k$ eine Überdeckung von $M$ durch Karten mit Diffeomorphismen $\phi_1,\ldots, \phi_k$. Wir wählen zusätlich offene Mengen $V_1,\ldots, V_k$ so, dass diese $M$ überdecken und dass gilt
+	\[ \overline{V_i} \subset U_i \]
+	Ferner wählen wir glatte Funktionen $\lambda_i : M \pfeil{} \R$ mit
+	\begin{align*}
+	\lambda_{i|V_i} \equiv 1 \text{  und  } \supp \lambda_i \subset U_i
+	\end{align*}
+	Definiere nun glatte Abbildungen
+	\begin{align*}
+	\psi_i : M & \Pfeil{} \R\\
+	x &\longmapsto \left\lbrace
+	\begin{aligned}
+	\lambda_i(x)\phi_i(x) && x\in U_i\\
+	0 && x \notin U_i
+	\end{aligned}
+	\right.
+	\end{align*}
+	Wir erhalten nun eine glatte Abbildung
+	\begin{align*}
+	\Theta : M &\Pfeil{} (\R^{n})^k \times \R^k\\
+	x & \longmapsto (\psi_1(x), \ldots, \psi_k(x), \lambda_1(x), \ldots, \lambda_k(x))
+	\end{align*}
+	\item Wir wollen zeigen, dass $\Theta$ eine Einbettung ist.\\
+	Sei $p \in V_i, 0\neq v \in T_pM$. Angenommen es gilt
+	\[ \Theta_{*,p}(v) = 0 \]
+	Dann gilt insbesondere
+	\[ \psi_{i,*,p}(v) = 0 \]
+	$\lambda_i$ ist in einer Umgebung von $p$ konstant 1, ergo gilt
+	\[ \phi_{j,p,*}(v) = 0 \]
+	Aber $\phi_{j,p,*}$ ist ein Diffeomorphismus, ergo erhalten wir einen Widerspruch. Insofern ist $\Theta$ immersiv.\\
+	Anhand der Definition sieht man auch ein, dass $\Theta$ injektiv ist. Ferner ist $\Theta$ ein Homöomorphismus auf sein Bild, da $M$ kompakt und $\R^{nk + k}$ ein Hausdorffraum ist.
+	\item Wir haben nun eine Einbettung
+	\[ \Theta : M \Pfeil{} \R^N \]
+	und wollen $N$ auf $2n+1$ verringern. Dazu nehmen wir an, dass es ein $0\neq w \in \R^N$ gibt mit
+	\begin{align*}
+	&w \text{ ist tangential zu } \Theta(M)\\
+	\forall x,y \in \Theta(M):~& x\neq y \Impl{} x-y \text{ ist nicht parallel zu } w
+	\end{align*}
+	In diesem Fall ergibt sich folgendes Diagramm
+	\begin{center}
+		\begin{tikzcd}
+			\R^N\arrow[rr]	&  & w^\bot \\
+			M \arrow[u, "\Theta"]\arrow[rru, "\Theta'"]  & &
+		\end{tikzcd}
+	\end{center}
+wobei $\Theta'$ wieder eine Einbettung liefert.
+\item Wir wollen die Existenz von oben proklamierten $w$s zeigen und betrachten die Projektion
+\begin{align*}
+\R^N \Pfeil{} P^{N-1}\R
+\end{align*}
+Wir erhalten zwei Abbildungen
+\begin{align*}
+\tau : \T M - M \subset \R^N & \Pfeil{} P^{N-1}\R\\
+v & \longmapsto [v]\\
+\sigma : M\times M - \Delta(M) & \Pfeil{} P^{N-1}\R\\
+(x,y) & \longmapsto [x-y]
+\end{align*}
+Laut dem Satz von Sard besitzen beide Abbildungen einen gemeinsamen regulären Wert $[w]$. Da
+\[ \dim M\times M= \dim \T M = 2n< N-1 = \dim P^{N-1}\R \]
+kann dieser Wert nicht in den Bildern von $\tau$ und $\sigma$ liegen, ergo erfüllt $w$ obige Eigenschaften.
+\end{itemize}
+\end{Beweis}
+
+\Def{}
+Sei $M$ eine $n$-dimensionale glatte Mannigfaltigkeit mit einer Einbettung $M \subset \R^{n+k}$. Setze
+\[ E:= \set{ (p,v) \in M\times \R^{n+k} }{ x\bot T_pM } \]
+Dann ist $(\pi, E, M)$ das \df{Normalenbündel} von Rang $k$ bzgl. $M \subset \R^{n+k}$.
+
+\Satz{Tubenumgebung}
+Ist $M$ kompakt im obigen Setting,\\
+so existiert eine offene \df{Tubenumgebung} $U\subset \R^{n+k}$ von $M$ mit
+\[ U \isom{} E \]
+Inbesondere kommt $U$ mit einem Deformationsretrakt $r : U \pfeil{} M$ einher.
+\begin{Beweis}{}
+Wir setzen für $\e > 0$
+\[ E(\e) := \set{(p,v) \in E}{\norm{v}< \epsilon} \]
+Offensichtlich liegt dann folgende Isomorphie vor
+\[ E(\e) \isom{} E \]
+Durch die Exponentialabbildung von $\R^{n+k}$ erhalten wir eine glatte Abbildung
+\begin{align*}
+\exp : E(\e) & \Pfeil{} \R^{n+k}\\
+(p,v) & \longmapsto \exp_p(v) = p +v 
+\end{align*}
+Da $M$ kompakt ist, können wir $\e$ so klein wählen, dass $\exp$ zu einer Einbettung der Untermannigfaltigkeit $E(\e)$ wird. Dann setzen wir
+\[ U:= \exp(E(\e)) \]
+\end{Beweis}

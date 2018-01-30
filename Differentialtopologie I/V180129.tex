@@ -1,0 +1,182 @@
+\section{Der Kohomologiering von $\C P^n$}
+\marginpar{Vorlesung vom 29.1.18}
+\Def{}
+Wir definieren den \df{komplexen projektiven Raum} durch
+\[ \C P^n := (\C^{n+1} - \{0\})/\sim \]
+wobei
+\[ (x_1,\ldots, x_{n+1}) \sim (\lambda x_1,\ldots, \lambda x_{n+1}) \]
+für alle $(x_1,\ldots, x_{n+1}) \in \C^{n+1} - \{0\}$ und $\lambda \in \C - \{0\}$.\\
+Die Punkte von $\C P^n$ lassen sich durch \df{homogene Koordinaten} beschreiben:
+\[ (x_1 : x_2 : \ldots : x_{n+1}) := [ (x_1,\ldots, x_{n+1}) ]_\sim \]
+
+\Bsp{}
+Betrachte $\C P^1$ in $\C P^2$ gegeben durch
+\[ \C P^1 = \set{ (0: x_1 : x_2) }{} \subset \C P^2 \]
+Es gilt nun
+\[ \C P^2 - \C P^1 = \set{(1 : x_1 : x_2)}{x_1, x_2 \in \C} \isom{} \C^2 \]
+Dies zeigt, dass $\C P^2$ eine glatte reelle Mannigfaltigkeit der Dimension 4 ist. Allgemeiner gilt
+\[ \dim_\R \C P^n = 2n \]
+Im Detail haben wir für $\C P^2$ folgende Karten
+\begin{align*}
+\{(1 : u : v)~|~u,v \in \C\} & \Pfeil{} \C^2\\
+(1 : u : v) & \longmapsto (u,v)\\
+\{(u : 1 : v)~|~u,v \in \C\} & \Pfeil{} \C^2\\
+(u : 1 : v) & \longmapsto (u,v)\\
+\{(u : v : 1)~|~u,v \in \C\} & \Pfeil{} \C^2\\
+( u : v : 1 ) & \longmapsto (u,v)\\
+\end{align*}
+
+\Def{}
+Wir führen \df{Polarkoordinaten} auf $\C^2 = \C P ^2 - \C P ^1$ ein
+\begin{align*}
+u &= r e^{2\pi i \theta }\\
+v &= s e^{2\pi i \phi }
+\end{align*}
+für $(u,v) \in \C^2$ und $r,s \geq 0, \theta, \phi \in [0,1)$.\\
+Wir deklarieren folgende 1-Formen auf $\C P^2 - \C P^1$
+\[ \eta(u,v) = \frac{r^2 \d \theta + s^2 \d \phi}{ 1 + r^2 + s^2 } \]
+Allerdings ist $r$ im Allgemeinem nicht glatt in Abhängigkeit von $u$, aber $r^2= x^2 + y^2 = u \cdot \overline{u}$ ist glatt für $x = Re(u), y = Im(u)$.\\
+$\theta$ ist nicht einmal stetig. Aber $2\pi r^2 \d \theta$ ist glatt, denn
+\begin{align*}
+2\pi r^2 \d \theta &= 2\pi (x^2 + y^2) \d (\frac{1}{2\pi} \text{atan}(\frac{y}{x}) )\\
+&= (x^2 + y^2)( \frac{\partial}{\partial x} \text{atan}(\frac{y}{x}) \d x +
+\frac{\partial }{\partial y} \text{atan}(\frac{y}{x}) \d y )\\
+&= (x^2 + y^2) \frac{1}{1 + (\frac{y}{x})^2} (-\frac{y}{x^2}\d x + \frac{1}{x}\d y)\\
+&= (x^2 + y^2) \frac{x^2}{x^2 + y^2} (- y \frac{\d x}{x^2} + x \frac{\d y}{x^2})\\
+&= x \d y - y \d x
+\end{align*}
+D.\,h., $\eta \in \Omega^1(\C P^2 - \C P^1)$. Setze
+\[ \omega := \d \eta \in \Omega^2(\C P^2 - \C P^1) \]
+$\omega$ ist dann geschlossen auf $\C P^2 - \C P ^1$. Ferner lässt sich $\omega$ glatt auf $\C P^2$ fortsetzen. Betrachte die Karte $(u_1 : 1 : v_1) \mapsto (u_1, v_1)$:
+\begin{align*}
+(u_1 : 1 : v_1) &= (r_1 e^{2\pi i \theta_1} : 1 : s_1 e^{2\pi i \phi_1} )
+\end{align*}
+Ist zum Beispiel $u_1 \neq 0$, so gilt
+\begin{align*}
+(u_1 : 1 : v_1) &= (1 : \frac{1}{r_1 e^{2\pi i \theta_1}} : \frac{s_1 e^{2\pi i \phi_1}}{r_1 e^{2\pi i \theta_1}} )\\
+&=  (1 : \frac{1}{r_1} e^{-2\pi i \theta_1} : \frac{s_1}{r_1} e^{2\pi i(\phi_1- \theta_1)} )
+\end{align*}
+Dies lässt sich in obige Formel einsetzen. Da $\C P^2 - \C P^1$ dicht in $\C P^2$ liegt und $\omega$ stetig ist, ist die Fortsetzung auf $\C P^2$ eindeutig. Aus dem selben Grund gilt
+\[ \d \omega = 0 \]
+auf ganz $\C P ^2$.
+Wir erhalten so $\omega \in \Ker\ \d \subset \Omega^2(\C P^2)$. Ergo ist $\omega$ geschlossen auf ganz $\C P^2$. 
+$\eta$ lässt sich nicht glatt auf $\C P^2$ fortsetzen, insofern ist $\omega$ nicht exakt auf ganz $\C P^2$.\\\\
+
+
+Es gilt nun
+\[ \omega \wedge \omega = \frac{8rs}{(1+ r^2 + s^2)^3}\d r\d\theta \d s \d \phi \in \Omega^4(\C P ^2)  \]
+und
+\begin{align*}
+\int_{\C P^2} \omega \wedge \omega  &= 8
+\int_{0}^{\infty}\int_{0}^{1}\int_{0}^{\infty}\int_{0}^{1}
+\frac{8rs}{(1+ r^2 + s^2)^3}\d r\d\theta \d s \d \phi \in \Omega^4(\C P ^2)\\
+&= \int_{0}^{\infty}\int_{0}^{\infty} \frac{rs}{(1 + r^2 +s^2)^3} \d r \d s = 1
+\end{align*}
+Daraus folgt $\omega^2$ ist nicht exakt auf $\C P^2$. Es gilt somit
+\begin{align*}
+0\neq [\omega] &\in H^2(\C P^2)\\
+0\neq [\omega]^2 &\in H^4(\C P^2)
+\end{align*}
+Wir wissen, dass $\C P^2$ geschlossen und orientiert ist. Mit der Poincare-Dualität folgt nun
+\[\dim H^4(\C P^2) = \dim H^0(\C P^2) = 1 \]
+da $\C P ^2$ zusammenhängend ist. Insofern wird $H^4(\C P^2)$ von $[\omega^2]$ als reeller Vektorraum erzeugt.\\
+Ferne folgt aus obigem
+\[ \dim H^2(\C P^2) \geq 1 \]
+
+Um $\dim H^2(\C P^2)$ genau zu bestimmen, brauchen wir nun \textit{relative Kohomologie}.
+
+\Def{Relative Kohomologie}
+Sei $\iota : N \inj{} M$ eine geschlossene glatte eingebettete Untermannigfaltigkeit. Setze
+\[ \Omega^k(M, N) :=
+\set{\omega \in \Omega^k(M)}{ \iota^*(\omega) = 0 }
+= \Ker (\iota^* : \Omega^k(M) \pfeil{} \Omega^k(N) ) \]
+Ist $\omega \in \Omega^k(M,N)$, so gilt
+\[ \iota^*(\d \omega) = \d (\iota^*\omega) = 0 \]
+d.\,h., $\d$ steigt wohldefiniert auf $\Omega^*(M,N)$ ab. Dadurch erhalten wir den \df{relativen de Rham-Komplex} $(\Omega^*(M,N), \d)$.\\
+Wir definieren die $k$-te \df{relative Kohomologiegruppe} durch
+\[ H^k(M,N) := H^k(\Omega^*(M,N), \d) \]
+Wir erhalten insbesondere folgende kurze exakte Sequenz
+\[ 0 \Pfeil{} \Omega^*(M,N) \Pfeil{} \Omega^*(M) \Pfeil{\iota^*} \Omega^*(N) \Pfeil{} 0 \]
+Die Surjektivität von $\iota^*$ gilt, denn:\\
+Lokal ist $\iota$ gegeben durch
+\[ \iota : \R^n \Inj{} \R^m = \R^n \times \R^{m-n} \]
+mit einer Projektion
+\[ \pi : \R^n \times \R^{m-n} \Pfeil{} \R^n \]
+Daraus folgt
+\[ \pi \circ \iota = \id{} \]
+und damit
+\[ \iota^* \circ \pi^* = \id{} \]
+Daraus folgt die Surjektivität von $\iota^*$.\\
+Global folgt die Surjektivität durch eine Zerlegung der Eins.\\
+
+
+Wir erhalten dadurch folgende lange exakte Sequenz
+\[
+\ldots \Pfeil{\delta^*} H^k(M,N)
+\Pfeil{  } H^k(M)
+\Pfeil{ \iota^* }
+H^k(N)
+\Pfeil{\delta^*} 
+H^{k+1}({M,N})
+\Pfeil{  }\ldots
+\]
+
+\Prop{Alternative Beschreibung der Relativen Kohomologie}
+Durch Fortsetzung durch Null erhält man eine Abbildung
+\[ \Omega^*_c(M- N ) \Pfeil{} \Omega^*(M,N) \]
+Diese vertauscht mit $\d$. Sind $M,N$ kompakt, so erhalten wir einen Isomorphismus
+\[ H^*_c (M-N) \Pfeil{\isom{}} H^*(M,N) \]
+
+\Bem{Zurück zu $\C P^2$}
+Betrachte $N = \C P^1 \inj{\iota} \C P^2 = M$. Es liegt folgende exakte Sequenz vor
+\begin{align*}
+H^2(\C P^2, \C P^1) \Pfeil{} H^2 (\C P^2) \Pfeil{  }H^2(\C P^1) \Pfeil{  }H^3(\C P^2 , \C P^1) 
+\end{align*}
+Ferner gilt\footnote{Anmerkung des Autors: Die Isomorphie $H^3_c(\C P^2 - \C P^1) \isom{} H^3_c(\R ^4)$ gilt, obwohl $H^*_c$ keine Homotopie-Invariante ist, weil $\C P^2 - \C P^1 \isom{} \R ^4$ ein eigentlicher Diffeomorphismus ist.}
+\[ H^3(\C P^2, \C P^1) \isom{} H^3_c(\C P^2 - \C P^1) \isom{} H^3_c(\R ^4) = 0 \]
+und
+\[ H^2(\C P^2, \C P^1) = H^2_c(\R^4) = 0 \]
+Daraus folgt
+\[ H^2(\C P^1) \isom{} H^2(\C P^2) \]
+Es gilt nun
+\[ H^2(\C P^2) \isom{} H^0(\C P^1)^* \isom{} \R \]
+Daraus folgt
+\[ H^2(\C P^2) \isom{} \R\shrp{\omega} \]
+
+Betrachte ferner
+\[ H^1(\C P^2, \C P^1) \Pfeil{} H^1(\C P^2) \Pfeil{\iota^*} H^1(\C P^1) \]
+Es gilt nun
+\[ H^1(\C P^2, \C P^1) \isom{} H^1_c(\R^4) = 0 \]
+und
+\[ H^1(\C P^1) \isom{} H^1(S^2) = 0 \]
+Daraus folgt
+\[ H^1(\C P^2) = 0\]
+Mit der Poincare-Dualität folgt nun, da $\C P^2$ orientierbar ist.
+\[ H^3(\C P^2) = 0 \]
+Unterm Strich erhalten wir folgende Isomorphie von graduierten $\R$-Algebren
+\[ H^*(\C P^2) \isom{} \R[~[\omega]~]/([\omega]^3 = 0) \]
+wobei $[\omega]$ Grad 2 hat.\\
+
+Allgemeiner gilt
+\begin{align*}
+H^*(\C P^n) \isom{} \R[ ~[\omega]~] /([\omega]^{n+1} = 0)
+\end{align*}
+
+\section{Kartesische Produkte}
+Seien $M,N$ glatte Mannigfaltigkeiten. Wir fragen uns, wie wir die Kohomologie von $H^*(M\times N)$ berechnen können.
+
+\Bem{Tensorprodukte}
+Seien $V,W$ reelle endlich-dimensionale Vektorräume. Wir definieren das \df{Tensoprodukt} $V\otimes W$ durch
+\begin{align*}
+V \otimes W := \R\shrp{V\times W}/I
+\end{align*}
+wobei $I$ der Untervektorraum ist, der durch folgende Elemente erzeugt wird
+\begin{align*}
+(v+v', w + w') &- (v, w) - (v, w') - (v', w) - (v', w')\\
+(\lambda v, \eta w) &- \lambda \eta (v, w)
+\end{align*}
+für $v,v'\in V, w, w'\in W, \lambda, \eta \in \R$. Die Klasse von $(v,w)$ in $V\otimes W$ bezeichnen wir mit $v\otimes w$. Es gilt dann
+\begin{align*}
+(v+v') \otimes (w + w') &= v \otimes w + v' \otimes w + v\otimes w' + v'\otimes w'\\
+(\lambda v) \otimes (\eta w) &= \lambda \eta (v\otimes w)
+\end{align*}

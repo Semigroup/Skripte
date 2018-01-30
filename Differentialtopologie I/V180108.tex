@@ -1,0 +1,119 @@
+\section{De Rham-Kohomologie von Glatten Mannigfaltigkeiten}
+\marginpar{Vorlesung vom 8.1.18}
+\Def{}
+Sei $M$ eine (kompakte) glatte Mannigfaltigkeit der Dimension $n$. Durch Whitneys Einbettungssatz erhalten wir eine glatte Einbettung $M \subset \R^{2n+1}$. Durch den Satz über Tubenumgebungen wissen wir um die Existenz einer offenen Umgebung $U$ von $M$ in $\R^{2n+1}$, sodass
+\[ U \isom{} E(\nu) \]
+wobei $E \surj{p} M $ der Totalraum des Normalenbündels ist. Dieser induziert einen Deformationsretrakt $r : U \pfeil{} M$.\\
+$H^*$ soll eine Homotopieinvariante sein. Dies würde einen Isomorphismus
+\[ r^* : H^*(M) \Pfeil{\sim} H^*(U) \]
+implizieren. In diesem Sinne definieren wir die \df{Kohomologiegruppen} von $M$ durch
+\[ H^k(M) := H^k(U) \]
+Diese Definition hängt von der Einbettung von $M$ ab. Insofern wäre es wünschenswert eine intrinsische Definition von $H^*(M)$ zu finden.
+
+\Def{}
+Sei $M$ eine glatte Mannigfaltigkeit der Dimension $n$.\\
+Wir betrachten Familien $\omega = \{ \omega_p\}_{p\in M}$ mit $\omega_p \in Alt^k(T_pM)$. Sei eine glatte Karte 
+\[\phi : U' \off M \pfeil{\sim} U \off \R^n \]
+gegeben. Betrachte für jedes $p \in U'$ die Abbildung
+\[ Alt^k(\phi\i_{*,\phi(p)}) : Alt^k(T_pM) \Pfeil{\sim} Alt^k(T_{\phi(p)}U) \isom{} Alt^k(\R^n) \]
+Wir definieren den \df{Pullback} von $\omega$ durch
+\begin{align*}
+(\phi\i)^*\omega : U & \Pfeil{} Alt^k(\R^n)\\
+x & \longmapsto Alt^k(\phi\i_{x,*})(\omega_{\phi\i(x)})
+\end{align*}
+$\omega$ heißt eine \df{glatte Differential-$k$-Form} auf $M$, wenn $(\phi\i)^*\omega$ für jede Karte $\phi$ glatt ist.\\
+Es bezeichne $\Omega^k(M)$ den reellen Vektorraum aller glatter Differential-$k$-Formen auf $M$.
+
+\Def{}
+Die Karte $\phi$ von $M$ induziert einen Isomorphismus
+\[ \phi_{*,p} : T_pM \Pfeil{\sim} T_{x}U \]
+für $x = \phi(p)$. Dadurch erhalten wir einen Isomorphismus
+\[ Alt^{k+1} ( \phi_{*,p}) : Alt^{k+1}(T_xU) \Pfeil{\sim} Alt^{k+1}(T_pM) \]
+Wir können so folgende $k+1$-Form definieren
+\[ \d \omega_p:= Alt^{k+1}(\phi_{*,p}) \klam{ \d ((\phi\i)^*\omega) (\phi(p)) } \]
+Dadurch erhalten wir eine glatte Differentialform $\d \omega$ auf $M$. Diese Definition ist unabhängig von der Wahl der Karte $\phi$. Es gilt $\d^2 = 0$ auf $\Omega^*(M)$. Wir erhalten folglich einen Kokettenkomplex $(\Omega^*(M), \d)$.
+
+\Def{}
+Die \df{de Rham-Kohomologie} von $M$ ist definiert als die Kohomologie des Kokettenkomplexes $(\Omega^*(M), \d)$, d.\,h.
+\[ H^k(M) := H^k(\Omega^*(M), \d) = \frac{\Ker (\d : \Omega^k(M) \pfeil{}\Omega^{k+1}(M))}{\Img \d : (\Omega^{k-1}(M) \pfeil{} \Omega^k(M))} \]
+
+\Def{}
+Zu glatten Differentialformen $\omega = \{ \omega_p\}, \eta = \{\eta_p\}$ auf $M$ definieren wir das \df{äußere Produkt} punktweise durch
+\[ (\omega\wedge \eta)_p := \omega_p \wedge \eta_p \]
+$\omega \wedge \eta$ ist wieder eine glatte Differentialform auf $M$. Ferner gilt hierfür offensichtlich wieder die Produktregel, d.\,h.
+\[ \d(\omega \wedge \eta) = (\d \omega) \wedge \eta + (-1)^k\omega \wedge \d(\eta) \]
+für $\omega \in \Omega^k(M)$. Wir erhalten dadurch wieder eine graduiert kommutative Algebra $\Omega^*(M)$.\\
+Das äußere Produkt auf $\Omega^*(M)$ steigt wie im affinen Fall wohldefiniert auf $H^*(M)$ ab. Dadurch wird auch $H^*(M)$ zu einer graduiert kommutativen Algebra.
+
+\Def{}
+Sei $\phi : M \pfeil{} N$ eine glatte Abbildung und $\omega = \{ \omega_q\}_{q\in N} \in \Omega^k(N)$ eine glatte Differentialform. Für einen Punkt $p \in M$ erhalten wir eine lineare Abbildung
+\begin{align*}
+Alt^k(\phi_{*,p}) : Alt^k(T_{\phi(p)}M) & \Pfeil{} Alt^k(T_pM)
+\end{align*}
+In diesem Sinn setzen wir
+\[ (\phi^*\omega)_p := Alt^k(\phi_{*,p})(\omega_{\phi(p)}) \]
+und erhalten eine glatte Differentialform
+\[ \phi^*\omega := \{ (\phi^*\omega)_p\}_{p\in M} \]
+auf $M$. Dadurch erhalten wir eine lineare Abbildung
+\[ \phi^* : \Omega^k(N) \pfeil{} \Omega^k(M) \]
+Wie im affinen Fall ist die Zuweisung
+\begin{align*}
+M & \longmapsto \Omega^k(M)\\
+\phi & \longmapsto \phi^*
+\end{align*}
+ein kontravarianter Funktor.\\
+Es gilt wieder
+\begin{itemize}
+	\item $\phi^*(\omega \wedge \eta) = (\phi^*\omega) \wedge (\phi^*\eta)$
+	\item $\d_M \circ \phi^* = \phi^* \circ \d_N$
+\end{itemize}
+$\phi^*$ steigt wohldefiniert auf die Kohomologie ab und liefert Abbildungen
+\[ \phi^* : H^k(N) \Pfeil{} H^k(M) \]
+Dadurch wird die de Rham-Kohomologie zu einem kontravarianten Funktor von der Kategorie der glatten Mannigfaltigkeiten in die Kategorie der reellen Vektorräume.
+
+\section{Integration auf Glatten Mannigfaltigkeiten}
+
+\Def{}
+Sei $U \subset \R^n$ offen, $\omega \in \Omega^n(U)$ sei eine $n$-Form.\\
+Wir definieren den \df{Träger} von $\omega$ durch
+\[ \supp \omega := Cl_U{\set{x \in U}{\omega_x \neq 0}} \]
+wobei $Cl_U$ den Abschluss einer Menge in $U$ bezeichnet.\\
+Hat $\omega$ einen kompakten Träger, so hat $\omega$ eine glatte Fortsetzung durch Null auf $\R^n$.\\
+Da $\omega$ eine $n$-Form ist, hat es die Gestalt
+\[ \omega = f(x_1, \ldots, x_n) \d x_1 \wedge \ldots \wedge \d x_n \]
+Wir definieren folgendes Integral zu $\omega$
+\[ \int_U \omega := \int_{\R^n}\omega := \int_{\R^n} f \d x_1 \ldots \d x_n \]
+
+\Bem{}
+Seien $V,U \subset \R^n$ offen, $\theta : V \pfeil{} U$ ein Diffeomorphismus.\\
+Sei ferner $\omega = f \d x_1 \wedge \ldots \d x_n\in \Omega^n(U)$ mit kompakten Träger. Dies induziert uns eine Differentialform $\theta^*\omega \in \Omega^n(V)$, welche ebenfalls kompakten Träger hat. Es gilt
+\[ \theta^*\omega= \theta^*(f\d x_1 \wedge \ldots \wedge \d x_n) = f\circ \theta \cdot \theta^*(\d x_1 \wedge \ldots \wedge \d x_n) = f\circ \theta \cdot \det(J_\theta) \cdot \d x_1 \wedge \ldots \wedge \d x_n \]
+Es ergibt sich nun
+\begin{align*}
+\int_V \theta^*\omega &= \int_{\R^n} f\circ \theta \cdot \det(J_\theta)~ \d x_1 \ldots \d x_n\\
+&\gl{\text{Traforegel in }\R^n} \pm \int_{\R^n} f~ \d x_1 \ldots \d x_n = \pm \int_U \omega
+\end{align*}
+Ist $U$ zusammenhängend, so ist das Vorzeichen hier gerade das Vorzeichen der Jacobie-Determinante.\\
+Ist $\theta$ orientierungserhaltend und $U$ zusammenhängend, so gilt also
+\[ \int_V \theta^*\omega = \int_U \omega \]
+
+\Def{}
+Sei nun $M$ eine glatte, orientierte Mannigfaltigkeit der Dimension $n$ und $\omega \in \Omega^n(M)$.\\
+Sei $\phi : U' \pfeil{} U$ eine orientierte Karte von $M$. Es gelte ferner
+\[ \supp(\omega) \subset U' \text{ ist kompakt} \]
+Wir setzen dann
+\[ \int_M  \omega := \int_U (\phi\i)^*\omega \]
+Dies ist wohldefiniert. Ist nämlich $\psi : U' \pfeil{} U$ eine weitere orientierte Karte, so gilt
+\[ (\phi\i)^* = (\phi\i)^*\psi^* (\psi\i)^* \omega \]
+Setzt man $\psi \circ \phi\i =: \theta$, so folgt mit obiger Bemerkung
+\[ \int_U (\phi\i)^*\omega = \int_U (\psi\i)^*\omega \]
+
+\Def{}
+Sei nun $\omega \in \Omega^n(M)$ mit kompakten Träger. Im Allgemeinem liegt $\supp f$ nicht in einer einzelnen Karte von $M$.\\
+Deswegen sei $(f_i)_i$ eine glatte Partition der Eins auf $M$, sodass $\supp f_i \subset U_i$, wobei die Paare $(U_i, \phi_i)_i$ orientierte Karten seien, die $\supp f$ überdecken, und, bei denen $\overline{U_i}$ kompakt ist.\\
+Wir setzen
+\[ \int_M \omega := \sum_i\int_M f_i \omega \]
+Dies ist ein wohldefiniertes Integral. Es ist unabhängig von der Wahl der Partition, denn sei $(g_j)_j$ eine weitere Partition der Eins, dann gilt ja
+\[ f_i = \sum_j f_i g_j \text{ und } g_j = \sum_i f_i g_j \]
+Ergo folgt
+\[ \sum_i \int f_i \omega = \sum_{i,j} \int f_i g_j \omega = \sum_j \int g_j \omega \]

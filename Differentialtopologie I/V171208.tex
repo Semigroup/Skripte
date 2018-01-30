@@ -1,0 +1,107 @@
+\section{Orientierungen}
+\marginpar{Vorlesung vom 8.12.17}
+Seien $V,W$ reelle Vektorräume der Dimension $n$.
+\Def{}
+Eine \df{Orientierung} von $V$ ist die Äquivalenzklasse einer geordneten Basis $(\alpha_1, \ldots, \alpha_n)$ von $V$, wobei zwei geordnete Basen $(\alpha_1, \ldots, \alpha_n)$ und $(\beta_1, \ldots, \beta_n)$ genau dann äquivalent sind, wenn die Determinante des Isomorphismus $\Phi$, der $\alpha_i$ auf $\beta_i$ abbildet, positiv ist.
+\Bem{}
+Ist $n> 0$, so hat $V$ genau eine Orientierung. Anderenfalls hat $V$ genau eine Orientierung.
+\Def{}
+Die \df{kanonische Orientierung} von $\R^1$ ist gegeben durch
+\[ [(+1)] \]
+
+\Bem{}
+Sind $V$ und $W$ orientiert\footnote{Ein \df{orientierter} Vektorraum ist ein Vektorraum zusammen mit einer fixierten Orientierung.}, so ist auch $V\oplus W$ orientiert. D.\,h.
+%Diese Zuordnung ist kanonisch. Wir schreiben dies (aus sich mir nicht erschließenden Gründen) im Typenkalkül
+\begin{equation*}
+\begin{aligned}
+V : &[(\alpha_1, \ldots, \alpha_n)]\\
+ W : &[(\beta_1, \ldots, \beta_n)]\\
+\midrule
+V\oplus W :& [(\alpha_1,\ldots,  \alpha_n, \beta_1, \ldots, \beta_n)]
+\end{aligned}
+\end{equation*}
+Insbesondere ist $\R^n$ kanonisch orientiert.\footnote{Haben $V\oplus W$ und $W \oplus V$ dieselbe Orientierung?}
+
+\Def{}
+Eine \df{stabile Orientierung} von $V$ ist eine Orientierung $V \oplus \R^1$. \footnote{Also eigentlich eine von $V \oplus \R^n$ für $n > 0$. Beachte, dass $\R^n$ kanonisch orientiert ist für alle $n > 0$, und diese Orientierungen können kompatibel gewählt werden, d.\,h., $\R^n \oplus \R^m \isom{} \R^{n+m}$ ist kanonisch orientiert, wenn $\R^n$ und $\R^m$ beide kanonisch bzw. antikanonisch orientiert sind.}
+
+\Bem{}
+Jeder Vektorraum hat genau zwei stabile Orientierungen.
+
+\Bsp{}
+Der nulldimensionale Vektorraum hat die beiden stabilen Orientierungen
+\[ [(+1)] \text{ und } [(-1)] \]
+die wir kurz auch einfach nur als $+$ und $-$ bezeichnen werden.
+
+\subsection{Prinzip}
+Sind zwei der Elemente aus $\{V, W, V\oplus W\}$ stabil orientiert, so ist auch das dritte auf kanonische Weise stabil orientiert.
+
+\Bsp{}
+Es sei $V = 0$. $W = \R^1$ kanonisch orientiert. $V\oplus W = \R^1$ sei antikanonisch orientiert\footnote{An dieser Stelle ist es wichtig zu erwähnen, dass der kanonische Isomorphismus $V\oplus W \isom{} \R^1 $ hier orientierungserhaltend gewählt ist.}. Dann erhält $V$ die stabile Orientierung $-$.
+
+\Def{}
+Ein Vektorraumhomomorphismus $\Phi : V \pfeil{} W$ heißt \df{orientierungserhaltend}, falls
+\[ [ (\Phi(\alpha_1), \ldots, \Phi(\alpha_n) )] = [ (\beta_1, \ldots, \beta_n)] \]
+Anderenfalls heißt $\Phi$ \df{orientierungsumkehrend}.
+
+\Def{}
+Sei $p : E \pfeil{} B$ ein Vektorraumbündel von Rang $n$ mit lokaler Trivialisierung
+\[p\i (U_\alpha) \Pfeil{\isom{\phi_\alpha} } U_\alpha \times \R^n\]
+Eine \df{Orientierung} von $p$ ist eine Familie von Orientierungen der $p\i(b), b\in B$, sodass alle
+\[ p\i(b) \Pfeil{ \phi_\alpha } \{b\} \times \R^n  \]
+orientierungserhaltend sind, wobei $\{b\} \times \R^n$ kanonisch orientiert ist.\\
+Dies ist genau dann der Fall, wenn die Übergangsfunktionen
+\[ \phi_{\alpha \beta} : U_\alpha \cap U_\beta \Pfeil{} \text{GL}_n(\R) \]
+nur orientierungserhaltende Isomorphismen als Bilder annehmen, d.\,h.
+\[ \det \phi_{\alpha \beta}(x) > 0 ~~~~\forall x \in U_\alpha \cap U_\beta \]
+
+\Bem{}
+Ein orientierbares Vektorraumbündel mit einem zusammenhängenden Basisraum hat genau zwei stabile Orientierungen.\\
+Denn, seien $\alpha, \beta$ zwei Orientierungen von $p : E \pfeil{} B$. Die Menge der $b \in B$ an denen $\alpha$ und $\beta$ übereinstimmen ist offen. Die Menge, in denen sich $\alpha$ und $\beta$ unterscheiden ist aber auch offen. Allgemein können wir eine Orientierung als eine stetige Abbildung
+\[ \text{or} : B \Pfeil{} \{+, -\} \]
+auf"|fassen.
+
+\Bsp{}
+Das Möbiusbündel ist nicht orientierbar.
+
+\subsection{Prinzip}
+Sind zwei Elemente aus der Menge der Vektorbündel ${E, E', E\oplus E'}$ über $B$ orientiert, so bestimmt dies eindeutig und kanonisch eine Orientierung des Dritten.
+
+\Bem{}
+Vektorraumbündel über nullhomotopen Basisräumen sind immer orientierbar.
+\begin{Beweis}{}
+Definiere
+\[ \widehat{X} := \set{(x, \alpha)}{x \in X, \alpha : \text{ Orientierung von }p\i(x)} \]
+Dies liefert eine Überlagerung von Grad 2.
+\end{Beweis}
+
+\Prop{}
+Sei $M$ eine glatte Mannigfaltigkeit. $M$ ist genau dann orientierbar, wenn $\T M$ orientierbar ist.
+\begin{Beweis}{}
+	Die $\phi_{\alpha \beta}$ sind gerade die Jacobimatrizen der Kartenwechsel.
+\end{Beweis}
+
+\Bem{}
+Sei $(M,\partial M)$ eine glatte berandete Mannigfaltigkeit. Es gilt
+\[ \T M_{|\partial M} = \T(\partial M) \oplus \R^1 \]
+Denn auf $\partial M$ können wir einen Schnitt angeben, indem wir einen Vektor im Tangentialraum identifizieren, der vom Rand nach \textbf{innen} rein geht.\\
+Ist $M$ orientiert, so ist es auch $\T M$, dadurch auch $\T\partial M$ und ergo auch $\partial M$. Beachte, dass wir immer den nach innen weisenden Randvektor für $\R^1$ instrumentalisieren.
+
+\Def{}
+Seien $M, N$ geschlossene orientierte glatte Mannigfaltigkeiten der Dimension $n$.\\
+$f : M\pfeil{} N $ sei glatt.\\
+Sei ferner $p \in N$ ein regulärer Wert von $f$. Definiere
+\[ \deg_p f := \sum_{q \in f\i(p)} \e_q \]
+wobei
+\[
+\e_q :=
+\left\lbrace
+\begin{aligned}
++1 && \d f_q : T_q M \pfeil{} T_p N \text{ ist orientierungserhaltend}\\
+-1 && \d f_q : T_q M \pfeil{} T_p N \text{ ist orientierungsumkehrend}
+\end{aligned}
+\right.\]
+
+\Bem{}
+Wie im nicht orientierten Fall zeigt man, dass $\deg_p f$ unabhängig von $p$ und eine Homotopieinvariante bzgl. $f$ ist.\\
+Denn ist $M$ orientiert, $f\simeq g$, so ist $M \times I$ orientiert, da $I$ kanonisch orientiert ist. Ergo ist auch $f\i(p)$ orientiert, da $\partial H\i(p)$ orientiert ist. Alle Punkte in $f\i(p)$ und $g\i(p)$ haben eine Orientierung. Ihre Epsilonwerte subtrahieren sich zu Null. 

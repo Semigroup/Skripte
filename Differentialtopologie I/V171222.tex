@@ -1,0 +1,122 @@
+\Def{}
+\marginpar{Vorlesung vom 22.12.17}
+Seien $U_1\subset \R^n,U_2\subset \R^m$ offen und $\phi : U_1 \pfeil{}U_2$ eine glatte Abbildung. Wir definieren folgenden Vektorraumhomomorphismus
+\begin{align*}
+\phi^* :  \Omega^p(U_2) & \Pfeil{} \Omega^p(U_1)\\
+\eta & \longmapsto Alt^p( \phi_*) ( \eta \circ \phi)
+\end{align*}
+D.\,h., für $x \in U_1$ ist folgender Vektorraumhomomorphismus gegeben
+\begin{align*}
+\phi^*(\eta)(x) : (\T_x U_1)^p & \Pfeil{} \R\\
+(v_1, \ldots, v_p) & \longmapsto \eta(\phi(x))( \phi_{*,x} v_1, \ldots, \d \phi_{*,x} v_p)
+\end{align*}
+\Bem{}
+Die Zuweisung $\phi \mapsto \phi^*$ ist funktoriell, d.\,h., es gilt
+\[ (\phi \circ \psi)^* = \psi^* \circ \phi^* \text{ und } \id{U}^* = \id{\Omega^p(U)} \]
+
+\Bem{}
+Die Zuweisung $\phi \mapsto \phi^*$ ist eindeutig durch folgende Rechenregeln bestimmt:
+\begin{itemize}
+	\item $\phi^*(f\omega) = f \phi^*(\omega)$ für $f \in \Omega^0(U_2)$
+	\item $\phi^*(\omega_1 \wedge \omega_2) = \phi^*(\omega_1) \wedge \phi^*(\omega_2)$
+	\item $\d \circ \phi^* = \phi^* \circ \d $
+\end{itemize}
+
+\Bsp{}
+\begin{itemize}
+	\item $\phi^*(\d x_i) = \d(\phi^*(x_i)) = \d (x_i \circ \phi ) = \d \phi_i$
+	\item Sei $\gamma : (a,b) \pfeil{} U \off \R^n$ eine glatte Kurve, $\omega = f_1\d x_1 + \ldots +f_n \d x_n$ sei eine 1-Differentialform auf $U$. Es gilt
+	\begin{align*}
+	\gamma^*(\omega) &= \gamma^*(f_1) \wedge \gamma^*(\d x_1) + \ldots + \gamma^*(f_n) \wedge \gamma^*(\d x_n)\\
+	&=f_1(\gamma(t)) \d \gamma_1 + \ldots + f_n(\gamma(t)) \d \gamma_n\\
+	&= \shrp{f(\gamma(t)), \gamma'(t)} \d t
+	\end{align*}
+	\item Für die Volumenform $\d x_1 \wedge \ldots \wedge \d x_n$ von $U_2$ gilt
+	\begin{align*}
+	\phi^*(\d x_1 \wedge \ldots \wedge \d x_n) &= \d\phi_1 \wedge \ldots \wedge \d \phi_n\\
+	&= \klam{\sum_{i = 1}^n \frac{\partial \phi_1}{\partial x_i}\d x_1} \wedge \ldots \wedge\klam{\sum_{i = 1}^n \frac{\partial \phi_n}{\partial x_i}\d x_1}\\
+	&= \det\klam{ (\frac{\partial \phi_i}{\partial x_j})_{i,j} } \d x_1 \wedge \ldots \wedge \d x_n\\
+	&= \det( J_\phi )\d x_1 \wedge \ldots \wedge \d x_n\\
+	\end{align*}
+	\item Betrachte die glatte Abbildung $\phi : U \times \R \pfeil{} U, U \off \R^n,$ mit
+	\[ \phi(x,t) = \psi(t)\cdot x \] 
+	für eine glatte Funktion $\psi : \R \pfeil{} \R$. Es gilt
+	\[ \phi^*(\d x_i) = \d \phi_i = \d (\psi(t) \cdot x_i) = x_i \cdot \d \psi(t) + \psi(t) \cdot \d x_i = x_i \psi'(t)\d t + \psi(t) \d x_i \]
+\end{itemize}
+
+\section{Pullback auf die de Rham-Kohomologie}
+Im Folgenden sei $\phi : U_1\subset \R^n\pfeil{} U_2\subset \R^m$ immer eine glatte Abbildung.
+
+\Def{}
+Eine Form $\omega \in \Omega^p(U)$ heißt \df{geschlossen}, falls $\d \omega = 0$.\\
+$\omega$ heißt \df{exakt}, wenn es ein $\eta \in \Omega^{p-1}(U)$ gibt, mit $\omega = \d \eta$.
+
+\Bem{}
+$\phi : U_1 \pfeil{} U_2$ induziert einen Ringhomomorphismus
+\[ \phi^* : H^*(U_2) \Pfeil{} H^*(U_1) \]
+da $\phi^*$ den Kern und das Bild von $\d$ erhält. Dadurch folgt, dass die de Rham-Kohomologie ein kontravarianter Funktor ist.
+
+\Satz{Poincare-Lemma}
+Sei $U \subset \R$ offen und sternförmig. Dann gilt
+\[ 
+H^p(U) \isom{} \left\lbrace
+\begin{aligned}
+0 && p > 0\\
+\R && p =0
+\end{aligned}
+\right.
+\]
+
+\begin{Beweis}{}
+\begin{itemize}
+	\item Ohne Einschränkung sei $0$ der Mittelpunkt des sternförmigen Gebietes $U$. Setze dann
+	\begin{align*}
+	ev : \Omega^0(U) & \Pfeil{} \R \\
+	\omega & \longmapsto \omega(0)
+	\end{align*}
+	Wir wollen im Folgenden eine Kettenhomotopie $s_p : \Omega^p(U) \pfeil{} \Omega^{p-1}(U)$ konstruieren, für die gilt
+	\[\d s_p + s_{p+1} \d = \left\lbrace
+	\begin{aligned}
+	\id{} && p > 0\\
+	\id{} - ev && p = 0
+	\end{aligned}
+	\right. \]
+	Dann folgt nämlich für $\omega \in \Omega^p(U), p > 0,$
+	\[ \d \omega = 0 \Impl{} \d s_p (\omega) = \d s_p(\omega) +s_{p+1}\d\omega = \omega \]
+	also $[\omega] = 0$, da $\omega \in \Img\ \d$. Ferner gilt für $p = 0$
+	\[\omega - \omega(0) = s_1\d \omega = 0\]
+	also $\omega = \omega(0)$ ist konstant.
+	\item Eine Differentialform $\omega \in \Omega^p(U\times \R)$ hat die Gestalt
+	\begin{align*}
+	\omega = \sum_I f_I(x,t) \d x_I + \sum_J g_J(x,t) \d t \wedge \d x_J
+	\end{align*}
+	Definiere daher folgende Abbildung
+	\begin{align*}
+	\widehat{S}_p : \Omega^p(U\times \R ) &\Pfeil{} \Omega^{p-1}(U)\\
+	\omega & \longmapsto \sum_J (\int_0^1 g_J(x,t) \d t ) \d x_J
+	\end{align*}
+	Dann gilt
+	\[	\d \widehat{S}_p(\omega) + 	\widehat{S}_{p+1}(\d\omega) =
+	\sum_I \klam{ \int_0^1 \frac{\partial f_I}{\partial t} \d t } \d x_I 
+	=
+	\sum_I \klam{ f_I(x,1) - f_I(x,0)} \d x_I   \]
+	\item Sei nun $\psi : \R \pfeil{} \R$ eine glatte Funktion mit
+	\[ \psi(t) \in
+	\left\lbrace
+	\begin{aligned}
+	\{0\} && t \leq 0\\
+	[0,1] && t \in [0,1]\\
+	\{1\} && t \geq 1
+	\end{aligned}
+	\right.
+	 \]
+	 Definiere dann
+	 \begin{align*}
+	 \phi : U \times \R &\Pfeil{} U\\
+	 (x,t) & \longmapsto \psi(t) \cdot x
+	 \end{align*}
+	 und setze
+	 \[ s_p(\omega) := \widehat{S}_p \circ \phi^*(\omega) \]
+	 Die so definierte Funktion tut das Gewünschte.
+\end{itemize}
+\end{Beweis}

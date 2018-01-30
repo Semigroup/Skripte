@@ -1,0 +1,134 @@
+\Kor{Brownscher Fixpunktsatz}
+\marginpar{Vorlesung vom 4.12.17}
+Jede stetige Abbildung $f : D^n \pfeil{} D^n$ hat einen Fixpunkt.
+\begin{Beweis}{}
+	Wir nehmen an, $f : D^n \pfeil{} D^n$ habe keinen Fixpunkt. Wir definieren dann folgende stetige Abbildung
+	\begin{align*}
+	r : D^n & \Pfeil{} S^{n-1}\\
+	x & \longmapsto x + t (x - f(x))
+	\end{align*}
+	s.d. $x + t(x- f(x)) \in S^{n-1}$.
+Er ist insbesondere ein Retrakt auf $S^{n-1}$, da $r$ die Identität auf $S^{n-1}$ ist. Dies steht im Widerspruch zum obigen Satz.
+\end{Beweis}
+
+\Kor{}
+Sphären sind nicht zusammenziehbar.
+\begin{Beweis}{}
+Angenommen, $S^n$ wäre zusammenziehbar. Dann existiert eine Homotopie
+\[H : S^n \simeq p \in S^n\]
+der folgendes Diagramm induziert
+\begin{center}
+\begin{tikzcd}
+	S^n\times I \arrow[r, "H"] \arrow[d, "Quot"]	& S^n \\
+	S^n \times I/S^n \times \{1\} \arrow[ur, dashed, "\exists_1 \overline{H}" ]		& 
+\end{tikzcd}
+\end{center}
+Wir haben also eine stetige Abbildung
+\[ \overline{H} : D^{n+1} \Pfeil{} S^n \]
+wobei gilt
+\[ \overline{H}_{|S^n} = \id{S^n} \]
+Ergo ist $\overline{H}$ ein Retrakt von $D^{n+1}$ auf $S^n$. Dies ist ein Widerspruch.
+\end{Beweis}
+
+\section{Homogenität von Mannigfaltigkeiten}
+Wir wollen Folgendes zeigen in diesem Kapitel.
+\Satz{}
+\label{SatzHomogenitat}
+Sei $M$ eine zusammenhängende, geschlossene Mannigfaltigkeit und $p,q \in M$ beliebige Punkte. Dann existiert ein Diffeomorphismus $\phi:M\pfeil{} M$, der sogar isotop zur Identität ist, mit
+\[ \phi(p) = q \]
+
+\Lem{}
+Für $p = 0 \in \R^n$ und $q \in \R^n$ mit $\norm{q} < 1$ existiert ein Diffeomorphismus $\tau : \R^n \pfeil{} \R^n$ mit
+\begin{enumerate}[i.]
+	\item $\tau(p) = q$
+	\item $\tau(x) = x$ für alle $x \in \R^n$ mit $\norm{x} \geq 1$
+	\item $\tau$ ist isotop zu $\id{\R^n}$
+\end{enumerate}
+\begin{Beweis}{}
+Ohne Einschränkung liege $q \in [0,1)$ auf einer Achse.\\
+Wähle eine glatte Funktion $\lambda : \R^n \pfeil{} \R$ mit
+\begin{align*}
+\lambda(x) > 0 & \text{ für } \norm{x} < 1\\
+\lambda(x) = 0 & \text{ für } \norm{x} \geq 1
+\end{align*}
+Sei $v_0 \in S^{n-1}$. Wir definieren folgendes Vektorfeld auf $\R^n$
+\[ v(x) := \lambda(x) \cdot v_0 \]
+Dann ist $v(x) = 0$ für $\norm{x} \geq 1$.\\
+Wir betrachten nun folgende gewöhnliche Differentialgleichung
+\begin{align*}
+\left\lbrace
+\begin{aligned}
+x'(t) &= v(x(t))\\
+x(0) &=x_0
+\end{aligned}
+\right.
+\end{align*}
+Diese hat lokal eine eindeutige Lösung $x(t)$, die glatt von $x_0$ abhängt. Hier existiert die Lösung für alle $t \in \R$, da $v(x)$ außerhalb einer kompakten Menge verschwindet. Definiere
+\begin{align*}
+\tau_t(x_0) &:= x(t)\\
+\tau_0(x_0) &:= x_0
+\end{align*}
+Die $\{\tau_t~|~ t\in \R\} \subset \text{Diffeo}(\R^n)$ bilden dann eine Einparametergruppe von Diffeomorphismen. Es gilt
+\[ \set{ \tau_t(0) }{t \in \R^n} = [0,1) \]
+Ergo erfüllt eines der $\tau_t$ die Voraussetzungen.
+\end{Beweis}
+
+\begin{Beweis}{Satz \ref{SatzHomogenitat}}
+Seien $p, q \in M$.
+\begin{itemize}
+	\item Liegen $p,q$ im Definitionsbereich einer Karte $U \subset M$, dann konstruieren wir ein Koordinatensystem $x$ um $p$ mit
+	\begin{align*}
+	x(p) &= 0\\
+	x(q) &= (\frac{1}{2}, 0, \ldots, 0)
+	\end{align*}
+	Dann verwenden wir das $\tau : U \pfeil{} U$ aus dem vorhergehenden Lemma, um $p$ auf $q$ abzubilden und setzen $\tau$ durch die Identität zu einem Diffeomorphismus auf $M$ fort.
+	\item Sind $p,q$ beliebig auf $M$ verteilt, so können wir $M$ mit endlich vielen Karten überdecken und eine Sequenz von Punkten
+	\[ p = p_0 \pfeil{} p_1 \pfeil{} p_2  \pfeil{} \ldots \pfeil{} p_k = q \]
+	finden, bei denen zwei hintereinander folgende Punkte in einer Karte liegen. Wir konstruieren nun induktiv Diffeomorphismen $\tau : p \mapsto p_{i}$.
+\end{itemize}
+\end{Beweis}
+
+\newpage
+\section{Theorie der Abbildungsgrade}
+Seien $M,N$ glatte, geschlossene Mannigfaltigkeiten derselben Dimension $n$. \\
+Sei $f : M \pfeil{} N$ eine glatte Abbildung.\\
+Wir wollen $f$ einen \df{Abbildungsgrad} $\deg f \in \Z/ 2\Z$ zuordnen, sodass gilt
+\begin{align*}
+\deg f = \deg g 
+\end{align*}
+für $f \simeq g$. Dadurch wird der Abbildungsgrad zu einer Homotopieinvariante von $f$.\\
+Sei $p \in N$ ein regulärer Wert von $f$. Dann ist $f\i(p)$ eine nulldimensionale, kompakte Untermannigfaltigkeit von $M$, also eine endliche Menge von Punkten. Wir setzen
+\[ \deg_pf := \# f\i(p) \mod 2 \]
+
+\Lem{}
+\label{GradLemma1}
+Seien $f,g : M \pfeil{} N$ glatt und sei $H :M\times I \pfeil{} N$ ein Homotopie von $f$ nach $g$. Ist $p$ ein regulärer Wert für $f,g$ und $H$, so gilt
+\[ \deg_pf = \deg_p g \mod 2 \]
+
+\begin{Beweis}{}
+	$H\i(p)$ ist eine kompakte eindimensionale Untermannigfaltigkeit von $M \times I$ mit Rand
+	\[ \partial H\i(p) = \partial(M\times I) \cap H\i(p) = f\i(p) \times \{0\} \cup g\i(p) \times \{1\} \]
+	$H\i(p)$ ist eine disjunkte Vereinigung von endlich vielen Kreisen und kompakten Intervallen. Daraus folgt
+	\[ \# \partial H\i(p) \equiv 0 \mod 2 \]
+	Nun gilt aber
+	\[ \# \partial H\i(p) = \# f\i(p) + \# g\i(p) \]
+	Daraus folgt die Behauptung.
+\end{Beweis}
+
+\Lem{}
+In Lemma \ref{GradLemma1} genügt es anzunehmen, dass $p$ ein regulärer Wert für $f$ und $g$ ist.
+\begin{Beweis}{}
+	Auf einer hinreichend kleinen Umgebung eines Urbildes von $p$ unter $f$ ist $f$ ein lokaler Diffeomorphismus, da $p$ regulär ist und $\dim M = \dim N$.\\
+	Also ist jeder Punkt, der hinreichend nahe bei $p$ liegt, auch ein regulärer Wert von $f$ und $g$.\\
+	Laut dem Satz von Sard existiert ein $p'$ hinreichend nahe bei $p$, sodass $p'$ ein regulärer Wert von $H$ ist. $p'$ ist dann insbesondere regulär für $f$ und $g$.
+\end{Beweis}
+
+\Lem{}
+Sei $N$ zusammenhängend. Seien $p,q$ reguläre Werte von $f$. Dann gilt
+\[ \deg_pf = \deg_qf \mod 2  \]
+\begin{Beweis}{}
+	Aus der Homogenität von $N$ folgt die Existenz eines Diffeomorphismus $\tau : p \mapsto q$, der isotop zur Identität ist. Es gilt
+	\[ (\tau f)\i(q) = f\i(p) \]
+	Nun gilt
+	\[ \deg_q f \equiv \deg_q \tau \circ f = \deg_p f \mod 2 \]
+\end{Beweis}

@@ -1,0 +1,80 @@
+\Kor{}
+\marginpar{Vorlesung vom 15.1.18}
+Sind $M,N$ Homotopie-äquivalente, glatte Mannigfaltigkeiten, so gilt
+\[ H^*(M) \isom{} H^*(N)  \]
+
+\section{Exakte Sequenzen}
+\Def{}
+Im folgenden seien $A,B$ und $C$ reelle Vektorräume und $f : A\pfeil{} B, g : B \pfeil{} C$ lineare Abbildungen.\\
+Die Sequenz
+\[ A \Pfeil{f} B \Pfeil{g} C \]
+heißt \df{exakt} bei $B$, falls
+\[ \Ker g = \Img f \]
+Eine \df{kurze exakte Sequenz} ist eine Sequenz der Form
+\[ 0 \Pfeil{} A \Pfeil{} B \Pfeil{} C \Pfeil{} 0 \]
+die exakt bei $A,B$ und $C$ ist.
+
+\Bsp{}
+Sind $U \subset V$ Vektorräume, so ist folgende kurze exakte Sequenz gegeben
+\[ 0 \Pfeil{} U \Pfeil{} V \Pfeil{} V/U \Pfeil{} 0 \]
+
+\Def{}
+Seien $A^*,B^*$ und $C^*$ Koketten-Komplexe reeller Vektorräume zusammen mit Morphismen $i : A^* \pfeil{} B^*$ und $j : B^* \pfeil{} C^*$.\\
+Die Sequenz
+\[ A^* \Pfeil{i} B^* \Pfeil{j} C^* \]
+heißt \df{exakt} bei $B^*$, falls sie gradweise exakt ist, d.\,h.
+\[ A^p \Pfeil{} B^p \Pfeil{} C^p \]
+ist exakt bei $B^p$ für alle $p\in \Z$.
+
+\Lem{Zick-Zack- bzw. Schlangenlemma}
+Eine kurze exakte Sequenz
+\[ 0 \Pfeil{} A^* \Pfeil{i} B^* \Pfeil{j} C^* \Pfeil{} 0  \]
+von Koketten-Komplexen induziert eine lange exakte Sequenz der Kohomologiegruppen
+\[ \ldots \pfeil{j^*} H^{p-1}(C^*) \pfeil{\delta} H^p(A) \pfeil{i^*} H^p(B) \pfeil{j^*} H^p(C) \pfeil{\delta} H^{p+1}(A) \pfeil{i^*} \ldots  \]
+\begin{Beweis}{}
+	Benutze Diagrammjagd.
+\end{Beweis}
+
+\section{Die Mayer-Vietoris-Sequenz}
+
+Sei $M$ eine glatte Mannigfaltigkeit, $U,V \subset M$ offen mit $M = U\cup V$. Es ergeben sich folgende kommutative Diagramm
+\begin{center}
+	\begin{tikzcd}
+		U\cap V \arrow[hookrightarrow, r, "i_U"] \arrow[hookrightarrow, d, "i_V"]	& U \arrow[hookrightarrow, d, "j_U"] \\
+		V  \arrow[hookrightarrow, r, "j_V"] 	& M 
+	\end{tikzcd}
+$\rightsquigarrow$
+\begin{tikzcd}
+	\Omega^*(U\cap V) 	& \Omega^*(U) \arrow[l, "i_U^*"] \\
+	\Omega^*(V)  \arrow[u, "i_V^*"] 	& \Omega^*(M)  \arrow[l, "j_V^*"] \arrow[u, "j_U^*"]
+\end{tikzcd}
+\end{center}
+
+\Prop{}
+Definiert man im obigen Setting folgende Abbildungen
+\begin{align*}
+\Omega^*(M) & \Pfeil{(i^*_U, j^*_V)} \Omega^*(U) \oplus \Omega^*(V) & \Omega^*(U) \oplus \Omega^*(V) & \Pfeil{} \Omega^*(U\cap V)\\
+\omega & \longmapsto (j^*_U \omega, j^*_V \omega) & (\omega, \eta) & \longmapsto i^*_V\eta - i^*_U\omega 
+\end{align*}
+So liegt folgende kurze exakte Sequenz vor
+\[ 0 \Pfeil{} \Omega^*(M) \Pfeil{} \Omega^*(U) \oplus \Omega^*(V) \Pfeil{} \Omega^*(U\cap V) \Pfeil{} 0 \]
+\newpage
+\begin{Beweis}{}
+\begin{enumerate}[1)]
+	\item $i_V^*-i_U^*$ ist surjektiv:\\
+	Sei $\{f_U,f_V\}$ eine Partition der Eins auf $M$ bzgl. $\{U,V\}$. Ist $\omega $ in $ \Omega^*(U\cap V)$, so ist $f_U\omega $ in $\Omega^*(V)$ und $f_V \omega$ in $\Omega^*(U)$. Es gilt
+	\[ (i_V^* - i_U^*)(-f_V\omega, f_U \omega) = f_U\omega_{|U\cap V} - (-f_V \omega)_{|U\cap V} = (f_U + f_V)(\omega) = \omega \]
+	\item $(j_U^*, j_V^*)$ ist injektiv:\\
+	Sei $\omega \in \Omega^*(M)$ mit $j_U^*(\omega) = 0$ und $j_V^*(\omega) = 0$. Dann verschwindet $\omega$ auf $U$ und $V$, also auch auf $M = U\cup V$. Ergo $\omega = 0$.
+	\item Exaktheit in der Mitte:\\
+	Ist $(\omega, \eta) \in \Omega^*(U) \oplus \Omega^*(V)$, s.\,d.
+	\[ \eta_{|U\cap V} - \omega_{|U\cap V} = 0 \]
+	dann stimmen $\omega$ und $\eta$ auf $U\cap V$ überein. Dann ist es möglich $\omega$ durch $\eta$ auf $V$ fortzusetzen und dadurch eine glatte Form $\tau \in \Omega^*(M)$ zu erhalten mit
+	\[ \tau_{|U}= \omega \text{ und } \tau_{|V} = \eta \]
+	Ist umgekehrt ein $\tau \in \Omega^*(M)$ gegeben, so gilt offensichtlich
+	\[ (i^*_V - i_U^*)\circ (j_U^*, j_V^*)(\tau) = (i^*_V - i_U^*) (\omega_{|U}, \omega_{|V}) = \omega_{|U\cap V} - \omega_{|V\cap U} = 0 \]
+\end{enumerate}
+\end{Beweis}
+\Bem{}
+Durch das Zick-Zack-Lemma erhalten wir folgende lange exakte Sequenz der Kohomologie-Gruppen
+\[ \ldots \pfeil{} H^{p-1}(U\cap V) \pfeil{} H^p(M) \pfeil{} H^p(U) \oplus H^p(V) \pfeil{} H^p(U\cap V) \pfeil{} H^{p+1}(M) \pfeil{} \ldots \]

@@ -1,0 +1,161 @@
+\section{Der Allgemeine Satz von Stokes}
+\marginpar{Vorlesung vom 12.1.18}
+\Def{}
+Sei $(M,\partial M)$ eine $n$-dimensionale Mannigfaltigkeit mit Rand. $M$ sei orientiert, dadurch ist auch $\partial M$ orientiert. $\iota : \partial M \pfeil{} M$ bezeichne die Inklusion des Randes.\\
+Für $\omega \in \Omega^*(M)$ erhalten wir unter $\iota$ eine Pullbackform
+\[ \omega_{|\partial M} := \iota^*\omega \in \Omega^*(\partial M) \]
+Wir nennen dies die \df{Einschränkung auf den Rand} von $\omega$.
+
+\Satz{Allgemeiner Satz von Stokes}
+Sei $(M,\partial M)$ eine $n$-dimensionale orientierte Mannigfaltigkeit mit Rand. $\omega \in \Omega^{n-1}(M)$ sei eine $n-1$-Form auf $M$ mit kompakten Träger. Dann hat $\d \omega \in \Omega^n(M)$ kompakten Träger und es gilt
+\[ \int_M \d \omega = \int_{\partial M} \iota^*\omega \]
+\begin{Beweis}{}
+Wir führen den Beweis in lokalen Koordinaten $x_1, \ldots, x_n$. Der Rand soll lokal beschrieben werden durch
+\[ \partial M = \set{ (x_1,\ldots, x_n) }{ x_1 = 0 } \]
+wobei allgemeine Punkte $x_1 \leq 0$ erfüllen.\\
+$\omega$ habe die Gestalt
+\[ \omega = \sum_{j = 1}^n f_j \d x_1 \wedge \ldots \wedge \widehat{\d x_j} \wedge \ldots \wedge \d x_n  \]
+Es gilt nun
+\begin{align*}
+\iota^*\omega &= \sum_{j = 1}^n (f_j \circ \iota) (\d  x_1 \circ \iota) \wedge \ldots \wedge \widehat{(\d x_j\circ \iota)} \wedge \ldots \wedge (\d x_n\circ \iota) \\
+&= (f_1)_{|\partial M} \d x_2 \wedge \ldots \wedge \d x_n \\
+&= f_1(0, x_2, \ldots, x_n) \d x_2 \wedge \ldots \wedge \d x_n
+\end{align*}
+da $x_1 \circ \iota = 0$.\\
+Ohne Einschränkung nehmen wir nun an, dass $\omega$ folgende Form hat
+\[ \omega = f \d x_1 \wedge \ldots \wedge \widehat{\d x_j} \wedge \ldots \wedge \d x_n  \]
+Es gilt nun
+\begin{align*}
+\d \omega &= \sum_k \frac{\partial f}{\partial x_k} \d x_k \wedge d x_1 \wedge \ldots \wedge \widehat{\d x_j} \wedge \ldots \wedge \d x_n\\
+ &= (-1)^{j-1} \frac{\partial f}{\partial x_j} \d x_1 \wedge \ldots \wedge \d x_n
+\end{align*}
+Wir nehmen nun ferner an, dass $\omega$ kompakten Träger folgender Gestalt habe
+\[ \supp \omega \subset \set{x}{-a \leq x_1 \leq 0, \bet{x_j}\leq a \forall j = 2,\ldots,n} \] 
+Es gilt nun
+\[ \int_M \d \omega = (-1)^{j-1} \int_{-a}^{+a} \ldots \int_{-a}^{+a} \int_{-a}^{0} \frac{\partial f}{\partial x_j} \d x_1 \ldots \d x_n \]
+Wir unterscheiden nun zwei Fälle. Beachte hierbei, dass $f$ auf dem Rand von $\supp \omega$ verschwindet.
+\begin{enumerate}[\text{Fall} 1]
+	\item $j\neq 1$: In diesem Fall gilt
+	\[ \int_M \d \omega = (-1)^{j-1} \int_{-a}^{+a} \ldots \int_{-a}^{+a} \int_{-a}^{0} f|_{x_j = -a}^{x_j = a} \d x_1 \ldots \widehat{\d x_j} \ldots \d x_n = 0  \]
+	da $f|_{x_j = -a}^{x_j = a} = 0$, da $f_{| x_j = a \neq 0} = 0$.
+	\item $j= 1$: In diesem Fall gilt
+	\[ \int_M \d \omega = \int_{-a}^{+a} \ldots \int_{-a}^{+a} f|_{x_1 = -a}^{x_1 = 0} \d x_2 \ldots \d x_n = 
+	  \int_{-a}^{+a} \ldots \int_{-a}^{+a} f(0, x_2, \ldots, x_n) \d x_2 \ldots \d x_n = \int \iota^*\omega  \]
+	da $f(-a, x_2, \ldots, x_n) = 0$.
+\end{enumerate}
+Es sei $\omega$ nun beliebig. Sei $\{g_j\}_j$ eine glatte Partition der Eins mit
+\[ \supp g_j \subset \{ x~|~ -a \leq x_1 \leq 0, \bet{x_j}\leq a \forall j = 2, \ldots, n \} \]
+Es gilt $\omega = \sum_j g_j \omega$ und somit
+\[ \int_M \d \omega = 
+\int_M \d (\sum_j g_j \omega) = \sum_j  \int_M \d (g_j \omega) = \sum_{j} \int_{\partial M} \iota^*(g_j\omega) = \int_{\partial M}\iota^*(\sum_{j} g_j \omega) = \int_{\partial M} \iota^*\omega \]
+\end{Beweis}
+
+\newpage
+\section{Das Homotopieaxiom für de Rham-Kohomologie}
+\Def{}
+Ein \df{Komplex} bzw. \df{Kokettenkomplex} $(C^*,\d)$ ist eine Familie $(C^p)_{p\in \Z}$ reeller Vektorräume mit einer Familie linearer Abbildungen
+\[ \d : C^p \Pfeil{} C^{p+1} \]
+für die gilt
+\[ \d \circ \d = 0 \]
+
+\Def{}
+Sind $(C^*,\d_C)$ und $(D^*, \d_D)$ Komplexe, so ist ein \df{Homomorphismus} von Komplexen $\phi : C^* \pfeil{} D^*$ eine Familie von linearen Abbildungen
+\[ \phi^p : C^p \Pfeil{} D^p \]
+so, dass folgendes Diagramm kommutiert
+\begin{center}
+\begin{tikzcd}
+	C^p \arrow[r, "\phi^p"] \arrow[d, "\d_C"]	& D^p \arrow[d, "\d_D"] \\
+	C^{p+1}  \arrow[r, "\phi^{p+1}"] 	& D^{p+1} 
+\end{tikzcd}
+\end{center}
+
+\Def{}
+Unter einer \df{(Ketten)-Homotopie} zwischen Morphismen $\phi, \psi : C^* \pfeil{} D^*$ verstehen wir einen Kettenmorphismus $K : C^* \pfeil{} D^{*-1}$, d.\,h.
+\[ K^p : C^p \Pfeil{} D^{p-1} \]
+sodass gilt
+\[ \d K - K \d = \phi - \psi \]
+Wir schreiben in diesem Fall
+\[ \phi \simeq \psi \]
+
+\Lem{}
+Gilt $\phi \simeq \psi$, so folgt
+\[ H(\phi) = H(\psi) : H^*(C^*) \Pfeil{} H^*(D^*) \]
+\begin{Beweis}{}
+Sei $[c] \in H^*(C^*)$, d.\,h., $\d c = 0$. Es gilt
+\begin{align*}
+H(\phi)[c] - H(\psi)[c] 
+= [\phi(c)] - [\psi(c)]
+= [(\phi - \psi)(c)]
+= [(\d K - K \d)(c)]
+= [\d K c ]
+= 0
+\end{align*}
+\end{Beweis}
+
+\Bem{}
+Betrachte die Projektion
+\begin{align*}
+\pi : \R^n \times \R^1 & \Pfeil{} \R^n\\
+(x,t) & \longmapsto x
+\end{align*}
+und den Schnitt
+\begin{align*}
+s : \R^n & \Pfeil{} \R^n \times \R^1\\
+x & \longmapsto (x,0)
+\end{align*}
+Formen auf $\R^n \times \R^1$ sind Linearkombinationen von Formen des Types
+\begin{enumerate}[(i)]
+	\item $f(x,t)(\pi^*\eta)  $ 
+	\item $(\pi^*\eta) \wedge f(x,t) \d t$
+\end{enumerate}
+wobei $\eta \in \Omega^*(\R^n)$.
+
+\Bem{}
+Wir definieren eine Homotopie $K : \Omega^*(\R^n \times \R^1) \Pfeil{} \Omega^{* - 1}(\R^n \times \R^1)$ durch
+\begin{align*}
+K( f(x,t)(\pi^*\eta)) &= 0\\
+K((\pi^*\eta) \wedge f(x,t) \d t) &= (\pi^*\eta)\cdot \int_0^t f(x,t)\d t
+\end{align*}
+Durch die Rechnung im Beweis des Poincare-Lemmas wissen wir nun, dass gilt
+\[ \d K - K \d = \pm(\id{\Omega^*(\R^n \times \R^1)} - \Omega(\pi) \circ \Omega(s)) \]
+Daraus folgt
+\[ H^*(\pi) \circ H^*(s) = \id{} \]
+Trivialerweise gilt
+\[ H^*(s) \circ H^*(\pi) = \id{} \]
+da $\pi \circ s = \id{\R^n}$. Daraus folgt, dass $H^*(\pi) : H^*(\R^n ) \pfeil{} H^*(\R^n\times \R^1)$ ein Isomorphismus ist.
+
+\Kor{}
+\[ H^p(\R^n) \isom{} H^p(\R^{n-1}) \isom{} \ldots \isom{} H^p(\R^0) \isom{} \left\lbrace 
+\begin{aligned}
+\R && p = 0\\
+0 && p > 0
+\end{aligned}
+\right. \]
+
+
+\Bem{}
+Sei nun $M$ eine glatte Mannigfaltigkeit. Betrachte die Projektion
+\[ \pi : M \times \R \Pfeil{} M \]
+und den dazu gehörenden Schnitt $s : M \pfeil{} M\times \R$. Es gilt dann bereits
+\[ H^*(s) H^*(\pi) = \id{} \]
+Seien Karten $\{U_\alpha\}_\alpha$ auf $M$ gegeben. Dann ist $\{U_\alpha \times \R\}_\alpha$ ein korrespondierender Atlas für $M\times \R$. Mithilfe dieser Karten kann $K$ wie zuvor definiert werden, d.\,h., wir erhalten
+\begin{align*}
+K : \Omega^*(M\times \R) & \Pfeil{} \Omega^{*-1}(M\times \R)
+\end{align*}
+mit
+\[ \d K - K \d = \pm (\id{\Omega^*(M\times \R)} - \Omega(\pi) \Omega(s)) \]
+Dadurch folgt wieder
+\[ H^*(\pi) H^*(s) = \id{} \]
+Und $H^*(\pi) : H^*(M) \pfeil{} H^*(M\times \R)$ ist ein Isomorphismus.
+
+\Satz{Homotopieaxiom}
+Seien $f,g : M \pfeil{} N$ zueinander homotope glatte Abbildungen. Dann gilt
+\[ H^*(f) = H^*(g) : H^*(N) \pfeil{} H^*(M) \]
+\begin{Beweis}{}
+Sei $F: M\times \R^1 \pfeil{} N$ eine glatte Homotopie, $F(x,t) = f(x)$ für alle $t\geq 1$ und $F(x,t)= g(x)$ für alle $t\leq 0$.\\
+Betrachte ferner $s_0, s_1 : M \pfeil{} M \times \R^1$ mit $s_0(x) = (0,x)$ und $s_1(x) = (1,x)$.\\
+Da $H(\pi) H(s_0) = \id{} = H(\pi)H(s_1)$ und $H(\pi)$ isomorph ist, folgt
+\[ H(s_0) = H(s_1) \]
+Da $F\circ s_0 = g$ und $F\circ s_1 = f$, gilt nun
+\[ H(g) = H(s_0) \circ H(F) = H(s_1) \circ H(F) = H(f) \]
+\end{Beweis}

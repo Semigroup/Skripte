@@ -1,0 +1,337 @@
+%\section{Anwendungen des Abbildunggrades}
+%Im Folgenden seien $M,N$ geschlossene glatte orientierte Mannigfaltigkeiten der Dimension $n$.
+%
+%\Lem{}
+%Sei $f : M \pfeil{} N$ glatt. Ist $\deg f \neq 0$, dann ist $f$ surjektiv.
+%\begin{Beweis}{}
+%	Wäre $f$ nicht surjektiv, dann wählen wir $p\in N - f(M)$. Damit ist $p$ regulär und es gilt
+%	\[ \deg f = \deg_p f = 0 \]
+%\end{Beweis}
+%
+%\Satz{Fundamentalsatz der Algebra}
+%Jedes nichtkonstante komplexe Polynom hat eine Nullstelle.
+%\begin{Beweis}{}
+%Sei $f : \C \pfeil{} \C$ ein nichtkonstantes komplexes Polynom. Ohne Einschränkung hat $f$ folgende Gestalt
+%\[ f(z) = z^n + a_{n-1} z^{n-1}+\ldots + a_1z + a_0 \]
+%Es gilt notorischerweise
+%\[ \lim\limits_{z\pfeil{} \infty} f(z) = \infty \]
+%$f$ induziert somit eine stetige Fortsetzung $\overline{f}$ auf der Ein-Punkt-Kompaktifizierung von $\C$.
+%\begin{align*}
+%\overline{f} : \C \cup \{\infty\} & \Pfeil{}\C \cup \{\infty\}\\
+%z \in \C & \longmapsto f(z)\\
+%\infty & \longmapsto \infty
+%\end{align*}
+%Wir fassen im Folgenden $\C \cup \infty$ als $S^2$ auf. Wir wollen den Abbildungsgrad von $\overline{f}$ bestimmen. Betrachte hierzu folgende Homotopie
+%\begin{align*}
+%H : S^2 \times I & \Pfeil{} S^2\\
+%(z,t) & \longmapsto z^n + a_{n-1}tz^{n-1} + \ldots + a_1tz + a_0t
+%\end{align*}
+%hierdurch werden $\overline{f}$ und $\overline{g}$ homotop für $g(z) := z^n$. Ergo haben $\overline{f}$ und $\overline{g}$ den selben Abbildungsgraden. Der Abbildungsgrad von $\overline{g}$ ist gerade $n$. Betrachte zum Beispiel den regulären Wert 1. Dieser hat $n$ $n$-te Einheitswurzeln.\\
+%Ergo verschwindet der Abbildungsgrad von $\overline{f}$ nicht, ergo ist $\overline{f}$ surjektiv, ergo ist $f$ surjektiv, ergo hat $f$ eine Nullstelle.
+%\end{Beweis}
+%
+%\Bem{}
+%Es liegt folgender Isomorphismus vor
+%\begin{align*}
+%\left\lbrace
+%\begin{aligned}
+%\text{punktierte Homotopieklassen von}\\
+%\text{stetigen Abbildungen }f : S^n \pfeil{} S^n
+%\end{aligned}
+%\right\rbrace
+%&\Pfeil{\isom{}}
+%\Z\\
+%[f] & \longmapsto \deg f
+%\end{align*}
+%
+%\chapter{{\textsc{Glatte Differentialformen und De Rham Kohomologie}}}
+%
+%\section*{Motivation}
+%Für jede glatte Funktion $f : U\off \R \pfeil{} \R$ existiert eine glatte \df{Stammfunktion} $F : U \pfeil{} \R$, d.\,h.
+%\[ \frac{\d}{\d x} F = f \]
+%Kann das auf Funktionen in mehreren Veränderlichen verallgemeinert werden?\\
+%Betrachten wir hierzu eine glatte Abbildung
+%\[ f : U \off \R^2 \Pfeil{} \R^2 \]
+%\paragraph{Frage} Existiert ein \df{Potential} $F : U \pfeil{} \R$ sodass
+%\[ f = (\frac{\d}{\d x} F, \frac{\d}{\d y} F) =: (f_1, f_2) \]
+%Wenn ja, dann gilt auch
+%\[ \frac{\d f_1}{\d y} = \frac{\d^2 F}{\d x\d y} = \frac{\d^2 F}{\d y\d x} =  \frac{\d f_2}{\d x}  \]
+%Dadurch erhalten wir folgende notwendige Bedingung
+%\[ \frac{\d f_1}{\d y} = \frac{\d f_2}{\d x} \]
+%\paragraph{Frage} Ist diese Bedingung hinreichend?\\
+%Schauen wir uns dazu folgendes Beispiel an:
+%\begin{align*}
+%f : \R^2 - 0 & \Pfeil{} \R^2\\
+%(x_1, x_2) & \longmapsto \frac{1}{x_1^2 + x_2^2}(-x_2, x_1)
+%\end{align*}
+%$f$ erfüllt obige Bedingung. Angenommen es gäbe ein Potential $F : \R^2 - 0 \pfeil{} \R$ für $f$. Betrachte
+%\[ \int_{0}^{2\pi} \frac{\d}{\d \theta} F(\cos \theta, \sin \theta) \d \theta = F(\cos 2\pi , \sin 2\pi) - F(\cos 0, \sin 0) = 0 \]
+%Andererseits gilt
+%\[ \frac{\d}{\d \theta} F(\cos \theta, \sin \theta) = \frac{\partial F}{\partial x_1}(- \sin \theta) + 
+%\frac{\partial F}{\partial x_2}(\cos \theta) = \frac{\sin^2 \theta}{\cos^2 \theta + \sin^2 \theta} +  \frac{\cos^2 \theta}{\cos^2 \theta + \sin^2 \theta} =1 \]
+%woraus folgenden würde
+%\[\int_{0}^{2\pi} \frac{\d}{\d \theta} F(\cos \theta, \sin \theta) \d \theta = \int_{0}^{2\pi} 1 \d \theta = 2\pi \]
+%Dies ist ein Widerspruch, ergo ist obige Bedingung nicht hinreichend.
+%
+%\Def{}
+%Eine Menge $U \subset \R^n$ heißt \df{sternförmig} bzgl. $x_0\in U$, wenn für alle $x \in U$ die Strecke
+%\[\set{tx + (1-t)x_0}{t\in [0,1]} \]
+%in $U$ enthalten ist.
+%
+%\Prop{}
+%Ist $U \subset \R^2$ sternförmig und erfüllt die glatte Funktion $f : U \pfeil{} \R^2$ die Bedingung
+%\[ \frac{\d f_1}{\d x_2} = \frac{\d f_2}{\d x_1} \]
+%dann hat $f$ ein Potential auf $U$.
+%\begin{Beweis}{}
+%Ohne Einschränkung ist $x_0 = 0$. Dann setzen wir
+%\[ F(x_1, x_2) = \int^{1}_0 x_1f_1(tx_1, tx_2) + x_2 f_2(tx_1, tx_2) \d t \]
+%\end{Beweis}
+%
+%\Bem{}
+%Die Existenz eines Potentials hängt also irgendwie von der Topologie der Definitionsmenge ab.
+%
+%\subsection*{Umformulierung}
+%Sei $U \subset \R^2$. Wir definieren den \df{Gradient} durch
+%\begin{align*}
+%\nabla : C^\infty(U,\R) & \Pfeil{} C^\infty (U, \R^2)\\
+%f & \longmapsto (\frac{\d f}{\d x_1}, \frac{\d f}{\d x_2})
+%\end{align*}
+%Die \df{Rotation} definieren wir durch
+%\begin{align*}
+%\rot : C^\infty(U,\R^2) & \Pfeil{} C^\infty (U, \R)\\
+%f_1, f_2 & \longmapsto \frac{\d f_1}{\d x_2} - \frac{\d f_2}{\d x_1}
+%\end{align*}
+%Es gilt dann 
+%\[ \rot \circ \nabla = 0 \]
+%D.\,h., $\Img \nabla \subset \Ker~ \rot$. Wir definieren die \df{erste Kohomologiegruppe} von $U$ durch
+%\[ H^1(U) := \Ker~ \rot / \Img \nabla \]
+%
+%\Bsp{}
+%Wir wissen bereits
+%\[ H^1(\text{sternförmig}) = 0 \]
+%und
+%\[ H^1(\R^2 - 0) \neq 0 \]
+%
+%\section{Äußere Algebren}
+%Sei $V$ ein endlich dimensionaler reeller Vektorraum. Es bezeichne $V^k$ das $k$-fache kartesische Produkt von $V$ mit Vektorraumstruktur.
+%\Def{}
+%Eine $k$-lineare Abbildung $\omega : V^k \pfeil{} \R$ heißt \df{alternierend}, wenn
+%\[ \omega(v_1, \ldots, v_k) = 0 \]
+%für alle $v_1,\ldots, v_k$, in denen ein Vektor $v_i$ mindestens an zwei Stellen vorkommt. Das ist äquivalent dazu zu fordern, dass $\omega$ für alle linear abhängige System $v_1,\ldots, v_k$ verschwindet.
+%
+%\Bem{}
+%Für ein alternierendes $\omega$ gilt
+%\[ \omega(v_1, \ldots, v_i, \ldots, v_j, \ldots, v_k) = - \omega(v_1,\ldots, v_j, \ldots, v_i, \ldots, v_k) \]
+%
+%\Def{}
+%Unter $Alt^k(V) \subset \Hom{\R}{V^k}{\R}$ verstehen wir den reellen Vektorraum der alternierenden Formen. Wir legen ferner folgende Konvention fest
+%\[ Alt^0(V) := \R \]
+%
+%\Bsp{}
+%Ist $k = \dim V$, so ist $Alt^k(V)$ eindimensional und wird von der Determinante erzeugt.
+%
+%\Lem{}
+%\begin{enumerate}[1.)]
+%	\item $Alt^k(V) = 0$ für $k > \dim V$
+%	\item $\omega(v_1, \ldots, v_n) = \text{sgn}(\sigma) \cdot \omega(v_{\sigma(1)}, \ldots, v_{\sigma(n)})$ für eine Permutation $\sigma \in S_k = \text{Bij}(\{1,\ldots, k\}, \{1,\ldots,k\})$
+%\end{enumerate}
+%
+%\section{Äußeres Produkt}
+%Wir wollen ein Produkt auf dem System der $Alt^k(V)$ konstruieren.
+%\[ \wedge : Alt^p(V) \times Alt^q(V) \Pfeil{} Alt^{p+q} (V) \]
+%
+%Für $p = q = 1$ legen wir fest
+%\[ (\omega_1 \wedge \omega_2) (v_1, v_2) = \omega_1(v_1) \omega_2(v_2) - \omega_1(v_2) \omega_2(v_1) \]
+%
+%\Def{}
+%Eine Permutation $\sigma \in S_{p+q}$ heißt $(p,q)$-\df{Shuffle}, wenn gilt
+%\begin{align*}
+%& \sigma(1) < \sigma(2) < \ldots < \sigma(p)\\
+%\text{ und }& \sigma(p+1) < \sigma(p+2) < \ldots \sigma(p+2)
+%\end{align*}
+%Ein $(p,q)$-Shuffle ist eindeutig durch sein Verhalten auf $\{1,\ldots, p\}$ festgelegt. Daraus folgt
+%\[ \# S_{p,q}  = \binom{p+q}{p} \]
+%wobei $S_{p,q} \subset S_{p+q}$ die Menge aller $(p,q)$-Shuffles bezeichnet.
+%
+%\Def{}
+%Seien $p,q$ beliebig, $\omega_1 \in Alt^p(V), \omega_2 \in Alt^q(V)$. Wir definieren das \df{Wedge-Produkt} der beiden Funktionale durch
+%\[ (\omega_1 \wedge \omega_2) (v_1,\ldots, v_{p+q}) := \sum_{\sigma \in S_{p,q}}\text{sgn}(\sigma) \omega_1(v_{\sigma(1)}, \ldots, v_{\sigma(p)}) \omega_2( v_{\sigma(p+1)}, \ldots, v_{\sigma(p+q)} ) \]
+%Dann erhalten wir eine bilineare Abbildung
+%\[ \wedge : Alt^p(V) \otimes Alt^q(V)  \Pfeil{} Alt^{p+q}(V) \]
+%Es gilt ferner
+%\[ (\omega_1 \wedge \omega_2) (v_1,\ldots, v_{p+q}) = \frac{1}{p!q!} \sum_{\sigma \in S_{p+q}}\text{sgn}(\sigma) \omega_1(v_{\sigma(1)}, \ldots, v_{\sigma(p)}) \omega_2( v_{\sigma(p+1)}, \ldots, v_{\sigma(p+q)} ) \]
+\Lem{}
+\marginpar{Vorlesung vom 15.12.17}
+Das Wedge-Produkt ist assoziativ, bilinear und ein graduiert kommutatives Produkt, d.\,h.
+\begin{enumerate}[i.]
+		\item $(\omega_1 \wedge \omega_2) \wedge \omega_3 = \omega_1 \wedge (\omega_2 \wedge \omega_3)$
+	\item $(\omega_1 + \omega_2) \wedge \omega_3 = \omega_1 \wedge \omega_3 + \omega_2 \wedge \omega_3$
+	\item $(\lambda \omega_1)\wedge \omega_2 = \lambda (\omega_1 \wedge \omega_2) = \omega_1 \wedge (\lambda \omega_2)$
+	\item $\omega_1 \wedge \omega_2 = (-1)^{pq} (\omega_2 \wedge \omega_1)$
+\end{enumerate}
+für $\omega_1 \in Alt^p(V), \omega_2 \in Alt^q(V), \omega_3 \in Alt^t(V), \lambda \in \R$.
+
+\Def{}
+Setze
+\[ Alt^*(V) = \bigcup_{p\geq 0} Alt^p(V) \]
+$(Alt^*(V), +,\wedge)$ bildet eine graduierte $\R$-Algebra, die sogenannte \df{Äußere Algebra} von $V$. Sie ist graduiert kommutativ.
+
+\Lem{}
+Für 1-Formen $\omega_1, \ldots, \omega_p \in Alt^1(V)$ gilt
+\[ (\omega_1 \wedge \ldots \wedge \omega_p)(v_1,\ldots, v_p) = \det 
+\left(
+\begin{matrix}
+\omega_1(v_1) & \cdots & \omega_1(v_p)\\
+\vdots & & \vdots\\
+\omega_p(v_1) & \cdots & \omega_p(v_p)
+\end{matrix}
+\right)\]
+\begin{Beweis}{}
+Wir beweisen dies durch Induktion nach $p$.\\
+Es sei $p = 2$. Dann gilt
+\[ (\omega_1 \wedge \omega_2)(v_1, v_2) = \omega_1(v_1) \omega_2(v_2) - \omega_2 (v_1) \omega_1(v_2) = 
+\det 
+\left(
+\begin{matrix}
+\omega_1(v_1) & \omega_1(v_2)\\
+\omega_2(v_1) &  \omega_2(v_2)
+\end{matrix}
+\right)
+ \]
+Im Induktionsschritt rechnen wir nun
+\begin{align*}
+&\omega_1 \wedge ( \omega_2 \wedge \ldots \wedge \omega_p) (v_1, \ldots, v_p)
+= \sum_{j} (-1)^{j+1} \omega_1(v_j) (\omega_2 \wedge \ldots \wedge \omega_p) (v_1, \ldots, \widehat{v_j}, \ldots, v_p)
+\end{align*}
+die Aussage ergibt sich nun, indem man
+\[\left(
+\begin{matrix}
+\omega_1(v_1) & \cdots & \omega_1(v_p)\\
+\vdots & & \vdots\\
+\omega_p(v_1) & \cdots & \omega_p(v_p)
+\end{matrix}
+\right)\]
+nach der ersten Zeile entwickelt.
+\end{Beweis}
+
+\Lem{}
+Sei $\{e_1, \ldots, e_n\}$ eine Basis von $V$ und $\{\epsilon_1, \ldots, \epsilon_n\}$ die dazu duale Basis von $Alt^1(V) = V^*$. Dann ist
+\[ \left\lbrace\epsilon_{i_1} \wedge \epsilon_{i_2} \wedge \ldots \wedge \epsilon_{i_p} ~|~ 1 \leq i_1 < i_2 < \ldots < i_p \leq n \right\rbrace\]
+eine Basis für $Alt^p(V)$. Insbesondere gilt
+\[ Alt_p(V) = \binom{n}{p} \]
+\begin{Beweis}{}
+Es gilt nach Lemma 1 für $1 \leq j_1< \ldots < j_p \leq n$
+\begin{align*}
+(\epsilon_{i_1} \wedge \epsilon_{i_2} \wedge \ldots \wedge \epsilon_{i_p})(e_{j_1},\ldots, e_{j_p})
+=&
+\det \left(
+\begin{matrix}
+\epsilon_{i_1}(e_{j_1}) & \cdots & \epsilon_{i_1}(e_{j_p})\\
+\vdots & & \vdots\\
+\epsilon_{i_p}(e_{j_1}) & \cdots & \epsilon_{i_p}(e_{j_p})
+\end{matrix}
+\right)\\
+=
+\det \left(
+\begin{matrix}
+\delta_{i_1,j_1} & \cdots & \delta_{i_1,j_p}\\
+\vdots & & \vdots\\
+\delta_{i_p,j_1} & \cdots & \delta_{i_p,j_p}
+\end{matrix}
+\right)
+=& \left\lbrace
+\begin{aligned}
+\text{sign}(\sigma) && \{i_1, \ldots, i_p\} = \{j_1, \ldots, j_p \} \text{ und } \exists \sigma \in S_p : \sigma(i_k) = j_k\\
+0 && \text{ sonst}
+\end{aligned}
+\right.
+\end{align*}
+Insbesondere gilt für eine $p$-Form $\omega \in Alt^p(V)$
+\[ \omega(e_{j_1}, \ldots, e_{j_p}) = \sum_{i_1<\ldots < i_p} \omega(e_{i_1},\ldots, e_{i_p}) \cdot (\epsilon_{i_1} \wedge \ldots \wedge \epsilon_{i_p})(e_{j_1}, \ldots, e_{j_p}) \]
+Definiert man $c_{i_1, \ldots, i_p} = \omega(e_{i_1},\ldots, e_{i_p})$, so folgt mit der Linearität von $\omega$
+\[ \omega = \sum_{i_1 < \ldots <i_p}c_{i_1, \ldots, i_p} (\epsilon_{i_1} \wedge \ldots \wedge \epsilon_{i_p})  \]
+Ergo wird $Alt^p(V)$ linear von den Produkten $\epsilon_{i_1} \wedge \ldots \wedge \epsilon_{i_p}$ erzeugt. Diese Produkte sind linear unabhängig, denn wenn
+\[\sum_{i_1 < \ldots <i_p}b_{i_1, \ldots, i_p} (\epsilon_{i_1} \wedge \ldots \wedge \epsilon_{i_p})= 0\]
+für Koeffizienten $b_{i_1, \ldots, i_p} \in \R$, dann gilt
+\[ b_{j_1, \ldots, j_p} = \sum_{i_1 < \ldots <i_p}b_{i_1, \ldots, i_p} (\epsilon_{i_1} \wedge \ldots \wedge \epsilon_{i_p})(e_{j_1}, \ldots, e_{j_p}) = 0 \]
+für alle $1 \leq j_1<\ldots j_p\leq n$.
+\end{Beweis}
+
+\Bsp{}
+Für $p = n$ ist $Alt^p(V)$ eindimensional und erzeugt durch $\epsilon_1 \wedge \ldots \wedge \epsilon_n$.
+
+\section{Glatte Differentialformen auf Offenen Mengen im $\R^n$}
+Sei $U \subseteq \R^n$ offen.
+\Def{}
+Eine glatte \df{Differentialform} vom Grad $p$ auf $U$ ist eine glatte Abbildung
+\[ \omega : U \pfeil{} Alt^p(\R^n) \isom{} \R^{\binom{n}{p}} \]
+Es gilt
+\[ \omega = \sum_{i_1 < \ldots <i_p} f_{i_1,\ldots, i_p}(x) (\epsilon_{i_1} \wedge \ldots \wedge \epsilon_{i_n}) \]
+für glatte Funktionen $f_{i_1,\ldots,i_p} \in C^\infty (U,\R)$.\\
+Es bezeichne $\Omega^p(U)$ den $\R$-Vektorraum aller glatten Differentialformen vom Grad $p$ auf $U$.
+
+\paragraph{Schreibweise} Schreibt man für $1\leq i_1< \ldots i_p\leq n$
+\[ I = (i_1, \ldots, i_p)  \]
+so schreibe man weiterhin
+\[ f_I = f_{i_1,\ldots, i_p} \]
+und
+\[ \epsilon_I = \epsilon_{i_1} \wedge \ldots \wedge \epsilon_{i_n} \]
+und
+\[ \omega = \sum_{I}f_I \epsilon_I \]
+
+\Def{}
+Wir definieren \df{Richtungsableitungen} bei $x \in U$
+\begin{align*}
+\D_x\omega : \R^n & \Pfeil{} Alt^p(\R^n)\\
+e_i & \longmapsto  \frac{\d \omega}{\d x_i}(x) := \frac{\d}{\d t}_{t = 0} \omega(x + te_i)
+\end{align*}
+Für $\omega = \sum_{I}f_I \epsilon_I$ ist
+\[ (\D_x \omega)(e_i) = \sum_{I} \frac{\partial f_I}{\partial x_i}(x) \epsilon_I \]
+
+\Def{}
+Mithilfe von $\D_x$ definieren wir die \df{äußere Ableitung}
+\begin{align*}
+\d : \Omega^p(U) & \Pfeil{} \Omega^{p+1}(U)\\
+\omega & \longmapsto \d \omega
+\end{align*}
+mit
+\[ (\d \omega)(x)(v_1, \ldots, v_{p+1}) := \sum_{j=1}^{p+1} (-1)^{j+1} (\D_x \omega) (v_j) (v_1, \ldots, \widehat{v_j}, \ldots, v_{p+1}) \]
+
+\Bsp{}
+$\d : \Omega^0(U) = C^\infty(U,\R) \Pfeil{} \Omega^1 (U)$ mit
+\[ \d f = \sum_{i = 1}^{n} \frac{\partial f}{\partial x_i} \epsilon_i \]
+Insbesondere gilt für $f = x_j$
+\[ \d x_j = \epsilon_j \]
+Insofern werden wir in Zukunft $\d x_i$ statt $\epsilon_i$ schreiben und ferner
+\[ \epsilon_I = \epsilon_{i_1} \wedge\ldots \wedge \epsilon_{i_p} = \d x_{i_1} \wedge\ldots \wedge \d x_{i_p} =: \d x_I \]
+
+\Lem{}
+Für $\omega = f \epsilon_I$ gilt
+\[ \d \omega = (\d f) \wedge \epsilon_I \]
+\begin{Beweis}{}
+\[ (\d \omega)(x)(v_1, \ldots, v_{p+1}) = \sum_{j} (-1)^{j+1} (\D_x \omega) (v_j) (v_1, \ldots, \widehat{v_j}, \ldots, v_p) \]
+es gilt dabei mit $v = \sum_{i= 1}^{n} \epsilon_i(v) e_i$
+\[ (\D_x \omega)(v) = \sum_{i= 1}^{n} \epsilon_i(v) \D_x(f\epsilon_I)(e_i) \]
+Ferner gilt
+\[ \sum_{i= 1}^{n} \epsilon_i(v)\frac{\partial f}{\partial x_i}(x) \epsilon_I = \d f(x)(v) \epsilon_I \]
+Daraus folgt
+\begin{align*}
+ (\d \omega) (x) (v_1, \ldots, v_{p+1}) &= \sum_{j} (-1)^{j+1} \d f(x) (v_j)  \epsilon_I(v_1, \ldots, \widehat{v_j}, \ldots, v_{p+1}) \\
+ &= ( (\d f) (x) \wedge \epsilon_I) (v_1, \ldots, v_{p+1}) 
+\end{align*}
+\end{Beweis}
+
+\Lem{}
+Die Zusammensetzung
+\[ \Omega^p(U) \Pfeil{\d} \Omega^{p+1}(U) \Pfeil{ \d } \Omega^{p+2}(U) \]
+verschwindet.
+\begin{Beweis}{}
+Es genügt dies für Formen der Gestalt $\omega = f\epsilon_I$ zu zeigen. Es gilt laut vorhergehendem Lemma
+\[ \d \omega = \d f \wedge \epsilon_I = \sum_{i = 1}^n \frac{\partial f}{\partial x_i} \epsilon_i \wedge \epsilon_I \]
+und
+\[ \d (\d \omega) = \sum_{i,j} \frac{\partial^2 f}{\partial x_i \partial x_j} \epsilon_i \wedge \epsilon_j \wedge \epsilon_I
+= \sum_{i<j} ( \frac{\partial^2 f}{\partial x_i \partial x_j} - \frac{\partial^2 f}{\partial x_j \partial x_i}) \epsilon_j\wedge \epsilon_i \wedge \epsilon_I
+ \]
+ Das verschwindet aber, da
+ \[\frac{\partial^2 f}{\partial x_i \partial x_j} = \frac{\partial^2 f}{\partial x_j \partial x_i}\]
+\end{Beweis}

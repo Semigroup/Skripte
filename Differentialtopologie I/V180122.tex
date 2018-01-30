@@ -1,0 +1,133 @@
+\section{Poincare-Lemma für $H^*_c$}
+\marginpar{Vorlesung vom 22.1.18}
+Betrachte die Projektion
+\[ \pi : M \times \R^1 \Pfeil{} M \]
+$\pi$ ist nicht eigentlich. Trotzdem behaupten wir, dass $\pi$ kovariant eine Abbildung
+\[ \pi_* : \Omega^p_c(M \times \R^1) \Pfeil{} \Omega^{p-1}_c(M) \]
+induziert. Diese Abbildung nennt man \df{Integration entlang der Faser}. Wir unterscheiden dazu zwei Typen von Elementen in $\Omega_c^*(M\times \R^1)$
+\begin{enumerate}[(1)]
+	\item $\pi^*\eta \cdot f(x,t)$ mit $\eta \in \Omega^*(M)$ und $f$ hat kompakten Träger
+	\item $(\pi^*\eta)\wedge f(x,t) \d t$ mit $\eta \in \Omega^{*-1}(M)$
+\end{enumerate}
+Wir definieren $\pi_*$ durch
+\begin{align*}
+\pi_*(\pi^*\eta \cdot f(x,t)) &= 0\\
+\pi_*((\pi^*\eta)\wedge f(x,t) \d t) &= \eta \int_{-\infty}^{\infty}f(x,t) \d t
+\end{align*}
+Es bleibt nun nachzuprüfen
+\[ \d \pi_* = \pi_* \d \]
+Dadurch erhalten wir eine wohldefinierte Abbildung
+\[ \pi_* : H^*_c(M\times \R^1) \Pfeil{} H^{*-1}_c(M) \]
+Wir behaupten, dass $\pi_*$ ein Isomorphismus auf den Kohomologiegruppen ist, und wollen eine Umkehrabbildung konstruieren.\\
+Sei hierzu $e(t)$ eine glatte Funktion auf $\R$ mit $\int_{-\infty}^{\infty}e(t) \d t = 1$ und $\supp\ e(t)\subset \R$ kompakt. Definiere
+\[ e:= e(t) \d t \in \Omega_c^1(\R^1) \]
+und
+\begin{align*}
+e_* : \Omega_c^{*-1}(M) & \Pfeil{} \Omega_c^*(M\times \R)\\
+\eta & \longmapsto (\pi^*\eta) \wedge e(t) \d t
+\end{align*}
+Auch in diesem Fall rechnet man nach
+\[ \d \circ e_* = e_* \circ \d \]
+Dadurch ergibt sich eine wohldefinierte Abbildung
+\[ e_* : H_c^{*-1}(M) \Pfeil{} H_c^*(M\times \R^1) \]
+Es bleibt nun zu zeigen, dass $e_*$ und $\pi_*$ auf Ebene der Kohomologiegruppen tatsächlich invers zueinander sind.\\
+Wir erhalten hierdurch folgende Isomorphie
+\[ H^k_c(M\times \R^1) \isom{\pi_*} H^{k-1}_c(M) \]
+
+\Lem{Poincare für $H^*_c$}
+\[ H^n_c(\R^n) = H^0_c(\R^0) = \R \]
+
+\Satz{}
+Sei $M$ eine glatte, zusammenhängende, orientierbare Mannigfaltigkeit der Dimension $n$ ohne Rand. Dann gilt
+\[ H^n_c(M) \isom{} \R \]
+\begin{Beweis}{}
+\begin{enumerate}[\text{Schritt} 1]
+	\item $\dim_\R H^n_c(M)\geq 1$:\\
+	Sei dazu $U\subset M$ eine Karte $U \isom{} \R^n$. $\omega \in \Omega_c^n(U)$ sei eine $n$-Form mit
+	\[ \int_{U}\omega \neq 0 \]
+	Der Satz von Stokes impliziert nun, dass $\omega$ ist nicht exakt, d.\,h., $\omega \notin \Img\ \d$. Damit folgt aber auch
+	\[ 0\neq [\omega] \in H^n_c(M) \]
+	\item $\dim_\R H^n_c(M) \leq 1$:\\
+	Sei $\omega' \in \Omega_c^n(M)$. Wir müssen zeigen, dass es ein $c\in \R$ und ein $\eta \in \Omega_c^{n-1}(M)$ gibt, sodass
+	\[ \omega' = c\omega + \d \eta \]
+	Dazu nehmen wir uns Karten $U_1, \ldots, U_k \subset M$ mit $U_i \isom{}\R^n$ und
+	\[\supp\ \omega' \subset U_1\cup \ldots \cup U_k\]
+	Sei ferner $f_1,\ldots, f_k$ eine glatte Partition der Eins mit $\supp f_i \subset U_i$ kompakt. Dann gilt
+	\[ \omega' = \sum_{i} f_i \omega' \]
+	Angenommen, es gäbe $c_i \in \R$ und $\eta\in \Omega_c^{n-1}(U_i)$ mit
+	\[ f_i \omega' = c_i\omega + \d \eta_i \]
+	für alle $i$. Dann ergäbe sich
+	\[ \omega' = (\sum_{i}c_i) \omega + \d (\sum_{i} \eta_i) \]
+	Insofern genügt es also, die Existenz von $c_i$ und $\eta_i$ nachzuweisen. D.\,h., wir können ohne Einschränkung annehmen, dass $\omega'$ kompakten Träger in einer Karte $V \subset M$, $V \isom{} \R^n$, hat.\\
+	Beachte, dass
+	\[ \supp\ \omega \subset U \text{  und  } \supp\ \omega' \subset V \]
+	Da $M$ zusammenhängend ist, finden wir offene Karten $U_1, \ldots, U_r \subset M$ mit
+	\begin{align*}
+		U_i             & \isom{} \R     & U_1 & = U \\
+		U_i\cap U_{i+1} & \neq \emptyset & U_r & = V
+	\end{align*}
+	Sei $\omega_1 \in \Omega_c^n(U_1)$ mit $\emptyset \neq \supp\ \omega_1 \subset U_1 \cap U_2$. Dies führen wir für $i = 2, \ldots, r-1$ fort und erhalten
+	\[ 0\neq \omega_i \in \Omega^n_c(U_i\cap U_{i+1})  \]
+	Mit dem Poincare Lemma folgt nun
+	\[ H^n_c(U_i) \isom{} \R \]
+	Deswegen existieren $c_1 \in \R$ und $\eta_1 \in \Omega^{n-1}_c(U_1)$ mit
+	\[ \omega_1 = c_1 \omega + \d \eta_1 \]
+	Und analog folgt die Existenz von $c_2, \ldots, c_{r-1} \in \R$ und $\eta_2, \ldots, \eta_r$ mit
+	\[ \omega_i = c_i \omega_{i-1} + \d \eta_i \]
+	Zusammenfügen ergibt
+	\[ \omega' = c_1 \cdots c_{r-1} \omega + \d (\eta_{r-1} +c_{r-1}\eta_{r-2} + \ldots + c_{1}\cdots c_{r-2}\eta_1) \]
+\end{enumerate}
+\end{Beweis}
+\Bem{}
+Ist $M$ nicht orientierbar, so gilt
+\[ H^n_c(M) = 0 \]
+Der Beweis hierfür wird ähnlich geführt wie oben.
+
+\section{Zurück zum Abbildungsgrad}
+\Def{}
+Sei $\phi : M \pfeil{} N$ eine glatte Abbildung glatter, orientierter, zusammenhängender, geschlossener Mannigfaltigkeiten der Dimension $n$.\\
+Sei $\omega_0 \in \Omega^n_c(N)$ eine Form mit
+\[ \int_M \omega_0 \neq 0 \]
+Dann ist $\phi^* \omega$ eine $n$-Form auf $M$. Definiere
+\[ d(\phi) := \frac{\int_{M}\phi^*\omega_0}{\int_N\omega_0} \]
+$d(\phi)$ ist unabhängig von der Wahl von $\omega_0$, denn ist $\omega \in \Omega^n_c(N)$ eine weitere $n$-Form, so gilt
+\[ \omega = c \omega_0 + \d \eta \]
+und es gilt
+\[ \frac{\int_M \phi^*\omega }{\int_N \omega} = \frac{\int_M c\phi^*\omega_0 + \phi^*\d \eta}{\int_N c \omega_0 + \d \eta} = \frac{\int_M \phi^*\omega_0}{\int_N\omega_0} = d(\phi) \]
+da $\int_N \d \eta= 0$, da $N$ keinen Rand hat.
+
+\Bem{}
+$d(\phi)$ ist auch dann wohldefiniert, wenn $M,N$ nicht kompakt sind, aber $\phi$ eigentlich ist.
+
+\Satz{}
+In obiger Situation gilt
+\[ d( \phi) = \deg (\phi) \]
+Insbesondere ist $d(\phi)$ immer eine ganze Zahl.
+\begin{Beweis}{}
+	Sei $p \in N$ ein regulärer Wert von $\phi$ und $\phi\i(p) = \{q_1, \ldots, q_k\} \subset M$. Wir haben Isomorphismen
+	\[ \phi_{*,q_i} : T_{q_i}M \Pfeil{\isom{}} T_pN \]
+	Nach dem Satz über umkehrbare Funktionen ist $\phi$ lokal in der Nähe der $q_i$ ein Diffeomorphismus. Ergo existiert eine Karte $\R^n \isom{} V\subset N$ um $p$ und weitere Karten $\R^n \isom{} U_i \subset M$ um $q_i$, sodass
+	\[ \phi_{|U_i} : U_i \Pfeil{} V \]
+	ein Diffeomorphismus ist für alle $i$.\\
+	Sei $\omega_0 \in \Omega_c^n(V)$ mit
+	\[ \int_N \omega_0 \neq 0 \]
+	Dann ist der Träger $\supp\ \phi^*\omega_0$ in $U_0 \cup \ldots \cup U_k$ enthalten. Wir erhalten $k$ Kopien von $\omega_0$
+	\[ \phi^*_{|U_i}\omega_0 \in \Omega_c^n(U_i) \]
+	Es folgt
+	\[ \int_M \phi^*\omega_0 =
+	\sum_{i=1}^k\int_{U_i} \phi^*_{|U_i}\omega_0 \]
+	und es gilt
+	\[\int_{U_i} \phi^*_{|U_i}\omega_0 = \epsilon_i \int_V \omega_0 \]
+	wobei
+	\[ \epsilon_i = \left\lbrace
+	\begin{aligned}
+	+1 && \phi_{*,q_i} \text{ ist orientierungserhaltend}\\
+	-1 && \phi_{*,q_i} \text{ ist orientierungsumkehrend}
+	\end{aligned}
+	\right. \]
+	Dadurch folgt
+	\[ d(\phi) = \frac{\int_M \phi^*\omega_0 }{ \int_N \omega_0 }
+	= \frac{\sum_{i=1}^k\epsilon_i \int_N \omega_0}{\int_N \omega_0} = \sum_{i=1}^k\epsilon_i  = \deg(\phi)
+	 \]
+\end{Beweis}
+

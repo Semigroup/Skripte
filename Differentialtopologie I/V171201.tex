@@ -1,0 +1,123 @@
+%Vorstufe zum glatten Approximationssatz
+\setcounter{chapter}{3}
+\chapter{\textsc{Vektorraumbündel}}
+\marginpar{Vorlesung vom 1.12.17}
+\section{Glatter Approximationssatz}
+
+\Prop{}
+Sei $M$ eine glatte Mannigfaltigkeit, $A \abg M$, $f : M \pfeil{} \R^k$ stetig, sodass $f_{|A}$ glatt ist.\\
+Dann existiert für alle $\e > 0$ ein Abbildung $g : M \pfeil{{}} \R^k$ mit:
+\begin{enumerate}[1.)]
+	\item $g$ ist glatt
+	\item $g_{|A} = f_{|A}$
+	\item $\norm{f(x) - g(x)} < \e ~~\forall x \in M$
+	\item $g \simeq f$ relativ $A$ durch eine $\epsilon$-kleine Homotopie, d.\,h., es existiert eine Homotopie $H : M \times I \pfeil{} \R^k$ mit
+	\begin{enumerate}
+		\item $H(x,t) = H(x,0) ~~~\forall t \in I,x \in A $
+		\item $H(x,0) = f(x)~~~\forall x \in A$
+		\item $H(x,1) = g(x)~~~\forall x \in A$
+		\item $d(H(x,t_1), H(x, t_2)) < \e ~~~ \forall x \in M, t_1, t_2 \in I $
+	\end{enumerate} 
+\end{enumerate}
+\begin{Beweis}{}
+	Für alle $x \in M$ wählen wir:
+	\begin{enumerate}[\text{Fall} 1]
+		\item $x \in A$:\\
+		Dann existiert eine offene Umgebung $V_x\subset M$ und eine glatte Abbildung $h_x : V_x \pfeil{} \R^k$ mit
+		\[ {h_x}_{|V_x \cap A} = f_{|V_x\cap A} \]
+		\item $x\notin A:$\\
+		Wähle $V_x\off M$ mit
+		\[ V_x \cap A = \emptyset \]
+		und wähle $h_x : V_x \pfeil{} \R^k$ glatt mit
+		\[ h_x(y) = f(x) \]
+		für alle $y \in V$. Außerdem stellen wir sicher, dass die $V_x$ so klein sind, dass für $x, x' \notin A$ gilt
+		\[ \norm{h_x(y) - f(x')} < \frac{\e}{2}, ~~~ \norm{f(y) - f(x)}< \frac{\e}{2} \]
+	\end{enumerate}
+Sei $(U_\alpha)_\alpha$ eine lokal endliche Verfeinerung von $(V_x)_x$ mit
+\[ U_{\alpha} \subset V_{x(\alpha)} \]
+Sei $(\lambda_\alpha)_\alpha$ eine glatte Partition der Eins mit $\text{supp}\lambda_\alpha \subset U_\alpha$.\\
+Wir setzen
+\[ g(y) := \sum_{\alpha}\lambda_\alpha(y) h_{x(\alpha)}(y) \]
+Dann ist $g : M \pfeil{} \R^k$ bereits glatt.\\
+Sei $y \in A$. Wenn $y \notin V_{x(\alpha)}$, dann ist $\lambda_\alpha(y) = 0$, denn $\text{supp}(\lambda_\alpha) \subset V_{x(\alpha)}$. Daraus folgt
+\[ g(y) = \sum_{\alpha : y \in V_{x(\alpha)}\cap A} \lambda_\alpha(y) h_{x(\alpha)}(y) = \sum_{\alpha : y \in V_{x(\alpha)}\cap A} \lambda_\alpha(y)f(y) = f(y) \]
+bzw.
+\[ f_{|A} = g_{|A} \]
+Sei $y \notin A$
+\[ g(y) - f(y) = \sum_{\alpha} \lambda_\alpha(y) (h_{x(\alpha)}(y) - f(y)) \]
+Da $\norm{h_{x(\alpha)}(y) - f(y)} \leq \norm{h_{x(\alpha)}(y) - f(x)} + \norm{f(x)- f(y)} \leq \e$, folgt
+\[ \norm{g(y) - f(y)} \leq \e \]
+Wir definieren nun die Homotopie zwischen $f$ und $g$ durch
+\begin{align*}
+H(x,t) := t\cdot f(x) + (1- t) g(x)
+\end{align*}
+\end{Beweis}
+
+\Satz{Glatter Approximationssatz}
+Sei $M$ eine glatte Mannigfaltigkeit der Dimension $m$, sei $N$ eine glatte, kompakte und metrische Mannigfaltigkeit der Dimension $n$. Sei $A\abg M$, $f : M\pfeil{} N$ stetig. $f$ sei auf $A$ eingeschränkt glatt. Dann gilt:\\
+Für jedes $\e > 0$ existiert eine glatte Abbildung $h : M \pfeil{} N$, sodass gilt:
+\begin{enumerate}
+	\item $h$ stimmt auf $A$ mit $f$ überein.
+	\item $f$ und $h$ sind durch eine $\e$-kleine Homotopie relativ zu $A$ verbunden.
+\end{enumerate}
+\begin{Beweis}{}
+$N$ habe eine glatte Einbettung $\iota : N \inj{} \R^k$. Da $N$ kompakt ist, existiert für jedes $\e > 0$ ein $\delta > 0$, sodass für alle $p,q \in N$ gilt
+\[ \norm{\iota(p)- \iota(q)} < \delta \Impl{} d(p,q) < \e \]
+d.\,h., $\iota\i$ ist gleichmäßig stetig.\\
+Dies motiviert im Folgenden $\norm{\cdot}$ auf $\R^k$ statt $d$ auf $N$ zu betrachten.\\
+Wir fixieren ein $\e > 0$. Der Satz über Tubenumgebungen impliziert die Existenz einer $\frac{\delta}{2}$-Umgebung $U \off \R^k$ von $\iota(N)$, sodass $U \isom{} E(\frac{\delta}{2})$, wobei $E$ das Normalenbündel zu $\iota$ war.\\
+Aus der vorhergenden Proposition folgt nun die Existenz einer glatten Abbildung $g : M\pfeil{} \R^k$, die $\frac{\delta}{2}$-klein und relativ zu $A$ homotop zu $\iota \circ f$ ist. Das Bild von $g$ liegt dann ganz in $U$.\\
+Sei $r : U \pfeil{} N$ ein glatter Deformationsrektrakt. Wir können fordern, dass diese eine $\frac{\e}{2}$-kleine Homotopie induziert. Dann ist $r \circ g$ glatt und homtop zu $f$ via einer $\e$-kleinen Homotopie relativ zu $A$.
+\end{Beweis}
+
+\Bem{}
+\begin{itemize}
+\item Der Metrisierbarkeitssatz von Smirnov besagt.
+\begin{center}
+	Ist $X$ ein parakompakter, lokal metrisierbarer Hausdorffraum, so ist $X$ global metrisierbar.
+\end{center}
+Insbesondere sind Mannigfaltigkeiten immer metrisierbar.
+\item Sei $ f: M \pfeil{} S^n$ eine stetige Abbildung. $m = \dim M < n$. Der Glatte Approximationssatz impliziert nun die Existenz einer glatten Abbildung $f : M \pfeil{} S^n$, die homotop zu $f$ ist.\\
+Der Satz von Sard proklamiert nun die Existenz eines regulären Wert $p \in S^n$ von $g$. Da $m < n$, folgt aber hieraus
+\[ p \notin g(M) \]
+$S^n- p \isom{} \R^n$, ergo erhalten wir eine glatte Abbildung $ g : M \pfeil{} \R^n$. Hieraus folgt aber, dass $g$ nullhomotop ist. Insbesondere ist auch $f$ nullhomoptop.\\
+D.\,h., eine stetige Abbildung von einer glatten Mannigfaltigkeit in eine höherdimensionale Sphäre ist immer null-homotop.
+\item $\partial D^{n+1} = S^n$ ist kein Retrakt von $D^{n+1}$.\\
+Denn angenommen, es gäbe eine Retraktion $r : D^{n+1} \pfeil{} S^n$. Definiere
+\[ D^{n+1}_{\leq \frac{1}{2}} = \set{ x \in \R^{n+1} }{\norm{x} \leq \frac{1}{2}} \text{ und } \partial D^{n+1}_{\leq \frac{1}{2}} = S^n_{\frac{1}{2}} \]
+Analog erhalten wir $r_{\frac{1}{2}} : D^{n+1}_{\leq\frac{1}{2}} \pfeil{} S^n_{\frac{1}{2}}$. Betrachte ferner
+\[ p:\R^{n+1} \pfeil{} S^n, x \mapsto \frac{x}{\norm{x}} \]
+Definiere nun
+\begin{align*}
+f : \R^{n+1} & \Pfeil{} S^n\\
+x & \longmapsto \left\lbrace
+\begin{aligned}
+p(r_{\frac{1}{2}}(x)) && \norm{x} \leq \frac{1}{2}\\
+p(x) && \norm{x} \geq \frac{1}{2}
+\end{aligned}
+\right.
+\end{align*}
+$f$ ist glatt in einer kleinen Umgebung vom $S^n$. Betrachte
+\[ f_{|D^{n+1}} \Pfeil{} S^n \]
+Diese Abbildung ist stetig, ergo homotop zu einer glatten Abbildung $g : D^{n+1} \pfeil{} S^n$, wobei $f_{|S^n} = g_{|S^n}$.\\
+Mit dem Satz von Sard existiert ein regulärer Wert für $g$ (und $g_{|S^n}$).\\
+$g\i(p)$ ist dann eine glatte, kompakte Untermannigfaltigkeit der Dimension 1 mit Rand. Es gilt folgende Randformel
+\[ \partial g\i(p) = (g\i(p)) \cap \partial D^{n+1} \]
+Dann ist $g\i(p)$ eine endliche Vereinigung von Kreisen in $\text{int}(D^n)$ und kompakten Intervallen mit Randpunkten in $S^n$. Allerdings gilt
+\[ \partial g\i(p) = \{ p\} \]
+da $g$ die ganze Faser $g\i(p)$ auf $p$ schickt und $g$ auf $S^n$ die Identität ist.
+Deswegen kann die Zahl der Randpunkte von $g\i(p)$ nicht gerade sein.
+\end{itemize}
+
+\Lem{}
+Sei $(M, \partial M)$ eine berandete Mannigfaltigkeit, $g : M\pfeil{} N$ glatt.\\
+$p \in N$ sei regulär für $g$ und für $g_{|\partial M}$. Dann gilt
+\[ \partial g\i(p) = g\i(p) \cap \partial M \]
+
+\Bsp{}
+Betrachte $g:D^2 \pfeil{} \R$ durch
+\[ g(x,y)  = x^2 + y^2 \]
+$p = 1$ ist ein regulärer Wert für $g$, aber nicht für $g_{|S^1} \gl{\text{konst.}} 1$. Es gilt
+\[ g\i(p) \cap \partial D^2 = S^1 \cap S^1 = S^1 \]
+aber
+\[ \partial g\i(p) = \partial S^1 = \emptyset \]

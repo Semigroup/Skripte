@@ -1,0 +1,168 @@
+\section{Anwendungen des Abbildunggrades}
+\marginpar{Vorlesung vom 11.12.17}
+Im Folgenden seien $M,N$ geschlossene glatte orientierte Mannigfaltigkeiten der Dimension $n$.
+
+\Lem{}
+Sei $f : M \pfeil{} N$ glatt. Ist $\deg f \neq 0$, dann ist $f$ surjektiv.
+\begin{Beweis}{}
+	Wäre $f$ nicht surjektiv, dann wählen wir $p\in N - f(M)$. Damit ist $p$ regulär und es gilt
+	\[ \deg f = \deg_p f = 0 \]
+\end{Beweis}
+
+\Satz{Fundamentalsatz der Algebra}
+Jedes nichtkonstante komplexe Polynom hat eine Nullstelle.
+\begin{Beweis}{}
+Sei $f : \C \pfeil{} \C$ ein nichtkonstantes komplexes Polynom. Ohne Einschränkung hat $f$ folgende Gestalt
+\[ f(z) = z^n + a_{n-1} z^{n-1}+\ldots + a_1z + a_0 \]
+Es gilt notorischerweise
+\[ \lim\limits_{z\pfeil{} \infty} f(z) = \infty \]
+$f$ induziert somit eine stetige Fortsetzung $\overline{f}$ auf der Ein-Punkt-Kompaktifizierung von $\C$.
+\begin{align*}
+\overline{f} : \C \cup \{\infty\} & \Pfeil{}\C \cup \{\infty\}\\
+z \in \C & \longmapsto f(z)\\
+\infty & \longmapsto \infty
+\end{align*}
+Wir fassen im Folgenden $\C \cup \infty$ als $S^2$ auf. Wir wollen den Abbildungsgrad von $\overline{f}$ bestimmen. Betrachte hierzu folgende Homotopie
+\begin{align*}
+H : S^2 \times I & \Pfeil{} S^2\\
+(z,t) & \longmapsto z^n + a_{n-1}tz^{n-1} + \ldots + a_1tz + a_0t
+\end{align*}
+hierdurch werden $\overline{f}$ und $\overline{g}$ homotop für $g(z) := z^n$. Ergo haben $\overline{f}$ und $\overline{g}$ den selben Abbildungsgrad. Der Abbildungsgrad von $\overline{g}$ ist gerade $n$. Betrachte zum Beispiel den regulären Wert 1. Dieser hat $n$ $n$-te Einheitswurzeln.\\
+Ergo verschwindet der Abbildungsgrad von $\overline{f}$ nicht, ergo ist $\overline{f}$ surjektiv, ergo ist $f$ surjektiv, ergo hat $f$ eine Nullstelle.
+\end{Beweis}
+
+\Bem{}
+Es liegt folgender Isomorphismus vor
+\begin{align*}
+\left\lbrace
+\begin{aligned}
+\text{punktierte Homotopieklassen von}\\
+\text{stetigen Abbildungen }f : S^n \pfeil{} S^n
+\end{aligned}
+\right\rbrace
+&\Pfeil{\isom{}}
+\Z\\
+[f] & \longmapsto \deg f
+\end{align*}
+
+\chapter[\textsc{De Rham Kohomologie}]{{\textsc{Glatte Differentialformen und De Rham Kohomologie}}}
+
+\section*{Motivation}
+Für jede glatte Funktion $f : U\off \R \pfeil{} \R$ existiert eine glatte \df{Stammfunktion} $F : U \pfeil{} \R$, d.\,h.
+\[ \frac{\d}{\d x} F = f \]
+Kann das auf Funktionen in mehreren Veränderlichen verallgemeinert werden?\\
+Betrachten wir hierzu eine glatte Abbildung
+\[ f : U \off \R^2 \Pfeil{} \R^2 \]
+\paragraph{Frage} Existiert ein \df{Potential} $F : U \pfeil{} \R$ sodass
+\[ f = (\frac{\d}{\d x} F, \frac{\d}{\d y} F) =: (f_1, f_2) \]
+Wenn ja, dann gilt auch
+\[ \frac{\d f_1}{\d y} = \frac{\d^2 F}{\d x\d y} = \frac{\d^2 F}{\d y\d x} =  \frac{\d f_2}{\d x}  \]
+Dadurch erhalten wir folgende notwendige Bedingung
+\[ \frac{\d f_1}{\d y} = \frac{\d f_2}{\d x} \]
+\paragraph{Frage} Ist diese Bedingung hinreichend?\\
+Schauen wir uns dazu folgendes Beispiel an:
+\begin{align*}
+f : \R^2 - 0 & \Pfeil{} \R^2\\
+(x_1, x_2) & \longmapsto \frac{1}{x_1^2 + x_2^2}(-x_2, x_1)
+\end{align*}
+$f$ erfüllt obige Bedingung. Angenommen es gäbe ein Potential $F : \R^2 - 0 \pfeil{} \R$ für $f$. Betrachte
+\[ \int_{0}^{2\pi} \frac{\d}{\d \theta} F(\cos \theta, \sin \theta) \d \theta = F(\cos 2\pi , \sin 2\pi) - F(\cos 0, \sin 0) = 0 \]
+Andererseits gilt
+\begin{align*}
+\frac{\d}{\d \theta} F(\cos \theta, \sin \theta) &= - \sin \theta\frac{\partial F}{\partial x_1}(\cos \theta, \sin \theta) + 
+\cos \theta\frac{\partial F}{\partial x_2}(\cos \theta, \sin \theta)\\
+& = \frac{\sin^2 \theta}{\cos^2 \theta + \sin^2 \theta} +  \frac{\cos^2 \theta}{\cos^2 \theta + \sin^2 \theta} =1
+\end{align*}
+woraus folgen würde
+\[\int_{0}^{2\pi} \frac{\d}{\d \theta} F(\cos \theta, \sin \theta) \d \theta = \int_{0}^{2\pi} 1 \d \theta = 2\pi \]
+Dies ist ein Widerspruch, ergo ist obige Bedingung nicht hinreichend.
+
+\Def{}
+Eine Menge $U \subset \R^n$ heißt \df{sternförmig} bzgl. $x_0\in U$, wenn für alle $x \in U$ die Strecke
+\[\set{tx + (1-t)x_0}{t\in [0,1]} \]
+in $U$ enthalten ist.
+
+\Prop{}
+Ist $U \subset \R^2$ sternförmig und erfüllt die glatte Funktion $f : U \pfeil{} \R^2$ die Bedingung
+\[ \frac{\d f_1}{\d x_2} = \frac{\d f_2}{\d x_1} \]
+dann hat $f$ ein Potential auf $U$.
+\begin{Beweis}{}
+Ohne Einschränkung ist $x_0 = 0$ das Zentrum von $U$. Dann setzen wir
+\[ F(x_1, x_2) = \int^{1}_0 x_1f_1(tx_1, tx_2) + x_2 f_2(tx_1, tx_2) \d t \]
+\end{Beweis}
+
+\Bem{}
+Die Existenz eines Potentials hängt also irgendwie von der Topologie der Definitionsmenge ab.
+
+\subsection*{Umformulierung}
+Sei $U \subset \R^2$. Wir definieren den \df{Gradient} durch
+\begin{align*}
+\nabla : C^\infty(U,\R) & \Pfeil{} C^\infty (U, \R^2)\\
+f & \longmapsto (\frac{\d f}{\d x_1}, \frac{\d f}{\d x_2})
+\end{align*}
+Die \df{Rotation} definieren wir durch
+\begin{align*}
+\rot : C^\infty(U,\R^2) & \Pfeil{} C^\infty (U, \R)\\
+f_1, f_2 & \longmapsto \frac{\d f_1}{\d x_2} - \frac{\d f_2}{\d x_1}
+\end{align*}
+Es gilt dann 
+\[ \rot \circ \nabla = 0 \]
+D.\,h., $\Img \nabla \subset \Ker~ \rot$. Wir definieren die \df{erste Kohomologiegruppe} von $U$ durch
+\[ H^1(U) := \Ker~ \rot / \Img \nabla \]
+
+\Bsp{}
+Wir wissen bereits
+\[ H^1(\text{sternförmig}) = 0 \]
+und
+\[ H^1(\R^2 - 0) \neq 0 \]
+
+\section{Äußere Algebren}
+Sei $V$ ein endlich dimensionaler reeller Vektorraum. Es bezeichne $V^k$ das $k$-fache kartesische Produkt von $V$ mit Vektorraumstruktur.
+\Def{}
+Eine $k$-lineare Abbildung $\omega : V^k \pfeil{} \R$ heißt \df{alternierend}, wenn
+\[ \omega(v_1, \ldots, v_k) = 0 \]
+für alle $v_1,\ldots, v_k$, in denen ein Vektor $v_i$ mindestens an zwei Stellen vorkommt. Das ist äquivalent dazu zu fordern, dass $\omega$ für alle linear abhängige System $v_1,\ldots, v_k$ verschwindet.
+
+\Bem{}
+Für ein alternierendes $\omega$ gilt
+\[ \omega(v_1, \ldots, v_i, \ldots, v_j, \ldots, v_k) = - \omega(v_1,\ldots, v_j, \ldots, v_i, \ldots, v_k) \]
+
+\Def{}
+Unter $Alt^k(V) \subset \Hom{\R}{V^k}{\R}$ verstehen wir den reellen Vektorraum der alternierenden Formen. Wir legen ferner folgende Konvention fest
+\[ Alt^0(V) := \R \]
+
+\Bsp{}
+Ist $k = \dim V$, so ist $Alt^k(V)$ eindimensional und wird von der Determinante erzeugt.
+
+\Lem{}
+\begin{enumerate}[1.)]
+	\item $Alt^k(V) = 0$ für $k > \dim V$
+	\item $\omega(v_1, \ldots, v_n) = \text{sgn}(\sigma) \cdot \omega(v_{\sigma(1)}, \ldots, v_{\sigma(n)})$\\
+	für eine Permutation $\sigma \in S_k = \text{Bij}(\{1,\ldots, k\}, \{1,\ldots,k\})$
+\end{enumerate}
+
+\section{Äußeres Produkt}
+Wir wollen ein Produkt auf dem System der $Alt^k(V)$ konstruieren.
+\[ \wedge : Alt^p(V) \times Alt^q(V) \Pfeil{} Alt^{p+q} (V) \]
+
+Für $p = q = 1$ legen wir fest
+\[ (\omega_1 \wedge \omega_2) (v_1, v_2) = \omega_1(v_1) \omega_2(v_2) - \omega_1(v_2) \omega_2(v_1) \]
+
+\Def{}
+Eine Permutation $\sigma \in S_{p+q}$ heißt $(p,q)$-\df{Shuffle}, wenn gilt
+\begin{align*}
+& \sigma(1) < \sigma(2) < \ldots < \sigma(p)\\
+\text{ und }& \sigma(p+1) < \sigma(p+2) < \ldots \sigma(p+q)
+\end{align*}
+Ein $(p,q)$-Shuffle ist eindeutig durch sein Verhalten auf $\{1,\ldots, p\}$ festgelegt. Daraus folgt
+\[ \# S_{p,q}  = \binom{p+q}{p} \]
+wobei $S_{p,q} \subset S_{p+q}$ die Menge aller $(p,q)$-Shuffles bezeichnet.
+
+\Def{}
+Seien $p,q$ beliebig, $\omega_1 \in Alt^p(V), \omega_2 \in Alt^q(V)$. Wir definieren das \df{Wedge-Produkt} der beiden Funktionale durch
+\[ (\omega_1 \wedge \omega_2) (v_1,\ldots, v_{p+q}) := \sum_{\sigma \in S_{p,q}}\text{sgn}(\sigma) \omega_1(v_{\sigma(1)}, \ldots, v_{\sigma(p)}) \omega_2( v_{\sigma(p+1)}, \ldots, v_{\sigma(p+q)} ) \]
+Dann erhalten wir eine bilineare Abbildung
+\[ \wedge : Alt^p(V) \otimes Alt^q(V)  \Pfeil{} Alt^{p+q}(V) \]
+Es gilt ferner
+\[ (\omega_1 \wedge \omega_2) (v_1,\ldots, v_{p+q}) = \frac{1}{p!q!} \sum_{\sigma \in S_{p+q}}\text{sgn}(\sigma) \omega_1(v_{\sigma(1)}, \ldots, v_{\sigma(p)}) \omega_2( v_{\sigma(p+1)}, \ldots, v_{\sigma(p+q)} ) \]
+

@@ -1,0 +1,173 @@
+%
+% -------------------------------------------------------------------------------------------
+% "THE BEER-WARE LICENSE"
+% Jo, Ihr könnt mit diesem Code machen, was Ihr wollt, solange keinerlei Verantwortlichkeiten auf mich zurückfallen...
+% Ansonsten kann ich Euch nur anregen, Wissen frei zu gestalten und allen Menschen zugänglich zu machen.
+% Ja, und trinkt ein Bier oder eine Chai Latte oder einen Grünen Tee auf das Skript hier (oder ladet mich ein, wenn Ihr wollt).
+% LG Akin
+% -------------------------------------------------------------------------------------------
+%
+
+\documentclass[12pt]{book}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{tikz-cd}
+\usetikzlibrary{babel}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{wasysym}
+\usepackage{dsfont}
+\usepackage{geometry}
+\usepackage{makeidx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\usepackage{enumerate}
+\usepackage{adjustbox}
+
+\newcommand{\ifLeer}[3]{\ifx&#1&\relax#2\relax\else\relax#3\relax\fi\relax}
+
+\newcommand{\Def}[1]{\subsection{Definition\ifLeer{#1}{}{: #1}}}
+\newcommand{\Bsp}[1]{\subsection{Beispiel\ifLeer{#1}{}{: #1}}}
+\newcommand{\Lem}[1]{\subsection{Lemma\ifLeer{#1}{}{: #1}}}
+\newcommand{\Bem}[1]{\subsection{Bemerkung\ifLeer{#1}{}{: #1}}}
+\newcommand{\Kor}[1]{\subsection{Korollar\ifLeer{#1}{}{: #1}}}
+\newcommand{\Satz}[1]{\subsection{Satz\ifLeer{#1}{}{: #1}}}
+\newcommand{\Prop}[1]{\subsection{Proposition\ifLeer{#1}{}{: #1}}}
+
+\newcommand{\QED}{\hfill $\square$}
+\newcommand{\qed}{\hfill $\blacksquare$}
+
+\newenvironment{Beweis}[1]{\paragraph{Beweis\ifLeer{#1}{}{: #1}\\}}{\QED}
+\newenvironment{Beweisskizze}[1]{\paragraph{Beweisskizze\ifLeer{#1}{}{: #1}\\}}{\qed}
+
+\newcommand{\df}[1]{\index{#1}\textbf{#1}}
+
+\newcommand{\klam}[1]{\left(#1\right)}
+\newcommand{\bet}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\bet{\bet{#1}}}
+\newcommand{\brak}[1]{\left[#1\right]}
+\newcommand{\curv}[1]{\left\lbrace#1\right\rbrace}
+\newcommand{\shrp}[1]{\left<#1\right>}
+\newcommand{\quot}[1]{\glqq #1 \grqq\relax}
+\newcommand{\set}[2]{\curv{\ifLeer{#2}{#1}{#1 ~ | ~ #2}}}
+\newcommand{\grp}[2]{\shrp{\ifLeer{#2}{#1}{#1 ~ | ~ #2}}}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\O}{\mathcal{O}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\id}[1]{\text{Id}_{#1}}
+\newcommand{\Ker}{\textsf{Kern}}
+\newcommand{\Coker}{\textsf{Kokern}}
+\newcommand{\Img}{\textsf{Bild}}
+\newcommand{\Coimg}{\textsf{Kobild}}
+\newcommand{\Hom}[3]{\textsf{Hom}_{#1}\left(#2, #3\right)}
+\newcommand{\Aut}[2]{\textsf{Aut}_{#1}\left(#2\right)}
+\newcommand{\Sym}[1]{\textsf{Symm}_{#1}}
+
+\newcommand{\e}{\varepsilon}
+
+\newcommand{\Pfeil}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\pfeil}[1]{\overset{#1}{\rightarrow}}
+\newcommand{\inj}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\Inj}[1]{\overset{#1}{\lhook\joinrel\longrightarrow}}
+\newcommand{\surj}[1]{\overset{#1}{\twoheadrightarrow}}
+
+\newcommand{\impl}[1]{\overset{#1}{\Rightarrow}}
+\newcommand{\Impl}[1]{\overset{#1}{\Longrightarrow}}
+\newcommand{\gdw}[1]{\overset{#1}{\Leftrightarrow}}
+\newcommand{\Gdw}[1]{\overset{#1}{\Longleftrightarrow}}
+
+\newcommand{\off}{\overset{o}{\subset}}
+\newcommand{\abg}{\overset{c}{\subset}}
+
+\newcommand{\gl}[1]{\overset{#1}{=}}
+\newcommand{\grgl}[1]{\overset{#1}{\geq}}
+\newcommand{\klgl}[1]{\overset{#1}{\leq}}
+\newcommand{\gr}[1]{\overset{#1}{>}}
+\newcommand{\kl}[1]{\overset{#1}{<}}
+\newcommand{\isom}[1]{\overset{#1}{\cong}}
+
+\newcommand{\supp}{\text{supp}}
+
+\renewcommand{\i}{^{-1}}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\d}{\text{d}}
+
+\newcommand{\rot}{\text{rot}}
+
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\sgn}{\text{sign}}
+
+\setlength{\marginparwidth}{20mm}
+
+\makeindex
+\date{\today}
+\author{\href{mailto:tensor.produkt@gmx.de}{tensor.produkt@gmx.de}}
+
+\makeindex
+
+\begin{document}
+\title{Mitschrieb: Differentialtopologie I\\
+WS 17 / 18}
+\maketitle
+\section*{Vorwort}
+Dies ist ein Mitschrieb der Vorlesungen vom 1.12.17 bis zum 22.01.18 des Kurses \textsc{Differentialtopologie I} an der Universität Heidelberg.\\
+Dieses Dokument wurde \glqq{live}\grqq\ in der Vorlesung getext. Sämtliche Verantwortung für Fehler übernimmt alleine der Autor dieses Dokumentes.\\
+Auf Fehler kann gerne hingewiesen werden bei folgende E-Mail-Adresse
+\begin{center}
+	\href{mailto:tensor.produkt@gmx.de}{tensor.produkt@gmx.de}
+\end{center}
+Ferner kann bei dieser E-Mail-Adresse auch der Tex-Code für dieses Dokument erfragt werden.
+
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\include{Abriss}
+\include{V171201}
+\include{V171204}
+\include{V171208}
+\include{V171211}
+\include{V171215}
+\include{V171218}
+\include{V171222}
+\include{V180108}
+\include{V180112}
+\include{V180115}
+\include{V180119}
+\include{V180122}
+\include{V180126}
+\include{V180129}
+
+\printindex
+\end{document}
