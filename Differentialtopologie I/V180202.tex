@@ -67,12 +67,15 @@ Induktionsschritt: Wir wollen wieder ein Argument via Mayer-Vietoris-Sequenz und
 	\end{tikzcd}
 \end{center}
 Tensorieren mit $H^q(N)$ erhält die Exaktheit, da Vektorräume flach sind. Dadurch erhalten wir folgende exakte Sequenz
-\begin{center}
+\begin{scriptsize}
+	\begin{center}
 	\begin{tikzcd}
 		H^p(U\cup V)\otimes H^q(N)  \arrow[r] & H^p(U)\otimes H^q(N)\oplus H^p(V)\otimes H^q(N)  \arrow[r] & H^p(U\cap V)\otimes H^q(N)  \arrow[r, "\delta^*"] & H^{p+1}(U\cup V)\otimes H^q(N) 
 	\end{tikzcd}
 \end{center}
+\end{scriptsize}
 Wir bilden für alle $p+q = k$ die direkte Summe der Sequenzen. Dies erhält weiterhin die Exaktheit, ergo erhalten wir folgende exakte Sequenz
+\begin{tiny}	
 \begin{center}
 	\begin{tikzcd}
 		\bigoplus\limits_{p+q = k}H^p(U\cup V)\otimes H^q(N)  \arrow[r] 
@@ -81,14 +84,17 @@ Wir bilden für alle $p+q = k$ die direkte Summe der Sequenzen. Dies erhält wei
 		&\bigoplus\limits_{p+q = k+1} H^{p}(U\cup V)\otimes H^q(N) 
 	\end{tikzcd}
 \end{center}
+\end{tiny}
 Da $U\times N$ und $V\times N$ offene Teilmengen von $M\times N$ sind, haben diese ihrerseits eine exakte Mayer-Vietoris-Sequenz
 \begin{center}
-	\begin{tikzcd}
-		H^k((U\cup V)\times N) \arrow[r] 
-		& H^k(U\times N) \oplus H^k(V\times N)  \arrow[r] 
-		&H^k((U\cap V) \times N)  \arrow[r, "\delta^*"] 
-		& H^{k+1}((U\cup V)\times N)
-	\end{tikzcd}
+\begin{small}
+\begin{tikzcd}
+H^k((U\cup V)\times N) \arrow[r] 
+& H^k(U\times N) \oplus H^k(V\times N)  \arrow[r] 
+&H^k((U\cap V) \times N)  \arrow[r, "\delta^*"] 
+& H^{k+1}((U\cup V)\times N)
+\end{tikzcd}
+\end{small}
 \end{center}
 Ferner erhalten wir durch die Abbildungen $\kappa$ ein Diagramm\\\\
 \adjustbox{scale=0.6,center}{%
