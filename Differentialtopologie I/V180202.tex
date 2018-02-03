@@ -1,0 +1,197 @@
+\marginpar{Vorlesung vom 02.02.18}
+Elemente von $V\oplus W$ sind endliche Linearkombinationen der Gestalt
+\[ \lambda_1 \cdot v_1 \otimes w_1 + \ldots + \lambda_k\cdot v_k \otimes w_k \]
+für $\lambda_i \in \R, v_i \in V$ und $w_i \in W$. In diesem Sinne nennt man Elemente der Gestalt $v\oplus w$ \df{Elementartensoren}.\\
+Ist $v_1, \ldots, v_n$ eine Basis von $V$ und $w_1, \ldots, w_m$ eine Basis von $W$, so ist
+\[ \set{v_i \otimes w_j}{i = 1, \ldots, n,~~j=1, \ldots, m} \]
+eine Basis von $V\otimes W$.\\
+Es liegt eine kanonische Abbildung
+\begin{align*}
+V\times W & \Pfeil{} V\otimes W\\
+(v,w) & \longmapsto v\otimes w
+\end{align*}
+vor. Diese ist bilinear, aber nicht linear. Tatsächlich liegt folgende Äquivalenz vor:
+\begin{align*}
+\left\lbrace
+\begin{aligned}
+\text{Bilineare }&\text{Abbildungen}\\
+V\times W &\Pfeil{} U\\
+(v,w) & \longmapsto \beta(v,w)
+\end{aligned}
+\right\rbrace
+\longleftrightarrow
+\left\lbrace
+\begin{aligned}
+\text{Lineare }&\text{Abbildungen}\\
+V\otimes W &\pfeil{} U\\
+v\otimes w & \longmapsto \beta(v,w)
+\end{aligned}
+\right\rbrace
+\end{align*}
+
+\paragraph{Zurück zu Produktmannigfaltigkeiten\\}
+Es seien wieder $M,N$ glatte Mannigfaltigkeiten. Dann ist $M\times N$ ebenfalls eine glatte Mannigfaltigkeit mit Projektionen
+\begin{align*}
+\pi : M\times N & \Pfeil{} M\\
+\rho : M\times N & \Pfeil{} N
+\end{align*}
+Betrachte die bilineare Abbildung
+\begin{align*}
+H^p(M) \times H^q(N) & \Pfeil{} H^{p+q}(M\times N)\\
+([\omega],[\eta]) & \longmapsto [\pi^*\omega \wedge \eta^*\eta] 
+\end{align*}
+bzw. die lineare Abbildung
+\begin{align*}
+\kappa_{p,q} : H^p(M) \otimes H^q(N) & \Pfeil{} H^{p+q}(M\times N)\\
+[\omega]\otimes [\eta] & \longmapsto [\pi^*\omega \wedge \eta^*\eta] 
+\end{align*}
+Diese induzieren uns eine lineare Abbildung
+\begin{align*}
+\kappa = \sum_{p+q=k}\kappa_{p,q} : \bigoplus_{p+q = k} H^p(M) \otimes H^q(N) & \Pfeil{} H^{k}(M\times N)
+\end{align*}
+
+\Satz{Satz von Künneth}
+$\kappa$ ist ein Isomorphismus, d.\,h.
+\begin{align*}
+\bigoplus_{p+q = k} H^p(M) \otimes H^q(N) \isom{} H^{k}(M\times N)
+\end{align*}
+\begin{Beweis}{}
+Wir zeigen die Aussage nur im Fall, dass $M$ eine endliche gute Überdeckung hat.\\
+Wir führen wieder eine Induktion nach der Kardinalität einer endlichen guten Überdeckung.\\
+Induktionsbasis: $M \isom{} \R^n$\\
+Daraus folgt $M\times N = \R^n \times N$. In diesem Fall folgt die Behauptung aus dem Poincare-Lemma.\\
+Induktionsschritt: Wir wollen wieder ein Argument via Mayer-Vietoris-Sequenz und Fünferlemma machen. Dazu seien $U,V\subset M$ gegeben, dann erhalten wir folgende exakte Sequenz
+\begin{center}
+	\begin{tikzcd}
+		H^p(U\cup V) \arrow[r] & H^p(U)\oplus H^p(V) \arrow[r] & H^p(U\cap V) \arrow[r, "\delta^*"] & H^{p+1}(U\cup V)
+	\end{tikzcd}
+\end{center}
+Tensorieren mit $H^q(N)$ erhält die Exaktheit, da Vektorräume flach sind. Dadurch erhalten wir folgende exakte Sequenz
+\begin{scriptsize}
+	\begin{center}
+	\begin{tikzcd}
+		H^p(U\cup V)\otimes H^q(N)  \arrow[r] & H^p(U)\otimes H^q(N)\oplus H^p(V)\otimes H^q(N)  \arrow[r] & H^p(U\cap V)\otimes H^q(N)  \arrow[r, "\delta^*"] & H^{p+1}(U\cup V)\otimes H^q(N) 
+	\end{tikzcd}
+\end{center}
+\end{scriptsize}
+Wir bilden für alle $p+q = k$ die direkte Summe der Sequenzen. Dies erhält weiterhin die Exaktheit, ergo erhalten wir folgende exakte Sequenz
+\begin{tiny}	
+\begin{center}
+	\begin{tikzcd}
+		\bigoplus\limits_{p+q = k}H^p(U\cup V)\otimes H^q(N)  \arrow[r] 
+		& \bigoplus\limits_{p+q = k}H^p(U)\otimes H^q(N)\oplus \bigoplus\limits_{p+q = k}H^p(V)\otimes H^q(N)  \arrow[r] 
+		&\bigoplus\limits_{p+q = k} H^p(U\cap V)\otimes H^q(N)  \arrow[r, "\delta^*"] 
+		&\bigoplus\limits_{p+q = k+1} H^{p}(U\cup V)\otimes H^q(N) 
+	\end{tikzcd}
+\end{center}
+\end{tiny}
+Da $U\times N$ und $V\times N$ offene Teilmengen von $M\times N$ sind, haben diese ihrerseits eine exakte Mayer-Vietoris-Sequenz
+\begin{center}
+\begin{small}
+\begin{tikzcd}
+H^k((U\cup V)\times N) \arrow[r] 
+& H^k(U\times N) \oplus H^k(V\times N)  \arrow[r] 
+&H^k((U\cap V) \times N)  \arrow[r, "\delta^*"] 
+& H^{k+1}((U\cup V)\times N)
+\end{tikzcd}
+\end{small}
+\end{center}
+Ferner erhalten wir durch die Abbildungen $\kappa$ ein Diagramm\\\\
+\adjustbox{scale=0.6,center}{%
+\begin{tikzcd}
+	\bigoplus\limits_{p+q = k}H^p(U\cup V)\otimes H^q(N)  \arrow[r] \arrow[d, "\kappa"]
+	& \bigoplus\limits_{p+q = k}H^p(U)\otimes H^q(N)\oplus \bigoplus\limits_{p+q = k}H^p(V)\otimes H^q(N)  \arrow[r] \arrow[d, "\kappa\oplus \kappa"]
+	&\bigoplus\limits_{p+q = k} H^p(U\cap V)\otimes H^q(N)  \arrow[r, "\delta^*"] \arrow[d, "\kappa"]
+	&\bigoplus\limits_{p+q = k+1} H^{p}(U\cup V)\otimes H^q(N)\arrow[d, "\kappa"] \\
+	H^k((U\cup V)\times N) \arrow[r] 
+	& H^k(U\times N) \oplus H^k(V\times N)  \arrow[r] 
+	&H^k((U\cap V) \times N)  \arrow[r, "\delta^*"] 
+	& H^{k+1}((U\cup V)\times N)
+\end{tikzcd}
+}\\\\
+Wegen der Induktionshypothese können wir annehmen, dass alle $\kappa$ außer
+\[ \kappa : \bigoplus\limits_{p+q = k}H^p(U\cup V)\otimes H^q(N) \Pfeil{} H^k((U\cup V) \otimes N) \]
+Isomorphismen sind. Wir wollen die Kommutativität des Diagramms zeigen. Für alle Quadrate, die nicht das $\delta^*$ involvieren, ist dies klar. Für
+\begin{center}
+	\begin{tikzcd}
+		\bigoplus\limits_{p+q = k} H^p(U\cap V)\otimes H^q(N)  \arrow[r, "\delta^*"] \arrow[d, "\kappa"]
+		&\bigoplus\limits_{p+q = k+1} H^{p}(U\cup V)\otimes H^q(N)\arrow[d, "\kappa"] \\
+		H^k((U\cap V) \times N)  \arrow[r, "\delta^*"] 
+		& H^{k+1}((U\cup V)\times N)
+	\end{tikzcd}
+\end{center}
+gilt
+\begin{align*}
+\kappa \delta^*(\omega \otimes \eta) 
+&= \kappa((\delta^*\omega) \otimes \eta)\\
+&= \kappa(\d (f_U\omega) \otimes \eta )\\
+&= \pi^*(\d (f_U\omega)) \wedge \rho^*\eta\\
+&= \d (\pi^*f_U \cdot \pi^*\omega \wedge \rho^*\eta)\\
+&= \d (\pi^*f_U \cdot \kappa(\omega \otimes \eta))\\
+&= \delta^*\kappa(\omega \times \eta)
+\end{align*}
+wobei $f_U\circ \pi, f_V \circ \pi$ eine Partition der Eins bzgl. $U\times N$ und $V\times N$ ist.\\
+Daraus folgt, dass
+\[ \kappa : \bigoplus\limits_{p+q = k}H^p(U\cup V)\otimes H^q(N) \Pfeil{} H^k((U\cup V) \otimes N) \]
+ein Isomorphismus ist.
+\end{Beweis}
+
+\Bsp{}
+\begin{align*}
+H^*(S^3 \times S^2)&=H^*(S^3)\otimes H^*(S^2)\\
+&= (H^0(S^3)\oplus H^3(S^3)) \otimes (H^0(S^2) \oplus H^2(S^2)\\
+&= H^0(S^3)\otimes H^0(S^2) \oplus H^0(S^3) \otimes H^2(S^2) 
+\oplus H^3(S^3) \otimes H^0(S^3) \oplus H^3(S^3)\otimes H^2(S^2)
+\end{align*}
+Daraus folgt
+\begin{align*}
+H^p(S^3 \times S^2) =
+\left\lbrace
+\begin{aligned}
+H^0(S^3)\otimes H^0(S^2) = \R && p= 0\\
+H^0(S^3)\otimes H^2(S^2) = \R && p= 2\\
+H^3(S^3)\otimes H^0(S^2) = \R && p= 3\\
+H^3(S^3)\otimes H^2(S^2) = \R && p= 5\\
+0 && \text{ sonst}
+\end{aligned}
+\right.
+\end{align*}
+
+\section{Die Signatur einer Mannigfaltigkeit}
+Sei $M$ eine glatte orientierte geschlossene Mannigfaltigkeit der Dimension $n = 4k$.\\
+Betrachte die Bilinearform
+\begin{align*}
+\shrp{\cdot ~|~\cdot}: H^{2k}(M) \times H^{2k} & \Pfeil{} \R\\
+([\omega], [\eta]) &\longmapsto \int_M \omega \wedge \eta
+\end{align*}
+Diese Bilinearform ist symmetrisch und nicht ausgeartet wegen der Poincare-Dualität.\\
+Deswegen existiert eine Basis $v_1, \ldots, v_{s+t}$ von $H^{2k}(M)$, in der die Matrixdarstellung von $\shrp{\cdot~|~\cdot}$ diagonal ist. D.\,h.
+\[ \shrp{v_i|v_j}_{i,j} = \left(
+\begin{matrix}
+	p_1 &        &     &     &        &  0   \\
+	    & \ddots &     &     &        &  \\
+	    &        & p_s &     &        &     \\
+	    &        &     & n_1 &        &     \\
+	    &        &     &     & \ddots &     \\
+	0    &        &     &     &        & n_t
+\end{matrix}
+\right) \]
+mit $p_i >0$ und $n_i< 0$. Die \df{Signatur} 
+\[\sigma(\shrp{\cdot~|~\cdot}):= s-t\]
+ist dann definiert als die Anzahl der positiven Eigenwerte von $\shrp{\cdot~|~\cdot}$ minus die Anzahl der negativen Eigenwerte von $\shrp{\cdot~|~\cdot}$.\\
+Wir definieren die \df{Signatur} der Mannigfaltigkeit $M$ durch
+\[ \sigma(M):= \sigma(\shrp{\cdot~|~\cdot} : H^{2k}(M) \otimes H^{2k}(M) \pfeil{} \R)= s-t\]
+Die Signatur einer Mannigfaltigkeit ist offenbar eine orientierte Homotopieinvariante.
+
+\paragraph{Frage}
+Wann ist $\sigma(\shrp{\cdot ~|~\cdot})$ gleich Null für eine beliebige symmetrische nicht-ausgeartete Bilinearform $\shrp{\cdot~|~\cdot} : V\otimes V \pfeil{} \R$?
+
+\Def{}
+Ein Untervektorraum $L\subset V$ heißt \df{Lagrangscher Untervektorraum} bzgl. $\shrp{\cdot ~|~\cdot}$, falls
+\begin{enumerate}[i.)]
+	\item $\shrp{\cdot ~|~\cdot}_{L} = 0$
+	\item $\dim L = \frac{1}{2} \dim V$
+\end{enumerate}
+
+\Satz{}
+$\sigma(\shrp{\cdot ~|~\cdot})$ ist genau dann Null, wenn $V$ einen Lagrangschen Untervektorraum hat.
