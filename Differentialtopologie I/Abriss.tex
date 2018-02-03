@@ -51,6 +51,7 @@ mit
 Ein parakompakter Raum besitzt bzgl. jeder Überdeckung durch offene Mengen eine Zerlegung der Eins.
 
 \section{Mannigfaltigkeiten}
+\Prop{}
 Jede Mannigfaltigkeit, die sich durch zwei Karten mit zusammenhängendem Schnitt überdecken lässt, ist orientierbar.
 
 
@@ -184,8 +185,8 @@ Seien $U,V \subset M$ glatte eingebettete Untermannigfaltigkeit. $U$ und $V$ sch
 In einem solchen Fall ist $U\cap V$ eine eingebettete Untermannigfaltigkeit der Dimension $\dim U + \dim V - \dim M$.
 
 \Satz{Thoms Transversalität Theorem}
-Sei $f : X \pfeil{} M$ glatt und $N\subset M$ eine eingebettete Untermannigfaltigkeit. Dann existiert eine glatte Abbildung $f' : X \pfeil{} M$, die homotop zu $f$ ist und $N$ \df{transversal} schneide, d.\,h.
-\[ \Img (f'_{*,x})  + T_{f(x)}N = T_(f(x))M \]
+Sei $f : X \pfeil{} M$ glatt und $N\subset M$ eine eingebettete Untermannigfaltigkeit. Dann existiert eine glatte Abbildung $f' : X \pfeil{} M$, die homotop zu $f$ ist und $N$ \df{transversal} schneidet, d.\,h.
+\[ \Img (f'_{*,x})  + T_{f(x)}N = T_{f(x)}M \]
 für alle $x \in {f'}\i(N)$. Ferner kann $f'$ \textsl{beliebig nahe} und isotop zu $f$ gewählt werden.
 
 \section{Vektorraumbündel}
@@ -283,7 +284,7 @@ Sei $M$ eine glatte, geschlossene Mannigfaltigkeit der Dimension $n$. Dann exist
 	\[ \Theta : M \Pfeil{} \R^N \]
 	und wollen $N$ auf $2n+1$ verringern. Dazu nehmen wir an, dass es ein $0\neq w \in \R^N$ gibt mit
 	\begin{align*}
-	&w \text{ ist tangential zu } \Theta(M)\\
+	&w \text{ ist nicht tangential zu } \Theta(M)\\
 	\forall x,y \in \Theta(M):~& x\neq y \Impl{} x-y \text{ ist nicht parallel zu } w
 	\end{align*}
 	In diesem Fall ergibt sich folgendes Diagramm
@@ -294,7 +295,7 @@ Sei $M$ eine glatte, geschlossene Mannigfaltigkeit der Dimension $n$. Dann exist
 		\end{tikzcd}
 	\end{center}
 wobei $\Theta'$ wieder eine Einbettung liefert.
-\item Wir wollen die Existenz von oben proklamierten $w$s zeigen und betrachten die Projektion
+\item Wir wollen die Existenz von den oben proklamierten $w$s zeigen und betrachten die Projektion
 \begin{align*}
 \R^N \Pfeil{} P^{N-1}\R
 \end{align*}
