@@ -34,7 +34,7 @@ Hat $M$ eine gute endliche Überdeckung, so gilt für alle $p$
 	 \]
 	 Es gilt dann
 	 \[ H^p(U\cup V) \isom{} \Img \iota^* \oplus \Img \delta^* \]
-	 Da $H^p(U\cap V), H^p(U)$ und $H^p(V)$ endliche Dimension haben, haben dies auch die Bilder von $\iota^*$ und $\delta^*$. Ergo auch $H^p(U\cap V)$.
+	 Da $H^p(U\cap V), H^p(U)$ und $H^p(V)$ endliche Dimension haben, haben dies auch die Bilder von $\iota^*$ und $\delta^*$. Ergo auch $H^p(U\cup V)$.
 	 \item Wir führen eine vollständige Induktion nach der Kardinalität $\kappa$ einer endlichen guten Überdeckung:
 	 \begin{itemize}
 	 	\item $\kappa = 1$:\\
@@ -179,14 +179,14 @@ Für die Kommutativität ist zu zeigen
 \]
 Tatsächlich gilt
 \begin{align*}
-\shrp{\delta^* \omega, \eta} = \int_{U\cap V} \delta^*\omega \wedge \eta 
+\shrp{\delta^* \omega, \eta} = \int_{U\cup V} \delta^*\omega \wedge \eta 
 &= \int \d(f_U\omega) \wedge \eta
 = \int \d f_U \wedge \omega \wedge \eta
 \end{align*}
 und
 \begin{align*}
 \shrp{\omega, \delta^* \eta}=\int \omega \wedge \delta_* \eta 
-&= \int \omega \wedge \d  (f_V \eta)
+&= \int \omega \wedge \d  (f_U \eta)
  = \int \omega \wedge \d f_U \wedge \omega
  =(-1)^p \int \d f_U \wedge \omega \wedge \eta
 \end{align*}
