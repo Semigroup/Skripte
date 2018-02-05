@@ -1,0 +1,238 @@
+\marginpar{Vorlesung vom 05.02.18}
+
+\subsection{Konvention}
+Wir setzen die Signatur einer Mannigfaltigkeit gleich Null, falls die Dimension der Mannigfaltigkeit nicht von Vier geteilt wird. D.\,h.,
+\[ \sigma(M) := 0\text{  falls  } \dim M = 0 \mod{4} \]
+
+\Bsp{}
+\begin{itemize}
+	\item Für alle $n> 0$ gilt
+	\[ \sigma(S^n) = 0 \]
+	\item $\sigma(\text{Punkt}) = 1$
+	\item Wir betrachten $M = \C P^2$. Betrachte die 2-Form $\omega \in \C P^2$, die $H^2(\C P^2)$ erzeugt und für die gilt
+	\[ \int_{\C P^2} \omega \wedge \omega = \shrp{[\omega], [\omega]} = +1 \]
+	Daraus folgt, dass die Matrix von $\shrp{\cdot ~|~\cdot}$ gerade durch $+1$ dargestellt wird. Insofern folgt
+	\[ \sigma(\C P^2) = +1 \]
+\end{itemize}
+
+\begin{Beweis}{Satz \ref{SatzLagrangeRaum}}
+\begin{enumerate}[1.)]
+\item Sei $\sigma(\shrp{\cdot ~|~\cdot}) = 0$. Dann existiert eine Basis $v_1, \ldots, v_s, w_1,\ldots, w_s$ von $V$, sodass gilt
+\begin{align*}
+\left(
+\begin{matrix}
+\shrp{v_i|v_j} & \shrp{v_i|w_j}\\
+\shrp{w_i|v_j} & \shrp{w_i | w_j}
+\end{matrix}
+\right)
+=
+\left(
+\begin{matrix}
+	p_1 &        &     &     &        &  \\
+	    & \ddots &     &     &        &     \\
+	    &        & p_s &     &        &     \\
+	    &        &     & n_1 &        &     \\
+	    &        &     &     & \ddots &     \\
+	    &        &     &     &        & n_s
+\end{matrix}
+\right)
+\end{align*}
+mit
+\[ p_i > 0 \text{  und  } n_i < 0 \]
+Setzt man
+\begin{align*}
+&e_i := \frac{v_i}{\sqrt{p_i}}
+&f_i := \frac{w_i}{\sqrt{\bet{n_i}}}
+\end{align*}
+so gilt
+\begin{align*}
+\left(
+\begin{matrix}
+\shrp{e_i|e_j} & \shrp{e_i|f_j}\\
+\shrp{f_i|e_j} & \shrp{f_i | f_j}
+\end{matrix}
+\right)
+=
+\left(
+\begin{matrix}
+	1 &        &   &    &        &  \\
+	  & \ddots &   &    &        &    \\
+	  &        & 1 &    &        &    \\
+	  &        &   & -1 &        &    \\
+	  &        &   &    & \ddots &    \\
+	  &        &   &    &        & -1
+\end{matrix}
+\right)
+\end{align*}
+Setze nun
+\begin{align*}
+e_i' &:= \frac{e_i + f_i}{\sqrt{2}} &f_i' := \frac{e_i - f_i}{\sqrt{2}}
+\end{align*}
+Dann folgt
+\begin{align*}
+\shrp{e_i'|e_i'} &= \frac{1}{2}\shrp{e_i+f_i|e_i + f_i}\\
+&= \frac{1}{2} \klam{ \shrp{e_i|e_i} + 2 \shrp{e_i|f_i} + \shrp{f_i|f_i} } = 0
+\end{align*}
+und
+\begin{align*}
+\shrp{e_i'|e_j'} &= \frac{1}{2}\shrp{e_i+f_i|e_j + f_j}\\
+&= \frac{1}{2} \klam{ \shrp{e_i|e_j} + \shrp{e_i|f_j}+\shrp{e_j|f_i} + \shrp{f_i|f_j} } = 0
+\end{align*}
+Setze ergo
+\[ L:= \R \shrp{e_1',\ldots, e_s'} \]
+$L$ ist dann der gesuchte Lagrangsche Untervektorraum.
+\item Sei nun $L$ ein Lagrangscher Untervektorraum. Sei $\{e_1, \ldots, e_s\}$ eine Basis für $L$. Dann existieren Vektoren $\{f_1, \ldots, f_s\}$ mit
+\[ \shrp{e_i|f_j} = \delta_{i,j} = \left\lbrace
+\begin{aligned}
+1 && i = j\\
+0 && i\neq j
+\end{aligned}
+\right. \]
+Daraus folgt, dass $\{e_1, \ldots, e_s, f_1, \ldots, f_s \}$ eine Basis von $V$ ist. Es ergibt sich nun
+\begin{align*}
+\left(
+\begin{matrix}
+\shrp{e_i|e_j} & \shrp{e_i|f_j}\\
+\shrp{f_i|e_j} & \shrp{f_i | f_j}
+\end{matrix}
+\right)
+=
+\left(
+\begin{matrix}
+	0 &   &   & 1 &   &   \\
+	  & 0 &   &   & 1 &   \\
+	  &   & 0 &   &   & 1 \\
+	1 &   &   & * &   &   \\
+	  & 1 &   &   & * &   \\
+	  &   & 1 &   &   & *
+\end{matrix}
+\right)
+\end{align*}
+Setze
+\[\widehat{f}_j \in f_j +L \]
+so für alle $j$, dass
+\[ \shrp{f_i|f_j} = 0 \]
+für alle $i,j$. Es gilt dann
+\begin{align*}
+\left(
+\begin{matrix}
+\shrp{e_i|e_j} & \shrp{e_i|f_j}\\
+\shrp{f_i|e_j} & \shrp{f_i | f_j}
+\end{matrix}
+\right)
+=
+\left(
+\begin{matrix}
+0 &   &   &  1   &        &     \\
+& 0 &   &     &   1     &     \\
+&   & 0 &     &        &  1   \\
+1  &   &   & 0 &        &     \\
+& 1  &   &     & 0 &     \\
+&   & 1  &     &        & 0
+\end{matrix}
+\right)
+\end{align*}
+Wir ordnen die Basis $\{e_1, \ldots, e_s, \widehat{f}_1, \ldots, \widehat{f}_s \}$ zu $\{e_1, \widehat{f}_1, \ldots, e_s, \widehat{f}_s \}$ um und erhalten folgende Darstellung von $\shrp{~|~}$
+\begin{align*}
+\left(
+\begin{matrix}
+	0 & 1 &   &   &   &   &   &  \\
+	1 & 0 &   &   &   &   &   &  \\
+	  &   & 0 & 1 &   &   &   &  \\
+	  &   & 1 & 0 &   &   &   &  \\
+	  &   &   &   & \ddots & \ddots &   &  \\
+	  &   &   &   & \ddots & \ddots &   &  \\
+	  &   &   &   &   &   & 0 & 1 \\
+	  &   &   &   &   &   & 1 & 0
+\end{matrix}
+\right)
+\end{align*}
+Ersetzt man $e_i, \widehat{f}_i$ durch $\frac{e_i + \widehat{f}_i}{\sqrt{2}},\frac{e_i - \widehat{f}_i}{\sqrt{2}}$, so verwandeln sich die Diagonalblöcke von $\left(
+\begin{matrix}
+0 & 1 \\
+1 & 0 
+\end{matrix}
+\right)$
+zu  $\left(
+\begin{matrix}
+1 & 0 \\
+0 & -1 
+\end{matrix}
+\right)$
+Die Anzahl der positiven Diagonaleinträge minus die Anzahl der negativen Diagonaleinträge von einer Matrix von $\shrp{~|~}$ ist nun Null.
+\end{enumerate}
+\end{Beweis}
+
+\paragraph{Geometrische Frage}
+Wann ist eine geschlossene (orientierte) Mannigfaltigkeit der Dimension $n$ Rand einer kompakten (kompatibel orientierten) Mannigfaltigkeit der Dimension $(n+1)$.
+
+\Bem{}
+Die Forderung, dass der Korand kompakt ist, ist in obiger Frage wesentlich, da $M$ immer der Rand von $M \times [0,1)$ ist.
+
+\Bsp{}
+\begin{itemize}
+	\item Sei $n = 1$ und $M = S^1$. Dann ist $M$ der Rand von $D^2$. Diese Wahl ist nicht eindeutig, da $M$ als Rand einer Fläche mit beliebigen Geschlecht dargestellt werden kann.
+	\item Sei $n=2$. Betrachten Sie eine Fläche von Geschlecht $g$ Ihres Vertrauens. Im nicht orientierten Fall kann man sich die Kleinsche Flasche vorstellen als unorientierbare Fläche von Geschlecht Eins. Die Kleinsche Flasche ist tatsächlich der Rand einer dreidimensionalen Mannigfaltigkeit, denn:
+	\begin{center}
+		\textit{Stellen Sie sich hier eine Grafik vor, die alles erklärt.}
+	\end{center}
+	\item Sei $n = 3$. Jede dreidimensionale Mannigfaltigkeit lässt sich als Rand einer vierdimensionalen Mannigfaltigkeit darstellen. Dies besagt der Satz von Rohlin.
+\end{itemize}
+
+\Satz{Satz von R. Thom}
+Sei $n = 4k$. Existiert eine $(n+1)$-dimensionale orientierte, kompakte Mannigfaltigkeit $W$ mit $\partial W = M$, so gilt
+\[ \sigma(M) = 0 \]
+\begin{Beweis}{}
+Sei $M$ der Rand von $W$. Betrachte das Paar $(W,M)$:
+\begin{align*}
+H^{2k}(W)
+\Pfeil{\iota^*} H^{2k}(M)
+\Pfeil{\delta^*} H^{2k+1}(W,M) 
+\end{align*}
+Mit der Poincare-Dualität folgen Isomorphismen\\\\
+\adjustbox{scale=1,center}{%
+	\begin{tikzcd}
+		H^{2k}(W) \arrow[d, "\sim"] \arrow[r,"\iota^*"]
+		& H^{2k}(M) \arrow[d, "\sim"] \arrow[r, "\delta^*"]
+		& H^{2k+1}(W,M) \arrow[d, "\sim"]\\
+		H^{2k+1}(W,M)^*\arrow[r]
+		& H^{2k}(M)^*  \arrow[r, "(\iota^*)^*"]
+		& H^{2k+1}(W)^*
+	\end{tikzcd}
+}\\\\
+wobei gilt
+\[ H^k(W, \partial W) = H^{k}_c(W - \partial W) = H^{n-k}(W)^* \]
+für jede kompakte, $n$-dimensionale Mannigfaltigkeit. Obiges Diagramm kommutiert bis auf Vorzeichen.\\
+Wir behaupten nun, dass
+\[ L:= \Img \iota^* \subset H^{2k}(M) \]
+ein Lagrangscher Untervektorraum ist. Es gilt
+\begin{itemize}
+	\item
+	\[H^{2k}(M)/\Ker \delta^* \isom{} \Img \delta^* \isom{} \Img (\iota^*)^* = L^*\]
+	und
+	\[H^{2k}(M)/\Ker \delta^* = H^{2k}(M) / \Img \iota^* \isom{} H^{2k}(M)/L \isom{} L^*\]
+	Daraus folgt
+	\[ \dim L = \frac{1}{2} \dim H^{2k}(M) \]
+	\item Wir müssen zeigen, dass $\shrp{\cdot~|~\cdot}$ auf $L$ verschwindet. Seien $\omega, \eta \in \Img i^*$. Dann existieren $\omega', \eta' \in H^{2k}(W)$ mit
+	\begin{align*}
+	\omega = \iota^* \omega' && \eta = \iota^*\eta'
+	\end{align*}
+	Es gilt nun
+	\begin{align*}
+	\shrp{\omega, \eta} &=
+	\int_M \omega \wedge \eta
+	= \int_{\partial W} \iota^*\omega' \wedge \iota^* \eta'
+	= \int_{\partial W} \iota^*(\omega'\wedge \eta')
+	= \int_W \d \iota^*(\omega' \wedge \eta')
+	=\int_W  \iota^*\d(\omega' \wedge \eta')
+	= 0
+	\end{align*}
+	
+	
+\end{itemize}
+\end{Beweis}
+
+
+\Kor{}
+Ist $\partial W = M \dot{\cup} N$, so heißen $M$ und $N$ \df{kobordant}. In diesem Fall gilt
+\[ \sigma(M) = \sigma(N) \].

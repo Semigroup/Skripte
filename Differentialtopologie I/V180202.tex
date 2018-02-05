@@ -163,7 +163,7 @@ H^3(S^3)\otimes H^2(S^2) = \R && p= 5\\
 Sei $M$ eine glatte orientierte geschlossene Mannigfaltigkeit der Dimension $n = 4k$.\\
 Betrachte die Bilinearform
 \begin{align*}
-\shrp{\cdot ~|~\cdot}: H^{2k}(M) \times H^{2k} & \Pfeil{} \R\\
+\shrp{\cdot ~|~\cdot}: H^{2k}(M) \times H^{2k}(M) & \Pfeil{} \R\\
 ([\omega], [\eta]) &\longmapsto \int_M \omega \wedge \eta
 \end{align*}
 Diese Bilinearform ist symmetrisch und nicht ausgeartet wegen der Poincare-Dualität.\\
@@ -189,11 +189,13 @@ Die Signatur einer Mannigfaltigkeit ist offenbar eine orientierte Homotopieinvar
 Wann ist $\sigma(\shrp{\cdot ~|~\cdot})$ gleich Null für eine beliebige symmetrische nicht-ausgeartete Bilinearform $\shrp{\cdot~|~\cdot} : V\otimes V \pfeil{} \R$?
 
 \Def{}
-Ein Untervektorraum $L\subset V$ heißt \df{Lagrangscher Untervektorraum} bzgl. $\shrp{\cdot ~|~\cdot}$, falls
+Ein Untervektorraum $L\subset V$ heißt \df{Lagrangscher Untervektorraum}\footnote{Eine andere Bezeichnung ist \textit{maximaler isotroper} Untervektorraum.} bzgl. $\shrp{\cdot ~|~\cdot}$, falls
 \begin{enumerate}[i.)]
 	\item $\shrp{\cdot ~|~\cdot}_{L} = 0$
 	\item $\dim L = \frac{1}{2} \dim V$
 \end{enumerate}
 
 \Satz{}
+\label{SatzLagrangeRaum}
+Sei $V$ endlich dimensional.\\
 $\sigma(\shrp{\cdot ~|~\cdot})$ ist genau dann Null, wenn $V$ einen Lagrangschen Untervektorraum hat.
