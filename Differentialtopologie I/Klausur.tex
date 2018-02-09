@@ -1,0 +1,176 @@
+%
+% -------------------------------------------------------------------------------------------
+% "THE BEER-WARE LICENSE"
+% Jo, Ihr könnt mit diesem Code machen, was Ihr wollt, solange keinerlei Verantwortlichkeiten auf mich zurückfallen...
+% Ansonsten kann ich Euch nur anregen, Wissen frei zu gestalten und allen Menschen zugänglich zu machen.
+% Ja, und trinkt ein Bier oder eine Chai Latte oder einen Grünen Tee auf das Skript hier (oder ladet mich ein, wenn Ihr wollt).
+% LG Akin
+% -------------------------------------------------------------------------------------------
+%
+
+\documentclass[12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{tikz-cd}
+\usetikzlibrary{babel}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{wasysym}
+\usepackage{dsfont}
+\usepackage{geometry}
+\usepackage{makeidx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\usepackage{enumerate}
+\usepackage{adjustbox}
+
+\newcommand{\ifLeer}[3]{\ifx&#1&\relax#2\relax\else\relax#3\relax\fi\relax}
+
+\newcommand{\Def}[1]{\subsection{Definition\ifLeer{#1}{}{: #1}}}
+\newcommand{\Bsp}[1]{\subsection{Beispiel\ifLeer{#1}{}{: #1}}}
+\newcommand{\Lem}[1]{\subsection{Lemma\ifLeer{#1}{}{: #1}}}
+\newcommand{\Bem}[1]{\subsection{Bemerkung\ifLeer{#1}{}{: #1}}}
+\newcommand{\Kor}[1]{\subsection{Korollar\ifLeer{#1}{}{: #1}}}
+\newcommand{\Satz}[1]{\subsection{Satz\ifLeer{#1}{}{: #1}}}
+\newcommand{\Prop}[1]{\subsection{Proposition\ifLeer{#1}{}{: #1}}}
+
+\newcommand{\QED}{\hfill $\square$}
+\newcommand{\qed}{\hfill $\blacksquare$}
+
+\newenvironment{Beweis}[1]{\paragraph{Beweis\ifLeer{#1}{}{: #1}\\}}{\QED}
+\newenvironment{Beweisskizze}[1]{\paragraph{Beweisskizze\ifLeer{#1}{}{: #1}\\}}{\qed}
+
+\newcommand{\df}[1]{\index{#1}\textbf{#1}}
+
+\newcommand{\klam}[1]{\left(#1\right)}
+\newcommand{\bet}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\bet{\bet{#1}}}
+\newcommand{\brak}[1]{\left[#1\right]}
+\newcommand{\curv}[1]{\left\lbrace#1\right\rbrace}
+\newcommand{\shrp}[1]{\left<#1\right>}
+\newcommand{\quot}[1]{\glqq #1 \grqq\relax}
+\newcommand{\set}[2]{\curv{\ifLeer{#2}{#1}{#1 ~ | ~ #2}}}
+\newcommand{\grp}[2]{\shrp{\ifLeer{#2}{#1}{#1 ~ | ~ #2}}}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\O}{\mathcal{O}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\id}[1]{\text{Id}_{#1}}
+\newcommand{\Ker}{\textsf{Kern}}
+\newcommand{\Coker}{\textsf{Kokern}}
+\newcommand{\Img}{\textsf{Bild}}
+\newcommand{\Coimg}{\textsf{Kobild}}
+\newcommand{\Hom}[3]{\textsf{Hom}_{#1}\left(#2, #3\right)}
+\newcommand{\Aut}[2]{\textsf{Aut}_{#1}\left(#2\right)}
+\newcommand{\Sym}[1]{\textsf{Symm}_{#1}}
+
+\newcommand{\e}{\varepsilon}
+
+\newcommand{\Pfeil}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\pfeil}[1]{\overset{#1}{\rightarrow}}
+\newcommand{\inj}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\Inj}[1]{\overset{#1}{\lhook\joinrel\longrightarrow}}
+\newcommand{\surj}[1]{\overset{#1}{\twoheadrightarrow}}
+
+\newcommand{\impl}[1]{\overset{#1}{\Rightarrow}}
+\newcommand{\Impl}[1]{\overset{#1}{\Longrightarrow}}
+\newcommand{\gdw}[1]{\overset{#1}{\Leftrightarrow}}
+\newcommand{\Gdw}[1]{\overset{#1}{\Longleftrightarrow}}
+
+\newcommand{\off}{\overset{o}{\subset}}
+\newcommand{\abg}{\overset{c}{\subset}}
+
+\newcommand{\gl}[1]{\overset{#1}{=}}
+\newcommand{\grgl}[1]{\overset{#1}{\geq}}
+\newcommand{\klgl}[1]{\overset{#1}{\leq}}
+\newcommand{\gr}[1]{\overset{#1}{>}}
+\newcommand{\kl}[1]{\overset{#1}{<}}
+\newcommand{\isom}[1]{\overset{#1}{\cong}}
+
+\newcommand{\supp}{\text{supp}}
+
+\renewcommand{\i}{^{-1}}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\d}{\text{d}}
+
+\newcommand{\rot}{\text{rot}}
+
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\sgn}{\text{sign}}
+
+\setlength{\marginparwidth}{20mm}
+
+\begin{document}
+
+\section{Hauptklausur}
+\subsection{Aufgabe (4 Punkte)}
+Sei $f :M \pfeil{} N$ eine glatte Abbildung glatter geschlossener Mannigfaltigkeiten der Dimension $n$. $W$ sei eine glatte kompakte $(n+1)$-dimensionale Mannigfaltigkeit mit Rand $\partial W = M$. $F$ sei eine glatte Fortsetzung von $f$ auf $W$. $p \in N$ sei regulär für $F$ und $f$.
+\paragraph{Zeigen Sie:}
+\[ \deg_p f \equiv 0 \mod 2 \]
+
+\subsection{Aufgabe (4 Punkte)}
+Sei $f :M \pfeil{} \R^n$ eine glatte Abbildung. $N\subset \R^n$ sei eine glatte Untermannigfaltigkeit. $\epsilon > 0$ sei beliebig.
+\paragraph{Zeigen Sie:} Es gibt ein $v \in \R^n$ mit $\norm{v} < \epsilon$, sodass die Abbildung
+\[ g(x) := f(x) + v \]
+transversal zu $N$ steht.
+\paragraph{Hinweis:} Benutzen Sie die Abbildung
+\begin{align*}
+F: M\times N &\Pfeil{} \R^n\\
+(x,y) & \longmapsto y - f(x)
+\end{align*}
+
+\subsection{Aufgabe (4 Punkte)}
+Sei $f : S^3 \pfeil{} S^2$ glatt. $\omega \in \Omega^2(S^2)$ sei eine glatte 2-Form.
+\subsubsection{Teilaufgabe (1 Punkt)}
+\paragraph{Zeigen Sie:} Es gibt ein $\beta \in \Omega^1(S^3)$ mit
+\[ \d \beta = f^*(\omega) \]
+
+\subsubsection{Teilaufgabe (3 Punkte)}
+\paragraph{Zeigen Sie:} Das Integral $\int_{S^3} f^*(\omega) \wedge \beta$ ist unabhängig von der Wahl von $\beta \in \Omega^1(S^3)$ mit $\d \beta = f^*(\omega)$.
+
+\subsection{Aufgabe (4 Punkte)}
+Es bezeichne $T^2$ den zweidimensionalen Torus. $p \in T^2$ sei ein beliebiger Punkt.
+\paragraph{Berechnen Sie:} Die Kohomologiegruppen $H^k(T^2 - \{p\})$ der zweidimensionalen Mannigfaltigkeit $T^2 - \{p\}$ für $k = 0,1,2$.
+
+\subsection{Aufgabe (4 Punkte)}
+\subsubsection{Teilaufgabe (1 Punkt)}
+Geben sie Definition von \textit{Immersion} und \textit{Submersion} wieder.
+\subsubsection{Teilaufgabe (1 Punkt)}
+Geben sie Definition von \textit{Parallelisierbar} wieder.
+\subsubsection{Teilaufgabe (1 Punkt)}
+Ist $S^2$ parallelisierbar? Warum / Warum nicht?
+\subsubsection{Teilaufgabe (1 Punkt)}
+Ist $S^2$ parallelisierbar? Warum / Warum nicht?
+
+\end{document}
