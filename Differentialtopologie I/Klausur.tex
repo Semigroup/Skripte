@@ -1,13 +1,3 @@
-%
-% -------------------------------------------------------------------------------------------
-% "THE BEER-WARE LICENSE"
-% Jo, Ihr könnt mit diesem Code machen, was Ihr wollt, solange keinerlei Verantwortlichkeiten auf mich zurückfallen...
-% Ansonsten kann ich Euch nur anregen, Wissen frei zu gestalten und allen Menschen zugänglich zu machen.
-% Ja, und trinkt ein Bier oder eine Chai Latte oder einen Grünen Tee auf das Skript hier (oder ladet mich ein, wenn Ihr wollt).
-% LG Akin
-% -------------------------------------------------------------------------------------------
-%
-
 \documentclass[12pt]{article}
 
 \usepackage[T1]{fontenc}
@@ -149,6 +139,14 @@ transversal zu $N$ steht.
 F: M\times N &\Pfeil{} \R^n\\
 (x,y) & \longmapsto y - f(x)
 \end{align*}
+\paragraph{Lösungsskizze?}
+$F$ hat laute dem Satz von Sard einen regulären Wert $v$ mit $\norm{v} < \e$. Für die Transversalität müssen wir das Differential von $g$ für alle $g(x) \in N$ bestimmen. Tatsächlich gilt durch einen Paralleltransport
+\[ g_*(T_xM) \isom{} f_*(T_xM) \]
+und
+\[ F_*  = {\id{N}}_* - f_* \]
+Da $F$ regulär für $v$ ist, gilt somit bei der Stelle $(x,y) \in M\times N$
+\[ T_v\R^n = F_*(T_xM \times T_yN) = \id{N}^*(T_yN) + f_*(T_xM) = T_yN +f_*(T_xM) \isom{} T_yN + g_*(T_xM) \]
+
 
 \subsection{Aufgabe (4 Punkte)}
 Sei $f : S^3 \pfeil{} S^2$ glatt. $\omega \in \Omega^2(S^2)$ sei eine glatte 2-Form.
@@ -171,6 +169,6 @@ Geben sie Definition von \textit{Parallelisierbar} wieder.
 \subsubsection{Teilaufgabe (1 Punkt)}
 Ist $S^2$ parallelisierbar? Warum / Warum nicht?
 \subsubsection{Teilaufgabe (1 Punkt)}
-Ist $S^2$ parallelisierbar? Warum / Warum nicht?
+Ist $S^3$ parallelisierbar? Warum / Warum nicht?
 
 \end{document}
