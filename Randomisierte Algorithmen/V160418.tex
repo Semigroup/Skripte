@@ -1,1 +1,152 @@
 \marginpar{Vorlesung vom 16.04.18}
+
+\section{Einführung}
+
+\Bsp{Halb-Duplex-Kanal}
+Es seien $A,B$ zwei Knoten, die durch einen Halb-Duplex-Kanal verbunden sind, d.\,h., es kann in beide Richtungen gesendet werden, aber nur in eine Richtung zu einem bestimmten Zeitpunkt. Senden $A$ und $B$ gleichzeitig, so erfahren sie weder was noch, ob die andere Seite sendet.\\
+Dieses Problem lässt sich durch folgendes Protokoll lösen:
+\begin{itemize}
+	\item Sendet eine Seite bereits, so schweigt die andere Seite.
+	\item Senden beide Seiten gleichzeitig, so warten beide ein jeweils zufälliges Zeitintervall und fangen danach an zu senden; wobei diejenige Seite Priorität erhält, die als erste sendet.
+\end{itemize}
+
+\Bsp{Randomisiertes Quicksort}
+Bei Quicksort wird in jeder Iteration ein Element der Liste als Pivot-Element gewählt. Betrachte zwei Herangehensweisen:
+\begin{itemize}
+	\item Im deterministischen Quicksort wird das Pivotelement entsprechend einem deterministischen Verfahren gewählt, z.\,Bsp. das erste Element oder der mittlere.
+	\item Im randomisierten Quicksort wird das Pivotelement zufällig gleich verteilt aus allen Elementen der Liste gewählt.
+\end{itemize}
+Die randomisierte Variante hat für jede Liste eine Worst-Case Laufzeit von $O(n^2)$. Allerdings kann man zeigen, dass man eine erwartete Laufzeit von $O(n\log n)$ erhält.\\
+Die deterministische Variante realisiert für einige wenige Listen ihre Worst-Case Laufzeit und performt für viele Listen in $O(n\log n)$.
+
+\Bsp{Das Copy Game}
+Zu Beginn jeder Runde wählen zwei Spieler $A,B$ zufällig und geheim einen Wert $x_A,x_B \in \{0,1\}$ und committen sich auf den.\\
+Spieler $A$ gewinnt, falls $x_A\neq x_b$. Ansonsten gewinnt $B$.\\\\
+Hier ist es essentiell, dass $A$ einer randomisierten Strategie folgt. Denn ist die Strategie von $A$ deterministisch, so kann $B$ diese erfahren oder lernen und sie in Zukunft simulieren (und dadurch immer gewinnen).\\
+Folgt aber $A$ einer zufälligen Strategie mit echten Zufall, so gewinnen beide Spieler mit einer Chance von $50\%$. Dies ist unabhängig von den Rechenkraft, die $B$ zur Verfügung steht.
+
+\Def{}
+Für $a,b\in \{0,1\}$ definieren wir die \df{Paritätssumme} durch
+\begin{align*}
+a \oplus b := \left\lbrace
+\begin{aligned}
+1 && a\neq b\\
+0 && a = b
+\end{aligned}
+\right.
+\end{align*}
+Die Menge $\{0,1\}$ zusammen mit der Operation $\oplus$ ist eine abelsche Gruppe.
+
+\Bsp{One-Time Pad}
+$A$ will $B$ eine Nachricht $w = w_1\ldots w_n \in \{0,1\}^n$ senden, wobei kein Dritter in der Lage sein soll diese Nachricht $w$ durch Abhören des Kommunikationskanals zu lernen.\\
+Kennen $A$ und $B$ beide ein gemeinsames Geheimnis
+\[r = r_1\ldots r_n \in \{0,1\}^n \]
+das zufällig gewählt wurde, so kann $A$ die bitweise Paritätssumme übermitteln. D.\,h., $A$ sendet
+\[ w \oplus r := (w_1\oplus r_1)\ldots (w_n\oplus r_n) \in \{0,1\}^n \]
+$B$ erhält $w\oplus r$ und kann durch Addieren von $r$ die Nachricht $w = (w\oplus r) \oplus r$ erlernen. Ein Dritter, der $w\oplus r$ abhört, hat keine Chance $w$ zu erraten, weil $r$ zufällig gleichverteilt gewählt wurde.\\
+Beachte, die Sicherheit des One-Time Pads ist kompromittiert, wenn derselbe Zufall $r$ für die Verschlüsselung verschiedener Nachrichten $w,v,x, \ldots$ benutzt wird.
+
+\Bsp{Das Dining Cryptographers Problem}
+Drei Kryptographen $A,B,C$ essen in einem Restaurant und erfahren am Ende, dass ihre Rechnung bereits bezahlt wurde.\\
+Sie wollen ein Protokoll etablieren, durch das sie am Ende wissen, ob einer von ihnen für die Rechnung bezahlt hat:
+\begin{itemize}
+	\item Jedes Paar von Kryptographen wirft eine faire Münze, dessen Ergebnis gegenüber dem Dritten verborgen wird. Dadurch erhalten wir Zufallbits $r_{A,B}, r_{B,C}$ und $r_{C,A}$.
+	\item Setze dann
+	\begin{align*}
+	u_A := r_{A,B} \oplus r_{C,A} && u_B := r_{A,B} \oplus r_{B,C} && u_C := r_{C,A} \oplus r_{B,C}
+	\end{align*}
+	\item Danach macht jeder Kryptograph $X$ sein Bit $v_X := u_X$ öffentlich, falls er nicht die Rechnung bezahlt hat. Hat er bezahlt, so veröffentlicht er $v_X:=1 \oplus u_X$.
+	\item Es gilt nun
+	\[ v_A \oplus v_B \oplus v_C = r_{A,B} \oplus \ldots \oplus r_{C,A}= 0 \]
+	falls keiner der Kryptographen die Rechnung bezahlt hat (oder falls zwei der Kryptographen die Rechnung bezahlt haben), und
+	\[ v_A \oplus v_B \oplus v_C = 1\oplus r_{A,B} \oplus \ldots \oplus r_{C,A}= 1  \]
+	falls genau einer (oder drei) der Kryptographen die Rechnung bezahlt hat.
+	\item Keiner der Kryptographen kann erfahren, wer bezahlt von den anderen bezahlt hat, da er eine der Zufallsvariablen $r_{A,B}, r_{B,C}, r_{C,A}$ nicht kennen kann.
+\end{itemize}
+
+\renewcommand{\P}{\text{Prob}}
+\section{Diskrete Wahrscheinlichkeitsmaße}
+Betrachte ein Zufallsexperiment mit Ergebnissen aus einer Menge $\Omega$, die entweder endlich oder abzählbar unendlich ist.\\
+Die Wahrscheinlichkeiten werden durch ein \df{diskretes Wahrscheinlichkeitsmaß}
+\[ \P : \Omega \Pfeil{} [0,1] \]
+so dass gilt
+\[ \sum_{\omega \in \Omega} \P(\omega) = 1 \]
+Bei $(\Omega, \P)$ handelt es sich um einen \df{diskreten Wahrscheinlichkeitsraum}.\\
+Eine Teilmenge von $E\subset \Omega$ heißt \df{Ereignis}. Ereignisse erhalten eine Wahrscheinlichkeit durch
+\[ \P(E) := \sum_{\omega \in E} \P(\omega) \]
+Auf einer endlichen Menge $\Omega$ ist das gleich verteilte Wahrscheinlichkeitsmaß definiert durch
+\[ \P(\omega) := \frac{1}{\bet{\Omega}} \]
+
+\Def{}
+Eine \df{Zufallsvariable} ist eine Abbildung
+\[ X : \Omega \Pfeil{} \R \]
+Jede Zufallsvariable definiert ein Wahrscheinlichkeitsmaß $\P_X$ auf $\R$ durch
+\[ \P_X(x) := \sum_{\omega \in X\i(x)} \P(\omega) \]
+$\P_X$ heißt die \df{Verteilung} von $X$.\\
+Wir legen folgende Notationen fest
+\begin{align*}
+\P(X = x) &:= \P_X(x)\\
+\P(X \geq x) &:= \sum_{t \geq x}\P_X(t)\\
+\text{etc.}
+\end{align*}
+
+\Def{}
+Die \df{Indikator-Variable} für eine Menge $A \subset \Omega$ ist die Zufallsvariable
+\begin{align*}
+1_A (\omega) := \left\lbrace
+\begin{aligned}
+1 && \omega \in A\\
+0 && \text{ sonst}
+\end{aligned}
+\right.
+\end{align*}
+
+\Def{Multivariate Verteilungen}
+Seien $X_1,\ldots, X_m$ Zufallsvariablen auf $\Omega$. Wir definieren die \df{Multivariate Verteilung} $\P_{X_1,\ldots, X_m}$ durch
+\begin{align*}
+\P_{X_1,\ldots, X_m}(r_1,\ldots, r_m) := \sum_{\omega \in \Omega: X_1(\omega) = r_1, \ldots, X_m(\omega) = r_m}\P(\omega)
+\end{align*}
+Wir schreiben in Zukunft:
+\[ \P(X_1 = r_1, \ldots, X_m = r_m) := \P_{X_1,\ldots, X_m}(r_1,\ldots, r_m) \]
+
+\Def{}
+$X_1,\ldots, X_m$ heißen \df{gemeinsam unabhängig}, falls für alle $r_1,\ldots, r_m$ gilt
+\[ \P(X_1 = r_1, \ldots, X_m = r_m) = \P(X_1 = r_1) \cdots \P(X_m = r_m) \]
+$X_1,\ldots, X_m$ heißen \df{paarweise (stochastisch) unabhängig}, falls für alle $r_1,\ldots, r_m$ und $i\neq j$ gilt
+\[ \P(X_i = r_i,  X_j = r_j) = \P(X_i = r_i) \cdot \P(X_j = r_j) \]
+Sie heißen \df{$k$-weise unabhängig}, falls jedes $k$-Tupel von Zufallsvariablen gemeinsam unabhängig ist.
+
+\Bem{}
+Gemeinsame oder $k+1$-weise Unabhängigkeit impliziert immer $k$-weise Unabhängigkeit. Allerdings ist die Umkehrung im Allgemeinem falsch.
+
+\Bsp{}
+$X_1,X_2,X_3\in \{0,1\}$ seien zufällig gezogen. Setze
+\begin{align*}
+Z_1 := X_2 \oplus X_3 && Z_2 := X_1 \oplus X_3 && Z_3 := X_1 \oplus X_2
+\end{align*}
+Dann sind die $Z_i$ paarweise unabhängig, aber nicht gemeinsam unabhängig.
+
+\renewcommand{\E}{\mathbb{E}}
+
+\Def{}
+Für eine Zufallsvariable $X$ ist der Erwartungswert definiert durch
+\[ \E(X) := \sum_{\omega \in \Omega} X(\omega) \cdot \P(\omega) \]
+Wir sagen, dass $\E(X)$ existiert, falls obige Reihe absolut konvergiert. D.\,h.
+\[ \sum_{\omega \in \{\omega_1,\ldots, \omega_n\}} \bet{X(\omega) \cdot \P(\omega)}  \]
+konvergiert für $n \pfeil{} \bet{\Omega}$.
+
+\Bem{}
+\begin{itemize}
+	\item $\E$ ist $\R$-linear.
+	\item Sind $X_1,\ldots, X_m$ gemeinsam unabhängig, so gilt
+	\[ \E(X_1 \cdots X_m) = \E(X_1) \cdots \E(X_m) \]
+\end{itemize}
+
+\Def{}
+Die \df{bedingte Wahrscheinlichkeit} eines Ereignisses $A$ unter $B$ ist definiert durch
+\[ \P(A|B) := \frac{\P(A\cap B)}{\P(B)} \]
+für $\P(B) > 0$.\\
+Die \df{bedingte Verteilung} einer Zufallsvariable $X$ unter $B$ ist definiert durch
+\[ \P(X = x|B) := \frac{\sum_{\omega \in \Omega \cap B} \P(\omega)}{\P(B)} \]
+Definiere den \df{bedingten Erwartungswert} durch
+\[ \E(X | B) := \sum_{r \in \R} r\cdot \P(X = r | B) \]
