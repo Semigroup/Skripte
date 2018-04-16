@@ -1,1 +1,88 @@
+%Prüfungstag: Mittwoch, 18. Juli
+
+\chapter{Einführung in die Riemannsche Geometrie}
+\section{Überblick und Ideen}
 \marginpar{Vorlesung vom 16.04.18}
+
+Bisher können wir durch die äußere Ableitung
+\[ \d : \Omega^p(M) \pfeil{} \Omega^{p+1}(M) \]
+nur Differentialformen auf glatten Mannigfaltigkeiten ableiten, aber keine anderen Objekte wie zum Beispiel Vektorfelder. Wir können also auch nicht über Phänomene aus der Physik wie Beschleunigung zum Beispiel sprechen.
+
+\paragraph{Ziel}
+Wir wollen einen Rahmen finden, in dem Objekte wie zum Beispiel Vektorfelder abgeleitet werden können.
+
+\Bsp{}
+Sei $f:M \pfeil{} \R$ eine glatte Funktion. Gilt $\d f = 0$ und ist $M$ zusammenhängend, so ist $f$ konstant.\\
+Hätten wir für ein Vektorfeld $\xi$ eine Ableitung $\d \xi$, dann sollte die Gleichung $\d \xi = 0$ implizieren, dass $\xi$ \textsl{konstant} ist.\\
+Ist zum Beispiel $\xi$ auf $M = \R^n$ konstant, so ist $\xi$ parallel, im Sinne von, die einzelnen Tangentialvektoren, die im Bild von $\xi$ liegen, sind parallel.\\
+Somit impliziert eine Ableitung für Vektorfelder ein Konzept von \textsl{Parallelismus}.
+
+\paragraph{Problem}
+Ein Konzept von Parallelismus kann nicht über Karten erklärt werden, weil Kartenwechsel im Allgemeinen nicht winkeltreu sind.
+
+\Bsp{}
+Sei $M = S^2 \subset \R^3$ die zweidimensionale Einheitssphäre. Sei $p \in S^2$ und $\xi(p) \in T_pS^2$.\\
+$\gamma$ sei ein Großkreis, der durch $p$ in Richtung $\xi(p)$ geht. Ist $p_1$ ein weiterer Punkt auf $\gamma$, so lässt sich $\xi(p)$ \textsl{naiv} wie gewohnt in $\R^3$ von $p$ auf $p_1$ verschieben. Dies hat das offensichtliche Problem, das der so parallel verschobene Vektor im Allgemeinem nicht tangential an $S^2$ anliegt.\\
+Diesen kann man nun orthogonal auf den Tangentialraum $T_{p_1}S^2$ projizieren. Dadurch erhält man einen Tangentialvektor $\xi(p_1) \in T_{p_1}S^2$. Durch dieses Prozedere lässt sich $\xi$ glatt auf $S^2$ fortsetzen. Wählt man weitere Punkte $p_i$ auf $\gamma$, die gegen einen Punkt $q$ am Äquator konvergieren und für die gilt
+\[ d(p_i, p_{i+1}) \Pfeil{} 0 \]
+dann erhalten wir einen Vektor $\xi(q) \in T_qS^2$. Dies nennt man den \df{Paralleltransport} von $\xi(p)$ entlang $\gamma$ zu $\xi(q)$.\\
+Allerdings kann man $\xi(p)$ auch entlang eines weiteren Großkreises $\gamma_1$ verschieben. Verschiebt man entlang $\gamma_1$ wieder auf den Äquator und von dort wieder auf $q$, so erhält man einen anderen Tangentialvektor auf $q$.
+
+\paragraph{Neues Phänomen}
+Für allgemeine Mannigfaltigkeiten hängt der Paralleltransport vom Weg $\gamma$ ab; im Gegensatz zum Euklidischen Raum.
+
+\subsection{Zurück zu Ableitungen von Vektorfeldern $\xi$}
+Auf $M$ sei Parallelismus gegeben (zum Beispiel ist $M$ eingebettet im $\R^n$). $p\in M$ sei ein Punkt und $v \in T_pM$ sei ein Tangentialvektor. $\xi$ sei ein Vektorfeld auf $M$.\\
+Sei $\gamma$ eine glatte Kurve mit $\gamma(0) = p$ und $\dot{\gamma} (0) = v$. $q$ sei ein Punkt auf $\gamma$. Durch den vorgegebenen Parallelismus lässt sich $\xi(p)$ entlang $\gamma$ verschieben. D.\,h., im Punkt $q$ haben wir die Vektoren $\xi(q)$ und $\tau^q_p\xi(p)$, wobei $\tau^q_p\xi(p)$ der Paralleltransport von $\xi(p)$ nach $q$ entlang $\gamma$ ist.
+
+\paragraph{Idee}
+Betrachte
+\[ \xi(q) - \tau^q_p\xi(p) \in T_pM  \]
+für $\d(p,q) \pfeil{} 0$. Dies bezeichnet man dann auch als die \df{kovariante Ableitung} von $\xi$ in Richtung $v$
+\[ \nabla_v\xi \in T_qM \]
+$\nabla_v$ nennt man dabei einen \df{Zusammenhang.} Diese hat folgende Eigenschaften:
+\begin{itemize}
+	\item $\nabla_v$ ist $\Omega^0(M)$-linear in $v$, d.\,h.
+	\[ \nabla_{\lambda v + w}(\xi) = \lambda \nabla_{v} (\xi) + \nabla_{w} (\xi) \]
+	für glatte Funktionen $\lambda : M \pfeil{} \R$.
+	\item Sie ist $\R$-linear im zweiten Argument
+	\[ \nabla_{v}(\xi + \eta) = \nabla_{v}(\xi) + \nabla_{v}(\eta) \]
+	\item Ist $f : M \pfeil{} \R$ linear, so liegt folgende Produktregel vor
+	\[ \nabla_{v}(f\cdot \xi) = f \cdot \nabla_{v}(\xi) + \nabla_{v}(f) \cdot \xi \]
+	wobei
+	\[ \nabla_{v} f := v(f) \]
+\end{itemize}
+
+
+\subsection{Geodätische}
+Sei $\gamma$ eine (glatte) Kurve auf $M$. $\gamma$ heißt eine \df{Geodätische}, falls gilt
+\[ \nabla_{\dot{\gamma}}\dot{\gamma} = 0 \]
+Obige Bedingung ist in lokalen Koordinaten eine Differentialgleichung zweiter Ordnung.\\
+Physikalisch gesprochen verschwindet die Beschleunigung. Geometrisch gesprochen ist $\gamma$ parallel entlang $\gamma$.
+
+\Bsp{}
+Sei $M$ eine Riemannsche Fläche im $\R^3$. Die Gleichung
+\[ \nabla_{\dot{\gamma}}\dot{\gamma} = 0 \]
+bedeutet
+\[ \ddot{\gamma} \bot M \]
+D.\,h., die Euklidische zweite Ableitung steht orthogonal auf der Fläche $M$.
+
+\Bsp{}
+\begin{itemize}
+	\item Geraden sind Geodätische im Euklidischen Raum.
+	\item Großkreise sind Geodätische auf Sphären.
+	\item Allgemein sind Geodätische lokal kürzeste Kurven.
+\end{itemize}
+
+\newpage
+\subsection{Parallelogramme}
+Sei $p\in M$. $\mu, \lambda$ seien zwei Geodätische, die sich im Punkt $p$ schneiden mit $\mu(0) = \lambda(0) = p$.\\
+$\mu, \lambda$ seien parametrisiert durch die Bogenlänge, d.\,h.,
+\[ \norm{\dot{\lambda}(t)} = \norm{\dot{\mu}(t)} = 1 \]
+für alle $t$. Setze $v := \dot{\mu}(0)$ und $w := \dot{\lambda}(0)$. Sei $\e > 0$.\\
+Indem wir $w$ entlang $\mu$ verschieben, erhalten wir einen Vektor $\overline{w}$ auf $\mu(\e)$ und analog einen Vektor $\overline{v}$ auf $\lambda(\e)$.\\
+Es gilt
+\[ \norm{\overline{v}} = \norm{\overline{w}} = 1 \]
+da der Paralleltransport eine Isometrie ist, wenn die Riemannsche Metrik kompatibel ist zum Zusammenhang $\nabla$.\\
+Indem man $\overline{v}$ und $\overline{w}$ durch durch Bogenlänge parametrisierte Geodätische fortsetzt, erhält man Geodätische $\overline{\mu}$ und $\overline{\lambda}$. Dadurch erhält man dann Punkte $\overline{\lambda}(\e) $ und $\overline{\mu}(\e)$. Im Euklidischen würden die beiden Punkte zusammen fallen und das Parallelogramm schließen. Für allgemeine Riemannsche Mannigfaltigkeiten muss dies nicht der Fall sein, aber es gilt
+\[ d(\overline{\mu}(\e), \overline{\lambda}(\e)) \in O(\e^2) \]
