@@ -1,0 +1,187 @@
+\marginpar{Vorlesung vom 18.04.18}
+\Def{}
+Definiere die \df{Torsion} des Zusammenhangs durch
+\[ T(\xi, \eta) := \nabla_\xi \eta - \nabla_\eta \xi - [\xi, \eta] \]
+wobei $[\xi, \eta]$ die \df{Lie-Klammer}\footnote{Lassen sich die beiden Vektorfelder als Koordinatenrichtungen schreiben, so gilt zum Beispiel $[\frac{\partial}{\partial x_i}, \frac{\partial}{\partial x_j}] = 0$} der beiden Vektorfelder $\xi$ und $\eta$ bezeichnet.\\
+$T$ ist ein \df{Tensor}, d.\,h., $\mathcal{C}^{\infty}(M)$-linear.\\
+$\nabla$ heißt \df{symmetrisch} bzw. \df{torsionsfrei}, falls $T = 0$.
+
+\newcommand{\crv}{\text{R}}
+
+\Lem{}
+Ist $\nabla$ symmetrisch, dann gilt sogar
+\[ d(\overline{\mu}(\e), \overline{\lambda}(\e)) \in O(\e^3) \]
+
+Sei $u \in T_p(M)$ ein weiterer Tangentialvektor. $u_1$ sei der Paralleltransport von $u$ entlang $\lambda\overline{\mu}$. $u_2$ sei der Paralleltransport entlang $\mu \overline{\lambda}$.\\
+Es liegt dann folgende asymptotische Gleichheit vor
+\[ \norm{u_1 - u_2} \sim \epsilon^2 \crv(v,w)u  \]
+$\crv(v,w)u$ heißt \df{Riemannscher Krümmungstensor}. Er ist definiert durch
+\[ \crv(v,w)u := \nabla_v \nabla_wu - \nabla_w \nabla_v u - \nabla_{[v,w]} u \]
+
+Wir werden nun im Folgenden mit den Formalen Definitionen beginnen.
+
+\newpage
+\section{Die Lie-Klammer}
+Sei $M$ im Folgenden eine glatte $n$-dimensionale Mannigfaltigkeit und $X,Y : M \pfeil{} \T M$ glatte Vektorfelder auf $M$.
+
+\newcommand{\CC}[1]{\mathcal{C}^{#1}}
+
+\Lem{}
+Es existiert genau ein glattes Vektorfeld $Z$ auf $M$, sodass gilt
+\[Z(f) = X(Y(f)) - Y(X(f)) \]
+für alle $f \in \CC{\infty}(M)$. Beachte, $X(f)$ bezeichnet die glatte Funktion, die sich ergibt durch
+\[ X(f)(p) := X(p)(f) \]
+
+\begin{Beweis}{}
+\begin{itemize}
+	\item Eindeutigkeit:\\
+	Sei $p \in M$. $\{x_i\}$ seien lokale Koordinaten bei $p$. $X, Y$ lassen sich dann schreiben durch
+	\begin{align*}
+	X = \sum_i a_i \frac{\partial}{\partial x_i} && \text{ und } && Y = \sum_j b_j \frac{\partial}{\partial x_j}
+	\end{align*}
+	und es gilt
+	\begin{align*}
+	X(Yf) &= X\klam{\sum_j b_j \frac{\partial f}{\partial x_j}}\\
+	&= \sum_i a_i \sum_j \frac{\partial }{\partial x_i} \klam{b_j \frac{\partial f}{\partial x_j}}\\
+	&= \sum_{i,j} a_i \frac{\partial b_j}{\partial x_i} \frac{\partial f}{\partial x_j} + 
+	\sum_{i,j} a_i b_j \frac{\partial^2 f}{\partial x_j\partial x_i} 
+	\end{align*}
+	bzw.
+	\begin{align*}
+		Y(Xf) =  \sum_{i,j} b_j \frac{\partial a_i}{\partial x_j} \frac{\partial f}{\partial x_i} + 
+	\sum_{i,j} b_j a_i \frac{\partial^2 f}{\partial x_i\partial x_j} \\
+	\end{align*}
+	In der Differenz ergibt sich
+	\begin{align*}
+	X(Yf) - Y(Xf) &= \sum_{i,j} a_i \frac{\partial b_j}{\partial x_i} \frac{\partial f}{\partial x_j}
+	- \sum_{i,j} b_i \frac{\partial a_j}{\partial x_i} \frac{\partial f}{\partial x_j}\\
+	&= \sum_{i,j} \klam{a_i \frac{\partial b_j}{\partial x_i} - b_i \frac{\partial a_j}{\partial x_i} } \frac{\partial f}{\partial x_i}
+	\end{align*}
+	Lokal ist $Z$ also bestimmt durch
+	\[ Z =  \sum_{i,j} \klam{a_i \frac{\partial b_j}{\partial x_i} - b_j \frac{\partial a_j}{\partial x_i} } \frac{\partial }{\partial x_j} \]
+	\item Existenz:\\
+	Durch obige Formel ist für jedes lokale Koordinatensystem ein $Z$ gegeben. Diese lassen sich global zu einem glatten Vektorfeld auf ganz $M$ zusammen setzen.
+\end{itemize}
+\end{Beweis}
+
+\Def{}
+Definiere nun die \df{Lie-Klammer} von $X$ und $Y$ durch
+\[ Z:= [X,Y] = XY - YX\]
+
+\Bem{}
+Die Lie-Klammer hat folgende Eigenschaften
+\begin{itemize}
+	\item $[X,Y] = - [Y,X]$
+	\item Für $a,b \in \R$ gilt
+	\[ [aX_1 + bX_2, Y] = a[X_1, Y] + b[X_2, Y] \]
+	\item Iteration: Für beliebige Vektorfelder $X,Y,Z$ gilt
+	\[ [[X,Y], Z] = [ XY - YX, Z ] = XYZ- YXZ - ZXY + ZYX \]
+	und
+	\[ [[Y,Z], X] = [ YZ - ZY, X ] = YZX- ZYX - XYZ + XZY \]
+	und
+	\[ [[Z,X], Y] = [ ZX - XZ, Y ] = ZXY - XZY - YZX + YXZ \]
+	Durch Aufsummieren ergibt sich
+	\[ [[X,Y], Z] + [[Y,Z], X]  + [[Z,X], Y] = 0\]
+	Dies nennt sich die \df{Jacobi-Identität}.
+	\item Seien $f,g \in \CC{\infty}(M)$. Es gilt
+	\[ [fX, gY] = fX(gY) - gY(fX) = f(X(g)Y - gXY) - g(Y(f)X - fYX) = fg[X,Y] + fX(g) Y - gY(f)X \]
+\end{itemize}
+
+\newcommand{\pf}[2]{\frac{\partial #1}{\partial #2}}
+%\vspace{12mm}
+Da eine Mannigfaltigkeit lokal wie $\R^n$ aussieht, lassen sich die bekannten Sätze zu Existenz, Eindeutigkeit und Abhängigkeit von Anfangsbedingungen von gewöhnlichen Differentialgleichungen von $\R^n$ auf $M$ verallgemeinern.
+
+\Satz{}
+Sei $M$ eine glatte Mannigfaltigkeit, $X$ ein glattes Vektorfeld auf $M$, $p \in M$ ein Punkt.\\
+Dann existiert eine offene Umgebung $U \subset M$ von $p$ und ein $\delta > 0$ zusammen mit einer Abbildung
+\[ \phi : (-\delta, \delta) \times U \Pfeil{} M \]
+sodass $t \mapsto \phi(t,p)$ die eindeutige Lösung von
+\begin{align*}
+\pf{}{t} \phi(t,q) &= X(\phi(t,q)) && \forall q \in U\\
+\phi(0,q) &= q
+\end{align*}
+ist.\\
+Schreibweise:
+\[ \phi_t(p) := \phi(t,p) \]
+Die glatte Abbildung
+\[ \phi_t : U\pfeil{} M \]
+heißt \df{Fluss} von $X$ (in der Umgebung von $p$).
+
+\Bem{}
+Sei $\bet{s}, \bet{t}, \bet{s+t} < \delta$. Betrachte
+\[ \gamma_1(t) := \phi(t, \phi(s,p)) \]
+Das impliziert
+\begin{align*}
+\dot{\gamma_1} = X(\gamma_1) && \gamma_1(0) = \phi(s,p)
+\end{align*}
+und
+\[ \gamma_1(t) := \phi(t+s, p) \]
+impliziert
+\begin{align*}
+\dot{\gamma_2} = X(\gamma_2) && \gamma_2(0) = \phi(s,p)
+\end{align*}
+Aus der Eindeutigkeit folgt nun
+\[ \gamma_1 = \gamma_2 \]
+D.\,h.,
+\[ \phi_{s+t} = \phi_s \circ \phi_t \]
+Insbesondere gilt
+\[ \id{M} = \phi_t\circ \phi_{-t} \]
+Daraus folgt, dass jedes $\phi_t$ ein Diffeomorphismus ist. Die Menge aller $\{\phi_t\}_{t}$ nennt man eine \df{Einparameter-Untergruppe} von Diffeomorphismen.
+
+\newpage
+\section{Die Lie-Ableitung}
+Seien $X,Y$ zwei Vektorfelder auf $M$, $p \in M$ ein Punkt.\\
+Sei $\phi_t$ der Fluss auf $X$ mit
+\begin{align*}
+\pf{}{t} \phi(t,p) = X(\phi_t(p)) && \text{ und } && \phi_0(p) = p
+\end{align*}
+Definiere nun die \df{Lie-Ableitung durch}
+\begin{align*}
+(L_XY)(p):=\lim\limits_{h\pfeil{} 0} \frac{1}{h} \klam{
+Y_p 
+- (\d \phi_h)(Y_{\phi_{-h}(p)})
+}\in T_p(M)
+\end{align*}
+wobei $Y_p = Y(p), \d \phi_h = \phi_{h,*}$. Die Lie-Ableitung leitet das Vektorfeld $Y$ bzgl. dem Fluss von $X$ im Punkt $p$ ab.
+
+\Prop{}
+\label{LieKlammerProp}
+Es gilt
+\[ L_XY = [X,Y] \]
+Für den Beweis dieser Proposition benötigen wir ein Lemma:
+\paragraph{Idee}
+Sei $f: \R \pfeil{} \R$ glatt mit $f(0) = 0$. $f$ hat die Taylor-Entwicklung
+\[ f(t) = t f'(0) + \frac{t^2}{2} f''(0) + \ldots =: t \cdot g(t) \]
+Es gilt
+\[ f(t) = tg(t) \]
+und $f'(0) = g(0)$.\\
+Wir brauchen nun folgende Verallgemeinerung dieser Beobachtung:
+
+\Lem{}
+Sei $M$ eine Mannigfaltigkeit, $f : (-\e, \e) \times M \pfeil{} \R$ glatt, $f(0,p) = 0$ für alle $p \in M$.\\
+Dann existiert eine glatte Funktion $g: (-\e, \e) \times M \pfeil{} \R$ mit
+\begin{align*}
+f(t,p) = t\cdot g(t,p) && \text{ und } && \pf{f}{t}(0,p) = g(0,p)
+\end{align*}
+\begin{Beweis}{}
+Wir definieren $g$ durch
+\begin{align*}
+g(t,p) := \int_{0}^{1} \klam{\pf{f}{s}} (s\cdot t,p) \d s
+\end{align*}
+Der Rest ist nachrechnen.
+\end{Beweis}
+
+\begin{Beweis}{\ref{LieKlammerProp}}
+Sei $f \in \CC{\infty}(M)$. Definiere die Hilfsfunktion
+\begin{align*}
+h(t,p) := f(\phi_t(p)) - f(p)
+\end{align*}
+Aufgrund des Lemmas existiert ein $g$ mit
+\begin{align*}
+h(t,p) = t \cdot g(t,p) && \pf{h}{t}(0,p) = g(0,p)
+\end{align*}
+Es gilt
+\begin{align*}
+f \circ \phi_t = f + t g_t
+\end{align*}
+\end{Beweis}
