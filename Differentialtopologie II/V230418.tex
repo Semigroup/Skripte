@@ -1,0 +1,132 @@
+\marginpar{Vorlesung vom 23.04.18}
+\begin{Beweis}{\ref{LieKlammerProp}}
+	Sei $f \in \CC{\infty}(M)$. Wir wollen Folgendes zeigen.
+	\[ (L_XY)(f) = [X,Y](f) = XYf - YXf \]
+	Definiere die Hilfsfunktion
+	\begin{align*}
+	h(t,p) := f(\phi_t(p)) - f(p).
+	\end{align*}
+	Da $h(0,p) = 0$, existiert aufgrund des Lemmas ein $g$ mit
+	\begin{align*}
+	h(t,p) = t \cdot g(t,p) &&\text{ und }&& \pf{h}{t}(0,p) = g(0,p).
+	\end{align*}
+	Es gilt
+	\begin{align*}
+	f \circ \phi_t = f + t g_t
+	\end{align*}
+	und
+	\begin{align*}
+	X_p(f) = \klam{\pf{}{t}_{t= 0}\phi_t(p)}(f) = \pf{}{t}_{t = 0} f(\phi_t(p)) = \pf{h}{t} (0,p) = g(0,p).
+	\end{align*}
+	Durch die erste der beiden obigen Gleichung erhalten wir
+	\begin{align*}
+	(\d \phi_h)(Y_{\phi_{-h}(p)})(f) &= Y_{\phi_{-h}(p)}(f\circ \phi_h)\\
+	&= Y_{\phi_{-h}(p)} (f+tg_t).
+	\end{align*}
+	Setzt man dies in die Lie-Ableitung ein, so erhält man
+	\begin{align*}
+	(L_XY)(f) &= \lim\limits_{h\pfeil{} 0}\frac{1}{h}\klam{ Y_p - (\d \phi_h)(Y_{\phi_{-h}(p)})(f) }\\
+	&= \lim\limits_{h\pfeil{} 0}\frac{1}{h}\klam{ Y_p - (Y_{\phi_{-h}(p)})(f) } - \lim\limits_{h\pfeil{} 0}\frac{1}{h}\klam{h (Y_{\phi_{-h}(p)})(g_h) }.
+	\end{align*}
+	Da gilt
+	\[ \lim\limits_{h\pfeil{} 0}\frac{1}{h}\klam{h (Y_{\phi_{-h}(p)})(g_h) } =
+	\lim\limits_{h\pfeil{} 0} (Y_{\phi_{-h}(p)})(g_h)  = Y_p(g_0) =YXf,  \]
+	folgt
+		\begin{align*}
+	(L_XY)(f)&= \lim\limits_{h\pfeil{} 0}\frac{1}{h}\klam{ (Yf)_p - (Yf)_{\phi_{-h}(p)} } - Y_pXf\\
+	&= X_pYf - Y_pXf.
+	\end{align*}
+\end{Beweis}
+\paragraph{Folgerungen}
+\begin{align*}
+L_YX = -L_XY, && L_XX = 0
+\end{align*}\\\\
+Seien Vektorfelder $X,Y$ gegeben. Man kann zeigen, dass lokale Koordinaten $x_1,\ldots, x_n$ existieren mit
+\[ X = \pf{}{x_1}. \]
+Gilt ferner
+\[ Y = \pf{}{x_2}, \]
+so folgt
+\[ [X,Y] = \pf{\partial}{x_1\partial x_2} - \pf{\partial}{x_2\partial x_1} = 0.  \]
+Insofern ist das Verschwinden von $[X,Y]$ eine notwendige Bedingung für die Existenz von lokalen Koordinaten $x_1,\ldots, x_n$ mit
+\begin{align*}
+X = \pf{}{x_1} && \text{ und } && Y = \pf{}{x_2}.
+\end{align*}
+
+\subsection{Geometrische Interpretation der Lie-Klammer}
+Seien $X,Y$ Vektorfelder. $\phi$ und $\psi$ seien korrespondierende Flüsse, $p\in M$ sei ein Punkt. Setze
+\[ c(h) := \psi_{-h}\phi_{-h}\psi_h\phi_h(p). \]
+Die Zuordnung $h \mapsto c(h)$ definiert eine glatte Kurve. Man kann zeigen
+\[ \dot{c}(h) = 0. \]
+Für Kurven $\gamma(t)$ mit $\dot{\gamma}(0) = 0$ lässt sich die zweite Ableitung definieren durch
+\[ \ddot{\gamma}(t)(0):= \frac{\d^2}{\d t^2}_{t = 0} f(\gamma(t)) .\]
+Dann ist $\ddot{\gamma}(0)$ eine Derivation.\\
+Daraus folgt, dass $\ddot{c}(0)$ definiert ist, und es gilt
+\begin{align*}
+\ddot{c}(0) = 2[X,Y]_p.
+\end{align*}
+
+\newpage
+\section{Riemannsche Mannigfaltigkeiten}
+Sei $M$ eine glatte, $n$-dimensionale Mannigfaltigkeit.
+\Def{}
+Eine \df{Riemannsche Metrik} auf $M$ ist eine Zuordnung
+\begin{align*}
+p \longmapsto \shrp{\cdot ~|~\cdot}_p
+\end{align*}
+für $p\in M$, wobei $\shrp{\cdot ~|~\cdot}_p$ jeweils ein inneres Produkt\footnote{Inneres Produkt heißt hier eine symmetrische, positiv definite Bilinearform.} auf $T_pM$ ist. Ferner soll diese Zuordnung\df{glatt} sein in dem Sinne, dass für lokale Koordinaten $(U,x)$ die Funktionen
+\begin{align*}
+g_{i,j}(p) := \shrp{\pf{}{x_i}(p) ~|~ \pf{}{x_j}(p) }_p
+\end{align*} 
+für alle $i,j$ glatt sind auf $U$.\\
+Wir werden manchmal $g(p)$ anstatt $\shrp{\cdot ~|~ \cdot}_p$ schreiben.\\
+Das Paar $(M, \shrp{\cdot~|~ \cdot})$ heißt \df{Riemannsche Mannigfaltigkeit}.
+
+\Def{}
+Ein Diffeomorphismus $\phi: (M, \shrp{\cdot~|~\cdot}_M) \pfeil{} (N, \shrp{\cdot~|~\cdot}_N)$ heißt \df{Isometrie}, falls für alle $p \in M$ und $u,v \in T_pM$ gilt
+\[ \shrp{u,v}_{M,p} = \shrp{ \d \phi_pu, \d \phi_pv}_{N,\phi(p)}. \]
+
+
+\begin{enumerate}[(1)]
+	\item \Bsp{} Sei $M = \R^n$. $x$ seien die Standardkoordinaten auf $\R^n$. Setzt man
+	\[ \shrp{\pf{}{x_i}, \pf{}{x_j}}_p = \delta_{i,j} \]
+	so erhält man die euklidische Metrik auf $\R^n$.
+	\item Sei $f:M\pfeil{} N$ eine glatte Immersion. $(N,\shrp{\cdot~|~\cdot}_N)$ sei eine Riemannsche Mannigfaltigkeit, $M$ eine glatte Mannigfaltigkeit. Dann induziert $f$ eine Riemannsche Metrik $\shrp{\cdot ~|~\cdot}_M$ auf $M$ durch
+	\[ \shrp{u|v}_M:= \shrp{\d f(u), \d f(v)}_N. \]
+	Da $\d f$ injektiv ist, ist $ \shrp{u|v}_{M,p}$ positiv definit.
+	\item \Bsp{} Es bezeichne $S^n = \set{(x_1,\ldots,x_{n+1}) \in \R^{n+1}}{x_1^2 + \ldots + x_{n+1}^2 = 1}$ die Einheitssphäre. Durch die Einebettung $S^n \subset \R^{n+1}$ erhalten wir eine Riemannsche Metrik auf $S^n$. $S^n$ zusammen mit dieser Metrik nennt man \df{Standardsphäre}.
+	\item \textbf{Produktmetrik}: Seien $(M, g_m), (N,g_N)$ zwei Riemannsche Mannigfaltigkeiten. $\pi_1, \pi_2$ seien die korrespondierenden Projektionen von $M\times N$ auf $M$ bzw. $N$. Seien $u,v \in T_{(p,q)}(M\times N)$, setze
+	\begin{align*}
+	\shrp{u,v}_{p,q} := \shrp{\d \pi_1(u), \d \pi_1(v)}_{M,p} + \shrp{\d \pi_2(u), \d \pi_2(v)}_{N,q}. 
+	\end{align*}
+	$\shrp{u,v}_{p,q}$ ist eine Riemannsche Metrik auf $M \times N$, die sogenannte \df{Produktmetrik}.
+	\item \Bsp{} Betrachte $T^n := S^1 \times \ldots \times S^1$. Ist $S^1$ mit der Standardmetrik versehen, so induziert uns dies eine Produktmetrik auf $T^n$. In diesem Fall spricht man vom \df{flachen Torus}.\\
+	Für $n=2$ kann man $T^2$ in den $\R^3$ einbetten. Dadurch erhält man eine andere induzierte Metrik auf $T^2$, die nicht äquivalent zu obiger Produktmetrik ist. Diese beiden Tori sind nicht isometrisch.
+\end{enumerate}
+
+\Prop{}
+Jede glatte Mannigfaltigkeit besitzt eine Riemannsche Metrik.
+
+\begin{Beweis}{}
+Sei $\set{(U_\alpha,x_\alpha)}{}$ eine offene Überdeckung von $M$ durch Karten und $\{f_\alpha\}$ eine glatte Partition der Eins bzgl. dieser Überdeckung.\\
+Über $U_\alpha$ betrachte man die eindeutige Riemannsche Metrik $g^\alpha$, sodass
+\[ (U_\alpha,g^\alpha) \Pfeil{x_\alpha} (\R^n, g_{eukl}) \]
+eine Isometrie ist. Auf $M$ erhält man nun eine Riemannsche Metrik durch
+\begin{align*}
+g_p := \sum_{p\in U_\alpha} f_\alpha(p) g_p^\alpha.
+\end{align*}
+\end{Beweis}
+
+\Def{}
+Sei $c : \R \pfeil{} M$ eine glatte Kurve. Ein \df{Vektorfeld entlang einer Kurve} $c$ ist eine glatte Zuordnung
+\[ t \longmapsto V(t) \in T_{c(t)}M \]
+
+\Bem{}
+Ein Vektorfeld entlang einer Kurve lässt sich im Allgemeinem nicht auf ein Vektorfeld einer offenen Umgebung der Kurve fortsetzen. Zum Beispiel könnte sich die Kurve selbst schneiden und $V$ die Ableitung der Kurve sein.
+
+\paragraph{Notation}
+Wir schreiben auch für $v \in T_pM$
+\[ \norm{v} := \sqrt{ \shrp{v|v}_p } \]
+
+\Def{}
+Für eine Kurve $c$ definiere wir die \df{Länge} durch
+\[ L^b_a(c) := \int_{a}^{b} \norm{\dot{c}(t)} \d t \]
