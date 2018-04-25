@@ -1,0 +1,188 @@
+\marginpar{Vorlesung vom 25.04.18}
+
+Sei $(M,g)$ eine Riemannsche Mannigfaltigkeit, die obendrein orientiert ist. $(U,x)$ und $(V,y)$ seien orientierte Karten auf $M$, die sich schneiden.\\
+Wir erinnern an folgendes Lemma aus Differentialtopologie I.
+\Lem{}
+Auf $U\cap V$ gilt
+\[ f\d x_1 \wedge \ldots \wedge \d x_n = g \d y_1 \wedge \ldots \wedge \d y_n \]
+genau dann, wenn
+\[ f = \det\klam{ \pf{y_i}{x_j} } g \]
+gilt.\\\\
+Auf einer orientierten Karte $U$ sind Funktionen $g_{i,j} : U \pfeil{} \R$ gegeben durch
+\[ g_{i,j} = \shrp{\pf{}{x_i}|\pf{}{x_j} } \]
+für $p \in U$. Setze ferner $X_i := \pf{}{x_i}$.\\
+Sei $e_1,\ldots, e_n$ eine {Orthonormalbasis} (ONB) für $T_pM$ bzgl. $g_p$. Dann lässt sich $X_i$ darstellen durch
+\[ X_i = \sum_j a_{i,j}e_j. \]
+Wir erhalten so eine $n\times n$-Matrix $A := (a_{i,j})_{i,j}$. Es gilt
+\begin{align*}
+g_{i,j} :=& \shrp{X_i|X_j}\\
+=& \shrp{ \sum_k a_{i,k}e_k| \sum_l a_{j,l}e_l  }\\
+=& \sum_{k,l} a_{i,k}a_{j,l} \shrp{e_k|e_l}\\
+=& \sum_k a_{i,k}a_{j,k}.
+\end{align*}
+Daraus folgt
+\[ (g_{i,j})_{i,j} = AA^T. \]
+Dies impliziert insbesondere
+\[ \det(g_{i,j}) = \det(A)^2 > 0. \]
+Insbesondere ist $\sqrt{\det(g_{i,j})} = \bet{\det A}$ wohldefiniert. Durch den Transformationssatz folgt nun im Punkt $p$
+\begin{align*}
+vol(X_1, \ldots, X_n) = \bet{\det A} \cdot vol(e_1, \ldots, e_n) = \bet{\det A},
+\end{align*}
+da $vol(e_1, \ldots, e_n) = 1$. Daraus folgt insbesondere
+\[ vol(\pf{}{x_1}, \ldots, \pf{}{x_n}) = \sqrt{\det (g_{i,j})}. \]
+Auf $(V,y)$ erhält man analog
+\[ vol(Y_1, \ldots, Y_n) = \sqrt{\det (h_{i,j})}. \]
+für
+\[ Y_i = \pf{}{y_i} \]
+und
+\[ h_{i,j} = \shrp{Y_i|Y_j}. \]
+Man erhält hierdurch
+\begin{align*}
+\sqrt{\det (h_{i,j})} &= vol(Y_1, \ldots, Y_n)\\
+&= \det \klam{ \pf{x_i}{y_j} } vol(X_1, \ldots, X_n)\\
+&=  \det \klam{ \pf{x_i}{y_j} } \sqrt{\det (g_{i,j})}.
+\end{align*}
+Mit dem obigen Lemma folgt nun auf $U\cap V$
+\[ \sqrt{\det (g_{i,j})} \d x_1\wedge \ldots \wedge \d x_n = \sqrt{\det (h_{i,j})} \d y_1\wedge \ldots \wedge \d y_n.  \]
+Durch Verkleben erhalten wir eine glatte $n$-Form $\nu \in \Omega^n(M)$.
+
+\Def{}
+$\nu$ heißt \df{Riemannsche Volumenform} von $M$. $\nu$ ist durch die Riemannsche Metrik eindeutig festgelegt.
+
+\Def{}
+Wenn $M$ kompakt ist, setzen wir
+\[ vol(M) := \int_M \nu < \infty. \]
+$vol(M)$ heißt das \df{Riemannsche Volumen}.\\
+Wenn $vol(K)$ unbeschränkt ist über kompakte Untermannigfaltigkeiten (mit Rand) $K \subset M$, dann sagen wir, dass $M$ unendliches Volumen habe.
+
+\Bem{}
+Oft sieht man in der Literatur $\nu = \d V = \d vol$, obwohl $\nu$ im Allgemeinem nicht im Bild des Randhomomorphismus
+\[ \d : \Omega^{n-1}(M) \Pfeil{} \Omega^n(M) \]
+liegt.
+
+\newpage
+\section{Zusammenhänge}
+Sei $\Gamma(\T M)$ der Vektorraum der glatten Schnitte von $\T M$, d.\,h., $\Gamma(\T M)$ ist der Vektorraum der glatten Tangentialvektorfelder auf $M$.
+
+\Def{}
+Ein \df{Zusammenhang} auf $M$ ist eine Abbildung
+\begin{align*}
+\nabla : \Gamma(\T M) \times \Gamma(\T M ) &\Pfeil{} \Gamma(\T M)\\
+(X,Y) & \longmapsto \nabla_XY ,
+\end{align*}
+sodass:
+\begin{enumerate}[(1)]
+	\item Für $f,g \in \CC{\infty}(M)$ gilt
+	\[\nabla_{fX_1 + gX_2}Y = f\nabla_{X_1}Y + g \nabla_{X_2}Y.\]
+	\item Ferner gilt
+	\[ \nabla_X(Y_1 + Y_2) = \nabla_X Y_1 + \nabla_X Y_2. \]
+	\item Zuletzt wird folgende Produktregel gefordert
+	\[ \nabla_X(f\cdot Y) = f\nabla_XY + X(f)Y. \]
+\end{enumerate}
+
+\paragraph{In Lokalen Koordinaten} Sei $(U,x)$ eine Karte. $X,Y$ seien Vektorfelder der Gestalt
+\begin{align*}
+X = \sum_ia_i \pf{}{x_i}, && Y = \sum_j b_j\pf{}{y_j}.
+\end{align*}
+Es gilt
+\begin{align*}
+\nabla_XY &= \sum_ia_i \nabla_{\pf{}{x_i}} (\sum_j \pf{}{y_j})\\
+&= \sum_ia_i\sum_j \nabla_{\pf{}{x_i}} (b_j \pf{}{y_j})\\
+&= \sum_{i,j} a_i 
+\klam{
+\pf{b_j}{x_i} \pf{}{x_j} + b_j \nabla_{\pf{}{x_i}} \pf{}{y_j} 
+}.
+\end{align*}
+Wir dröseln die Terme $\nabla_{\pf{}{x_i}} \pf{}{y_j}$ weiter auf und erhalten
+\begin{align*}
+\nabla_{\pf{}{x_i}} \pf{}{y_j}  = \sum_k \Gamma_{i,j}^k \pf{}{x_k}.
+\end{align*}
+Die Funktionen $\Gamma_{i,j}^k$ nennt man \df{Christoffel-Symbole} des Zusammenhangs.\\
+Wir erhalten final
+\begin{align*}
+\nabla_XY &= \sum_{i,k} a_i 
+\klam{
+\pf{b_k}{x_i} \pf{}{x_k} +\sum_{i,j} a_i b_j \sum_k \Gamma_{i,j}^k \pf{}{x_k} 
+}\\
+&= \sum_k \klam{
+\sum_i  a_i \pf{b_k}{x_i}
++
+\sum_{i,j} a_i b_j \Gamma_{i,j}^k
+}
+\pf{}{x_k}.
+\end{align*}
+
+\Bem{}
+Die Gleichung
+\begin{align*}
+\nabla_XY &= \sum_k \klam{
+	\sum_i  a_i \pf{b_k}{x_i}
+	+
+	\sum_{i,j} a_i b_j \Gamma_{i,j}^k
+}
+\pf{}{x_k}
+\end{align*}
+impliziert, dass $\nabla_X Y$ eine lokale Operation ist. Denn für $p \in M$ gilt
+\begin{align*}
+(\nabla_XY)(p) &= \sum_k \klam{
+\sum_i a_i(p) \pf{b_k}{x_i}(p)
++ \sum_{i,j} a_i(p) b_j(p) \Gamma_{i,j}^k(p)
+}\pf{}{x_k}_{|p}.
+\end{align*}
+D.\,h., $(\nabla_XY)(p)$ hängt nur von $X(p), Y(p)$ und $\pf{b_k}{x_i}(p)$ ab.
+
+\newcommand{\Dd}[1]{\frac{\text{D}}{\d #1}}
+\Def{}
+Sei $V = V(t)$ ein Vektorfeld entlang einer Kurve $c(t)$ in $M$.\\
+Eine \df{kovariante Ableitung} ist eine Zuordnung
+\[ \Dd{t} : \V_c \Pfeil{} \V_c, \]
+wobei $\V_c$ den Raum aller Vektorfelder entlang $c$ bezeichnet, sodass
+\begin{enumerate}[(1)]
+	\item $\Dd{t}(V+W) = \Dd{t}V + \Dd{t} W$
+	\item und $\Dd{t}(fV) = f \Dd{t} V + \pf{f}{t} V$ für $f : \R \pfeil{}\R$ glatt gelten.
+	\item Wenn ferner ein Vektorfeld $X$ auf $M$ existiert mit $X(c(t)) = V(t)$, dann soll gelten
+	\[ \nabla_{\dot{c}}X = \Dd{t}(V) .\]
+\end{enumerate}
+
+\Prop{}
+Sei $M$ eine glatte Mannigfaltigkeit mit Zusammenhang $\nabla$. Sei $c$ eine Kurve auf $M$. Dann existiert eindeutig eine kovariante Ableitung $\Dd{t}$ mit obigen Eigenschaften.
+\begin{Beweis}{}
+\begin{itemize}
+	\item Eindeutigkeit: Sei $V(t)$ ein Vektorfeld entlang $c(t)$. In lokalen Koordinaten $x_1, \ldots, x_n$:
+	\begin{align*}
+	V(t) = \sum_i v_i(t) \pf{}{x_i}, && c(t) = (x_1(t), \ldots, x_n(t))
+	\end{align*}
+	Es gilt dann
+	\begin{align*}
+	\Dd{t} V &= \sum_i \klam{
+v_i \Dd{t} \klam{
+\pf{}{x_i}_{|c(t)}
+}	+ v_i' \pf{}{x_i}
+}\\
+&= \sum_i \klam{
+v_i \nabla_{\dot{c}(t)} \pf{}{x_i} 
++ v_i'\pf{}{x_i}
+}.
+	\end{align*}
+	
+	\item Existenz: Sei $(U_\alpha, x^\alpha)$ eine offene Überdeckung von $M$ durch Karten. Definiere $\Dd{t}$ auf $U_\alpha$ durch
+	\begin{align*}
+	\Dd{t} V := \sum_i \klam{
+		v_i \nabla_{\dot{c}(t)} \pf{}{x_i} 
+		+ v_i'\pf{}{x_i}
+	}.
+	\end{align*}
+	Auf $U_\alpha \cap U_\beta$ stimmen diese $\Dd{t}$ überein wegen Eindeutigkeit und definieren somit $\Dd{t}$ überall.
+\end{itemize}
+\end{Beweis}
+
+\Prop{}
+Sei $c$ eine Kurve in $M$, $p = c(0)$. Sei ferner $V^0 \in T_pM$ ein Tangentialvektor. Dann existiert genau ein Vektorfeld $V$ entlang $c$ mit
+\[ \Dd{t}V = 0 \]
+und
+\[ V(0) = V^0. \]
+
+\Def{}
+Sei $V$ ein Vektorfeld entlang einer Kurve $c$. $V$ heißt \df{parallel} entlang $c$, falls
+\[ \Dd{t}V =0. \]
+
