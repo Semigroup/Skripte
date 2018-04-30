@@ -1,0 +1,147 @@
+\marginpar{Vorlesung vom 30.04.18}
+
+\Prop{}
+Sei $c$ eine Kurve in $M$ und $V^0\in T_{c(t_0)}M$ ein Vektor bei $c(t_0)$.
+Dann existiert genau ein Vektorfeld $V(t)$ entlang $c(t)$, das die Eigenschaften
+\begin{align*}
+V(t_0) &= V^0\\
+\Dd{t} V &= 0
+\end{align*}
+erfüllt.
+\begin{Beweis}{}
+\begin{itemize}
+	\item Existenz und Eindeutigkeit in lokalen Koordinaten:\\
+	Existiert so ein $V$, so gilt
+	\begin{align*}
+	0 = \Dd{t} V=\sum_k (v'_k + \sum_{i,j} x_i'v_j \Gamma_{i,j}^k) \pf{}{x_k}.
+	\end{align*}
+	Daraus folgt
+	\[ v'_k = - \sum_{i,j} (x_i' \Gamma_{i,j}^k) v_j \]
+	für alle $k = 1,\ldots, n$. Dadurch ergibt sich ein System von linearen gewöhnlichen Differentialgleichungen. Aus der Theorie der gewöhnlichen Differentialgleichungen wissen wir, dass es in kleinen Umgebungen von $t$ eindeutige Lösungen für $v_k(t)$ gibt für alle $t$. Da obiges DGL linear ist, sind die $v_k(t)$ für alle $t\in \R$ definiert.
+	\item Globale Existenz:\\
+	Sei $t_1 > t_0$ beliebig. Der Kurvenabschnitt $c[t_0, t_1]$ ist kompakt und wird folglich überdeckt durch endlich viele Karten. Man kann nun eine lokale Lösung von Karte zu Karte fortsetzen. Die lokalen Lösungen stimmen auf den Durchschnitten der Karten überein wegen ihrer Eindeutigkeit.
+\end{itemize}
+\end{Beweis}
+
+\Bem{}
+\begin{enumerate}[1.)]
+	\item Wir erhalten folgende Abbildung
+	\begin{align*}
+	\tau : T_{c(t_0)}M & \Pfeil{} T_{c(t_1)}M\\
+	V^0 & \longmapsto V(t_1).
+	\end{align*}
+	Diese Abbildung nennt man den \df{Paralleltransport} von $c(t_0)$ nach $c(t_1)$ entlang $c$.\\
+	Die Linearität des vorangegangenen Differentialgleichungssystems stellt die Linearität von $\tau$ sicher. Durch Umkehren der Zeit erhält man eine lineare Abbildung
+	\begin{align*}
+	\tau' : T_{c(t_1)}M & \Pfeil{} T_{c(t_0)}M.
+	\end{align*}
+	Naheliegenderweise gilt
+	\[ \tau' = \tau\i .\]
+	Hierdurch folgt insbesondere, dass $\tau$ ein Isomorphismus ist. D.\,h., wir können Tangentialräume an verschiedenen Punkten mittels Paralleltransporte vergleichen.\\
+	Daher die Terminologie \textsl{Zusammenhang}.
+	\item $\Dd{t}V$ ordnet auch Vektoren an Punkten mit $\dot{c}(t) = 0$ zu. Diese Vektoren müssen nicht Null sein!
+	\Bsp{}
+	Wenn $c(t) = p$ konstant ist, dann ist $V(t)$ eine Kurve in $T_pM$. $\Dd{t}V$ ist dann einfach die Ableitung von $V(t)$ nach $t$, also $V'(t)$ im euklidischen Sinne.
+\end{enumerate}
+
+
+\newpage
+\section{Der Levi-Civita-Zusammenhang}
+Sei $(M, g)$ eine Riemannsche Mannigfaltigkeit.
+
+\Def{}
+Ein Zusammenhang $\nabla$ auf $M$ heißt \df{kompatibel} mit der Riemannschen Metrik $g$, falls für jede Kurve $c$ und für alle parallele Vektorfelder $V,W$ entlang $c$ gilt:
+\[ \shrp{V,W} = \text{konst.} \]
+d.\,h., der Paralleltransport ist in diesem Fall sogar eine Isometrie.
+
+\Prop{}
+$g$ und $\nabla$ sind genau dann kompatibel, wenn für alle Vektorfelder $V,W$ entlang einer beliebigen Kurve $c$ gilt
+\[ \pf{}{t}\shrp{V,W} = \shrp{ \Dd{t}V, W } +\shrp{V, \Dd{t} W}. \]
+
+\begin{Beweis}{}
+\begin{itemize}
+	\item[$\Leftarrow )$] Seien $V,W$ parallele Vektorfelder entlang $c$. Dann gilt
+	\[\pf{}{t}\shrp{V,W} = \shrp{ \Dd{t}V, W } +\shrp{V, \Dd{t} W} = \shrp{ 0, W } +\shrp{V, 0} = 0. \]
+	$\shrp{V,W}$ ist als Funktion in $t$ konstant.
+	\item[$\Rightarrow )$] $\shrp{,}$ und $\nabla$ seien kompatibel. Sei $\{ P_1(t_0), \ldots, P_n(t_0) \} \subset T_{c(t_0)}M$ eine Orthonormalbasis. Durch den Paralleltransport erhalten wir die parallelen Vektorfelder $P_1, \ldots, P_n$ entlang $c$.\\
+	Durch die Kompatibilität bleiben die $P_1, \ldots, P_n$ an jeder Stelle auf $c$ eine Orthonormalbasis. Seien $V,W$ nun beliebige Vektorfelder entlang $c$. Wir können dann schreiben
+	\begin{align*}
+	V = \sum_i v_i P_i && \text{ und } && W = \sum_j w_j P_j.
+	\end{align*}
+	Es gilt dann
+	\[ \Dd{t}V = \sum_i (v_i' P_i + v_i \Dd{t}P_i) = \sum_i v_i' P_i. \]
+	Und somit
+	\[ \shrp{\Dd{t}V, W} = \shrp{ \sum_i v_i' P_i , \sum_j w_j P_j  } = \sum_{i,j} v_i'w_j\shrp{P_i,P_j} = \sum_i v_i'w_i. \]
+	Und analog
+	\[ \shrp{V, \Dd{t}W} =  \sum_i v_iw_i'. \]
+	Zusammen also
+	\[\shrp{\Dd{t}V, W} + \shrp{V, \Dd{t}W} = \sum_i (v_i'w_i + v_i w_i'). \]
+	Ferner gilt
+	\[ \shrp{V,W} = \ldots = \sum_i v_i w_i. \]
+	Mit der Produktregel folgt nun
+	\[ \pf{}{t} \shrp{V,W} = \sum_i (v_i'w_i + v_i w_i'). \]
+\end{itemize}
+\end{Beweis}
+
+\Kor{}
+$g$ und $\nabla$ sind genau dann kompatibel, wenn gilt
+\[ X\shrp{Y,Z} = \shrp{\nabla_x Y, Z} + \shrp{Y, \nabla_X Z} \]
+für beliebige Tangentialvektorfelder $X,Y,Z$ auf $M$.
+\begin{Beweis}{}
+Für einen Punkt $p \in M$ wähle eine Kurve $c$ mit $c(0) = p$ und $\dot{c}(0) = X(p)$. Es gilt dann
+\[ X(p)\shrp{Y,Z} = \pf{}{t}_{|t = 0} \shrp{Y_{c(t)}, Z_{c(t)}}. \]
+\end{Beweis}
+
+\Def{Symmetrie von Zusammenhängen}
+Ein Zusammenhang $\nabla$ heißt \df{symmetrisch}, wenn gilt
+\[ \nabla_{X} Y - \nabla_YX = [X,Y]. \]
+In lokalen Koordinaten für $X = \pf{}{x_i}$ und $Y = \pf{}{y_j}$ gilt dann
+\[ \nabla_{\pf{}{x_i}}\pf{}{x_j} - \nabla_{\pf{}{x_j}}\pf{}{x_i} = [\pf{}{x_i}, \pf{}{x_j}] = 0. \]
+Daraus folgt dann
+\[ \nabla_{\pf{}{x_i}}\pf{}{x_j} = \nabla_{\pf{}{x_j}}\pf{}{x_i}. \]
+Für die Christoffel-Symbole bedeutet dies
+\[ \Gamma_{i,j}^k = \Gamma_{j,i}^k. \]
+
+\Bem{}
+Definiere die \df{Torsion} durch
+\[ T(X,Y) := \nabla_{X}Y - \nabla_{Y}X - [X,Y]. \]
+$T$ ist linear über $\CC{\infty}(M)$. D.\,h., $T$ ist ein Tensor.\\
+Ferner ist ein Zusammenhang genau dann symmetrisch, wenn er torsionsfrei ist.
+
+\Satz{Levi-Civita}
+Sei $(M,g)$ eine Riemannsche Mannigfaltigkeit. Dann existiert genau ein Zusammehang $\nabla$ auf $M$, sodass gilt:
+\begin{enumerate}[1.)]
+	\item $\nabla$ und $g$ sind kompatibel.
+	\item $\nabla$ ist symmetrisch.
+\end{enumerate}
+Diesen Zusammenhang nennen wir den \df{Levi-Civita-Zusammenhang} bzw. den \df{Riemannschen Zusammenhang}.
+
+\begin{Beweis}{}
+\begin{enumerate}[option]
+	\item[Eindeutigkeit] Seien $X,Y,Z$ beliebige Tangentialvektorfelder auf $M$. Es gilt dann
+	\[ X\shrp{Y,Z} = \shrp{\nabla_{X}Y, Z} + \shrp{Y, \nabla_{X} Z} \]
+	und
+	\[ Y\shrp{Z,X} = \shrp{ \nabla_{Y} Z, X } + \shrp{Z, \nabla_{Y} X} \]
+	und
+	\[ Z\shrp{X,Y} = \shrp{\nabla_{Z}X, Y} + \shrp{X, \nabla_Z Y}. \]
+	Wir addieren die ersten beiden Zeilen und subtrahieren die dritte. Dadurch erhalten wir
+	\begin{align*}
+	&X\shrp{Y,Z} + Y\shrp{Z,X} - Z \shrp{X,Y} \\
+	=&
+	\shrp{Y, \nabla_XZ - \nabla_ZX} + \shrp{ X, \nabla_YZ - \nabla_YZ }\\
+	+& \shrp{Z, \nabla_XY + \nabla_YX}\\
+	\gl{\nabla \text{ symm}}& \shrp{Y, [X,Z]} + \shrp{X, [Y,Z]} + \shrp{Z, [X,Y] + 2 \nabla_YX}\\
+	=&  \shrp{Y, [X,Z]} + \shrp{X, [Y,Z]} + \shrp{Z, [X,Y] }+ 2 \shrp{Z,\nabla_YX}\
+	\end{align*}
+	Daraus erhalten wir für $\nabla$
+	\begin{align*}
+	&\shrp{Z,\nabla_YX} =\\
+	 &\frac{1}{2} \klam{
+		X\shrp{Y,Z} + Y\shrp{Z,X} - Z\shrp{X,Y} - \shrp{Y,[X,Z]} - \shrp{X, [Y,Z]} - \shrp{Z, [X,Y]}
+	}
+	\end{align*}
+Daraus folgt die Eindeutigkeit von $\nabla$.
+\item[Existenz] Definiere $\nabla_YX$ durch obige Gleichung. Dann bleibt nachzurechnen, dass $\nabla$ ein symmetrischer und kompatibler Zusammenhang ist.
+\end{enumerate}
+
+\end{Beweis}
