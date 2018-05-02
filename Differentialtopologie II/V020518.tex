@@ -1,0 +1,163 @@
+\marginpar{Vorlesung vom 02.05.18}
+
+\section{Geodätische Kurven}
+\Def{}
+Sei $(M,g)$ eine Riemannsche Mannigfaltigkeit. Sei $\nabla$ der Levi-Civita-Zusammenhang auf $M$.\\
+{Geodätische} sind Kurven auf $M$ mit Beschleunigung Null, d.\,h., eine glatte Kurve $c : I \pfeil{} M $ heißt \df{geodätisch}, falls
+\[ \Dd{t}\dot{c} = 0 \]
+gilt.
+
+\Bsp{}
+Betrachte $\R^n$ mit der Euklidischen Metrik. Durch den Levi-Civita-Zusammenhang werden alle Christoffel-Symbole Null. Gilt
+\[ 0 = \Dd{t}\dot{\gamma} = \ddot{\gamma}, \]
+so muss $\dot{\gamma}$ konstant gleich $a$ sein. Ergo ist $\gamma(t) = at +b$ eine Gerade.
+\vspace{6 mm}\\
+
+Sei $\gamma$ eine Geodätische. Betrachte
+\[ \pf{}{t} \shrp{\dot{\gamma}, \dot{\gamma}} = 2 \shrp{\Dd{t}\dot{\gamma}, \dot{\gamma}} =2 \shrp{0, \dot{\gamma}} = 0, \]
+da $\gamma$ geodätisch ist. Somit ist $\norm{\gamma'(t)}$ konstant gleich $c \in \R_{\geq 0}$.\\
+Sei $c\neq 0$. $0,t$ seien in $I$. Dann
+\begin{align*}
+L_0^t(\gamma) &= \int_{0}^t \norm{\dot{\gamma}(\tau)} \d\tau = \int_{0}^t c \d\tau = ct.
+\end{align*}
+D.\,h., die Bogenlänge ist proportional zum Parameter $t$. Ist insbesondere $c = 1$, dann sagen wir, dass $\gamma$ durch die Bogenlänge parametrisiert sei.
+\paragraph{In lokalen Koordinaten $x$} lässt sich $\gamma$ darstellen durch
+\[ \gamma(t) = (x_1(t), \ldots, x_n (t)) .\]
+Sei $V(t)$ ein Vektorfeld entlang $\gamma$. $V$ hat die Gestalt
+\[ V(t) = \sum_i v_i(t) \pf{}{x_i}_{|\gamma(t)}. \]
+Es gilt allgemein
+\begin{align*}
+\Dd{t}V = \sum_k \klam{
+v_k' + \sum_{i,j} x_i' v_j \Gamma_{i,j}^k
+}
+\pf{}{x_k}.
+\end{align*}
+Für $V(t) = \dot{\gamma(t)}$ gilt $v_k(t) = x_k'(t)$. Dann gilt
+\begin{align*}
+0 = \Dd{t}\dot{\gamma} = \sum_k \klam{
+	x_k'' + \sum_{i,j} x_i' x_j' \Gamma_{i,j}^k
+}
+\pf{}{x_k}.
+\end{align*}
+Daraus folgt für alle $k$
+\begin{align*}
+	x_k'' = - \sum_{i,j} x_i' x_j' \Gamma_{i,j}^k.
+\end{align*}
+Dadurch erhalten wir ein System von gewöhnlichen Differentialgleichungen 2. Ordnung. Auf dem Tangentialbündel $\T M$ kann dieses System umgeschrieben werden in ein System 1. Ordnung. Seien die Koordinaten $x$ definiert auf $U \subset M$. Ein Tangentialvektor kann geschrieben werden als eine Linearkombindation
+\[ \sum_i y_i \pf{}{x_i}. \]
+Dann sind $(x_1, \ldots, x_n, y_1, \ldots, y_n)$ lokale Koordinaten auf $\T M$, definiert in $\T U$.\\
+Die Abbildung
+\[ t \longmapsto (\gamma(t), \dot{\gamma}(t)) \]
+definiert eine glatte Kurve in $\T M$. Hierfür gilt
+\begin{align*}
+y_k &= x_k\\
+y_k' &= - \sum_{i,j} \Gamma_{i,j}^ky_iy_j.
+\end{align*}
+Dies ist ein System von Differentialgleichungen 1. Ordnung auf $\T M$. Wir wenden den Satz über Existenz, Eindeutigkeit und Abhängigkeit von Anfangsbedingungen an auf dieses System. Es folgt dann:
+
+\Prop{}
+Für alle $p \in M$ existieren $\delta, \e_1 > 0$, eine offene Umgebung $V \subset M$ von $p$ und eine glatte Abbildung
+\[ \gamma : (-\delta, \delta) \times U \Pfeil{} M, \]
+wobei
+\[ U = \set{(q,v) \in V \times T_qM}{\norm{v} < \e_1}, \] 
+sodass
+\[ t \longmapsto \gamma(t,q,v) \]
+die eindeutige Geodätische in $M$ ist mit
+\begin{align*}
+\gamma(0,q,v) = q && \text{ und } && \dot{\gamma(0,q,v)} = v.
+\end{align*}
+
+\Lem{Homogenität von Geodätischen}
+Ist die Geodäte $\gamma(t,q, v)$ definiert für $\bet{t} < \delta$, so ist die Geodäte $\gamma(at,q,v)$ definiert für $a > 0$ und $\bet{t} < \frac{q}{a}$, und es gilt
+\[ \gamma(at, q, v) = \gamma(t,q,av). \]
+\begin{Beweis}{}
+Setze $c(t) := \gamma(at, q,v)$. Dann ist $c(0) = q$ und $\dot{c}(0) = a \dot{\gamma}(0,q,v) = av$. Damit erfüllt $c$ dieselben Anfangsbedingungen wie $\gamma(t,q, av)$. Es bleibt zu zeigen, dass $c$ tatsächlich eine Geodätische ist. Es gilt
+\[ \Dd{t}\dot{c} = \nabla_{\dot{c}} \dot{c} = \nabla_{a\dot{\gamma}} (a\dot{\gamma}) = a^2 \nabla_\{\dot{\gamma}\} \dot{\gamma} = a^2 \cdot 0 = 0. \]
+Aus der Eindeutigkeit folgt nun
+\[ c(t) = \gamma(t,q,av). \]
+\end{Beweis}\\
+Betrachte insbesondere $\bet{t} < 2 = \frac{\delta}{\delta / 2}$ und $a = \frac{\delta}{2}$. Setze $\e = \frac{\delta \e_1}{2}$. Dann ist $\gamma(t,q,v)$ definiert für $\bet{t}<2$ und $\norm{v} < \epsilon$.
+
+\Def{Die Exponentialabbildung}
+Sei $q \in V$, $v \in T_qM$ mit $\norm{v} < \e$. Definiere die Abbildung
+\begin{align*}
+ \exp_q(v) = \gamma(1, q, v).
+\end{align*}
+Für $v \neq 0$ gilt
+\[ \exp_q(v) = \gamma(1, q, v) = \gamma(\norm{v}, q, \frac{v}{\norm{v}}) \].
+Bezeichnet $B_0(\e)$ den $\e$-Ball in $T_qM$, so ist $\exp_q$ eine Abbildung vom Typ
+\[ \exp_q : B_0(\e) \subset T_qM \Pfeil{} M. \]
+Wir schreiben allgemein auch $\exp$ statt $\exp_q$.
+
+\Bem{}
+Die Bezeichnung obiger Abbildung als Exponentialabbildung kommt aus der Theorie der Lie-Gruppen. Ist $G$ eine Lie-Gruppe, so erhält man eine Abbildung
+\[ \exp : \mathfrak{g} := T_1G \Pfeil{} G, \]
+wobei $\mathfrak{g}$ die Lie-Algebra von $G$ bezeichnet. D.\,h., in diesem Fall gilt
+\[ \exp(\mathfrak{a} + \mathfrak{b}) = \exp(\mathfrak{a}) \cdot \exp(\mathfrak{b}). \]
+
+\Prop{}
+Es existiert ein $\e > 0$, sodass
+\[ \exp : B_0(\e) \]
+ein Diffeomorphismus auf sein Bild ist.
+\begin{Beweis}{}
+Betrachte
+\[ (\d \exp)_0(v) = \pf{}{t}_{| t = 0} \exp(tv) = \pf{}{t}_{| t = 0} \gamma(1, q, tv) =  \pf{}{t}_{| t = 0} \gamma(t, q, v) = v . \]
+D.\,h., $\d \exp_0$ ist die Identität auf $B_0(\epsilon)$. Der Satz über umkehrbare Funktionen impliziert, dass $\exp$ ein lokaler Diffeomorphismus in der Nähe von $0$ ist.
+\end{Beweis}
+
+\Bsp{}
+\begin{enumerate}[1)]
+	\item Sei $M = \R^n$. Betrachte
+	\[ \exp_0 : T_0\R^n\isom{} \R^n \Pfeil{\id{\R^n}} \R^n \]
+	\item Sei $S^n \subset \R^{n+1}$ die Einheitssphäre. Betrachte
+	\[ \exp_q  : B_0(\pi) \Pfeil{} S^n - \{-q\} \]
+	wobei $q$ den Nordpol bezeichnet. $\exp_q$ ist dann tatsächlich surjektiv auf $S^n - \{-q\}$. Allerdings gilt
+	\[ \exp_q(\partial B_0(\pi)) = \{-q\}. \]
+\end{enumerate}
+
+\Satz{Gauss-Lemma}
+Es gilt
+\[ \shrp{\d \exp_v(v), \d \exp_v(w)} = \shrp{v,w} \]
+für $v,w \in T_qM$. Dabei wurde stillschweigend die Identifikation
+\[ T_v(T_qM) \isom{} T_qM \]
+angenommen.
+\begin{Beweis}{}
+Wir schreiben $w = w_{||} + w_\bot$ mit $w_{||} \in \R\cdot {v}$ und $w_\bot \in v^\bot$. Die Linearität impliziert, dass es genügt die Aussage für $w_{||}$ und für $w_\bot$ jeweils zu beweisen.
+\begin{enumerate}[1)]
+	\item Für $w_{||} = \lambda v$:\\
+	Es gilt
+	\begin{align*}
+	\shrp{\d \exp_v(v), \d \exp_v(\lambda v)} = {\lambda} \norm{\d \exp_v(v)}^2
+	\end{align*} 
+	und
+	\[ \shrp{v,\lambda v} = \lambda \norm{v}^2. \]
+	Zu zeigen bleibt
+	\[ \norm{\d \exp_v(v)} = \norm{v}. \]
+	Es gilt nun
+	\begin{align*}
+	\norm{\d \exp_v(v)} &= \norm{\pf{}{t}_{|t = 0} \gamma(1,q, v+tv)} =\norm{ \pf{}{t}_{|t = 0} \gamma(1+t, q, v)} = \norm{v}
+	\end{align*}
+	\item Für $w_\bot $:\\
+	Wir schreiben $w = w_\bot$ und es gilt $\shrp{v,w} = 0$. Zu zeigen ist
+	\[ \shrp{\d \exp_v(v), \d \exp_v(w)} = 0. \]
+	Sei $v(s)$ eine Kurve in $T_qM$ mit $v(0) = v, \dot{v} = w$ und $\norm{v(s)}$ konstant. Setze
+	\[ f(t,s) := \exp(tv(s)). \]
+	$f$ ist eine parametrisierte Fläche. Es gilt dann
+	\[ \shrp{\d \exp_v(v), \d \exp_v(w)} = \shrp{\pf{f}{t}, \pf{f}{s}}(t = 1, s = 0). \]
+	Wir behaupten, dass $\shrp{\pf{f}{t}, \pf{f}{s}}$ unabhängig von $t$ ist, denn:
+	\begin{align*}
+	\pf{}{t} \shrp{\pf{f}{t}, \pf{f}{s}} = \shrp{\Dd{t} \pf{f}{t}, \pf{f}{s}} +  \shrp{ \pf{f}{t}, \Dd{t}\pf{f}{s}}
+	\end{align*}
+	Nun ist $\pf{}{t} \pf{f}{t}$ gleich Null, da $\gamma$ eine Geodätische ist. Es gilt nun
+	\begin{align*}
+	\shrp{\Dd{t} \pf{f}{s}, \pf{f}{t}} \gl{Symmetrie} \shrp{\Dd{s}\pf{f}{t}, \pf{f}{t} } = \frac{1}{2} \pf{}{s} \norm{\pf{f}{t}}^2 = 0,
+	\end{align*}
+	da $\norm{v(s)}$ konstant ist.\\
+	
+	Betrachte wieder
+	\[ \shrp{\pf{f}{t}, \pf{f}{s}}(1, s) = \shrp{\pf{f}{t}, \pf{f}{s}} (0,s). \]
+	Nun gilt
+	\[ \pf{f}{s}(0,s) = 0, \]
+	da $f(0,s) = \exp(0\cdot v(s)) = \exp(0) = q$ konstant in $s$ ist.
+\end{enumerate}
+\end{Beweis}
