@@ -1,0 +1,114 @@
+\marginpar{Vorlesung vom 07.05.18}
+\Def{}
+Sei $\exp_p : T_pM \pfeil{} M$ die Exponentialabbildung und $\e > 0$ so, dass $\exp_p$ auf $B_0(\e)$ injektiv ist.\\
+Für $0<r<\e$ nennen wir dann
+\[ B_p(r) := \exp_p(B_0(r)) \]
+den \df{geodätischen Ball} und
+\[ S_p(r) := \exp_p(\partial B_0(r)) \]
+die \df{geodätische Sphäre} um $p$ von Radius $r$.
+
+\Bem{Interpretation: Gauss-Lemma}
+Wir können nun das Gauss-Lemma wie folgt ausdrücken:
+\begin{center}
+\emph{
+	Geodätische Kurven durch $p$ stehen senkrecht auf geodätischen Sphären.
+}	
+\end{center}
+
+\Prop{Geodätische minimieren lokal die Länge von Kurven.}
+Sei $p \in M$ und $\e > 0$ so klein, dass $\exp_p : B_0(\e) \pfeil{} M$ injektiv ist. Sei $\gamma: [0,1] \pfeil{} B := B_p(r)$ für $r<\e$ mit $\gamma(0) = p$ eine Geodätische.\\
+Sei $c : [0,1] \pfeil{} M$ eine stückweise glatte Kurve mit $c(0) = p$ und $c(1) = q:= \gamma(1)$.\\
+Dann gilt
+\[ L(c) \geq L(\gamma). \]
+Ferner gilt Gleichheit genau dann, wenn $c$ und $\gamma$ dasselbe Bild haben.
+\begin{Beweis}{}
+\paragraph{Idee:} Wir schreiben $c = c(s)$ in Polarkoordinaten:
+\[ c(s) = \exp ( r(s) \cdot v(s) ) \]
+für $r > 0, s > 0$ und $\norm{v(s)} = 1$. Wir nehmen dabei zunächst an, dass $c[0,1] \subset B$. Ferner nehmen wir ohne Einschränkung an, dass $c(s)\neq p$ für $s > 0$. Setze
+\[ f(r,s) := \exp (r \cdot v(s)). \] 
+Dann gilt
+\[ c(s) = f(r(s), s). \]
+Daraus folgt
+\[ \dot{c}(s) = \pf{f}{r} \cdot r' + \pf{f}{s}. \]
+Und hieraus
+\begin{align*}
+\norm{\dot{c}(s)}^2 &= 
+\norm{\pf{f}{r} \cdot r' }^2 
++ 2 \shrp{\pf{f}{r} r, \pf{f}{s}}
++ \norm{\pf{f}{s}}^2\\
+&= \bet{r'}^2 \cdot \norm{\pf{f}{r}}^2
++ 2r' \shrp{ \pf{f}{r}, \pf{f}{s} }
++ \norm{\pf{f}{s}}^2\\
+&= \bet{r'}^2 \cdot 1 + 2r' \cdot 0 + \norm{\pf{f}{s}}^2,
+\end{align*}
+denn $\shrp{\pf{f}{r} r, \pf{f}{s}} = 0$ nach Gauss-Lemma und $\norm{\pf{f}{r}} = \norm{v(s)} = 1$.\\
+Es folgt also
+\[ \norm{\dot{c}(s)}^2 = \bet{r'}^2 + \norm{\pf{f}{s}}^2 \geq \bet{r'}^2. \]
+Wähle nun $\delta > 0$ klein, und betrachte
+\[ \int_{\delta}^{1} \norm{\dot{c}(s)} \d s \geq_{\delta}^1 \bet{r'(s)} \d s \geq \int_{\delta}^1r'(s)\d s = r(1) - r(\delta) \pfeil{\delta \pfeil{} 0} r(1) = L(\gamma).  \]
+Ferner gilt
+\[ \int_{\delta}^{1} \norm{\dot{c}(s)} \d s \pfeil{\delta \pfeil{} 0}  L(c).  \]
+Gilt Gleichheit, so muss
+\[ \norm{\pf{f}{s}} = 0 \]
+gelten. Daraus folgt aber, dass $f(r,s)$ konstant in $s$ ist. Ergo
+\[ f(r,s) = \exp (r \cdot v(0)). \]
+Insofern haben in diesem Fall $c$ und $\gamma$ tatsächlich dasselbe Bild.\\
+
+Wenn nun $c[0,1]$ nicht in $B$ enthalten ist, dann sei $s_0$ der kleinste Wert $s$, sodass $c(s_0) \in \partial B$. Es gilt
+\[ L_0^1(c) \geq L_0^{s_0}(c) \geq L(\gamma_1) = r \geq L(\gamma).\]
+$\gamma_1 : p \mapsto c(s_0)$ ist eine Geodätische.
+\end{Beweis}
+
+\Bem{}
+\begin{enumerate}[1.)]
+	\item Man kann auch zeigen:\\
+	Ist $\gamma$ eine Kurve parametrisiert proportional zur Bogenlänge, sodass
+	\[ L(\gamma) \leq L(c) \]
+	für alle Kurven $c$ mit denselben Randpunkten gilt, so muss $\gamma$ eine Geodätische sein.
+	\item Isometrien erhalten Geodätische.
+\end{enumerate}
+
+\newpage
+\section{Krümmung}
+\Bsp{}
+\begin{itemize}
+	\item Die Krümmung eines Kreises von Radius $r$ definieren wir durch $\frac{1}{r}$.
+	\item Wir betrachten nun Kurven in $\R^2$, die durch die Bogenlänge parametrisiert sind.\\
+	Sei dazu $c$ eine solche Kurve mit $\ddot{c(s)} \neq 0$ für ein $s$. Betrachte $s_1, s_2, s_3$ nahe bei $s$. Da die zweite Ableitung nicht verschwindet, sind $c(s_1), c(s_2)$ und $c(s_3)$ nicht kolinear.\\
+	Daraus folgt, dass $c(s_1), c(s_2)$ und $c(s_3)$ auf einem eindeutig bestimmten Kreis mit Radius $R$ liegen. Für $s_1, s_2, s_3 \pfeil{} s$ erhält man einen Grenzkreis, den sogenannten oskulierenden Kreis in $c(s)$.\\
+	Die Krümmung von $c$ im Punkt $c(s)$ definiert man nun als $\frac{1}{R}$, die Krümmung dieses oskulierenden Kreises.\\
+	Es gilt nun ferner
+	\[ \frac{1}{R} = \bet{\ddot{c}(s)}. \]
+	\item Kurven in $\R^3$:\\
+	Wir fixieren wieder $s$. Sei $\ddot{c}(s) \neq 0$. $c(s_1), c(s_2)$ und $c(s_3)$ definieren dann eine Ebene in $\R^3$. Laufen $s_1, s_2, s_3$ nach $s$, so definieren sie eine Grenzebene, die oskulierende Ebene.\\
+	Ferner erhält man in dieser oskulierenden Ebene den oskulierenden Kreis mit Radius $R$. Die Krümmung bei $c(s)$ definieren wir dann wieder als die Krümmung $\frac{1}{R}$ des oskulierenden Kreises. Es gilt nun
+	\[ 0 = \pf{}{s} \norm{\dot{c}(s)}^2 = \pf{}{s}\shrp{\dot{c}, \dot{c}} = 2\shrp{\ddot{c}, \dot{c}} \]
+	ergo steht $\ddot{c}(s)$ orthogonal auf $\dot{c}(s)$. Beide liegen in der oskulierenden Ebene und spannen diese auf.
+	\item Flächen und Euler:\\
+	Sei $M$ eine zweidimensionale Mannigfaltigkeit im $\R^3$. Sei $p \in M$ und $\nu_p$ ein Einheitsnormalenvektor, d.\,h.,
+	\[ \nu_p \bot T_pM \text{ und } \norm{\nu_p} = 1. \]
+	Sei ferner $v \in T_pM$ mit $\norm{v} = 1$. $\nu_p$ und $v$ spannen eine Ebene $E_v$ auf. Schneidet man diese mit $M$, so erhält man eine Kurve
+	\[ E_v\cap M = \text{ Kurve }c_v. \]
+	$c_v$ sei hierbei durch Bogenlänge parametrisiert mit $c_v(0) = p$ und $\dot{c_v}(0) = v$. Es gilt nun
+	\[ \ddot{c_v}(0) \bot T_pM. \]
+	Dann existiert genau ein $\kappa_v \in \R$, sodass
+	\[ \ddot{c_v}(0) = \kappa_v \nu_p. \]
+	Es gilt
+	\[ \kappa_{-v} = \kappa_v, \]
+	insofern erhalten wir eine Funktion
+	\[ \kappa : \R P^1 \Pfeil{} \Pfeil{} \R. \]
+	
+	\Satz{Satz von Euler}
+	Es existieren eindeutige Richtungen $v_1,v_2 \in \R P^1$, sodass
+	\[ k_1 := \kappa_{-v_1} = \min_v \kappa_v \]
+	und
+	\[ k_2 := \kappa_{v_2} = \max_v\kappa_v. \]
+	Es gilt ferner
+	\[v_1 \bot v_2\]
+	und
+	\[ \kappa_v = k_1 \cos^2\theta + k_2 \sin^2\theta \]
+	wobei $\theta = \angle (v, v_1)$.	 
+	
+\end{itemize}
+
+
