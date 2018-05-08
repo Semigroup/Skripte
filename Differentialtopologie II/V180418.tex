@@ -84,7 +84,11 @@ Die Lie-Klammer hat folgende Eigenschaften
 	\[ [[X,Y], Z] + [[Y,Z], X]  + [[Z,X], Y] = 0\]
 	Dies nennt sich die \df{Jacobi-Identität}.
 	\item Seien $f,g \in \CC{\infty}(M)$. Es gilt
-	\[ [fX, gY] = fX(gY) - gY(fX) = f(X(g)Y - gXY) - g(Y(f)X - fYX) = fg[X,Y] + fX(g) Y - gY(f)X \]
+	\begin{align*}
+	[fX, gY] &= fX(gY) - gY(fX) \\
+	&= f(X(g)Y - gXY) - g(Y(f)X - fYX) \\
+	&= fg[X,Y] + fX(g) Y - gY(f)X
+	\end{align*}
 \end{itemize}
 
 \newcommand{\pf}[2]{\frac{\partial #1}{\partial #2}}
