@@ -1,0 +1,138 @@
+\marginpar{Vorlesung vom 09.05.18}
+
+\paragraph{Krümmung von Flächen nach Gauss}
+Sei $M^2 \subset \R^3$ eine orientierte Fläche, $p\in M$. Sei ferner $\nu_p \in T_pM^\bot$ ein Einheitsnormalenvektor orthogonal auf $M$ am Punkt $p$, sodass $(\nu_p, v, w)$ positiv orientiert ist, wobei $(v,w)$ positiv orientiert in $T_pM$ sei.\\
+Dies induziert die \df{Gauss-Abbildung}:
+\begin{align*}
+\nu: M &\Pfeil{} S^2\\
+p &\longmapsto \nu_p
+\end{align*}
+Ist $A \subset M$ eine Umgebung um $p$, so kann man die \df{Gauss-Krümmung} definieren durch
+\begin{align*}
+\kappa(p) := \lim\limits_{A\pfeil{} p} \frac{\vol(\nu(A))}{\vol(A)}.
+\end{align*}
+
+\Bsp{}
+\begin{enumerate}[1.)]
+	\item Sei $M = S^2 = S^2_1$ die Einheitssphäre. Dann ist $\nu = \id{S^2}$. Daraus folgt $\kappa(p) = 1$ für alle $p \in M$.
+	\item Sei $M = S^2_r$ die Sphäre von Radius $r$. Dann gilt
+	\[ \vol(\nu(A)) = \frac{1}{r^2}\vol(A). \]
+	Daraus folgt
+	\[ \kappa(p) = \lim\limits_{A\pfeil{} p} \frac{\vol(\nu(A))}{\vol(A)} = \frac{1}{r^2}. \]
+	\item Ist $M$ eine Ebene, so sind alle $\nu_p$ parallel zueinander. Daraus folgt, dass $\nu$ konstant ein Punkt ist. Und somit gilt $\kappa(p) = 0$ für alle $p\in M$.
+	\item Sei $M$ ein Zylinder, $p \in M$. Ist $A$ eine kleine Umgebung um $p$, so induziert die Nabe bei $b$ eine Strecke auf dem Äquator von $S^2$. Die Längsachse des Zylinders induziert nur einen Punkt in $S^2$. Insofern ist $\nu(A)$ eine Strecke in $S^2$. Es folgt $\vol(\nu(A)) = 0$ und $\kappa(p) = 0$.\\
+	Daraus folgt, der Zylinder ist \textbf{nicht} gekrümmt!
+\end{enumerate}
+
+\Satz{Beziehung Gauss-Euler}
+Es gilt
+\[ \kappa(p) = \kappa_1(p) \cdot \kappa_2(p),\]
+wobei $\kappa(p)$ die Gauss-Krümmung und $\kappa_1(p), \kappa_2(p)$ die Eulerschen Minimal- und Maximal-Krümmungen bezeichnet.
+
+\Bsp{}
+\begin{enumerate}[1)]
+	\item Betrachte $S^2_r \subset \R^3$. Dann ist $\kappa_1 = \kappa_2 = \frac{1}{r}$. Insbesondere gilt
+	\[ \kappa_1 \kappa_2 = \frac{1}{r^2} = \kappa(p). \]
+	\item Betrachte den Zylinder. Dann ist $\kappa_2 = \frac{1}{r}$ bei einem Radius von $r$ und $\kappa_1 = 0$. Es folgt
+	\[ \kappa(p) = 0 = \kappa_1 \kappa_2. \]
+	\item Betrachte die Fläche $z = \frac{a}{2}(x^2 - y^2)$ für $a > 0$. Dann gilt
+	\[ \pf{}{x} \pf{}{x}(\frac{ax^2}{2}) = a = \kappa_2 > 0 \]
+	und
+	\[ \pf{}{y} \pf{}{y}(-\frac{ay^2}{2}) = -a = \kappa_1 < 0 \]
+	bei $p= (0,0,0)$. Folglich gilt
+	\[ \kappa_1 \kappa_2 = -a^2 < 0. \]
+	Insofern handelt es sich hierbei um eine Fläche negativer Krümmung.
+\end{enumerate}
+
+\paragraph{Krümmung nach Riemann}
+Idee: Sei $M$ eine $n$-dimensionale Mannigfaltigkeit und $p \in M$. Sei $\sigma \subset T_pM$ ein zweidimensionaler Untervektorraum. Betrachte
+\begin{align*}
+\exp_p : B_0(\e) \subset T_pM \Pfeil{\isom{}} U,
+\end{align*}
+wobei $U$ den geodätischen Ball um $p$ bezeichnet. $F^2 := \exp_p(\sigma \cap B_\e(0))$ ist dann eine Fläche in $U$. $F$ erhalte die induzierte Metrik von $M$.\\
+Dann sei $\kappa(p, \sigma)$ definiert als die Krümmung von $F$ im Punkt $p$ nach Euler-Gauss.\\
+Formell: Sei $\nabla$ der Levi-Civita-Zusammenhang auf der Riemannschen Mannigfaltigkeit $(M, \shrp{,})$. Wir definieren eine Abbildung
+\begin{align*}
+R : \Gamma(\T M )^3 & \Pfeil{} \Gamma(\T M)\\
+(X,Y,Z) & \longmapsto R(X,Y)Z
+\end{align*}
+wobei
+\[ R(X,Y) Z := \nabla_{Y} \nabla_{X} Z - \nabla_X \nabla_{Y} Z + \nabla_{[X,Y]}Z. \]
+In lokalen Koordinaten $\{x_i\}$ mit $X = \pf{}{x_i}$ und $Y = \pf{}{x_j}$ gilt
+\[ [X,Y] = 0 \]
+und insbesondere
+\[ R(X,Y) = \nabla_{Y}\nabla_{X} - \nabla_{X} \nabla_{Y}. \]
+Ferner
+\[ R(X,Y) \pf{}{x_k} =: \sum_l R^l_{i,j,k} \pf{}{x_l}. \]
+
+\paragraph{Eigenschaften}
+Sind $f,g : M \pfeil {} \R$ und $X,Y \in \Gamma(\T M)$ glatt, so gilt:
+\begin{itemize}
+	\item $R(fX_1+gX_2,Y)Z = fR(X_1,Y)Z + gR(X_2,Y)Z$.
+	\item $R(X, fY_1 + gY_2)Z = fR(X,Y_1)Z + gR(X,Y_2)Z$.
+\end{itemize}
+Ferner gilt
+\begin{align*}
+R(X,Y)(fZ) &= \nabla_Y \nabla_{X} (fZ) - \nabla_{X} \nabla_{Y} (fZ) + \nabla_{[X,Y]} (fZ)\\
+&= \nabla_{Y}( f\nabla_{X} Z + X(f)Z) - \nabla_{X}(f\nabla_{Y} Z + Y(f)Z) + f\nabla_{[X,Y]} Z + [X,Y](f) Z\\
+&=f \nabla_{Y} \nabla_{X} Z + Y(f) \nabla_{Y} Z + YX(f) Z\\
+&- f\nabla_{X} \nabla_{Y} Z - X(f) \nabla_{Y} Z - Y(f) \nabla_{X} Z - XY(f)Z \\
+&+ f\nabla_{[X,Y]} Z + XY(f) Z -YX(f)Z\\
+&= f R(X,Y)Z
+\end{align*}
+und insbesondere
+\[ R(X,Y)(fZ_1 + gZ_2) = f R(X,Y) Z_1 + g R(X,Y)Z_2.  \]
+Daraus folgt, dass $R$ ein Tensor ist, der sogenannte \df{Riemannsche Krümmungstensor}. (Dies erklärt den Term $\nabla_{[X,Y]}Z$.)\\
+Es folgt auch, dass $(R(X,Y)Z)_p$ am Punkt $p \in M$ nur von den Vektoren $X(p), Y(p)$ und $Z(p)$ abhängt.\\
+Ferner gilt:
+\begin{enumerate}[1)]
+	\item $R(X,Y)Z + R(Y,X) Z = 0$ (offensichtlich).
+	\item Symmetrie von $\nabla$ + Jacobi-Identität für $[,]$ impliziert die \df{Bianchi-Identität}
+	\[ R(X,Y)Z + R(Y,Z)X  + R(Z,X)Y = 0. \]
+	\item Es gilt $\shrp{R(X,Y)Z, W} + \shrp{R(X,Y)W, Z} = 0 $, denn
+	\begin{align*}
+	\shrp{R(X,Y)Z,Z} &= \shrp{ \nabla_{Y} \nabla_{X} Z - \nabla_{X} \nabla_{Y} Z + \nabla_{[X,Y]} Z, Z }\\
+	&= \shrp{\nabla_{Y} \nabla_{X} Z, Z}  - \shrp{\nabla_{X} \nabla_{Y}Z, Z } + \shrp{\nabla_{[X,Y]} Z, Z}\\
+	&= Y\shrp{\nabla_{X} Z, Z}
+	- \shrp{\nabla_{X} Z, \nabla_{Y} Z}
+	- X\shrp{\nabla_{Y} Z, Z }
+	+ \shrp{\nabla_Y Z, \nabla_{X} Z}
+	+ \frac{1}{2} [X,Y] \shrp{Z,Z}\\
+	&= 0,
+	\end{align*}
+	wobei
+	\begin{align*}
+	Y\shrp{\nabla_XZ,Z} &= \shrp{ \nabla_{Y} \nabla_{X} Z, Z } + \shrp{\nabla_{X} Z, \nabla_{Y} Z}\\
+	X\shrp{\nabla_YZ,Z} &= \shrp{ \nabla_{X} \nabla_{Y} Z, Z } + \shrp{\nabla_{Y} Z, \nabla_{X} Z}\\
+	[X,Y] \shrp{Z,Z} &= 2 \shrp{ \nabla_{[X,Y]} Z,Z }.
+	\end{align*}
+\end{enumerate}
+Ferner gilt
+\begin{align*}
+\shrp{R(X,Y)Z, W} + \shrp{ R(Y,Z)X ,W} + \shrp{ R(Z,X)Y , W} &= 0\\
+\shrp{R(Y,Z)W, X} + \shrp{ R(Z,W)Y ,X} + \shrp{ R(W,Y)Z , X} &= 0\\
+\shrp{R(Z,W)X, Y} + \shrp{ R(W,X)Z ,Y} + \shrp{ R(X,Z)W , Y} &= 0\\
+\shrp{R(W,X)Y, Z} + \shrp{ R(X,Y)W ,Z} + \shrp{ R(Y,W)X , Z} &= 0.
+\end{align*}
+Indem man alle Zeilen aufaddiert, erhält man
+\begin{align*}
+0 &= \shrp{ R(Z,X)Y , W} + \shrp{ R(W,Y)Z , X} + \shrp{ R(X,Z)W , Y} +\shrp{ R(Y,W)X , Z}  \\
+&= 2 \shrp{R(Z,X)Y,W} - 2 \shrp{ R(Y,W)Z,X }.
+\end{align*}
+Ergo gilt auch folgende Symmetrie
+\[ \shrp{R(X,Y)Z, W} = \shrp{R(Z,W)X,Y}.  \]
+
+
+In lokalen Koordinaten $(x_1, \ldots, x_n)$ setzen wir
+\[ X_i := \pf{}{x_i}. \]
+$X,Y,Z \in \Gamma(\T M)$ schreiben wir als
+\[ X = \sum_i x_i X_i,~~ Y = \sum_i y_i X_i~ \text{ und }~ Z = \sum_i z_i X_i. \]
+Dann gilt
+\[ R(X,Y)Z = \sum_{i,j,k} x_i y_j z_k R(X,i,X_j)X_k = \sum_{i,j,k} x_i y_j z_k R^l_{ijk} X_l \]
+wobei
+\[ R(X,i,X_j)X_k = \sum_k R_{jjk}^l X_l. \]
+Insbesondere gilt
+\begin{align*}
+R(X_i, X_j)X_k &= \nabla_{X_j} \nabla_{X_i} X_k - \nabla_{X_i} \nabla_{X_j} X_k\\
+&= \nabla_{X_j} \sum_l \Gamma_{ik}^l X_l - \nabla_{X_i} \sum_l \Gamma_{jk}^l X_l
+\end{align*}
