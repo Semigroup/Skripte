@@ -85,6 +85,7 @@ und insbesondere
 Daraus folgt, dass $R$ ein Tensor ist, der sogenannte \df{Riemannsche Krümmungstensor}. (Dies erklärt den Term $\nabla_{[X,Y]}Z$.)\\
 Es folgt auch, dass $(R(X,Y)Z)_p$ am Punkt $p \in M$ nur von den Vektoren $X(p), Y(p)$ und $Z(p)$ abhängt.\\
 Ferner gilt:
+\label{SymmetrienRiemannscherKrümmungstensor}
 \begin{enumerate}[1)]
 	\item $R(X,Y)Z + R(Y,X) Z = 0$ (offensichtlich).
 	\item Symmetrie von $\nabla$ + Jacobi-Identität für $[,]$ impliziert die \df{Bianchi-Identität}
@@ -106,22 +107,21 @@ Ferner gilt:
 	X\shrp{\nabla_YZ,Z} &= \shrp{ \nabla_{X} \nabla_{Y} Z, Z } + \shrp{\nabla_{Y} Z, \nabla_{X} Z}\\
 	[X,Y] \shrp{Z,Z} &= 2 \shrp{ \nabla_{[X,Y]} Z,Z }.
 	\end{align*}
+	\item Ferner gilt
+	\begin{align*}
+	\shrp{R(X,Y)Z, W} + \shrp{ R(Y,Z)X ,W} + \shrp{ R(Z,X)Y , W} &= 0\\
+	\shrp{R(Y,Z)W, X} + \shrp{ R(Z,W)Y ,X} + \shrp{ R(W,Y)Z , X} &= 0\\
+	\shrp{R(Z,W)X, Y} + \shrp{ R(W,X)Z ,Y} + \shrp{ R(X,Z)W , Y} &= 0\\
+	\shrp{R(W,X)Y, Z} + \shrp{ R(X,Y)W ,Z} + \shrp{ R(Y,W)X , Z} &= 0.
+	\end{align*}
+	Indem man alle Zeilen aufaddiert, erhält man
+	\begin{align*}
+	0 &= \shrp{ R(Z,X)Y , W} + \shrp{ R(W,Y)Z , X} + \shrp{ R(X,Z)W , Y} +\shrp{ R(Y,W)X , Z}  \\
+	&= 2 \shrp{R(Z,X)Y,W} - 2 \shrp{ R(Y,W)Z,X }.
+	\end{align*}
+	Ergo gilt auch folgende Symmetrie
+	\[ \shrp{R(X,Y)Z, W} = \shrp{R(Z,W)X,Y}.  \]
 \end{enumerate}
-Ferner gilt
-\begin{align*}
-\shrp{R(X,Y)Z, W} + \shrp{ R(Y,Z)X ,W} + \shrp{ R(Z,X)Y , W} &= 0\\
-\shrp{R(Y,Z)W, X} + \shrp{ R(Z,W)Y ,X} + \shrp{ R(W,Y)Z , X} &= 0\\
-\shrp{R(Z,W)X, Y} + \shrp{ R(W,X)Z ,Y} + \shrp{ R(X,Z)W , Y} &= 0\\
-\shrp{R(W,X)Y, Z} + \shrp{ R(X,Y)W ,Z} + \shrp{ R(Y,W)X , Z} &= 0.
-\end{align*}
-Indem man alle Zeilen aufaddiert, erhält man
-\begin{align*}
-0 &= \shrp{ R(Z,X)Y , W} + \shrp{ R(W,Y)Z , X} + \shrp{ R(X,Z)W , Y} +\shrp{ R(Y,W)X , Z}  \\
-&= 2 \shrp{R(Z,X)Y,W} - 2 \shrp{ R(Y,W)Z,X }.
-\end{align*}
-Ergo gilt auch folgende Symmetrie
-\[ \shrp{R(X,Y)Z, W} = \shrp{R(Z,W)X,Y}.  \]
-
 
 In lokalen Koordinaten $(x_1, \ldots, x_n)$ setzen wir
 \[ X_i := \pf{}{x_i}. \]
@@ -130,9 +130,12 @@ $X,Y,Z \in \Gamma(\T M)$ schreiben wir als
 Dann gilt
 \[ R(X,Y)Z = \sum_{i,j,k} x_i y_j z_k R(X,i,X_j)X_k = \sum_{i,j,k} x_i y_j z_k R^l_{ijk} X_l \]
 wobei
-\[ R(X,i,X_j)X_k = \sum_k R_{jjk}^l X_l. \]
+\[ R(X_i,X_j)X_k = \sum_l R_{jjk}^l X_l. \]
 Insbesondere gilt
 \begin{align*}
 R(X_i, X_j)X_k &= \nabla_{X_j} \nabla_{X_i} X_k - \nabla_{X_i} \nabla_{X_j} X_k\\
-&= \nabla_{X_j} \sum_l \Gamma_{ik}^l X_l - \nabla_{X_i} \sum_l \Gamma_{jk}^l X_l
+&= \nabla_{X_j} \sum_l \Gamma_{ik}^l X_l - \nabla_{X_i} \sum_l \Gamma_{jk}^l X_l\\
+&= \sum_l \sum_a (\Gamma_{ik}^l \Gamma_{jl}^a  - \Gamma_{jk}^l \Gamma_{il}^a)X_a
 \end{align*}
+Ergo
+\[ R_{ijk}^a = \sum_l (\Gamma_{ik}^l \Gamma_{jl}^a  - \Gamma_{jk}^l \Gamma_{il}^a) \]

@@ -1,0 +1,123 @@
+\marginpar{Vorlesung vom 14.05.18}
+\paragraph{Schnittkrümmung}
+Sei $p \in M$ ein Punkt und $\sigma \subset T_pM$ ein zweidimensionaler Untervektorraum. Sei $\{x,y\}$ eine Basis für $\sigma$. Die Fläche des von $x$ und $y$ aufgespannten Parallelogramms ist
+\[ A(x,y) := \sqrt{\norm{x}^2 \norm{y}^2 - \shrp{x,y}}. \]
+Wir betrachten
+\[ \kappa(x,y) := \frac{\shrp{R(x,y)x,y}}{ A(x,y)^2 }. \]
+\Lem{}
+$\kappa(x,y)$ hängt nicht von der Wahl der Basisvektoren $x,y$ für $\sigma$ ab.
+\begin{Beweis}{}
+Jede andere Basis von $\sigma$ erhält man aus $\{x,y\}$ durch Anwendung der folgenden drei elementaren Transformationen:
+\begin{align*}
+\{x,y\} &\Impl{} \{y,x\}\\
+\{x,y\} &\Impl{} \{\lambda x, y\} \text{ für }\lambda \neq 0\\
+\{x,y\} &\Impl{} \{x + \lambda y, y\}
+\end{align*}
+Überprüfe dann, dass $\kappa(x,y)$ invariant bleibt unter diesen drei Transformationen.
+\end{Beweis}
+
+Aufgrund obigen Lemmas dürfen wir die \df{Schnittkrümmung} von $M$ entlang $\sigma$ in $p$ definieren:
+\[ \kappa_p(\sigma) := \kappa(x,y) \]
+
+Die Familie aller $\set{\kappa_p(\sigma)}{}_{\sigma \subset T_pM}$ bestimmt $R$ im Punkt $p$ eindeutig. Dies folgt aus einem Resultat der linearen Algebra, nämlich:
+\Prop{}
+\label{PropLAREindeutig}
+Sei $(V,\shrp{\cdot, \cdot})$ ein Euklidischer Vektorraum und seien $R,R' : V\times V \times V \pfeil{} V$ trilineare Abbildungen, die beide die Symmetrien aus 1) bis 4) aus \ref{SymmetrienRiemannscherKrümmungstensor} erfüllen. Wenn ferner folgende Gleichheit vorliegt
+\begin{align*}
+\shrp{R(x,y)x,y} = \shrp{R'(x,y)x,y}
+\end{align*}
+für alle $x,y \in V$, dann gilt
+\[ R = R'.\]
+
+\paragraph{Ricci-Krümmung}
+Sei $p \in M$ und $x \in T_pM$ mit $\norm{x} = 1$. Wir ergänzen $x$ zu einer Orthonormalbasis $\{x, z_1, \ldots, z_{n-1}\}$ von $T_pM$. Definiere die \df{Ricci-Krümmung} durch
+\[ \Ric_p(x) := \frac{1}{n-1} \sum_{i = 1}^{n-1} \shrp{R(x,z_i)x,z_i}. \]
+$\Ric_p(x)$ ist unabhängig von der Wahl von $\{z_i\}_{i = 1}^{n-1}:$
+\[ Q(x,y) := \mathrm{Spur}(z \mapsto R(x,z)y) .\]
+$Q$ ist eine Bilinearform und es gilt
+\[ Q(x,x) = (n-1)\Ric_p(x). \]
+
+\newpage
+\section{Jacobi-Felder}
+Wir stellen uns die Frage:
+\begin{center}
+	Wie Schnell Entfernen sich Geodäten Voneinander?
+\end{center}
+Sei dazu $(M,g)$ eine Riemannsche Mannigfaltigkeit zusammen mit dem Levi-Civita-Zusammenhang $\nabla$. Sei $p \in M$. Ferner sei die Abbildung $\exp_p : B_0(\e) \pfeil{} M$ gegeben. Sei $v \in T_pM$, dann ist
+\[ \gamma(t) = \exp_p(tv) \]
+die eindeutig bestimmte Geodätische in $p$ mit $\dot{\gamma}(0) = v$. Wir betrachten Vektorfelder entlang von Geodätischen. Sei $w \in T_v(T_pM)$. Wie im Gauss-Lemma sei $v(s)$ eine Kurve in $T_pM$ mit $v(0) = v$ und $\dot{v} (0) = w$. Setze nun
+\[ f(t,s) := \exp_p(tv(s)). \]
+Sei
+\[ J(t) = (\d \exp_p)_{tv}(tw) = \pf{f}{s} (t, s = 0). \]
+$J$ ist ein Vektorfeld entlang $\gamma$.\\
+$\gamma$ ist eine Geodäte, ergo gilt
+\[ \Dd{t} \pf{f}{t} = \Dd{t}\dot{\gamma} = 0. \]
+Daraus folgt
+\[ \Dd{s} (\Dd{t} \pf{f}{t}) = 0. \]
+Ist $V$ ein Vektorfeld entlang einer parametrisierten Fläche, so gilt
+\[ \Dd{s}\Dd{t} V - \Dd{t} \Dd{s} V = R(\pf{f}{t}, \pf{f}{s}) V. \]
+Das kann man durch Nachrechnen in lokalen Koordinaten überprüfen.
+\begin{align*}
+\Dd{s} \Dd{t} \pf{f}{t} &= \Dd{t} \Dd{s} (\pf{f}{t}) + R(\pf{f}{t}, \pf{f}{s})\pf{f}{t}\\
+= \Dd{t} \Dd{t} (\pf{f}{s})  + R(\dot{\gamma}, \pf{f}{s}) \dot{\gamma}.
+\end{align*}
+Daraus folgt, dass $J = \pf{f}{s}$ folgende Gleichung erfüllt
+\[ \Dd{t}\Dd{t}J + R(\dot{\gamma}, J) \dot{\gamma} = 0. \]
+Diese Gleichung nennt man \df{Jacobi-Gleichung}.
+
+\paragraph{In Lokalen Koordinaten:}
+Seien $\{e_1(t), e_2(t), \ldots, e_n(t)\}$ parallele Vektorfelder entlang $\gamma$, die an jedem Punkt $\gamma(t)$ eine Orthonormalbasis von $T_{\gamma(t)}M$ bilden. Betrachte
+\[ J(t) = \sum_i f_i(t) e_i(t). \]
+Es gilt
+\begin{align*}
+\Dd{t}\Dd{t} J(t) = \sum_i f_i''(t) e_i(t).
+\end{align*}
+Insbesondere folgt
+\begin{align*}
+ R(\dot{\gamma}, J) \dot{\gamma} &= \sum_i \shrp{ R(\dot{\gamma}, J)  \dot{\gamma}, e_i}e_i\\
+ &\gl{\text{Fourier-Entwicklung}} \sum_{i,j} f_j \shrp{ R(\dot{\gamma}, e_j) \dot{\gamma}, e_i }e_i.
+\end{align*}
+Setzt man $a_{i,j} := \shrp{ R(\dot{\gamma}, e_j) \dot{\gamma}, e_i }$, so gilt
+\[ f''_i(t) +\sum_j a_{i,j} f_j(t) = 0 \]
+Dies ist eine \emph{lineare} Differentialgleichung zweiter Ordnung.
+
+\Def{}
+Ein Vektorfeld $J(t)$ entlang einer Geodätischen $\gamma(t)$ heißt \df{Jacobi-Feld}, wenn $J(t)$ die Jacobi-Gleichung erfüllt.\\
+
+Die Tatsache, dass eine Differentialgleichung zweiter Ordnung vorliegt, impliziert nun, dass man nach Wahl von $J(0)$ und $\Dd{t}J(0)$ ein eindeutiges Jacobi-Feld durch Lösen von 
+\[ f''_i(t) +\sum_j a_{i,j} f_j(t) = 0 \]
+erhält.
+
+\Bsp{}
+$\dot{\gamma}(t)$ und $t\dot{\gamma(t)}$ sind Jacobi-Felder für eine Geodäte $\gamma$.
+
+\Bsp{Jacobi-Felder auf Mannigaltigkeiten Konstanter Schnittkrümmung}
+Sei $M$ eine Mannigfaltigkeit der konstanten Schnittkrümmung $\kappa$. Definiere $R'$ durch
+\[ \shrp{R'(X,Y)Z, W} := \shrp{X,Z} \shrp{Y,W} - \shrp{X,W} \shrp{Y,Z}. \]
+$R'$ ist trilinear und erfüllt die Symmetrien 1) - 4) des echten Krümmungstensors aus \ref{SymmetrienRiemannscherKrümmungstensor}. Betrachte
+\[ \shrp{R'(X,Y)X,Y} = \norm{X}^2\norm{Y}^2 - \shrp{X,Y} = A(X,Y)^2. \]
+Ferner gilt
+\[ \frac{\kappa R'(X,Y)X,Y}{A(X,Y)^2} = \kappa = \frac{\shrp{ R(X,Y)X,Y }}{A(X,Y)^2}. \]
+Aus \ref{PropLAREindeutig} folgt nun
+\[ R = KR'. \]
+Setzt man dies in die Jacobi-Gleichung ein, so erhält man
+\begin{align*}
+\shrp{R(\dot{\gamma}, J)\dot{\gamma}, T} &= \shrp{\kappa R'(\dot{\gamma}, J)\dot{\gamma}, T}\\
+&= \kappa ( \shrp{\dot{\gamma}, \dot{\gamma}} \shrp{J,T} - \shrp{\dot{\gamma}, T} \shrp{\dot{\gamma}, J} ).
+\end{align*}
+Sei $\gamma$ parametrisiert durch die Bogenlänge und $J$ orthogonal zu $\gamma$. Es gilt
+\begin{align*}
+\shrp{ R(\dot{\gamma}, J) \dot{\gamma}, T } = \kappa \shrp{J,T}.
+\end{align*}
+Daraus vereinfacht sich die Jacobi-Gleichung zu
+\[ \Dd{t} \Dd{t} J+  \kappa J = 0. \]
+Sei $W(t)$ ein Vektorfeld entlang $\gamma$, $\norm{W(t)} = 1$, $\shrp{W, \dot{\gamma}} = 0$, $W$ parallel. Die vereinfachte Jacobi-Gleichung impliziert
+\begin{align*}
+J(t) = \left\lbrace
+\begin{aligned}
+\frac{\sin(\sqrt{\kappa} t)}{\sqrt{\kappa}} W(t) &&\text{, falls }\kappa > 0,\\
+t W(t) && \text{, falls }\kappa = 0,\\
+\frac{\sinh(\sqrt{-\kappa}(t))}{\sqrt{-\kappa}} W(t) && \text{, falls }\kappa < 0.
+\end{aligned}
+\right.
+\end{align*}
