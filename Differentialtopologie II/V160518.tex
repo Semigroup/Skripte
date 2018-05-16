@@ -1,0 +1,118 @@
+\marginpar{Vorlesung vom 16.05.18}
+
+\Bem{}
+Ist $J(0) = 0$ und $ v := \dot{\gamma}(0),$, $w := \Dd{t}J(0)$, dann gilt
+\[ J(t) = (\d \exp)_{tv}(tw) = \pf{f}{s}(t,0) \]
+für $f(t,s) = \exp_{p}(tv(s))$ für $v(0) = v, \dot{v}(0) = w$. Dies folgt aus der Eindeutigkeit von Differentialgleichungen zweiter Ordnung.
+
+\paragraph{Notation:}
+Wir schreiben in Zukunft
+\[J'(t) := \Dd{t}J \]
+und allgemeiner
+\[ J^{(k)}(t) := \klam{\Dd{t}}^k J. \]
+\vspace{12mm}\\
+Sei $J(t)$ ein Jacobi-Feld mit $J(0) = 0, v = \dot{\gamma}(0), w = J'(0), \norm{w} = 1$.
+Wir interessieren uns für $\norm{J(t)}^2$ für kleine $t$ und taylorn es deswegen im Folgenden.
+\begin{itemize}
+	\item $\shrp{J,J}(0) = 0$,
+	\item $\shrp{J,J}' = 2 \shrp{J',J}$, und insbesondere
+	\[ \shrp{J,J}'(0) = 2\shrp{J'(0),J(0)} = 0, \]
+	da $J(0) = 0$.
+	\item $\shrp{J,J}'' = 2 \klam{ \shrp{J',J'} + \shrp{J,J''} }$, und ferner
+	\[ \shrp{J,J}''(0) = 2\shrp{J'(0), J'(0)} = 2\norm{w}^2 = 2. \]
+	\item $\shrp{J,J}''' = 2\klam{ 
+2\shrp{J'',J'} + \shrp{J',J''} + \shrp{J,J'''}	
+ } = 6 \shrp{J',J''} + 2 \shrp{J,J'''}$. Indem man $0$ einsetzt, erhält man
+\[ \shrp{J,J}'''(0) = 6 \shrp{w, J''(0)} \gl{\mathrm{Jacobi}} 6 \shrp{w, - R(\dot{\gamma},J)\dot{\gamma}(0)} = 
+ 6 \shrp{w, - R(v,J(0))v} = 0
+ \]
+	\item $\shrp{J,J}'''' = 6 \shrp{J'',J''} + 8\shrp{J',J'''} + 2 \shrp{J,J''''}$.
+	\[ \shrp{J,J}''''(0) = 6\shrp{J''(0), J''(0)} + 8\shrp{w, J'''(0)} = 8\shrp{w, J'''(0)}  \] 
+	$J'' = - R(\dot{\gamma}, J) \dot{\gamma}$. Es gilt
+	\begin{align*}
+	J''' = - \Dd{t}_{t= 0} R(\dot{\gamma}, J)\dot{\gamma} \gl{(1)}  R(\dot{\gamma}, J'(0))\dot{\gamma} = -R(v,w)v
+	\end{align*}
+	Somit ergibt sich
+		\[ \shrp{J,J}''''(0) = 8\shrp{ -R(v,w)v, w} = -8\kappa(v,w).  \] 
+	Die Gleichheit bei (1) gilt, da
+	\begin{align*}
+	&\pf{}{t} \shrp{R(\dot{\gamma}, J)\dot{\gamma}, W} \klam{= \shrp{ \Dd{t}R(\dot{\gamma}, J)\dot{\gamma}, W } + \shrp{R(\dot{\gamma},J)\dot{\gamma}, \Dd{t}W}}\\
+=	&\pf{}{t} \shrp{R(\dot{\gamma}, W)\dot{\gamma}, J} = \shrp{ \Dd{t}R(\dot{\gamma}, W)\dot{\gamma}, J } + \shrp{R(\dot{\gamma},W)\dot{\gamma}, J'}\\
+	&=\shrp{ \Dd{t}R(\dot{\gamma}, W)\dot{\gamma}, J } + \shrp{R(\dot{\gamma},J')\dot{\gamma}, W}
+	\end{align*}
+\end{itemize}
+\paragraph{Zusammenfassung:} Wir haben gezeigt:
+\[ \norm{J(t)}^2 = t^2 - \frac{1}{3} \shrp{ 
+R(v,w)v, w
+ } t^4
++ o(t^4) \]
+für $t \pfeil{} 0$.\\
+
+Gilt $\norm{v} = \norm{w} = 1$, $v\bot w$, dann $A(v,w) = 1$ und somit
+\[ \shrp{R(v,w)v, w} = \kappa_p(v,w). \]
+Daraus folgt
+\[ \norm{J(t)}^2 = t^2 - \frac{1}{3} \kappa_p(v,w)t^4 + o(t^4) \]
+und somit
+\[ \norm{J(t)}= t - \frac{1}{6} \kappa_p(v,w)t^3 + o(t^3). \]
+
+
+Wir wollen die Abweichungsgeschwindigkeit von geodätischen Kurven in $M$ mit der Abweichungsgeschwindigkeit solcher Kurven in $T_pM$ vergleichen.\\
+Die Abweichungsgeschwindigkeit in $T_pM$ der Szrahlen $t \mapsto tv(s)$ und $t\mapsto tv(0)$ ist gerade
+\[ \norm{ \pf{}{s}_{s=0 }tv(s)} = t \norm{ \pf{}{s}_{s = 0 } v(s) } = t\norm{w} = t. \]
+Daraus folgt, dass die Differenz der Abweichungsgeschwindigkeit in $M$ und der in $T_pM$ gegeben ist durch
+\[ - \frac{1}{6}\kappa_p(v,w)t^3  + o(t^3) \]
+Daraus folgt, ist $\kappa > 0$, so ist die Abweichungsgeschwindigkeit in $M$ langsamer als in $T_pM$. Ist die Schnittkrümmung bei $p$ negativ, so ist die Abweichungsgeschwindigkeit in $M$ schneller als in $T_pM$.
+
+\newpage
+\section{Konjugationspunkte}
+\Def{}
+Sei $p \in M$, $\gamma$ eine Geodätische in $M$ mit $\gamma(0) = p$. Ein Punkt $\gamma(t_0)\neq p$ heißt \df{konjugiert} zu $p$ entlang $\gamma$, falls ein Jacobi-Feld $J\neq 0$ entlang $\gamma$ existiert, sodass 
+\[J(0) = J(t_0) = 0.\]
+Die \df{Vielfachheit} von $\gamma(t_0)$ ist dann die maximale Anzahl von linear unabhängigen Jacobi-Feldern mit dieser Eigenschaft.
+
+\Bsp{}
+Sei $ M = S^n \subset \R^{n+1}$ die Einheitssphäre. Dann ist $\kappa_p(\sigma) = 1$ konstant positiv.\\
+Wir haben gezeigt
+\[ J(t) = \sin(t) W(t) \]
+mit $\norm{W(t)} = 1$ und $W\bot \dot{\gamma}.$\\
+Ist $p \in S^n$, $p = \gamma(0)$, dann ist $-p = \gamma(\pi)$ konjugiert zu $p$. Daraus folgt für alle $p$, dass $-p$ konjugiert zu $p$ ist. Die Vielfachheit dieser Konjugation ist $n-1$.
+
+\Bem{}
+$J(t) = t\dot{\gamma}(t)$ ist ein Jacobi-Feld mit $J(0) = 0$, und $J(t) \neq 0$ für alle $t\neq 0$, falls $\dot{\gamma} (0) \neq 0$.\\
+Daraus folgt, dass die Vielfachheit einer Konjugation immer höchstens $n-1$ ist für zwei verschiedene Konjugationspunkte.
+
+\Prop{}
+$q = \gamma(t_0)$ ist genau dann konjugiert zu $p = \gamma(0)$ entlang $\gamma$, wenn $t_0v$ ein kritischer Punkt von $\exp_{p}$ ist für $v = \dot{\gamma}(0)$.
+\begin{Beweis}{}
+Ist $J(0) = 0$, so folgt $J(t) = (\d \exp_p)_{tv}(tw)$ und somit
+\[ 
+0 = J(t_0) = (\d \exp_p)_{t_0v}(t_0w),
+ \]
+wobei $t_0w \neq 0$.
+\end{Beweis}
+
+\Def{}
+Wir definieren den \df{Konjugationslokus} durch
+\[ C(p) = \set{q \in M}{p, q \text{ sind konjugiert}} \]
+\Bsp{}
+Ist $M= S^n$, so gilt
+\[ C(p) = \{-p\}. \]
+
+\newpage
+\section{Vollständige Mannigfaltigkeiten}
+Sei $(M,g)$ eine Riemannsche Mannigfaltigkeiten.
+\Def{}
+$(M,g)$ heißt \df{geodätisch vollständig} bzw. \df{vollständig}, falls für alle $p \in M$ die Abbildung $\exp_p$ auf ganz $T_pM$ definiert ist.
+
+\Bsp{}
+\begin{itemize}
+	\item $M = \R^n$ ist geodätisch vollständig.
+	\item Die eingebettete Untermannigfaltigkeit $B := \set{x \in \R^n}{\norm{x} < 1} \subset \R^n$ mit der induzierten Metrik ist nicht vollständig.\\
+	Allerdings kann man die Mannigfaltigkeit $B$ mit $\R^n$ identifizieren und dementsprechend eine Metrik auf $B$ einführen, sodass $B $ und $ \R^n$ isometrisch sind. Dadurch wird $B$ zu einer vollständigen Mannigfaltigkeit.
+\end{itemize}
+
+\Def{}
+Seien $p,q \in M.$ Definiere die Distanz zwischen $p$ und $q$ durch
+\[ d(p,q) := \inf \set{L(c)}{ c:p\mapsto q \text{ ist eine stückw. glatte Kurve} }. \]
+Gilt $d(p,q) = 0$, so folgt $p = q$, da Geodätische lokal die Länge minimieren. Die anderen Axiome eines metrischen Raumes werden durch $d(p,q)$ ebenfalls erfüllt.\\
+Dadurch wird $(M,d)$ zu einem metrischen Raum.
