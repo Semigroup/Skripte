@@ -1,0 +1,98 @@
+\marginpar{Vorlesung vom 23.05.18}
+Für hinreichend kleinen Raidus sind geodätische Bälle metrische Bälle. Daraus folgt, dass die Topologie, die durch die Metrik induziert wird, mit der Topologie der Riemannschen Mannigfaltigkeit $M$ übereinstimmt.
+
+\Satz{Hopf-Rinow}
+Sei $M$ eine zusammenhängende Riemannsche Mannigfaltigkeit und $p\in M$ ein Punkt. Dann sind folgende Aussagen äquivalent:
+\begin{enumerate}[(1)]
+	\item $\exp_p$ ist auf ganz $T_pM$ definiert.
+	\item Abgeschlossene beschränkte Mengen in $M$ sind kompakt.
+	\item $(M,\d)$ ist metrisch vollständig.
+	\item $(M,g)$ ist geodätisch vollständig.
+	\item Für jede Folge von kompakten Teilmengen $K_j \subset M$ mit
+	\begin{align*}
+	K_j \subseteq K_{j+1} && \text{ und } && \bigcup_j K_j = M
+	\end{align*}
+	und jede Folge $x_j \in M \setminus K_j$ gilt
+	\[ d(p,x_j) \Pfeil{j\pfeil{}\infty} \infty. \]
+\end{enumerate}
+Jeder der Aussagen (1) - (5) impliziert:
+\begin{enumerate}[(6)]
+	\item Für jedes $q \in M$ existiert eine Geodätische $\gamma$, die $p$ und $q$ verbindet, und für die gilt
+	\[ L(\gamma) = d(p,q). \]
+\end{enumerate}
+\begin{Beweis}{}
+\begin{enumerate}
+	\item[(1) $\impl{}$ (6):] Setze $r := d(p,q)$. Sei $\overline{B}_\delta(p)$ ein abgeschlossener geodätischer Ball um $p, \delta > 0$. sei $S := \partial \overline{B}_\delta(p)$ die korrespondierende geodätische Sphäre. Dann existiert ein $x_0 \in S$ sodass gilt
+	\[ d(x_0, q) = \min_{x \in S} d(x,q). \]
+	Dann exisiert ein $v \in T_pM$ mit $\norm{v} = 1$ und $x_0 = \exp_p(\delta v)$.\\
+	Mit (1) folgt jetzt, dass
+	\[ \gamma(s):= \exp_p(sv) \]
+	eine Geodätische ist.
+	\paragraph{Behauptung:} $\gamma(r) = q$.\\
+	Setze, um dies zu zeigen, 
+	\[ A:= \set{s \in [0,r]}{ d(\gamma(s),q) = r-s }. \]
+	0 liegt in $A$, somit ist $A$ nicht leer.
+	\paragraph{Behauptung:} Ist $s_0\in A$ mit $s_0<r$, dann existiert ein $\epsilon > 0$ mit $s_0 + \epsilon \in A$.\\
+	Sei $\overline{B}_\e(\gamma(s_0))$ ein geodätischer Ball um $\gamma(s_0)$ mit Radius $\epsilon > 0$. sei
+	$S':= \partial \overline{B}_\e (\gamma(s_0)) $ die korrespondierende geodätische Sphäre.\\
+	Dann existiert ein $y_0 \in S'$ mit $d(y_0, q) = \min_{y\in S'} d(y,q)$. Es gilt nun
+	\begin{align*}
+	d(\gamma(s_0), q) &= \e + \min_{y\in S'} d(y,q) = \e + d(y_0, q)\\
+	d(\gamma(s_0), q) &\gl{s_0 \in A} r - s_0.
+	\end{align*}
+	Daraus folgt
+	\[ d(y_0, q) = r - s_0 - \e. \]
+	Da gilt
+	\[ d(p,q) \leq d(p,y_0) + d(y_0,q), \]
+	 folgt
+	 \begin{align*}
+	 d(p,y_0) &\geq d(p,q) - d(y_0, q)\\
+	 &= r - (r - s_0 - \e)\\
+	 &= s_0+\e.
+	 \end{align*}
+	 Andererseits gibt es eine stückweise glatte Kurve $c$, die $p$ und $y_0$ verbindet und Länge $s_0 + \e$ hat. Somit folgt
+	 \[ d(p, y_0) = s_0 + \e. \]
+	 Damit folgt insbesondere, dass $c$ eine Geodätische, also durchgehend glatte Kurve ist. Damit folgt
+	 \[ \gamma(s_0 + \e) = y_0. \]
+	 Es gilt nun
+	 \[ d(\gamma(s_0+\e), q) = d(y_0, q) = r - (s_0 + \e). \]
+	 Ergo liegt $s_0 + \e$ in $A$.\\
+	 
+	 Da $A$ abgeschlossen ist, gilt nun $r \in A$. Damit gilt
+	 \[ d(\gamma(r), q) = r- r = 0, \]
+	 ergo
+	 \[ \gamma(r) = q. \]
+	 \item[(1) $\impl{}$ (2):] Sei $C \subset M$ abgeschlossen und beschränkt. Wegen der Beschränktheit existiert ein metrischer Ball $B$, sodass $C$ in $B$ enthalten ist. Da $\exp_p$ laut (6) surjektiv ist, existiert somit ein $\overline{B}_r(0) \subset T_pM$ mit $B \subset \exp \overline{B}_r(0)$. Da $\overline{B}_r(0)$ kompakt ist, ist $\exp \overline{B}_r(0)$ ebenfalls kompakt. Ergo ist $C \subset \exp \overline{B}_r(0)$ eine abgeschlossene Teilmenge eines kompakten Raumes und dadurch selbst kompakt.
+	 \item[(2) $\impl{}$ (3):] Wir müssen zeigen: Jede Cauchy-Folge $(x_n)$ in $M$ konvergiert.\\
+	 $X := \set{x_n}{}\subset M$ ist beschränkt. Ergo ist $\overline{X}$ beschränkt und abgeschlossen und somit kompakt. Daraus folgt, dass $(x_n)$ eine konvergente Teilfolge hat. Da $(x_n)$ Cauchy-konvergent ist, folgt, dass $(x_n)$ konvergiert.
+	 \item[(3) $\impl{}$ (4):] Wir führen einen Widerspruchsbeweis: Angenommen, $M$ wäre nicht geodätisch vollständig. Dann gibt es eine nach Bogenlänge parametrisierte Geodätische $\gamma$ und es existiert ein $s_0 \in \R$, sodass $\gamma(s)$ für alle $s_0 > s$ definiert ist, aber $\gamma$ sich auf $s$ nicht fortsetzen lässt.\\
+	 Betrachte eine Folge $(s_n)$ mit $s_n \pfeil{} s$ für $n \pfeil{} \infty $. Wir behaupten, dass die Folge $(\gamma(s_n))_n$ dann Cauchy-konvergent ist. Sei $\e > 0$. Es existiert ein $N$, sodass für alle $n,m \geq N$ gilt
+	 \[ \bet{s_n - s_m} < \e. \]
+	 Dann gilt
+	 \[ d(\gamma(s_n), \gamma(s_m)) \leq L_{s_n}^{s_m}(\gamma) = \bet{s_n - s_m} < \e. \]
+	 (3) impliziert nun, dass $\gamma(s_n)$ gegen einen Punkt $q \in M$ konvergiert. Ergo liegen ab einem bestimmten Index alle Folgenglieder in einer geodätischen Umgebung von $q$. Nun kann man durch $q$ eine Geodäte wählen, die $\gamma$ fortsetzt.
+	 \item[(4) $\impl{}$ (1):] trivial.
+	 \item[(2) $\gdw{}$ (5):] Dies zeigt man durch Punktmengen-Topologie.
+\end{enumerate}
+\end{Beweis}
+
+\Kor{}
+Kompakte Mannigfaltigkeiten sind vollständig.
+
+\newpage
+\section{Überlagerungen}
+Seien $E,B$ topologische Räume. Sei $p : E \pfeil{} B$ eine stetige surjektive Abbildung.
+\Def{}
+$p$ heißt \df{Überlagerung} von $B$, wenn für jedes $b \in B$ eine offene Umgebung $U \off B, b \in U,$ existiert mit
+\[ p\i(U) = \bigsqcup_i V_i, \]
+wobei die $V_i$ topologisch disjunkt und jeweils offen sind. Ferner soll für jedes $i$ die Einschränkung
+\[ p_{|V_i} : V_i \Pfeil{} U_i \]
+ein Homöomorphismus sein.\\
+Man nennt in diesem Zusammenhang $B$ den \df{Basisraum} und $E$ den Totalraum.
+
+\Bsp{}
+$\R$ lässt sich wie eine Spirale über $S^1$ aufdrehen. Betrachte dazu
+\begin{align*}
+p : \R^1 & \Pfeil{} S^1\\
+t & \longmapsto e^{2\pi i t}.
+\end{align*}
