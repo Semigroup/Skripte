@@ -1,0 +1,132 @@
+\marginpar{Vorlesung vom 28.05.18}
+%12.te Vorlesung
+\Bem{}
+Nicht jeder surjektiver lokaler Homöomorphismus ist eine Überlagerung.
+
+\subsection{Hochhebungsproblem}
+In voller Allgemeinheit gestaltet sich das Problem wie folgt. Es sind stetige Abbildungen $f:X \pfeil{} Y$ und $g:Z \pfeil{} Y$ gegeben und man fragt, ob eine stetige Abbildung $\widetilde{f} : X \pfeil{} Z$ existiert mit $g\circ \widetilde{f} = f$.
+\begin{center}
+	\begin{tikzcd}
+		& Z \arrow[d, "g"] \\
+	X  \arrow[r, "f"] \arrow[ru, "\exists_? \widetilde{f}", dashed]	& Y
+	\end{tikzcd}
+\end{center}
+Im allgemeinem Fall ist die Antwort natürlich Nein. Betrachte als Gegenbeispiel die Identität $f = \id{S^1}$ und die Überlagerung $g : \R^1 \pfeil{} S^1$. Würde $\widetilde{f}$ existieren, so würde sich folgendes kommutierende Diagramm von Kohomologiegruppen existieren:
+\begin{center}
+	\begin{tikzcd}
+	& H^1(\R) = 0 \arrow[dl, "\widetilde{f}^*"] \\
+	H^1(S^1) = \R   	& H^1(S^1) = \R \arrow[l, "f^* = \id{}"] \arrow[u, "g^*"]
+	\end{tikzcd}
+\end{center}
+Sei $g = p$ nun eine Überlagerung.
+\paragraph{Fakt:}
+Wege lassen sich bzgl. Überlagerungen hochheben, und zwar \emph{eindeutig}, wenn de Anfangspunkt der Hochhebung fixiert wurde.
+\begin{Beweis}{}
+Ist $\gamma : [0,1] \pfeil{} B$ ein Weg im Basisraum und $x \in p\i(\gamma(0))$, so besitzt $\gamma\cap U$ in einer offenen Umgebung um $U$ eine eindeutige Fortsetzung von $x$ aus. Da $\gamma([0,1])$ kompakt ist, können wir $\gamma([0,1])$ mit endlich vielen offenen Mengen überdecken, deren Urbilder unter $p$ sich in homöomorphe Komponenten zerlegen lassen. Auf jede dieser Komponente ist die Hochliftung aufgrund der Homöomorphie eindeutig.
+\end{Beweis}
+
+\Def{}
+Zwei Überlagerungen $p_i : E_i \pfeil{} B, i = 1,2,$ heißen \df{äquivalent}, wenn es einen Homöomorphismus $\phi : E_1 \pfeil{} E_2$ zwischen den Totalräumen, sodass sich folgendes Diagramm ergibt:
+\begin{center}
+	\begin{tikzcd}
+	E_1 \arrow[rr, "\phi"] \arrow[rd, "p_1"]	& 	&	E_2 \arrow[ld, "p_2"]	 \\
+		& B	&	
+	\end{tikzcd}
+\end{center}
+
+\Def{}
+Ein topologischer Raum $X$ heißt \df{einfach zusammenhängend}, wenn $X$ wegzusammenhängend ist und jede stetige punktierte Abbildung $\gamma : (S,1) \pfeil{} (X,x_0)$ homotop relativ 1 zur konstanten Abbildung $z\mapsto x_0$ ist.
+
+\paragraph{Fakt:}
+Sei $p : E\pfeil{} B$ eine Überlagerung. Seien $\gamma, \gamma' : I \pfeil{} B$ Wege, die homotop relativ Endpunkte sind. Seien $\widetilde{\gamma}, \widetilde{\gamma}' : I \pfeil{} E$ Hochhebungen von $\gamma$ und $\gamma'$, sodass gilt
+\[ \widetilde{\gamma}(0) = \widetilde{\gamma}'(0). \]
+Dann gilt
+\[ \widetilde{\gamma}(1) = \widetilde{\gamma}'(1). \]
+
+\paragraph{Fakt:}
+Abbildungen, die auf einem einfach zusammenhängenden Raum definiert sind, lassen sich immer bzgl. Überlagerungen hochheben.
+\begin{Beweis}{}
+Sei $X$ einfach zusammenhängend und es seien eine Abbildung $f : X \pfeil{} B$ und eine Überlagerung $g : E \pfeil{} B$ gegeben. Wir wollen ein Hochhebung $\widetilde{f} : X \pfeil{} E$ konstruieren.\\
+Sei $x_0 \in X$ ein beliebiger Basispunkt und $y_0 \in p\i(x_0)$ fixiert. Ist $x\in X$ ein anderer Punkt, so sei $\gamma : x_0 \mapsto x$ eine Strecke zwischen beiden Punkte. Der Weg $f\gamma$ besitzt eine Hochhebung $\widetilde{\gamma}$ mit $\widetilde{\gamma}(0) = y_0$. Wir setzen
+\[ \widetilde{f}(x):= \widetilde{\gamma}(1). \]
+$\widetilde{f}$ ist dadurch wohldefiniert. Denn sind $\gamma, \gamma': x_0 \pfeil{} x$ zwei verschiedene Wege. Dann ist $f\circ \overline{\gamma}*\gamma'$ ein nullhomotoper Weg in $B$. Dieser wird zu einem nullhomotopen Weg in $E$ hochgeliftet. Es gilt ergo
+\[ f(x) = \widetilde{\gamma}(1) = \widetilde{\gamma}'. \] 
+Es bleibt zu zeigen, dass $\widetilde{f}$ stetig ist.
+\end{Beweis}
+
+\Def{}
+Eine Überlagerung $p : E \pfeil{} B$ heißt \df{universell}, wenn $E$ einfach zusammenhängend.\\\\
+
+
+
+Wir nehmen nun an, dass unsere Räume wegzusammenhängend sind.\\
+Seien $E_1, E_2$ einfach zusammenhängend mit Überlagerungen $p_i : E_i \pfeil{} B$ für $i = 1,2$.
+Es ergibt sich folgendes Diagramm
+\begin{center}
+	\begin{tikzcd}
+	 	&	E_2 \arrow[d, "p_2"]	 \\
+E_1 \arrow[ru, "\exists_1 \widetilde{p_1}", dashed] \arrow[r, "p_1"]	& B	
+	\end{tikzcd}
+\end{center}
+da $E_1$ einfach zusammenhängend ist. Da $E_2$ ebenfalls einfach zusammenhängend ist, ergibt sich ferner
+\begin{center}
+	\begin{tikzcd}
+	&	E_1 \arrow[d, "p_1"]	 \\
+	E_2 \arrow[ru, "\exists_1 \widetilde{p_2}", dashed] \arrow[r, "p_2"]	& B	
+	\end{tikzcd}
+\end{center}
+Da die Hochhebungen $\widetilde{\id{E_1}} = \widetilde{p_2} \widetilde{p_1}$ und $\widetilde{\id{E_2}}= \widetilde{p_1} \widetilde{p_2}$ eindeutig sind, folgt, dass $\widetilde{p_1}$ und $\widetilde{p_2}$ zueinander inverse Homöomorphismen sind. Daraus folgt, dass $E_1$ und $E_2$ äquivalent sind.\\
+Wir haben gezeigt: Die \emph{universelle} Überlagerung eines Basisraumes ist eindeutig bis auf Äquivalenz von Überlagerungen.
+
+\Kor{}
+Ist $B$ einfach zusammenhängend, so ist
+\[ p : E \Pfeil{} B \]
+ein Homöomorphismus.
+\begin{Beweis}{}
+$E$ muss einfach zusammenhängend sein.
+Ferner liegt folgendes Diagramm von Überlagerungen vor:
+\begin{center}
+	\begin{tikzcd}
+	E \arrow[rr, "\exists_1\phi", dashed] \arrow[rd, "p"]	& 	&	B \arrow[ld, "\id{B}"]	 \\
+	& B	&	
+	\end{tikzcd}
+\end{center}
+Da $B$ einfach zusammenhängend ist, folgt, dass $p = \phi$ homöomorph ist.
+\end{Beweis}
+
+\Bem{}
+Im glatten Kontext ersetzen wir \emph{Homöomorphismus} durch \emph{Diffeomorphismus}, etc.\,.\\\\
+
+Sei $M^n$ eine Riemannsche Mannigfaltigkeit.
+\Prop{}
+Ist $M$ zusammenhängend und vollständig mit Schnittkrümmung $\kappa \leq 0$ überall, so ist $\exp_{p} : T_pM \pfeil{} M$ die universelle Überlagerung von $M$.\\\\
+Daraus folgt:
+\Satz{Hadamard}
+Sei $M$ einfach zusammenhängend und vollständig mit $\kappa \leq 0$.\\
+Dann ist $M$ diffeomorph zu $\R^n$.
+\begin{Beweis}{}
+$p : T_pM \pfeil{} M$ ist universell laut der Proposition. Mit dem voran gegangenem Korollar folgt nun, dass $\exp_{p}$ ein Diffeomorphismus ist.
+\end{Beweis}
+
+Wir wollen nun die Proposition beweisen.
+
+\subsection{Lemma 1}
+Seien $T,M$ Riemannsche Mannigfaltigkeiten der Dimension $n$ und $T$ vollständig. Ist $p : T \pfeil{} M$ eine isometrische Immersion, so ist $p$ eine Überlagerung.
+\begin{Beweis}{}
+\begin{enumerate}[(1)]
+	\item $M$ ist vollständig:\\
+	Sei $x^* \in T$. Setze $x:= p(x^*)$. Sei $v \in T_xM$ mit $\norm{v} = 1$. Dann ist $\d p_{x^*} : T_{x^*}T \pfeil{} T_xM$ eine Isometrie von Vektorräumen. Setze
+	\[ v^* := (\d p_{x^*})\i (v). \]
+	Definiere eine Geodäte durch
+	\[ \gamma^*(s) := \exp_{x^*}(sv^*) \]
+	für alle $s \in \R$, da $T$ vollständig. Da gilt
+	\[ p(\gamma^*(s)) = \exp_{x}(sv) \]
+	ist auch $\exp_{x}(sv)$ für alle $s \in \R$ definiert. Ergo ist auch $M$ vollständig.
+	\item $p$ ist surjektiv:\\
+	Sei $x_0^* \in T$, setze $x_0:= p(x_0^*)$. Sei $x \in M$. Wegen Hopf-Rinow (6) gibt es eine Geodätische $\gamma$, die $x_0$ mit $x$ verbindet, wobei $v := \dot{\gamma}(0)$ Länge $1$ hat. Dann gilt $\gamma(l) = x$ für $l = d(x_0,x)$.\\
+	Wir können $v$ zu $v^* \in T_{x_0^*}T$ hochliften. Es gilt dann für $x^* := \exp_{x_0^*}(lv*)$
+	\[ p(x^*) = x. \]
+	\item $p$ ist eine Überlagerung:\\
+	
+\end{enumerate}
+\end{Beweis}
