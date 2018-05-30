@@ -1,0 +1,148 @@
+\marginpar{Vorlesung vom 30.05.18}
+%13.te Vorlesung
+
+\subsection{Lemma 2}
+Ist $M$ vollständig mit $\kappa \leq 0$, so ist $\exp_p : T_pM \pfeil{} M$ ein lokaler Diffeomorphismus.
+\begin{Beweis}{}
+Sei $J$ ein Jacobi-Feld entlang $\gamma(t) = \exp_p(tv)$ für $\norm{v} = 1$, mit $J(0) = 0$ und $J\neq 0$.\\
+Es genügt zu zeigen, dass $J(t) \neq 0$ für alle $t > 0$. Es gilt
+\begin{align*}
+\shrp{J,J}'' &= 2 \shrp{J', J'} + 2 \shrp{J, J''}\\
+&= 2 \norm{J'}^2 + 2 \shrp{-R(\dot{\gamma}, J')\dot{\gamma}, J}\\
+&= 2\norm{J'}^2 - 2 \kappa(\dot{\gamma}, J) \cdot A(\dot{\gamma}, J)^2.
+\end{align*}
+Da $A(\dot{\gamma}, J)^2 \geq 0$ und $\kappa(\dot{\gamma}, J) \leq 0$, folgt
+\[ \shrp{J,J}'' \geq 0. \]
+D.\,h., $\norm{J}^2$ ist eine konvexe Funktion von $t$. Es gilt ferner $J'(0) \neq 0$ und $\shrp{J,J}'(0) = 2 \shrp{J,J'}(0) = 0$.\\
+Daraus folgt $J(t) \neq 0$ für alle $t > 0$.
+\end{Beweis}
+
+\begin{Beweis}{Proposition \ref{PropHadamard}}
+Mit Lemma 2 folgt, dass $\exp_{p}$ ein lokaler Diffeomorphismus ist. Daraus folgt, dass die Riemannsche Metrik auf $M$ eine eindeutige Riemannsche Metrik auf $T_pM$ induziert, durch die $\exp_{p}$ zu einer isometrischen Isomorphismus wird.\\
+Die Geodätischen in $T_pM$ durch den Ursprung 0 sind die Geraden durch 0. Mit Hopf-Rinow folgt nun, dass $T_pM$ mit der gegebenen Metrik vollständig ist. Mit Lemma 1 folgt nun, dass $\exp_p$ eine Überlagerung ist.
+\end{Beweis}
+
+
+
+
+\chapter{Morse-Theorie}
+\section{Crash-Kurs: Zellkomplexe und Homologie}
+\begin{itemize}
+	\item \textbf{Zellkomplexe}:\\
+	Idee: Zerlege einen Raum in Teile (\emph{Zellen}), die selbst \emph{keine Topologie} besitzen. Dann kann die Homologie/Kohomologie aus der Kombinatorik dieser Teile abgelesen werden.
+\end{itemize}
+\Def{Zelle}
+Wir definieren \df{Zelle} als alles, was homöomorph zu $D^n = \set{x \in \R^n}{\norm{x} \leq 1}$ ist. Es gilt $\partial D^n = S^{n-1}$.
+\paragraph{Schreibweise:}
+\[ e^n \isom{}D^n. \]
+Wir beschränken uns auf \textbf{endliche} Zellkomplexe.
+\begin{itemize}
+	\item \textbf{CW-Komplexe}\footnote{Das \emph{C} steht für \emph{closure finite} und das \emph{W} für \emph{weak topology}.}:\\
+	CW-Komplexe sind induktiv definiert:
+	\begin{align*}
+	X^0 &= e_1^0 \sqcup e_2^0 \cup \ldots \sqcup e_{k_0}^0 
+	\end{align*}
+	ist eine disjunkte Vereinigung von Punkten.
+	$X^1$ ergibt sich, indem 1-Zellen dazu nimmt und ihre Randpunkte mit Punkten in $X^0$ identifiziert:
+	\[ X^0 \cup_f e^1 := (X^0 \sqcup e^1)/( x\sim f(x)~\forall x \in \partial e^1) \text{ mit }\partial e^1 = S^0 \pfeil{f} X^0. \]
+	Dann gilt
+	\begin{align*}
+	X^1 &= X^0 \cup_{f_1} e_1^1
+	\cup_{f_2} e_2^1 \ldots
+	\cup_{f_{k_1}} e_{k_1}^1.
+	\end{align*}
+	Die $f_i : e_i^1 \pfeil{} X^0$ nennt man \df{anheftende Abbildungen}. $X^1$ nennt man auch \df{Graph}.
+	
+	\[ X^2 : e^2, \partial e^2 = S^1 \pfeil{f} X^1 \]
+	\[ X^1 \cup_f e^2 := (X^1 \sqcup e^2) / (\forall x \in \partial e^2 = S^1: ~x\sim f(x)) \]
+	\[ X^2 = X^1 \cup_{f_1} e^2_1 \ldots \cup_{f_{k_2}}e_{k_2}^2. \]
+	 \textbf{Allgemein}:
+	\[ X^n = X^{n-1} \cup_{f_1} e^n_1 \ldots \cup_{f_{k_n}} e_{k_n}^n \]
+	mit $f_i : \partial e_i^n \pfeil{} X^{n-1}$ stetig. $X^n$ nennt man das \df{$n$-Skelett}.
+\end{itemize}
+
+\Def{}
+Ein topologischer Raum von der Form $X^n$ heißt \df{CW-Komplex}.
+
+\Bsp{}
+\begin{align*}
+S^0 &= e^0 \sqcup e^0\\
+S^1 &= e^0\sqcup e^1\\
+S^n &= e^0 \sqcup e^n
+\end{align*}
+und
+\begin{align*}
+\R P^2 &= D^2 /(x \sim -x, x \in \partial D^2)\\
+\R P^2 &= S^1\cup_f e^2
+\end{align*}
+mit $f$ antipodal. Daraus folgt
+\[ \R P^2 = e^0\cup_{\mathrm{konst.}} e^1 \cup_f e^2. \]
+\textbf{Allgemein}:
+\[ \R P^n = \R P^{n-1} \cup_{\mathrm{Quot} = f}e^n \]
+mit $f : \partial e^n = S^{n-1} \Pfeil{\mathrm{Quot}} \R P^{n-1} = S^{n-1}/(x\sim - x)$.
+Daraus folgt
+\[ \R P^n = e^0 \cup e^1 \cup \ldots \cup_{\mathrm{Quot}} e^n. \]
+\textbf{Torus}:
+\[ T^2 = e^0 \cup_{\mathrm{konst.}} e^1_a \cup_{\mathrm{konst.}} e^1_b \cup_f e^2 \]
+mit $f : \partial e^2 = S^1 \pfeil{} (T^2)^1$. $(T^2)^1$ soll das 1-Skelett des Tori beschreiben. $f = aba\i b\i$.\\
+\textbf{Kleinsche Flasche}:
+\[ K^2 = e^0 \cup e^1_a \cup e^1_b \cup_f e^2  \]
+mit $f : aba\i b$, sonst gilt $(K^2)^1 = (T^2)^1$.
+
+\Def{}
+Sei $X$ ein CW-Komplex. Setze
+\[ C_k(X) := \Z[X^k]. \]
+D.\,h., $C_k(X)$ ist die frei abelsche Gruppe, die von den $k$-dimensionalen Zellen in $X$ frei erzeugt wird. $C_k(X)$ nennen wir die $k$-te \df{zelluläre Kettengruppe} von $X$.
+
+\Bsp{}
+Für $X = T^2 = e^0 \cup e_a^1\cup e_b^1 \cup_f e^2$ ist
+\begin{align*}
+C_{-1} &= 0,
+C_0(T^2) &= \Z\shrp{e^0},\\
+C_1(T^2) &= \Z\shrp{e^1_a, e^1_b} = \Z\shrp{e^1_a} \oplus \Z\shrp{e^1_b},\\
+C_2(T^2) &= \Z \shrp{e^2}.
+\end{align*}
+Es gibt ferner Randabbildungen
+\begin{align*}
+\Pfeil{\partial_3} C_2(T^2) \Pfeil{\partial_2}
+C_1(T^2) \Pfeil{\partial_1}
+C_0(T^2) \Pfeil{\partial_0}
+C_{-1}(T^2) \Pfeil{\partial_{-1}}.
+\end{align*}
+Diese sind gegeben durch
+\begin{align*}
+\partial_1(e^1_a) &= e^0 - e^0 = 0,\\
+\partial_1(e^1_b) &= e^0 - e^0 = 0,\\
+\partial_2(e^2) &= e^1_a + e^1_b - e^1_a - e^1_b = 0.\\
+\end{align*}
+Für die Homologie
+\[ H_k(X) 
+:=
+\frac{ \ker (\partial_k : C_k(X) \pfeil{} C_{k-1}(X)}{ \mathrm{im}(\partial_{k+1} : C_{k+1}(X) \pfeil{} C_k(X) }
+\]
+ergibt sich nun
+\begin{align*}
+H_2(T^2) &= C_2(T^2) = \Z,\\
+H_1(T^2) &= C_1(T^2) = \Z\oplus \Z,\\
+H_0(T^2) &= C_0(T^2) = \Z.
+\end{align*}
+Für $K^2$ kann man analog nachrechnen
+\begin{align*}
+H_2(K^2) &= 0,\\
+H_1(K^2) &= \Z \oplus \Z /2\Z ,\\
+H_0(K^2) &= \Z.
+\end{align*}
+
+
+\Def{Randoperatoren}
+Wir definieren \df{Randoperatoren}
+\[ \partial_{k} : C_k(X) \Pfeil{} C_{k-1}(X).  \]
+Sei $e^k_i$ eine $k$-Zelle von $X$.
+\[ \partial e_i^k = S^{k-1}_i \Pfeil{f_i} X^{k-1} \Pfeil{\mathrm{Quot}} \frac{X^{k-1}}{X^{k-2}} \isom{} \bigvee_j S_j^{k-1} \Pfeil{\mathrm{Proj}}S_j^{k-1}. \]
+$\partial e_i^k = S^{k-1}_i \pfeil{} S^{k-1}_i$ habe den Abbildungsgrad $d_{i,j} \in \Z$. $\partial_k$ ist dann gerade die Matrix $(d_{i,j})_{i,j}$. Es gilt
+\[ \partial_{k-1} \circ \partial_k = 0. \]
+Wir definieren ferner die \df{zelluläre Homologie} von $X$ durch
+\[ H_k(X) 
+:=
+\frac{ \ker (\partial_k : C_k(X) \pfeil{} C_{k-1}(X)}{ \mathrm{im}(\partial_{k+1} : C_{k+1}(X) \pfeil{} C_k(X) }.
+\]
