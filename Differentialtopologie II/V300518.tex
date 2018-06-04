@@ -58,7 +58,15 @@ Wir beschränken uns auf \textbf{endliche} Zellkomplexe.
 	\[ X^2 = X^1 \cup_{f_1} e^2_1 \ldots \cup_{f_{k_2}}e_{k_2}^2. \]
 	 \textbf{Allgemein}:
 	\[ X^n = X^{n-1} \cup_{f_1} e^n_1 \ldots \cup_{f_{k_n}} e_{k_n}^n \]
-	mit $f_i : \partial e_i^n \pfeil{} X^{n-1}$ stetig. $X^n$ nennt man das \df{$n$-Skelett}.
+	mit $f_i : \partial e_i^n \pfeil{} X^{n-1}$ stetig. $X^n$ nennt man das \df{$n$-Skelett}.\\
+	Es ergibt sich ferner folgendes Diagramm
+	\begin{center}
+		\begin{tikzcd}
+		e_i^k \arrow[r, "\chi_i"] & X^k \subset X \\
+		\partial e_i^k \arrow[u, hook]  \arrow[r, "f"] & X^{k-1} \arrow[u, hook] 
+		\end{tikzcd}
+	\end{center}
+wobei $\chi_i$ ein Homöomorphismus vom Inneren von $e_i^k$ auf sein Bild ist. $\chi_i$ nennt man auch die \df{charakteristische Abbildung}.
 \end{itemize}
 
 \Def{}

@@ -1,0 +1,101 @@
+\marginpar{Vorlesung vom 04.06.18}
+%14.te Vorlesung
+
+\Bem{}
+Man kann auch Kettengruppen $C_k(X;R) = C_k(X) \otimes_\Z R $ über beliebige \df{Koeffizientenringe} einführen. Diese besitzen Randabbildungen $\partial_k : C_k(X;R) \pfeil{} C_{k-1}(X;R)$ und führen zu $R$-wertigen Homologierguppen $H_k(X;R) = \ker \partial_k / \Img \partial_{k+1}$.\\
+Die Definition von $H_k(X;R)$ ist unabhängig von der Wahl der CW-Struktur auf $X$.
+\paragraph{Achtung: }Im Allgemeinem gilt \textbf{nicht}
+\[ H_k(X;R) = H_k(X)\otimes_\Z R. \]
+
+\Bsp{}
+Sei $X = \R P^2 = e^0 \cup e^1 \cup_f e^2$, wobei $f : D^2 = e^2 \pfeil{} S^1 = e^1 \cup e^0$ die Abbildung von Grad 2 ist. Es ergeben sich folgende Abbildungen
+\[ \Pfeil{0} C_2 = \Z\shrp{e^2} \Pfeil{\partial_2 = 2} C_1 = \Z\shrp{e^1} \Pfeil{\partial_1 = 0} C_0 = \Z \shrp{e^0} \Pfeil{0}.  \]
+Somit folgt
+\begin{align*}
+H_i(\R P^2) = \left\lbrace
+\begin{aligned}
+&0,&&i=2,\\
+&\Z/2\Z && i= 1,\\
+&\Z && i = 0.
+\end{aligned} 
+\right.
+\end{align*}
+
+\Def{Induzierte Abbildungen}
+Eine stetige Abbildung $f :X \pfeil{} Y$ zwischen CW-Komplexen heißt \df{zellulär}, wenn $f(X^k) \subset Y^k$ für alle $k$ gilt.\\\\
+
+Sei $f : X \pfeil{} Y$ zellulär und sei $e_i^k$ eine $k$-Zelle von $X$. Betrachte die charakteristische Abbildung
+	\begin{center}
+	\begin{tikzcd}
+	e_i^k \arrow[r, "\chi_i"] & X^k \subset X \\
+	\partial e_i^k \arrow[u, hook]  \arrow[r, "f"] & X^{k-1} \arrow[u, hook] 
+	\end{tikzcd}
+\end{center}
+Dies induziert Abbildungen
+\[ S_i^k := \frac{e_i^k}{\partial e_i^k} \Pfeil{\overline{\chi}} \frac{X^k}{X^{k-1}} \Pfeil{f} \frac{Y^k}{Y^{k-1}} = \bigvee_j S_j^k \Pfeil{\text{Proj}} S^k_j. \]
+Den Grad der Abbildung $S_i^k \pfeil{} S_j^k$ nennen wir $f_{ij} \in \Z$. Diese ergeben die Matrix
+\[ f_* := (f_{ij}) : C_k(X) \Pfeil{} C_k(Y). \]
+Es gilt
+\[ \partial_* \circ f_* = f_* \circ \partial_*. \]
+Daraus folgt, dass $f_*$ Homomorphismen auf der Homologie
+\[ f_* : H_k(X) \Pfeil{} H_k(Y) \]
+induziert.
+
+\Satz{Zellulärer Approximationssatz}
+Sei $f : X \pfeil{} Y$ eine stetige Abbildung zwischen CW-Komplexen. Dann ist $f$ homotop zu einer zellulären Abbildung.\\\\
+
+Beachte, dass die auf den Homologiegruppen induzierte Abbildung $f_*$ nur von der Homotopieklasse von $f$ abhängt.
+
+\Def{Relative Homologie}
+Sei $X$ ein CW-Komplex und $A \subset X$ ein \df{Unterkomplex}, d.\,h., eine Vereinigung von abgeschlossenen Zellen. Dann ergibt sich eine Inklusion
+\[ C_k(A) \subset C_k(X). \]
+Wir setzen
+\[ C_k(X, A) := \frac{C_k(X)}{C_k(A)}. \]
+Betrachte nun das kommutierende Diagramm
+\begin{center}
+\begin{tikzcd}
+C_k(A) \arrow[r, hook] \arrow[d, "\partial^A_k"] & C_k(X) \arrow[d, "\partial^X_k"] \\
+C_{k-1}(A) \arrow[r, hook] & C_{k-1}(X) 
+\end{tikzcd}
+\end{center}
+Wir definieren ergo die \df{relative Homologie} des Paares $(X,A)$ durch
+\[ H^k(X,A) := \frac{\ker \partial_{k} : C_k(X,A) \pfeil{} C_{k-1}(X,A)}{\Img \partial_{k+1} : C_{k+1}(X,A) \pfeil{} C_{k}(X,A)} \]
+
+Nach Konstruktion ist
+\[ 0 \Pfeil{} C_*(A) \Pfeil{} C_*(X) \Pfeil{} C_*(X,A) \Pfeil{} 0 \]
+exakt. Dies induziert uns eine lange exakte Sequenz
+\[ \ldots \pfeil{} H_k(A) \pfeil{} H_k(X) \pfeil{} H_k(X,A) \pfeil{} H_{k-1}(A) \pfeil{}\ldots \]
+
+\Def{Tripel}
+Betrachte das \df{Tripel} $A \subset Y \subset X$ von Unterkomplexen. Wir schreiben hierfür auch $(X,Y,A)$.\\
+Dann ergibt sich folgendes kommutierende Zopf-Diagramm
+\begin{center}
+	\begin{tikzcd}[scale = 0.5]
+					&			& H_k(Y,A)\arrow[rr]\arrow[du]	&			& H_{k-1}(A)\arrow[rr]\arrow[du]	& 				& H_{k-1}(A) 	& \\
+					& H_k(Y) \arrow[ru] \arrow[rd]	&						& H_k(X,A) \arrow[ru] \arrow[rd]	&				& H_{k-1}(Y) \arrow[ru] \arrow[rd]	&				& H_{k-1}(X,A)\\
+H_k(A) \arrow[rr] \arrow[ru]	&			& H_k(X) \arrow[rr]	\arrow[ru]	&			& H_k(X,Y)	\arrow[rr]\arrow[ru]	& 				&H_{k-1}(Y,A)	
+
+	\end{tikzcd}
+\end{center}
+
+
+\newpage
+\section{Morse-Theorie}
+Die Morse-Theorie soll eine Beziehung zwischen auf der einen Seite den kritischen Punkten und den Indizes einer glatten Funktion $f: M \pfeil{} \R$ und auf der anderen Seite der Zellstruktur bzw. der Homologie von $M$.
+
+\Bsp{}
+Es sei $f : M = T^2 \Pfeil{} \R^1$ die glatte Abbildung, die jedem Punkt des auf der Seite stehenden Tori seine Höhe zuordnet. Dies Abbildung hat vier kritische Punkte: Der höchste Punkt, der tiefste Punkt und der maximal bzw. minimale Innenpunkt. Wir nennen diese kritischen Punkte in absteigender Höhe $s,r,p,q$.\\
+Für ein $a \in \R$ setze $M^a := \set{x \in M}{f(x) \subseteq a}$.
+\begin{itemize}
+	\item Ist $a< f(p)$, so gilt $M^a = \emptyset$.
+	\item Ist $a \in (f(p), f(q))$, so ist $M^a$ eine Kreisscheibe.
+	\item Ist $a \in (f(q), f(r))$, so ist $M^a$ ein Zylinder.
+	\item Ist $a \in (f(r), f(s))$, so ist $M^a$ der Torus minus eine obere Kreisscheibe.
+	\item Ist $a > f(s)$, so ist $M^a = M$.
+\end{itemize}
+
+\paragraph{Homotopietheoretisch:}
+Ist $a \in (f(p), f(q))$, so ist $M^a$ homotop zum Punkt, ergo zu einer 0-Zelle $e^0$.\\
+Ist $a \in (f(q), f(r))$, so ist $M^a$ homotop zu einer Sphäre, ergo erhält man eine 1-Zelle $e^1$, die man an $e^0$ anklebt.\\
+Ist $a \in (f(r), f(s))$, so ist $M^a$ homotop zu $S^1\wedge S^1$, ergo erhält man eine weiteren 1-Zelle $e^1$, die man an den oberen Punkt von $e^1$ klebt.\\
+Ist $a > f(s)$, so ist $M^a = M$ homotop zum Torus, ergo erhält man eine 2-Zelle, die man entlang den beiden $e^1$s verklebt.
