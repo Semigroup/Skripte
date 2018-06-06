@@ -1,0 +1,164 @@
+\marginpar{Vorlesung vom 06.06.18}
+%15.te Vorlesung
+\Def{Die Hesse-Form}
+Sei $M$ eine glatte Mannigfaltigkeit, $f : M \pfeil{} \R$ glatt, $p \in M$ ein kritischer Punkt von $f$.\\
+Seien $v,w \in T_pM$. Wähle glatte Fortsetzungen von $v,w$ als glatte Vektorfelder $\widetilde{v}, \widetilde{w}$ auf $M$. Wir definieren folgenden Ausdruck
+\[ H(f)(v,w) := v_p(\widetilde{w}(f)). \]
+Um dies zu untersuchen, betrachten wir folgende Lie-Klammer für $\widetilde{v} = \sum_i a_i \pf{}{x_i}, \widetilde{w} = \sum_i b_i \pf{}{x_i}$ in lokalen Koordinaten
+\[ [\widetilde{v}, \widetilde{w}](f)_p = \sum_{i,j} \klam{
+a_i \pf{b_j}{x_i} - b_i \pf{a_j}{x_i}
+} \pf{f}{x_j}|_{p}. \]
+Aber $\pf{f}{x_j}|_{p}$ muss Null sein, da $p$ ein kritischer Punkt ist. Es folgt
+\[ v_p(\widetilde{w}(f)) = w_p(\widetilde{v}(f)) \]
+bzw.
+\[ H(f)(v,w) = H(f)(w,v). \]
+Dies zeigt, dass $H(f)$ symmetrisch und wohldefiniert, d.\,h. unabhängig von der Wahl von $\widetilde{v}$ und $\widetilde{w}$, ist.\\
+Wir erhalten so eine symmetrische Bilinearform
+\[ H(f) : T_pM \times T_pM \Pfeil{} \R, \]
+die sogenannte \df{Hesse-Form}.\\\\
+
+In der Basis $\{\pf{}{x_1}, \ldots, \pf{}{x_n}\}$ von $T_pM$ ist $H(f)$ durch die \df{Hesse-Matrix} $\klam{\pf{}{x_i}\pf{}{x_j}f(0)}_{i,j}$ gegeben.
+
+\Def{}
+\begin{itemize}
+	\item Ein kritischer Punkt $p \in M$ von $f\colon M \pfeil{} \R$ heißt \df{nicht ausgeartet}, wenn $H(f)_p$ als Bilinearform nicht ausgeartet ist. D.\,h., die Hesse-Matrix bei $p$ ist nicht singulär.
+	\item Der \df{Index} eines nicht ausgearteten kritischen Punktes $p$ von $f$ ist die maximale Dimension von Untervektorräumen von $T_pM$, auf denen die Hesse-Form negativ definit ist.
+\end{itemize}
+
+\Lem{}
+Sei $f\colon U \pfeil{} \R$ glatt, $U \subset \R^n$ offen und konvex. Ferne soll $f(0) = 0$ gelten. Dann existieren glatte Funktionen $g_i : U \pfeil{} \R$ für $i = 1, \ldots, n$ mit:
+\begin{enumerate}[1.]
+	\item $f(x) = \sum_{i = 1}^n x_i g_i(x)$.
+	\item $g_i(0) = \pf{f}{x_i}(0)$.
+\end{enumerate}
+\begin{Beweis}{}
+Es gilt
+\[ f(x) = \int_0^1 \pf{}{t}f(tx) \d x = \int_0^1 \sum_{i = 1}^n \pf{f}{x_i} (tx) \cdot x_i \d t.   \]
+Setze ergo
+\[ g_i(x) := \int_{0}^1 \pf{f}{x_i} (tx) \d t. \]
+\end{Beweis}
+
+\Lem{Morse Lemma}
+Sei $\cln{f}{M}{\R}$ glatt und $p \in M$ ein nicht ausgearteter kritischer Punkt von $f$. Dann gibt es lokale Koordinaten $y_1,\ldots, y_n$ bei $p$, sodass
+\[ f(y) = f(p) - y_1^2 - \ldots - y_\iota^2 + y_{\iota+1}^2 + \ldots + y_n^2, \]
+wobei $\iota$ gleich dem Index von $f$ bei $p$ ist.
+\begin{Beweis}{}
+Seien $x_1, \ldots, x_n$ lokale Koordinaten. Wir dürfen ohne Einschränkung annehmen, dass $f(0) = 0$ gilt.\\
+Das vorangegangene Lemma impliziert, dass $g_i$ existieren mit
+\begin{align*}
+f(x) &= \sum_{i = 1}^n x_i g_i(x),
+g_i(0) &= \pf{f}{x_i}(0).
+\end{align*}
+Da $p$ ein kritischer Punkt ist, ist $g_i(0) = \pf{f}{x_i}(0) = 0$ für alle $i$. Wir wenden das Lemma nochmal für alle $g_i$ an und erhalten Funktionen $h_{ij}(x)$ mit
+\[ g_i(x) = \sum_j x_j h_{ij}(x). \]
+Daraus folgt
+\[ f(x) = \sum_{i,j} x_i x_j h_{ij}(x). \]
+Man kann ferner ohne Einschränkung annehmen, dass $h_{ij} = h_{ji}$ gilt (anderenfalls kann man stattdessen $\frac{h_{ij} + h_{ji}}{2}$ betrachten).
+\paragraph{Induktion:}
+Annahme: Wir haben lokale Koordinaten $u$ bei $p$ mit
+\[ f(u) = \pm u_1^2 \pm \ldots \pm u_{r-1}^2 + \sum_{i,j\geq r} u_i u_j H_{ij}(u) \]
+für glatte Funktionen $H_{ij}$ mit $H_{ij} = H_{ji}$. Aufgrund der Symmetrie können wir die Matrix $H_{ij}(0)$ diagonalisieren, d.\,h.
+\[ A\i H_{ij}(0)A = \left(
+\begin{matrix}
+\lambda_1 \\
+& \ddots \\
+& & \lambda_n
+\end{matrix}
+\right). \]
+Da $H_{ij}(0)$ nicht singulär ist, ist $\lambda_1 \neq 0$. Es sei $r$ maximal mit $\bet{H_{rr}(u)} > 0$. Dann ist $g(u) := \sqrt{\bet{H_{rr}(u)}}$ glatt in der Nähe von $u = 0$.\\
+\paragraph{Transformation}
+\begin{align*}
+v_i &:= u_i \text{ für } i \neq r\\
+v_r &:= g(u)\klam{
+u_r + \sum_{i > r}u_i \frac{H_{ir}}{H_{rr}}.
+}
+\end{align*}
+Dann gilt
+\[ f(v) = \pm v_1^2 \pm \ldots \pm v_r^2 + \sum_{i,j \geq r+ 1}v_i v_j \widetilde{H}_{ij}. \]
+\end{Beweis}
+Wenn $f$ die Form in der Behauptung hat, dann
+\[ (H(f))_{ij} = \left(
+\begin{matrix}
+-2 \\
+& -2\\
+& & \ddots \\
+& & & -2\\
+& & & & 2 \\
+& & & & & \ddots\\
+& & & & & & 2
+\end{matrix}
+\right), \]
+wobei die Anzahl der negativen Diagonaleinträge dem Index von $f$ bei $p$ entspricht.
+
+\Kor{}
+Nichtausgeartete kritische Punkte sind isoliert.
+
+\Bsp{}
+Betrachte einen auf der Seite liegenden Zylinder. Alle Punkte auf der oberen Seitenlinie, sind kritisch und liegen kontinuierlich, ergo sind sie alle ausgeartet.\\\\
+
+
+Sei $M$ eine glatte Mannigfaltigkeit und $X$ ein Vektorfeld auf $M$, sodass $X_{|M-K} = 0$ für eine kompakte Menge $K \subset M$.\\
+Sei $U_1\cup \ldots \cup U_m$ eine Überdeckung von $K$ durch offene Mengen auf denen lokale Flüsse $\phi_{i,t} : U_i \pfeil{} M$ existieren mit
+\[ \pf{}{t} \phi_{i,t} = X(\phi_{i,t}) \]
+für $\bet{t}<\e_i$. Wegen der Eindeutigkeit von Lösungen von Differentialgleichungssystemen gilt $\phi_{i,t} = \phi_{j,t}$ auf $U_{i,t} \cap U_{j,t}$. Setze nun
+\begin{align*}
+\phi_t(q):=
+\left\lbrace
+\begin{aligned}
+&q && q \in M \setminus K,\\
+& \phi_{i,t}(q), && q \in U_i
+\end{aligned}
+\right.
+\end{align*}
+für $\bet{t}< \e := \min_i \e_i$.
+$\phi_t$ ist ein globaler Fluss für $X$.\\
+Ist $\bet{t} \geq \e$, dann schreibe
+\[ t = k \cdot \frac{\e}{2} + r \]
+mit $k \in \Z, \bet{r} < \frac{\e}{2}$. Es gilt dann konsequenterweise
+\[ \phi_t = (\phi_{\frac{\e}{2}})^k \circ \phi_r. \]
+Ergo ist $\phi_t(p)$ für alle $p \in M$ und $t\in \R$ definiert.
+
+\Prop{}
+Sei $M$ eine glatte kompakte Mannigfaltigkeit, $\cln{f}{M}{\R}$ glatt ohne kritische Punkte in $f\i([a,b])$ für ein Paar $a,b \in \R, a < b$. Dann ist $M^a$ diffeomorph zu $M^b$, die Inklusion $M^a \inj{} M^b$ ist eine Homotopieäquivalenz und $M^a$ ist ein Deformationsretrakt von $M^b$.
+\begin{Beweis}{}
+Sei $\shrp{\cdot, \cdot}$ eine Riemannsche Metrik auf $M$.
+\Def{}
+Wir definieren einen \df{Gradienten} $\nabla f$ durch
+\[ \shrp{X, \nabla f} := X(f) \]
+für alle Vektorfelder $X$.\\
+
+$p$ ist genau dann ein kritischer Punkt von $f$, wenn $\nabla f$ bei $p$ Null ist.\\
+Nun folgt, dass $\norm{\nabla f} > 0$ auf $f\i([a,b])$. Setze
+\[ \rho(q) :=
+\left\lbrace
+\begin{aligned}
+&\frac{1}{\norm{\nabla f}^2}(q),&& q \in f\i([a,b])\\
+&0, && q \in M \setminus K
+\end{aligned}
+\right.\]
+für eine kompakte Umgebung $K \supset f\i([a,b])$. Auf $K \setminus f\i([a,b])$ sei $\rho$ irgendwie definiert, sodass $\cln{\rho}{M}{\R}$ glatt ist.\\
+Definiere folgendes Vektorfeld auf $M$
+\[ X:= \rho \cdot \nabla f. \]
+$X$ verschwindet außerhalb von $K$,
+ergo existiert ein globaler Fluss $\phi_t \colon M \pfeil{} M$ mit $\pf{}{t} \phi_t = X(\phi_t)$ für $ t \in \R$.\\
+Setze $g(t) := f(\phi_t(q))$. Es gilt
+\begin{align*}
+g'(t) &= \shrp{ \pf{}{t} \phi_t , \nabla f }\\
+&= \shrp{ X , \nabla f }\\
+&= \shrp{ \rho \nabla f , \nabla f }\\
+&= \rho \norm{\nabla f}^2 = +1,\\
+\end{align*}
+solange sich $q$ auf $f\i([a,b])$ befindet.
+Sei $c = g(0) = f(\phi_0(q)) = f(q)$. Wenn $q \in M^a$, dann $f(q) \leq a$. Daraus folgt $c \leq a$ und $g(t) = t + c$. Es gilt
+\[ f(\phi_{b-a}(q)) = g(b-a) = b-a + c \leq b -a \leq b \]
+d.\,h., $\phi_{b-a} (q) \in M^b$. Es ist nun $\phi_{b-a}$ der gesuchte Diffeomorphismus.\\
+Der Deformationsretrakt ist nun gegeben durch $r_1$ für 
+\[ r_t := 
+\left\lbrace
+\begin{aligned}
+&q && q \in M^a\\
+&\phi_{t(a- f(q))} && q \in f\i[a,b]
+\end{aligned}
+\right.
+ \]
+\end{Beweis}
