@@ -1,0 +1,97 @@
+\marginpar{Vorlesung vom 11.06.18}
+%16.te Vorlesung
+\Def{}
+Eine glatte Funktion $f : M \pfeil{} \R$, deren kritischen Punkte alle nicht ausgeartet sind, heißt \df{Morse-Funktion}.
+
+\Satz{}
+Sei $M$ eine glatte Mannigfaltigkeit, $f : M \pfeil{{}} \R$ glatt, $\e > 0$, sodass $f\i[c-\e, c +\e]$ kompakt ist. Ferner sei $p$ der einzige kritische Punkt von $f$ in $[c - \e, c + \e]$ für $c = f(p)$.\\
+Ist $p$ nicht ausgeartet mit Index $i$, so ist $M^{c+\e}$ homotopieäquivalent zu $M^{c-\e} \cup e^i$.
+
+\begin{Beweis}{}
+Wegen dem Morse-Lemma existieren lokale Koordinaten $u$ um $p$, sodass sich $f$ lokal darstellen lässt durch
+\[ f(u) = c - u_1^2 - \ldots - u_i^2 + u_{i+1}^2 + \ldots u_n^2. \]
+Setze
+\[ e^i := \set{u}{ u_1^2 + \ldots + u_i^2 \leq \e, u_{i+1} = \ldots = u_n = 0 }, \]
+dann ist der Rand gegeben durch
+\[ \partial e^i := \set{u}{ u_1^2 + \ldots + u_i^2 = \e, u_{i+1} = \ldots = u_n = 0 }\subset M^{c- \e}. \]
+Die anheftende Abbildung für diese $i$-Zelle an $ M^{c- \e}$ ist dann die Inklusion.\\
+Wir modifizieren $f$ und definieren mithilfe der modifizierten Funktion $F$ einen sogenannten Henkel, der $e^i$ als Deformationsretrakt enthält.
+\begin{itemize}
+	\item \textbf{Hilfsfunktion $\mu$:} Sei $\mu : \R \pfeil{{}} \R$ glatt, sodass gilt
+	\begin{align*}
+	\mu(t) \left\lbrace
+	\begin{aligned}
+	&> \e,&& \text{ falls } t = 0\\
+	& \in [0, 2\e],&& \text{ falls } t  \in [0, 2\e]\\
+	&= 0,&& \text{ falls } t \geq 2 \e.
+	\end{aligned}
+	\right.
+	\end{align*}
+	und $\mu' \in [-1,0]$.
+	\item Setze
+	\begin{align*}
+	\xi(u) :=&u_1^2 + \ldots + u_i^2\\
+	\eta(u) :=&u_{i+1}^2 + \ldots + u_n^2\\
+	F(u) := & f(u) - \mu( \xi(u) + 2 \eta(u) ) = c - \xi + \eta - \mu(\xi  - 2 \eta)
+	\end{align*}
+	\item Im Ellipsoid $\xi + 2 \eta \leq 2\e$ gilt nun
+	\begin{align*}
+	F \leq f = c - \xi + \eta \leq c + \frac{1}{2} \xi + \eta \leq c + \e 
+	\end{align*}
+	Daraus folgt
+	\[ F\i(-\infty, c+ \e] = M^{c+\e} \]
+	\item Die Bedingung $\mu' \in (-1,0]$ stellt sicher, dass $F$ und $f$ in $F\i(-\infty, c+ \e]$ dieselben kritischen Punkte haben. Denn es gilt
+	\begin{align*}
+	\pf{}{u_k}F(u) &= \pf{}{u_k}(f(u) - \mu( \xi(u) + 2 \eta(u) )) \\
+	&= \pf{}{u_k}f(u)-\pf{}{u_k}\mu( \xi(u) + 2 \eta(u) ) \\
+	&= \pm2u_k - c u_k\mu'(\xi(u) + 2 \eta(u)) \\
+	&= (2 - c\mu'(\xi(u) + 2 \eta(u)))u_k \\
+	&\gdw{} u_k = 0.
+	\end{align*}
+	für ein passendes $c \in \{1,2\}$.
+	\item Der einzige kritische Punkt von $F$ in $F\i(-\infty, c+ \e]$ könnte somit nur $p$ sein. Es gilt aber
+	\[ F(p) = f(p) - \mu(0) < c - \e. \]
+	Daraus folgt, dass $p$ nicht in $F\i(-\infty, c+ \e]$ liegt, also hat $F$ keine kritischen Punkte auf $F\i(-\infty, c+ \e]$.
+\end{itemize}
+Mit der letzten Proposition folgt, dass $F\i(-\inf,c - \e] \subset F\i(-\inf,c + \e]$ ein Deformationsretrakt ist. Daraus folgt, dass $F\i(-\inf,c - \e] \subset M^{c+\e}$ ein Deformationsrektrakt ist.\\
+Wir definieren den Henkel durch den topologischen Abschluss
+\[ H:= \mathrm{closure}(F\i(-\inf,c + \e] - M^{c- \e}). \]
+Dann wird $M^{c- \e} \cup e^i$ von $M^{c - \e}\cup H$ als Deformationsretrakt enthalten. Insgesamt ergibt sich folgendes Diagramm:
+ \begin{center}
+ 	\begin{tikzcd}
+M^{c- \e} \cup e^i\arrow[r,hook, "\mathrm{Def-retr.}"]\arrow[rd,hook, "\mathrm{Def-retr.}"]  &M^{c-\e} \cup H\arrow[d,hook, "\mathrm{Def-retr.}"]\\
+&M^{c+\e}
+ 	\end{tikzcd}
+ \end{center}
+\end{Beweis}
+
+\Satz{Hauptsatz}
+Sei $M$ eine kompakte Mannigfaltigkeit und $f : M \pfeil{{}} \R$ eine Morse-Funktion. Dann hat $M$ den Homotopie-Typ eines CW-Komplexes mit genau einer Zelle der Dimension $i$ für jeden kritischen Punkt mit Index $i$.
+\begin{Beweis}{}
+$C$ sei die Menge der kritischen Punkte von $f$. Jeder kritische Punkt ist isoliert, da er nicht ausgeartet ist. Da $M$ kompakt ist, ist $C$ somit endlich. Insofern besteht $f(C)$ aus den Elementen $c_1< c_2 < \ldots < c_k$.
+
+Wir führen nun eine vollständige Induktion nach $k$. In der Induktionsvoraussetzung nehmen wir an, dass wir eine Homotopieäquivalenz $h$ zwischen $M^a$ und einem CW-Komplex $K$ haben für einen Wert $a$, der nicht in $f(C)$ liegt.
+
+Im Induktionsschritt sei $c \in f(C)$ minimal mit der Eigenschaft $c > a$. Dann existiert für ein hinreichend kleines $\e > 0$ eine Homotopie
+\[ h' : M^a \simeq M^{c-\e}. \]
+Aus dem vorhergegangenen Satz folgt nun
+\[ M^{c+\e} \simeq M^{c-\e} \cup_{\phi_1}e_1^{i_1}\cup \ldots \cup_{\phi_l}e_l^{i_l} \]
+für anheftende Abbildungen
+\[ \phi_j : \partial e_j^{i_j} \Pfeil{} M^{c-\e} \simeq^{h'} M^a \simeq^h K. \]
+Durch den zellulären Approximationssatz erhalten wir homotope Abbildungen $\psi_i$:
+\begin{align*}
+hh'\phi_j & : \partial e_j^{i_j} \Pfeil{}  K\\
+\rott{\simeq}& ~~~~~~~~~~~~~~\rott{\supseteq}\\
+\psi_i & : \partial e_j^{i_j} \Pfeil{}  K^{i_j -1}.
+\end{align*}
+Es ergibt sich nun folgend Homotopie
+\begin{align*}
+K\cup_{\psi_1} e_1^{i_1} \cup \ldots \cup_{\psi_l} e_l^{i_l} 
+\simeq
+K\cup_{hh'\phi_1} e_1^{i_1} \cup \ldots \cup_{hh'\phi_l} e_l^{i_l}
+\simeq
+M^{c-\e}\cup_{\phi_1} e_1^{i_1} \cup \ldots \cup_{\phi_l} e_l^{i_l}
+\simeq M^{c+\e}.
+\end{align*}
+Rechterseits steht der CW-Komplex, den wir haben wollen. Ergo folgt durch Induktion die Aussage.
+\end{Beweis}
