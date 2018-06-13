@@ -1,0 +1,171 @@
+\marginpar{Vorlesung vom 13.06.18}
+%17.te Vorlesung
+
+\subsection{Anwendungen}
+Sei $M^n$ glatt, geschlossen. Es habe $f : M \pfeil{} \R$ genau 2 kritische Punkte.\\
+Mit ein paar Homotopie-Tricks folgt, dass $M$ homöomorph\footnote{$M$ und $S^n$ müssen nicht diffeomorph sein, da es in höheren Dimensionen \textsl{exotische Sphären} gibt.} zu $S^n$ ist (Satz von Reeb).
+
+\section{Die Morse Ungleichungen}
+
+\Def{}
+Sei $S: \{ \text{top. Paaren} (X,Y) \} \Pfeil{} \Z$ eine Funktion. $S$ heißt \df{subadditiv}, wenn für Tripel $X \supseteq Y \supseteq Z$ gilt
+\[ S(X,Z) \leq S(X,Y) + S(Y,Z). \]
+Besteht Gleichheit, so heißt $S$ \df{additiv}.\\
+Wir legen ferner folgende Konvention für Funktionen wie $S$ fest:
+\[ S(X) := S(X,\emptyset). \]
+
+\Bsp{}
+Setzt man
+\[  R_i(X,Y) := \dim_\Q H_i(X,Y; \Q), \]
+so kann man die \df{Euler-Charakteristik} definieren durch
+\[ \chi(X,Y) := \sum_{i} (-1)^i R_i(X,Y). \]
+Für  $X \supseteq Y \supseteq Z$ ergibt sich nun die Lange exakte Sequenz des Tripels:
+\begin{center}
+	\begin{tikzcd}
+	\ldots \pfeil{} H_i(Y,Z) \pfeil{} H_i(X,Z) \pfeil{} H_i(X,Y) \pfeil{} H_{i+1}(Y,Z) \pfeil{} \ldots
+	\end{tikzcd}
+\end{center}
+Für eine lange exakte Sequenz
+\begin{center}
+	\begin{tikzcd}
+	\ldots \pfeil{} A_i \pfeil{} B_i \pfeil{} C_i \pfeil{} A_i \pfeil{} \ldots
+	\end{tikzcd}
+\end{center}
+gilt
+\[ \chi(B_*) = \chi(A_*) + \chi(C_*). \]
+Daraus folgt
+\[ \chi(X,Z) = \chi(Y,Z) + \chi(X,Y). \]
+Also ist $\chi$ ein Beispiel für eine additive Funktion.\\
+Der Rang $R_i$ selbst ist nur subadditiv (dies folgt aus der langen exakten Sequenz).
+
+\Lem{}
+Sei $X$ ein Raum mit einer Filtrierung durch Teilräume
+\[ \emptyset = X_0 \subset X_1 \subset \ldots \subset X_{n-1} \subset X_n = X \]
+Ist $S$ subadditv, so gilt
+\[ S(X) \leq \sum_{i = 1}^nS(X_i, X_{i-1}) \]
+Ist $S$ additiv, so gilt sogar Gleichheit.
+\begin{Beweis}{}
+Durch Induktion folgt
+\[ S(X) \leq S(X, X_{n-1}) + S(X_{n-1}) \leq S(X,X_n) + \sum_{i = 1}^{n-1} S(X_i, X_{i-1}). \]
+\end{Beweis}
+
+
+Sei $M$ eine glatte, kompakte Mannigfaltigkeit mit Morse-Funktion $f : M \pfeil{} \R$ und $a_1 < \ldots < a_k$ in $\R$ so, dass $M^{a_i}$ genau $i$ kritische Punkte von $f$ enthält. Es soll außerdem gelten
+\[ M^{a_k} = M. \]
+Wir erhalten hierdurch eine Filtrierung
+\[ \emptyset = M^{a_0} \subset M^{a_1} \subset \ldots \subset M^{a_k} = M. \]
+
+\subsection{Ausschneidung in Zellulärer Homologie:}
+Sei ein CW-Paar $X \supset Y$ gegeben, $Y \supseteq U$. $U$ sei gerade $U = X -Z$ für einen weiteren Unterkomplexen $Z \subset X$.\\
+Es gilt nun
+\[ C_*(X,Y) = \frac{C_*(X)}{C_*(Y)} 
+\isom{} \frac{C_*(X-U)}{C_*(Y-U)}
+= C_*(X- U, Y - U). \]
+Insbesondere gilt für die Homologiegruppen
+\[ H_*(X,Y) \isom{} H_*(X- U, Y-U). \]
+
+
+
+Wir betrachten nun weiter
+\[ H_j(M^{a_i}, M^{a_{i-1}})\]
+Der Hauptsatz impliziert folgende Homotopie
+\[ M^{a_i} \simeq M^{a_{i-1}} \cup e^{\iota_i}. \]
+Dadurch folgt
+\[  H_j(M^{a_i}, M^{a_{i-1}}) \isom{} H_j(M^{a_{i-1}} \cup e^{\iota_i}, M^{a_{i-1}} ) \isom{} H_j(e^{\iota_i}, \partial e^{\iota_i}). \]
+Mit Koeffizienten über $\Q$ folgt nun
+\[ H_j(e^{\iota_i}, \partial e^{\iota_i}; \Q) =
+\left\lbrace
+\begin{aligned}
+&\Q && j = \iota_i,\\
+&0 && j \neq \iota_i.
+\end{aligned}
+\right.
+   \]
+   
+Mit dem Lemma und dem vorangegangenem Beispiel folgt nun
+\[ R_\iota(M) \leq \sum_{i} R_\iota(M^{a_i}, M^{a_{i-1}}) = \# \text{krit. Punkte von Index} \iota =: c_\iota. \]
+Ferner folgt
+\[ \chi(M) = \sum_{i} \chi(M^{a_i}, M^{a_{i-1}}) = c_0 - c_1 + c_2 - \ldots = \sum_{i} c_i. \]
+Zusammenfassend haben wir nun folgende \df{schwache Morse-Ungleichungen}
+\begin{align*}
+R_\iota (M) &\leq c_\iota\\
+\chi(M) &= c_0 - c_1 + c_2 - \ldots.
+\end{align*}
+
+Definiert man
+\[ S_\iota(X,Y) := R_{j}(X,Y) - R_{\iota-1}(X,Y) + \ldots \pm R_0(X,Y), \]
+so kann man zeigen:
+\Lem{}
+$S_i$ ist subadditiv.
+\begin{Beweis}{}
+Sei eine exakte Sequenz wie folgt gegeben
+\[ A_{i+1} \Pfeil{\psi}A_{i} \Pfeil{\psi_{i}}A_{i} \Pfeil{\psi_{i-1}} \ldots  \Pfeil{\psi_{1}}A_{0} \Pfeil{\psi_{0}} 0.  \]
+Da gilt
+\[ \dim A_i = \text{Rg} \psi + \text{Rg} \psi_i, \]
+folgt
+\[ 0 \leq \text{Rg} \psi = \dim A_i - \text{Rg} \psi_i = \ldots = \dim A_i - \dim A_{i-1} + \ldots \pm \dim A_0.  \]
+Für die Tripel-Sequenz ergibt sich nun eine exakte Sequenz
+\[ \pfeil{\psi = \partial} H_i(Y,Z)
+\pfeil{}
+H_i(X,Z)
+\pfeil{}
+H_i(X,Y)
+\pfeil{\partial}
+\ldots
+\pfeil{}
+0. \]
+Durch obige Beobachtung folgt nun
+\[ 0\leq R_i(Y,Z) - R_i(X,Z) + R_i(X,Y) - R_{i-1} (Y,Z) + \ldots \pm R_0(X,Y) 
+= S_i(Y,Z) - S_i(X,Z) + S_i(X,Z) \]
+\end{Beweis}
+
+
+
+Mit dem Lemma folgt nun
+\[ S_i(M) \leq \sum_i S_i(M^{a_i}, M^{a_{i-1}}) = c_\iota - c_{\iota -1} + \ldots \pm c_0. \]
+Hieraus folgen nun die \df{Starken Morse-Ungleichungen}:
+\[ R_\iota(M) - R_{\iota-1}(M) + \ldots \pm R_0(M) \leq c_\iota - c_{\iota - 1} + \ldots \pm c_0 \]
+für alle $\iota$.
+
+\subsection{Anwendungen}
+Sei $M^2\subset \R^3$ seine glatt eingebettete geschlossene Fläche (daraus folgt, dass $M$ orientierbar ist).
+
+Sei $N_p$ für $p \in M$ ein Normalenfeld auf $M$ mit
+\[ \norm{N_p} = 1. \]
+Wir betrachten die \df{Gauss-Abbildung}
+\begin{align*}
+G : M & \Pfeil{} S^2\\
+p & \longmapsto N_p.
+\end{align*}
+Wir haben einen Abbildungsgrad $\deg G \in \Z$, den wir uns näher anschauen wollen. Sei dazu $N_0 \in S^2$ ein regulärer Wert für $G$, sodass auch $-N_0$ ein regulärer Wert ist (so einen Wert findet man durch den Satz von Sard).
+
+Es gilt nun
+\[ \deg G = \sum_{p \in G\i(N_0)} \e_p \]
+für
+\[ \e_p = \left\lbrace
+\begin{aligned}
+&+1, && \d G \text{ ist orientierungserhaltend},\\
+&-1, && \text{ sonst.}
+\end{aligned}
+\right. \]
+Ferner gilt
+\[ 2 \deg G= \sum_{p \in G\i(N_0)} \e_p + \sum_{p \in G\i(-N_0)} \e_p. \]
+Wir wenden nun das Morse-Lemma\footnote{Wir nehmen hierbei an, dass $f$ eine Morse-Funktion ist. Dies muss im Allgemeinem nicht der Fall sein, allerdings kann man in diesen Fällen durch leichtes Variieren von $f$ eine sehr nahe Morse-Funktion finden.} für $f : M \pfeil{} \R$ mit
+\[f(x) = \shrp{x, N_0} \]
+an.
+Die kritischen Punkte von $f$ sind dann gerade
+\[  C(f) = G\i(\pm N_0).\]
+Ist $p \in C(f)$, so muss $f$ in einer Umgebung von $p$ eine der folgenden Gestalten haben
+\begin{center}
+	\begin{tabular}{c|c|c}
+		$f$ & Index& Orientierung\\\hline
+		$x^2 + y^2$ & 0 & bleibt erhalten\\
+		$-x^2 - y^2$ & 2 & bleibt erhalten\\
+		$x^2 - y^2$ & 1 & wird umgekehrt\\
+		$-x^2 + y^2$ & 1 & wird umgekehrt
+	\end{tabular}
+\end{center}
+Somit gilt
+\[ \sum_{p \in G\i(N_0)} \e_p + \sum_{p \in G\i(-N_0)} \e_p = c_0 - c_1 + c_2 = \chi(M). \]
+Es folgt
+\[ \deg(G) = \frac{1}{2} \chi(M). \]
