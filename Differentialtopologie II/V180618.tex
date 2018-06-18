@@ -1,0 +1,66 @@
+\marginpar{Vorlesung vom 18.06.18}
+%18.te Vorlesung
+
+Sei $\omega \in \Omega(S^2), \int_{S^2}\omega \neq 0$. Dann gilt
+\[ \deg G = \frac{\int_M G^* \omega}{\int_{S^2} \omega }.  \]
+Es bezeichne $g$ die durch die euklidische Metrik induzierte Metrik auf $S^2 \subset \R^3$. Sei $\omega$ die Riemannsche Volumenform auf $S^2 \subset \R^3$. Dann folgt
+\[ \int_{S^2}\omega = 4\pi \]
+und somit
+\[ 4\pi \deg G = \int_M G^* \omega. \]
+Bezeichnet $\kappa$ die Gauß-Krümmung auf $M$, so gilt für $p \in M$
+\[ \kappa(p) = \lim\limits_{\theta \pfeil{} p} \frac{\vol (G(\theta))}{\vol(\theta )}
+= \lim\limits_{\theta \pfeil{} p} \frac{\int_{G(\theta)}\omega}{\int_\theta\d A} = \lim\limits_{\theta \pfeil{} p} \frac{\int_{M}G^*\omega}{\int_\theta\d A}  \]
+wobei $\d A$ die Riemannsche Volumenform auf $M$ ist. Daraus folgt
+\[ \kappa(p) \d A = G^* \omega. \]
+Und ferner
+\[ 2\pi \chi(M) = 2\pi (2 \deg G ) = 4\pi \deg G = \int_M \kappa \d A. \]
+Wir haben nun folgenden Satz gezeigt.
+\Satz{Gauss-Bonnet}
+\[ \int_M \kappa \d A = 2\pi \chi(M). \]
+\Bem{}
+Man kann Gauss-Bonnet auch alternativ unabhängig von der Einbettung beweisen. Sei dazu $(M^2, g)$ eine (abstrakte) Riemannsche Mannigfaltigkeit der Dimension 2, geschlossen und orientiert.
+
+Zunächst nehmen wir an, dass $M$ gerade $S^2$ ist. Für ein geodätisches Dreieck $\Delta$ mit Innenwinkeln $\alpha, \beta, \gamma$ und einer Fläche $A$ auf $S^2$ kann man folgendes nachweisen
+\[ A= \alpha + \beta + \gamma - \pi. \]
+Da $\kappa = 1$ konstant auf $S^2$ ist, folgt
+\[ \int_{\Delta}\kappa \d A = \alpha + \beta + \gamma - \pi.  \]
+Dies gilt auch für beliebige $M$.
+
+
+Ein allgemeines $M$ kann man nun durch geodätische Dreiecke triangulieren. Bezeichnet $f$ die Anzahl der Dreiecke, $e$ die Anzahl der Kanten und $v$ die Anzahl der Eckpunkte, so gilt
+\begin{align*}
+\int_M \kappa \d A &= \sum_{\Delta} \int_{\Delta}\kappa \d A\\
+&= \sum_{\Delta} (\alpha_\Delta + \beta_\Delta + \gamma_\Delta - \pi)\\
+&= \sum_{\Delta} (\alpha_\Delta + \beta_\Delta + \gamma_\Delta) - \pi f\\
+&= 2\pi v- \pi f = 2\pi (v-e+f) = 2\pi \chi(M).
+\end{align*}
+
+\Bem{Folgerung}
+\begin{itemize}
+	\item Wenn $\kappa>0$ überall auf $M$ gilt, dann folgt aus der gezeigten Gleichung
+	\[ 2-2g = \chi(M) > 0  \]
+	Daraus folgt $g = 0$, ergo ist $M$ homöomorph zu $S^2$.
+	\item Ist $\kappa = 0$ überall auf $M$, so muss das Geschlecht von $M$ Eins sein. In diesem Fall ist $M$ sogar diffeomorph zu $T^2$.
+	\item Wenn $\kappa < 0$ überall auf $M$ ist, so folgt
+	\[ g \geq 2. \]
+	Daraus folgt, dass $M$ weder homöomorph zu $S^2$ noch $T^2$ ist.
+\end{itemize}
+
+\paragraph{Frage}
+Gibt es auf Flächen mit Geschlecht $g\geq 2$ eine Metrik mit $\kappa<0$ überall.
+
+\Def{I. Konstruktion}
+Wir definieren die \df{Hyperbolische Ebene} durch den Raum
+\[ \H = \set{z \in \C}{\Im z > 0} \]
+und der Metrik
+\[ \frac{1}{y^2(\d x^2 + \d y^2)}. \]
+$\H$ ist dann vollständig als Riemannsche Mannigfaltigkeit und hat eine konstante Schnittkrümmung von $-1$.
+
+Für hyperbolische Dreiecke gilt
+\[ \alpha + \beta + \gamma \leq \pi \]
+und
+\[ \vol(\Delta) = \pi - (\alpha + \beta + \gamma). \]
+D.\,h., kleine hyperbolische Dreiecke sind nahezu hyperbolisch. Wir betrachten ein gleichmäßiges $n$-Eck. Dann existiert ein $r> 0$, sodass jeder Innenwinkel die Größe $\frac{1}{n}2\pi$ hat. In diesem Fall kann gegenüberliegende Seiten isometrisch verkleben und erhält so eine geschlossene Fläche mit konstanter Schnittkrümmung $-1$.
+
+\Bem{}
+Die Polygone können verwendet werden, um $\H$ zu partitionieren und eine universelle Überlagerung zu erhalten.
