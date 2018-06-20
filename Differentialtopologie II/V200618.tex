@@ -1,0 +1,199 @@
+\marginpar{Vorlesung vom 20.06.18}
+%19.te Vorlesung
+
+\Def{II. Konstruktion}
+Sei $z$ eine komplexe Variable. Wir betrachten die Funktion
+\begin{align*}
+f(z) := \sqrt{(z-1)(z-2)(z-3) \cdots (z- (2g+2))}.
+\end{align*}
+Wir betrachten zwei Kopien $C_1, C_2$ von $\C\cup \{\infty\} \isom{} S^2$ und markieren die Stellen 1, 2, 3, \ldots, $2g+2$ auf der reellen Achse. Wir reißen das Intervall $[1,2]$ auf in zwei Seiten $a$ und $a'$ und verkleben $a$ von $C_1$ mit $a'$ von $C_2$ und $a'$ von $C_1$ mit $a$ von $C_2$. Analog verfahren wir mit $[3,4], [5,6], \ldots, [2g+1, 2g+2]$. $f$ wird dann zu einer wohldefinierten stetigen Funktion
+\[ f : \C \Pfeil{} C_1 \cup C_2 / \sim. \]
+
+Die Riemannsche Fläche von $f$ ist entspricht dann zwei Sphären, in die man $g+1$ Löcher jeweils reingerissen hat und die Sphären an den entsprechenden Löchern verklebt hat. Die Naben der sich so ergebenden verbindenden Zylinder sind $a$ und $a'$. Wir nennen diese Mannigfaltigkeit $\Sigma$.
+
+Sei $\pi \colon \widetilde{\Sigma} \pfeil{} \Sigma$ die universelle Überlagerung. $\widetilde{\Sigma}$ trägt eine komplexe Struktur, weswegen der Uniformisierungssatz liefert, dass $\widetilde{\Sigma}$ entweder $\H$ oder $\C$ ist.
+
+Angenommen $\widetilde{\Sigma}$ wäre $\C$. Die analytischen Automorphismen von $\C$ sind von der Form
+\[ z \longmapsto a z +b. \]
+Bezeichnet $\pi_1 \Sigma$ die Fundamentalgruppe von $\Sigma$, so wirkt sie eigentlich diskontinuierlich und analytisch auf $\widetilde{\Sigma}$. Die Elemente von $\pi_1\Sigma$ haben keine Fixpunkte, da $\pi_1 \Sigma$ die Decktransformationsgruppe der Überlagerung ist. Daraus folgt für alle $z$ und eine Wirkung
+\begin{align*}
+az+b &\neq z\\
+(a-1)z+b &\neq 0
+\end{align*}
+Daraus folgt $a = 1$. Also haben die Elemente von $\pi_1 \Sigma$ die Gestalt $z\mapsto z + b$. Daraus würde folgen, dass $\pi_1 \Sigma$ abelsch wäre. Dies widerspricht aber der Tatsache, dass $\pi_1 \Sigma$ nicht abelsch ist, da $\Sigma$ ein Geschlecht größer gleich 2 hat. Dies widerspricht unserer Annahme, ergo gilt
+\[ \widetilde{\Sigma} =  \H. \]
+
+Es ergibt sich ergo eine analytische eigentlich diskontinuierliche Wirkung
+\[ \pi_1 \Sigma \curvearrowright \H. \]
+Die analytischen Transformationen von $\H$ sind \df{Möbiustransformationen}, d.\,h., sie sind von der Gestalt
+\[ z \longmapsto \frac{az+b}{cz + d} \]
+mit
+\[ ad - bc > 0.\]
+Diese Transformationen sind aber Isometrien für die Metrik $\frac{1}{y^2}(\d x^2 + \d y^2)$ auf $\H$.
+
+Daraus folgt, dass eine eindeutig bestimmte Metrik $\shrp{\cdot, \cdot}$ auf $\Sigma$ existiert, sodass gilt
+\[ \pi^*\shrp{\_,\_} = \frac{1}{y^2} (\d x^2 + \d y^2). \]
+$\pi$ wird dadurch zu einer Isometrie, ergo hat $\Sigma$ ebenfalls eine konstante Schnittkrümmung von $-1$ mit der gegebenen Metrik.
+
+
+\section{Rahmenfelder (E. Carton)}
+Sei $M$ eine Riemannsche Mannigfaltigkeit, $U \subset M$ offen.
+\Def{}
+Ein \df{Rahmenfeld} auf $U$ ist ein Tupel
+\[ \{e_1, \ldots, e_n\} \]
+für $n = \dim M$, wobei $e_i\in \Gamma(\T U)$, sodass
+\[ \{e_1(p), \ldots, e_n(p)\} \]
+eine ONB für $T_pM$ ist für alle $p \in U$.
+
+\Bsp{}
+$M = S^2$ hat kein globales Rahmenfeld.
+\begin{itemize}
+	\item \textbf{Duale 1-Formen:} $\theta^1, \ldots, \theta^n \in \Omega^1(U),$ mit
+	\[ \theta^i(e_j) = \delta_{i,j}. \]
+	Man setzt nun
+	\[ \theta := 
+	\left(
+	\begin{matrix}
+	\theta^1\\
+	\vdots\\
+	\theta^n
+	\end{matrix}
+	\right).
+	 \]
+	 \item \textbf{Zusammenhangs-1-Formen:} Es existiert genau eine 1-Form $\omega^j_i$ auf $U$, sodass gilt:
+	 \begin{enumerate}[(1)]
+	 	\item $\omega^j_i = -\omega^i_j$,
+	 	\item \df{die Erste Strukturgleichung:}
+	 	\[\d \theta = - \omega \wedge \theta\] 
+	 \end{enumerate}
+ 	\[ \omega^i_j (v) = \shrp{\nabla_v e_i, e_j}. \]
+ 	 \item \textbf{Krümmungs-2-Formen:}
+ 	 \[ \Omega := \d \omega + \omega \wedge \omega \]
+ 	 Dies Gleichung nennt man die \df{Zweite Strukturgleichung}.\\
+ 	 Es gilt dann
+ 	 \[ \Omega^i_j(v,w) = \shrp{ R(v,w)e_i, e_j}. \]
+\end{itemize}
+
+\Bsp{}
+\begin{itemize}
+	\item Auf $M = \R^n$ mit der euklidischen Metrik:
+	\begin{align*}
+	&e_i = \pf{}{x_i}\\
+	\Impl{} & \theta^i = \d x_i\\
+	\Impl{} & \d \theta = 0 = -\omega \wedge \theta\\
+	\Impl{} & \omega = 0\\
+	\Impl{} & \Omega= 0
+	\end{align*}
+	\item Auf einer Fläche $M^2$:
+	\begin{align*}
+	\omega = \left(
+	\begin{matrix}
+	0 & \omega^1_2\\
+	- \omega^1_2 & 0
+	\end{matrix}
+	\right)
+	\end{align*}
+	und
+	\begin{align*}
+	\Omega &= \left(
+	\begin{matrix}
+	0 & \d \omega^1_2\\
+	- \d \omega^1_2 & 0
+	\end{matrix}
+	\right)
+	+
+	\left(
+	\begin{matrix}
+	0 & \d \omega^1_2\\
+	- \d \omega^1_2 & 0
+	\end{matrix}
+	\right)
+	\wedge
+	\left(
+	\begin{matrix}
+	0 & \d \omega^1_2\\
+	- \d \omega^1_2 & 0
+	\end{matrix}
+	\right)\\
+	&= \left(
+	\begin{matrix}
+	0 & \d \omega^1_2\\
+	- \d \omega^1_2 & 0
+	\end{matrix}
+	\right)
+	+
+	\left(
+	\begin{matrix}
+	- \omega^1_2\wedge \omega^1_2 & 0\\
+	0 & -\omega^1_2 \wedge \omega^1_2
+	\end{matrix}
+	\right) = 
+		\left(
+	\begin{matrix}
+	- \omega^1_2\wedge \omega^1_2 & \d \omega_2^1\\
+	-\d \omega_2^1 & -\omega^1_2 \wedge \omega^1_2
+	\end{matrix}
+	\right) 
+	\end{align*}
+	Daraus folgt
+	\[ \Omega^1_2 = \d \omega_2^1 \]
+	und
+	\[ \Omega_2^1(e_1, e_2) = \shrp{R(e_1,e_2)e_1, e_2} = \kappa. \]
+	Daraus folgt
+	\[ \kappa = \d \omega^1_2. \]
+\item \textbf{Basiswechsel:} Seien $\{ e_1, e_2 \}$, $\{e_1', e_2'\}$ zwei Rahmenfelder.
+Dann gilt
+\[ {\omega'}_2^1 = \omega^1_2 + \d \alpha, \]
+wobei $\alpha$ $\{e_1, e_2\}$ zu $e_1', e_2'$ transformiert.
+\end{itemize}
+
+
+\subsection{Anwendung:}
+Sei $M$ eine geschlossene, orientierte Fläche und $X$ ein Vektorfeld auf $M$ mit endlich vielen Singularitäten $p_1,\ldots, p_k \in M$.
+
+Sei $\e > 0$. Wir betrachten um jedes $p_i$ eine Kreisscheiben $D_i(\e)$ mit Radius $\e$. Wir entfernen ihr Inneres und erhalten eine Mannigfaltigkeit mit Rand. Wir setzen
+\[ M_\e := M - \bigcup_i D^o_i(\e). \]
+Wir haben dann folgendes Rahmenfeld auf $M_\e$
+\[ \{ e_i := \frac{X}{\norm{X}}, e_2 \}. \]
+
+Es gilt
+\[ \int_{M_\e} \kappa \d A = \int_{M_\e} \d \omega^1_2 \gl{\text{Stokes}} \int_{\partial M_\e} \omega^1_2
+= \sum_i \int_{\partial D_i(\e)} \omega_2' = \sum_i \int_{\partial D_i(\e)} ({\omega'}_2^1 + \d \alpha_i) 
+  \]
+\[ = \sum_{i} \int_{\partial D_i(\e)} (\omega')^1_2 +\sum_{i} \int_{\partial D_i(\e)} \d \alpha_i \]
+Mit
+\[ \int_{\partial D_i(\e)} (\omega')^1_2 \gl{\text{Stokes}} \int_{D_i(\e)} \d {\omega'}^1_2 \]
+und
+\[ \int_{\partial D_i(\e)} \d \alpha_i = \text{Index}_{p_i}X \]
+folgt
+\[ \int_{M_\e} \kappa \d A \Pfeil{\e \pfeil{} 0} \sum_i \text{Index}_{p_i}X  = \int_{M} \kappa \d A \]
+Auf $D_i(\e)$ betrachten wir dabei ein Rahmenfeld $\{ e_1', e_2' \}$.
+
+Es folgt nun der \df{Poincaresche Indexsatz}
+\[ 2\pi \chi(M) = \int_M \kappa \d A = \sum_i \text{Index}_{p_i}(X). \]
+
+
+\chapter{Faserbündel}
+\paragraph{Prototyp:} Lokal sieht ein Faserbündel $E \pfeil{} B$ aus wie $E = B \times F$.
+
+\Def{}
+Ein \df{Faserbündel} mit \df{Strukturgruppe} $G$ und Faser $F$ ist ein Quadrupel $(E,p,B, G)$ mit folgenden Eigenschaften:
+\begin{enumerate}[1)]
+	\item $E,B,F$ sind topologische Räume.
+	\item $G$ ist eine topologische Gruppe, die effektiv auf $F$ wirkt\footnote{D.\,h., $G \pfeil{} \text{Homöo}(F)$ ist injektiv.}.
+	\item $p: E \pfeil{} B$ ist eine stetige Abbildung.
+	\item Es gilt \df{lokale Trivialität}:\\
+	$B$ hat eine Überdeckung durch offene Mengen
+	\[ B = \bigcup_\alpha U_\alpha, \]
+	sodass für jedes $\alpha$ folgendes kommutierende Diagramm vorliegt:
+	\begin{center}
+		\begin{tikzcd}
+		p\i(U_\alpha) \arrow[rd, "p|"] \arrow[rr, "\exists \phi_\alpha~~\text{homeom.}"] & & U_\alpha \times F \arrow[dl, "pr_1"] \\
+		& U_\alpha&
+		\end{tikzcd}
+	\end{center}
+Für $x \in U_\alpha \cap U_\beta$ soll der Homöomorphismus
+\[ \phi_\beta \circ \phi_\alpha\i |_{\{x\}} : \{x\} \times F \Pfeil{}  \{x\} \times F   \]
+in $G$ liegen.
+	
+\end{enumerate}
