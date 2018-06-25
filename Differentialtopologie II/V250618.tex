@@ -1,0 +1,136 @@
+\marginpar{Vorlesung vom 25.06.18}
+%20.te Vorlesung
+
+%\begin{center}
+%\begin{tikzcd}
+%	p\i(U_\alpha) \arrow[rd, "p|"] \arrow[rr, "\exists \phi_\alpha~~\text{homeom.}"] & & U_\alpha \times F \arrow[dl, "pr_1"] \\
+%	& U_\alpha&
+%\end{tikzcd}
+%\end{center}
+
+\section{Der Satz von Leray-Hirsch}
+
+\Bsp{}
+Sei $p:E \pfeil{} B$ eine Projektion, $F$ eine Faser, auf die eine topologische Gruppe $G$ von links effektiv wirkt.
+\begin{enumerate}[(1)]
+	\item Vektorraumbündel sind Faserbündel $\R^n$ bzw. $\C^n$ mit Strukturgruppe $\mathrm{GL}_n$.
+	\item Sei $F$ ein topologischer Raum und $\mu : F \pfeil{} F$ ein Homöomorphismus. Es bezeichne $I$ das Einheitsintervall.
+	
+	Betrachte das Faserbündel
+	\[ p : E:= (I \times F)/((0,x) \sim (1, \mu(x))) \Pfeil{(x,y) \mapsto x} S^1. \]
+	$p$ nennt man auch den \df{Abbildungstorus} zu $\mu$.
+	\item Sei $ F = S^1 \subset \C$, $\mu (z) = \overline{z}$. Durch obiger Konstruktion ist $E$ die Kleinsche Flasche.
+	\item Betrachte
+	\[ S^{2n+1} \subset \R^{2n+2} = \C^{n+1}. \]
+	Wir betrachten den komplexen projektiven Raum
+	\begin{align*}
+	\C P^n :=&	(\C^{n+1} - \{0\}) / (z\sim \lambda z,\lambda \in \C^\times = \C - \{0\})\\
+	=& S^{2n+1} / (z \sim \lambda z,
+	\bet{\lambda} = 1, \lambda \in \C
+	 ) 
+	\end{align*}
+	Hierdurch ergibt sich ein Faserbündel $S^{2n+1} \Pfeil{} \C P^n$ mit Faser $S^1$. Diese Faserung nennt man auch die \df{Hopf-Faserung}.
+	
+	
+ 	Für $n = 1$ ergibt sich folgendes Diagramm.
+ 	\begin{center}
+ 	\begin{tikzcd}
+ 	S^1  \arrow[r]& S^3 \arrow[d, "p"] \\
+ 	& \C P^1 \arrow[r, "\isom{}"] & S^2
+ 	\end{tikzcd}
+ 	\end{center}
+\end{enumerate}
+
+\paragraph{Frage:} Inwieweit lässt sich der Künneth-Satz für die deRham-Kohomologie verallgemeinern auf Faserprodukte?
+
+
+Seien $E \isom{} B \times F$ alles Mannigfaltigkeiten. Wir erhalten dann eine Abbildung
+\begin{align*}
+H^p(B) \otimes H^q(F) &\Pfeil{} H^{p+q}(E)\\
+[\omega] \otimes [\eta] & \longmapsto [\pi_1^*\omega \wedge \pi_2^*\eta].
+\end{align*}
+Wir fassen diese Abbildungen zu einem Isomorphismus zusammen
+\begin{align*}
+\bigotimes_{p+q = k}H^p(B) \otimes H^q(F) &\Pfeil{} H^{k}(E).
+\end{align*}
+
+%\Satz{Leray-Hirsch}
+Sei $F \inj{j} E \pfeil{p} B$ ein Faserbündel.
+\begin{center}
+	\begin{tikzcd}
+	H^*(F) & H^*(E) \arrow[l, "j^*"]\\
+	& H^*(B) \arrow[u, "p^*"]
+	\end{tikzcd}
+\end{center}
+$H^*(E)$ ist ein $H^*(B)$-Modul durch
+\[ \alpha \cdot x := p^*(\alpha) \wedge x \]
+für $\alpha \in H^*(B), x \in H^*(E)$.
+
+\Def{}
+Das Faserbündel $E \pfeil{p} B$ heißt \df{kohomologisch gespalten}, wenn es eine additive Abbildung
+\[ \beta : H^*(F) \Pfeil{} H^*(E) \]
+existiert mit
+\[ j^* \beta = \id{H^*(F)}. \]
+\paragraph{Bemerkung:} $\beta$ muss nur linear sein, aber kein Ring-Homomorphismus.
+\paragraph{Bemerkung:} Da wir mit reellen Koeffizienten arbeiten, genügt es für die Existenz einer Spaltung $\beta$ anzunehmen, dass $j^*$ surjektiv ist.
+\paragraph{Bemerkung:} Wenn $p: E \pfeil{} B$ kohomologisch gespalten ist mit Spaltung $\beta$, dann ist $j^*$ surektiv und $\beta$ injektiv.
+
+\Def{}
+Sei nun $p : E \pfeil{} B$ ein kohomologisch gespaltenes Bündel. Wir definieren dann
+\begin{align*}
+\phi : H^*(B) \otimes H^*(F) &\Pfeil{} H^*(E)\\
+\alpha \otimes y & \longmapsto p^*(\alpha) \wedge \beta(y)
+\end{align*}
+\paragraph{Bemerkung:}
+$\phi$ ist linear, aber im Allgemeinem \textbf{nicht} multiplikativ.
+
+\Satz{}
+Ist $E \pfeil{p} B$ ein kohomologisch gespaltenes Faserbündel, dann ist $\Phi$ ein Isomorphismus.
+\begin{Beweis}{}
+Wie beim Satz von Künneth über Mayer-Vietoris-Sequenzen und dem Fünfer-Lemma.
+\end{Beweis}
+
+
+\Bsp{}
+\begin{itemize}
+	\item Hopf-Faserung $S^1 \pfeil{} S^3 \pfeil{p} S^2$. Es gilt
+	\[ H^*(S^3) \not\isom{} H^*(S^2) \otimes H^*(S^1). \]
+	Insoweit ist die Forderung der kohomologischen Spaltung zwingend notwendig. Tatsächlich ist $p : S^3 \pfeil{} S^2$ nicht kohomologisch gespalten, denn
+	\[ j^* : H^1(S^3) = 0 \Pfeil{} H^1(S^1) \isom{} \R \]
+	ist trivial auf Grad 1.
+	\item Sei $E \pfeil{} B$ ein Vektorraumbündel mit Faser $\R^n$ bzw. $\C^n$. Bezeichnet $\P$ die Projektivizierung eines Raumes, so kann man sich die projektive Versionen der Fasern anschauen und diese zusammensetzen zu einem Faserbündel
+	\[ \P (\R^n) \Pfeil{} \P(E) \Pfeil{} B \]
+	bzw.
+	\[ \P (\C^n) \Pfeil{} \P(E) \Pfeil{} B. \]
+	Dies nennt man die \df{Projektivisierung} von E.
+\end{itemize}
+
+\paragraph{Fakt:}
+Projektivisierungen von Vektorraumbündeln sind immer kohomologisch gespalten.
+
+\chapter{Charakteristische Klassen}
+Sei $\R^2 \pfeil{} E \pfeil{} M = B$ ein orientiertes Vektorraumbündel über einer glatten Mannigfaltigkeit $M$.
+
+Sei $\sigma \in \Omega^1(S^1)$ eine Form, die den Erzeuger $[\sigma] \in H^1(S^1)$ repräsentiert. Z.Bsp. $\sigma = \d \theta$, wobei $\theta = \tan(x,y) : S^1 \pfeil{} \R$ den Winkel auf $S^1$ darstellt.
+
+Sei $\rho : \R^2 \setminus \{0\} \pfeil{} S^1$ die übliche Retraktion. Setze $\Psi := \rho^*\sigma \in \Omega^1(\R^2 - \{0\})$.
+
+Se ferner $f : \R \pfeil{} [0,1] $ glatt und so, dass $f'$ eine Bump-Function ist.
+
+$f\Psi$ liegt in $\Omega^1(\R^2 - 0)$ und es gilt
+\[ \d(f\Psi) = \d f \wedge \Psi. \]
+$\d(f \Psi)$ ist eine geschlossene Form. Betrachte
+\[ [\d (f\Psi) ] \in H_c^2(\R^2 - 0) \isom{} \R. \]
+Da $\int \d f \wedge \Psi$ nicht Null ist, ist $[\d (f\Psi) ]$ ein Erzeuger von $H_c^2(\R^2 - 0) $.\\
+$[\d (f\Psi) ]$  nennt man auch die \df{Thom-Klasse} für das Bündel $\R^2 \pfeil{} \mathrm{Pkt.}$.
+
+
+Wähle eine Metrik auf $E$. Diese induziert einen Radius $r = \norm{v}$ für $v \in E$.\\
+Wähle eine offene Überdeckung $\{U_\alpha\}_\alpha$ von $M$, sodass 
+\begin{center}
+	\begin{tikzcd}
+p\i (U_\alpha) \arrow[rd, "p|"] \arrow[rr, "\isom{}"] & & U_\alpha \times \R^2 \arrow[ld, "\mathrm{pr}_1"]\\
+& U_\alpha & 	
+	\end{tikzcd}
+\end{center}
+Wähle Rahmenfelder auf $p\i(U_\alpha)$ für alle $\alpha$. Diese ergeben für $\alpha$ Polarkoordinaten  $(r_\alpha, \theta_\alpha)$ gegen den Uhrzeigersinn. Dies ist möglich, da $E$ orientiert ist.
