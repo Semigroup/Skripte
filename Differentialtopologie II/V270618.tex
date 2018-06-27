@@ -1,0 +1,127 @@
+\marginpar{Vorlesung vom 27.06.18}
+%21.te Vorlesung
+\begin{itemize}
+	\item Es gilt $r_\alpha = r_\beta$ auf
+	\[ U_{\alpha \beta} := U_\alpha \cap U_\beta. \]
+	\item Setze
+	\[ \phi_{\alpha \beta} := \theta_\alpha - \theta_\beta. \]
+	\item Auf $U_\alpha \cap U_\beta \cap U_\gamma$ gilt im Allgemeinem
+	\[  \phi_{\alpha \beta} + \phi_{\beta \gamma} - \phi_{\alpha \gamma} \neq 0, \]
+	sondern es gilt lediglich
+	\[ \phi_{\alpha \beta} + \phi_{\beta \gamma} - \phi_{\alpha \gamma} \in 2\pi \Z. \]
+	\item Sei $\{g_\alpha\}_\alpha$ eine Partition der Eins bzgl. $\{U_\alpha\}_\alpha$. Setze
+	\[ \xi_\alpha := \frac{1}{2\pi} \sum_\gamma g_\gamma \d \phi_{\gamma\alpha} \in \Omega^1(U_\alpha). \]
+	Es gilt
+	\[ \xi_\beta - \xi_\alpha = \frac{1}{2\pi} \sum_\gamma g_\gamma (\d \phi_{\gamma\alpha} - \d \phi_{\gamma\beta}). \]
+	Nun gilt aber auch
+	\[ \d \phi_{\alpha \beta} = \d (2\pi n) + \d \phi_{\alpha \beta} = \d \phi_{\gamma\beta} - \d \phi_{\gamma\alpha} \]
+	für ein $n \in \Z$. Somit gilt
+	\[ \xi_\beta - \xi_\alpha = \frac{1}{2\pi} \sum_\gamma g_\gamma \d \phi_{\alpha\beta} = \frac{\d \phi_{\alpha\beta}}{2\pi} \sum_\gamma g_\gamma  = \frac{\d \phi_{\alpha\beta}}{2\pi} . \]
+	Insbesondere folgt nun
+	\[ \d\xi_\beta - \d \xi_\alpha = 0. \]
+	D.\,h., die $\{ \d \xi_\alpha \}$ definieren eine globale 2-Form auf $M$. Diese 2-Form nennen wir $\eu \in \Omega^2(M)$. $\eu$ ist geschlossen, denn
+	\[ \d \eu_{|U_\alpha} = \d\d \xi_\alpha = 0. \]
+	Daraus folgt, dass $\eu$ eine Kohomologieklasse
+	\[ \eu(E) := [\eu] \in H^2(M) .\]
+	$\eu(E)$ nennt man die \df{Eulerklasse} von $E$ (unabhängig von Wahlen).
+\end{itemize}
+
+\Bem{}
+Es gibt im Allgemeinem keine globale 1-Form $\xi$ auf $M$, sodass $\d \xi = \eu$. Die $\{\xi_\alpha\}_{\alpha}$ lassen sich im Allgemeinem nicht verkleben zu einer globalen Form.
+
+\subsection{Eigenschaften der Eulerklasse}
+\begin{itemize}
+	\item Eulerklasse des trivialen Bündels:
+	\[ E = M\times \R^2 \Impl{} \phi_{\alpha\beta} = 0 \Impl{} \xi_\alpha = 0 \Impl{} \eu = 0. \]
+	Daraus folgt
+	\[ \eu(E) = 0 \in H^2(M). \]
+	\item \textbf{Formal mit Übergangsfunktionen:}
+	\[ g_{\alpha \beta} :U_{\alpha \beta} \Pfeil{} \mathrm{GL}(2, \R) ~~\text{a priori.} \]
+	Die Wahl der Riemannschen Metrik und der Orientierung des Bündels führen zu einer Reduktion der Strukturgruppe auf
+	\[ g_{\alpha \beta} :U_{\alpha \beta} \Pfeil{} \mathrm{SO}(2) = \set{
+\left(\begin{matrix}
+\cos \theta & -\sin \theta\\
+\sin \theta & \cos \theta
+\end{matrix}\right)	= e^{i\theta}
+}{\theta \in [0,2\pi]} \isom{} S^1. \]
+Es gilt
+\[ \phi_{\alpha \beta} = \theta_\beta - \theta_\alpha = \frac{1}{i} \log e^{i(\theta_\beta - \theta_\alpha)} = \frac{1}{i} \log g_{\alpha \beta}. \]
+Und somit
+\begin{align*}
+\xi_\alpha &= \frac{1}{2\pi} \sum_\gamma g_\gamma \d (\frac{1}{i} \log g_{\gamma \alpha})\\
+ &= \frac{1}{i2\pi} \sum_\gamma g_\gamma \d \log g_{\gamma \alpha}.\\
+\end{align*}
+Daraus folgt diese Darstellung der Eulerform durch Übergangsfunktionen des Bündels
+\[ \eu_{|U_\alpha} = \d \xi_\alpha =
+\frac{1}{i2\pi} \sum_\gamma \d (g_\gamma \d \log  g_{\gamma \alpha}).
+ \]
+	\item \textbf{Pullbacks von Vektorraumbündeln:}\\
+	\begin{itemize}
+		\item $X,Y$ topologische Räume.
+		\item Sei $\R^n \pfeil{} E \pfeil{p} Y$ ein Vektorraumbündel über $Y$.
+		\begin{center}
+			\begin{tikzcd}
+			f^*E \arrow[r] \arrow[d, "q"] & E \arrow[d, "p"]\\
+			X \arrow[r, "f~ \text{stetig}"] & Y
+			\end{tikzcd}
+		\end{center}
+	Mit
+	\[ f^*E = \set{(x,v)}{f(x) = p(v)} \subset X \times E \]
+	ist $q$ die Projektion auf $X$.
+	\end{itemize}
+\end{itemize}
+\Bsp{}
+\begin{enumerate}[1)]
+	\item Ist $Y$ ein Punkt und $f : X \pfeil{} \text{Pkt.}$ mit dem Bündel $E = \R^n \pfeil{} \text{Pkt.}$, so ist $f^* E = X \times \R^n$ das triviale Vektorbündel.
+	\item Ist $Y$ allgemein und $E$ trivial, so ist auch $f^* E$ trivial.
+	\item Ist $f$ eine Inklusion, so ist $f^*E$ die Einschränkung von $E$ auf $X \subset Y$. 
+\end{enumerate}
+
+\begin{itemize}
+	\item Sei $U_\alpha$ eine offene Überdeckung von $Y$, sodass $p\i(U_\alpha) = U_\alpha \times \R^n$ jeweils trivial ist. Setze
+	\[ V_\alpha := f\i(U_\alpha) \subset_{\text{offen}} X. \]
+	Dann ist
+	\[f^*E|_{V_\alpha}\isom{} f^*(U_\alpha \times \R^n) = V_\alpha \times \R^n\]
+	ebenfalls trivial.
+	Die Übergangsfunktionen von $f^*E \pfeil{} X$ sind dann
+	\begin{center}
+		\begin{tikzcd}
+		V_{\alpha \beta} = V_\alpha \cap V_\beta \arrow[r, "f"] \arrow[rd, "g_{\alpha \beta}\circ f"] & U_{\alpha \beta}\arrow[d, "g_{\alpha \beta}\circ f"]\\
+		& \text{GL}(n,\R)
+		\end{tikzcd}
+	\end{center}
+$g_{\alpha \beta}\circ f$ ist dann die Übergangsfunktion für $f^*E \Pfeil{} X$.
+\end{itemize}
+
+\subsection{Eulerklasse eines Pullbacks}
+Sei $f : M \pfeil{} N$ eine glatte Abbildung von Mannigfaltigkeiten. $\R^2 \pfeil{} E \pfeil{} N$ sei eine Vektorraumbündel. $f^*E \pfeil{} M$  bezeichne den Pullback von $E$. Es gilt
+\begin{align*}
+\eu(f^*E) 
+= &
+\frac{1}{2\pi i}
+\sum_\gamma \d (g_\alpha \circ f \cdot \d \log (g_{\gamma\alpha} \circ f))\\
+= & \frac{1}{2\pi i}
+\sum_\gamma f^*\d (g_\alpha \cdot \d \log (g_{\gamma\alpha} ))\\
+= & f^*\eu (E)
+\end{align*}
+Wir haben also gezeigt
+\[ \eu (f^* E) = f^*\eu(E) \in H^2(M), \]
+wobei $f^*\colon H^2(N) \pfeil{} H^2 M$.
+
+
+\section{Chernklassen}
+Betachte ein Bündel $\C^n \pfeil{} E \pfeil{} B$. Die Strukturgruppe ist $\mathrm{GL}(n,\C)$.
+
+Sei $V$ ein Vektorraum über $\C$. Durch Vergessen der komplexen Struktur erhalten wir den unterliegenden reellen Vektorraum $V_\R$. Es gilt
+\[ \dim_\C V = n  \Impl{} \dim_\R V_\R = 2n. \]
+Führt man dies faserweise durch, so erhält man ein unterliegendes reelles Vektorraumbündel $\R^{2n} \pfeil{} E_\R \pfeil{} B$.
+
+$E_\R$ ist kanonisch orientiert, denn sei $\{v_1, \ldots, v_n\}$ eine Basis von $V$ als komplexer Vektorraum, dann ist $\{v_1, iv_1, \ldots, v_n, iv_n\}$ eine Basis für den unterliegenden reellen Vektorraum. Diese Basis definiert die Orientierung von $V_\R$. Da $\mathrm{GL}(n,\C)$ im Gegensatz zu $\mathrm{GL}(n,\R)$ zusammenhängend ist, sind alle Basen für $V$ äquivalent.
+
+Ein $\C^1$-Bündel heißt auch \df{Geradenbündel}.
+
+Sei $E \pfeil{} M$ ein komplexes Geradenbündel. Dann hat $E$ ein unterliegendes reelles Vektorraumbündel $E_\R$ mit Faser $\R^2$ und dieses Bündel ist kanonisch orientiert.
+
+Die Eulerklasse von $E_\R$ ist daher wohldefiniert und wir setzen
+\[ c_1(E) := \eu (E_\R) \in H^2(M). \]
+$c_1$ nennt man die erste \df{Chernklasse} von $E$.
