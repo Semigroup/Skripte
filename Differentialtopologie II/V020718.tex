@@ -1,0 +1,164 @@
+\marginpar{Vorlesung vom 02.07.18}
+%22.te Vorlesung
+
+\section{Die Thom-Klasse}
+\Def{}
+Sei $\R^2 \pfeil{} E \pfeil{\pi} M$ ein orientiertes Vektorraumbündel über einer kompakten Mannigfaltigkeit $M$. Wir erinnern uns daran, dass für die Karten aus dem vorhergehenden Abschnitt gilt
+\[ \d \theta_\beta - \d \theta_\alpha = \d \phi_{\alpha\beta} = 2\pi (\xi_\beta - \xi_\alpha) \]
+für
+\[ \xi_\alpha = \frac{1}{2 \pi} \sum_\gamma g_\gamma \d \phi_{\gamma\alpha}. \]
+Ferner gilt
+\[ \d \theta_\beta - 2\pi \xi_\beta = \d \theta_\alpha - 2\pi \xi_\alpha \]
+und somit
+\[ \frac{\d \theta_\beta}{2 \pi} - \xi_\beta = \frac{\d \theta_\alpha}{2\pi} - \xi_\alpha \]
+auf $U_{\alpha \beta} = U_\alpha \cap U_\beta$.
+
+Die $\{\frac{\d \theta_\alpha}{2 \pi} - \xi_\alpha\}_\alpha$ definieren eine globale 1-Form $\Psi \in \Omega^1(E_0)$, die sogenannte \df{globale Winkelform}, für
+\[ E_0 = \set{v\in E}{v\neq 0} = E - \mathrm{0-Schnitt}. \]
+
+Wähle eine glatte monotone Funktion $f(r)$ mit folgenden Eigenschaften
+\begin{align*}
+f(r) = \left\lbrace
+\begin{aligned}
+&-1, && r \leq 0\\
+&\in [0,1], && r \in [0, 1]\\
+&0, && r \geq 1.
+\end{aligned}
+\right.
+\end{align*}
+Die Ableitung von $f$ ist dann eine bump function.
+
+Wir setzen
+\[ \Phi := \d (f \cdot \Psi). \]
+Es gilt
+\[ \d \Psi = \d (\frac{\d \theta_\alpha}{2 \pi} - \xi_\alpha) = \d \xi_\alpha = -\pi^* \eu, \]
+d.\,h.,
+\[ \d \Psi = -\pi^*\eu. \]
+Somit gilt
+\[ \Phi = \d (f \cdot \Psi) = \d f \wedge \Psi + f \d \Psi = \d f \wedge \Psi - f \pi^*\eu.  \]
+Ergo hat $\Phi$ einen kompakten Träger, d.\,h.
+\[ \Phi \in \Omega^2_c (E). \]
+Ferner ist $\Phi$ offensichtlich geschlossen und repräsentiert somit eine Kohomologieklasse
+\[ \Phi := [\Phi] \in H^2_c(E). \]
+$\Phi$ nennt man die \df{Thom-Klasse} von $E \pfeil{} M$.
+
+
+
+Sei $s : M \pfeil{} E$ der Nullschnitt, d.\,h.
+\[ \pi \circ s = \id{M}, \]
+woraus folgt
+\[ s^* \pi^* = \id{H^*(M)}. \]
+Betrachte nun
+\[ s^*\Phi = s^* \d (f\Psi) = \d (s^* (f\Psi)) = \d ( (f\circ s)(r) \cdot s^*\Psi) = \d (f(0) \cdot s^*\Psi ) = - \d (s^* \Psi) = - s^*(\d \Psi) = s^*\pi^* \eu = \eu. \]
+Somit folgt
+\[ s^*(\text{Thom-Klasse}) = \text{Eulerklasse von E}. \]
+
+\Satz{Isomorphiesatz von Thom}
+Sei $M$ kompakt. Die Abbildung
+\begin{align*}
+H^*(M) & \Pfeil{} H^{*+2}_c(E)\\
+[\omega] & \longmapsto [(\pi^*\omega) \wedge \Phi ]
+\end{align*}
+ist ein Isomorphismus. Er heißt auch \df{Thom-Isomorphismus}.
+\begin{Beweis}{}
+Wir besprechen zwei mögliche Beweise.
+\begin{enumerate}[1.]
+	\item Man benutzt wie gewohnt die Mayer-Vietoris-Sequenz, das Fünfer-Lemma, etc..
+	\item Wir verwenden die Intergation entlang der Faser
+	\begin{align*}
+\pi_* : H^{* + 2}_c (E )  \Pfeil{} H^*(M).
+\end{align*}
+	Es gilt dann die sogenannte \df{Projektionsformel}:
+	
+	Sind $\omega \in H^*(M)$ und $\eta \in H^*_c(E)$, so gilt
+	\[ \pi_*(\pi^* \omega \wedge \eta) = \omega \wedge \pi_*\eta.\]
+	Für $\eta = \Psi$ gilt
+	\[ \pi_*\Phi = 1. \]
+	Und somit
+	\[ 
+	\pi_*\Phi_{|\text{Faser}} = \int_{0}^\infty \int_{0}^{2\pi} \d f \frac{\d \theta}{2\pi} = f(\infty) - f(0) = 0 - (-1) = 1.
+	 \]
+	 Mit der Projektionsformel gilt
+	 \[ \pi_*(\pi^* \omega \wedge \Phi) = (\omega\wedge \pi_* \Phi) = \omega \wedge 1 = \omega. \]
+	Daraus folgt, dass der Thom-Isomorphismus ist invers zu $\pi_*$, der Integration der Faser.
+\end{enumerate}
+\end{Beweis}
+
+\section{Gysin-Sequenz}
+Betrachte wieder das Bündel $E \pfeil{\pi} M$. Es trägt eine Riemannsche Metrik, insofern können wir das \df{Disk-Bündel} definieren durch
+\[ D(E) := \set{v \in E}{\norm{v} \leq 1}. \]
+Das \df{Sphären-Bündel} definiert man analog durch
+\[ S(E) := \set{v \in E}{\norm{v} = 1}. \]
+Wir erhalten dann Faserbündel.
+\begin{center}
+	\begin{tikzcd}
+	D^2  \arrow[r]& D(E)\arrow[d, "\pi|"] & & S^1 \arrow[r] & S(E)\arrow[d, "\pi|"]\\
+	& M & & & M  
+	\end{tikzcd}
+\end{center}
+$D(E)$ ist dann eine glatte Mannigfaltigkeit mit $S(E)$. Ferner gilt
+\[ D(E) \simeq M \]
+durch eine von $\pi$ induziert Homotopie. Und
+\[ S(E) \simeq E_0 \]
+durch die Homotopie $\R^2 - 0 \simeq S^1$.
+
+Wir betrachten
+\[ H^*(D(E), S(E))  \isom{} H^*_c(D(E) - S(E)). \]
+Da folgende Diffeomorphie vorliegt
+\[ D(E) - S(E) \isom{} E, \]
+gilt nun 
+\[ H^*(D(E), S(E))  \isom{} H^*_c(D(E) - S(E)) \isom{} H^*_c(E). \]
+Wir betrachten die lange exakte Sequenz
+\begin{center}
+\begin{tikzcd}
+H^{j-1}(SE) \arrow[r, "\delta^*"] & H^j(DE, SE) \arrow[r] \arrow[d, "\isom{}"] & H^j(DE) \arrow[r]\arrow[d, "\pi^*; \isom{}"]  & H^j (SE) \arrow[r, "\delta^*"] \arrow[d, "\isom{}"]& H^{j+1}(DE, SE)\arrow[d, "\isom{}"]\\
+& H^j_c(E) \arrow[d, "\isom{}"] & H^j(M) & H^j(E_0) & H^{j-1}(M)\\
+& H^{j-2}(M) \arrow[ur, "\_ \wedge \eu"]
+\end{tikzcd}	
+\end{center}
+Wir erhalten folgende exakte Sequenz, die sogenannte \df{Gysin-Sequenz}
+\[ H^{j-1}(E_0) \Pfeil{\delta^*} H^{j-2} (M) \Pfeil{\_ \wedge \eu} H^j(M) \Pfeil{} H^j(E_0) \Pfeil{\delta^*} H^{j-1}(M). \]
+
+\section{Euler-/Chernklasse des Tautologischen Geradenbündels über $\C\P^{n-1}$}
+Wir schreiben in diesem Abschnitt kurz
+\[ \P^{n-1} := \C P^{n-1}.\]
+Es gilt
+\[ \P^{n-1} = \set{l \subset \C^n \text{ UVR}}{
+\dim_\C l = 1
+} \]
+Das \df{Tautologische Geradenbündel} ergibt sich durch
+\[ \C \Pfeil{} \gamma := \set{
+(l,v)
+}{
+v \in l
+} \subset \P^{n-1} \times \C^n \Pfeil{} \P^{n-1}. \]
+
+Betrachte
+\begin{center}
+	\begin{tikzcd}
+	\gamma \arrow[r, hook] \arrow[rd, swap, "\sigma := "] & \P^{n-1} \times \C^n \arrow[d, "\text{pr}_2"]\\
+	& \C^n
+	\end{tikzcd}
+\end{center}
+Sei $v \in \C^n$.
+\begin{itemize}
+	\item Ist $v\neq 0$, so liegt $v$ in einem $l = \shrp{v}\in \P^{n-1}$. Es ist
+	\[ \sigma\i(v) = \{l\} \]
+	ein Punkt.
+	\item Ist $v = 0$, so gilt
+	\[ \sigma\i(\{0\})  = \P^{n-1}.\]
+\end{itemize}
+$\sigma : \gamma \pfeil{} \C^n$ nennt man einen \df{Blow-Up} von $\C^n$ entlang $\{0\} \subset \C^n$. Die Einschränkung
+\[ \sigma| : \gamma - \text{0-Schnitt} \Pfeil{\isom{}} \C^n - \{0\} \]
+ist ein Diffeomorphismus. Es folgt
+\[ E_0 \isom{} S^{2n-1}. \]
+Ferner wissen wir
+\[ H^*(\P^{n-1}) = \R[x] /(x^n = 0), \]
+wobei $x \in H^2(\P^{n-1})\isom{} \R$ ein Erzeuger von Rang 2 ist. Setzt man das in die Gysin-Sequenz ein, so erhält man
+\[ H^{1}(S^{2n-1}) = 0 \Pfeil{\delta^*} H^0(\P^{n-1}) \Pfeil{\_ \wedge \eu} H^2(\P^{n-1}) \Pfeil{} H^2(S^{2n-1}) = 0\Pfeil{\delta^*}H^1(\P^{n-1}). \]
+Dadurch erhalten wir eine Isomorphie
+\begin{align*}
+H^0(\P^{n-1}) & \Pfeil{} H^2(\P^{n-1})\\
+1 \longmapsto \eu.
+\end{align*}
+Dadurch ist $\eu(\gamma_\R) = c_1(\gamma)$ der Erzeuger von $H^*(\P^{n-1})$.
