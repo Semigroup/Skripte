@@ -1,0 +1,194 @@
+\marginpar{Vorlesung vom 04.07.18}
+%23.te Vorlesung
+
+Sei $\C^n \pfeil{} E \pfeil{} B$ ein komplexes Vektorraumbündel.
+\paragraph{Projektivisierung:}
+$\P^{n-1} = P\C^n \pfeil{} \P(E) \pfeil{\pi} B$.
+
+Ist $A \in \mathrm{GL}_n(\C)$, so induziert $A$ einen Homöomorphismus
+\begin{align*}
+A : P\C^{n} & \Pfeil{} P\C^n\\
+l & \longmapsto A(l).
+\end{align*}
+Betrachte den Pullback
+\begin{center}
+	\begin{tikzcd}
+\gamma_{\P E} \arrow[r, hook] \arrow[rd]&	\pi^* E \arrow[r] \arrow[d] & E \arrow[d, "\pi"]\\
+	&\P(E) \arrow[r, "\pi"] & B
+	\end{tikzcd}
+\end{center}
+und das Geradenbündel über $\P E$
+\[ \gamma_{\P E}E := \set{(l,v) }{v \in l} \subset \pi^* E. \]
+$\gamma_{\P E}$ nennt man das \df{tautologische Geradenbündel}. In der algebraischen Geometrie ist $\gamma_{\P E}$ unter der Bezeichnung $\O(-1)$ geläufig.
+
+\Prop{}
+$\P E \pfeil{\pi} B$ ist kohomologisch gespalten.
+\begin{Beweis}{}
+Setze
+\[ y:= c_1(\gamma_{\P E}) \in H^2(\P E) .\]
+Die Inklusion
+\[ j : \P^{n-1} \Inj{} \P E \]
+induziert einen Homomorphismus
+\[ j^* : H^*(\P E) \Pfeil{} H^*(\P^{n-1}) = \R[\mathrm{Erz.}] / (\mathrm{Erz.}^n = 0). \]
+Nun gilt
+\[ j^*(y) = j^*c_1(\gamma_{\P E}) = c_1(j^*\gamma_{\P E}) = c_1(\gamma_{\P E}|_{\mathrm{Faser}})
+= c_1(\gamma_{\P^{n-1}}) = \mathrm{Erz.} \]
+Da $j^*$ ein Ringhomomorphismus ist, gilt nun
+\[ j^*(y^k) = \text{Erz.}^k. \]
+Ergo muss $j^*$ surjektiv sein. Da es sich bei den Kohomologiegruppen um reelle Vektorräume handelt, können wir eine Spaltung $\beta$ wie folgt konstruieren.
+\begin{align*}
+\beta : H^*(\P^{n-1}) & \Pfeil{} H^*(\P E)\\
+\mathrm{Erz.}^k & \longmapsto y^k.
+\end{align*}
+\paragraph{Bemerkung:} $\beta$ ist eine lineare Spaltung, aber im Allgemeinem kein Ringhomomorphismus. Zum Beispiel gilt
+\[ \mathrm{Erz.}^n = 0, \]
+aber
+\[ y^n \neq 0 \]
+im Allgemeinem.\\
+
+
+
+Es gilt nun
+\[ j^*\beta (\mathrm{Erz.}^k) = j^*(y^k) = \mathrm{Erz.}^k\]
+und somit
+\[ j^*\beta = \id{}. \]
+\end{Beweis}
+
+Aufgrund dieser Proposition können wir den Satz von Leray-Hirsch auf $\P E$ anwenden und erhalten folgenden Isomorphismus von linearen Vektorräumen
+\[ H^*(\P E) \isom{}H^*(B) \otimes (\R[\mathrm{Erz.}]/ (\mathrm{Erz.}^n = 0)).  \]
+Es bezeichne $\Phi$ den Isomorphismus $H^*(B) \otimes (\R[\mathrm{Erz.}]/ (\mathrm{Erz.}^n = 0)) \pfeil{} H^*(\P E)$. Es sei $n$ der Rang von $E$. Es gilt nun
+\[ \Phi\i(y^n) = a_0\otimes 1  
++ a_1\otimes \mathrm{Erz.}
++ a_2\otimes \mathrm{Erz.}^2
++ a_3\otimes \mathrm{Erz.}^3
++ \ldots
++ a_{n-1}\otimes \mathrm{Erz.}^{n-1} \]
+für $a_i \in H^{2(n-i)}(B)$. Wendet man nun $\Phi$ an, so gilt
+\[ y^n = \pi^*(a_0) + \pi^*(a_1) \wedge y + \pi^*(a_2) \wedge y^2 + \ldots +\pi^*(a_{n-1}) \wedge y^{n-1}.  \]
+
+\Def{}
+Wir definieren die $i$-te \df{Chernklasse} von $E$ durch
+\[ c_i(E) := a_{n-i} \in H^{2i}(B). \]
+Insbesondere setzen wir
+\[ c_0(E) := 1 \in H^0(B) \]
+und
+\[ c_i(E) := 0 \]
+für $i > \text{Rang } E.$
+
+\Bem{Chernklassen des trivialen Bündels}
+Betrachte die Bündel
+\begin{center}
+\begin{tikzcd}
+E = B\times \C^n \arrow[d, "\pi = \pi_1"] & \Impl{} & \P E = B\times \P^{n-1} \arrow[d, "\pi_1"] \arrow[r, "\pi_2"] & \P^{n-1}\\
+B & & B 
+\end{tikzcd}
+\end{center}
+Es gilt dann
+\[ \pi_2^*\gamma_{\P^{n-1}} = \gamma_{\P E} \]
+und
+\[ y = c_1(\gamma_{\P E}) = c_1(\pi_2^*\gamma_{\P^{n-1}}) = \pi_2^* c_1(\gamma_{\P^{n-1}}) = \pi_2^*\mathrm{Erz.} \]
+Somit
+\[ y^n = (\pi_2^*\mathrm{Erz.})^n = \pi_2^*(\mathrm{Erz.}^n) = \pi_2^* 0 = 0. \]
+Somit sind alle Chernklassen $c_i(E)$ gleich Null im trivialen Fall für alle $i> 0$.
+\Bem{Natürlichkeit von $c_i$}
+Betrachte das Diagramm
+\begin{center}
+\begin{tikzcd}
+f^*E \arrow[r, "F"] \arrow[d] & E \arrow[d] & \rightsquigarrow & \P(f^*E)  \arrow[r] \arrow[d, "\overline{\pi}"]& \P(E) \arrow[d, "\pi"]\\
+ X \arrow[r, "f"] & Y& & X \arrow[r, "f"] & Y
+\end{tikzcd}
+\end{center}
+und
+\begin{center}
+\begin{tikzcd}
+\C  \arrow[r] & \gamma_{\P f^*E} \arrow[d] \arrow[r, "\mathrm{kart.}"] & \gamma_{\P E} \arrow[d] & \arrow[l] \C\\
+&\P(f^*E)  \arrow[r, "F"] & \P E  
+\end{tikzcd}
+\end{center}
+D.\,h.
+\[ \gamma_{\P f^*E} = F^*\gamma_{\P E}. \]
+Setzt man
+\[ x:= c_1(\gamma_{\P f^*E}) \in H^2(\P f^* E) .\]
+Somit gilt
+\[ F^*(y) = F^*c_1(\gamma_{\P E}) = c_1 (F^*\gamma_{\P E}) = c_1(\gamma_{\P f^*E}) = x. \]
+Somit gilt
+\[ F^*(y) = x. \]
+
+Ferner gilt nun
+\[ y^n = \pi^* c_n(E) + \pi^*c_{n-1}(E) y + \ldots \]
+und somit
+\[ F^*(y^n) = F^*\pi^*c_n(E) + F^*\pi^*c_{n-1}(E)F^*(y) + \ldots
+= \overline{\pi}^* f^*c_n(E) + \overline{\pi}^* f^*c_{n-1}(E) F^*(y) + \ldots \]
+Substituiert man $x = F^*(y)$, so ist dies gleich zu
+\[ x^n = \overline{\pi}^*c_n(f^* E) + 
+\overline{\pi}^*c_{n-1}(f^* E) x +
+\overline{\pi}^*c_{n-2}(f^* E) x^2 +\ldots 
+ \]
+Somit gilt
+\[ c_i(f^* E) = f^*c_i(E) \in H^{2i}(X) \]
+für alle $i$.
+
+\Prop{}
+Hat $\pi : E \pfeil{} B$ einen nirgendwo verschwindenden Schnitt, so gilt $c_n(E) = 0$, wobei $n = \text{Rang }E$.
+\begin{Beweis}{}
+Sei $s : B \pfeil{} E$ ein Schnitt, der nirgendwo verschwindet. $s$ induziert einen nichtverschwindenden Schnitt in der Projektivisierung
+\begin{align*}
+\widetilde{s} : B & \Pfeil{} \P E\\
+b & \longmapsto \text{Gerade erzeugt durch }s(b).
+\end{align*}
+Nun ist $\widetilde{s}^*(\gamma_{\P E})$ das triviale Geradenbündel, denn es hat einen nirgendwo verschwindenden Schnitt, nämlich $s$. Ferner gilt für $y = c_1(\gamma_{\P E})$
+\[ \widetilde{s}^*(y) = c_1(\widetilde{s}^*\gamma_{\P E}) = c_1(\mathrm{triv.}) = 0. \]
+Somit folgt
+\[ \widetilde{s}^*(y^n) = 0. \]
+Da
+\[ y^n = \pi^* c_n(E) +
+\pi^*c_{n-1}(E) y
++\pi^* c_{n-2}(E) y^2 + \ldots,
+ \]
+folgt
+\[ 0 = \widetilde{s}^*(y^n)
+= \widetilde{s}^*\pi^*c_n(E)
++ \widetilde{s}^*\pi^*c_{n-1}(E)\widetilde{s}^*(y) + \ldots
+ \]
+ Da gilt
+ \[ \widetilde{s}^* \pi^* = \id{} \]
+ und
+ \[ \widetilde{s}^*(y) = 0, \]
+ folgt
+ \[ 0 = c_n(E) + ( \ldots) \cdot \widetilde{s}^*(y) = c_n(E). \]
+\end{Beweis}
+
+
+\Bem{Weitere Konstruktionen mit Vektorraumbündeln}
+\begin{itemize}
+	\item \textbf{Tensorprodukt: } Es seien $E$ und $E'$ zwei Vektorraumbündel über demselben Basisraum $B$.
+	Wir definieren das Tensorprodukt $E \otimes E'$, indem wir faserweise Tensorprodukte bilden.	
+	Um die Übergangsabbildungen zu erklären, führen wir das \df{Kroneckerprodukt} von Matrizen ein:
+	
+	Sind $A \in \mathrm{GL}_n(\C)$ und $B \in \mathrm{GL}_m(\C)$ gegeben, so definieren wir eine $(nm)\times (nm)$-Matrix durch
+	\[A \otimes B := 
+	\left(
+	\begin{matrix}
+	a_{1,1} B & \ldots & a_{1,n} B\\
+	\vdots & & \vdots\\
+	a_{n,1} B & \ldots & a_{n,n} B
+	\end{matrix}
+	\right). \]
+	Sind nun Übergangsfunktionen $g_{\alpha \beta} : U_{\alpha \beta} \pfeil{} \mathrm{GL}_n(\C)$ für $E$ und
+	$g_{\alpha \beta}' : U_{\alpha \beta} \pfeil{} \mathrm{GL}_n(\C)$ für $E'$. Die Übergangsfunktionen für $E\otimes E'$ sind dann die Kroneckerprodukte $g_{\alpha \beta} \otimes g_{\alpha \beta}' : U_{\alpha \beta} \pfeil{} \mathrm{GL}_{nm}(\C).$
+	\paragraph{Beispiel:}
+	Sei $n = m = 1$. Dann sind $E,E'$ Geradenbündel mit Übergangsfunktionen
+	\begin{align*}
+	g_{\alpha\beta} : U_{\alpha \beta} & \Pfeil{} \C^\times = \C - 0\\
+	g_{\alpha\beta}' : U_{\alpha \beta} & \Pfeil{} \C^\times.\\
+	\end{align*}
+	Die Übergangsfunktionen von $E\otimes E'$ sind dann $g_{\alpha\beta}\cdot g_{\alpha\beta}'$. Es gilt dann
+	
+	\[c_1(E \otimes E') = \eu((E \otimes E')_{\R}) = 
+	\frac{1}{2\pi i} \sum_\gamma \d (g_\gamma \cdot \d \log (g_{\alpha \beta}\cdot g_{\alpha \beta}')).
+	\]
+	Da
+	\[ \log (g_{\alpha \beta}\cdot g_{\alpha \beta}') = \log (g_{\alpha \beta}) + \log (g_{\alpha \beta}'),\]
+	folgt
+	\[ c_1(E\otimes E') = c_1(E) + c_1(E'). \]
+\end{itemize}
