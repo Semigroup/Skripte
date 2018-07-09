@@ -1,0 +1,174 @@
+\marginpar{Vorlesung vom 09.07.18}
+%24.te Vorlesung
+
+\Satz{Das Spaltungsprinzip}
+Sei $E \pfeil{} B$ ein Vektorraumbündel.
+
+Dann existiert eine stetige (bzw. glatte) Abbildung
+\[ f: B' \Pfeil{} B \]
+mit den Eigenschaften:
+\begin{enumerate}[(1)]
+	\item $f^*E $ ist die direkte Summe von Geradenbündeln.
+	\item Die Abbildung
+	\[ f^* : H^*(B) \Pfeil{} H^*(B') \]
+	ist injektiv.
+\end{enumerate}
+
+\begin{Beweis}{}
+Wir führen eine vollständige Induktion nach $n = \text{Rang } E$.
+\begin{enumerate}
+	\item[$n = 1$:] In diesem Fall ist $E$ bereits ein Geradenbündel, ergo ist in diesem Fall nichts zu zeigen
+	\[ f:= \id{B}. \]
+	\item[$n- 1 \pfeil{} n$:] Sei $\pi : \P E \pfeil{} B$ die Projektivisierung von $E$. Dann betrachten wir den Pullback
+	\begin{center}
+		\begin{tikzcd}
+		\pi^*E \arrow[r] \arrow[d] & E \arrow[d, "p"]\\
+		\P E \arrow[r, "\pi"] & B
+		\end{tikzcd}
+	\end{center}
+$\pi^*E$ enthält das tautologische Geradenbündel $\gamma$ als Unterbündel, wobei $\gamma$ definiert war durch
+\[ \gamma := \set{(l_b, v)}{ v \in p\i(b), v \in l_b } \subset \pi^*E. \]
+Bilde faserweise den Quotienten
+\[ Q := \pi^*E/ \gamma, \]
+dadurch wird $Q$ zu einem Vektorraumbündel über $\P E$. Wir erhalten nun eine kurze exakte Sequenz
+\[ 0 \Pfeil{} \gamma \Pfeil{} \pi^*E \Pfeil{} Q \Pfeil{} 0. \]
+Diese Sequenz spaltet aufgrund geometrischer Möglichkeiten\footnote{Zu jedem Vektor aus $Q$ wählt man das orthogonale Komplement bei passender Metrik.}, wodurch folgt
+\[ \pi^* E = \gamma \oplus Q. \]
+Der Rang von $Q$ ist kleiner gleich $n-1$, ergo können wir das Prozedere induktiv fortsetzen.
+\end{enumerate}
+Es bleibt zu zeigen, dass Eigenschaft (2) erfüllt ist. Allerdings ist die Abbildung
+\[ \pi^* H^*(B) \Pfeil{} H^*(\P E) \]
+wegen dem Diagramm
+\begin{center}
+	\begin{tikzcd}
+	H^*(B) \arrow[r, "\pi^*"] & H^*(\P E)\\
+	H^*(B) \otimes H^0(F) \arrow[ur, hook] \arrow[r, hook] & H^*(B) \otimes H^*(F) \arrow[u,swap, "\isom{}\mathrm{LerayHirsch}"]
+	\end{tikzcd}
+\end{center}
+auf die naheliegende Weise injektiv.
+\end{Beweis}
+
+\paragraph{Bedeutung des Spaltungsprinzips:} Wir wollen eine polynomiale Identität zwischen Chernklasssen zeigen.
+\Def{}
+Wir definieren die \df{totale Chernklasse} eines Vektorbündels $E$ durch
+\[ c(E) := c_0(E) + c_1(E) + \ldots \in H^*(B). \]
+
+
+Wir wollen zeigen, dass ein Polynom $p$ existiert, sodass für alle Paare $E, E'$ von Vektorbündeln über $B$ gilt
+\[ p(c(E), c(E'), c(E \oplus E')) = 0. \]
+Angenommen, diese Identität gilt nur für Geradenbündel, dann können wir das Spaltungsprinzip anwenden und erhalten eine Abbildung $f : B' \pfeil{} B$, sodass gilt
+\begin{align*}
+f^*p(cE, cE', c(E\oplus E')) &= p(f^*cE, f^*cE', f^*c(E\oplus E'))\\
+&= p(c(f^*E), c(f^*E'), c(f^*E \oplus f^*E'))
+\end{align*}
+Nun sind die Pullbacks der Vektorraumbündeln alles Summen von Geradenbündel. Da wir angenommen haben, dass Geradenbündel unsere Identität erfüllen und $f^*$ injektiv ist, folgt
+\[ p(cE, cE', c(E\oplus E')) = 0. \]
+D.\,h., es genügt die Identität für Geradenbündel nachzuweisen.
+\paragraph{Bemerkung:} Man kann mehrere Bündel gleichzeitig spalten (das nehmen wir auch an, um $E$ und $E'$ gleichzeitig über $B$ zu spalten).
+
+\Bem{Konstruktionen}
+\begin{itemize}
+	\item \textbf{Tensorprodukt:} Sind $E,E'$ Bündel über dem selben Basisraum, so ist $E \otimes E'$ lokal ihr Tensorprodukt über dem gegebenen Basisraum. Die Übergangsabbildungen sind gegeben durch das Kroneckerprodukt.
+	\item \textbf{Duales Bündel:} Sei ein Bündel $\C^n \pfeil{} E \pfeil{} B$ gegeben.
+	
+	Zu einem komplexen Vektorraum $V$ kann man den dualen Vektorraum $V^* := \Hom{\C}{V}{\C}$ bilden. Führt man dies faserweise durch, erhält man ein Bündel $(\C^n)^* \pfeil{} E^* \pfeil{} B$, dessen Fasern die korrespondierenden dualen Vektorräume sind.
+	
+	Seien $g_{\alpha \beta} : U_{\alpha \beta} \pfeil{} \mathrm{GL}_n(\C)$ die Übergangsabbildungen von $E$, dann sind $(g_{\alpha \beta}^T)\i$ die Übergangsabbildungen von $E^*$ (d.\,h., die Pfeile drehen sich um).
+
+	Für Geradenbündel $E = l$ gilt insbesondere
+	\[ (g_{\alpha \beta}^T)\i = \frac{1}{g_{\alpha \beta}}. \]
+	Damit folgt
+	\[ c_1(l^*)|_{U_\alpha} = 
+	\frac{1}{2\pi i}
+	\sum_\gamma \d (g_\gamma \cdot \d \log (g\i_{\gamma \alpha}))
+	= -c_1(l)|_{U_\alpha},
+	 \]
+	 also global
+	 \[ c_1(l^*) = -c_1(l). \]
+	 Wir merken ferner noch an, dass $l^*$ das multiplikative Inverse von $l$ für Geradenbündel ist, d.\,h.,
+	 \[ l\otimes l^* = \text{triviales Geradenbündel} \isom{} \e^1 := B\times \C, \]
+	 da die Übergangsabbildungen alle die Identität sind. Beachte, dass $\e^1$ ein Neutralelement ist, d.\,h.
+	 \[ l \otimes \e^1 \isom{} l. \]
+	 Zusammenfassend folgt, dass die Isomorphieklassen von Geradenbündeln eine Gruppe bilden. Diese Gruppe nennt man die \df{Picard-Gruppe}, geschrieben
+	 \[ \mathrm{Pic}^{(\infty)}(B). \]
+	 \item \textbf{Homomorphismenbündel}: Sind zwei Vektorbündel $E, E'$ über dem Basisraum $B$ gegeben, so bezeichne $\Hom{}{E}{E'}$ das Vektorbündel, das sich ergibt, indem man lokal die Homomorphismenräume der Vektorräume nimmt. Beachte, dass auf Ebene der Vektorräume und Vektorbündel gilt
+	 \[ \Hom{}{V}{W} \isom{} V^* \otimes W. \]
+	 
+	 Ein Morphismus von Vektorraumbündeln entspricht dann einem Schnitt des Hom-Bündels.
+\end{itemize}
+
+Sei $E \pfeil{} B$ eine Whitney-Summe von Geradenbündeln, d.\,h. $E = \bigoplus_{i = 1}^n l_i$. Betrachte das Diagramm
+\begin{center}
+\begin{tikzcd}
+L_i := \pi^* l_i \arrow[r] \arrow[d] & l_i \arrow[d]\\
+\P(E) \arrow[r, "\pi"] & B
+\end{tikzcd}
+\end{center}
+
+Es gilt
+$\pi^*E = \bigoplus L_i$. Betrachte das tautologische Bündel $\gamma \pfeil{} \P E$ und
+\begin{center}
+	\begin{tikzcd}
+	\gamma \arrow[r, hook] \arrow[rd, swap, "s_i :="] & \pi^*E = \bigoplus L_i \arrow[d, "Proj."]\\
+	 & L_i
+	\end{tikzcd}
+\end{center}
+Wir erhalten globale Schnitte
+\[ s_i \in \Gamma(B, \Hom{}{\gamma}{L_i}) = \Gamma(B, \gamma^* \otimes L_i). \]
+Setze
+\[ U_i := \set{x \in \P E}{s_i(x) \neq 0}. \]
+Es gilt
+\[ c_1(\gamma^* \otimes L_i) = [\xi_i] \in H^2(\P E) \]
+für passende $\xi \in \Omega^2(\P E)$. Ferner
+\[ c_1(\gamma^* \otimes L_i)|_{U_i} = 0, \]
+da $\e^1 \isom{} (\gamma^* \otimes L_i)|_{U_i}$ einen nirgendwo verschwindenden Schnitt $s_i$ hat.
+Daraus folgt, dass $\omega_i \in \Omega^1(U_i)$ existieren mit
+\[ \xi|_{U_i} = \d \omega_i. \]
+Es gilt
+\[ \P E = \bigcup_{i=1}^n U_i \]
+denn für $x \in \P E$ existiert ein $i$ mit $s_i(x) \neq 0$, denn $\gamma$ ist in $\pi^* E$ enthalten.
+
+Sei $\{ V_i\}_{i = 1,\ldots, n}$ eine offene Überdeckung von $\P E$ mit folgenden Eigenschaften:
+\begin{itemize}
+	\item $\overline{V_i} \subset U_i$
+	\item Es gibt glatte Funktionen $f_i$, die auf $\overline{V_i}$ konstant 1 sind und deren Träger in $U_i$ enthalten sind.
+\end{itemize}
+Es gilt dann
+\[{\xi_i}|_{V_i} - \d (f_i \omega_i)|_{V_i} = 0. \]
+und
+\[ c_1(\gamma^* \otimes L_i)|_{V_i} = [ (\xi_i - \d (f_i \omega_i))|_{V_i}], \]
+folgt
+\begin{align*}
+&\prod_{i= 1}^nc_1(\gamma^* \otimes L_i) = 0\\
+=&\prod_{i= 1}^n(c_1(\gamma^*) + c_1(L_i))\\
+=&\prod_{i= 1}^n(y + c_1(L_i))\\
+=& y^n + \sigma_1 y^{n-1} + \sigma_2 y^{n-2} + \ldots + \sigma_n
+\end{align*}
+für $y := c_1(\gamma^*)$. Die $\sigma_i$ heißen \df{elementarsymmetrische Polynome}.
+
+Es folgt
+\[ c(E) = c(\bigoplus_i l_i)
+= \prod(1 + c_1(L_i)) = \prod c(L_i).
+ \]
+Die Produktformel von Whitney ist somit gezeigt für Summen für Geradenbündel.
+
+\paragraph{Bemerkung:}
+Seien $E,E'$ beliebige komplexe Vektorbündel über $B$. Mit dem Spaltungsprinzip erhalten wir eine Abbildung $f : B' \pfeil{} B$, sodass
+\[ f^* E = \bigoplus_i l_i \text{ und } f^* E' = \bigoplus_i l_i'  \]
+die Summen von Geradenbündel sind. Nun gilt
+\begin{align*}
+&f^*(
+c(E) c(E') - c(E \otimes E')
+)\\
+=& f^*c(E) f^*c(E') - f^*c(E\otimes E')\\
+=& c(f^*E) c(f^*E') - c(f^*E \otimes f^*E')\\
+=&c(\bigoplus l_i) c(\bigoplus l'_i) - c((\bigoplus k_i) \otimes (\bigoplus l'_i))\\
+=& \prod c(l_i) \cdot \prod c(l_i') - \prod c(l_i) \cdot \prod c(l_i') = 0
+\end{align*}
+Da $f^*$ injektiv ist, folgt nun die \df{Whitneysche Produktformel}
+\[ c(E\oplus E') = c(E) \cdot c(E'). \]
+
+\paragraph{Folgerung:}
+$\e^k$ bezeichne das triviale Bündel von Rang $k$. Es gilt
+\[ c(E\oplus \e^k) = c(E) \cdot c(\e^k) = c(E). \]
+Diese Eigenschaft nennt man die \df{Stabilität der Chernklassen}. Das Hinzuaddieren eines trivialen Bündels nennt man \df{Stabilisieren}.
