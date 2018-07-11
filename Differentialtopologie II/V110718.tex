@@ -1,0 +1,122 @@
+\marginpar{Vorlesung vom 11.07.18}
+%25.te Vorlesung
+
+\Bem{Chernklassen von dualen Bündeln}
+Sei $\C^n \pfeil{} E \pfeil{} B$ ein Bündel und $E^*$ das duale Bündel.
+
+Zunächst sei $E$ eine Summe $L_1 \oplus \ldots \oplus L_n$ von Geradenbündeln über $B$. Dann ist $E^* = L_1^* \oplus \ldots \oplus L_n^*$.
+
+Nach der Produktformel von Whitney gilt
+\[ c(E^*) = \prod_i c(L_i^*) = \prod_i (1 + c_1(L_i^*)) = \prod_i (1 - c_1(L_i)). \]
+Daraus folgt
+\[ c_i(E^*) = (-1)^i c_i(E). \]
+Wegen des Spaltungsprinzips gilt diese Formel für beliebige komplexe Vektorraumbündel.
+
+\Def{}
+Eine \df{komplexe Mannigfaltigkeit} ist eine reelle glatte Mannigfaltigkeit $M$ zusammen mit einem kompatiblen holomorphen Atlas. Die Übergangsfunktionen für das Tangentialbündel sind die Jacobimatrizen dieser holomorphen Kartenwechsel. Somit ist $\T M$ ein \df{holomorphes} Vektorraumbündel.
+
+Für eine komplexe Mannigfaltigkeit setzen wir
+\[ c(M) := c(\T M). \]
+
+\Bsp{}
+$\P^n = \C P^n$. Die Kartenwechsel $\frac{z_i}{z_j}$ sind holomorph, ergo ist $\P^n$ eine komplexe Mannigfaltigkeit. Es gilt für jedes $l \in \P^n$
+\[ \T_l\P^n \isom{} \Hom{\C}{l}{l^\bot}. \]
+Betrachte die kurze exakte Sequenz
+\[ 0 \pfeil{} \gamma \pfeil{} \e^{n+1}  \pfeil{} Q \pfeil{} 0. \]
+Daraus folgt
+\[ \T \P^n \isom{} \Hom{}{\gamma}{Q} = \gamma^* \otimes Q. \]
+Tensoriere die exakte Sequenz mit $\gamma^*$
+\[ 0 \pfeil{} \e^1 \pfeil{} \gamma^* \otimes \e^{n+1}  \pfeil{} \gamma^* \otimes Q \pfeil{} 0. \]
+
+Wegen der Stabilität von $c$ gilt dann
+\begin{align*}
+&c(\P^n) = c(\T \P^n) = c(\gamma^* \otimes Q) \\
+=& c(\gamma^* \otimes Q \oplus \e^1)\\
+=& c(\gamma^* \oplus \ldots \oplus \gamma^*)\\
+=& c(\gamma^*)^{n+1}\\
+=& (1 + c_1(\gamma^*))^{n+1}
+\end{align*}
+wobei $c_1(\gamma^*) \in H^2(\P^n)$ der Erzeuger ist.
+
+\newpage
+\section{Pontrjaginklassen}
+\Def{Konjugierte Vektorraumbündel}
+Sei $E \pfeil{} B$ ein $\C$-VB. Sei $V$ ein $\C$-VR. Wir definieren
+\[ z\bullet v := \overline{z}v \]
+für $z \in \C, v\in V$. Der Raum
+\[ \overline{V} := (V, +, \bullet) \]
+heißt \df{konjugiert komplexer} Vektorraum von $V$. Dementsprechend bezeichne $\overline{\C^n} \pfeil{} \overline{E} \pfeil{} B$ das \df{konjugierte Bündel}.
+
+Sind $g_{\alpha \beta}$ die Übergangsfunktionen von $E$, dann sind $\overline{g}_{\alpha\beta}$ die Übergangsfunktionen von $\overline{E}$. Die Wahl einer hermiteschen Metrik auf $E$ reduziert die Strukturgruppe von $\mathrm{GL}_n(\C)$ auf $U_n$. Wenn $g_{\alpha\beta} \in U_n$, dann gilt
+\[ \overline{g}_{\alpha\beta} = {(g_{\alpha\beta})^{T}}\i. \]
+Daraus folgt
+\[ \overline{E} \isom{} E^*. \]
+Insbesondere gilt
+\[ c_i(\overline{E})  = (-1)^i c_i(E). \]
+
+\Def{Komplexifizierung}
+Seien $V,W$ reelle Vektorräume. Der komplexe Vektorraum $V\otimes_\R \C$ heißt die \df{Komplexifizierung} von $V$.
+
+Eine lineare Abbildung $A : V \pfeil{} W$ induziert dann eine lineare Abbildung $A : V\otimes_\R \C \pfeil{} W \otimes_\R \C$. Hat $A$ im reellen Fall eine Matrixgestalt, so behält sie diese im komplexen Fall bei. Insbesondere behält sie ihre reellen Einträge.
+
+Ferner kann man jedes reelle Bündel $\R^n \pfeil{} E \pfeil{} B$ komplexifizieren zu $\R^n\otimes_\R \C  = \C^n \pfeil{} E\otimes_\R \C \pfeil{} B$, der \df{Komplexifizierung} von $E$.
+
+Sind Übergangsfunktionen $g_{\alpha\beta} \in \mathrm{GL}_n(\R)$ im reellen Fall gegeben, so bleiben diese im komplexen Fall erhalten.
+
+\Bem{Vergissfunktor}
+Ist umgekehrt ein komplexe Vektorbündel $\C^n \pfeil{} E \pfeil{} B$, so kann man die komplexe Struktur vergessen und erhält ein reelles Bündel
+\[ \R^{2n} \Pfeil{} E_\R \Pfeil{} B. \]
+Dieses kann man wieder komplexifizieren und erhält
+\[ \C^{2n} \Pfeil{} E_\R \otimes_\R \C = E \oplus \overline{E} \Pfeil{} B. \]
+
+Ist umgekehrt ein reelles Bündel $\R^n \pfeil{} E \pfeil{} B$, so kann man zuerst komplexifizieren  und dann wieder vergessen. Dadurch erhält man
+\[ \R^{2n} \Pfeil{} (E\otimes \C)_\R = E \oplus E \Pfeil{} B. \]
+Da komplexe Vektorbündel immer orientiert sind, ist dieses reelle Bündel kanonisch orientiert, da es von einem komplexen Bündel kommt.
+
+
+Sind $V,W$ komplexe Vektorräume und $A : V \pfeil{} W$ eine lineare, komplexe Abbildung, so induziert diese eine reelle lineare Abbildung
+\[ A_\R : V_\R \Pfeil{} W_\R. \]
+Wird $A$ als $\C^{n\times m}$-Matrix dargestellt, so wird $A_\R$ als $\R^{2n \times 2m}$-Matrix dargestellt.
+
+\Def{Pontrjagin-Klasse}
+Sei nun $M$ eine reelle glatte Mannigfaltigkeit der Dimension $n$. Betrachte
+\[ \R^n \Pfeil{} \T M \Pfeil{} M. \]
+Wir definieren die \df{Pontrjagin}-Klasse von $M$ durch
+\[ p(M) := p(\T M ) := c(\T M \otimes_\R \C) \in H^*(M,\R). \]
+\paragraph{Allgemeiner:}
+Für beliebige reelle Vektorbündel $E \pfeil{} B$\footnote{Es gibt auch andere Konventionen in der Literatur. Z.\,Bsp. $p_i(E) = (-1)^i c_{2i} (E\otimes_\R \C)$.}
+\[ p(E) := c(E \otimes \C) \in H^*(B). \]
+\paragraph{Bemerkung:} Die Übergangsfunktionen von $E\otimes_\R \C$ sind gerade die $g_{\alpha \beta} \in \mathrm{GL}_n(\R)$. Daraus folgt, dass $\overline{E\otimes_\R \C}$ hat die Übergangsfunktionen $\overline{g_{\alpha \beta}} = g_{\alpha \beta}$. Es folgt ergo
+\[ \overline{E \otimes_\R \C} = E \otimes_\R \C. \]
+Daraus folgt nun
+\[
+(-1)^i c_i(E\otimes_\R \C) = c_i(\overline{E \otimes_\R \C}) = c_i({E \otimes_\R \C}).  \]
+Für jedes ungerade $i$ gilt nun
+\[ c_i(E\otimes_\R \C) = 0. \]
+Für die Pontrjagin-Klasse gilt nun
+\[ p(E) = 1 + c_2(E\otimes_\R \C) + c_4(E\otimes_\R \C) + \ldots \]
+
+\paragraph{Bemerkung:}
+Es gelten Formeln wie
+\[ p(E\oplus E') = p(E) \cdot p(E'). \]
+
+\Bsp{}
+Betrachte die Sphäre $M = S^n$. Bettet man $S^n \subset \R^{n+1}$ als Einheitssphäre. Für das Normalenbündel $\nu$ dieser Einbettung gilt dann
+\[ \T S^n \oplus \nu = \T \R^{n+1}|_{S^n}. \]
+Nun ist $\nu = \e^1$ ein triviales Bündel. Das Tangentialbündel $\R \R^{n+1}$ ist ebenfalls trivial. Es folgt
+\[ \T S^n \oplus \e^1 = \e^{n+1}. \]
+Wegen der Stabilität gilt nun
+\[ p(S^n) = p(\T S^n \oplus \e^1) = p(\e^{n+1}) = 1. \]
+
+\Def{}
+Sei $M$ nun eine komplexe Mannigfaltigkeit. Die \df{Pontrjagin-Klasse} von $M$ ist definiert durch
+\begin{align*}
+p(M):=& p(\T M_\R)\\
+=& c(\T M_\R \otimes \C) \\
+=& c(\T M \oplus \overline{\T M})\\
+=& c(\T M ) \cdot c(\overline{\T M}).
+\end{align*}
+Wenn $c(\T M ) = \prod_i (1 + x_i)$, was nach dem Spaltungsprinzip immer existiert, so ist
+\[ c(\overline{\T M}) = \prod_i (1 - x_i) \]
+und es gilt
+\[ p(M) = \prod_i (1- x_i^2). \]
