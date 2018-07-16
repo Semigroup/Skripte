@@ -1,0 +1,140 @@
+\marginpar{Vorlesung vom 16.07.18}
+%26.te Vorlesung
+\section{Anwendungen Charakteristischer Klassen}
+\subsection{Einbettungsfragen}
+Frage: Gibt es eine Einbettung von $\P^4 = \C P^4$ in $\R^9$, $\R^{10}$, $\R^{11}$ ?
+\[ c(\P^4) = c(\T \P^4) = (1 + x)^5, \]
+wobei $x$ ein Erzeuger von $H^2(\P^4)$ ist. Es gilt nun
+\[ p(\P^4) = c(\T \P^4) \cdot c(\overline{\T \P^4}) = (1 + x)^5 (1-x)^5 = (1- x^2)^5. \]
+Angenommen, es existiert eine glatte Einbettung
+\[ \P^4 \Inj{} \R^9. \]
+Diese hat ein Normalenbündel $\nu$. Es gilt
+\[ \T_\R \P^4 \oplus \nu= \T \R^9|_{\P^4}.  \]
+Mit der Whitneyschen Produktformel folgt nun
+\[ 1=p(\T \R^9|_{\P^4})=p(\T \P^4 \oplus \nu) = p(\T \P^4) \cdot p(\nu). \]
+Da $x^5 = 0$, gilt nun
+\begin{align*}
+p(\nu) &= \frac{1}{p(\P^4)} = \frac{1}{(1- x^2)^5} = (1 + x^2 + x^4)^5\\
+&= (1 + x^2(1 + x^2))^5\\
+&= 1 + 5x^2 (1 + x^2) + \binom{5}{2} (x^2 (1+ x^2))^2\\
+&= 1 + 5x^2 + 5x^4 + 10x^4\\
+&= 1 + 5x^2 + 15x^4.
+\end{align*}
+Da $x^4 \neq 0$, folgt, dass der Rang von $\nu$ mindestens 4 ist. Dies ist ein Widerspruch, weil der Rang von $\nu$ gerade die Dimension des Oberraumes minus die Dimension des einzubettenden Raumes sein muss. Dadurch folgt, dass es keine Einbettung von $\P^4$ in die Räume $\R^9,\R^{10}$ oder $\R^{11}$ geben kann.
+
+\subsection{Bordismus}
+Frage: Wann ist eine glatte geschlossene (orientierte) Mannigfaltigkeit ein (orientierter) Rand einer kompakten glatten Mannigfaltigkeit?
+
+\paragraph{Beispiele:} $n = 1: M = S^1 = \partial D^2$.\\
+$n = 2:$ Betrachte eine Fläche mit Geschlecht $g$. Diese lässt sich als der Rand einer dreidimensionalen kompakten Mannigfaltigkeit darstellen.\\
+$n = 3:$ In diesem Fall gibt es einen Satz von Rohlin, der besagt, dass es für jede geschlossene dreidimensionalen Mannigfaltigkeit eine kompakte vierdimensionale Mannigfaltigkeit gibt, deren Rand die dreidimensionale ist.
+
+\Def{}
+Seien $M,N$ geschlossene glatte orientierte Mannigfaltigkeiten der Dimension $n$.
+
+$M$ und $N$ heißen \df{bordant}, falls eine kompakte glatte orientierte $n+1$ dimensionale Mannigfaltigkeit $W$ existiert, sodass ein orientierungserhaltender Diffeomorphismus
+\[ \partial W \isom{} (M \sqcup -N) \]
+vorliegt, wobei $-N$ die Mannigfaltigkeit $N$ mit umgekehrter Orientierung bezeichnet. Wir schreiben in diesem Fall
+\[ M \sim N. \]
+Die Relation $\sim$ ist eine Äquivalenzrelation. Die Äquivalenzklasse von $M$ bezeichnen wir mit $[M]$ und setzen
+\newcommand{\sso}{\Omega^{\mathrm{so}}}
+\[ \sso_n :=
+\set{[M]}{ M \text{ glatt, geschlossen, orientiert, } \dim M = n}.
+ \]
+
+$\sso_n$ ist eine abelsche Gruppe, durch die Verknüpfung
+\[ [M] + [N]:= [M\sqcup N] \]
+und dem Neutralelement
+\[ 0 := [\emptyset] = [S^n]. \]
+Das Inverse von $[M]$ ist gerade $[-M]$, denn
+\[ [-M] + [M] = [M \sqcup -M] = [\partial (M\times [0,1])] = 0. \]
+
+
+Wir setzen
+\[ \sso_* := \bigcup_{n\geq 0} \sso_n. \]
+$\sso_*$ ist ein Ring mit der Multiplikation
+\[ [M] \cdot [N] = [M\times N]. \]
+Das Neutralelement dieser Operation ist
+\[ 1:= [\text{Pkt.}] \in \sso_0. \]
+Die Multiplikation ist \df{graduiert kommutativ}, d.\,h.
+\[ [M] \cdot [N] = (-1)^{\dim M \cdot \dim N} [N] \cdot [M]. \]
+Es gilt
+\begin{align*}
+\sso_0 &= \Z[[\text{Pkt.}]]\isom{} \Z.\\
+\sso_1 &= 0\\
+\sso_2 &= 0\\
+\sso_3 &= 0
+\end{align*}
+
+Wir haben letztes Semester eine Invariante einer Mannigfaltigkeit eingeführt. Die sogenannte \df{Signatur} $\sigma(M) \in \Z$. Ferner hatten wir folgenden Satz erwähnt
+\Satz{Thom}
+Wenn $M$ Rand einer kompakten glatten Mannigfaltigkeit ist, so gilt
+\[ \sigma(M) = 0. \]
+
+Ist $\partial W = M \sqcup -N$, so gilt
+\[ 0 = \sigma(W) = \sigma(M) - \sigma(N). \]
+Daraus folgt
+\[ M \sim N \Impl{} \sigma(M) = \sigma(N). \]
+
+Es folgt nun, dass auf $\sso_n$ folgender Homomorphismus definiert ist
+\[ \sigma : \sso_n \Pfeil{} \Z. \]
+Wir schauen uns $\sso_4$ an. Wir wissen, dass gilt
+\[ \sso_4(\C P^2) = 1. \]
+Insofern ist
+\[ \sigma : \sso_4 \Pfeil{} \Z \]
+ein Epimorphismus. Ist $\sigma(M^4) = 0$, dann kann man zeigen, dass $M$ bordant ist zu $N^4$ mit einer Einbettung
+\[ N^4 \Inj{} \R^6. \]
+Dann existiert eine Seifert-Mannigfaltigkeit $W^5 \subset \R^6$ mit
+\[ \partial W^5 = N. \]
+Daraus folgt
+\[ [M] = 0 \in \sso_4. \]
+Insofern liegt folgende Isomorphie vor
+\[ \sso_4 \Pfeil{\sim} \Z. \]
+
+
+Ferner gilt
+\begin{align*}
+\sso_5 &= \Z/2\Z~ (\text{Dold: }M^5 = (S^1 \times \C P^2)/(x,z) \sim (-x, \overline{z})\text{ ist ein Erzeuger dieser Gruppe.})\\
+\sso_6 &= 0\\
+\sso_7&= 0\\
+\sso_8 &= \Z \oplus \Z~ (\text{erzeugt durch }[\C P^4] \text{ und } [\C P^2]\cdot [\C P^2].)
+\end{align*}
+Um zu zeigen, dass die Erzeuger von $\sso_8$ nicht bordant sind, braucht man charakteristische Klassen.\\
+\paragraph{Pontrjagin:} $p_i \in H^{4i}$.
+
+$M^n, n = 4k, k \in \Z.$ Sei $I = (i_1, i_2, \ldots, i_r)$ eine \df{Partition} von $k$, d.\,h.
+\[ k = i_1 + i_2 + \ldots + i_r. \]
+Für solche Partitionen setzen wir
+\[ p_I (\T M) := p_{i_1}(\T M) \wedge p_{i_2}(\T M) \wedge \ldots \wedge p_{i_r}(\T M) \in H^n(M). \]
+Wir definieren die \df{Pontrjaginzahlen} von $M$ durch
+\[ p_I[M] := \int_M p_I(\T M) \in \R. \]
+
+\Satz{Pontrjagin}
+Wenn eine kompakte glatte $n+1$-dimensionale Mannigfaltigkeit $W$ existiert mit $M = \partial W$, so gilt
+\[ p_I(M) = 0 \]
+für jede Partition $I$ von $k$.
+\begin{Beweis}{}
+Wenn $M$ der Rand von $W$ ist, so gibt es eine Einbettung $j : M \inj{} W$. Es gilt
+\[ j^*\T W = \T M \oplus \e^1. \]
+Es folgt
+\[ p_I(\T M) = p_I(\T M \oplus \e^1) = p_I(j^* \T W) = j^*p_I(\T W). \]
+Es gilt
+\[ p_I[M]
+= \int_M p_I(\T M)
+= \int_{M = \partial W} j^*p_I(\T W)
+\gl{\mathrm{Stokes}} \int_W \d p_I (\T W) = 0,
+ \]
+da $\d p_I = 0.$
+\end{Beweis}
+
+Sei $p(k)$ die Anzahl der Partitionen von $k$. Seien $I,J$ zwei Partitionen von $k$. Mit
+\[ \C P^J := \C P^{2j_1} \times \ldots \times \C P^{2j_r} \]
+gilt, dass die Matrix
+\[ (p_I[\C P^J])_{I,J} \in \R^{p(k) \times p(k)} \]
+nicht singulär ist. Daraus folgt nun
+\[ \text{Rang } \sso_{4k} \geq p(k). \]
+Ferner kann man sogar zeigen
+\[ \text{Rang } \sso_{4k} \leq p(k). \]
+
+\Satz{Thom}
+\[ \sso_*\otimes_\Z \Q \isom{} \Q[[\C P^2], [\C P^4], [\C P^6], \ldots ].  \]
