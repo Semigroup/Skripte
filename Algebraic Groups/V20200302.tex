@@ -1,11 +1,259 @@
 \marginpar{Vorlesung vom 03.02.2020}
 
+\paragraph{Recall:} Last time we introduced the \df{Zariski-Topology} on $X$.
+
+There, algebraic sets equal closed sets.
+
+We called a set $X$ \df{irreducible} iff each open subset lies dense in $X$.
+
+
+\begin{lemma}
+	For an algebraic set $X$, the following are equivalent:
+	\begin{enumerate}[(1)]
+		\item $X$ is irreducible.
+		\item $k[X] = k[x_1, \ldots, x_n] / I(X)$ is a domain.
+		\item $I(X)$ is a prime ideal.
+	\end{enumerate}
+\end{lemma}
+The proof of $(2) \iff (3)$ is a basic algebraic result.
+
+\begin{lemma}
+	An open base for the Zariski-Topology on an algebraic set $X$ is given by sets:
+	\[ D(f) := \set{p \in X}{f(p) \neq 0} \]
+	for each $f \in k[X]$. We call the $D(f)$ \df{basic open sets}.
+\end{lemma}
+\begin{proof}
+	Suppose $U \subseteq X$ is nonempty and open. Set
+	\[ Z:= X \setminus U\]
+	then $Z$ is closed.
+	Thus
+	\[ Z = \set{x \in X}{f(x) = 0 \forall f \in  I} \]
+	for some ideal $I \subseteq k[X]$. Let $p \in U$, then there is an $f \in Z$ s.t.
+	\[f (p) \neq 0. \]
+	Also, $D(f) \cap Z = 0$, thus $p \in D(f) \subseteq U$.
+\end{proof}
+
+\begin{proof}[Lemma 1]
+	It is clear that (2) is equivalent to (3).
+	
+	(1) is equivalent to
+	\begin{align*}
+	& \forall \text{ nonempty, open }U_1, U_2\subset X: U_1\cap U_2 \neq \emptyset\\
+\overset{\text{Lemma 2}}{\iff}	& \forall \text{ nonempty, basic open }D(f_1), D(f_2)\subset X: D(f_1) \cap D(f_2) \neq \emptyset
+	\end{align*}
+	Since $D(f_1)\cap D_(f_2) = D(f_1f_2)$, this is equivalent to the statement
+	\[f_1, f_2 \in k[X]: f_1, f_2 \neq 0 \implies f_1f_2 \neq 0. \]
+	Which states that $k[X]$ is a domain.
+\end{proof}
+
+\begin{lemma}
+	Let $X$ be an algebraic set. We have bijections
+	\[
+	\{ \text{closed subsets } Z \subseteq X\} \leftrightarrow \{ \text{ radical ideals } I \subset k[X]\}
+	\]
+	and
+	\[
+	\{ \text{irreducible, closed subsets } Z \subseteq X\} \leftrightarrow \{ \text{ prime ideals } I \subset k[X]\}
+	\]
+		and
+	\[
+	\{ \text{points of } X\} \leftrightarrow \{ \text{ maximum ideals } I \subset k[X]\}.
+	\]
+\end{lemma}
+\begin{lemma}[Primary Decompositions, Atiyah, Macdonald Ch. 4]
+For an ideal $I$ we call $P \supseteq I$ a \df{minimal prime} of $I$ if $P$ is a prime ideal and we have for each prime ideal $Q$:
+\[ P \supseteq Q \supseteq I \implies P = Q. \]
+
+Any radical ideal $I $ of $k[x_1, \ldots, x_n]$ has only finitely many \textbf{minimal} primes $P_1,\ldots, P_r$.
+Inparticular,
+\[ I = \bigcap_{i=1}^n P_i \]
+and for each $i$
+\[ P_j \not \supseteq \bigcap_{j : j \neq i} P_j. \]
+\end{lemma}
+
+\begin{definition}
+An \df{(irreducible) component} $Z$ of $X$ is a maximal irreducible closed subset, i.e., an irreducible closed $Z \subseteq X$ s.t. there does not exist an irreducible closed $Y \subset X$ s.t. $Y \supsetneq Z$.
+
+Then, we have the bijection
+	\[
+\{ \text{irreducible components of } X\} \leftrightarrow \{ \text{ mimimal primes of } I(X)\}.
+\]
+\end{definition}
+
+\begin{lemma}
+Any algebraic set $X$ has finitely many components $Z_1, \ldots, Z_r$. We have
+\[ X = Z_1 \cup \ldots \cup Z_r \]
+and for each $i$
+\[ Z_i \not \subset \bigcup_{j : j \neq i}Z_j. \]
+\end{lemma}
+
+\begin{example}
+	\begin{enumerate}
+		\item 	Let $X = V(x\cdot y) \subset k^2$. Then $X = Z_1\cup Z_2$ where $Z_1 = V(x), Z_2 = V(y)$.
+		
+		$X$ is connected, but not irreducible ($D(x)$ does not lie dense in $X$).
+		\item Let $X$ be a \textbf{finite} algebraic set. It is easy to check that every subset of $X$ is closed:
+		\[ \{p\} = V(x_1-p_1, \ldots, x_n-p_n) \]
+		for each $p \in X$. Further
+		\[ X = \{p_1\}\cup \ldots \cup \{p_r\}. \]
+		Moreover: Any function $f : X \pfeil{} k$ is regular (i.e. given by polynomials).
+	\end{enumerate}
+\end{example}
+
+\begin{lemma}
+	We call an element $e \in k[X]$ \df{idempotent} iff $e^2 = e$.
+	
+	Let $X$ be an algebraic set. Then
+	\begin{align*}
+	X \text{ connected} &\iff \text{ the only idempotents }e \in k[X] \text{ are 0 and 1}\\
+	&\iff k[X] \not\isom{} A \times B \text{ for any }k\text{-algebras }A,B.
+	\end{align*}
+\end{lemma}
+\begin{lemma}
+	Morphisms of algebraic sets are continuous.
+\end{lemma}
+\begin{proof}
+	Let $\phi : X \pfeil{} Y$ be a morphism.
+	It suffices to show that for all closed $Z \subset Y$ that $\phi\i(Z) \subset X$ is closed.
+	
+	But, if
+	\[Z = V_Y(S) := \set{q \in Y}{f(q) = 0 \forall f \in S}\]
+	 for some ideal $S \subset k[Y]$, then 
+	 \[\phi\i(Z) = V_X(\phi^*(S)) = \set{\phi^*(f) = f \circ \phi}{f \in S}.\]
+\end{proof}
+\begin{lemma}
+	Isomorphisms of algebraic sets are homeorphisms. In particular, any isomorphism of algebraic sets $\phi : X \pfeil{} X$ permutes the components $Z_1, \ldots, Z_r$ of $X$:
+	\[ \forall i \exists j: \phi(Z_i) = Z_j. \]
+\end{lemma}
+
 \begin{theorem}
-	Inhalt...
+	Let $G$ be an algebraic group.
+	\begin{enumerate}[(i)]
+		\item There is a unique component $G^0$ of $G$ with $e \in G^0$.
+		\item Every component $Z$ of $G$ is a coset $gG^0$ of $G$ for some $g\in Z$.
+		\item $G^0$ is a normal algebraic subgroup of $G$.
+		\item $G^0$ is of finite index, i.e.
+		\[ [G: G^0] = \# \klam{G / G^0} < \infty. \]
+		\item 	The irreducible components are also the connected components.
+	\end{enumerate}
 \end{theorem}
 \begin{proof}
-	Inhalt...
+Let $G = Z_1 \cup \ldots \cup Z_r$ be the decomposition into components. 
+We may assume that $e \in Z_1$.
+
+Recall that $Z_1 \not \subset \bigcup_{j \geq 2} Z_j$.
+Then, there is an $x \in Z_1 \setminus \bigcup_{j \geq 2} Z_j$.
+Thus, for all algebraic set isomorphisms $\phi : G \pfeil{} G$, we have by some previous lemma
+that $ \phi (x)$ is likewise contained in some unique component of $G$.
+For example, we may take $\phi$ to be 
+\begin{align*}
+\phi_g : G& \pfeil{} G\\
+y &\longmapsto gy
+\end{align*}
+for any $g \in G$.
+Then, for all $g\in G$, the element $gx = \phi_g(x)$ is contained in only one component of $G$. Ergo, each $g \in G$ is contained in exactly one component.
+	\begin{enumerate}
+	\item[(i)] Take $g = e$.
+	\item[(iii)] $G^0$ is an algebraic subset, by construction. Denote by $m : G \times G \pfeil{} G$ and $i : G \pfeil{} G$ the continuous multiplication and inversion map on $G$.
+	\textbf{Why is $G^0$ a subgroup?} We need to show
+	\begin{align*}
+	 m(G^0 \times G^0) &\subseteq G^0.\\
+	i(G^0) &\subseteq G^0. 
+	\end{align*}
+	We know that $i(G^0)$ is some component of $G$, since $i$ is an isomorphism. But it contains the identity $e$, since $e\i = e$. Therefore, $i(G^0) = G^0$.
+	
+	If $g \in G$, then $gG^0$ is some component of $G$. Suppose $g \in G^0$. Then $gG^0 \cap G^0 \supseteq \{g\}$, therefore $gG^0 = G^0$. Ergo, $G^0$ is closed under multiplication.
+	
+	\textbf{Why is $G^0$ a normal?} If $g \in G$, then $gG^0g\i$ is a component that contains $e$, therefore $G^0 = gG^0g\i$.
+	
+	
+	(Alternative proof that $m(G^0 \times G^0) = G^0$: Consider
+	\begin{itemize}
+		\item any continuous image of an irreducible set is irreducible.
+	\item	the closure of any irreducible set is irreducible.
+	\end{itemize}
+	Ergo $\overline{m(G^0\times G^0)}$ is a closed irreducible set containing $e$. Ergo, $\overline{m(G^0\times G^0)} = G^0$).
+	
+	\item[(ii)] Let $Z \subset G$ be a component. Let $g \in Z$. Then $g \in (gG^0 \cap Z) $, so $gG^0 = Z$.
+	\item[(iv)] This follows from some previous lemma.
+	\item[(v)] This is left as a topological exercise. It is true whenever the irreducible components do not intersect.
+	\end{enumerate}
 \end{proof}
+
+It now follows:
+\[ \{ \text{finite algebraic groups}\} \longleftrightarrow \{ finite groups \} \]
+where the above arrow is an equivalence of categories.
+
+\begin{example}
+	\begin{itemize}
+		\item Let $G = \{g_1, \ldots, g_r\}$ be a finite algebraic group. Then,
+		\[ G^0 = \{e\}.\]
+		\item Without proofs:
+		\[ G \in \{\GL_n(k), \SO_n(k),\SL_n(k)\} \implies G^0 = G. \]
+		Further,
+		\[G = O_n(k) \implies G^0 = \SO_n(k)\]
+		(but only if $-1 = 1$ i.e. $\textsf{char} k = 2$. Otherwise $[G:G^0] = 2$.) 
+		% Correct?
+%		\item For $\Ad : \GL_n(k) \pfeil{} \GL(M_n(k))$
+%		\[ G = \PGL_n(k) := \Img(\Ad) \]
+%		turns out to be algebraic and $G/G^0 \isom{} M_n(k)$.
+	\end{itemize}
+\end{example}
+
+\section{Jordan Decomposition}
+As usual, $k = \overline{k}$ is an algebraically closed field.
+\begin{definition}
+	Let $V$ be a finite-dimensional vector space.
+	
+	An element $x \in \End(V)$ is \df{semisimple}, if it is diagonalizable, i.e. it has a basis of eigenvectors, or equivalently, if the minimal polynomial of $x$ is square-free.
+	
+	Then, there is a decomposition $V = \bigoplus_{i=1}^r V_i$ and distinct elements $\lambda_1, \ldots, \lambda_n \in k$ s.t.
+	\[ x|_{V_i} = \lambda_i. \]
+	If $\dim(V_i)= n_i$, then
+	\[ \text{char polynomial of}x = \prod_{i=1}^r (T_i - \lambda_i)^n_i \in k[T] \]
+	and
+		\[ \text{minimal polynomial of}x = \prod_{i=1}^r (T_i - \lambda_i) \in k[T]. \]
+		(Where the minimal polynomial of $x$ is defined as the least degree monic $m$ s.t. $m(x) = 0$ and Cayley-Hamilton $m | c$. )
+\end{definition}
+
+\begin{definition}
+	$x \in End(V)$ is \df{nilpotent} if $x^n = 0$ for some $n$. (Equivalent to: characteristic polynomial of $x$ is $T^{\dim(V)}$.)
+	
+	$x$ is \df{unipotent}, if $x -1$ is nilpotent.
+\end{definition}
+
+\begin{lemma}
+	If $x$ is semisimple and nilpotent, then $x = 0$.
+	
+	If $x$ is semisimple and unipotent, then $x = 1$.
+\end{lemma}
+\begin{lemma}
+	If $x,y$ are commuting elements, thar are semisimple resp. unipotent or nilpotent, then so is $xy$.
+\end{lemma}
+
+
+\begin{theorem}[Goal]
+For all algebraic groups $G$ and for all $g \in G$, there exist unique group elements $g_s, g_u \in G$ s.t.
+\[g = g_s g_u = g_ug_s\]
+and
+for all finite-dimensional representations  $\rho : G \pfeil{} \GL(V)$, $\rho(g_s)$ is semisimple and $\rho(g_u)$ is unipotent.
+\end{theorem}
+
+\begin{example}
+If	$g = \klam{\begin{matrix}
+	\lambda & 1 & 0 \\
+	& \lambda & 1 \\
+	& & \lambda
+	\end{matrix}} \in G = \GL_3(k)$, then $g_s = \klam{\begin{matrix}
+	\lambda & 0 & 0 \\
+	& \lambda & 0 \\
+	& & \lambda
+	\end{matrix}}$, $g_u = \klam{\begin{matrix}
+	1 & \lambda\i & 0 \\
+	& 1 & \lambda\i \\
+	& & 1
+	\end{matrix}}. $
+\end{example}
 
 \begin{center}
 	\begin{tikzcd}
