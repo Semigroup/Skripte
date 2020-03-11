@@ -1,0 +1,261 @@
+\marginpar{Lecture from 11.03.2020}
+Let $G$ be an algebraic group.
+\paragraph{Easy Exercise}: If $V_1,V_2$ are representations $r_1,r_2$ of $G$, then $V_1\otimes V_2$ is also a representation with
+\[ r = r_1 \otimes r_2: G \pfeil{} \GL(V_1 \otimes V_2) \]
+given by
+\[ r(g)(v_1 \otimes v_2) = (r_1(g)v_1) \otimes (r_2(g) v_2).  \]
+\begin{proof}
+	Given $\Delta_j : V_j \pfeil{} V_j \otimes k[G]$, define
+	\[\Delta : V_1\otimes V_2 \Pfeil{} V_1 \otimes V_2 \otimes k[G]\]
+	by:
+	if
+	\[ \Delta_1 u = \sum u_i \otimes f_i, ~~~~ \Delta_2 v = \sum v_j \otimes h_j, \]
+	then
+	\[ \Delta(u\otimes v) \sum \sum u_i \otimes v_j \otimes f_i h_j. \]
+	Set $A := k[G]$, then
+	\[ r_A := \text{right regular representation with } r_A(g) f(x) = f(xg). \]
+	
+	The map
+	\begin{align*}
+	A \otimes A &\Pfeil{m} A\\
+	f_1 \otimes f_2 &\longmapsto f_1f_2
+	\end{align*}
+	defines a morphism of representations
+	\[ (A, r_A) \otimes (A, r_A) \pfeil{} (A, r_A). \]
+	Indeed,
+	\begin{align*}
+	m((r_A \otimes r_A)(g)(f_1 \otimes f_2))(x) &= f_1(xg)f_2(xg),\\
+	&= f_1f_2(xg) = r_A(g)(m(f_1 \otimes f_2))(x),
+	\end{align*}
+	since $f_1(\_ g) \otimes f_2(\_ g) = (r_A \otimes r_A)(g)(f_1 \otimes f_2)$.
+	
+	Ergo $m \circ (r_A \otimes r_A)(g) = r_A(g) \circ m$.
+\end{proof}
+
+
+Recall: We stated the following theorem
+\begin{theorem}
+	Let $\lambda_V \in  \End(V)$ be given s.t. for all finite-dim. rep.s $V$ of $G$ s.t.:
+	\begin{itemize}
+		\item[(i)] $\lambda_k = 1$
+		\item[(ii)] $\lambda_{V\otimes W} = \lambda_V \otimes \lambda_W$
+		\item[(iii)] for all morphisms of rep.s $\phi :V \pfeil{} W$ we have
+		\[ \phi \circ \lambda_V = \lambda_W \circ \phi. \]
+	\end{itemize}
+Then, there is exactly one $g \in G$ s.t. $\lambda_V = r_V(g)$ for all $V$.
+\end{theorem}
+\begin{proof}
+	Last time, we saw that any such family $V \mapsto \lambda_V$ extends to \textbf{all} rep.s $V$ of $G$.
+	
+	Let's note also that, if $(V_0, r_0)$ is any representation of $G$ with trivial action, i.e. $r(g) = 1$ for all $g$, then $\lambda_{V_0} = 1$.
+	Indeed, let $v\in V_0$. We must check that $\lambda_{V_0} v = v$. Since the action is trivial, any subsapce of $V_0$ is $G$-invariant.
+	
+	Consider the map
+	\begin{align*}
+	\phi : k& \Pfeil{} V_0\\
+	\alpha & \longmapsto \alpha v
+	\end{align*}
+	where $v = \phi(1)$. Then, $\phi$ is a morphism of rep.s because the action is trivial.
+	
+	Thus,
+	\[ \lambda_Vv = (\lambda_V \circ \phi)(1) \overset{(iii)}{=} (\phi \circ \lambda_k) (1) \overset{(i)}{=} \phi(1) = v. \]
+	
+	Consider $\lambda_A \in \End(A)$. Then,
+	\[ \lambda_{A\otimes A} = \lambda_A \otimes \lambda_A. \]
+	It is an easy exercise to see that $m : (A, r_A) \otimes (A,r_A) \pfeil{} (A,r_A)$ is a morphism of rep.s.
+	
+	By (iii) it follows, $m \circ (\lambda_A\otimes \lambda_A) = \lambda_A \circ m$, i.e.
+	\[ \lambda_A(f_1f_2) = \lambda_A(f_1) \lambda_A(f_2) \]
+	for all $f_1, f_2 \in A$. Thus, $\lambda_A$ is an algebra morhism (check, using the morphism $k \inj{} A$, that $\lambda_A(1) = 1$).
+	
+	Thus, $\lambda_A = \phi^*$ for some unique morphism $\phi$ of algebraic sets $\phi : G \pfeil{} G$.
+	
+	We claim that $\phi$ commutes left multiplication i.e.
+	\[ \phi(hx) = h \phi(x) \]
+	for all $h,x \in G$. Indeed, let's consider the map
+	\begin{align*}
+	A & \Pfeil{} A\\
+	f &\longmapsto f(h\cdot\_).
+	\end{align*}
+	This induces a morphism
+	\begin{align*}
+	(A, r_A) \Pfeil{\psi} (A,r_A).
+	\end{align*}
+	By (ii), $\psi \circ \lambda_A = \lambda_A \circ \psi$.
+	
+	Since $\lambda_A = \phi^*$, this implies the claim.
+	
+	Now, set $g := \phi(e)$. Then for all $h \in G$,
+	\[ \phi(h) = \phi(he) = hg. \]
+	Thus, $\lambda_A = \phi^* = r_A(g)$.
+	
+	(It remains to show that
+	\[ \lambda_V = r_V(g) \]
+	for each finite-dim. rep. $V$.)
+	
+	Let $V = (V,r)$ be any rep. This induces a map
+	\begin{align*}
+\Delta: V & \Pfeil{}V\otimes  A.
+\end{align*}
+If $\Delta v = \sum{v_i} \otimes f_i$, then
+\[ hv = \sum f_i(h_i) \otimes v_i.  \]
+Let \begin{align*}
+\e : V\otimes A & \Pfeil{} V\\
+v\otimes f &\longmapsto f(1) v.
+\end{align*}
+It follows $\e \circ \Delta : V \pfeil{} V$ is the identity map.
+
+
+Let $(V_0, r_0)$ be the representation of $G$ with $V_0 := V$ and $r_0$ the trivial action.
+Then, $\Delta : V \pfeil{} V_0\otimes A$ is a morphism of representations.
+
+(Indeed, if $\Delta v = \sum v_i \otimes f_i$, then 
+\[ \Delta (r(h) v) \overset{?}{=} (r_0(h) \otimes r_A(h) ) \Delta v \]
+since
+\begin{align*}
+\Delta v &= \sum v_i \otimes f_i\\
+\iff xv &= \sum f_i(x_i)v_i ~ \forall x \in G\\
+\iff xhv &= \sum f_i(xh) v_i ~\forall x,h \in G.\\
+\end{align*}
+Since $r(h) v = hv$, it follows
+\[ \Delta(hv) = \sum v_i \otimes f_i(\cdot h) \implies (?). ) \]
+
+
+We want to show
+\[ \lambda_V = r_V(g). \]
+We have
+\begin{align*}
+\Delta \circ \lambda_V &\overset{(iii)}{=} \lambda_{V_0 \otimes A} \circ \Delta\\
+&\overset{(ii)}{=} \lambda_{V_0} \otimes \lambda_A\\
+&= 1 \otimes  \lambda_A = 1 \otimes r_A(g).
+\end{align*}
+This implies
+\[ \Delta \circ \lambda_V = (1 \otimes r_A(g)) \circ \Delta \]
+but also
+\[ \Delta \circ r_V(g) = (1 \otimes r_A(g)) \circ \Delta. \]
+Because of the injectivity of $\Delta$ it now follows
+\[ \lambda_V = r_V(g). \]
+\end{proof}
+
+\begin{corollary}
+Let $\phi : G \pfeil{} H$ be any morphism of algebraic groups. Then, for all $g \in G$
+\begin{align*}
+\phi(g)_s &= \phi(g_s)\\
+\phi(g)_u &= \phi(g_u).
+\end{align*}
+\end{corollary}
+\begin{proof}
+Let $V$ be any \df{faithful} representation of $H$, i.e. $r_V : H \pfeil{} \GL(V)$ is injective, (for a finite-dim. $V$).
+
+Then, $r_V \circ \phi$ is a rep. of $G$. To prove (i), it suffices to show
+\[r_V(\phi(g)_s)  = r_V(\phi(g_s))\]
+since $H$ operates faithfully on $V$.
+
+We know that
+\[r_V(\phi(g)_s) = r_V(\phi(g))_s \]
+(characterizing property of $h_s$ for $h \in H$).
+On the other hand,
+\[ r_V(\phi(g_s)) = (r_V\circ \phi)(g_s) = r_V(\phi(g))_s.\]
+Therefore, claim (i) follows. (ii) works analogously.
+\end{proof}
+
+\begin{definition}
+	Let $g \in G$ where $G$ is an algebraic group.
+	We call $g$ \df{semisimple}, if $g = g_s$.
+	
+	We call $g$ \df{unipotent}, if $g = g_u$.
+\end{definition}
+
+\begin{lemma}
+	For $g \in G$, the following are equivalent:
+	\begin{enumerate}[(i)]
+		\item $g$ is semisimple.
+		\item $r_V(g)$ is semisimple for all finite-dim. rep. $V$.
+		\item $r_V(g)$ is semisimple for at least one faithful f.d. rep. $V$ of $G$.
+	\end{enumerate}
+\end{lemma}
+We get an analogous lemma for unipotent group elements.
+\begin{proof}
+	We have
+	\begin{align*}
+	(i) &\iff g = g_s \\
+	&\overset{\text{Def. of }g_s \text{ by goal thm.}}{\iff} r_V(g) = r_V(g)_s \forall \text{ f.d. } V \\
+&\iff	r_V(g) \text{ is semisimple}\\
+	&\iff(ii) \implies (iii).
+	\end{align*}
+	On the other hand,
+	\begin{align*}
+	(iii) & \implies \exists~~ \text{faithful f.d. }V \text{ s.t. } r_V(g) = r_V(g)_s = r_V(g_s) \implies g = g_s.
+	\end{align*}
+\end{proof}
+
+
+\newpage
+\section{Non-Commutative Algebra}
+\begin{definition}
+A \df{ring} $R$ (for now) is unital, associative but not necessarily commutative.
+\end{definition}
+\begin{example}
+The ring of matrices over some field or ring.
+\end{example}
+
+\begin{definition}
+A \df{left ideal} $I \subset R$ is a subset that is an abelian subgroup of $(R,+)$ s.t.$ra \in I$ for all $r \in R, a \in I$.
+
+A \df{right ideal} $I\subset R$ is a subset that is an abelian subgroup with
+\[ IR \subset I. \]
+A two-sided ideal $I$ is a subset that is a left and a right ideal of $R$.
+\end{definition}
+
+It is easy to check that for any homomorphism of rings $\phi : R\pfeil{} S$, $\Ker \phi$ is a two-sided ideal. Also, if $J \subset R$ is any two-sided ideal, then  there exists a unique ring structure on $R /J$ s.t. the projection $R \pfeil{} R/J$ is a ring homomorphism.
+
+\begin{definition}
+A \df{left module} $M$ for $R$ is an abelian group equipped with a ring homomorphism
+\[ R \Pfeil{\alpha} \End(M)\]
+where $\End(M)$ acts on the left of $M$. We write
+\[ rm:= \alpha(r) m. \]
+We have
+\[ (r_1r_2)(m) = r_1(r_2(m)). \]
+If $R$ \df{acts} on $M$ by the right, we write
+\[ R \curvearrowright M. \]
+\end{definition}
+\begin{example}
+	$M_n(k) \curvearrowright k^n$ where $k^n$ is the space of column vectors.
+	
+	If $k^n$ denotes the space of row vectors, we have $k^n \curvearrowleft M_n(k)$.
+\end{example}
+
+\begin{definition}
+	A \df{(left) submodule} $N \subset M$ is an algebraic subgroup s.t.
+	\[ RN \subset N. \]
+	It follows that $N$ is itself is a left module.
+\end{definition}
+\begin{definition}
+	A (left) module $M$ of $R$ is \df{simple} (or irreducible) if it has exactly the two submodules: $0 = \{0\}$ and $M$.
+\end{definition}
+\begin{definition}
+	A ring $R$ is a \df{division ring} if it satisfies any of the following equivalent requirements:
+	\begin{enumerate}[(i)]
+		\item $R^\times = R \setminus \{0\} $
+		where $R^\times = \set{r \in R}{\exists a,b \in R: ar = rb = 1.}$\footnotetext{If $ar = rb = 1$, then $a = arb = b$.}
+		\item $R$ has no nontrivials left or right ideals.
+	\end{enumerate}
+\end{definition}
+\begin{definition}
+If $R \curvearrowright M$, then we can define
+\[ \End_R(M) := \set{\phi \in \End(M)}{\phi(rm) = r\phi(m) ~\forall r\in R, m \in M}. \]
+Note, that $\End_R(M)$ is a ring.
+\end{definition}
+\begin{lemma}[Schur's Lemma]
+	If $M$ is simple, then $\End_R(M)$ is a division ring.
+\end{lemma}
+\begin{lemma}
+	Let $k$ be a field. Then, $M_n(k)$ has no nontrivial twosided ideals.
+\end{lemma}
+\begin{theorem}[Jacobson Density Theorem (Double Commutant Theorem)]
+Suppose $M$ is a simple left module which is finitely generated as a right $D$-module for $D = \End_R(M)$.
+
+Assume that $R$ acts faithfully on $M$, i.e. $R \pfeil{} \End_R(M)$ is injective.
+
+Then, the map $R \pfeil{} \End_D(M)$ is an isomorphism.
+\end{theorem}
