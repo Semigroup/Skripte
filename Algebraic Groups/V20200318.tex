@@ -1,0 +1,220 @@
+\marginpar{Lecture from 18.03.2020}
+
+\paragraph{Answert to last Exercise:} Recall that the main point was to show that any unipotent subgroup $G \subseteq \GL(V)$ leaves invariant some complete flag $\F = (V_0 \subset V_1 \ldots)$. But by some homework (problem 1), the group
+\[ \GL(V)_\F := \set{g \in \GL(V)}{g\F = \F} \]
+is algebraic.
+
+\textbf{Proof:} If $\F$ is the standard flag with $V_i = \Span(e_1, \ldots, e_i)$ for the standard basis $\{e_1, \ldots, e_n\}$, then
+\[ \GL(V)_\F = \{ A \in \GL(V) ~|~ A \text{ is upper-triangle} \}. \]
+The condition that $A$ is upper triangle can be realized by polynomials. \qed
+
+
+Thus,
+\begin{align*}
+& G \text{ fixes }\F\\
+\iff & G \subseteq \GL(V)_\F\\
+\overset{\GL(V)_\F \text{ is algebraic}}{\iff}& \overline{G} \subseteq\GL(V)_\F\\
+\iff & \overline{G} \text{ fixes } \F.
+\end{align*}
+Now, the Zariski-Closure $\overline{G}$ of any group $G$ is an algebraic group (shown in some homework).
+
+Further, if $G$ is unipotent, then $\overline{G}$ is unipotent.
+
+
+\section{Tori}
+\begin{definition}
+A \df{torus} is an algebraic group that is isomorphic to $\G_m^n$ for some $n \in \N_0$ where $\G_m = k^\times = \GL_1(k)$ is the unit group of $k$.
+
+We think of $\G_m^n \subseteq \GL_n(k)$ as the subgroup of diagonal matrices.
+\end{definition}
+
+\begin{lemma}
+	Let $G$ be a commutative algebraic group. Then the following are equivalent:
+	\begin{enumerate}[(i)]
+		\item each $g \in G$ is semisimple.
+		\item for each finite-dimensional representation $V $ of $G$ and for each $g \in G$, the operator $r_V(g)$ is diagonalizable.
+		\item for all finite-dimensional representations $V$ of $G$, there is a basis of common eigenvectors for $r_V(G)$, i.e. a basis s.t.
+		\[ r_V(G) \subseteq \G_m^n. \]
+		\item $G$ is isomorphic to an algebraic subgroup of a torus.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}
+		\item[(i) $\iff$ (ii):] This follows from the Jordan decomposition and definition of semisimple.
+		\item[(ii) $\implies$ (iii)]: This is homework. Note that any commutative subset $S$ of $\GL(V)$ consisting of semisimple operators may be diagonalized simultaneously.
+		\item[(iii) $\implies$ (iv)]: Take any faithful representation $V$ of $G$ and diagonalize it simultaneously. Then, $G \isom{} r_V(G) \subseteq \G_m^n$.
+		\item[(iv) $\implies$ (i)]: Any diagonal matrix is semisimple.
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+	A commutative algebraic group $G$ is called \df{diagonalizable}, if it satisfies one of the above equivalent conditions.
+\end{definition}
+\begin{definition}
+	A character $\chi$ of any algebraic group $F$ is an element $\chi \in \Hom{\mathrm{alg.grp.}}{G}{k^\times}$, i.e., a homomorphism $\chi : G \pfeil{} k^\times$ of algebraic groups.
+\end{definition}
+\begin{notation}
+For an algebraic group $G$, set $\Xi(G) := \Hom{\mathrm{alg.grp.}}{G}{k^\times}$.
+
+Also denote now by $\O(X) := k[T] / I(X)$ the coordinate ring of an algebraic set $X$ (rather than $k[X]$).
+\end{notation}
+
+\begin{lemma}
+	There is a bijection
+	\[ \Xi(G) = \{ \text{characters } \chi \text{ of } G \} \longleftrightarrow \{ x \in \O(G)^\times ~|~ \Delta(x) = x \otimes x \}. \]
+\end{lemma}
+\begin{proof}
+Note, that any $x \in O(G)^\times$ can be thought of as a map $x : G \pfeil{} k^\times \subset k$.
+
+We have
+\begin{align*}
+\Hom{\mathrm{alg.grp.}}{G}{\G_m} &= \set{\phi \in \Hom{\mathrm{alg.sets}}{G}{\G_m}}{ \phi(gh) = \phi(g) \phi(h)~\forall g,h }\\
+&= \set{\phi \in \Hom{k\mathrm{-alg.}}{\O(\G_m)}{\O(G)}}{(\phi \otimes \phi) \circ \Delta = \Delta \circ \phi}.
+\end{align*}
+\textbf{Recall:} $\O(\G_m) \isom{} k[t, \frac{1}{t}]$ with $\Delta(t) = t \otimes t$.
+
+Thus for any $k$-algebra $A$, $\Hom{k\mathrm{-alg.}}{\O(\G_m)}{A} \isom A^\times$ via
+\[ [t \mapsto a, (t\i \mapsto a\i)] \longleftrightarrow a. \]
+Thus,
+\begin{align*}
+\Hom{\mathrm{alg.grp.}}{G}{\G_m} \isom{} \set{a \in \O(G)^\times}{ a \otimes a = \Delta(a) }.
+\end{align*}
+Therefore, it suffices to test the condition $ (\phi \otimes \phi ) \circ \Delta = \Delta \circ \phi $ on the generators $t,t\i$ of $\O(\G_m)$.
+Now, the above isomorphism is given by
+\[ \phi \mapsto a = \phi(t) \]
+which is equivalent or regarding $\chi : G \pfeil{} \G_m$ as a map $\chi : G \pfeil{} k$.
+\end{proof}
+
+\begin{example}
+	Let $G = \G_m$, then $\O(G) = k[t, \frac{1}{t}]$. Which $x = \sum_{m \in \Z}c_mt^m \in \O(G)$, almost all $c_m = 0$, but not all of them, have the property
+	\[ \Delta(x) = x\otimes x. \]
+	We have
+	\begin{align*}
+	x \otimes x &= \sum_{m,n \in \Z} c_mc_n t^m \otimes t^n,\\
+	\Delta(x) &= \sum_{m\in \Z} c_mt^m \otimes t^m.
+	\end{align*}
+	Those sums equal, if
+	\begin{align*}
+	c_mc_n = o & \text{ for all } m \neq n,\\
+	c_m^2 = c_m & \text{ for all m}.
+	\end{align*}
+	By those conditions, it follows
+	\[ x = t^m. \]
+	Therefore
+	\[ \Xi(G) = \set{\chi_m}{m \in \Z} \isom{} \Z\]
+	with
+	\[ \chi_m(y) = y^m. \]
+\end{example}
+
+\begin{example}
+Let $T \isom{} \G_m^n$ be a torus. Then,
+\[ \Xi(T) = \set{\chi_m}{m \in \Z^n} \isom{} \Z^n \]
+where $\chi_m(y) = y^m = y_1^{m_1}\cdots y_n^{m_n}.$
+\end{example}
+\paragraph{Note:} For each algebraic group $G$, $\Xi(G)$ is naturally an abelian group:
+\[ (\chi_1 \cdot \chi_2)(g) := \chi_1(g) \cdot \chi_2(g). \]
+
+
+Given a morphism of algebraic groups $f : G \pfeil{} H$, we get a morphism of abelian groups
+\begin{align*}
+f^* : \Xi(H) & \Pfeil{} \Xi(G)\\
+\chi & \longmapsto \chi \circ f =: f^*(\chi).
+\end{align*}
+This induces a contravariant functor from the category of algebraic groups to the category of abelian groups.
+
+\begin{lemma}
+Let $G$ be a diagonalizable algebraic group. Then, $\Xi(G)$ is a $k$-basis for $\O(G)$.
+\end{lemma}
+\begin{example}
+Let $G = \G_m^n$ be a torus. Then, we have the embedding
+\begin{align*}
+\Xi(G) &\Inj{} \O(G)\\
+\chi_m & \longmapsto t^m.
+\end{align*}
+The lemma is obvious in this case: each elment of $\O(G) = k [t_1,\ldots, t_m, t_1\i, \ldots, t_m\i]$ can be written uniquely as a linear combination of monomials.
+\end{example}
+\begin{proof}
+\begin{enumerate}[(i)]
+	\item $\Xi(G)$ spans $\O(G)$:\\
+	Choose an embedding $G \subset \G_m^n$ of algebraic groups. Then, by restriction, we get
+	\[ \O(\G^n_m) \surj{} \O(G). \]
+	Since the $\chi_m, m \in \Z^n, $ span $\O(\G_m^n)$, their images $\chi_m|_G \in \Xi(G)$ span $\O(G)$.
+	\item $\Xi(G)$ is linearly independent:\\
+	Suppose otherwise and let $\phi_1, \ldots, \phi_m$ be a linearly dependent subset of $\Xi(G)$ with $m \geq 1$ chosen minimally, with $c_1, \ldots, c_m \in k^\times$ s.t.
+	\[ \sum_{i = 1}^m c_i \phi_i = 0. \]
+	We distinguish the following cases:
+	\begin{enumerate}
+		\item[$m = 1$:] In this case, we have $\phi_1 = 0$, but $\phi_1(1) = 1$, a contradiction.
+		\item[$m > 1$:] We can assume $\phi_1 \neq \phi_2$, so there is an $h \in G$ s.t. $\phi_1(h) \neq \phi_2(h)$. Then,
+		\[ \phi_1(h) \sum_{i=1}^m c_i \phi_i = 0, \]
+		but also for all $h,g \in G$
+		\[ \sum_{i = 1}^mc_i \phi_i(hg) =\sum_{i = 1}^mc_i \phi_i(h)\phi_i(g) = 0. \]
+		This implies
+		\[ \sum_{i = 1}^m c_i\phi_i(h) \phi = 0. \]
+		Ergo
+		\[ \sum_{i= 1}^m c_j(\phi_i(h) - \phi_1(h)) \phi_i = \sum_{i= 2}^m c_j(\phi_i(h) - \phi_1(h)) \phi_i = 0. \]
+		Now, $\phi_i(h) - \phi_1(h)$ is zero if $i = 1$ and non-zero, if $i = 2$. Therefore, this yields a shorter linear dependency for the elements
+		\[ \phi_2, \ldots, \phi_m, \]
+		which contradicts our requirement.
+	\end{enumerate}
+\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Let $M$ be an abelian group. The \df{group algebra} on $M$ is the $k$-algebra $k[M]$ (not a coordinate ring!) defined as follows:
+\begin{align*}
+k[M] := & \text{ the }k\text{-vectorspace with basis }M\\
+:= & \set{ \sum_{m \in M} c_m \cdot m }{c_m \in k, \text{ almost all }c_m = 0},
+\end{align*}
+where the multiplication on $k[M]$ extends that on $M$:
+\[ (\sum_{m\in M}c_m m) (\sum_{n\in M} d_n n) = \sum_{m,n \in M} c_md_n mn. \]
+\end{definition}
+\begin{corollary}
+	For a diagonalizable $G$, we have
+	\[ \O(G) \isom{} k[\Xi(G)]. \]
+\end{corollary}
+
+\paragraph{Fact:} For an abelian group $M$, there is exactly one Hopf algebra structure on $k[M]$ given by $\Delta(m) = m\otimes m$ for all $m \in M$.
+
+With this definition, the above isomorphism is one of Hopf algebras.
+
+\begin{lemma}
+If $G,H$ are diagonalizable algebraic groups, then
+\[ \Hom{\mathrm{alg.grp.s}}{G}{H} \Pfeil{f \mapsto f^*} \Hom{\mathrm{grp.}s}{\Xi(H)}{\Xi(G)} \]
+is a bijection.
+\end{lemma}
+\begin{proof}
+\begin{align*}
+\Hom{}{G}{H} \isom{} &\Hom{\mathrm{Hopf-alg.}}{\O(H)}{\O(G)}\\
+ \isom{} &\set{\phi \in \Hom{k\mathrm{-alg.}}{\O(H)}{\O(G)}}{(\phi \otimes \phi) \circ \Delta = \Delta \circ \phi}.
+\end{align*}
+Since $\Hom{k\mathrm{-alg.}}{\O(H)}{\O(G)} \isom{} \Hom{}{k[\Xi(H)]}{k[\Xi(G)]}$, this reduces to the following lemma:
+\begin{lemma}
+Let $M_1, M2$ be two abelian groups. Then
+\begin{align*}
+\Hom{}{M_1}{M_2} & \Pfeil{\isom{}} \Hom{\mathrm{Hopf-alg.}}{k[M_1]}{k[M_2]}\\
+\phi & \longmapsto \brak{ \sum c_m m \mapsto \sum c_m \phi(m) } .
+\end{align*}
+\end{lemma}
+\begin{proof}
+We have to show that
+\[ M = \set{x \in K[M]^\times}{\Delta(x) = x \otimes x}. \]
+Then, by this, it follows for each $\phi \in \Hom{\mathrm{Hopf-alg.}}{k[M_1]}{k[M_2]}$,
+\[ \phi(M_1) \subseteq M_2. \]
+Ergo, $\phi|_{M_1} \in \Hom{}{M_1}{M_2}$. Therefore, the surjectivity of the claimed bijection is shown.
+The injectivity is clear, since $M$ generates $k[M]$ as a $k$-algebra.
+
+To show
+\[ M = \set{x \in K[M]^\times}{\Delta(x) = x \otimes x}, \]
+let
+\begin{align*}
+x &= \sum c_m m\in K[M]^\times\\
+\Delta(x) &= \sum c_m m \otimes m\\
+x \otimes x &= \sum c_m c_n m\otimes n.
+\end{align*}
+If $\Delta(x) = x \otimes x$, then it follows
+\[ x = m \]
+for some $m \in M$.
+
+\end{proof}
+\end{proof}
