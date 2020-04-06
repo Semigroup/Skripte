@@ -1,0 +1,185 @@
+\marginpar{Lecture from 01.04.2020}
+Since $G' = \shrp{ghg\i h\i ~|~ g,h \in G}$, so $\det(r(G')) = 1$.
+
+On the other hand, for each $g \in G'$, we have
+\[
+r(g) = \mat{
+\chi_0(g) \\
+& \ddots \\
+ & & \chi_0(g)
+}
+\]
+since $V = V_{\chi_0}$. This implies
+\[ 1 = \det(r(g)) = \chi_0(g)^d. \]
+Ergo, $\chi_0$ defines a morphism
+\[ \chi_0 : G' \Pfeil{} \mu_d \subseteq \G_m. \]
+
+But $G'$ is connected and $\mu_d$ is finite. Since $\chi_0$ is a morphism, $\chi_0$ must be constant, ergo the trivial character.
+
+As a consequence, we get $r(G') = 1$ on $V = V_{\chi_0}$.
+
+\begin{lemma}
+	Let $G$ be an algebraic group, $r : G \pfeil{} \GL(V)$ a representation. $v \in V$ shall be a simultaneous non-zero eigenvector for $r(G)$.
+	
+	Then, for each $g \in G$, there is a value $\chi(g) \in k^\times$ s.t.
+	\[ r(g) v =: \chi(g)v. \]
+	Then, the mapping $\chi : G \pfeil{} \G_m$ is a morphism of algebraic groups.
+\end{lemma}
+
+Therefore, $r $ descends to a representation of the commutative group
+\[ \overline{r} : G / G' \Pfeil{} \GL(V). \]
+Ergo, $r(G / G') = r(G)$ is commutative and therefore trigonalizable (because of irreducibility). \qedsymbol
+
+
+\begin{example}[Non-Example]
+\begin{itemize}
+	\item Take $ G = D_4 \inj{} \GL_2(\C)$ which is solvable and has an irreducible and faithful representation over $\C^2$. 
+	\item Consider the solvable group
+	\[ G = \shrp{\mat{\pm 1 \\ & \pm 1}, \mat{& 1 \\ 1}} \]
+	which is a finite subgroup of $\GL_2(\C)$, s.t. $\C^2$ define an irreducible representation of $G$.
+\end{itemize}
+\end{example}
+
+\begin{lemma}[Form of Schur's Lemma]
+	If $S$ is any commutative subset of $\GL(V)$ for a finite-dimensional $0\neq V$ over an algebrically closed field $k$. Let $V$ be $S$-irreducible.
+	
+	Then, $\dim V = 1$.
+\end{lemma}
+\begin{proof}
+	There is notthing to show if $S$ is empty.
+	
+	Let $s \in S$ and denote by $V_\lambda \subseteq V $ the $\lambda$-eigenspace for $s$. Then, since $S$ is commutative, $V_\lambda$ is $S$-invariant. Therefore, $V = V_\lambda$ for one $\lambda \in k^\times$.
+	
+	Thus, every $s \in S$ acts by scaling, therefore every subspace of $V$ is $S$-invariant. Since $V$ is invariant, we get $\dim V = 1$.
+\end{proof}
+
+\begin{corollary}
+	Let $G$ be a connected algebraic group. Then, $G$ is solvable iff $G$ is trigonalizable.
+\end{corollary}
+
+\begin{proposition}
+	If $G$ is trigonalizable, then $G_u$ is a normal algebraic subgroup.
+\end{proposition}
+\begin{proof}
+	We have
+	\[ G \inj{} B:= \curv{
+\mat{* & \ldots & *\\  & \ddots & \vdots \\ & & *}	
+}  \subseteq \GL_n(k). \]
+$B$ has the normal subgroup $U := \curv{
+	\mat{1 & \ldots & *\\  & \ddots & \vdots \\ & & 1}	
+}$ and we have $G_u = G \cap U$. Now, $U$ is the kernel of the multiplicative morphism
+\[ 
+\mat{a_1 & \ldots & * \\ & \ddots & \vdots \\ & & a_n} \longmapsto \mat{a_1 &  &  \\ &  &  \\ & & a_n}.
+\]
+\end{proof}
+\begin{corollary}
+	If $G$ is connected and solvable, then $G_u$ is a normal algebraic subgroup.
+\end{corollary}
+
+\subsection{Semisimple Elements of nilpotent Groups}
+
+\begin{theorem}
+	Let $G$ be a connected nilpotent algebraic group. Then, we have
+	\[ G_s \subseteq Z(G) \]
+	where $Z(G)$ denotes the center of $G$.
+\end{theorem}
+\begin{theorem}[Lie-algebraic Analogue]
+Let $V$ be a finite-dimensional vectorspace. Let $\mathfrak{g}$ be the Lie-Subalgebra of $\End(V)$, i.e. $\mathfrak{g}$ is a subspace s.t. we have for each $x,y \in \mathfrak{g}$
+\[ [x,y] := xy - yx \in \mathfrak{g}. \]
+Assume that $\mathfrak{g}$ is nilpotent, i.e. there is an $n \in \N_0$ s.t.
+\[ [x_1, [x_2, [\ldots, [x_{n-1}, x_n]]]] = 0 \]
+for all $x_1, \ldots, x_n \in \mathfrak{g}$.
+
+Then, any semisimple (semisimple in $\End(V)$ that is) $x \in \mathfrak{g}$ is \df{central} in $\mathfrak{g}$, i.e. $[x,y] = 0$ for each $y \in \mathfrak{g}$.
+\end{theorem}
+\begin{remark}
+	The Lie-algebraic Analogue implies the general theorem if -- for example -- $k = \C$.
+\end{remark}
+\begin{proof}
+Let $g \in G_s$. We want to show $Z_G(g) = G$.
+
+\newcommand{\Lie}{\mathrm{Lie}}
+\paragraph{Fact from the theory of Lie-Algebras:}
+For the Lie-Algebra $\Lie Z_G(g)$ we have
+\[ \Lie Z_G(g) = \ker (\Ad(g)) \]
+where $\Ad$ is the map
+\begin{align*}
+\Ad : G & \Pfeil{} \GL(\mathfrak{g})\\
+x & \longmapsto gxg\i.
+\end{align*}
+Since $G$ is connected, it suffices to verify
+\[ \ker (\Ad (g)) = \mathfrak{g} \]
+i.e. $\Ad(g) = 1$.
+
+Since $g$ is semisimple, we have for suitable basis
+\[ g = \mat{a_1 \\ & \ddots \\ & & a_n} \]
+with $a_j \in \C^\times$. This is $\exp(x)$ for a suitable diagonal matrix $x \mat{x_1 \\ & \ddots \\ & & x_n} \in \GL_n(\C)$.
+\paragraph{Fact:}
+We may assume that $x \in \mathfrak{g} := \Lie (G)$.
+
+Since $G$ is nilpotent, it can be shown that $\mathfrak{g}$ is nilpotent.
+
+By the theorem, $x$ is central in $\mathfrak{g}$. By the properties of $\exp$ we have
+\[ \Ad(g) = \exp(\mathrm{ad}(g)) = 1 \]
+ergo $\mathrm{ad}(x) = 0$ where $\mathrm{ad}: \mathfrak{g} \pfeil{} \mathfrak{g}$ is defined by 
+\[ \mathrm{ad}(x) \cdot y := [x,y]. \]
+\end{proof}
+
+\begin{proof}
+If $\mathfrak{g}$ is nilpotent, then $\mathrm{ad}(x) \in \End(\mathfrak{g})$ is nilpotent.
+
+Since $x$ is semisimple, $\mathrm{ad}(x)$ is semisimple, because $\mathrm{ad}(x)$ is the restriction to $\mathfrak{g}$ of the map
+\begin{align*}
+\End(V) & \Pfeil{} \End(V)\\
+y & \longmapsto [x,y]
+\end{align*}
+and, if $e_1, \ldots, e_n$ are a basis of eigenvectors for $x$, then $E_{i,j}$ is a basis of eigenvectors for $\ell$.
+
+So, $\mathrm{ad}(x)$ is nilpotent and semisimple, therefore $\mathrm{ad}(x) = 0$.
+\end{proof}
+
+\begin{proof}[Proof Theorem]
+	Let $G$ be a connected nilpotent algebraic group, $G \inj \GL(V)$.
+	
+	Let $g \in G_s$, we want to show that $g \in Z(G)$.
+	
+	Assume otherwise, then we have a $h \in G$ s.t. $(g,h) = ghg\i h\i \neq 1$.
+	
+	Since $G$ is connected and nilpotent (ergo solvable), we know by Lie-Kolchin that $G$ stabilizes some complete flag $V_0 \subset \ldots \subset V_n$.
+	
+	We have $g|_{V_i}, h|_{V_i} \in \GL(V_i)$. They commute, if $i = 0$, but not if $i = n$.
+	
+	So, there is an $i$ s.t. $g|_{V_i}, h|_{V_i}$ commute but  $g|_{V_{i+1}}, h|_{V_{i+1}}$ don't commute. W.l.o.g. $V =V_{i+1}, g = g|_{V_{i+1}}, h = h|_{V_{i+1}}$.
+	Set $a:= g|_{V_i}, b:=  h|_{V_i} \in \GL(V_i)$. $a$ will be semisimple, since $g$ is.
+	
+	Since $g$ is semisimple, there is an eigenvector $v \in V_{i+1}$ for $g$ s.t.
+	\[ V_{i+1} = V_i \oplus \shrp{v}. \]
+	We have an isomorphism of vector spaces
+	\[ \End(V_{i+1}) \isom{} \End(V_i) \oplus \Hom{}{\shrp{v}}{V_i} \oplus \Hom{}{V_i}{\shrp{v}} \oplus \End(\shrp{v}) \]
+	with
+	\[ \End(\shrp{v}) \isom{} k \text{  and  } \Hom{}{\shrp{v}}{V_i} \isom{} V_i. \]
+	So, we can write $ g|_{V_{i+1}},   h|_{V_{i+1}}$ write as
+	\[
+	g = \mat{a \\ & * \in k} \text{  and  } 	h = \mat{b & c \in V_i \\ & * }.
+	\]
+	We may replace $g,h$ with scalar multiples to reduce to the case that $* = 1$. Then,
+		So, we can write $ g|_{V_{i+1}},   h|_{V_{i+1}}$ write as
+	\[
+	g = \mat{a \\ & 1} \text{  and  } 	h = \mat{b & c  \\ & 1 }.
+	\]
+	Then,
+	\[ h\neq ghg\i = \mat{b & ac \\ & 1}. \]
+	Ergo, $c \neq ac$, i.e. $c \notin \ker(a -1)$. Let $h_1 := h\i gh g\i$. Check
+	\[ h_1 = \mat{
+	1 & b\i(a-1)c\\ & 1}. \]
+We claim that $h_1$ does not commute with $g$. This claim implies the theorem, since we can iterate the claim to obtain elements $h_i$ by $h_{i+1} := h_i\i g h_i g\i$. Then, $h_i$ does not commute with $g$. But $G$ is nilpotent, therefore $h_i = 1$ for some large enough $i$.
+
+We can prove the claim as follows: By some calculation as for $h$ and $g$, we see, that $h_1$ and $g$ don't commute iff $b\i(a-1)c \notin \ker(a-1)$. This is equivalent to
+\begin{align*}
+\iff & (a-1)b\i(a-1)c \neq 0\\
+\iff & b\i(a-1)^2c \neq 0\\
+\iff & (a-1)^2c \neq 0\\
+\iff & c \in \ker((a-1)^2).
+\end{align*}
+But $a$ being semisimple implies $a-1$ being semisimple, therefore $\ker((a-1)^2) = \ker(a-1)$. So $h_1,g$ don't commute iff $c \in \ker(a-1) $ iff $h,g$ don't commute.
+\end{proof}
