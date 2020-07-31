@@ -1,0 +1,149 @@
+\section{Algebraic Groups and Hopf Algebras}
+
+\begin{definition}
+	A \df{morphism} $f : X \pfeil{} Y$ of algebraic sets $X \subset k^m, Y \subset k^n$ is a map which is coordinatewise described by polnomials.
+\end{definition}
+\begin{definition}
+	An \df{algebraic group} is an algebraic set $G \subset k^n$ together with a fixed element $e \in G$ and morphisms $m : G \times G \pfeil{} G, i : G \pfeil{} G$ s.t. $(G,m,i,e)$ is a group.
+	
+	A \df{morphism of algebraic groups} is a morphism of algebraic sets that is also a group homomorphism.
+\end{definition}
+
+\begin{definition}
+	Let $V \subset k^n$ be any subset. Then, we define the vanishing ideal of $V$ by
+	\[ I(V) := \set{f \in k[x]}{f(V) = 0}. \]
+\end{definition}
+\begin{definition}
+	For a commutative ring $R$ we define the \df{radical} of an ideal $I \subseteq R$ by
+	\[ \sqrt{I} := \set{r \in R}{r^m \in I~\text{for some }m \in \N_0}. \]
+	
+	$R$ is called \df{reduced}, if $\sqrt{0} = 0$.
+\end{definition}
+
+\begin{lemma}[Zariskis Lemma]
+	Let $L \supseteq k$ be fields. If $L$ is finitely generated as a $k$-algebra, then the extension $L \supseteq k$ is finite, i.e., $L$ is a finitely-generated $k$-vector space.
+\end{lemma}
+
+\begin{theorem}[Hilberts Nullstellensatz]
+	For any ideal $I \subseteq k[x]$, we have
+	\[ I(V(I)) = \sqrt{I}.\]
+\end{theorem}
+\begin{proof}
+	It is easy to see that
+	\[ I \subset \sqrt{I} \subset I(V(I)). \]
+	Now, let $f \in I(V(I))$ and assume -- for the sake of contradiction -- that $f \notin \sqrt{I}$. Since $\sqrt{I}$ is the intersection of its upper prime ideals, there is a prime ideal $p \supset I$, s.t. $f\notin p$. Now, define the zero divisor-free ring
+	\[ R:= (k[x] / p)[f\i]. \]
+	And let $\phi : k[x] \pfeil{} R$ be the corresponding ring homomorphism.
+	
+	Let $m \subseteq R$ be a maximal ideal in $R$. Then, $R/m$ is a field, which contains $k$ and is finitely generated as $k$-algebra. According to Zariski's lemma, $R / m$ is a finite (ergo algebraic) extension of $k$.
+	Since $k$ is algebraically closed, we have $R / m = k$. Let $\pi_m : R \pfeil{} k$ be the corresponding ring homomorphism.
+	
+	Now, for $x_1,\ldots, x_n$, set
+	\[ t_i := \pi_m(\phi(x_i)). \]
+	Then, $t = (t_1,\ldots, t_n) \in k^n$. We now have
+	\begin{enumerate}
+		\item $t \in V(I)$:
+		For each $g \in I$, we have $\phi(g) = 0$. On the other hand
+		\[ g(t) = g(\pi_m\circ \phi(x)) = \pi_m\circ \phi(g) = 0. \]
+		\item $f(t) \neq 0$:
+		$\phi(f)$ is invertible in $R$, therefore $\phi(f) \neq 0$ and $\phi(f) \notin m$. Ergo
+		\[ f(t) = \pi_m \circ \phi(f) \neq 0. \]
+	\end{enumerate}
+Ergo, there is a point $t \in V(I)$ s.t. $f(t) \neq 0$. This yields a contradiction, since we assumed $f \in I(V(I))$.
+\end{proof}
+\begin{definition}
+	For an algebraic set $X \subset k^n$, we define its \df{coordinate ring} by
+	\[ k[X] := k[x_1,\ldots, x_n] / I(X). \]
+\end{definition}
+
+\begin{lemma}
+	For a morphism $f : X \pfeil{} Y$ of algebraic sets define the following homomorphism of $k$-algebras.
+	\begin{align*}
+	f^* : k[Y] & \Pfeil{} k[X]\\
+	p & \longmapsto p \circ f.
+	\end{align*}
+	We have a contravariant functor $\_^*$ from the categories of algebraic sets over $k$ to the category of $k$-algebras:
+	\begin{align*}
+	X &\longmapsto k[X]\\
+	\Hom{}{X}{Y} & \longmapsto \Hom{k}{k[Y]}{k[X]}\\
+	f & \longmapsto f^*.
+	\end{align*}
+\end{lemma}
+
+\begin{lemma}
+	We have
+	\[ k[X \times Y] \isom{} k[X] \otimes k[Y]. \]
+\end{lemma}
+\begin{proof}
+\begin{align*}
+k[X] \otimes k[Y] = k[x] / I(X) \otimes_k k[y] / I(Y) = k[x,y] / I(X) \otimes k[y] + k[x] \otimes I(Y).
+\end{align*}
+But
+\[ V(I(X) \otimes k[y] + k[x] \otimes I(Y)) = V(I(X) \otimes k[y])\cap V(k[x] \otimes I(Y)) = X \times Y. \]
+\end{proof}
+\begin{theorem}
+	Every finitely generated reduced $k$-algebra $A$ is isomorphic to some $k[X]$ for some algebraic $X$.
+\end{theorem}
+\begin{proof}
+	Choose some $\pi : k[x_1,\ldots, x_n] \surj{} A$ and set $X := V(\ker \pi)$. Then $\ker \pi = I(X)$, since $\pi$'s kernel is radical since $A$ is reduced.
+\end{proof}
+\begin{corollary}
+	The contravariant functor $\_^* : \mathcal{C}_{\mathrm{algSets}} \pfeil{} \mathcal{C}_{k\mathrm{-alg.s}}$ gives an antiequivalence of categories.
+\end{corollary}
+\begin{lemma}
+	An algebraic set $X$ is isomorphic to some algebraic subset of $Y$ iff there is an epimorphism $k[Y] \surj{} k[X]$.
+\end{lemma}
+
+
+\begin{lemma}
+Let $G \subset k^n$ be an algebraic group. Then, we have maps
+\begin{align*}
+m: G \times G &\Pfeil{} G\\
+i : G & \Pfeil{} G\\
+e : * & \Pfeil{} G.
+\end{align*}
+They induce dual maps in the category of $k$-algebras:
+\begin{align*}
+\Delta := m^* : k[G] & \Pfeil{} k[G] \otimes_k k[G]\\
+\iota := i^* : k[G] &\Pfeil{} k[G]\\
+\e := e^* : k[G] &\Pfeil{} k
+\end{align*}
+\end{lemma}
+\begin{definition}
+A \df{Hopf-algebra} over $k$ is a (reduced?!) $k$-algebra together with maps $\Delta, \e, \iota $ as above s.t. the following holds:
+\begin{align*}
+(\Delta\otimes \id{})\Delta &= (\id{} \otimes \Delta)\Delta\\
+(\iota\otimes \id{})\Delta &= (\id{} \otimes \iota)\Delta = \e\\
+(\e\otimes \id{})\Delta &= (\id{} \otimes \e)\Delta = \id{}
+\end{align*}
+A morphism of Hopf-algebras is a homomorphism of $k$-algebra $F : A \pfeil{} B$ s.t.
+\[ \Delta \circ F = (F\otimes F) \circ \Delta. \]
+\end{definition}
+
+\begin{theorem}
+	The contravariant functor $\_^*$ gives an anti-equivalence of the categories of algebraic groups and the categories of finitely generated Hopf-algebras over $k$.
+\end{theorem}
+
+\begin{example}
+\begin{enumerate}
+	\item Let $G = \G_a = (k,+)$. Then, $k[G] = k[x]$, since $I(x) = 0$. Then, we have
+	\begin{align*}
+	\Delta(x) &= x \otimes 1 + 1 \otimes x\\
+	\iota(x) &= -x\\
+	\e(x) &= 0.
+	\end{align*}
+	\item Let $G = \G_m = \set{(a, a\i)}{a \neq 0} \isom{} k^\times$. Then, $k[G] = k[x,y]/(xy - 1) = k[x,x\i]$. Then, we have
+	\begin{align*}
+	\Delta(x) &= x \otimes x\\
+	\iota(x) &= x\i\\
+	\e(x) &= 1.
+	\end{align*}
+	\item Let $G = \GL_n(k) $. Then, $k[G] = k[x,y]/(xy - 1_n) = k[x_{i,j}, \frac{1}{\det}]$. Then, we have
+	\begin{align*}
+	\Delta(x_{i,j}) &= \sum_{k}x_{i,k} \otimes x_{k,j} \\
+	\Delta(\frac{1}{\det(x)}) &= \frac{1}{\det(x)} \otimes \frac{1}{\det(x)}
+	\iota(x_{i,j}) &= (x\i)_{i,j}\\
+	\e(x_{i,j}) &= \delta_{i,j}.
+	\end{align*}
+\end{enumerate}
+\end{example}

@@ -1,0 +1,51 @@
+\section{Introduction}
+Let $k$ be an algebraically closed field.
+
+\begin{definition}
+For $I \subseteq k[X]:=k[X_1,\ldots, X_n]$, we define its \df{vanishing set} by
+\[ V(I) := \set{p \in k^n}{\forall f \in I:~ f(p) = 0}. \]
+A set $S \subset k^n$ is called \df{algebraic}, if
+\[ S = V(I) \]
+for some  $I \subseteq k[X]$.
+\end{definition}
+\begin{example}
+	The group $\GL_n(k)$ is not an algebraic subset of $k^{n\times n}$. But, we can identify it with an algebraic subset of $(k^{n\times n})^2$ by
+	\[\GL_n(k) \isom{} \set{(x,y) \in k^{n\times n}}{xy = 1_n} = V( X \cdot Y - 1_n ). \]
+\end{example}
+\begin{definition}
+	Let $\iota: \GL_n(k) \inj{} {k^{n\times n}}^2$ be the injection
+	\[ A \mapsto (A, A\i). \]
+	A \df{linear algebraic group} over $k$ is a subgroup $U \subseteq \GL_n(k)$ s.t. $\iota(k)$ is an algebraic subset of $k^{2n^2}$.
+	
+	I.e., a linear algebraic group is a matrix-group which can be defined by polynomials over the entries of a matrix and its inverse.
+\end{definition}
+\begin{example}
+	The following groups are linear algebraic groups:
+	\begin{enumerate}
+		\item The multiplicative group $\G_m(k) := k^\times = k \setminus \{0\} = \GL_1(k)$.
+		\item The general linear group $\GL_n(k)$.
+		\item The special linear group
+		\[\SL_n(k) := \set{A \in \GL_n(k)}{\det(A) = 1}. \]
+		\item The orthogonal group
+		\[\O_n(k) := \set{A \in \GL_n(k)}{A^T\cdot A = 1}. \]
+			\item The special orthogonal group
+		\[\SO_n(k) := \O_n(k) \cap \SL_n(k). \]
+		\item The upper triangle-matrix group
+		\[ \set{ 
+	\mat{ a_{1,1} & \cdots & a_{1,n}\\
+		& \ddots & \vdots\\
+		& & a_{n,n}}	
+	 }{a_{i,j} \in k} \cap \GL_n(k).  \]
+ \item The normed upper triangle-matrix group
+ \[ \set{ 
+ 	\mat{ 1 & \cdots & a_{1,n}\\
+ 		& \ddots & \vdots\\
+ 		& & 1}	
+ }{a_{i,j} \in k} \cap \GL_n(k).  \]
+	\item The group of $n$-th roots of unity
+	\[ \mu_n(k) := \set{x \in k}{x^n = 1}. \]
+	\item The additive group $(k, +)$ is not a subgroup of $\GL_n(k)$, but it can be identified with the linear algebraic group
+	\[ \set{\mat{1 & a \\ & 1}}{a \in k} \subset \GL_2(k) \]
+	\item For $k = \C$, the unit sphere and the unitary groups are NOT linear algebraic groups.
+	\end{enumerate}
+\end{example}
