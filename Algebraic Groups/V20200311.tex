@@ -9,9 +9,9 @@ given by
 	\[\Delta : V_1\otimes V_2 \Pfeil{} V_1 \otimes V_2 \otimes k[G]\]
 	by:
 	if
-	\[ \Delta_1 u = \sum u_i \otimes f_i, ~~~~ \Delta_2 v = \sum v_j \otimes h_j, \]
+	\[ \Delta_1 u = \sum_i u_i \otimes f_i, ~~~~ \Delta_2 v = \sum_j v_j \otimes h_j, \]
 	then
-	\[ \Delta(u\otimes v) \sum \sum u_i \otimes v_j \otimes f_i h_j. \]
+	\[ \Delta(u\otimes v) =\sum_i \sum_j u_i \otimes v_j \otimes f_i h_j. \]
 	Set $A := k[G]$, then
 	\[ r_A := \text{right regular representation with } r_A(g) f(x) = f(xg). \]
 	
@@ -33,7 +33,7 @@ given by
 \end{proof}
 
 
-Recall: We stated the following theorem
+Recall: We stated to prove the following theorem
 \begin{theorem}
 	Let $\lambda_V \in  \End(V)$ be given s.t. for all finite-dim. rep.s $V$ of $G$ s.t.:
 	\begin{itemize}
@@ -200,7 +200,7 @@ The ring of matrices over some field or ring.
 \end{example}
 
 \begin{definition}
-A \df{left ideal} $I \subset R$ is a subset that is an abelian subgroup of $(R,+)$ s.t.$ra \in I$ for all $r \in R, a \in I$.
+A \df{left ideal} $I \subset R$ is a subset that is an abelian subgroup of $(R,+)$ s.t. $ra \in I$ for all $r \in R, a \in I$.
 
 A \df{right ideal} $I\subset R$ is a subset that is an abelian subgroup with
 \[ IR \subset I. \]
@@ -216,7 +216,7 @@ where $\End(M)$ acts on the left of $M$. We write
 \[ rm:= \alpha(r) m. \]
 We have
 \[ (r_1r_2)(m) = r_1(r_2(m)). \]
-If $R$ \df{acts} on $M$ by the right, we write
+If $R$ \df{acts} on $M$ by the left, we write
 \[ R \curvearrowright M. \]
 \end{definition}
 \begin{example}
@@ -234,10 +234,10 @@ If $R$ \df{acts} on $M$ by the right, we write
 	A (left) module $M$ of $R$ is \df{simple} (or irreducible) if it has exactly the two submodules: $0 = \{0\}$ and $M$.
 \end{definition}
 \begin{definition}
-	A ring $R$ is a \df{division ring} if it satisfies any of the following equivalent requirements:
+	A ring $R$ is a \df{division ring} (aka \df{skew field}) if it satisfies any of the following equivalent requirements:
 	\begin{enumerate}[(i)]
 		\item $R^\times = R \setminus \{0\} $
-		where $R^\times = \set{r \in R}{\exists a,b \in R: ar = rb = 1.}$\footnotetext{If $ar = rb = 1$, then $a = arb = b$.}
+		where\footnote{If $ar = rb = 1$, then $a = arb = b$.} $R^\times = \set{r \in R}{\exists a,b \in R: ar = rb = 1.}$
 		\item $R$ has no nontrivials left or right ideals.
 	\end{enumerate}
 \end{definition}
