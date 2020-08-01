@@ -1,0 +1,144 @@
+\section{Actions}
+
+\begin{remark}
+	Let $G \curvearrowright M$ be a group action of algebraic sets, then the morphism
+	\[ G\times M \Pfeil{} M \]
+	yields an homomorphism
+	\[ \Delta : k[M] \pfeil{} k[G]\otimes k[M].  \]
+	This turns $k[M]$ to a \df{comodule} of the Hopf-Algebra $k[G]$.
+\end{remark}
+
+\begin{definition}
+	Let $V$ be vector space and $G$ an algebraic group. A morphism $r_V : G \pfeil{} \GL(V)$ of groups is called \df{representation} of $G$, if there is a linear map
+	\[ \Delta : V \pfeil{} V \otimes_k k[G] ( = \Hom{alg}{G}{V}) \]
+	s.t. we have for each $v \in V$ and $g \in G$
+	\[r_V(g)\cdot v = \sum_{i} v_i \cdot  f_i(g)  \]
+	where $\Delta v =\sum_{i} v_i \otimes f_i $.
+	
+	That is, $V$ is a comodule for $k[G]$.
+	
+	A map $\phi : V \pfeil{} W$ is called \df{equivariant} for two representations $r_V, r_W$ of $G$, if
+	\[ \phi(r_V(g) v) = r_W(g)\phi(v) \]
+	for all $g,v$.
+\end{definition}
+\begin{example}
+	Let $G = \GL_n(k)$, $V = k^n$ and $r_V$ be the canonical representation. For an orthonormal basis $(b_i)_{i = 1,\ldots, n}$, we for example can set
+	\begin{align*}
+	\Delta v = \sum_{i = 1}^n b_i \otimes f_i
+	\end{align*}
+	where
+	\[ f_i(A) := b_i^T A v. \]
+	Then, we have 
+	\[ r_V(A) \cdot v = A \cdot v = \sum_{i= 1}^nb_i \cdot b_i^T A v = \Delta(v)(A). \]
+\end{example}
+
+\begin{example}
+	Let $M$ be a right $G$-set. Then, $G$ also acts on $k[M]$, therefore we have a map
+	\[ \rho : G \pfeil{} \GL(k[M]) \]
+	by, for $v \in k[M]$,
+	\[ (\rho(g)v)(m) := v(m.g). \]
+	Further, we have an algebra morphism
+	\[ \Delta : k[M] \pfeil{} k[M] \otimes k[G] = k[M\times G] \]
+	with
+	\[ (\Delta v) (m, g) = v(m.g). \]
+	With $\Delta v = \sum_{i} v_i \otimes f_i$
+	\[ \rho(g) v(m) = v(mg) = \Delta v(m, g) = \sum_{i= 1}f_i(g)v_i(m). \]
+	Ergo, $g$ is a representation of $G$.
+	
+	
+	When $M = G$ with action given by the right translation, then $\rho : G \pfeil{} \GL(k[G])$ is called the \df{right regular representation} of $G$.
+\end{example}
+
+\begin{lemma}
+	Let $G$ be an algebraic group and $V$ a finite-dimensional $k$-vector space. Then $\rho : G \pfeil{} \GL(V)$ is morphism of algebraic groups iff it is a representation.
+\end{lemma}
+
+\begin{definition}
+Let $G$ be an algebraic group and $V$ a representation of $G$. A subspace $W \subset V$ is called \df{invariant} or \df{subrepresentation}, if we have $W.G = W$.
+\end{definition}
+\begin{lemma}
+	The following are equivalent:
+	\begin{enumerate}
+		\item $W$ is invariant.
+		\item $\Delta(W) \subseteq W \otimes k[G]$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{lemma}
+	Any representation $V$ is a filtered union of its finite-dim. subrepresentations:
+	\begin{enumerate}
+		\item Each $v \in V$ is contained in some fin.-dim. subrep.
+		\item Any two finite-dim. subrep. are contained in some bigger fin.-dim. subrep.
+	\end{enumerate}
+\end{lemma}
+
+\begin{theorem}
+	Every algebraic group $G$ is isomorphic to a linear algebraic group.
+\end{theorem}
+\begin{proof}
+	Let $\rho : G \pfeil{} \GL(k[G])$ be the right regular representation. $k[G]$ is a finitely-generated $k$-algebra. Then, there is a finite-dim. subrepresentation $V \subseteq k[G]$ s.t. $V$ generates $k[G]$ as $k$-algebra. Then
+	\[\phi: G \Pfeil{} \GL(V) \]
+	 is morphism of algebraic groups.
+	 
+	 Consider the dual map
+	 \[ \phi^* : k[\GL(V)] \pfeil{} k[G]. \]
+	 We need to show that $\phi^*$ is surjective. It is enough to show that $V \subset \Img \phi^*$. Define
+	 \begin{align*}
+	 l : V \subset k[G] & \Pfeil{} k\\
+	 f &\longmapsto f(e).
+	 \end{align*}
+	 Let $f \in V$ and set $a(g) := l(g\cdot f)$ for $g \in \GL(V)$. Then $a \in k[\GL(V)]$ is regular. Further,
+	 \[ \phi^*(a)(g) = a(\rho(g)) = l(\rho(g)f) = f(eg) = f(g). \]
+	 Therefore, $f = \phi^*(a) \in \Img(\phi^*)$. Since $V$ generates $k[G]$, the surjectivity of $\phi^*$ follows.
+\end{proof}
+
+\begin{theorem}
+Let $H$ be an algebraic subgroup of an algebraic group $G$. There is a finite-dim. representation $V$ of $G$ and a line $L \subset V$ s.t. $H$ is the stabilizer in $G$ of $L$, i.e.
+\[ H= \set{g \in G}{L.g = g}. \]
+\end{theorem}
+\begin{proof}
+	Let $V$ be like in the previous proof. Consider
+	\[ I \inj{} k[G] \surj{} k[H]. \]
+	We can now set $L' := V \cap I$. We then have for $g \in G$.
+	\[ I.g \subseteq I \iff g \in H. \]
+	
+	Now, in general $L'$ is not of dimension one. Set $d = \dim (L')$ and consider the one-dimensional subspace $L:=\Lambda^d(L') \subseteq \Lambda^d(V)$. $G$ acts on $\Lambda^d(V)$ in the natural way.
+	
+	It is clear, that $H$ stabilizes $L$. For the other direction, let $g \notin H$ and let $e_1,\ldots, e_n$ be a basis of $V$ s.t. $L' = \shrp{e_1,\ldots, e_d}$. Then,
+	\[ L = \shrp{e_1\wedge \ldots \wedge e_d} \]
+	and, since $g$ does not stabilize $L'$, w.l.o.g. we can assume $e_1.g = e_{d+1}$.
+	Then, we have $g(e_1\wedge \ldots \wedge e_d) = g(e_1)\wedge \ldots \wedge g(e_d) =: v$. Now, $v$ cannot be zero and it cannot lie $L$ because $e_1.g = e_{d+1}$. Therefore, $g\notin H$ does not stabilize $L$.
+\end{proof}
+
+\begin{theorem}
+	Let $H$ be a normal algebraic subgroup of an algebraic group $G$. Then, there is a finite-dimensional $\rho : G \pfeil{} \GL(V)$ s.t. $H = \ker(\rho)$.
+\end{theorem}
+\begin{proof}
+	Let $V,L$ and $\phi : G \pfeil{} \GL(V)$ be like in the preceding theorem. Set
+	\[ V_H := \set{v \in V}{H.v \subset \shrp{v}}. \]
+	Then, $V_H$ is $G$-invariant, since
+	\[ h.(g.v) = (hg).v = (gh').v = g. (h'v) = g.(\kappa \cdot v) = \kappa \cdot g.v \]
+	for all $g \in G, h \in H, v\in V_H$ and fitting $h' \in H, \kappa \in k^\times$. W.l.o.g. we have $V = V_H$. $V$ is not trivial, because $L\subset V$.
+	
+	 Let $\chi$ range through all homorphism $H \pfeil{} k^\times$, then we have
+	\[ V = \otimes_\chi V_\chi \]
+	where
+	\[ V_\chi = \set{v \in V}{h.v = \chi(h) \cdot v}. \]
+	Then each $g\in G$ permutes those eigenspaces by
+	\[ g.V_\chi = V_{\chi(g\i \_ g)}. \]
+	
+	Now, let $ W:= \bigoplus_{\chi }\End (V_\chi) \subset \End(V)$. For $g \in G$ and $\lambda \in \End(V)$, define
+	\begin{align*}
+	\widetilde{\gamma} : G  &\Pfeil{} \GL(\End(V))\\
+	g &\longmapsto \widetilde{\gamma}(g) : [\lambda \mapsto \phi(g) \circ \lambda \circ \phi(g)\i].
+	\end{align*}
+	The action $\widetilde{\gamma}(g)$ stabilizes $W$, since each $\phi(g)$ just permutes the $V_\chi$ and $\phi(g)\i$ permutes them back. Therefore, we have a subrepresentation
+	\[ \gamma : G \pfeil{} \GL(W). \]
+	We now have to show
+	\[ \ker(\gamma) = H. \]
+	Since elements of $H$ don't permute $V_\chi$, we have $\gamma(H) = \id{}$.
+	
+	One the other side, let $g \in G$ with $\gamma(g) = \id{}$. Then, we can choose the projection $\pi : V \surj{} L$ in $W$ and get
+	\[ \phi(g) \circ \pi = \pi \circ \phi(g). \]
+	Therefore, $g$ leaves each $L$ invariant. But now, we have $g \in H$. 
+\end{proof}

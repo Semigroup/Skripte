@@ -1,0 +1,36 @@
+\section{Connected Components}
+
+\begin{lemma}
+	Let $I_1, I_2, I_\lambda \subset k[x]$ be ideals, then
+	\begin{align*}
+	V(I_1 \cap I_2) &= V(I_1) \cup V(I_2)\\
+	 V(\bigcup_\lambda I_\lambda) &= \bigcap_\lambda V(I_\lambda).
+	\end{align*}
+\end{lemma}
+\begin{lemma}
+	For any algebraic set $X$, the open subsets
+	\[ D(f) := \set{x \in X}{f(x) \neq 0} \]
+	for $f \in k[X]$, form an open basis of the Zariski topology on $X$.
+\end{lemma}
+
+\begin{definition}
+	A topological space $X$ is  called \df{connected}, if any of the following equivalent condition holds:
+	\begin{itemize}
+		\item There is no pair of non-empty closed subsets $Z_1,Z_2 \subseteq X$, s.t. $X = Z_1 \dot{\cup} Z_2$.
+		\item There is no pair of non-empty open closed subsets $U_1,U_2 \subseteq X$, s.t. $X = U_1 \dot{\cup} U_2$.
+		\item Each nonempty open subset of $X$ is dense.
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+	A topological space $X$ is  called \df{irreducibel}, if any of the following equivalent condition holds:
+	\begin{itemize}
+		\item There is no pair of proper closed subsets $Z_1,Z_2 \subseteq X$, s.t. $X = Z_1 \cup Z_2$.
+		\item For each pair $U_1,U_2 \subseteq X$ of non-empty open subsets we have $U_1\cap U_2 \neq \emptyset$.
+		\item Each nonempty open subset of $X$ is dense.
+	\end{itemize}
+\end{definition}
+
+\begin{example}
+	$V(xy)$ is connected but not irreducible.
+\end{example}

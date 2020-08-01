@@ -113,9 +113,12 @@ They induce dual maps in the category of $k$-algebras:
 A \df{Hopf-algebra} over $k$ is a (reduced?!) $k$-algebra together with maps $\Delta, \e, \iota $ as above s.t. the following holds:
 \begin{align*}
 (\Delta\otimes \id{})\Delta &= (\id{} \otimes \Delta)\Delta\\
-(\iota\otimes \id{})\Delta &= (\id{} \otimes \iota)\Delta = \e\\
+s^* \circ (\iota\otimes \id{})\Delta &= s^* \circ (\id{} \otimes \iota)\Delta = \e\\
 (\e\otimes \id{})\Delta &= (\id{} \otimes \e)\Delta = \id{}
 \end{align*}
+where $s : G \pfeil{} G \times G, g \mapsto (g,g)$ is the diagonal map.
+
+
 A morphism of Hopf-algebras is a homomorphism of $k$-algebra $F : A \pfeil{} B$ s.t.
 \[ \Delta \circ F = (F\otimes F) \circ \Delta. \]
 \end{definition}
@@ -147,3 +150,24 @@ A morphism of Hopf-algebras is a homomorphism of $k$-algebra $F : A \pfeil{} B$ 
 	\end{align*}
 \end{enumerate}
 \end{example}
+
+\subsection{An Aside on the General Group}
+Let $G = \GL_n(k) = \set{(x,y)}{xy = \id{n}}$. Since we have
+\[ x\i = \frac{1}{\det(x)} \cdot \mathrm{adj}(x) \]
+where the adjoint $\mathrm{adj}(x)$ can be expressed by polnomials in the entries of $x$, we have isomorphisms
+\begin{align*}
+k[x,y] / (xy - 1_n) &\Pfeil{} k[x, 1/ \det(x)] = k[x,t] / (\det(x)\cdot t = 1)\\
+(x,y) & \longmapsto (x, \det(y))
+\end{align*}
+and
+\begin{align*}
+ k[x, 1/ \det(x)] &\Pfeil{} k[x,y] / (xy - 1_n)\\
+(x,t) & \longmapsto (x, t \cdot \mathrm{adj}(x)).
+\end{align*}
+\begin{lemma}
+	\[k[\GL_n(k)] \isom{} k[x_{i,j}, \frac{1}{\det(x)}].\]
+\end{lemma}
+
+\begin{lemma}
+	Let $V$ be a finite-dimensional $k$-vector space. If we choose a basis for $V$, we get an isomorphism $\GL(V)$. Hence, $\GL(V)$ is an algebraic group whose structure is up to a unique isomorphism independent of the choice of basis.
+\end{lemma}
