@@ -11,7 +11,7 @@ We called a set $X$ \df{irreducible} iff each open subset lies dense in $X$.
 	For an algebraic set $X$, the following are equivalent:
 	\begin{enumerate}[(1)]
 		\item $X$ is irreducible.
-		\item $k[X] = k[x_1, \ldots, x_n] / I(X)$ is a domain.
+		\item $k[X] = k[x_1, \ldots, x_n] / I(X)$ is an (integral) domain.
 		\item $I(X)$ is a prime ideal.
 	\end{enumerate}
 \end{lemma}
@@ -27,13 +27,13 @@ The proof of $(2) \iff (3)$ is a basic algebraic result.
 	\[ Z:= X \setminus U\]
 	then $Z$ is closed.
 	Thus
-	\[ Z = \set{x \in X}{f(x) = 0 \forall f \in  I} \]
+	\[ Z = \set{x \in X}{f(x) = 0 ~\forall f \in  I} =V(I) \]
 	for some ideal $I \subseteq k[X]$. Let $p \in U$, then there is an $f \in Z$ s.t.
 	\[f (p) \neq 0. \]
 	Also, $D(f) \cap Z = 0$, thus $p \in D(f) \subseteq U$.
 \end{proof}
 
-\begin{proof}[Lemma 1]
+\begin{proof}[Proof: Lemma 1]
 	It is clear that (2) is equivalent to (3).
 	
 	(1) is equivalent to
@@ -42,7 +42,7 @@ The proof of $(2) \iff (3)$ is a basic algebraic result.
 \overset{\text{Lemma 2}}{\iff}	& \forall \text{ nonempty, basic open }D(f_1), D(f_2)\subset X: D(f_1) \cap D(f_2) \neq \emptyset
 	\end{align*}
 	Since $D(f_1)\cap D_(f_2) = D(f_1f_2)$, this is equivalent to the statement
-	\[f_1, f_2 \in k[X]: f_1, f_2 \neq 0 \implies f_1f_2 \neq 0. \]
+	\[\forall f_1, f_2 \in k[X]:~ f_1, f_2 \neq 0 \implies f_1f_2 \neq 0. \]
 	Which states that $k[X]$ is a domain.
 \end{proof}
 
@@ -66,7 +66,7 @@ For an ideal $I$ we call $P \supseteq I$ a \df{minimal prime} of $I$ if $P$ is a
 
 Any radical ideal $I $ of $k[x_1, \ldots, x_n]$ has only finitely many \textbf{minimal} primes $P_1,\ldots, P_r$.
 Inparticular,
-\[ I = \bigcap_{i=1}^n P_i \]
+\[ I = \bigcap_{i=1}^r P_i \]
 and for each $i$
 \[ P_j \not \supseteq \bigcap_{j : j \neq i} P_j. \]
 \end{lemma}
@@ -81,7 +81,7 @@ Then, we have the bijection
 \end{definition}
 
 \begin{lemma}
-Any algebraic set $X$ has finitely many components $Z_1, \ldots, Z_r$. We have
+Any algebraic set $X$ has finitely many irreducible components $Z_1, \ldots, Z_r$. We have
 \[ X = Z_1 \cup \ldots \cup Z_r \]
 and for each $i$
 \[ Z_i \not \subset \bigcup_{j : j \neq i}Z_j. \]
@@ -122,15 +122,15 @@ and for each $i$
 	 \[\phi\i(Z) = V_X(\phi^*(S)) = \set{\phi^*(f) = f \circ \phi}{f \in S}.\]
 \end{proof}
 \begin{lemma}
-	Isomorphisms of algebraic sets are homeorphisms. In particular, any isomorphism of algebraic sets $\phi : X \pfeil{} X$ permutes the components $Z_1, \ldots, Z_r$ of $X$:
+	Isomorphisms of algebraic sets are homeorphisms. In particular, any isomorphism of algebraic sets $\phi : X \pfeil{} X$ permutes the irreducible components $Z_1, \ldots, Z_r$ of $X$:
 	\[ \forall i \exists j: \phi(Z_i) = Z_j. \]
 \end{lemma}
 
 \begin{theorem}
 	Let $G$ be an algebraic group.
 	\begin{enumerate}[(i)]
-		\item There is a unique component $G^0$ of $G$ with $e \in G^0$.
-		\item Every component $Z$ of $G$ is a coset $gG^0$ of $G$ for some $g\in Z$.
+		\item There is a unique irreducible component $G^0$ of $G$ with $e \in G^0$.
+		\item Every irreducible component $Z$ of $G$ is a coset $gG^0$ of $G$ for some $g\in Z$.
 		\item $G^0$ is a normal algebraic subgroup of $G$.
 		\item $G^0$ is of finite index, i.e.
 		\[ [G: G^0] = \# \klam{G / G^0} < \infty. \]
@@ -181,7 +181,7 @@ Then, for all $g\in G$, the element $gx = \phi_g(x)$ is contained in only one co
 \end{proof}
 
 It now follows:
-\[ \{ \text{finite algebraic groups}\} \longleftrightarrow \{ finite groups \} \]
+\[ \{ \text{finite algebraic groups}\} \longleftrightarrow \{ \text{finite groups} \} \]
 where the above arrow is an equivalence of categories.
 
 \begin{example}
@@ -191,8 +191,8 @@ where the above arrow is an equivalence of categories.
 		\item Without proofs:
 		\[ G \in \{\GL_n(k), \SO_n(k),\SL_n(k)\} \implies G^0 = G. \]
 		Further,
-		\[G = O_n(k) \implies G^0 = \SO_n(k)\]
-		(but only if $-1 = 1$ i.e. $\textsf{char} k = 2$. Otherwise $[G:G^0] = 2$.) 
+		\[G = O_n(k) \implies G^0 = \SO_n(k).\]
+		And  if $-1 = 1$ i.e. $\textsf{char} k = 2$, then $[G:G^0] = 1$. Otherwise $[G:G^0] = 2$.
 		% Correct?
 %		\item For $\Ad : \GL_n(k) \pfeil{} \GL(M_n(k))$
 %		\[ G = \PGL_n(k) := \Img(\Ad) \]
@@ -200,27 +200,41 @@ where the above arrow is an equivalence of categories.
 	\end{itemize}
 \end{example}
 
+\newpage
 \section{Jordan Decomposition}
 As usual, $k = \overline{k}$ is an algebraically closed field.
 \begin{definition}
 	Let $V$ be a finite-dimensional vector space.
 	
 	An element $x \in \End(V)$ is \df{semisimple}, if it is diagonalizable, i.e. it has a basis of eigenvectors, or equivalently, if the minimal polynomial of $x$ is square-free.
-	
-	Then, there is a decomposition $V = \bigoplus_{i=1}^r V_i$ and distinct elements $\lambda_1, \ldots, \lambda_n \in k$ s.t.
-	\[ x|_{V_i} = \lambda_i. \]
-	If $\dim(V_i)= n_i$, then
-	\[ \text{char polynomial of }x = \prod_{i=1}^r (T_i - \lambda_i)^n_i \in k[T] \]
-	and
-		\[ \text{minimal polynomial of }x = \prod_{i=1}^r (T_i - \lambda_i) \in k[T]. \]
-		(Where the minimal polynomial of $x$ is defined as the least degree monic $m$ s.t. $m(x) = 0$ and Cayley-Hamilton $m | c$. )
 \end{definition}
+	
+Then, there is a decomposition $V = \bigoplus_{i=1}^r V_i$ and distinct elements $\lambda_1, \ldots, \lambda_n \in k$ s.t.
+\[ x|_{V_i} = \lambda_i. \]
+If $\dim(V_i)= n_i$, then
+\[ \text{char polynomial of }x = \prod_{i=1}^r (T_i - \lambda_i)^{n_i} \in k[T] \]
+and
+\[ \text{minimal polynomial of }x = \prod_{i=1}^r (T_i - \lambda_i) \in k[T]. \]
+(Where the minimal polynomial of $x$ is defined as the least degree monic polynomial $m \in k[T]$ s.t. $m(x) = 0$. )
+
+
+\begin{remark}
+	Let $m(T) \in k[T]$ be the minimal polynomial of $x \in k^{n\times n}$.
+	
+	The theorem of Cayley and Hamilton states that we have for each $p \in k[T]$:
+	\[ p(x) = 0 \implies m | p. \]
+\end{remark}
 
 \begin{definition}
-	$x \in End(V)$ is \df{nilpotent} if $x^n = 0$ for some $n$. (Equivalent to: characteristic polynomial of $x$ is $T^{\dim(V)}$.)
-	
+	$x \in End(V)$ is \df{nilpotent} if $x^n = 0$ for some $n$.
+
 	$x$ is \df{unipotent}, if $x -1$ is nilpotent.
 \end{definition}
+
+\begin{lemma}
+	$x$ is nilpotent iff the characteristic polynomial of $x$ is $T^{\dim(V)}$.
+	(Use Cayley-Hamilton for one of the directions).
+\end{lemma}
 
 \begin{lemma}
 	If $x$ is semisimple and nilpotent, then $x = 0$.
@@ -228,9 +242,21 @@ As usual, $k = \overline{k}$ is an algebraically closed field.
 	If $x$ is semisimple and unipotent, then $x = 1$.
 \end{lemma}
 \begin{lemma}
-	If $x,y$ are commuting elements, thar are semisimple resp. unipotent or nilpotent, then so is $xy$.
+	If $x,y$ are commuting elements, that are semisimple resp. unipotent resp. nilpotent, then so is $xy$.
 \end{lemma}
-
+\begin{proof}
+	It is easy to see, that this is true for nilpotent $x,y$.
+	
+	Now, let $x,y$ be unipotent and commuting. Then, we have
+	\[ xy - 1 = (x+1)(y-1) + (x-y). \]
+	Since $x,y$ commute, $ (x+1)(y-1)$ must be nilpotent. $(x-y)$ must be nilpotent because the sum of commuting nilpotent elements must be nilpotent.
+	Because everything commutes, also $xy-1$ as the sum of two commuting, nilpotent elements must be nilpotent.
+	
+	Now, let $A,B \in k^{n\times n}$ be two diagonalizable and commuting matrices. Let $\lambda_1,\ldots, \lambda_r$ be different eigenvectors of $A$ and let $E_i$ be the corresponding eigenspaces. We then have
+	\[ A\cdot (B E_i) = BAE_i = \lambda_i \cdot BE_i. \]
+	Ergo, each $E_i$ is invariant under $B$.
+	Since $B_{|E_i}$ stays diagonalizable, we can simply choose a basis of eigenvectors $b_1,\ldots, b_n \in \bigcup_i E_i$ of $B$. Since each $b_i$ lies in a $E_j$, those vectors are also eigenvectors for $A$. Therefore, $b_1,\ldots,b_n$ is basis of eigenvectors for both matrices. 
+\end{proof}
 
 \begin{theorem}[Goal]
 For all algebraic groups $G$ and for all $g \in G$, there exist unique group elements $g_s, g_u \in G$ s.t.
