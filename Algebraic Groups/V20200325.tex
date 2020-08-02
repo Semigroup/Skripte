@@ -1,13 +1,13 @@
 \marginpar{Lecture from 25.03.2020}
 \paragraph{Recall:} We have seen that for diagonalizable algebraic groups $G,H$
-\[ \Hom{}{G}{H} \isom{} \Hom{}{\Xi(H)}{\Xi(G)}. \]
+\[ \Hom{}{G}{H} \isom{} \Hom{}{\X(H)}{\X(G)}. \]
 If $G$ is diagonalizable, then
-\[ \O(G) \isom{} k[\Xi(G)]. \]
+\[ \O(G) \isom{} k[\X(G)]. \]
 
 \begin{theorem}
 The functor
 \begin{align*}
-G & \Pfeil{} \Xi(G)\\
+G & \Pfeil{} \X(G)\\
 f &\longmapsto f^*
 \end{align*}
 defines an equivalence of categories:
@@ -17,8 +17,8 @@ defines an equivalence of categories:
 This amounts to the bijection above between Hom-spaces and the following lemma.
 \begin{lemma}
 	\begin{enumerate}[(i)]
-		\item Let $G$ be a diagonalizable alg. group. Then, $\Xi(G)$ is a finitely generated abelian group with no $\mathrm{char}(k)$-torsion.
-		\item Let $\Gamma$ be a finitely generated abelian group with no $\mathrm{char}(k)$-torsion. Then, there is a diagonalizable algebraic group $G$ s.t. $\Xi(G) \isom{} \Gamma.$
+		\item Let $G$ be a diagonalizable alg. group. Then, $\X(G)$ is a finitely generated abelian group with no $\mathrm{char}(k)$-torsion.
+		\item Let $\Gamma$ be a finitely generated abelian group with no $\mathrm{char}(k)$-torsion. Then, there is a diagonalizable algebraic group $G$ s.t. $\X(G) \isom{} \Gamma.$
 	\end{enumerate}
 \end{lemma}
 \newcommand{\chr}{\mathrm{char}}
@@ -42,9 +42,9 @@ We will use the following facts:
 	where $M_1 \oplus M_2 \isom{} M_1 \times M_2$.
 \end{itemize}
 \begin{enumerate}[(i)]
-	\item Embed $G \inj{} T := \G^n_m$ for some $n$. Then, we have a surjection $\Z^n\isom{} \Xi(T)  \surj{} \Xi(G)$. Ergo, $\Xi(G)$ is finitely generated.
+	\item Embed $G \inj{} T := \G^n_m$ for some $n$. Then, we have a surjection $\Z^n\isom{} \X(T)  \surj{} \Xi(G)$. Ergo, $\X(G)$ is finitely generated.
 	
-	Suppose $\chr(k) = p > 0$. Let $\chi \in \Xi(G)$ with $\chi^p = 1$. Then, for all $g \in G$, $\chi^p(g) = \chi(g^p) = 1$. The unit group $k^\times$ has not $p$-torsion, therefore $G \inj{} T = (k^\times)^n$ has also no $p$-torsion. Therefore, the frobenius $g \mapsto g^p$ is an isomorphism on $G$. Therefore, $\chi = 1$ is a trivial character. Ergo $\Xi(G)$ has no $p$-torsion.
+	Suppose $\chr(k) = p > 0$. Let $\chi \in \X(G)$ with $\chi^p = 1$. Then, for all $g \in G$, $\chi^p(g) = \chi(g^p) = 1$. The unit group $k^\times$ has not $p$-torsion, therefore $G \inj{} T = (k^\times)^n$ has also no $p$-torsion. Therefore, the frobenius $g \mapsto g^p$ is an isomorphism on $G$. Therefore, $\chi = 1$ is a trivial character. Ergo $\X(G)$ has no $p$-torsion.
 	
 	\item Let $\Gamma$ be a finitely generated abelian group with no $\mathrm{char}(k)$-torsion. Then,
 	\[\Gamma \isom{} \Z^r \oplus \Z/n_1\Z \oplus \ldots \oplus \Z/n_l\Z\]
@@ -54,7 +54,7 @@ We will use the following facts:
 		\item $\Gamma = \Z/n\Z$ with $\chr(k) =: p \not | n$:\\
 		take $G:= \mu_n := \set{y \in k^\times}{y^n = 1}$. Then, since $p\not| n$, $(t^n - 1)$ is radical.
 		So, 
-		\[ \O(\mu_n) \overset{Nullstellensatz}{=} k[t] /(t^n - 1) \isom{as Hopf algebras} k[\Gamma] \]
+		\[ \O(\mu_n) \overset{\text{Nullstellensatz}}{=} k[t] /(t^n - 1) \isom{\text{ as Hopf algebras}} k[\Gamma] \]
 		where $t$ gets mapped to the generator of $\Gamma$.
 	\end{enumerate}
  \end{enumerate}
@@ -87,8 +87,8 @@ by
 Where $\mu_p$ in the left hand term gets mapped to $\O(\mu_p) = k[t] / (t^p - 1)$ with $p = \chr k$.
 \end{remark}
 
-
-\subsection{Trigonalization}
+\newpage
+\section{Trigonalization}
 We say a representation $r : G \pfeil{} \GL(V)$ of a group $G$ on a finite-dimensional $k$-vectorspace $V$ is \df{trigonalizable} if it admits a basis with respect to which $r(V)$ is upper-triangular:
 \[ r(G) \subseteq \curv{
 \mat{* & \ldots & *\\ 0 & \ddots & \vdots \\ 0 & 0 & *}
@@ -159,7 +159,7 @@ It follows that $r(G)$ is commutative and consists of semisimple elements. By so
 \end{definition}
 	Later, we will see, that if $G$ is connected, then being trigonalizable implies being solvable.
 	
-	
+\newpage	
 \section{Commutative Groups}
 Let $G$ be an algebraic group. Denote by $G_s$ resp. $G_u$ the subsets of semisimple resp. unipotent elements of $G$.
 
@@ -170,4 +170,4 @@ $G_s$ needs not to be algebraic: for example, take $G = \SL_2(k)$ and if $G_s$ w
 \[ \set{\lambda \in k^\times}{
 \mat{\lambda & 1\\ 0 & \lambda\i} \in G_s
 } = \set{ \lambda}{\lambda \neq \lambda\i} \]
-but the last set is not algebraic. Also, $G_s$ does not need to be a subgroup.
+but the last set is not algebraic. Also, $G_s$ does not need to be a group.

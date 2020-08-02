@@ -7,7 +7,7 @@ G_s \times G_u & \Pfeil{} G\\
 \begin{example}[Non-Example]
 Take generic $g \in G_s, h \in G_u$ for $G=\SL_2(k)$. Then, $g,h$ do not commute and we have
 \[ ((gh)_s, (gh_u)) \neq (g, h) \]
-because Jordan components commute.
+because Jordan components don't commute.
 \end{example}
 \begin{theorem}
 Let $G$ be a commutative algebraic group. Then:
@@ -35,7 +35,7 @@ Let $G$ be a commutative algebraic group. Then:
 	
 	Since $V$ is irreducible, we must have $V = V_\chi$ for some $\chi$.
 	
-	Recall that $G \isom{} G_s \times G_u$ as abstract groups. We have seen that $r(G_s) \subseteq k^\times$. We proved a while ago that any unipotent group, such as $G_u$, is trigonalizable. Ergo, $V$ is trigonalizable. Since $V$ is irreducible, we have $\dim V = 1$.
+	Recall that $G \isom{} G_s \times G_u$ as abstract groups. We have seen that $r(G_s) \subseteq \G_m^n$. We proved a while ago that any unipotent group, such as $G_u$, is trigonalizable. Ergo, $V$ is trigonalizable. Since $V$ is irreducible, we have $\dim V = 1$.
 	
 	If we apply the same argument without assuming that $V$ is irreducible, then we see that $V$ is the coproduct of $V_\chi$'s as above and that each $V_\chi$ admits a basis s.t.
 	\begin{align*}
@@ -54,7 +54,7 @@ and apply (ii). Then we have
 r(G) &\subseteq \curv{\mat{* & *& *\\
 		0 & \ddots & *\\
 		0 & 0 & *}} =: B \\
-B_u = \curv{\mat{1 & * & *\\
+B_u &= \curv{\mat{1 & * & *\\
 		0 & \ddots & *\\
 		0 & 0 & 1}},\\
 	r(G_s) &\subseteq \curv{\mat{* & 0& 0\\
@@ -80,15 +80,19 @@ This suffices because if $g = g_s g_u$, then $g_u = g_s\i g$, so if the map $g \
 \end{enumerate}
 \end{proof}
 
+\section{Connected Solvable Groups}
+
 \begin{theorem}[Lie-Kolchin]
 Let $G$ be a connected solvable algebraic group. Then $G$ is trigonalizable.
 \end{theorem}
-(By comparison, recall that we have seen that far that, if $G$ is commutative or unipotent, then $G$ is trigonalizable.)
+(By comparison, recall that we have seen so far that, if $G$ is commutative or unipotent, then $G$ is trigonalizable.)
 We can reformulate this theorem as: Any connected solvable subgroup of $\GL(V)$ stabilizes some complete flag $\F = (V_0 \subsetneq \ldots \subsetneq  V_n)$.
 \paragraph{Generalization (Borel's Fixed Point Theorem):} Any connected algebraic group $G$ acting on a projective variety $X$ has a fixed point in $X$.
 
 We get a relation between complete flags and projective varieties.
 \begin{proof}
+	
+	
 Induct on the number $n$ s.t. $G^{(n)} = 1$.
 
 For $n=0$, there is nothing to show.
@@ -96,8 +100,12 @@ For $n=0$, there is nothing to show.
 If $n = 1$, $(G,G) = 1$, then $G$ is commutative, ergo trigonalizable.
 
 Let $n \geq 2$. Then, we have $G' := (G,G) \neq 1$. We will show the following lemma:
+
+\end{proof}
 \begin{lemma}
-	If $G$ is connected, then the abstract group $G'$ with the induced topology is connected ($\iff$ the Zariski Closure of $G'$ is connected).
+	Let $G \subseteq \GL(V)$ be a subgroup.
+	
+	If $G$ is connected, then the group $G'$ with the induced topology is connected ($\iff$ the Zariski Closure of $G'$ is connected).
 \end{lemma}
 \begin{proof}
 We have the following facts:
@@ -113,18 +121,19 @@ G' =& \shrp{(g,h):= ghg\i h\i ~|~ g,h\in G }\\
 Since
 \[\bigcup_{g_1,h_1, \ldots, g_j, h_j \in G} \{(g_1, h_1)\cdots (g_j, h_j)\} = \Img \phi_j\]
 for some continuous map $\phi_j : G^{2j} \pfeil{} G$, the claim follows.
-\end{proof}
 Ergo, $G'$ is connected.
+\end{proof}
 
-\paragraph{Note:} It is equivalent to show that $(*)$ any subgroup of $\GL(V)$ s.t. $G$ is connected and solvable is trigonalizable in $\GL(V)$.
+\begin{remark}
+	It is equivalent to show that $(*)$ any subgroup $G$ of $\GL(V)$ -- s.t. $G$ is connected and solvable -- is trigonalizable in $\GL(V)$.
+	
+	Indeed, the theorem implies $(*)$: the Zariski closure of $G$ is a connected algebraic group that is solvable (which extends by continuity).
+	If $Zcl(G)$ is trigonalizable, then also $G$ is trigonalizable.
+	
+	On the other hand: $(*)$ implies the theorem, since if $G$ is given as in the theorem, apply $(*)$ to $r(G) \subseteq \GL(V)$.
+\end{remark}
 
-Indeed, the theorem implies $(*)$: the Zariski closure of $G$ is a connected algebraic group that is solvable (which extends by continuity).
-If $Zcl(G)$ is trigonalizable, then also $G$ is trigonalizable.
-
-$(*)$ implies the theorem, since if $G$ is given as in the theorem, apply $(*)$ to $r(G) \subseteq \GL(V)$.
-
-
-
+\begin{proof}[Proof of Theorem]
 If $G^{(n)} = 1$, then $(G')^{(n-1)} = G^{(n)} = 1$. By induction, we may assume that $G'$ satisfies the following:
 
 For all finite dimensional representations $r : G \pfeil{} \GL(V)$, $r(G')$ is trigonalizable.
@@ -133,47 +142,53 @@ For all finite dimensional representations $r : G \pfeil{} \GL(V)$, $r(G')$ is t
 
 Our aim is to show that any irreducible representation $V$ of $G$ has dimension $1$.
 
-The induction hypothesis implies that $r(G')$ is trigonalizable. In particular, there exist an eigenspace $V_\chi \subseteq V$ for $G'$ for some character $\chi : G' \pfeil{} k^\times$. Since $G'$ is normal in $G$ we know that $G$ acts from the left on
+The induction hypothesis implies that $r(G')$ is trigonalizable. In particular, there exists an eigenspace $V_\chi \subseteq V$ for $G'$ for some character $\chi : G' \pfeil{} k^\times$. Since $G'$ is normal in $G$ we know that $G$ acts from the left on
 \[\{ \text{eigenspaces }V_\chi \text{ in } V \text{ for } G' \}.\] 
-Ergo, $\bigoplus_{\chi : G' \pfeil{} k^\times}V_\chi$ is $G$-invariant. Ergo, $V = \bigoplus_{\chi : G' \pfeil{} k^\times}V_\chi = \bigoplus_{\chi \in \Xi'}V_\chi $ for
-some finite subset $\Xi' = \set{\chi}{V_\chi \neq 0}$ of $\Hom{}{G'}{\G_m}$, since $V$ is finite dimensional.
-
+Ergo, $\bigoplus_{\chi : G' \pfeil{} k^\times}V_\chi$ is $G$-invariant.
+Since $V$ is $G$-irreducible, we have
+\[ V = \bigoplus_{\chi : G' \pfeil{} k^\times}V_\chi = \bigoplus_{\chi \in \X'}V_\chi  \]
+for some finite subset $\X' = \set{\chi}{V_\chi \neq 0}$ of $\Hom{}{G'}{\G_m}$, since $V$ is finite dimensional.
 
 \paragraph{Claim:} Let $h \in G'$. Then, the map
 \begin{align*}
 G & \Pfeil{} \GL(V)\\
 g & \longmapsto r(ghg\i)
 \end{align*}
-has a finite map.
+has a finite image.
 \begin{proof}
 	Denote by $\chi \mapsto \chi^g$ the action of $g \in G$ in $\Hom{}{G'}{\G_m}$ given by $\chi^g(h) := \chi(ghg\i)$. This is an action, since $G'$ is normal.
 	
-	This descends to an action $G\curvearrowright \Xi$, because $r$ is a homomorphism. Since $r(h)$ is determined by $\{ \chi(h)~|~ \chi \in \Xi \}$, hence similarly $r(ghg\i) \in r(G')$ by $\{ \chi(ghg\i) ~|~ \chi \in \Xi \}$.
+	Note, that $\X'\subseteq \Hom{}{G'}{\G_m}$ is a finite subset.
 	
-	Hence,
-	\[ \# \set{r(ghg\i)}{g \in G} \leq \# \text{representations of the finite set }\Xi < \infty. \]
+	Also note, that the action $\chi \mapsto \chi^g$ descends to an action $G\curvearrowright \X' $.
+	
+	
+	Now, let $\X' = \{\chi_1,\ldots, \chi_r\}$. The matrix $r(h)$ is totally determined by the values $\chi_1(h), \ldots, \chi_r(h)$. Then, the element $r(ghg\i)$ is totally determined by the values $\chi_1^g(h), \ldots, \chi_r^g(h)$. It follows
+	\[ \# \set{r(ghg\i)}{g \in G} \leq r!. \]
 \end{proof}
+The following lemma is easy to show:
 \begin{lemma}
-Let $G$ be an algebraic group. Then, $G$ is connected iff for each finite algebraic set $X$, and for each morphism $f : G \pfeil{} X$ of algebraic sets, we have that $f$ is constant.
+Let $G$ be an algebraic set. Then, $G$ is connected iff for each finite algebraic set $X$, and for each morphism $f : G \pfeil{} X$ of algebraic sets, we have that $f$ is constant.
 \end{lemma}
 Claim with the Lemma implies that the map $g \mapsto t(ghg\i)$ is constant. This implies that $r(ghg\i) = r(h)$ for all $g \in G, h \in G'$. Ergo, $G$ stabilizes each eigenspace $V_\chi$ for $G'$. Ergo, $V = V_{\chi_0}$, since $V$ is irreducible.
-
-%%%%%%%%%%%%%%%To be continued here
-
 \end{proof}
 
-
 \begin{lemma}
-	Let $G$ be any group with a finite dimensional representation $r : G \pfeil{} \GL(V)$. Then, the subspaces $V_\chi$ for $\chi \in \Hom{}{G}{k^\times}$ are independent, i.e., the map
+	Let $G$ be any group with a finite dimensional representation $r : G \pfeil{} \GL(V)$. Then, the subspaces $V_\chi$ for $\chi \in \Hom{}{G}{k^\times}$ are linearly independent, i.e., the map
 	\begin{align*}
 	\oplus V_\chi \Pfeil{} V
 	\end{align*}
 	is injective.
 \end{lemma}
 \begin{proof}
-The spaces $V_\chi$ are $G$-invariant. Suppose, there exist distinct $\chi_1, \ldots, \chi_n$ of non-zero $v_j \in V_{\chi_j}$ s.t. $\sum_j v_j = 0$.
-
-We may assume that $n$, the number of $v_j$, is minimal. W.l.o.g., $n \geq 2$.
-
-Choose $g \in G$ s.t. $\chi_1(g) \neq \chi_2(g)$. Use that $0 = g\sum_j v_j = \sum_j gv_j$ and take the linear combination as in the proof of linear indpendence of characters to contradict the minimality of $n$.
+	The spaces $V_\chi$ are $G$-invariant. Suppose, there exist distinct $\chi_1, \ldots, \chi_n$ of non-zero $v_j \in V_{\chi_j}$ s.t. $\sum_j v_j = 0$.
+	
+	We may assume that $n$, the number of $v_j$, is minimal. W.l.o.g., $n \geq 2$.
+	
+	Choose $g \in G$ s.t. $\chi_1(g) \neq \chi_2(g)$. Use that $0 = g\sum_j v_j = \sum_j gv_j$ and take the linear combination as in the proof of linear indpendence of characters to contradict the minimality of $n$.
+	
+	($g- \chi_1(g)$ is not zero, but reduces $\sum_j v_j $ by one summand.)
 \end{proof}
+
+
+

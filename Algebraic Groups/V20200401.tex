@@ -1,34 +1,37 @@
 \marginpar{Lecture from 01.04.2020}
-Since $G' = \shrp{ghg\i h\i ~|~ g,h \in G}$, so $\det(r(G')) = 1$.
-
-On the other hand, for each $g \in G'$, we have
-\[
-r(g) = \mat{
-\chi_0(g) \\
-& \ddots \\
- & & \chi_0(g)
-}
-\]
-since $V = V_{\chi_0}$. This implies
-\[ 1 = \det(r(g)) = \chi_0(g)^d. \]
-Ergo, $\chi_0$ defines a morphism
-\[ \chi_0 : G' \Pfeil{} \mu_d \subseteq \G_m. \]
-
-But $G'$ is connected and $\mu_d$ is finite. Since $\chi_0$ is a morphism, $\chi_0$ must be constant, ergo the trivial character.
-
-As a consequence, we get $r(G') = 1$ on $V = V_{\chi_0}$.
-
-\begin{lemma}
-	Let $G$ be an algebraic group, $r : G \pfeil{} \GL(V)$ a representation. $v \in V$ shall be a simultaneous non-zero eigenvector for $r(G)$.
+\begin{proof}[Finishing Proof of Theorem.]
+	Since $G' = \shrp{ghg\i h\i ~|~ g,h \in G}$, so $\det(r(G')) = 1$.
 	
-	Then, for each $g \in G$, there is a value $\chi(g) \in k^\times$ s.t.
-	\[ r(g) v =: \chi(g)v. \]
-	Then, the mapping $\chi : G \pfeil{} \G_m$ is a morphism of algebraic groups.
-\end{lemma}
-
-Therefore, $r $ descends to a representation of the commutative group
-\[ \overline{r} : G / G' \Pfeil{} \GL(V). \]
-Ergo, $r(G / G') = r(G)$ is commutative and therefore trigonalizable (because of irreducibility). \qedsymbol
+	On the other hand, for each $g \in G'$, we have
+	\[
+	r(g) = \mat{
+		\chi_0(g) \\
+		& \ddots \\
+		& & \chi_0(g)
+	}
+	\]
+	since $V = V_{\chi_0}$. This implies
+	\[ 1 = \det(r(g)) = \chi_0(g)^d. \]
+	Ergo, $\chi_0$ defines a morphism
+	\[ \chi_0 : G' \Pfeil{} \mu_d \subseteq \G_m. \]
+	
+	But $G'$ is connected and $\mu_d$ is finite. Since $\chi_0$ is a morphism, $\chi_0$ must be constant, ergo the trivial character.
+	
+	As a consequence, we get $r(G') = 1$ on $V = V_{\chi_0}$.
+	
+	\begin{lemma}
+		Let $G$ be an algebraic group, $r : G \pfeil{} \GL(V)$ a representation. $v \in V$ shall be a simultaneous non-zero eigenvector for $r(G)$.
+		
+		Then, for each $g \in G$, there is a value $\chi(g) \in k^\times$ s.t.
+		\[ r(g) v =: \chi(g)v. \]
+		Then, the mapping $\chi : G \pfeil{} \G_m$ is a morphism of algebraic groups.
+	\end{lemma}
+	
+	Therefore, $r $ descends to a representation of the commutative group
+	\[ \overline{r} : G / G' \Pfeil{} \GL(V). \]
+	Ergo, $r(G / G') = r(G)$ is commutative and therefore trigonalizable (because of irreducibility).
+	
+\end{proof}
 
 
 \begin{example}[Non-Example]
@@ -36,17 +39,17 @@ Ergo, $r(G / G') = r(G)$ is commutative and therefore trigonalizable (because of
 	\item Take $ G = D_4 \inj{} \GL_2(\C)$ which is solvable and has an irreducible and faithful representation over $\C^2$. 
 	\item Consider the solvable group
 	\[ G = \shrp{\mat{\pm 1 \\ & \pm 1}, \mat{& 1 \\ 1}} \]
-	which is a finite subgroup of $\GL_2(\C)$, s.t. $\C^2$ define an irreducible representation of $G$.
+	which is a finite subgroup of $\GL_2(\C)$, s.t. $\C^2$ defines an irreducible representation of $G$.
 \end{itemize}
 \end{example}
 
 \begin{lemma}[Form of Schur's Lemma]
-	If $S$ is any commutative subset of $\GL(V)$ for a finite-dimensional $0\neq V$ over an algebrically closed field $k$. Let $V$ be $S$-irreducible.
+	Let $S$ be any commutative subset of $\GL(V)$ for a finite-dimensional $0\neq V$ over an algebrically closed field $k$. Let $V$ be $S$-irreducible.
 	
 	Then, $\dim V = 1$.
 \end{lemma}
 \begin{proof}
-	There is notthing to show if $S$ is empty.
+	There is nothing to show if $S$ is empty.
 	
 	Let $s \in S$ and denote by $V_\lambda \subseteq V $ the $\lambda$-eigenspace for $s$. Then, since $S$ is commutative, $V_\lambda$ is $S$-invariant. Therefore, $V = V_\lambda$ for one $\lambda \in k^\times$.
 	
@@ -76,12 +79,14 @@ $B$ has the normal subgroup $U := \curv{
 	If $G$ is connected and solvable, then $G_u$ is a normal algebraic subgroup.
 \end{corollary}
 
+\newpage
 \section{Semisimple Elements of nilpotent Groups}
 
 \begin{theorem}
 	Let $G$ be a connected nilpotent algebraic group. Then, we have
 	\[ G_s \subseteq Z(G) \]
-	where $Z(G)$ denotes the center of $G$.
+	where $Z(G)$ denotes the \df{center} of $G$, i.e.
+	\[ Z(G) = \set{g \in G}{\forall h \in G:~gh = hg}. \]
 \end{theorem}
 \begin{theorem}[Lie-algebraic Analogue]
 Let $V$ be a finite-dimensional vectorspace. Let $\mathfrak{g}$ be the Lie-Subalgebra of $\End(V)$, i.e. $\mathfrak{g}$ is a subspace s.t. we have for each $x,y \in \mathfrak{g}$
@@ -169,8 +174,8 @@ So, $\mathrm{ad}(x)$ is nilpotent and semisimple, therefore $\mathrm{ad}(x) = 0$
 	\]
 	Then,
 	\[ h\neq ghg\i = \mat{b & ac \\ & 1}. \]
-	Ergo, $c \neq ac$, i.e. $c \notin \ker(a -1)$. Let $h_1 := h\i gh g\i$. Check
-	\[ h_1 = \mat{
+	Ergo, $c \neq ac$, i.e. $c \notin \ker(a -1)$. Define
+	\[ h_1:= h\i gh g\i = \mat{
 	1 & b\i(a-1)c\\ & 1}. \]
 We claim that $h_1$ does not commute with $g$. This claim implies the theorem, since we can iterate the claim to obtain elements $h_i$ by $h_{i+1} := h_i\i g h_i g\i$. Then, $h_i$ does not commute with $g$. But $G$ is nilpotent, therefore $h_i = 1$ for some large enough $i$.
 
@@ -179,7 +184,9 @@ We can prove the claim as follows: By some calculation as for $h$ and $g$, we se
 \iff & (a-1)b\i(a-1)c \neq 0\\
 \iff & b\i(a-1)^2c \neq 0\\
 \iff & (a-1)^2c \neq 0\\
-\iff & c \in \ker((a-1)^2).
+\iff & c \notin \ker((a-1)^2).
 \end{align*}
-But $a$ being semisimple implies $a-1$ being semisimple, therefore $\ker((a-1)^2) = \ker(a-1)$. So $h_1,g$ don't commute iff $c \in \ker(a-1) $ iff $h,g$ don't commute.
+But $a$ being semisimple implies $a-1$ being semisimple, therefore
+\[ \ker((a-1)^2) = \ker(a-1).\]
+So $h_1,g$ don't commute iff $c \in \ker(a-1) $ iff $h,g$ don't commute.
 \end{proof}
