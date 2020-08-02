@@ -39,6 +39,7 @@ We think of $\G_m^n \subseteq \GL_n(k)$ as the subgroup of diagonal matrices.
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
+	We show:
 	\begin{enumerate}
 		\item[(i) $\iff$ (ii):] This follows from the Jordan decomposition and definition of semisimple.
 		\item[(ii) $\implies$ (iii)]: This is homework. Note that any commutative subset $S$ of $\GL(V)$ consisting of semisimple operators may be diagonalized simultaneously.
@@ -51,17 +52,17 @@ We think of $\G_m^n \subseteq \GL_n(k)$ as the subgroup of diagonal matrices.
 	A commutative algebraic group $G$ is called \df{diagonalizable}, if it satisfies one of the above equivalent conditions.
 \end{definition}
 \begin{definition}
-	A character $\chi$ of any algebraic group $F$ is an element $\chi \in \Hom{\mathrm{alg.grp.}}{G}{k^\times}$, i.e., a homomorphism $\chi : G \pfeil{} k^\times$ of algebraic groups.
+	A \df{character} $\chi$ of an algebraic group $G$ is an element $\chi \in \Hom{\mathrm{alg.grp.}}{G}{k^\times}$, i.e., a homomorphism $\chi : G \pfeil{} k^\times$ of algebraic groups.
 \end{definition}
 \begin{notation}
-For an algebraic group $G$, set $\Xi(G) := \Hom{\mathrm{alg.grp.}}{G}{k^\times}$.
+For an algebraic group $G$, set $\X(G) := \Hom{\mathrm{alg.grp.}}{G}{k^\times}$.
 
 Also denote now by $\O(X) := k[T] / I(X)$ the coordinate ring of an algebraic set $X$ (rather than $k[X]$).
 \end{notation}
 
 \begin{lemma}
 	There is a bijection
-	\[ \Xi(G) = \{ \text{characters } \chi \text{ of } G \} \longleftrightarrow \{ x \in \O(G)^\times ~|~ \Delta(x) = x \otimes x \}. \]
+	\[ \X(G) = \{ \text{characters } \chi \text{ of } G \} \longleftrightarrow \{ x \in \O(G)^\times ~|~ \Delta(x) = x \otimes x \}. \]
 \end{lemma}
 \begin{proof}
 Note, that any $x \in O(G)^\times$ can be thought of as a map $x : G \pfeil{} k^\times \subset k$.
@@ -86,8 +87,10 @@ which is equivalent or regarding $\chi : G \pfeil{} \G_m$ as a map $\chi : G \pf
 \end{proof}
 
 \begin{example}
-	Let $G = \G_m$, then $\O(G) = k[t, \frac{1}{t}]$. Which $x = \sum_{m \in \Z}c_mt^m \in \O(G)$, almost all $c_m = 0$, but not all of them, have the property
-	\[ \Delta(x) = x\otimes x. \]
+	Let $G = \G_m$, then $\O(G) = k[t, \frac{1}{t}]$.
+	
+	Which $x = \sum_{m \in \Z}c_mt^m \in \O(G)$ -- with almost all $c_m = 0$, but not all of them -- have the property
+	\[ \Delta(x) = x\otimes x? \]
 	We have
 	\begin{align*}
 	x \otimes x &= \sum_{m,n \in \Z} c_mc_n t^m \otimes t^n,\\
@@ -101,46 +104,46 @@ which is equivalent or regarding $\chi : G \pfeil{} \G_m$ as a map $\chi : G \pf
 	By those conditions, it follows
 	\[ x = t^m. \]
 	Therefore
-	\[ \Xi(G) = \set{\chi_m}{m \in \Z} \isom{} \Z\]
+	\[ \X(G) = \set{\chi_m}{m \in \Z} \isom{} \Z\]
 	with
 	\[ \chi_m(y) = y^m. \]
 \end{example}
 
 \begin{example}
 Let $T \isom{} \G_m^n$ be a torus. Then,
-\[ \Xi(T) = \set{\chi_m}{m \in \Z^n} \isom{} \Z^n \]
+\[ \X(T) = \set{\chi_m}{m \in \Z^n} \isom{} \Z^n \]
 where $\chi_m(y) = y^m = y_1^{m_1}\cdots y_n^{m_n}.$
 \end{example}
-\paragraph{Note:} For each algebraic group $G$, $\Xi(G)$ is naturally an abelian group:
+\paragraph{Note:} For each algebraic group $G$, $\X(G)$ is naturally an abelian group:
 \[ (\chi_1 \cdot \chi_2)(g) := \chi_1(g) \cdot \chi_2(g). \]
 
 
 Given a morphism of algebraic groups $f : G \pfeil{} H$, we get a morphism of abelian groups
 \begin{align*}
-f^* : \Xi(H) & \Pfeil{} \Xi(G)\\
+f^* : \X(H) & \Pfeil{} \X(G)\\
 \chi & \longmapsto \chi \circ f =: f^*(\chi).
 \end{align*}
 This induces a contravariant functor from the category of algebraic groups to the category of abelian groups.
 
 \begin{lemma}
-Let $G$ be a diagonalizable algebraic group. Then, $\Xi(G)$ is a $k$-basis for $\O(G)$.
+Let $G$ be a diagonalizable algebraic group. Then, $\X(G)$ is a $k$-vector space basis for $\O(G)$.
 \end{lemma}
 \begin{example}
 Let $G = \G_m^n$ be a torus. Then, we have the embedding
 \begin{align*}
-\Xi(G) &\Inj{} \O(G)\\
-\chi_m & \longmapsto t^m.
+\X(G) &\Inj{} \O(G)\\
+\chi_{(m_1,\ldots, m_n)} & \longmapsto t^{(m_1,\ldots, m_n)}.
 \end{align*}
-The lemma is obvious in this case: each elment of $\O(G) = k [t_1,\ldots, t_m, t_1\i, \ldots, t_m\i]$ can be written uniquely as a linear combination of monomials.
+The lemma is obvious in this case: each elment of $\O(G) = k [t_1,\ldots, t_n, t_1\i, \ldots, t_n\i]$ can be written uniquely as a linear combination of monomials.
 \end{example}
 \begin{proof}
 \begin{enumerate}[(i)]
-	\item $\Xi(G)$ spans $\O(G)$:\\
+	\item $\X(G)$ spans $\O(G)$:\\
 	Choose an embedding $G \subset \G_m^n$ of algebraic groups. Then, by restriction, we get
 	\[ \O(\G^n_m) \surj{} \O(G). \]
-	Since the $\chi_m, m \in \Z^n, $ span $\O(\G_m^n)$, their images $\chi_m|_G \in \Xi(G)$ span $\O(G)$.
-	\item $\Xi(G)$ is linearly independent:\\
-	Suppose otherwise and let $\phi_1, \ldots, \phi_m$ be a linearly dependent subset of $\Xi(G)$ with $m \geq 1$ chosen minimally, with $c_1, \ldots, c_m \in k^\times$ s.t.
+	Since the $\chi_m, m \in \Z^n, $ span $\O(\G_m^n)$, their images $\chi_m|_G \in \X(G)$ span $\O(G)$.
+	\item $\X(G)$ is linearly independent:\\
+	Suppose otherwise and let $\phi_1, \ldots, \phi_m$ be a linearly dependent subset of $\X(G)$ with $m \geq 1$ chosen minimally, with $c_1, \ldots, c_m \in k^\times$ s.t.
 	\[ \sum_{i = 1}^m c_i \phi_i = 0. \]
 	We distinguish the following cases:
 	\begin{enumerate}
@@ -171,7 +174,7 @@ where the multiplication on $k[M]$ extends that on $M$:
 \end{definition}
 \begin{corollary}
 	For a diagonalizable $G$, we have
-	\[ \O(G) \isom{} k[\Xi(G)]. \]
+	\[ \O(G) \isom{} k[\X(G)]. \]
 \end{corollary}
 
 \paragraph{Fact:} For an abelian group $M$, there is exactly one Hopf algebra structure on $k[M]$ given by $\Delta(m) = m\otimes m$ for all $m \in M$.
@@ -180,7 +183,7 @@ With this definition, the above isomorphism is one of Hopf algebras.
 
 \begin{lemma}
 If $G,H$ are diagonalizable algebraic groups, then
-\[ \Hom{\mathrm{alg.grp.s}}{G}{H} \Pfeil{f \mapsto f^*} \Hom{\mathrm{grp.}s}{\Xi(H)}{\Xi(G)} \]
+\[ \Hom{\mathrm{alg.grp.s}}{G}{H} \Pfeil{f \mapsto f^*} \Hom{\mathrm{grp.}s}{\X(H)}{\X(G)} \]
 is a bijection.
 \end{lemma}
 \begin{proof}
@@ -188,7 +191,7 @@ is a bijection.
 \Hom{}{G}{H} \isom{} &\Hom{\mathrm{Hopf-alg.}}{\O(H)}{\O(G)}\\
  \isom{} &\set{\phi \in \Hom{k\mathrm{-alg.}}{\O(H)}{\O(G)}}{(\phi \otimes \phi) \circ \Delta = \Delta \circ \phi}.
 \end{align*}
-Since $\Hom{k\mathrm{-alg.}}{\O(H)}{\O(G)} \isom{} \Hom{}{k[\Xi(H)]}{k[\Xi(G)]}$, this reduces to the following lemma:
+Since $\Hom{k\mathrm{-alg.}}{\O(H)}{\O(G)} \isom{} \Hom{}{k[\X(H)]}{k[\X(G)]}$, this reduces to the following lemma:
 \begin{lemma}
 Let $M_1, M2$ be two abelian groups. Then
 \begin{align*}
