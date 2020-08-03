@@ -1,0 +1,70 @@
+\subsection{Dimensions}
+\begin{definition}
+	Let $X$ be a quasi-projective variety. We define its \df{dimension} as the transcendency degree of its function field, i.e.
+	\[ \dim(X) := \text{tr.-deg}_k(k(X)). \]
+\end{definition}
+\begin{remark}
+	If $X$ is affine, then
+	\begin{align*}
+	\dim (X) &= \text{tr.-deg}_k(k(X))\\
+	&=\dim_{\mathrm{Krull}}(\O(X))\\
+	&= \sup\set{n \in \N_0}{P_0\subsetneq P_1\subsetneq \ldots P_n, P_i \text{ prime in }\O(X) }\\
+	&= \sup\set{n \in \N_0}{Z_n\subsetneq \ldots Z_0, Z_i \text{ closed, irreducible in }X }
+	\end{align*}
+\end{remark}
+\begin{remark}
+	If $U \subset X$ is open, then $k(U) = k(X)$ and $\dim(U) = \dim (X)$.
+\end{remark}
+\begin{lemma}
+	Let $\phi : X \pfeil{} Y$ be a surjective morphism of quasi-projective varieties. Then,
+	\[ \dim X \geq \dim Y. \]
+\end{lemma}
+\begin{proof}
+	$\phi$ induces an inclusion
+	\begin{align*}
+	 \phi^* : k(Y) &\Inj{} k(X)\\
+	 [(U_i, \alpha_i)_i] & \longmapsto [(\phi\i(U_i), \alpha_i\circ \phi)].
+	\end{align*}
+This map is indeed injective, since $\phi$ is surjective. Therefore, the claim follows.
+\end{proof}
+\begin{lemma}
+	Let $X$ be a quasi-projective variety and $Y$ a proper, closed subvariety. Then,
+	\[ \dim(Y) < \dim(X). \]
+\end{lemma}
+\begin{proof}
+By going from $X$ to its closure $\widetilde{X}$ and from there to $\widetilde{X}^{(i)}$, we can assume that $X$ is affine.
+
+Then, $I_X(Y)$ is a non-trivial prime ideal in $\O(X)$. Therefore, we have
+\[ \dim_{\mathrm{Krull}}(\O(Y)) = \dim_{\mathrm{Krull}}(\O(X) / I_X(Y)) \leq \dim_{\mathrm{Krull}}(\O(X) ), \]
+since $A$ is a finitely generated $k$-algebra and a domain.
+\end{proof}
+
+\begin{lemma}
+	Let $X$ be an affine variety and $f\in \O(X)$ be non-zero.
+	
+	Then, the set
+	\[ V_X(f) := \set{p \in X}{f(p) = 0} \]
+	is a proper, closed subset of $X$ and we can decompose it into irreducible components
+	\[ V_X(f) = Z_1\cup \ldots \cup Z_l. \]
+	For each of those $Z_i$, we have
+	\[ \dim(Z_i) = \dim(X) - 1. \]
+\end{lemma}
+\begin{proof}
+	The $Z_i$ correspond to minimal prime ideals $P_i$ in $\O(X)$ which contain $(f)$. Since, they are minimal, we have
+	\[ \mathrm{height}(P_i) = 1. \]
+\end{proof}
+
+\begin{lemma}
+	Let $X$ be an quasi-projective algebraic set. Then -- as in the affine case -- we may write
+	\[ X = Z_1\cup\ldots \cup Z_l \]
+	where each $Z_i \subseteq X$ is an \df{irreducible component}, i.e. a maximal closed irreducible subset.
+	
+	We then define
+	\[ \dim(X) := \max_i \dim(Z_j). \]
+\end{lemma}
+\begin{lemma}
+	Let $\phi :X \pfeil Y$ be a morphism of quasi-projective varieties. Further, let $\phi$ be \df{dominant}, i.e., $\Img \phi$ is dense.
+	
+	Then, for all $p \in \Img(\phi)$, we have the following for the fiber of $\phi$ along $p$:
+	\[ \dim(\phi\i(p)) \geq \dim(X) - \dim(Y). \]
+\end{lemma}

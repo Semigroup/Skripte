@@ -8,3 +8,26 @@
 	Let $X,Y$ be two quasi-projective varieties. A map $f:X\pfeil{} Y$ is called a \df{morphism}, if $f$ is continuous and we have
 	\[ f^*\O(U) := \set{h \circ f}{h \in \O(U)} \subseteq \O(f\i(U)). \]
 \end{definition}
+\begin{remark}
+	Let $X,Y$ be affine varieties and $f : X \pfeil{} Y$ be a map. Then we have
+	\[ f^*\O(U) \subseteq \O(f\i(U)) \]
+	iff $f$ is given by polynomials.
+\end{remark}
+
+\begin{lemma}
+	Let $X$ be a quasi-projective variety and let $p \in X$.
+	
+	Then there is an open neighborhood $U$ of $p$ in $X$ s.t. $U$ is isomorphic (as quasi-projetive varieties) to an affine variety $U' \subset k^n$.
+\end{lemma}
+\begin{proof}
+	Let $Y$ be a projective variety s.t. $X$ lies open in $Y$. By replacing $X \inj{} Y$ with $X^{(i)}\inj{} Y^{(i)}$, we may assume that $X$ is an open subset of an affine variety $Y$ in $k^n$.
+	
+	Since the sets $D(f)$ give an open basis of $k^n$, there is a $f \in O(Y)$ s.t.
+	\[ p \in D_Y(f) := \set{y \in Y}{f(y) \neq 0} \subset X. \]
+	Now, $D_Y(f)$ is affine, because the map
+	\begin{align*}
+	D_Y(f) & \Pfeil{} \set{(q,r) \in k^{n+1}}{q \in Y, f(q) r = 1}\\
+	q &\longmapsto (q, \frac{1}{f(q)})
+	\end{align*}
+is an isomorphism of quasi-projective varieties.
+\end{proof}
