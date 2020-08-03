@@ -1,0 +1,65 @@
+\subsection{Local Rings and Function Fields}
+\begin{definition}
+	An \df{affine variety} is an irredudible algebraic subset of $k^n$.
+\end{definition}
+\begin{definition}
+If $X$ is an affine variety, then the coordinate ring $\O(X)$ is a domain. Define the \df{function field} of $X$ by
+\[ k(X) := \Frac(\O(X)) := \set{\frac{a}{b}}{a,b \in \O(X), b \neq 0}. \]
+\end{definition}
+
+\begin{definition}
+	Let $p \in X$. We define the \df{local ring} of $\O(X)$ at $p$ by
+	\[ \O_{X,p} := \set{\frac{a}{b}}{a\in O(X), 0\neq b \in O(X), b(p)\neq 0}\subset k(X). \]
+	We have an \df{evaluation} map
+	\begin{align*}
+	\textsf{eval}_p : \O_{X,p} & \Pfeil{} k\\
+	\frac{a}{b} & \longmapsto \frac{a(p)}{b(p)}.
+	\end{align*}
+\end{definition}
+\begin{lemma}
+	Let $X$ be an affine variety. Then
+	\[ \O(X) = \bigcap_{p\in X}\O_{X,p}. \]
+\end{lemma}
+
+\begin{definition}
+	Let $X\subset \P^n$ be a projective variety. Denote by $I_{\P}(X)$ its homogenous vanishing ideal.
+	
+	 Define its \df{function field} by
+	\[ k(X) := R / M, \]
+	where
+	\begin{align*}
+	R &:= \set{\frac{f}{g}}{f,g \in k[x_0,\ldots, x_n] \text{ homogen.}, \deg f = \deg g, g\notin I_{\P}(X) },\\
+	M &:=\set{ \frac{f}{g} \in R }{f \in I_\P(X)}.	
+	\end{align*}
+\end{definition}
+\begin{lemma}
+	$M$ is a maximal ideal in $R$ and $R/M$ is a field.
+\end{lemma}
+\begin{lemma}
+If $X$ is a projective variety, then $X^{(i)} \subset k^n$ is an affine variety.
+
+If $X^{(i)} \neq \emptyset$, then
+\[ k(X) \isom{} k(X^{(i)}).\]
+\end{lemma}
+
+\begin{definition}
+	Let $X$ be a projective variety. For $p \in X$, we define its \df{local ring} at $p$ by
+	\[ \O_{X,p} := \set{\frac{f}{g} \in k(X)}{g(p) \neq 0}\subset k(X). \]
+\end{definition}
+\begin{lemma}
+	For a projective variety $X$, we have:
+	\begin{enumerate}
+		\item For $p \in X^{(i)}$: $\O_{X,p} \isom{} \O_{X^{(i)},p}$.
+		\item For $p \in X^{(i)}\cap X^{(j)}$: $\O_{X^{(j)},p} \isom{} \O_{X^{(i)},p}$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{definition}
+	If $X\subset \P^n$ is quasi-projective variety, there is a minimal projective variety $\overline{X}\subset \P^n$ which contains $X$ as an open subset.
+	
+	Then, we can set
+	\begin{align*}
+	k(X) &:= k(\overline{X})\\
+	\O_{X,p} &:= \O_{\overline{X},p}.
+	\end{align*}
+\end{definition}

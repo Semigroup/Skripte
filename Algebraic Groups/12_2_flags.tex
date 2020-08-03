@@ -1,0 +1,41 @@
+
+\subsection{Flag Varieties}
+
+\begin{definition}
+	We define the \df{Grassmannian manifold} by
+	\[ G(n,d) := \set{W \subset k^n}{W \text{ is a }d\text{-dimensional subvectorspace}}.  \]
+	Then, we have the \df{Plücker-embedding} by
+	\begin{align*}
+	P_d : G(n,d) & \Pfeil{} \P \klam{ \bigwedge^d k^n } = \P^{\binom{n}{d}}\\
+	W & \longmapsto [w_1\wedge w_d]
+	\end{align*}
+	where $w_1,\ldots, w_d$ is a basis of $W$.
+\end{definition}
+\begin{lemma}
+	$P_d$ is injective and has a closed image.
+	
+	Therefore, we can see $G(n,d)$ as a projective algebraic set.
+\end{lemma}
+
+\begin{definition}
+Let $V$ be a finite-dimensional vector space of dimension $n$. Set
+\[ \Gr_d(V) :=\curv{d\text{-dim. subspaces of} V} \isom{} G(n,d). \]
+Define further the \df{flag manifold} to be
+\[ \Flag(V) := \curv{ \text{complete flags } \F = (0 = V_0 \subseteq V_1 \subseteq \ldots \subseteq V_n = V) }. \]
+Then, we have a map
+\begin{align*}
+P_v : \Flag(V) & \Pfeil{} \Gr_0(V) \times \ldots \times \Gr_n(V)\\
+\F &\longmapsto (V_0,\ldots, V_n).
+\end{align*}
+\end{definition}
+\begin{lemma}
+	$P_V$ has a closed image and is injective.
+	
+	Thus, we can see $\Flag(V)$ as a projective algebraic set.
+\end{lemma}
+
+\begin{lemma}
+	$\Gr_d(V)$ and $\Flag(V)$ are both irreducible, hence projetive alg. varieties.
+	
+	$\Flag(V)$ is called the \df{variety of complete flags}.
+\end{lemma}
