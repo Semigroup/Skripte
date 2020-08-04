@@ -1,0 +1,39 @@
+\subsection{Generic Openness}
+\begin{proposition}
+Let $\phi : X \pfeil{} Y$ be a dominant morphism of quasi-projective varieties.
+
+Then, there is an open nonempty set $U \subset X$, s.t., $\phi_{|U}$ is open, that is, it maps open sets to open sets.
+\end{proposition}
+
+\begin{corollary}
+	Let $G$ be a connected algebraic group.
+	
+	Then, $[G,G] = \shrp{aba\i b\i ~|~a,b \in G}$ is a closed subgroup of $G$.
+\end{corollary}
+\begin{proof}
+	For $a,b \in G$, set
+	\[ [a,b] = aba\i b\i. \]
+	For $n\geq 0$, define
+	\begin{align*}
+	\phi_n : G^{2n} &\Pfeil{} G\\
+	(a_1,b_1,\ldots, a_n,b_n) & \longmapsto [a_1, b_1] \cdots [a_n, b_n].
+	\end{align*}
+	Let $Z_n := \overline{\Img \phi_n}$.
+	Then, we have an ascending chain
+	\[ Z_1 \subseteq Z_2 \subseteq \ldots \]
+	Each $Z_n$ is closed and irreducible, because $G^{2n}$ is connected.
+	
+	Then, at some point the chains of $Z_i$'s must become stationary, because $\dim(G) < \infty$, because $\O(G)$ is a fintely generated $k$-algebra.
+	
+	Let $N$ be s.t.
+	\[ Z_N = Z_{N+1} = \ldots. \]
+	
+	Since $[G,G] = \bigcup_n \Img(\phi_n)$, we have then
+	\[ Z_N = \bigcup_n Z_n = \overline{[G,G]}. \]
+	
+	Since $\phi_n : G^{2n} \pfeil{} Z_n$ is dominant and since $G^{2n}$ and $Z_n$ are quasi-projective varieties, $\Img \phi_n = [G,G]$ contains a nonempty open subset $U$.
+	
+	Now, let $h \in \overline{[G,G]}$. Then, $hU\cap U\neq \emptyset$, since both are nonempty open and $\overline{[G,G]}$ is irreducible. Therefore, we have $u_1, u_2 \in U \subseteq [G,G]$ with
+	\[ hu_1 = u_2. \]
+	Ergo, $h$ lies in $[G,G]$. 
+\end{proof}
