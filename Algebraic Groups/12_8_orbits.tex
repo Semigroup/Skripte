@@ -1,0 +1,50 @@
+\subsection{Orbits}
+\begin{definition}
+	Let $G$ be an algebraic group and $Y$ a quasi-projective variety.
+	
+	An \df{action} $G \curvearrowright Y$ is an action described by a morhism\footnote{
+If $G$ is connected, $\phi$ shall be a morphism of quasi-projective varieties. Otherwise, we just require that $G^o \times Y \pfeil{} Y$ is a morphism of quasi-projective varieties.
+}
+	\[ \phi:G \times Y \Pfeil{} Y. \]
+\end{definition}
+\begin{lemma}
+	Let $G$ be an algebraic group which acts on a quasi-projective algebraic set $Y$. For an orbit $O \subset Y$, we have that $O$ is open in $\overline{O}$.
+\end{lemma}
+\begin{proof}
+Let $G_i$ be an irreducible component of $G$. For a point $p \in O$, the map
+\begin{align*}
+G_i & \Pfeil{} \overline{G_i.p}\\
+g & \longmapsto g.p
+\end{align*}	
+is dominant. Ergo, $G_i.p$ contains a nonempty open subset of $\overline{G_i.p}$. Ergo, the set $O = G.p$ contains a nonempty open subset $U$ of $\overline{O} = \overline{G.p}$.
+
+Now, for $q \in O$, there is some isomorphism $g \in G$ s.t. $q \in q.U$. Ergo, $O$ is open.
+\end{proof}
+
+\begin{definition}
+	If $O$ is a $G$-orbit in a quasi-projective variety $Y$, we can consider it to be a quasi-projective set. Therefore, the notion of the dimension of an orbit $O$ is well-defined.
+\end{definition}
+
+\begin{lemma}[Minimal Orbit Lemma]
+Let $G$ be an algebraic group. Let $Y$ be a quasi-projective variety s.t. $Y$ is projective or affine.
+
+Let $O$ be a $G$-orbit in $Y$ s.t. the dimension of $O$ is minimal among all $G$-orbits in $Y$.
+
+Then, $O$ is closed.
+\end{lemma}
+\begin{proof}
+	Since the action of an element of $G$ does not change the dimension of a quasi-projective set, we can reduce the claim to the case that $G$ is connected.
+	
+	Then, $O$ is irreducible. Further $\overline{O}$ is reduced and, because of the previous lemma, $\overline{O} - O$ is closed. It is easy to see, that $G$ operates on $\overline{O} - O$.
+	
+	Let $Z$ be an irreducible component of $\overline{O} - O$.
+	Since $Z$ is a proper closed subset of $\overline{O}$, we have
+	\[ \dim(Z) < \dim(\overline{O}) = \dim(O). \]
+	Since $O$ is dimensionally minimal, we must have $Z = \emptyset$. Ergo, $O = \overline{O}$.
+\end{proof}
+
+\begin{corollary}
+Let $G$ be an algebraic group. Let $Y$ be a quasi-projective variety s.t. $Y$ is projective or affine.
+
+Then $G$ has a closed orbit in $Y$.
+\end{corollary}

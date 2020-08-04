@@ -1,0 +1,118 @@
+\subsection{Images of Morphisms}
+\begin{lemma}
+	Let $Y$ be a quasi-projective set. Then for each $p \in Y$, there is an open, affine neighborhood $Y_0 \subset Y$ which contains $Y$.
+\end{lemma}
+\begin{proof}
+	Denote by $\overline{Y}$ the algebraic closure of $Y$ in $\P^n$. Assume that $p_i \neq 0$.
+	Then, the affine sets $Y^{(i)} = Y \cap D(x_i)$ and $\overline{Y}^{(i)} = \overline{Y} \cap D(x_i)$ lie dense in $Y$ and $\overline{Y}$.
+	
+	Now, $Y^{(i)}$ is open in $\overline{Y}^{(i)}$. Since the $D_{\overline{Y}^{(i)}}(f)$, $f \in \O(\overline{Y}^{(i)})$, give a basis of the topology of $\overline{Y}^{(i)}$, there is an $f \in \O(\overline{Y}^{(i)})$ s.t.
+	\[ p \in D_{\overline{Y}^{(i)}}(f) \subseteq {Y}^{(i)} \subset Y. \]
+	The neighborhood $ D_{\overline{Y}^{(i)}}(f)$ is, in particular, affine.
+\end{proof}
+
+
+\begin{lemma}
+	Let $Y$ be a quasi-projective algebraic set. Then the diagonal
+	\[ \Delta Y := \set{(y,y)}{y \in Y} \]
+	is closed in $Y \times Y$.
+\end{lemma}
+\begin{proof}
+	If we cover $Y$ by affine open subsets, then, we can reduce the claim to the case, where $Y$ is affine, i.e. closed in $k^n$.
+	
+	Then, $\Delta Y = (Y\times Y) \cap \Delta k^n \subset k^n \times k^n$. Since $Y \times Y$ is algebraic, it suffices to show that $\Delta k^n$ is algebraic. And, indeed,
+	\[ \Delta k^n = \set{(x,y)}{x-y = 0}. \]
+\end{proof}
+\begin{theorem}[Thm2]
+	Let $X$ be a projective variety and $Y$ be a quasi-projective variety. Then, the projection
+	\[ \pi_Y : X\times Y \Pfeil{} Y \]
+	is \df{closed}, i.e. $\pi_Y(Z)$ is closed for each $Z \subseteq X\times Y$ closed.
+\end{theorem}
+\begin{proof}
+Since $X\inj{} \P^n$ is a closed map (since $X$ is closed in $\P^n$), it suffices to show the claim for $X = \P^n$.
+
+Actually, at this point, we are done, since $\P^n$ with the Zariski-topology is topologically quasi-compact.
+%
+%If we further take an open covering of $Y$ by affine sets, then we can reduce to the case that $Y$ is affine. Let $Y \subset k^m$.
+%
+%Since, we have for $A \subset X \times k^m$
+%\[ \pi(A \cap X \times Y) = \pi (A) \cap Y, \]
+%we can further assume $Y = k^m$.
+%
+%Let $Z \subset \P^n \times k^m$ be closed and let $p \in k^m \setminus \pi(Z)$. We want to show that $k^m \setminus \pi(Z)$ contains an open neighborhood of $p$. Set
+%\[ R := \O(k^m) = k[y_1,\ldots, y_m]. \]
+%We need to show, that there is an $f \in R$ s.t. $f(p) \neq 0$, but $f(\pi(Z)) = 0$.
+%
+%Choose one $i \in \{0,\ldots, n\}$, s.t. $ (D(x_i) \times k^m) \cap Z \neq \emptyset$.
+%Because of the Nullstellensatz, there is an ideal $I_i$ s.t.
+%\[ V(I_i) = (D(x_i) \times k^m) \cap Z \subseteq k^{n+m}. \]
+%Let $I_i = (f_1,\ldots, f_r)$. Since $Z \cap D(x_i) \times \{p\} = \emptyset$, we have for each $q \in D(x_i)$
+%\[ \exists j:~ f_j(q, p) \neq 0. \]
+%Take $f$ s.t.
+%\[ D(f) \subseteq \bigcap_{j= 1}^r D(f_j). \]
+\end{proof}
+
+
+\begin{theorem}[Thm1]
+	Let $X$ be a projective variety and $Y$ be a quasi-projective variety. Then, for each morphism $\phi : X \pfeil{} Y$, the image $\phi(X)$ is closed in $Y$.
+\end{theorem}
+\begin{proof}
+First, we show that
+\[ \Gamma := \set{(x,y)\in X \times Y}{\phi(x) = y} \]
+is closed in $X \times Y$. In fact, we have
+\[ \Gamma = (\phi \times 1)\i(\Delta Y) \]
+where $\Delta Y \subseteq Y \times Y$ is closed.
+
+Now, we can consider the chain
+\[ X \Pfeil{\id{} \times \phi } X \times Y \Pfeil{ \pi_Y } Y. \]
+We have $\phi(X) = \pi_Y ( \Gamma )$. Since $\pi_Y$ and $\Gamma$ are closed, the claim follows.
+\end{proof}
+
+
+\begin{example}
+	\begin{enumerate}
+		\item The condition that $X$ is a \emph{projective} variety is necessary. Consider
+		\[ \pi_x : \set{(x,y)}{xy = 1} \Pfeil{} k. \]
+		The image $k^\times = \pi_x(\set{(x,y)}{xy = 1})$ is not closed in $k$.
+		\item Let $Y = k \subset_o \P^1$. Then any morphism $\phi : X \pfeil{} k$ is constant.
+		
+		This is, because $\phi(X)$ must be closed in $\P^1$, ergo a finite set. Now, this finite set cannot contain multiple elements. Otherwise, $X$ would not be irreducible.
+	\end{enumerate}
+\end{example}
+
+\begin{corollary}
+		Let $X$ be a projective variety and $Y$ be an affine variety.
+		Then, any morphism $X \pfeil{} Y$ is constant.
+\end{corollary}
+\begin{proof}
+	We have the chain
+	\[ X \Pfeil{} Y \Inj{} k^m \Pfeil{\pi_i} k. \]
+	For each $\pi_i$ this chain must be constant.
+\end{proof}
+
+
+\begin{theorem}[Thm3]
+	Let $\phi : X \pfeil{} Y$ be a morphism of quasi-projective varieties. Assume that $\phi$ is \df{dominant}, i.e. $\phi(X)$ is dense in $Y$.
+	
+	Then, $\phi(X)$ contains a nonempty open (hence dense) subset of $Y$.
+\end{theorem}
+\begin{proof}
+	Postponed...
+\end{proof}
+\begin{corollary}
+	Let $\phi : G \pfeil{} H$ be a morphism of algebraic groups. Then, $\phi(G)$ is closed.
+\end{corollary}
+\begin{proof}
+Since $G$ can be reduced to finite many irreducible components and since $\phi(G) = \bigcup_i \phi(g_i) \phi(G^o)$, it suffices to show the claim in the case where $G = G^o$ is irreducible.
+
+Set $Y = \overline{\phi(G)}$. $Y$ is irreducible and closed. Further, $Y$ is a subgroup of $H$.
+
+We are finished, if we can show $\phi(G) = \overline{\phi(G)}$.
+
+By the previous theorem, $\phi(G)$ contains a nonempty open subset $U$ of $Y$, hence $\phi(G)$ is dense in $Y$. Now, assume there are any $h \in Y - \phi(G)$.
+The map $y \mapsto hy$ is an isomorphism, hence $h\phi(G)$ lies dense in $Y$. Ergo
+\[ \phi(G) \cap (h \phi(G)) \neq \emptyset. \]
+Take $u_1, u_2 \in \phi(G)$ s.t.
+\[ u_1 = h u_2. \]
+Then, it follow $h = u_1u_2\i \in \phi(G)$. A contradiction.
+\end{proof}

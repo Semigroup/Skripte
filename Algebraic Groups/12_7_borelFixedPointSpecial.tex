@@ -1,0 +1,35 @@
+\subsection{Borel's Fixed Point Theorem (special case)}
+
+\begin{theorem}
+	Let $G$ be a connected solvable algebraic subgroup of $\GL(V)$, where $V$ is a finite-dimensional non-trivial vector space.
+	
+	Then, $G$ acts algebraically on $\P(V)$.
+	
+	Let $X \subseteq$ be a non-empty, closed $G$-stable subset. Then, $G$ has a fixed point in $X$.
+\end{theorem}
+
+\begin{proof}
+	We prove this by an induction on $n = \dim(V)$:
+	\begin{itemize}
+		\item $n = 1$:\\
+		In this case, $\P(V)$ contains only one element.
+		\item $n = 2$:\\
+		We have $\P V \isom{} \P^1$. If $X = \P(V)$, then there is a complete invariant flag $0 \subset \shrp{v} \subset V$ which is $G$-stable.
+		
+		Then, $[v]$ is fixed by $G$.
+		
+		If $X$ is finite, let $x \in X$. Then, $G.x$ is a connected subset of $X$, hence $G.x = \{x\}$.
+		\item $n \geq 3$:\\
+		Take again a complete $G$-stable flag $0 \subset \shrp{v} \subset \ldots \subset V$. If $[v] \in X$, we are done.
+		
+		Otherwise, consider the morphism
+		\[ \phi : X \Pfeil{} \P(V / \shrp{v}). \]
+		Since $\shrp{v}$ is $G$-invariant, $G$ acts on $\P(V / \shrp{v})$ and $\phi$ is $G$-equivariant.
+		
+		The image $\phi(X)$ is closed by a theorem in the preceeding subsection. By the induction hypothesis, there is a fixed point $[w + \shrp{v}] \in \phi(X) \subseteq \P(V / \shrp{v})$.
+		
+		In particular, $[w+\shrp{v}]$ has a preimage $[w]$ in $X$. Consider the subset
+		\[ W := \shrp{w,v} \subseteq V. \]
+		$W$ is $G$-stable and we have $\P W \cap X\neq \emptyset$. Since $\P W \cap X$ is closed in $\P W \isom{} \P^2$, it follows from a previous case that there is a $G$-fixed point in $\P W \cap X$.
+	\end{itemize}
+\end{proof}
