@@ -1,0 +1,129 @@
+\subsection{Quotients}
+\begin{definition}
+	A (left) \df{quotient} of an algebraic group $G$ by a closed group $H$ is a pair $(X, \rho)$ s.t.
+	\begin{enumerate}[(1)]
+		\item $X$ is a quasi-projective variety.
+		\item $\rho : G \pfeil{} X$ is a morphism with
+		\[ \rho(hg) = \rho(g) \]
+		for all $h \in H, g \in G$.
+	\end{enumerate}
+Further, we demand that a quotient is \df{initial} in the category of all objects satisfying the above conditions. I.e. for each pair $(X', \rho')$ there must be a unique morphism $\phi$ s.t. the following diagram commutes:
+\begin{center}
+\begin{tikzcd}
+G \arrow[d, "\rho"] \arrow[rd, "\rho'"] & \\
+X \arrow[r, dashed, "\phi"] & X'
+\end{tikzcd}	
+\end{center}
+\end{definition}
+\begin{remark}
+	Set theoretically, we just have $X = G/H$.
+\end{remark}
+\begin{lemma}
+	Let $(X,\rho)$ satisfy conditions (1) and (2) from the above definition. Suppose further
+	\begin{enumerate}[(i)]
+		\item $\{ \text{fibers of } \rho \} = \{ \text{left }H\text{-cosets of }G \}$,
+		\item $X$ is a $G$-homogenous space and $\rho$ is $G$-equivariant,
+		\item for each open $U \subset X$ the pullback map
+		\begin{align*}
+		\rho^* : \O(U) & \Pfeil{} \O(\rho\i (U))\\
+		f &\longmapsto f \circ \rho
+		\end{align*}
+		defines an isomorphism
+		\[ \O(U) \isom{} \set{f \in \O(\rho\i U)}{f(Hg) = f(g)} =: \O(\rho\i(U))^H. \]
+	\end{enumerate}
+Then, $(X,\rho)$ is a quotient of $G$ by $H$.
+\end{lemma}
+\begin{proof}
+	We have to show that $(X,\rho)$ is initial. Let $(X', \rho')$ be another object satisfying (1), (2).
+	Because of (i), we have a unique settheoretic map $\phi : X \pfeil{} X'$ s.t. the diagram
+	\begin{center}
+		\begin{tikzcd}
+		G \arrow[d, "\rho"] \arrow[rd, "\rho'"] & \\
+		X \arrow[r, dashed, "\phi"] & X'
+		\end{tikzcd}	
+	\end{center}
+commutes. We need to check that $\phi$ is a morphism:
+\begin{itemize}
+	\item $\phi$ is continuous, since $\rho'$ is continuous and $\rho$ is open (since $X$ is a $G$-homogenous space). Therefore, $\phi = \rho' \circ \rho\i$ is continuous.
+	\item Let $U' \subset X'$ be open. We need to show
+	\[ \phi^* \O(U') \subseteq \O(\phi\i U'). \]
+	Let $f \in \O(U')$ and set $U := \phi\i U'$. Since $\rho'$ is a morphism, we have
+	\[ {\rho'}^*(f) \in \O({\rho'}\i U'). \]
+	Because of (iii), we have
+	\[ \O(U) \isom{} \O(\rho\i U)^H. \]
+	Therefore, it suffices to show
+	\[ {\rho'}^*(f) \in \O(\rho\i U)^H. \]
+	And, indeed
+	\[ f \circ \rho'(hg) = f \circ \rho'(g) \]
+	for $g \in G, h \in H$.
+\end{itemize}
+\end{proof}
+
+\begin{theorem}
+	Let $G$ be an algebraic group with a closed subgroup $H$.
+	\begin{itemize}
+		\item A quotient $(X, \rho)$ exists and $X$ is a homogenous space for $G$ s.t. $H = \mathrm{Stab}_G(p)$ for some $p \in X$.
+		\item If $\mathrm{char}(k)= 0$, then each $G$-homogenous space $X$ together with a point $p\in X$ s.t. $H = \mathrm{Stab}_G(p)$ gives a quotient of $G$ by $H$, where $\rho(g) = g.p$.
+	\end{itemize}
+\end{theorem}
+\begin{proof}
+	We only prove the theorem for the case $\mathrm{char} k = 0$. We construct $X$ as in a previous proposition, i.e. $X = G.p$ for a point $p \in \P(V)$ s.t. $H = \mathrm{Stab}_G(p)$.
+	
+	It is then clear, that conditions (i) and (ii) of the previous lemma are met. We only need to show
+	\[ \rho^*\O(U) = \O(\rho\i U)^H. \]
+	Naturally, $\rho^*\O(U)$ is contained in $\O(\rho\i U)^H$.
+	
+	Let $f \in \O(\rho\i U)^H$. W.l.o.g., we can assume that $U$ is affine. Consider the diagram
+	\begin{center}
+		\begin{tikzcd}
+		\rho\i U \arrow[r, "f"] \arrow[d, "\rho"] & k \\
+		U \arrow[ur, dashed, "g"] & 
+		\end{tikzcd}	
+	\end{center}
+$g := f \circ \rho\i$ is well-defined, because $f$ is $H$-invariant. We need to show, that $g$ is regular, i.e. $g \in \O(\rho\i U)$.
+
+We can blow up the diagram as follows:
+	\begin{center}
+	\begin{tikzcd}
+	U \times k \arrow[rd, "\pi_2"] & &  V \supset {\Img (\rho \times f)} \arrow[ld, "\pi_2"] \arrow[dd, "p"] \arrow[ll,hook', "\mathrm{open}"] \\
+	& k & \\
+	\rho\i U \arrow[uu, "\rho \times f"] \arrow[ru, "f"] \arrow[rr, "\rho"] & & U \arrow[ul, "g"]
+	\end{tikzcd}	
+\end{center}
+Then $V$ is a quasi-projective variety and $p$ is dominant and injective, hence birational. Therefore, we have
+\[ k(U) \isom{} k(V). \]
+In particular, do we have $\pi_2 \in \O(V)$ and therefore
+\[ g = p^*(\pi_2) \in \O(U). \]
+\end{proof}
+
+\begin{example}[Non-Example]
+	The proof of the theorem does not hold, if $\mathrm{char} (k) = p > 0$.
+	
+	Consider,
+	\begin{align*}
+	 G &:= \G_a\\
+	 H &:= 1\\
+	 V &= k^2\\
+	\end{align*}
+	and
+	\begin{align*}
+	G & \Pfeil{} \GL(V)\\
+	x &\longmapsto \mat{1 & x^{p^n}\\  & 1}
+	\end{align*}
+	for some $n \in \N_0$.
+	
+	For $q = [1,0] \in \P(V)$, we have
+	\[ X:= G.q = \set{[1,x^{p^n}]}{x \in k} \isom{} k. \]
+	Define $\rho$ by by
+	\begin{align*}
+	\rho : G & \Pfeil{} X\\
+	g & \longmapsto g.q.
+	\end{align*}
+	Then, $(\rho, X)$ fulfills the conditions of the above theorem, but it is NOT a quotient for $n \geq 1$.
+	
+	Indeed, for $n_1 \geq n_2$, we have non-isomorphic maps
+	\begin{align*}
+	X_{n_2} & \Pfeil{} X_{n_1}\\
+	x & \longmapsto x^{p^{n_1 - n_2}}.
+	\end{align*}
+\end{example}

@@ -1,0 +1,73 @@
+\section{Borel and Parabolic Groups}
+Let $G$ be a connected algebraic group.
+\begin{definition}
+	A subgroup $B \subset G$ is called \df{Borel}, if $B$ is maximal among all connected solvable closed subgroups.
+	
+	Since $\dim(G) < \infty$, Borel subgroups exist.
+\end{definition}
+\begin{definition}
+	A subgroup $P \subset G$ is called \df{parabolic}, if the quasi-projective variety $G / P$ is \df{projective}, i.e. closed in $\P^n$.
+\end{definition}
+\begin{lemma}
+	Let $G$ connected, $P$ parabolic, $B$ Borel. Then, $P$ contains some conjugate of $B$.
+\end{lemma}
+\begin{proof}
+	$B$ acts on the projective variety $G/P$. According to Borel's fixed point theorem, there is a fixed point $gP \in G/P$ s.t.
+	\[ bgP = gP \]
+	for each $b \in B$. Ergo
+	\[ g\i b g \in P \]
+	for each $b \in B$.
+\end{proof}
+
+\begin{theorem}
+	Let $G$ be connected.
+	 
+	Any two Borel subgroups are conjugate.
+\end{theorem}
+\begin{proof}
+Take a faithful representation $G \inj{} \GL(V)$ with a finite-dimensional $V$. Let $\F = \Flag(V)$ be the flag variety of $V$.
+
+Choose $F \in \F$ s.t. the orbit $G.F$ has a minimal dimension. Then, $G.F$ is closed, hence projective. If we set
+\[ H:= \Stab_G(F), \]
+then $H$ is parabolic. Therefore, each Borel group $B$ has a conjugate in $H$. Since $B$ is connected, its conjugate is contained in an irreducible component $H^o$ of the neutral element.
+
+Since $H$ is solvable\footnote{Why is $H$ solvable?}, $H^o$ is a connected, solvable, closed subrgoup. Ergo $H^o$ is the conjugate of $B$.
+\end{proof}
+\begin{proposition}
+Let $G$ be connected. Then, each Borel group is parabolic.
+\end{proposition}
+\begin{proof}
+	Let $B$ be a Borel subgroup of $G$.
+	
+	Take a representation $G \pfeil{} \GL(V)$ with a finite-dimensional $V$ s.t. there is a one-dimensional $L \subseteq V$ s.t.
+	\[ B = \set{g \in G}{gL = L}.\]
+	B acts on $V/L$. Since $B$ is connected and solvable there must be a complete $B$-invariant flag $\overline{F}$ in $V/L$. We can lift $\overline{F}$ to a complete flag $F = (L=V_1 \subset \ldots \subset V_n)$ of $V$. Then, it is easy to see
+	\[  B= \Stab_G(F). \]
+	
+	Choose $F' \in \Flag(V)$ s.t. the orbit $G.F'$ has a minimal dimension. Then, $G.F'$ is closed, hence projective. If we set
+	\[ H:= \Stab_G(F'), \]
+	we have (by conjugating)
+	\[ B = H^o.\]
+	Consider the map
+	\[ G/B = G/H^o \surj{} G/H. \]
+	This map has finite fibers, because $[H: B] < \infty$. Ergo
+	\[ \dim(G / B) \leq \dim(G/H). \]
+	Ergo, $G/B$ is of minimal dimension, hence closed. Hence, $B$ is parabolic.
+\end{proof}
+\begin{corollary}
+	Let $P$ be an algebraic subgroup of a connected algebraic group $G$.
+	
+	Then, $P$ is parabolic iff it contains a Borel group.
+\end{corollary}
+\begin{proof}
+	The direction to the right is known.
+	
+	Let $P$ contain a Borel group $B$. Consider the maps
+	\[ G / B \surj{} G /P \inj{} \P^n. \]
+	Since $B$ is parabolic, $G/B$ is closed. Therefore, the morphism $G / B \pfeil{} \P^n$ has a closed image. But its image is exactly $G/P$. Ergo, $P$ is parabolic.
+\end{proof}
+\begin{corollary}
+	Let $B$ be an algebraic subgroup of a connected algebraic group $G$.
+	
+	Then, $B$ is Borel iff it is a minimal parabolic subgroup.
+\end{corollary}

@@ -1,0 +1,37 @@
+\section{Homogenous Spaces}
+
+\begin{definition}
+	Let $G$ be a connected algebraic group. A homogenous space for $G$ is a quasi-projective variety $X$ equipped with a \df{transitive} action $G\curvearrowright X$.
+	
+	Let $G$ be now disconnected. Then, we only demand that $X$ is a finite union of irreducible components. Still $G$ needs to act transitively on $X$.
+	
+	A morphism of $G$-homogenous spaces is a \df{morphism} of quasi-projective varieties/sets which is $G$-equivariant.
+\end{definition}
+\begin{corollary}
+	If $\phi : X \pfeil{} Y$ is a morphism of $G$-homogenous spaces, then $\phi$ is an open map.
+\end{corollary}
+\begin{proof}
+	It suffices, if we show this statement for an irreducible $X$. Note, that $\phi$ must be surjective, ergo dominant.
+	
+	By a previous proposition, $X$ must contain an open nonempty subset $U$ s.t. $\phi_{|U}$ is an open map. Since $G$ acts transitively on $X$, we can cover $X$ with such open sets $gU$.
+\end{proof}
+
+\begin{proposition}
+	Let $G$ be an algebraic group and $H$ a closed subgroup.
+	
+	Then, there is a homogenous space $X$ for $G$ and a point $p \in X$ s.t.
+	\[ H = \mathrm{Stab}_G(p) \]
+	and the map
+	\begin{align*}
+	G /H & \Pfeil{} X\\
+	gH &\longmapsto g.p
+	\end{align*}
+	is a bijection.
+\end{proposition}
+\begin{proof}
+	There is a faithful representation $\rho : G \pfeil{} \GL(V)$ with $V$ finite-dimensional s.t. there is a one-dimensional subspace $L \subset V$ with
+	\[ H = \set{g \in G}{gL = L}. \]
+	Set $p := [L] \in \P(V)$. Then, we can set
+	\[ X := G.p. \]
+	Then, $X$ is an orbit of $G$, ergo a quasi-projective set/variety.
+\end{proof}
