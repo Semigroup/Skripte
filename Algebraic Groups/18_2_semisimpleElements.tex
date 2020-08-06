@@ -1,1 +1,87 @@
 \subsection{Semisimple Elements of Solvable Groups}
+\begin{theorem}
+	Let $B = U \rtimes T$ as before be a solvable connected algebraic group.
+	
+	Let $s \in B$ be semisimple. Then $s$ is conjugated to one element in $T$.
+\end{theorem}
+\begin{corollary}
+	Let $G$ be a connected algebraic group. Then, every semisimple element of $G$ is contained in some torus.
+\end{corollary}
+\begin{proof}
+	Let $s \in G$ be semisimple and choose a Borel group $B \subset G$ which contains $s$.
+	
+	$B$ is of the form $U \rtimes T$, ergo $s \in b\i T b$ for some $b \in B$.
+\end{proof}
+
+\begin{lemma}
+	Suppose $\mathrm{char} k = 0$.
+	\begin{enumerate}[(i)]
+		\item Let $g \in \GL_n(k)$ be unipotent and set $G(g) := \overline{\shrp{g}}$. Then, we have the following isomorphism of algebraic groups
+		\[ G(g) = \set{g^t}{t \in k} \isom{} k \]
+		where
+		\begin{align*}
+		g^t &:= \exp( t \cdot \log(g))\\
+		-\log(1 - X) &= \sum_{n = 1}^\infty \frac{X^n}{n}\\
+		\exp(Y) &= \sum_{k = 0}^\infty \frac{Y^k}{k!}.
+		\end{align*}
+		
+		\item Any unipotent algebraic group is connected. (This does not hold if $\mathrm{char} k > 0$.)
+		\item Any unipotent commutative algebraic group is isomorphic to some vector space.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+		\begin{enumerate}[(i)]
+		\item We will not prove this, but the idea is that $\Z$ is dense in $k$.
+		\item Let $g,h \in G$ be unipotent. Then the subgroups $G(g), G(h)$ are connected and share a common point ($e$), ergo $g,h$ are contained in the same component.
+		\item Since all elements commute $\log$ gives an isomorphism into an additive group, on which $k$ acts.
+	\end{enumerate}
+\end{proof}
+
+\begin{proof}[Proof of Theorem]
+	We only prove the theorem in case $\mathrm{char} k = 0$.
+	
+	Let $s \in B = U\rtimes T$ be semisimple. Since $\mathrm{char} k = 0$, $U$ is connected.
+	
+	We induct on $\dim(U)$:
+	\begin{itemize}
+		\item $\dim(U) = 0$: In this case $U = 1$ and $s \in G= T$.
+		\item $\dim(U) = 1$: This is the crucial case.
+		
+		Write
+		\[ s=ut \]
+		with $u \in U$ and $t \in T$.
+		
+		If $u$ and $t$ commute, then $ut$ is a Jordan decomposition and we have $u = 1$, ergo $s \in T$.
+		
+		Assume therefore, that $u,t$ don't commute. We claim:
+		
+		\paragraph{Claim:} For each $h \in sU = Us$, we have for the $B$-conjugacy class $C(h) = \set{ghg\i}{g \in B}$
+		\[ C(h) = sU. \]
+		The claim implies the theorem, because we then have
+		\[ t = su \in sU = C(s) \]
+		ergo $t = gsg\i$.
+		
+		\paragraph{Proof of Claim:}	
+		\begin{itemize}
+			\item First note, that $B$ acts by conjugation on $Us = sU$. This is because $G/U$ is commutative and $U$ is normal. In fact, we have for $g \in B, u \in U$
+			\[ gsug\i = s \cdot (s\i g sug\i) = s \cdot (s\i g s g\i) \cdot u'. \]
+			Now, $(s\i g s g\i)$ must lie in $U$ because $G/U$ is commutative.
+			\item Since $\dim(U) = 1$, we have 
+			\[ U = \set{v^k}{k \in K} \isom{} k. \]
+			\item $h \in sU$ does not commute with $u$, since -- otherwise -- $s,t$ would commute with $u$.
+			
+			Ergo, $h \neq u\i h u$, which means $C(h) \supseteq \{h, u\i h u\}$ contains at least two different elements.
+			\item Note, that $C(h)$ is a $B$-orbit and therefore connected and \df{locally closed} (that is a closed subset of an open subset of $G$). Since $G/U$ is commutative, we have
+			\[ C(h) \subset sU = hU \isom{} k. \]
+		\end{itemize}	
+		Now, the only connected, locally closed subset of $k$ are singletons and complements of finite sets.
+		
+		Since $C(h)$ is not a singleton, we have
+		\[ C(h) = sU  - \Sigma \]
+		for a finite set $\Sigma$.
+		
+		We claim that $\Sigma$ is empty. Note, that $B$ acts by conjugation on $sU$ and $C(h)$, ergo also on $\Sigma$. If we pick $h' \in \Sigma \subset sU$, then $C(h')$ must be finite, connected and contain two different elements. This is a contradiction.
+		\item $\dim(U) \geq 2$:
+	\end{itemize}
+\end{proof}
+
