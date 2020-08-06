@@ -59,6 +59,11 @@ commutes. We need to check that $\phi$ is a morphism:
 \end{itemize}
 \end{proof}
 
+\begin{lemma}
+	Suppose $\mathrm{char} k = 0$. Any injective morphism of quasi-projective varieties with dense image is \df{birational}, i.e., induces, via pullback an isomorphism
+	\[ k(X) \isom{} k(Y). \]
+\end{lemma}
+
 \begin{theorem}
 	Let $G$ be an algebraic group with a closed subgroup $H$.
 	\begin{itemize}
@@ -92,7 +97,9 @@ We can blow up the diagram as follows:
 \end{center}
 Then $V$ is a quasi-projective variety and $p$ is dominant and injective, hence birational. Therefore, we have
 \[ k(U) \isom{} k(V). \]
-In particular, do we have $\pi_2 \in \O(V)$ and therefore
+Since $X$ is homogenous space for $G$, it is smooth. On a smooth quasi-projective variety, every rational function that fails to be regular must have a pole.
+
+In particular, we do have $\pi_2 \in \O(V)$ and therefore
 \[ g = p^*(\pi_2) \in \O(U). \]
 \end{proof}
 

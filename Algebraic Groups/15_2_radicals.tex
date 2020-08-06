@@ -1,0 +1,59 @@
+\subsection{Radicals}
+Let $G$ be a connected algebraic group.
+
+\begin{definition}
+	The \df{radical} $R(G)$ of $G$ is defined as the intersection of all Borel subgroups of $G$ i.e.
+	\[ R(G) := \bigcap_{B \subset G \text{ Borel}} B. \]
+	The \df{unipotent radical} is defined by
+	\[ R_u(G) := R(G)_u = \{ \text{unipotent elements of } R(G)\}. \]
+\end{definition}
+
+\begin{lemma}
+	Let $G$ be a connected algebraic group.
+	
+	$R(G)$ is the largest connected solvable normal algebraic subgroup of $G$.
+\end{lemma}
+\begin{proof}
+	It is clear that $R(G)$ is connected, solvable, normal and algebraic.
+	
+	We need to show that each connected solvable normal algebraic subgroup $H$ of $G$ is contained in $R(G)$.
+	
+	Clearly, $H$ is contained in one Borel group $B$. Since $H$ is normal, we have for each $g \in G$
+	\[ H = gHg\i \subset gBg\i. \]
+	Since $gBg\i$ is a Borel group and all Borel groups are conjugated, it follows $H$ is contained in each Borel group, ergo it is contained in $R(G)$.
+\end{proof}
+
+\begin{definition}
+	We call $G$ \df{semisimple} iff $R(G) = 1$.
+	
+	We call $G$ \df{reductive} iff $R_u(G) = 1$ (iff $R(G)$ is a torus).
+\end{definition}
+
+\begin{example}
+	\begin{itemize}
+		\item Let $n \geq 1$ and $G = \GL_n(k)$. $G$ is reductive, but not semisimple:
+		
+		$G$ has two Borel groups:
+		\begin{align*}
+		B = \curv{\mat{* & *\\ & *}} && B' = \curv{\mat{* & \\ * & *}}.
+		\end{align*}
+		Ergo, we have for the radical
+		\[ R(G) \subset B \cap B' = \curv{\mat{* & \\ & *}} =: T. \]
+		But, now we have
+		\[ \set{t \in T}{gtg\i \in T ~ \forall g \in G} = k^\times. \]
+		Ergo,
+		\[ R(G) =  k^\times. \]
+	\end{itemize}
+\item Let $G = \SL_n(k)$. $G$ is semisimple and reductive:
+
+As above, one can compute
+\[ Z = G \cap \curv{\mat{ \lambda & & \\
+& \ddots & \\
+& & \lambda}}. \]
+However, $Z$ is not connected. In particular
+\[ R(G) = Z^o = 1. \]
+\item $G = \G^n_m$ is a torus: It is easy to see that $R(G) = G$ in this case.
+\item $G$ is solvable (and connected): Trivially, we have then $R(G) = G$.
+\item $G$ is unipotent: In this case, we know that $G$ is solvable. Further, we even have $R_u(G) = G$.
+\item If $G$ is $\SO_n$ or $\SP_{2n}$, then $R(G) = R_u(G) = 1$.
+\end{example}

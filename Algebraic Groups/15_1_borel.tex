@@ -71,3 +71,56 @@ Let $G$ be connected. Then, each Borel group is parabolic.
 	
 	Then, $B$ is Borel iff it is a minimal parabolic subgroup.
 \end{corollary}
+
+\begin{example}
+	If $G  = \GL_n(k)$, then
+	\[ B = \curv{\mat{* & \ldots & * \\
+	0 & \ddots & \vdots\\
+ 0  & 0 & * }} \]
+is a Borel group.
+
+
+Let $n = n1 + \ldots + n_r$ and set
+\[ P_{(n_1,\ldots, n_r)} := 
+\curv{
+\mat{\GL_{n_1}(k) & * & * \\
+	0 & \ddots & *\\
+	0  & 0 & \GL_{n_r}(k) }
+}.
+ \]
+ Each $P_{(n_1,\ldots, n_r)}$ is closed, since it is the stabilizer of an incomplete flag.
+ 
+ In fact, each parabolic group is conjugate to one of those $P_{(n_1,\ldots, n_r)}$.
+ 
+ If $P \neq G$ is parabolic, $P$ is called a \df{proper} parabolic subgroup.
+\end{example}
+
+\begin{example}
+	\begin{itemize}
+		\item $G = \SL_n(k)$: In this case parabolic groups are like in the above case, but inside of $\SL_n(k)$.
+		\item $G = \SO_n(k)$: Then, we can embed $G$ in $\GL(V)$. Let $\skp{\cdot}{\cdot}$ be (any?) symmetric bilinear form.
+		
+		A subspace $W \subset V$ is called \df{isotopic} iff $\skp{\cdot}{\cdot}_{|W\times W} \equiv 0$.
+		
+		Then, we have the equivalence
+		\[ \curv{ \text{Borel Group } B \subset G } \Leftrightarrow \{ \text{maximal isotropic flags }\F \text{ in }V \}. \]
+		\item $G = \SP_{2n}$: The symplectic group is defined by
+		\[ \SP_{2n} := \set{ A \in \GL_{2n}(k) }{ A^T \cdot \mat{ & 1\\ - 1 & } \cdot A = \mat{ & 1\\ - 1 & } }. \]
+		Embed again $G$ in $\GL(V)$.
+		
+		Let $\skp{\cdot}{\cdot}$ be a \df{symplectic} form on $V$, i.e., $\skp{\cdot}{\cdot}$ is bilinear, alternating ($\skp{v}{v}= 0$) and nonsingular, i.e. $\skp{v}{\_} \equiv 0 \iff v = 0$.
+		
+		Then, again, we have the equivalence
+		\[ \curv{ \text{Borel Group } B \subset G } \Leftrightarrow \{ \text{maximal isotropic flags }\F \text{ in }V \}. \]
+		Further, we can take a basis $e_1,\ldots, e_n, f_1,\ldots, f_n$ of $V$ with
+		\begin{align*}
+		\skp{e_i}{e_j} &= \skp{f_i}{f_j} = 0\\
+		\skp{e_i}{f_j} &= \delta_{i,j}.
+		\end{align*}
+		Then, one can for example set
+		\[V_j = \mathrm{span}\{e_1,\ldots, e_j\} \]
+		to get a flag $V_0 \subset V_1 \subset ...$.
+		
+		Vice versa, one can convert each maximal isotropic flag to such a symplectic basis.
+	\end{itemize}
+\end{example}
