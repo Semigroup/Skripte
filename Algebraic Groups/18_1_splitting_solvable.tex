@@ -36,6 +36,109 @@ Before, we can prove the therenm we need some lemmata:
 \begin{remark}
 	The lemma does not hold, if $\mathrm{char} k > 0$.
 \end{remark}
+\begin{proof}
+	Recall that we have the following correspondence:
+	\[ \curv{\text{tori}} \overset{T \mapsto \X(T)}{\longleftrightarrow} \curv{ \text{f.g. free }\Z\text{-modules} }. \]
+	and in particular for each torus $T$:
+	\begin{align*}
+	\curv{\text{alg. subgroups }H\text{ of }T} &{\longleftrightarrow} \curv{ \text{submodules }\Gamma\text{ of }\X(T)  }\\
+	H & \longmapsto \set{\chi \in \X(T)}{ \chi \in \X(T) : ~\chi_{|H} \equiv 1 }\\
+	\set{t \in T}{\chi(t) = 1 ~\forall \chi \in \Gamma} &\longleftarrow\!\shortmid \Gamma.
+	\end{align*}
+	So, we have $\overline{\shrp{s}}$ iff
+	\[ \chi(s) \neq 1 \]
+	for each $1\neq \chi \in \X(T)$.
+	
+	W.l.o.g. $T = (k^\times)^n$. Then
+	\[ \X(T) = \set{\chi_m}{m \in \Z^n} \]
+	with
+	\[ \chi_m(t_1,\ldots, t_n) = t_1^{m_1} \ldots t_n^{m_n}. \]
+	We can then pick
+	\[ s = (2,3,5,7, \ldots). \]
+\end{proof}
 
+\begin{lemma}
+	If $\mathrm{char} k = 0$, then any bijective morphism of algebraic groups is an isomorphism of algebraic groups.
+\end{lemma}
+\begin{remark}
+	This does not need to hold for non-zero charateristic. If $\mathrm{char} k = p$, then
+	\begin{align*}
+	k & \Pfeil{} k\\
+	x & \longmapsto x^p
+	\end{align*}
+	is bijective without being isomorphic.
+\end{remark}
+
+\begin{proof}[Proof of Theorem]
+	We only show the theorem in case $\mathrm{char} k = 0$.
+	
+	Let $B$ be a connected solvable algebraic group.
+	
+	We need to show, that there is a torus $T \subset B$ s.t. the composition
+	\[ T \inj{} B \surj{} B/U \]
+	is an isomorphism where
+	\[ U = B_u. \]
+	
+	We know, that $B/U$ is a torus. Take $s' \in B/U$ s.t.
+	\[ \overline{\shrp{s'}} = B / U. \]
+	Take a preimage $g \in B$ s.t. $\pi(g) = s'$.
+	
+	We can decompose $g=su$ into a semisimple and a unipotent element. We then have
+	\[ \phi(g) = \phi(s) \cdot \phi(u) = \phi(s), \]
+	since $\phi(u)$ must be unipotent, ergo trivial.
+	
+	Set
+	\[ T= \overline{\shrp{s}}. \]
+	Since $s$ is semisimple, $T$ must be diagonalizable. Ergo
+	\[ T\cap U = 1. \]
+	Ergo, the chain
+	\[ T \inj{} B \surj{} B/U \]
+	must be bijective, hence an isomorphism, since $\mathrm{char} k = 0$.
+\end{proof}
+The theorem gives the structure of a semidirect product of algebraic groups:
+\[ B = U \rtimes T \]
+(where $T \curvearrowright U$ by conjugation.)
+
+\begin{definition}
+	Let $G_1, G_2$ be algebraic groups. Let $G_2$ act algebraically on $G_1$ via $b : G_2 \pfeil{} \Aut{}{G_1}$ s.t. the map
+	\begin{align*}
+	G_2 \times G_1 &\Pfeil{} G_1\\
+	(g_2,g_1) & \longmapsto b(g_2)(g_1)
+	\end{align*}
+	is a morphism.
+	
+	Their semidirect group $G_1 \rtimes_b G_2$ is an algebraic group which is:
+	\begin{itemize}
+		\item set-theoretically $G_1 \times G_2$,
+		\item group-theoretically the semidirect product $G_1 \rtimes_b G_2$. I.e. multiplication works by
+		\[ (g_1,g_2) \cdot (h_1, h_2) = (g_1 \cdot b(g_2)(h_1), g_2 h_2 ). \]
+	\end{itemize}
+\end{definition}
+\begin{remark}
+	Even if we are given an algebraic group $G$ with closed subgroups $G_1, G_2$ s.t.
+	\[ G = G_1 \rtimes G_2 \]
+	 as abstract groups, it does not need to be the case that
+	 \[ G_1 \rtimes G_2 \Pfeil{} G \]
+	 is an isomorphism.
+	 (However, it is the case, if $\mathrm{char} k = 0$.)
+\end{remark}
 
 \subsection{An Aside}
+Let $G$ be an algebraic group and $H$ a normal algebraic subgroup.
+
+Then, $G/H$ is a quasi-projective variety equipped with a $G$-action. Ergo, we have an algebraic group structure on $G/H$.
+
+\begin{theorem}
+	$G/H$ is an affine algebraic group.
+\end{theorem}
+\begin{proof}
+	We need to show that $G/H$ is affine.
+	
+	We showed in a lemma long before, that there is a finite-dimensional representation $V,\rho$ s.t.
+	\[ H = \ker \rho. \]
+	
+	Therefore, we can simply set
+	\[ G/H := \Img (\rho) \subset \GL(V) \]
+	which is closed as $\rho$ is a morphism of algebraic groups.
+\end{proof}
+
