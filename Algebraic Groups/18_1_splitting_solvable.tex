@@ -1,0 +1,41 @@
+\section{Splitting Solvable Groups}
+Let $B$ be a connected solvable algebraic group. (Then, $B$ is trigonalizable.)
+
+Then, $U := B_u$ is a unipotent normal algebraic subgroup (since $U = R_u(B)$, since $B = R(B)$).
+
+\begin{lemma}
+	The group $B / U$ is a torus.
+\end{lemma}
+\begin{proof}
+	We have an injective morphism
+	\[ B \inj{} \curv{\mat{* & \ldots & * \\  & \ddots & \vdots \\ & & *}}\]
+	with
+	\[ U = B \cap \curv{\mat{1 & \ldots & * \\  & \ddots & \vdots \\ & & 1}}. \]
+	Therefore, we get an injection
+	\[B / U \inj{} \curv{\mat{* & \ldots & * \\  & \ddots & \vdots \\ & & *}} / \curv{\mat{1 & \ldots & * \\  & \ddots & \vdots \\ & & 1}} = \curv{\mat{* &  &  \\  & \ddots & \\ & & *}}. \]
+	Ergo, $B/U$ is diagonalizable. Since $B$ is connected, $B/U$ is connected, too.
+	It follows that $B/U$ is a torus.
+\end{proof}
+
+\begin{theorem}
+	Let $B$ be a connected solvable algebraic group.
+	
+	Then, there is a torus $T \subset B$ s.t. the composition
+	\[ T \inj{} B \surj{} B/U \]
+	is an isomorphism.
+\end{theorem}
+Before, we can prove the therenm we need some lemmata:
+
+\begin{lemma}
+	Suppose $\mathrm{char} k = 0$. Let $T$ be a torus.
+	
+	Then, there is an $s \in T$ s.t.
+	\[ \overline{\shrp{s}} = T. \]
+	$s$ is called the \df{generator} of $T$.
+\end{lemma}
+\begin{remark}
+	The lemma does not hold, if $\mathrm{char} k > 0$.
+\end{remark}
+
+
+\subsection{An Aside}

@@ -1,0 +1,91 @@
+\section{Reductivity}
+Let $G$ be a connected algebraic group which acts on an affine variety $X$.
+\begin{definition}
+	A \df{quotient} of $X$ by $G$ is a pair $(Y, \rho)$ s.t.
+	\begin{enumerate}
+		\item $Y$ is an affine variety
+		\item and $\rho : X \pfeil{} Y$ is a morphism which is constant on $G$-orbits.
+	\end{enumerate}
+Further, we demand that a quotient is initial in the category of all objects which fulfill the above conditions. I.e.
+\begin{center}
+	\begin{tikzcd}
+	X \arrow[d, "\rho"] \arrow[rd, "\rho'"] & \\
+	Y \arrow[r, dashed, "\exists_1 \phi"] & Y'
+	\end{tikzcd}	
+\end{center}
+\end{definition}
+
+\begin{remark}
+	\begin{itemize}
+		\item Such quotients need not to exist.
+		\item Even when such quotients exist, they don't need to describe orbits. I.e., $G\backslash X$ must not be related to $Y$.
+	\end{itemize}
+\end{remark}
+
+\begin{example}
+	Consider the action of $G = \G_m$ on $X = k^1$. This action has to orbits:
+	
+	the open orbit $k \setminus \{0\}$ and the closed orbit $\{0\}$.
+	
+	Then the quotient of $X$ by $G$ is given by $(Y,\rho) = (\{0\}, x \mapsto 0)$.
+	
+	Note, if $f : X \pfeil{} k$ is regular and constant on $G$-orbits, then $f$ is constant on $X$, because $k \setminus \{0\}$ lies dense in $k$.
+\end{example}
+\begin{definition}
+Let $G$ be a connected algebraic group.
+
+We call $G$ \df{geometrically reductive} if we have for each finite-dimensional representation $V$ of $G$:
+\begin{align*}
+\forall v \in V^G ~ \exists f : V \pfeil{} k :~ f \text{ is a homogenous }G\text{-invariant polynomial s.t. }f(v) \neq 0
+\end{align*}
+where
+\[V^G = \set{v\in V}{g.v = v ~\forall g \in G}. \]
+\end{definition}
+\begin{remark}
+	$G$ is geometrically reductive iff for each affine $X$ on which $G$ operates and for each pair of closed $G$-invariant disjoint subsets $W_1, W_2 \subset X$ there is an $f \in \O(X)^G$ s.t.
+	\begin{align*}
+	f_{|W_1} &\equiv 1,\\
+	f_{|W_2} &\equiv 0.\\
+	\end{align*}
+	
+	
+	Is this easy to see? I only see the backwards direction (take $X = V, W_1 =0, W_2 = v$).
+\end{remark}
+
+\begin{theorem}
+	Let $G$ be a connected algebraic group. 
+	
+	Then, $G$ is reductive iff $G$ is geometrically reductive.
+\end{theorem}
+
+\begin{theorem}
+	Let $G$ be a connected algebraic group which is geometrically reductive and acts on an affine set $X$.
+	
+	Then, there is a quotient $(Y, \rho)$ of $X$ by $G$.
+	
+	Moreover, $\rho$ induces a bijection
+	\[ \curv{ \text{closed }G\text{-orbits in }X } \Longleftrightarrow Y. \]
+\end{theorem}
+
+\begin{definition}
+	Let $G$ be a connected algebraic group.
+	
+	We call $G$ \df{linearly reductive} if we have for each finite-dimensional representation $V$ of $G$:
+	\begin{align*}
+	\forall v \in V^G\setminus \{0\} ~ \exists f : V \pfeil{} k :~ f \text{ is a linear }G\text{-invariant polynomial s.t. }f(v) \neq 0.
+	\end{align*}
+\end{definition}
+
+\begin{remark}
+	Naturally, linear reductivity implies geometrical reductivity.
+	The converse does hold iff $\mathrm{char} k = 0$.
+\end{remark}
+
+\begin{remark}
+	$\GL_n(k)$ is linear reductive.
+\end{remark}
+\begin{remark}
+	$G$ is linear reductive iff every finite-dimensional representation $V$ of $G$ is completely \df{reducible}, i.e.
+	\[ V = \bigoplus_i V_i \]
+	where each $V_i$ is irreducible.
+\end{remark}

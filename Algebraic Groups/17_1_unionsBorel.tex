@@ -1,0 +1,51 @@
+\section{Union of Borel Subgroups}
+\begin{theorem}
+	Let $G$ be a connected algebraic group.
+	Then,
+	\[ G = \bigcup_{B \text{ Borel}} B.  \]
+\end{theorem}
+Because of Jordan Decomposition, it is clear that the theorem holds for $\GL_n(k)$. We will prove it only for the case $k = \C$.
+
+\begin{lemma}
+	Let $k$ be any (not necessarily algebraically closed) field. Let $B$ be some Borel subgroup.
+	
+	Then, $X:= \bigcup_{g \in G} gBg\i$ is closed in $G$.
+\end{lemma}
+\begin{proof}
+	Our intuition is as follows:
+	
+	$gBg\i$ only depends on $gB \in G/B$. Since $B$ is Borel, ergo parabolic, $G/B$ is projective, ergo somewhat 'compact'. Then, $X= \bigcup_{g \in G} gBg\i$ is a union of 'compactly-many' closed sets.
+	
+	
+	Now, the actual proof works as follows:
+	We want to use that $G/B \times G \pfeil{} G$ is a closed map. Consider the chain
+	\[ G\times B \Pfeil{ \phi(g,b) = (g, gbg\i) } G \times G \Pfeil{} G / B \times G \Pfeil{} G. \]
+	$X$ is the image of the composition $(g,b) \mapsto gbg\i$. It therefore suffices to show that the image of
+	\[ \pi \times \id{} : G \times G \Pfeil{} G / B \times G \]
+	is closed.
+	
+	Set
+	\[ Y:= (\pi \times \id{})(\phi(G\times B)). \]
+	If we can show, that $(\pi \times \id{})\i(Y)$ is closed, then $Y$ is closed, because $\pi \times \id{}$ is, as a morphism of homogenous spaces, open. However, we have
+	\[ (\pi \times \id{})\i(Y) = \Img \phi. \]
+	Now, $\Img \phi$ is closed, since morphisms of algebraic groups have closed images.
+\end{proof}
+
+\begin{lemma}
+Let $k = \C$.
+
+Then, $X = \bigcup_{g\in G} gBg\i$ is dense in $G$.
+\end{lemma}
+\begin{proof}[Proof idea.]
+	We want to show $\overleftarrow{X} = G$.
+	
+	Since $G$ is connected, it would suffice to show that $X$ contains an Euclidean neighborhood of $1\in G$.
+	
+	Let $\mathfrak{g} := \mathrm{Lie}(G)$ be the Lie-algebra of $G$. A Borel-subalgebra $\mathfrak{b} \subset \mathfrak{g}$ is a maximal solvable subalgebra.
+	
+	Then, one can show, that for each Borel-subalgebra $\mathfrak{b} \subset \mathfrak{g}$ there is a Borel-subgroup $B \subset G$ s.t. $\mathfrak{b} = \mathrm{Lie}(B)$.
+	
+	Is easy to see, that each $x \in \mathfrak{g}$ is contained in some Borel-subalgebra, since $\C \cdot x$ is a solvable subalgebra.
+	
+	With the two above facts, it follows that $X$ contains a small euclidean neighborhood of $1$.
+\end{proof}
