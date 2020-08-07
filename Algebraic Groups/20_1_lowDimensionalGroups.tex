@@ -1,0 +1,92 @@
+\section{Low Dimensional Groups}
+\begin{lemma}
+	Let $G$ be a connected algebraic group with a Borel subgroup $B$.
+	
+If $B$ is nilpotent, then $G$ is solvable i.e. $B = G$.
+\end{lemma}
+\begin{proof}
+	We induct on $\dim(B)$:
+	\begin{itemize}
+		\item $\dim(B) = 0$:\\
+		In this case, we have $B = 1$. Then, $G=G/B$ must be projective and connected. Therefore, we must have
+		\[ \O(G) = \O(\P^n) / I(G) = k \]
+		since $\O(\P^n) = k$. On the other side, $G$ affine. Therefore, we have
+		\[ G = 1. \]
+		Or: $G = \bigcup_{g\in G} gBg\i$, since $G$ is connected. Since $B = 1$, it follows $G = 1$.
+		\item $\dim(B) \geq 1$:\\
+		Since $B$ is nilpotent, we have a descending chain
+		\[ B = B_0 \supsetneq \ldots \supsetneq B_n \supsetneq 1 \]
+		where
+		\[ B_{i+1} = [B, B_i]. \]
+		Note, that each $B_i$ is connected, since $B$ is connected.
+		Let $Z(B) = \set{b \in B}{\forall g \in B:~ gb=bg}$ be the center of $B$ and let $Z:= Z(B)^o$ be the component of the neutral element. Then, we have
+		\[ B_{n} \subset Z.  \]
+		Ergo, $Z$ is not the trivial subgroup.
+		
+		We want to show
+		\[ Z \subset Z(G). \]
+		
+		Let $z \in Z$ and consider the morphism
+		\begin{align*}
+		\phi : G/B & \Pfeil{} G\\
+		gB & \longmapsto gzg\i.
+		\end{align*}
+		$\phi$ is well-defined, because $z \in Z(B)$. Since $\phi$ is a morphism from a projective variety to an affine variety, $\phi$ must be constant. Thus,
+		\[ Z \subset Z(G). \]
+		In particular, $Z$ is normal in $G$. We now get an inclusion of quotient groups
+		\[ B/Z \Inj{} G/Z. \]
+		It is clear that
+		\[ \dim(B/Z) < \dim(B). \]
+		Further, $B/Z$ is parabolic, since
+		\[ (G/Z) / (B/Z) = G/B \]
+		is projective. Ergo, $B/Z$ is Borel. By the induction hypothesis, we get
+		\[ G/Z = B/Z. \]
+		Ergo, $B = G$.
+	\end{itemize}
+\end{proof}
+
+\begin{theorem}
+	Let $G$ be connected with $\dim(G) \leq 2$.
+	
+	Then, $G$ is solvable.
+\end{theorem}
+\begin{example}[Non-Example]
+	The condition $\dim(G) \leq 2$ is necessary. Consider e.g. $G= \SL_2(k)$ which has a dimension of $3$.
+\end{example}
+\begin{proof}
+	Let $B \subset G$ be a Borel subgroup. We want to show
+	\[ B = G.\]
+	Assume otherwise. Then, $B$ is of dimension 1. The key here is, that Borel groups of dimension 1 are nilpotent.
+	
+	Decompose $B = U \rtimes T$, then we have:
+	\begin{itemize}
+	\item $U \neq 1$: Then, $\dim(T) = \dim(B / U) = 0$, ergo $T = 1$. Hence
+	\[ B = U.\]
+	Since unipotent groups are nilpotent, $B$ is nilpotent.
+	\item $U = 1$: In this case, we have
+	\[ B = T.\]
+	Now $B$ as a torus is commutative, ergo nilpotent.
+	\end{itemize}
+Now, the above lemma states
+\[ B=G \]
+since $B$ is nilpotent. Ergo, $G$ is solvable.
+\end{proof}
+
+\begin{corollary}
+	Let $G$ be connected with $\dim(G) = 1$. Then, $G$ is commutative.
+\end{corollary}
+\begin{proof}
+	Because of the theorem, $G$ is solvable. Therefore,
+	$[G,G]$ is a closed proper subgroup of $G$. Hence, $\dim([G,G]) = 0$. Since $[G,G]$ is connected, it follows $[G,G] = 1$.
+\end{proof}
+\begin{remark}
+	If $G$ is commutative, it decomposes nicely into semisimple and unipotent elements
+	\[ G = G_s \times G_u. \]
+	So, if $\dim(G) = 1$ and if $G$ is connected, then $G = G_s\isom{} \G_m$ is a torus, or $G = G_u \isom{} \G_a$ is unipotent.
+	
+	Further, we can consider
+	\[ G = \curv{\mat{ * & * \\  & 1}}. \]
+	$G$ is connected and of dimension 2. It decomposes
+	\[ G = G_s \times G_u \]
+	into two groups of dimension 1.
+\end{remark}

@@ -1,0 +1,49 @@
+\section{Characterizing Nilpotent Groups via maximal Tori}
+
+\begin{lemma}
+	Let $T$ be a diagonaliable algebraic group. Then,
+	\[ T = \overline{\bigcup_{n \geq 1} T[n]} \]
+	where
+	\[ T[n] := \set{t \in T}{t^n = 1}. \]
+\end{lemma}
+\begin{proof}
+	If the claim is true for any $T_1, T_2$, then it is also true for $T_1\times T_2$.
+	
+	Therefore, we can reduce the claim to the cases where $T$ is finite or $T = \G_m$.
+	
+	A finite $T$ is contained in some $T[n]$.
+	
+	Let $T = \G_m$. Then, we have
+	\[ \O(T) = k[x, \frac{1}{x}]. \]
+	We need to show for each $f \in \O(T)$:
+	\[ f(\alpha)  = 0 ~\forall \alpha \in k, \in \N_0 \text{ s.t. } \alpha^n = 1 \Impl{} f = 0. \]
+	So, let $f \in \O(T)$. By multiplying with a large enough $x^r$, we can assume $f \in k[x]$. If $f\neq 0$, then $f$ has finitely many roots. However the set
+	\[ \set{\alpha \in k}{\exists n \in \N_0:~ \alpha^n = 1} \]
+	has infinitely many elements. Indeed we have
+	\[\# \set{\alpha \in k}{ \alpha^n = 1} = n, \]
+	if $\mathrm{char} k = 0$ or if $\gcd(\mathrm{char} k , n) = 1$.
+\end{proof}
+\begin{remark}
+	If $\mathrm{char} k = 0$ and if $U$ is unipotent, then
+	\[U[n] = 1  \]
+	for all $n$.
+\end{remark}
+
+\begin{theorem}
+	Let $G$ be a connected algebraic group. Then, the following are equivalent:
+	\begin{enumerate}[(i)]
+		\item $G$ is nilpotent.
+		\item Each maximal torus $T$ of $G$ satisfies $ T \subset Z(G)$.
+		\item $G$ has a unique maximal torus.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	We show:
+	\begin{enumerate}
+		\item[(i) $\implies$ (ii):]
+		\item[(ii) $\implies$ (iii):]
+		\item[(iii) $\implies$ (i):]
+	\end{enumerate}
+
+\paragraph{Proof of Claim:}
+\end{proof}
