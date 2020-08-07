@@ -81,7 +81,52 @@
 		for a finite set $\Sigma$.
 		
 		We claim that $\Sigma$ is empty. Note, that $B$ acts by conjugation on $sU$ and $C(h)$, ergo also on $\Sigma$. If we pick $h' \in \Sigma \subset sU$, then $C(h')$ must be finite, connected and contain two different elements. This is a contradiction.
-		\item $\dim(U) \geq 2$:
+		\item $\dim(U) \geq 2$:\\
+		We want to reduce this case to the case $\dim (U) = 1$. We need therefore, to show a lemma:
+		\begin{lemma}
+			Let $B = U \rtimes T$ as above and suppose again $\mathrm{char} k = 0$.
+			
+			Then, there is an algebraic subgroup $V \subset U$ s.t. $V$ is normal in $B$ and
+			\[ \dim(U/V) = 1. \]
+		\end{lemma}
+	\begin{proof}
+		$U$ is nilpotent, since it is unipotent.
+		Consider the chain
+		\[ U = U_0 \supset U_1 \supset \ldots \supset U_n \supset 1 \]
+		where
+		\[ U_{i+1} := [U_i, U]. \]
+		Since $U$ is normal in $B$, each $U_i$ is also normal in $B$. In particular, $B$ acts on each $U_i$ by conjugation.
+		
+		Now, $U/U_1$ is unipotent and commutative, hence isomorphic to a vector space.
+		
+		Further, $T$ acts on $U/U_1$ by conjugation. Note, that is diagonalizable, ergo reductive. Therefore, $U/U_1$ must be completely reducible and we can decompose it
+		\[ U/U_1 = \bigoplus_j V_j. \]
+		Since $T$ is diagonalizable and each $V_j$ is $T$-invariant, each $V_j$ must be one-dimensional. Set
+		\[ \overline{V} := \bigoplus_{j \geq 2} V_j. \]
+		And now set
+		\[ V := \pi\i(\overline{V}) = \set{u \in U}{uU_1 \in \overline{V}}. \]
+		Then, we have
+		\[ U/V = (U/U_1) / (V / U_1) = ( U / U_1) / \overline{V} \isom{} V_1 \isom{} k. \]
+		$V$ is normal in $U$, since $U_1$ is normal in $U$ and $T$ acts on $V$ and $\overline{V}$ by conjugation.
+	\end{proof}
+
+Let $s \in B$ be semisimple and $\dim(U) \geq 2$. Choose $V \subset U$ s.t. $\dim(U / V) = 1$ and $V$ is normal in $B$. Set
+\begin{align*}
+B' &:= B/V\\
+U' &:= U/V.
+\end{align*}
+Then, $B'$ is a connected algebraic group with
+\begin{align*}
+(B')_u &= U'\\
+B' / U \isom{} B/U = T\\
+B' &= U' \rtimes T.
+\end{align*}
+Since $\dim(U') = 1$, we know that $\pi_V(s) \in B$ is contained in a conjugacy class of $T$.
+Let $s'\in B$ be the conjugate of $s \in B$ s.t. $\pi_V(s') \in T$. Then,
+\[ s' \in TV. \]
+But $TV$ is a connected solvable algebraic group and we have
+\[ TV \isom{} V \rtimes T \subset U \times T. \]
+Since $(TV)_u = V$ and $\dim(V) = \dim(U) - 1$, the induction hypothesis does also hold in $TV$. Ergo, $s'$ is conjugated to some element in $T$, as we wanted.
 	\end{itemize}
 \end{proof}
 

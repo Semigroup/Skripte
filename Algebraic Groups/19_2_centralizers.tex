@@ -1,0 +1,35 @@
+\subsection{Centralizers of Tori}
+
+\begin{lemma}
+	Let $G$ be a connected algebraic group. Let $S\subset T$ be a torus. Let $g \in G$ be a semisimple element which commutes with each element of $S$.
+	
+	Then, $S\cup\{g\}$ is contained in some torus of $G$.
+\end{lemma}
+\begin{proof}
+	Set $H := Z_G(g)^o$. Then, $H$ is a connected algebraic groups that contains $S$. Then,
+	\[ g \in Z(H)_s \subset \bigcap_{T \text{ maximal tori in }H}T. \]
+	In particular, there must be some maximal torus of $H$ which contains $S$.
+\end{proof}
+
+\begin{theorem}
+	Let $G$ be a connected algebraic group. Let $S\subset T$ be a torus.
+	
+	Then, $Z_G(S)$ is connected.
+\end{theorem}
+\begin{proof}
+	We assume $\mathrm{char} k = 0$.
+	
+	Let $g \in Z_G(s)$. Decompose $g = g_sg_u$. Then, we need too show the claim in case:
+	\begin{enumerate}[(i)]
+		\item $g$ is semisimple:\\
+		By the previous lemma, there is a torus $T\subset Z_G(S)^o$ which contains $S$ and $g$.
+		\item $g$ is unipotent:\\
+		Since $k$ has characteristic zero, the group
+		\[ \overline{\shrp{g}} = g^k \isom{} \left\lbrace 
+		\begin{aligned}
+		k, ~~ g\neq 1 \\ 1, ~~ g = 1
+		\end{aligned}
+		\right. \]
+		is connected.
+	\end{enumerate}
+\end{proof}
