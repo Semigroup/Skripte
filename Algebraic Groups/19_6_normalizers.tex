@@ -1,0 +1,131 @@
+\subsection{Normalizers of Borel Subgroups}
+
+\begin{lemma}
+	Let $G$ be a connected algebraic group, $B \subset G$ a Borel subgroup and $S \subset B$ any torus.
+	
+	Then, $Z_B(S)$ is a Borel subgroup of $Z_G(S)$.
+\end{lemma}
+\begin{proof}
+	We showed before, that $Z_G(S)$ is connected, if $G$ is connected.
+	Set
+	\[ U:= B_u. \]
+	\begin{itemize}
+		\item We claim
+		\[ Z_G(S) B = \set{g \in G}{\forall s \in S:~g\i s g \in sU} =:A. \]
+		It is easy to see, that
+		\[ Z_G(S) \subset A. \]
+		For $b \in B$, we have
+		\[ b\i sb\in sU, \]
+		since $B/U$ is commutative.
+		
+		Now, let $g \in A$. Then,
+		\[ g\i S g \subset SU \subset B. \]
+		One can extend $S$ to a maximal torus $T$ of $B$. Then,
+		\[ B = U \rtimes T \supset SU = U \rtimes S.\]
+Since $S$ is closed in $T$, $SU$ is closed in $B$. Further, $g\i S g$ and $S$ are maximal tori in $SU$. Then, there is a $b \in B$ s.t.
+\[ b(g\i S g)b\i = S. \]
+Set
+\[ z:= gb\i. \]
+We need to show, that $z$ lies in $Z_G(S)$.
+
+Since $B/U$ is commutative, we have for each $s \in S$
+\[ z\i s z = b(g\i s g)b\i \in g\i s g U= sU, \]
+since $g \in A$.
+Now, we have for each $s \in S$
+\[ z\i s z \in sU \cap S = \{s\}.  \]
+Ergo, $z \in Z_G(S)$.
+\item We showed that
+\[ Z_G(S) B = \set{g \in G}{\forall s \in S:~g\i s g \in sU} = \set{g \in G}{\forall s \in S:[g,s] \in U}. \]
+Then, $Z_G(S)B$ is closed. Since
+\[ \pi : G \surj{} G/B \]
+is an open and surjective map, it is easy to see that
+\[ Z_G(S) / Z_B(S) \isom{} \pi(Z_G(S)) \]
+is closed. Since $Z_B(S)$ is closed, $Z_B(S)$ is a parabolic subgroup of $Z_G(S)$. Since $Z_B(S)$ is contained in $B$, it is solvable, hence a Borel subgroup.
+	\end{itemize}
+\end{proof}
+
+\begin{example}
+	\begin{align*}
+	G &= \GL_5(k)\\
+	B &= \curv{\mat{ * & * & * & * & *\\  & * & * & * & *\\  &  & * & * & *\\  &  &  & * & *\\  &  &  &  & * }}\\
+	S &= \set{\mat{t_1 & & & & \\ & t_1 & & & \\ & & t_1 & & \\ & & & t_2 & \\ & & & & t_2}}{t_1, t_2 \in k^\times}\\
+	Z_G(S) &= \curv{\mat{ * & * & * &  & \\ * & * & * &  & \\ * & * & * &  & \\  &  &  & * & *\\  &  &  & * & *}} = \GL_3(k) \times \GL_2(k)\\
+	Z_G(S) &= \curv{\mat{ * & * & * &  & \\  & * & * &  & \\  &  & * &  & \\  &  &  & * & *\\  &  &  &  & *}}.
+	\end{align*}
+\end{example}
+\begin{theorem}
+	Let $G$ be a connected algebraic group with a Borel subgroup $B \subset G$. Then,
+	\[ N_G(B) = B. \]
+\end{theorem}
+\begin{proof}
+	We induct on $\dim(G)$:
+	\begin{itemize}
+		\item $\dim (G) = 0$: In this case, we have $G = 1$.
+		\item $\dim(G) = 1$: We have seen, that in this case $G$ is commutative.
+		\item $\dim(G) \geq 2$:
+		Let $T$ be a maximal torus in $B$. Let $x \in N_G(B)$.
+		
+		Then, $xTx\i$ is again a maximal torus in $B$. Since all maximal tori in $B$ are related via $B$-conjugation, there is $b \in B$ s.t.
+		\[ xTx\i = bTb\i. \]
+		We therefore replace $x$ by $b\i x$ to achieve
+		\[ xTx\i = T. \]
+		Now, consider the map
+		\begin{align*}
+		\rho : T & \Pfeil{} T\\
+		t &\longmapsto txt\i x\i.
+		\end{align*}
+		We distinguish two cases:
+		\begin{itemize}
+			\item $\rho$ is not surjective:\\
+			Since all tori are irreducible, we have then
+			\begin{align*}
+			\dim(\Img(\rho)) &< T\\
+			\dim(\Ker(\rho)^o) & >0.\\
+			\end{align*}
+			If we set $S:=\Ker(\rho)^o$, then $S$ is a non-trivial torus in $T$.
+			
+			Since $S \subset \Ker (\rho)$, $x$ centralizes $S$ and normalizes $B$. Hence, $x$ normalizes $Z_B(S)$.
+			
+			Because of the previous lemma, $Z_B(S)$ is Borel subgroup of $Z_G(S)$. If $Z_G(S) \neq G$, then the indution hypothesis implies
+			\[ x \in N_{Z_G(S)}(Z_B(S)) = Z_B(S) \subset B. \]
+			Otherwise, if $Z_G(S) = G$, then $B/S$ is a Borel subgroup of $G/S$. So the induction hypothesis implies
+			\[ xS \in N_{G/S} (B/S) = B/S, \]
+			ergo $x \in B$.
+			\item $\rho$ is surjective:\\
+			Then,
+			\[ T = \Img \rho \subset [N_G(B), N_G(B)]. \]
+			Set $H := N_G(B)$. We have to show
+			\[ H =B. \]
+			Choose a finite-dimensional representation
+			\[ G \Inj{} \GL(V) \]
+			and a line $L \subset V$ s.t.
+			\[ H = \set{g \in G}{gL = L}. \]
+			Then, we have a morphism of algebraic groups
+			\[ \gamma : H \Pfeil{} \GL(L) = \G_m(k). \]
+			Since the right side is a torus, we have
+			\begin{align*}
+			\gamma_{| H_u} &\equiv 1\\
+			\gamma_{|[H,H]} & \equiv 1.
+			\end{align*}
+			Ergo, $\gamma(T) = 1$ and, since $B = B_u \rtimes T$, $\gamma(B) = 1$.
+			
+			Choose a non-zero element $v \in L$ and consider
+			\begin{align*}
+			\phi : G/B& \Pfeil{} V\\
+			gB &\longmapsto gv.
+			\end{align*}
+			Since $G/B$ is a projective variety, while $V$ is an affine variety, $\phi$ must be constant. Therefore, we have for each $g \in G$
+			\[ gv \in L. \]
+			Ergo, $ G = H$ and $B$ is normal in $G$. But, now
+			\[ G = \bigcup_{g\in G} gBg\i = B. \]
+			Ergo $H = B$.\qedhere
+		\end{itemize}
+	\end{itemize}
+\end{proof}
+\begin{corollary}
+We have a bijection:
+	\begin{align*}
+	G/B & \Pfeil{} \curv{\text{Borel Subgroups of }G}\\
+	gB & \longmapsto gBg\i.
+	\end{align*}
+\end{corollary}

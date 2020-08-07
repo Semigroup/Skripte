@@ -1,4 +1,4 @@
-\section{Characterizing Nilpotent Groups via maximal Tori}
+\subsection{Characterizing Nilpotent Groups via maximal Tori}
 
 \begin{lemma}
 	Let $T$ be a diagonaliable algebraic group. Then,
@@ -40,10 +40,21 @@
 \begin{proof}
 	We show:
 	\begin{enumerate}
-		\item[(i) $\implies$ (ii):]
-		\item[(ii) $\implies$ (iii):]
-		\item[(iii) $\implies$ (i):]
+		\item[(i) $\implies$ (ii):] We have shown, if $G$ is nilpotent and connected, then each semisimple element is central.
+		\item[(ii) $\implies$ (iii):] Any two maximal tori are conjugated.
+		\item[(iii) + (ii) $\implies$ (i):] Since each semisimple element is contained in some torus, we have that each semisimple element is central.
+		
+		Let $B = U \rtimes T' \subset G$ be a Borel subgroup. Since $T' \subset T$ is central in $G$, we have $B = U \times T'$. So, $B$ is nilpotent. We showed in this case that
+		\[ G = B. \]
+		\item[(iii) $\implies$ (ii):] Let $T$ be the maximal torus of $G$. We have to show that $T$ is central.
+		
+		Since $T$ is unique, it must be normal in $G$. Then, $G$ acts via conjugation on $T$ and each $T[n]$. Therefore, we get a morphism for each $t \in T[n]$
+		\begin{align*}
+		G &\Pfeil{} T[n]\\
+		g & \longmapsto gtg\i.
+		\end{align*}
+		Since $G$ is connected, this morphism must be constant, ergo trivial. Ergo, each $T[n]$ is central in $G$. Since
+		\[ T = \overline{\bigcup_{n \in \N}{T[n]}}, \]
+		$T$ must be central in $G$.
 	\end{enumerate}
-
-\paragraph{Proof of Claim:}
 \end{proof}

@@ -1,0 +1,43 @@
+\subsection{Weyl Groups}
+
+\begin{definition}
+	Let $G$ be a connected algebraic group with a torus $T$. Define the \df{normalizer} of $T$ in $G$ by
+	\[ N_G(T) := \set{g \in G}{gT = Tg}. \]
+	Then, the centralizer $Z_G(T)$ is a normal subgroup in $N_G(T)$. Define the \df{Weyl group} of $T$ as the quotient
+	\[ W(G, T) := N_G(T) / Z_G(T).  \]
+	
+	If $T$ is maximal, then the Weyl group $W(G,T)$ is up to conjugation independent of $T$.
+\end{definition}
+\begin{proposition}
+	\begin{enumerate}[(i)]
+		\item $\# W < \infty$.
+		\item For each tori $S \subset G$, we have
+		\[ N_G(S)^o = Z_G(S)^o. \]
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	It is clear, that (ii) implies (i).
+	
+	Let $S \subset G$ be a torus. We want to show
+	\[ N_G(S)^o \subset Z_G(S). \]
+	Note, that $N_G(S)^o$ acts by conjugation on $S$. Now, it is clear that
+	\[ S = \overline{\bigcup_n S[n]} \]
+	where $S[n]$ denotes the subgroup of $n$-th roots of unity.  $N_G(S)^o$ acts on each $S[n]$. As before, this gives for each $s \in S[n]$ a group morphism $\phi_s : N_G(S)^o \pfeil{} S[n]$. Since $S[n]$ is finite and $N_G(S)^o$ is connected, $\phi_s$ must be trivial. Ergo
+	\[ N_G(S)^o \subset Z_G(S). \]
+\end{proof}
+\begin{remark}
+	In general, $W(G,T)$ acts on $T$ by conjugation and induces an inclusion
+	\[ W(G,T) \Inj{} \Aut{}{T}. \]
+\end{remark}
+\begin{example}
+	Let $G = \GL_n(k)$ with the maximal torus
+	\[ T = \curv{\mat{* & & \\  & \ddots & \\ & & *}}. \]
+	Denote by $S(n)$ the group of all permutation matrices of $G$.
+	
+	Then, we have
+	\begin{align*}
+	Z_G(T) &= T\\
+	N_G(T) &= T \cdot S(n)\\
+	W(G,T) &\isom{} S(n).
+	\end{align*}
+\end{example}
