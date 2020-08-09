@@ -1,0 +1,91 @@
+\section{Root Data}
+\subsection{More on Reductive Groups}
+
+\begin{proposition}
+Let $G$ be a connected, reductive algebraic group. Then,
+\[ R(G) = Z(G)^o. \]	
+\end{proposition}
+\begin{proof}
+	$Z(G)^o$ is connected, normal and commutative, ergo solvable. Ergo $Z(G)^o$ is contained in $R(G)$.
+	
+	Since $R(G)$ is a normal subgroup of the connected group $G$, we have
+	\[  G = N_G(R(G)) =N_G(R(G))^o. \]
+	Since $R(G)$ is a torus in a connected group $G$, we have
+	\[ N_G(R(G))^o = Z_G(R(G))^o. \]
+	$G = Z_G(R(G))^o$ implies $R(G) \subset Z(G)$.
+\end{proof}
+
+\begin{proposition}
+	Let $G$ be a connected, reductive algebraic group. Then,
+	\[ R(G) \cap [G,G] \]
+	is finite.	
+\end{proposition}
+\begin{proof}
+	Take a faithful representation $G \inj{} \GL(V)$. $R(G)$ is a torus in $G$, therefore we can decompose $V$ into eigenspaces of $R(G)$:
+	\[ V= \bigoplus_{\chi} V_\chi \]
+	where $\chi \in \X(R(G))$ and
+	\[ V_\chi = \set{ v \in V}{h.v = \chi(h) v ~\forall h \in R(G)}. \]
+	Since $R(G)$ is normal in $G$, $G$ acts on each $V_\chi$. Consider the representations
+	\[ \rho_\chi : G \Pfeil{} \GL(V_\chi). \]
+	It is easy to see that
+	\[ \rho_\chi ([G,G]) \subseteq \SL(V_\chi) \]
+	and
+	\[ \rho_\chi(R(G)) \subseteq Z_{\GL(V_\chi)}(\GL(V_\chi)) = k^\times. \]
+	Ergo,
+	\[ \rho_\chi(R(G)\cap [G,G]) \subseteq \mu_{\dim(V_\chi)}. \]
+	And, therefore,
+	\[ \# ([G,G] \cap R(G)) \leq \prod_{\chi : V_\chi \neq 0} \dim(V_\chi). \qedhere \]
+\end{proof}
+
+\begin{example}
+	Let $G = \GL_n(k)$. Then
+	\[ R(G) = k^\times \cdot 1_n. \]
+	\[ [G,G] = \SL_n. \]
+	Ergo,
+	\[ R(G) \cap [G,G] \isom{} \mu_n. \]
+\end{example}
+
+\begin{proposition}
+		Let $G$ be a connected, reductive algebraic group. 
+		Then, $ [G,G] $ is semisimple, i.e. $R([G,G]) = 1$.
+\end{proposition}
+\begin{proof}
+If $B'$ is Borel group in $[G,G]$, then $gBg\i$ stays a Borel group in $[G,G]$ for each $g \in G$. Therefore, $R([G,G])$ is normal in $G$.
+
+	Now, take a Borel subgroup $B$ of $G$ s.t.
+	\[ R([G,G]) \subset B. \]
+Then, we have
+\[ R([G,G]) \subset \bigcap_{g\in G}gBg\i = R(G). \]
+So,
+\[ R([G,G]) \subset R(G) \cap [G,G]. \]
+Since $R([G,G])$ is finite and connected, it is trivial. Ergo, $[G,G]$ is semisimple.
+\end{proof}
+
+\begin{proposition}
+	Let $G$ be a connected, reductive algebraic group. 
+	
+	Let $S\subset G$ be a torus. Then, $Z_G(S)$ is reductive.
+	
+	If $T$ is a maximal torus, then $Z_G(T) = T$.
+\end{proposition}
+\begin{proof}
+	Since $S$ is a torus, $Z_G(S)$ is connected. Note that:
+	\begin{enumerate}[(i)]
+		\item every Borel subgroup of $Z_G(S)$ is contained in some Borel subgroup of $G$.
+		\item for each Borel $B \subset G$ which contains $S$, the intersection
+		\[ Z_B(S) = Z_G(S) \cap B \]
+		is a Borel subgroup of $Z_G(S)$.
+		\item From the above, it follows
+		\[R(Z_G(S)) = \bigcap_{\substack{S \subset B \subset G \text{ Borel} }} Z_B(S)  \subset \bigcap_{\substack{S \subset B \subset G \text{ Borel} }} B . \]
+		\item Since $R_u(G)$ is connected, we have
+		\[ R_u(G) = \klam{ \bigcap_{\substack{B \subset G \text{ Borel} }} B}_u^o. \]
+		\item One can show for any maximal torus $T$
+		\[ R_u(G) = \klam{ \bigcap_{\substack{T \subset B \subset G \text{ Borel} }} B}_u^o. \]
+	\end{enumerate}
+Now, it follows
+\[ R_u(Z_G(S)) \subset \klam{ \bigcap_{\substack{S \subset B \subset G \text{ Borel} }} B}_u^o \subset R_u(G) = 1. \]
+
+For the second part:
+$T$ is central in $Z_G(T)$ and a maximal torus in $Z_G(T)$. Therefore, $Z_G(T)$ must be nilpotent. Now, $W(Z_G(T), T) = 1$, ergo $Z_G(T)$ only has one Borel subgroup $R(Z_G(T))$. But $R(Z_G(T))$ must be a torus, hence
+\[ R(Z_G(T)) = T.\qedhere \]
+\end{proof}

@@ -1,1 +1,155 @@
 \subsection{Groups of Semisimple Rank One}
+
+\begin{definition}
+	Let $G$ be an algebraic groug. The \df{rank} of $G$ is defined by
+	\[ \rank (G) := \dim(T) \]
+	for any maximal torus $T$.
+\end{definition}
+\begin{remark}
+	If $G$ is connected and of rank zero, then $G$ is unipotent.
+\end{remark}
+\begin{definition}
+	The \df{semisimple rank} of $G$ is defined by
+	\[ \ssr (G ):= \rank ( G / R(G)). \]
+	(Note, that $G/R(G)$ is semisimple.)
+\end{definition}
+\begin{example}
+	\begin{itemize}
+		\item If $T$ is a torus, then $\ssr(T) = 0$.
+		\item Let $Z = Z_{\GL_n(k)}(\GL_n(k)) $ be the centralizer of $\GL_n(k)$. Then, $Z \isom{} k$. For a matrix group $G \subset \GL_n(k)$, set
+		\[ PG := G / (G \cap Z). \]
+		Then, $PG$ acts on $\P^n$.
+		
+		We now have
+		\begin{center}
+			\begin{tabular}{l|c|c}
+				$G$ & $\ssr(G)$ & $ \rank(G)$\\\hline
+				$\SL_2$ & 1 & 1\\
+				$P\GL_2$ & 1 & 1\\
+				$\GL_2$ & $1$ & 2\\
+				$\GL_n$ & $n-1$ & n
+			\end{tabular}
+		\end{center}
+	\item Consider
+	\[ G = \curv{\mat{* & * & * \\* & * & * \\ & & * }} \subset \GL_3(k). \]
+	Then,
+	\begin{align*}
+	\rank(G) &= 3,\\
+	\ssr (G) &= 1.
+	\end{align*}
+	\end{itemize}
+\end{example}
+
+\begin{remark}
+	Let $G$ be a connected algebraic group. Then, $G$ is of semisimple rank zero iff $G$ is Borel (because $R(G)$ is the connected component of $1$ in the intersection of all Borel sungroups in $G$).
+\end{remark}
+
+\begin{lemma}[Fact]
+	We call $X$ a \df{curve}, if $X$ is a one-dimensional variety.
+	
+	Let $X$ be a smooth projective {curve} $X$ that admits a nontrivial action by a nontrivial connected algebraic group $H$.
+	Then, we have
+	\[ X \isom{} \P^1. \]
+\end{lemma}
+\begin{proof}[Idea of Proof.]
+		Reduce to the case $H = \G_m$ or $H= \G_a$. They give a commutative diagramm:
+	\begin{center}
+		\begin{tikzcd}
+		\G_m \arrow[d, hook] \arrow[r] & X \\
+		\P^1 \arrow[ur, "\exists \phi"] &
+		\end{tikzcd}
+	\end{center}
+	Now, $\phi$ is a non-constant orbit map, therefore
+	\[ k(X) \inj{} k(\P^1) \isom{} k(T). \]
+	By Lüroth's Theorem\footnote{Lüroth's Theorem states that each intermediate field $L \supset P \supset K$ of a purely transcendental extension $L\supset K$ of degree 1 is either $K$ or purely transcendental over $K$.}, there is a transcendent $T' \in k(T)$ s.t. $k(X) = k(T')$.
+	Ergo
+	\[ X = \P^1.\qedhere \]
+\end{proof}
+
+\begin{lemma}[Fact]
+	We have
+	\[ \Aut{}{\P^1} \isom{} P\GL_2(k). \]
+\end{lemma}
+
+\begin{proposition}
+	Let $G$ be of semisimple rank one. Then, there is a surjective morphism
+	\[ \rho : G \pfeil{} P\GL_2(k) \]
+	s.t. $\Ker \rho^o = R(G)$.
+	
+	In particular, if $G$ is semisimple, then $\Ker \rho$ is finite, since $R(G)$ is trivial in this case.
+\end{proposition}
+\begin{proof}
+	By dividing out $R(G)$, we can reduce the proof to the case, in which $G$ is semisimple and of rank $1$. In particular, $G$ cannot be solvable, ergo $\dim(G) \geq 3$.
+	
+	We have seen for unsolvable groups, that $\# W(G,T) \geq 2$. But, since $T \isom{} \G_m$
+	\[ W(G,T) = N_G(T) / Z_G(T) \Inj{} \Aut{}{T} = \{ \id, t\mapsto t\i \} \isom{} \Z/2\Z. \]
+	Ergo, $\# W(G,T) = 2$. We have seen, that we have in this case
+	\[ \dim(G/B) = 1. \]
+	Ergo, $G/B$ is a projective one-dimensional variety. Ergo, $G/B \isom{} \P^1$.
+	Now, define
+	\begin{align*}
+	\rho : G & \Pfeil{} \Aut{}{G/B} \isom{} \Aut{}{\P^1} \isom{} P\GL_2(k)\\
+	g & \longmapsto [xB \mapsto gxB].
+	\end{align*}
+	Clearly,
+	\begin{align*}
+	\Ker \rho = \set{g\in G}{gxB = xB \forall x \in G} = \bigcap_{x\in G}xBx\i = \bigcap\{ B \subset G \text{ Borel}\}.
+	\end{align*}
+	Ergo $(\Ker \rho)^0 = R(G) = 1$, since $G$ is semisimple.
+	
+	It remains to show, that $\rho$ is surjective. Indeed, we have
+	\[ \dim(\rho(G)) \geq \dim(G) - \dim(\Ker \rho) \geq 3. \]
+	Since $P\GL_2 (k)$ is 3-dimensional and connected, we have
+	\[ \rho(G) = P\GL_2(k). \qedhere \]
+\end{proof}
+
+\begin{proposition}
+Let $G$ be a reductive algebraic group of semisimple rank one.
+
+Let $\rho : G \surj{} \Aut{}{G/B} \isom{} P\GL_2(k)$ be as in the previous proposition. Then, $\ker \rho$ is diagonalizable.
+\end{proposition}
+\begin{proof}
+	Let $T$ be a maximal torus in $G$. It suffices to show that
+	\[ \Ker \rho \subset T. \]
+	By the above proof
+	\[ 2 = \# W(G,T) = \# \B^T. \]
+	Therefore,
+	\[ \B^T = \curv{ B^+, B^- }. \]
+	Since $\Ker \rho \subset \bigcap_{B \subset G \text{ Borel}} B = B^+ \cap B^-$ it suffices to show
+	\[ B^+ \cap B^- = T. \]
+	Which is equivalent to
+	\[ B_u^+ \cap B_u^- = 1. \]
+	Since $G$ has a semisimple rank of one, we have $G \neq B^{\pm}$. Ergo, $B^\pm$ is not nilpotent (otherwise $G = B^\pm$).
+	Thus, $B^\pm_u$ is connected and non-trivial. Thus,
+	\[ \dim(B^\pm_u) \geq 1. \]
+	Also,
+	\[ (\Ker \rho)^o \cap B_u^\pm = R(G) \cap B_u^\pm \subset R_u(G) = 1 \]
+	since $G$ is reductive. So, $\Ker (\rho_{|B_u^\pm} )$ is finite. And therefore
+	\[ \dim(\rho(B_u^\pm)) \geq 1. \]
+	But $\rho(B_u^\pm)$ is a unipotent subgroup of $P \GL_2(k)$. Therefore
+	\[ \dim(\rho(B_u^\pm)) = 1. \]
+	Since $\Ker (\rho_{|B_u^\pm} )$ is finite, we have
+	\[ \dim B_u^\pm = 1. \]
+	Ergo, $B_u^\pm \isom{} \G_a$.
+	
+	In characteristic zero, we proved that $T$ acts on $B_u^{\pm}$ by conjugation. We have that the composition
+	\[ T \Pfeil{} \GL(\G_a) \isom{} \G_m \]
+	is nontrivial, since $B^\pm$ is not nilpotent.
+	
+	We still want to show
+	\[ B_u^+ \cap B_u^- = 1. \]
+	Assume, for the sake of contradiction, that we have a non-trivial $x \in B_u^+ \cap B_u^-$. Then, $T.x = \set{txt\i}{t \in T}$ lies dense in $B_u^+ \cap B_u^-$, in fact
+	\[ T.x \isom{} \G_a \setminus \{0\}. \]
+	Since $B_u^\pm$ is one-dimensional, it follows $B^+_u = B^-_u$. Therefore,
+	\[ B^+ = B^-. \]
+	This is a contradiction to $\# W(G,T) = 2$.
+\end{proof}
+\begin{corollary}[Eventual Corollary]
+	Any connected reductive group $G$ of semisimple rank one is isomorphic to one of the following:
+	\begin{align*}
+	\SL_2(k) \times T\\
+	P\GL_2(k) \times T\\
+	\GL_2(k) \times T
+	\end{align*}
+	for some torus $T$.
+\end{corollary}

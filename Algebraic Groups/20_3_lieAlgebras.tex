@@ -1,0 +1,73 @@
+\subsection{Lie Algebras}
+\begin{lemma}[Fact]
+	Let $G$ be an algebraic group. Take a faithful representation
+	\[ G \Inj{} \GL(V). \]
+	Set
+	\[ I:= I(G) \subset \O(\GL(V)). \]
+	Consider the nilpotent element $\e$ in $\O(\GL(V))[\e] / (\e^2)$ and
+	define the \df{Lie algebra} of $G$ by
+	\begin{align*}
+	\mathfrak{g} := \mathrm{Lie}(G) := &\set{x \in \End(V)}{\forall f \in I:~ f(1+\e x) = 0 \mod (\e^2)}\\
+	= &\set{x \in \End(V)}{\forall f \in I:~ f(1+\e x) \in (\e^2)}\\
+	= &\set{x \in \End(V)}{\forall f \in I:~ \frac{\mathrm{d}}{\mathrm{d} t}\klam{\frac{f(1+t x)}{t}}_{|t = 0} = 0. }.
+	\end{align*}
+	Then, $\mathfrak{g}$ is a $k$-vector space of dimension
+	\[ \dim_k(\mathfrak{g}) = \dim(G). \]
+\end{lemma}
+\begin{proof}[Idea of Proof.]
+	The proof boils down to show that $G$ is smooth at 1.
+	
+	However, each variety is generically smooth. Therefore, $G$ is smooth at some points. Since $G$ acts on itself via isomorphisms, 1 must look locally identically to one of $G$'s smooth points. Ergo, $G$ is smooth everywhere.
+\end{proof}
+\begin{example}
+	\begin{itemize}
+		\item $\mathrm{Lie}(\GL(V)) = \End(V)$ because $I(G) = 0$.
+		\item 
+		\begin{align*}
+		\mathrm{Lie}(\O_n(k)) &= \set{ x \in M_n(k)}{ (1+\e x)(1+\e x^T) = 1 + (\e^2) }\\
+		&= \set{ x \in M_n(k)}{ x^T = -x }.
+		\end{align*}
+	\end{itemize}
+\end{example}
+\begin{definition}
+	To each algebraic group we can attach the \df{adjoint representation}
+	\begin{align*}
+	\Ad : G &\Pfeil{} \GL(\mathfrak{g})\\
+	g &\longmapsto [x \mapsto gxg\i].
+	\end{align*}
+	If $T$ is a maximal torus in $G$, we can restrict the adjoint representation
+	\begin{align*}
+	\Ad : T &\Pfeil{} \GL(\mathfrak{g}).
+	\end{align*}
+\end{definition}
+Given any representation $\rho : T \pfeil{} \GL(V)$, we may decompose $V$
+\[ V = \bigoplus_{\chi \in \X(T) } V^\chi \]
+where
+\[ V^\chi = \set{v\in V}{\forall t \in T: ~t.v = \chi(t) v }. \]
+Therefore,
+\[ \mathfrak{g} = \bigoplus_{\chi \in \X(T)} \mathfrak{g}^\chi = g^o \oplus \bigoplus_{0\neq \alpha \in \X(T)} \mathfrak{g}^\alpha \]
+where
+\[ \mathfrak{g}^\alpha = \set{x \in \mathfrak{g}}{\forall t \in T: ~txt\i = \alpha(t) x } \]
+and
+\[ \mathfrak{g}^o = \set{x \in \mathfrak{g}}{\forall t \in T: ~txt\i =  x }. \]
+
+\begin{example}
+	Let $G \subset \GL_n(k)$ with the torus $T = \G_m^n$. Then,
+	\[ \mathfrak{g} = M_n(k) = \mathfrak{g}^o \oplus \klam{\bigoplus_{0\neq \alpha} \mathfrak{g}^\alpha } \]
+	where
+	\[ \mathfrak{g}^o = \curv{\mat{ * & & \\ & \ddots & \\ & & *}}. \]
+	For $i = 1,\ldots, n$ we define $\chi_i \in \X(T)$ as follows:
+	\begin{align*}
+	\chi_i( \mat{t_1 & & \\ & \ddots & \\ & & t_n} ) = t_i.
+	\end{align*}
+	Then, we have for each $i\neq j$
+	\[ \mathfrak{g}^{\chi_i / \chi_j} = k E_{i,j} \]
+	and for each other $\chi \in \X(T)$
+	\[ \mathfrak{g}^{\chi} = 0.  \]
+	Therefore
+	\[ \mathfrak{g} = \mathfrak{t} \oplus \klam{
+\bigoplus_{i\neq j} k E_{i,j}	
+} \]
+where
+\[ \mathfrak{t} = \mathrm{Lie}(T) = \mathfrak{g}^o. \]
+\end{example}
