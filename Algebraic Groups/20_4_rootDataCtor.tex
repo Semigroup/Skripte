@@ -1,1 +1,104 @@
 \subsection{Root Data -- Construction}
+Let $G$ be a connected reductive group with a torus $T$. We want to construct a corresponding root datum
+\[ \Psi = (X, X^\vee, R, R^\vee). \]
+\begin{itemize}
+	\item Set $X$ to be the \df{character lattice}
+	\[ X = \X(T) = \Hom{}{T}{\G_m}. \]
+	\item Set $X^\vee$ to be the \df{cocharacter lattice}
+	\[ X^\vee =  \Hom{}{\G_m}{T}. \]
+	\item If we are given $x \in X$ and $\xi \in X^\vee$, we define
+	\[ \skp{x}{\xi} := m \in \Z \]
+	s.t.
+	\begin{align*}
+	x \circ \xi : \G_m & \Pfeil{} \G_m\\
+	t & \longmapsto t^m.
+	\end{align*}
+	(Recall, $\X(\G_m) = \Z$.)
+	\item
+	\[ R:= \set{0\neq \alpha \in \X(T)}{\mathfrak{g}^\alpha \neq 0}. \]
+	\item Let $g \in \G_m$ be s.t. $\G_m = \overline{\shrp{g}}$. For $x \in R$, we need to choose $t \in T$ s.t.
+	\[ x(t) = g^2 \]
+	and, if we set
+	\begin{align*}
+	x^\vee = [g^n \mapsto t^n]
+	\end{align*}
+	the other axioms of a root datum are fulfilled.
+\end{itemize}
+
+\begin{example}
+	\begin{itemize}
+		\item $G = \SL_2(k)$:\\
+		In $G$ we have the maximal torus
+		\[ T= \curv{\mat{t & \\ & t\i}}. \]
+		Consider the character
+		\begin{align*}
+		\lambda : T & \Pfeil{} \G_m\\
+		\mat{t & \\ & t\i} & \longmapsto t.
+		\end{align*}
+		Set
+		\[ R = \curv{\alpha, - \alpha} \]
+		with
+		\begin{align*}
+		\alpha = 2\lambda : \mat{t & \\ & t\i} & \longmapsto t^2\\
+		-\alpha : \mat{t & \\ & t\i} & \longmapsto t^{-2}.
+		\end{align*}
+		Then, we have
+		\begin{align*}
+		\mathfrak{g}^\alpha &= \curv{\mat{0 & * \\ 0 & 0}}\\
+		\mathfrak{g}^{-\alpha} &= \curv{\mat{0 & 0 \\ * & 0}},
+		\end{align*}
+		since
+		\[ 
+		\mat{t & \\ & t\i} \mat{0 & 1 \\ 0 & 0} \mat{t & \\ & t\i}\i = \mat{0 & t^2 \\ 0 & 0}.
+		 \]
+		 Define
+		 \begin{align*}
+		 \alpha^\vee &:= \brak{
+	t\mapsto \mat{t & \\ & t\i}	 
+	 }\\
+ (-\alpha)^\vee &:= - \alpha^\vee \brak{
+ 	t\mapsto \mat{t\i & \\ & t}	 
+ }.
+		 \end{align*}
+		 Then, we have
+		 \[ \skp{\alpha}{ \alpha^\vee} = 2. \]
+		\item $G = P \GL_2(k)$:\\
+		We have the maximal torus
+		\[ T = \curv{\mat{t & \\ & 1}}. \]
+		Set
+		\[ R = \curv{\alpha, -\alpha} \]
+		with
+		\[ \alpha\mat{t & \\ & 1} := t. \]
+		Define $\alpha^\vee$ by
+		\[ \alpha^\vee(t) := \mat{t^2 & \\ & ^1} = \mat{t & \\ & t\i}. \]
+		We have
+		\[ \mat{t & \\ & 1} \mat{0 & 1\\ 0 & 0} \mat{t & \\ & 1}\i = \mat{0 & t \\ 0 & 0}. \]
+	\end{itemize}
+\end{example}
+Now, let $G$ be reductive of semisimple rank one. Then:
+\begin{itemize}
+	\item $G /R(G) \isom{} P \GL_2(k)$ with $R(G) = 1$ or $R(G) = \mu_n$.
+	\item $[G,G] \isom{} \SL_2(k)$ is semisimple of semisimple rank 1.
+	\item $\{ \text{roots for }G/R(G) \} = \{ \text{roots for } G\}$.
+	\item If $\alpha$ is a root of $G$, then it is also a root of $[G,G]$. Hence, define
+	\[ \alpha^\vee : \G_m \pfeil{} [G,G] \inj{} G. \]
+\end{itemize}
+Let $G$ be reductive. Take a root $\alpha \in \X(T)$ and define the torus of codimension $1$ in $T$
+\[ S_\alpha := \Ker (\alpha)^o. \]
+Then,
+\[ G_\alpha := Z_G(S_\alpha) \]
+is connected and reductive.
+Then,
+\[ S_\alpha \subset Z_G(G_\alpha) \]
+and
+\[ S_\alpha \subset R(G_\alpha). \]
+Ergo, $T / S_\alpha$ is a maximal torus of rank 1 in $G_\alpha / R(G_\alpha)$, while $G_\alpha / R(G_\alpha)$ is semisimple.
+
+Ergo, $G_\alpha$ is reductive of semisimple rank 1.
+
+\begin{example}
+	Let $G = \GL_3$ with the maximal torus $ T = \curv{\mat{* & & \\ & * & \\ & & *}}$.
+	
+	Let $\alpha = \chi_1 / \chi_2$. Then,
+	\[ S_\alpha = \curv{\mat{x & & \\ & x & \\ & & y}}. \]
+\end{example}
