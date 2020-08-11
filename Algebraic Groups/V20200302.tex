@@ -49,23 +49,23 @@ The proof of $(2) \iff (3)$ is a basic algebraic result.
 \begin{lemma}
 	Let $X$ be an algebraic set. We have bijections
 	\[
-	\{ \text{closed subsets } Z \subseteq X\} \leftrightarrow \{ \text{ radical ideals } I \subset k[X]\}
+	\{ \text{closed subsets } Z \subseteq X\} \leftrightarrow \{ \text{radical ideals } I \subset k[X]\}
 	\]
 	and
 	\[
-	\{ \text{irreducible, closed subsets } Z \subseteq X\} \leftrightarrow \{ \text{ prime ideals } I \subset k[X]\}
+	\{ \text{irreducible, closed subsets } Z \subseteq X\} \leftrightarrow \{ \text{prime ideals } I \subset k[X]\}
 	\]
 		and
 	\[
-	\{ \text{points of } X\} \leftrightarrow \{ \text{ maximum ideals } I \subset k[X]\}.
+	\{ \text{points of } X\} \leftrightarrow \{ \text{maximum ideals } I \subset k[X]\}.
 	\]
 \end{lemma}
 \begin{lemma}[Primary Decompositions, Atiyah, Macdonald Ch. 4]
-For an ideal $I$ we call $P \supseteq I$ a \df{minimal prime} of $I$ if $P$ is a prime ideal and we have for each prime ideal $Q$:
+For an ideal $I$ we call $P \supseteq I$ a \df{minimal prime} of $I$, if $P$ is a prime ideal and we have for each prime ideal $Q$:
 \[ P \supseteq Q \supseteq I \implies P = Q. \]
 
 Any radical ideal $I $ of $k[x_1, \ldots, x_n]$ has only finitely many \textbf{minimal} primes $P_1,\ldots, P_r$.
-Inparticular,
+In particular,
 \[ I = \bigcap_{i=1}^r P_i \]
 and for each $i$
 \[ P_j \not \supseteq \bigcap_{j : j \neq i} P_j. \]
@@ -117,9 +117,9 @@ and for each $i$
 	It suffices to show that for all closed $Z \subset Y$ that $\phi\i(Z) \subset X$ is closed.
 	
 	But, if
-	\[Z = V_Y(S) := \set{q \in Y}{f(q) = 0 \forall f \in S}\]
+	\[Z = V_Y(S) := \set{q \in Y}{f(q) = 0 ~\forall f \in S}\]
 	 for some ideal $S \subset k[Y]$, then 
-	 \[\phi\i(Z) = V_X(\phi^*(S)) = \set{\phi^*(f) = f \circ \phi}{f \in S}.\]
+	 \[\phi\i(Z) = V_X(\phi^*(S)) = \set{q \in X}{f ( \phi(q)) ~\forall f \in S}.\]
 \end{proof}
 \begin{lemma}
 	Isomorphisms of algebraic sets are homeorphisms. In particular, any isomorphism of algebraic sets $\phi : X \pfeil{} X$ permutes the irreducible components $Z_1, \ldots, Z_r$ of $X$:
@@ -212,7 +212,7 @@ As usual, $k = \overline{k}$ is an algebraically closed field.
 Then, there is a decomposition $V = \bigoplus_{i=1}^r V_i$ and distinct elements $\lambda_1, \ldots, \lambda_n \in k$ s.t.
 \[ x|_{V_i} = \lambda_i. \]
 If $\dim(V_i)= n_i$, then
-\[ \text{char polynomial of }x = \prod_{i=1}^r (T_i - \lambda_i)^{n_i} \in k[T] \]
+\[ \text{characteristic polynomial of }x = \prod_{i=1}^r (T_i - \lambda_i)^{n_i} \in k[T] \]
 and
 \[ \text{minimal polynomial of }x = \prod_{i=1}^r (T_i - \lambda_i) \in k[T]. \]
 (Where the minimal polynomial of $x$ is defined as the least degree monic polynomial $m \in k[T]$ s.t. $m(x) = 0$. )
