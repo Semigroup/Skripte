@@ -72,7 +72,7 @@ $B$ has the normal subgroup $U := \curv{
 	\mat{1 & \ldots & *\\  & \ddots & \vdots \\ & & 1}	
 }$ and we have $G_u = G \cap U$. Now, $U$ is the kernel of the multiplicative morphism
 \[ 
-\mat{a_1 & \ldots & * \\ & \ddots & \vdots \\ & & a_n} \longmapsto \mat{a_1 &  &  \\ &  &  \\ & & a_n}.
+\mat{a_1 & \ldots & * \\ & \ddots & \vdots \\ & & a_n} \longmapsto \mat{a_1 &  &  \\ & \ldots &  \\ & & a_n}.
 \]
 \end{proof}
 \begin{corollary}
@@ -144,7 +144,7 @@ So, $\mathrm{ad}(x)$ is nilpotent and semisimple, therefore $\mathrm{ad}(x) = 0$
 \end{proof}
 
 \begin{proof}[Proof Theorem]
-	Let $G$ be a connected nilpotent algebraic group, $G \inj \GL(V)$.
+	Let $G$ be a connected nilpotent algebraic group, $G \inj{} \GL(V)$.
 	
 	Let $g \in G_s$, we want to show that $g \in Z(G)$.
 	
@@ -163,12 +163,12 @@ So, $\mathrm{ad}(x)$ is nilpotent and semisimple, therefore $\mathrm{ad}(x) = 0$
 	\[ \End(V_{i+1}) \isom{} \End(V_i) \oplus \Hom{}{\shrp{v}}{V_i} \oplus \Hom{}{V_i}{\shrp{v}} \oplus \End(\shrp{v}) \]
 	with
 	\[ \End(\shrp{v}) \isom{} k \text{  and  } \Hom{}{\shrp{v}}{V_i} \isom{} V_i. \]
-	So, we can write $ g|_{V_{i+1}},   h|_{V_{i+1}}$ write as
+	So, we can write $ g|_{V_{i+1}},   h|_{V_{i+1}}$ as
 	\[
 	g = \mat{a \\ & * \in k} \text{  and  } 	h = \mat{b & c \in V_i \\ & * }.
 	\]
 	We may replace $g,h$ with scalar multiples to reduce to the case that $* = 1$. Then,
-		So, we can write $ g|_{V_{i+1}},   h|_{V_{i+1}}$ write as
+ we can write $ g|_{V_{i+1}},   h|_{V_{i+1}}$  as
 	\[
 	g = \mat{a \\ & 1} \text{  and  } 	h = \mat{b & c  \\ & 1 }.
 	\]
