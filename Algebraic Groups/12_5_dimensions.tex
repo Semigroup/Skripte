@@ -35,8 +35,8 @@ This map is indeed injective, since $\phi$ is surjective. Therefore, the claim f
 By going from $X$ to its closure $\widetilde{X}$ and from there to $\widetilde{X}^{(i)}$, we can assume that $X$ is affine.
 
 Then, $I_X(Y)$ is a non-trivial prime ideal in $\O(X)$. Therefore, we have
-\[ \dim_{\mathrm{Krull}}(\O(Y)) = \dim_{\mathrm{Krull}}(\O(X) / I_X(Y)) \leq \dim_{\mathrm{Krull}}(\O(X) ), \]
-since $A$ is a finitely generated $k$-algebra and a domain.
+\[ \dim_{\mathrm{Krull}}(\O(Y)) = \dim_{\mathrm{Krull}}(\O(X) / I_X(Y)) \leq \dim_{\mathrm{Krull}}(\O(X) )-1, \]
+since $A$ is a finitely generated $k$-algebra and a domain, and since $I_X(Y)$ is a prime ideal.
 \end{proof}
 
 \begin{lemma}
@@ -51,7 +51,7 @@ since $A$ is a finitely generated $k$-algebra and a domain.
 \end{lemma}
 \begin{proof}
 	The $Z_i$ correspond to minimal prime ideals $P_i$ in $\O(X)$ which contain $(f)$. Since, they are minimal, we have
-	\[ \mathrm{height}(P_i) = 1. \]
+	\[ \mathrm{height}(P_i) = 1.\qedhere \]
 \end{proof}
 
 \begin{lemma}
@@ -63,8 +63,8 @@ since $A$ is a finitely generated $k$-algebra and a domain.
 	\[ \dim(X) := \max_i \dim(Z_j). \]
 \end{lemma}
 \begin{lemma}
-	Let $\phi :X \pfeil Y$ be a morphism of quasi-projective varieties. Further, let $\phi$ be \df{dominant}, i.e., $\Img \phi$ is dense.
+	Let $\phi :X \pfeil{} Y$ be a morphism of quasi-projective varieties. Further, let $\phi$ be \df{dominant}, i.e., $\Img \phi$ is dense.
 	
 	Then, for all $p \in \Img(\phi)$, we have the following for the fiber of $\phi$ along $p$:
-	\[ \dim(\phi\i(p)) \geq \dim(X) - \dim(Y). \]
+	\[ \dim(\phi\i(p)) \geq \dim(X) - \dim(Y).\qedhere \]
 \end{lemma}

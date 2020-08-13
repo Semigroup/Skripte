@@ -6,8 +6,8 @@
 	\[ G(n,d) := \set{W \subset k^n}{W \text{ is a }d\text{-dimensional subvectorspace}}.  \]
 	Then, we have the \df{Plücker-embedding} by
 	\begin{align*}
-	P_d : G(n,d) & \Pfeil{} \P \klam{ \bigwedge^d k^n } = \P^{\binom{n}{d}}\\
-	W & \longmapsto [w_1\wedge w_d]
+	P_d : G(n,d) & \Pfeil{} \P \klam{ \bigwedge^d k^n } = \P^{\binom{n}{d}-1}\\
+	W & \longmapsto [w_1\wedge \ldots \wedge w_d]
 	\end{align*}
 	where $w_1,\ldots, w_d$ is a basis of $W$.
 \end{definition}
@@ -19,7 +19,7 @@
 
 \begin{definition}
 Let $V$ be a finite-dimensional vector space of dimension $n$. Set
-\[ \Gr_d(V) :=\curv{d\text{-dim. subspaces of} V} \isom{} G(n,d). \]
+\[ \Gr_d(V) :=\curv{d\text{-dim. subspaces of } V} \isom{} G(n,d). \]
 Define further the \df{flag manifold} to be
 \[ \Flag(V) := \curv{ \text{complete flags } \F = (0 = V_0 \subseteq V_1 \subseteq \ldots \subseteq V_n = V) }. \]
 Then, we have a map
