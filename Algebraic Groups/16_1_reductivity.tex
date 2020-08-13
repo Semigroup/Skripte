@@ -23,7 +23,7 @@ Further, we demand that a quotient is initial in the category of all objects whi
 \end{remark}
 
 \begin{example}
-	Consider the action of $G = \G_m$ on $X = k^1$. This action has to orbits:
+	Consider the action of $G = \G_m$ on $X = k^1$. This action has two orbits:
 	
 	the open orbit $k \setminus \{0\}$ and the closed orbit $\{0\}$.
 	
@@ -47,10 +47,28 @@ where
 	f_{|W_1} &\equiv 1,\\
 	f_{|W_2} &\equiv 0.\\
 	\end{align*}
-	
-	
-	Is this easy to see? I only see the backwards direction (take $X = V, W_1 =0, W_2 = v$).
 \end{remark}
+\begin{proof}
+	\begin{enumerate}
+		\item[$\Rightarrow$:] Let $G$ be geomtrically reductive and connected. W.l.o.g., we can assume $X = W_1 \cup W_2$. According to the next theorem, we then have a quotient $(Y,\rho)$ of $X$ by $G$.
+		
+		$Y$ only contains points associated with the closed orbits of $X$. Each point $Y$ comes either from $W_1$ or $W_2$.
+
+		 Therefore, we can define a function
+		\[f' : Y \pfeil{} k \]
+		s.t.
+		\[ f'(\rho(W_1)) = 1 \text{  and  } f'(\rho(W_2)) = 0. \]
+		Now, (for some reason?) $f'$ lies in $\O(Y)$. For $f = f'\circ \rho$, we now have
+		\[ f \in \rho^*\O(Y) = \O(X)^G.  \]
+		\item[$\Leftarrow$:] Let $V$ be a f.d. vector space, on which $G$ acts. Let $v \in V^G$. We need to show, that there is a homogenous, $G$-invariant $f : V \pfeil{} k$ s.t.
+		\[ f(v) \neq 0. \]
+		Assume $v \neq 0$ and take $X = V, W_1 = 0$ and $W_2 = v^\bot$. Then, there is an $f \in O(V)^G$ s.t.
+		\begin{align*}
+		f(v) = 1\text{  and  } f(v^\bot) = 0
+		\end{align*}
+		Now, because $f(v^\bot) = 0$, $f$ must be linear (or of high degree and homogenous in $\mathrm{char} k \neq 0$), ergo homogenous.
+	\end{enumerate}
+\end{proof}
 
 \begin{theorem}
 	Let $G$ be a connected algebraic group. 
@@ -64,7 +82,7 @@ where
 	Then, there is a quotient $(Y, \rho)$ of $X$ by $G$.
 	
 	Moreover, $\rho$ induces a bijection
-	\[ \curv{ \text{closed }G\text{-orbits in }X } \Longleftrightarrow Y. \]
+	\[ \curv{ \text{closed }G\text{-orbits in }X } \longleftrightarrow Y. \]
 \end{theorem}
 
 \begin{definition}
