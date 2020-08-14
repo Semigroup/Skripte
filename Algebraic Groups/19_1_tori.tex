@@ -6,7 +6,7 @@
 	Since $G$ has a finite dimension, it always has at least one maximal torus.
 \end{definition}
 \begin{example}
-	If $G = \GL_n(k)$, then $k^\times$ is its maximal torus.
+	If $G = \GL_n(k)$, then $(k^\times)^n$ is its maximal torus.
 \end{example}
 \begin{lemma}
 	Let $G$ be a connected algebraic group. Let $s \in G$ be semisimple. Then, there is a maximal torus in $G$ s.t.
@@ -41,7 +41,7 @@
 	Let $G$ be a connected algebraic group.
 	\begin{enumerate}[(i)]
 		\item Any two maximal tori are conjugate.
-		\item For each torus $S$ and each maximal torus $T$ exists a $g \in G$ s.t.
+		\item For each torus $S$ and each maximal torus $T$, there exists a $g \in G$ s.t.
 		\[ gSg\i \subset T. \]
 	\end{enumerate}
 \end{corollary}
@@ -51,7 +51,8 @@
 	Let $S$ be torus with a generator $s$. Then there is a $g \in G$ s.t.
 	\[ gsg\i \in T. \]
 	Ergo
-	\[ gSg\i = \overline{\shrp{gsg\i}} \subset T. \]
+	\[ gSg\i = \overline{\shrp{gsg\i}} \subset T, \]
+	where we assume that $\mathrm{char} k = 0$.
 \end{proof}
 
 \begin{corollary}
