@@ -10,7 +10,7 @@
 
 \begin{definition}
 	Let $V$ be vector space and $G$ an algebraic group. A morphism $r_V : G \pfeil{} \GL(V)$ of groups is called \df{representation} of $G$, if there is a linear map
-	\[ \Delta : V \pfeil{} V \otimes_k k[G] ( = \Hom{alg}{G}{V}) \]
+	\[ \Delta : V \pfeil{} V \otimes_k k[G] \subseteq \Hom{alg}{G}{V} \]
 	s.t. we have for each $v \in V$ and $g \in G$
 	\[r_V(g)\cdot v = \sum_{i} v_i \cdot  f_i(g)  \]
 	where $\Delta v =\sum_{i} v_i \otimes f_i $.
@@ -100,7 +100,7 @@ Let $H$ be an algebraic subgroup of an algebraic group $G$. There is a finite-di
 	Let $V$ be like in the previous proof. Consider
 	\[ I \inj{} k[G] \surj{} k[H]. \]
 	We can now set $L' := V \cap I$. We then have for $g \in G$.
-	\[ I.g \subseteq I \iff g \in H. \]
+	\[ L'.g \subset L' \iff I.g \subseteq I \iff g \in H. \]
 	
 	Now, in general $L'$ is not of dimension one. Set $d = \dim (L')$ and consider the one-dimensional subspace $L:=\Lambda^d(L') \subseteq \Lambda^d(V)$. $G$ acts on $\Lambda^d(V)$ in the natural way.
 	

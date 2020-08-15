@@ -48,7 +48,7 @@ Then, there is exactly one $g \in G$ s.t. $\lambda_V = r_V(g)$ for all $V$.
 	Last time, we saw that any such family $V \mapsto \lambda_V$ extends to \textbf{all} rep.s $V$ of $G$.
 	
 	Let's note also that, if $(V_0, r_0)$ is any representation of $G$ with trivial action, i.e. $r(g) = 1$ for all $g$, then $\lambda_{V_0} = 1$.
-	Indeed, let $v\in V_0$. We must check that $\lambda_{V_0} v = v$. Since the action is trivial, any subsapce of $V_0$ is $G$-invariant.
+	Indeed, let $v\in V_0$. We must check that $\lambda_{V_0} v = v$. Since the action is trivial, any subspace of $V_0$ is $G$-invariant.
 	
 	Consider the map
 	\begin{align*}
@@ -98,7 +98,7 @@ Then, there is exactly one $g \in G$ s.t. $\lambda_V = r_V(g)$ for all $V$.
 \Delta: V & \Pfeil{}V\otimes  A.
 \end{align*}
 If $\Delta v = \sum{v_i} \otimes f_i$, then
-\[ hv = \sum f_i(h_i) \otimes v_i.  \]
+\[ hv = \sum f_i(h) \otimes v_i.  \]
 Let \begin{align*}
 \e : V\otimes A & \Pfeil{} V\\
 v\otimes f &\longmapsto f(1) v.
@@ -110,7 +110,7 @@ Let $(V_0, r_0)$ be the representation of $G$ with $V_0 := V$ and $r_0$ the triv
 Then, $\Delta : V \pfeil{} V_0\otimes A$ is a morphism of representations.
 
 (Indeed, if $\Delta v = \sum v_i \otimes f_i$, then 
-\[ \Delta (r(h) v) \overset{?}{=} (r_0(h) \otimes r_A(h) ) \Delta v \]
+\[ \Delta (r(h) v) \overset{}{=} (r_0(h) \otimes r_A(h) ) \Delta v \]
 since
 \begin{align*}
 \Delta v &= \sum v_i \otimes f_i\\
@@ -118,7 +118,7 @@ since
 \iff xhv &= \sum f_i(xh) v_i ~\forall x,h \in G.\\
 \end{align*}
 Since $r(h) v = hv$, it follows
-\[ \Delta(hv) = \sum v_i \otimes f_i(\cdot h) \implies (?). ) \]
+\[ \Delta(hv) = \sum v_i \otimes f_i(\_\cdot h).) \]
 
 
 We want to show
@@ -126,8 +126,8 @@ We want to show
 We have
 \begin{align*}
 \Delta \circ \lambda_V &\overset{(iii)}{=} \lambda_{V_0 \otimes A} \circ \Delta\\
-&\overset{(ii)}{=} \lambda_{V_0} \otimes \lambda_A\\
-&= 1 \otimes  \lambda_A = 1 \otimes r_A(g).
+&\overset{(ii)}{=} (\lambda_{V_0} \otimes \lambda_A)\circ \Delta\\
+&= (1 \otimes  \lambda_A)\circ \Delta =( 1 \otimes r_A(g))\circ \Delta.
 \end{align*}
 This implies
 \[ \Delta \circ \lambda_V = (1 \otimes r_A(g)) \circ \Delta \]
