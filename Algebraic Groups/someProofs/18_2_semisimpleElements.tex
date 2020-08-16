@@ -1,0 +1,102 @@
+\newpage
+
+\begin{lemma}
+	Let $B = U \rtimes T$ as above and suppose again $\mathrm{char} k = 0$.
+	
+	Then, there is an algebraic subgroup $V \subset U$ s.t. $V$ is normal in $B$ and
+	\[ \dim(U/V) = 1. \]
+\end{lemma}
+\newpage
+\begin{proof}
+	$U$ is nilpotent, since it is unipotent.
+	Consider the chain
+	\[ U = U_0 \supset U_1 \supset \ldots \supset U_n \supset 1 \]
+	where
+	\[ U_{i+1} := [U_i, U]. \]
+	Since $U$ is normal in $B$, each $U_i$ is also normal in $B$. In particular, $B$ acts on each $U_i$ by conjugation.
+	
+	Now, $U/U_1$ is unipotent and commutative, hence isomorphic to a vector space.
+	
+	Further, $T$ acts on $U/U_1$ by conjugation. Note, that $T$ is diagonalizable, ergo reductive. Therefore, $U/U_1$ must be completely reducible and we can decompose it
+	\[ U/U_1 = \bigoplus_j V_j. \]
+	Since $T$ is diagonalizable and each $V_j$ is $T$-invariant, each $V_j$ must be one-dimensional. Set
+	\[ \overline{V} := \bigoplus_{j \geq 2} V_j. \]
+	And now set
+	\[ V := \pi\i(\overline{V}) = \set{u \in U}{uU_1 \in \overline{V}}. \]
+	Then, we have
+	\[ U/V = (U/U_1) / (V / U_1) = ( U / U_1) / \overline{V} \isom{} V_1 \isom{} k. \]
+	$V$ is normal in $U$, since $U_1$ is normal in $U$ and $T$ acts on $V$ and $\overline{V}$ by conjugation.
+\end{proof}
+
+\newpage
+
+\begin{theorem}[Semisimple Elements of Solvable Groups]
+	Let $B = U \rtimes T$ as before be a solvable connected algebraic group.
+	
+	Let $s \in B$ be semisimple. Then $s$ is conjugated to one element in $T$.
+\end{theorem}
+\paragraph{Claim:} Write $s = ut$ and assume that $s,t$ do not commute. Let $\mathrm{char} k = 0$ and $\dim U = 1$. For each $h \in sU = Us$, we have for the $B$-conjugacy class $C(h) = \set{ghg\i}{g \in B}$
+\[ C(h) = sU. \]
+\begin{corollary}
+	Let $G$ be a connected algebraic group. Then, every semisimple element of $G$ is contained in some torus.
+\end{corollary}
+
+\begin{lemma}
+	Suppose $\mathrm{char} k = 0$.
+	\begin{enumerate}[(i)]
+		\item Let $g \in \GL_n(k)$ be unipotent and set $G(g) := \overline{\shrp{g}}$. Then, we have the following isomorphism of algebraic groups
+		\[ G(g) = \set{g^t}{t \in k} \isom{} k \]
+		where
+		\begin{align*}
+		g^t &:= \exp( t \cdot \log(g))\\
+		-\log(1 - X) &= \sum_{n = 1}^\infty \frac{X^n}{n}\\
+		\exp(Y) &= \sum_{k = 0}^\infty \frac{Y^k}{k!}.
+		\end{align*}
+		
+		\item Any unipotent algebraic group is connected. (This does not hold if $\mathrm{char} k > 0$.)
+		\item Any unipotent commutative algebraic group is isomorphic to some vector space.
+	\end{enumerate}
+\end{lemma}
+
+\newpage
+\begin{proof}[Proof of Claim]
+1.	$B$ acts by conjugation on $Us = sU$, because $G/U$ is a commutative group.
+	
+2. 	Since $\dim(U) = 1$, we have $U = \set{v^k}{k \in K} \isom{} k.$
+
+3. $h \in sU$ does not commute with $u$, since -- otherwise -- $s,t$ would commute with $u$. Ergo, $h \neq u\i h u$, which means $C(h) \supseteq \{h, u\i h u\}$ contains at least two different elements.
+
+4. Note, that $C(h)$ is a $B$-orbit and therefore connected and \df{locally closed} (that is a closed subset of an open subset of $G$). Since $G/U$ is commutative, we have
+$C(h) \subset sU = hU \isom{} k$.
+
+Now, the only connected, locally closed subsets of $k$ are singletons and complements of finite sets.
+Since $C(h)$ is not a singleton, we have $C(h) = sU  - \Sigma$
+for a finite set $\Sigma$.
+We claim that $\Sigma$ is empty. Note, that $B$ acts by conjugation on $sU$ and $C(h)$, ergo also on $\Sigma$. If we pick $h' \in \Sigma \subset sU$, then $C(h')$ must be finite, connected and contain two different elements. This is a contradiction.	
+\end{proof}
+
+\begin{proof}[Proof of Theorem]
+	We only prove the theorem in case $\mathrm{char} k = 0$.
+	Let $s \in B = U\rtimes T$ be semisimple. Since $\mathrm{char} k = 0$, $U$ is connected.
+	We induct on $\dim(U)$:
+	
+	$\dim(U) = 0$: In this case $U = 1$ and $s \in G= T$.
+	
+	$\dim(U) = 1$: Write $s = ut$ with $u \in U$ and $t \in T$. If $u$ and $t$ commute, then $ut$ is a Jordan decomposition and we have $u = 1$, ergo $s \in T$.
+	Assume therefore, that $u,t$ don't commute. The claim now implies $t = su \in sU = C(s)$.
+	
+	$\dim(U) \geq 2$: Choose $V \subset U$ s.t. $\dim(U / V) = 1$ and $V$ is normal in $B$. Set
+	\[ B' = B/V ~~~ U' = U/V- \]
+	Then, $B'$ is a connected algebraic group with
+	\[ (B')_u = U'~~~
+	B' / U \isom{} B/U = T~~~
+	B' = U' \rtimes T. \]
+
+Since $\dim(U') = 1$, we know that $\pi_V(s) \in B'$ is contained in a conjugacy class of $T$.
+Let $s'\in B$ be the conjugate of $s \in B$ s.t. $\pi_V(s') \in T$. Then,
+$ s' \in TV$.
+But $TV$ is a connected solvable algebraic group and we have
+\[ TV \isom{} V \rtimes T \subset U \times T. \]
+Since $(TV)_u = V$ and $\dim(V) = \dim(U) - 1$, the induction hypothesis does also hold in $TV$. Ergo, $s'$ is conjugated to some element in $T$, as we wanted.
+\end{proof}
+

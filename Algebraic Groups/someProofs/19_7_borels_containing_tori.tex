@@ -1,0 +1,77 @@
+Let $G$ be a connected algebraic group with a maximal torus $T$. Set
+\[ \B^T := \set{B \subset G \text{ Borel}}{T \subset B}. \]
+Then, $N_G(T)$ acts on $\B^T$ by conjugation.
+\begin{example}
+Let $G = \GL_2(k)$ with $T = \curv{\mat{* & \\ & *}}$. Then,
+\[ \B^T = \curv{ \mat{* & *\\ & *}, \mat{* & \\ * & *} }. \]
+\end{example}
+\begin{lemma}
+	The action of $Z_G(T)$ on $\B^T$ by conjugation is trivial.
+	
+	Equivalently (since $B = N_G(B)$), $Z_G(T) \subset B$ for each $B \in B^T$.
+\end{lemma}
+\begin{corollary}
+	The action $N_G(T) \curvearrowright \B^T$ induces am action by the Weyl group $W(G,T) = N_G(T) / Z_G(T)$ on $\B^T$.
+\end{corollary}
+\begin{corollary}
+	In the proof, we could see that $N_G(T)$ and $W(G,T)$ act transitively on $\B^T$.
+\end{corollary}
+\begin{corollary}
+	\[ \# \B^T \leq \# W < \infty. \]
+\end{corollary}
+\newpage
+\begin{proof}
+	We know, that $Z_G(T)$ is connected, since $T$ is a torus. Further, since $T \subset Z_G(T)$ is central and a maximal torus, is must be the unique maximal torus in $Z_G(T)$.
+	We showed before, that this is equivalent to $Z_G(T)$ being nilpotent. Thus, $Z_G(T)$ is contained in some Borel group $B_0 \in \B^T$.
+	
+	Let $B \in \B^T$ and choose $g \in G$ s.t.
+	\[ B = gB_0g\i. \]
+	Since maximal tori in $B$ are $B$-conjugated, we can choose $g \in G$ s.t. $g \in N_G(T)$.
+	(Otherwise, we can replace $g$ bx $bg$ s.t. $bgTg\i b\i = T$.)
+	
+	One can show that
+	\[ g \in N_G(T) \implies g \in N_G(Z_G(T)). \]
+	Thus
+	\[g\i Z_G(T) g = Z_G(T) \subset B_0 \]
+	which implies
+	\[ Z_G(T) \subset gB_0g\i = B. \]
+\end{proof}
+\newpage
+
+\begin{theorem}[Borel Subgroups Containing a Given Torus]
+	$W$ acts \df{simply-transitively} on $\B^T$, i.e., for each $B_1, B_2 \in \B^T$ there is exactly \emph{one} $g \in G$ s.t.
+	\[ gB_1g\i = B_2. \]
+	In particular,
+	\[ \#\B^T = \# W. \]
+\end{theorem}
+
+\begin{corollary}
+	Since $N_B(T) \subset Z_G(T)$ we have for each Borel group $B$ and maximal torus $T$ of $B$
+	\[ W(B,T) = 1. \]
+	In particular,
+	\[\B^T = \{B\}. \]
+\end{corollary}
+
+\begin{proposition}
+	Let $G$ be a connected non-solvable algebraic group (this implies $\dim G \geq 3$). Let $B$ be a Borel subgroup with a maximal torus $T$. Then,
+	\[\# W(G,T) \geq 2. \]
+	Moreover,
+	\[\# W = 2 \iff \dim(G / B) = 1. \]
+\end{proposition}
+
+\newpage
+\begin{proof}
+	Let $B \in \B^T$. We need to show
+	\[ N_G(T) \cap N_G(B) \subset Z_G(T). \]
+	Note, that
+	\[ N_G(T) \cap N_G(B) = N_G(T) \cap B = N_B(T). \]
+	Set $U := B_u$, then $B = U \rtimes T$.
+	
+	Choose $b \in N_B(T)$ with $b = ut$, $u\in U, t \in T$. Then,
+	\[ T = bTb\i = uTu\i. \]
+	Since $t \in Z_G(T)$, it suffices to show that $u \in Z_G(T)$.
+	
+	Let $t \in T$ and set $t' = utu\i \in T$. Since, we have an isomorphism
+	\[ T \inj{} B \surj{} B/U \]
+	and $B/U$ is commutative, $t$ and $t'$ must be equal in $T$. Ergo, $u \in Z_G(T)$.
+\end{proof}
